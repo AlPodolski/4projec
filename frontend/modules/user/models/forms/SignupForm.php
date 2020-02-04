@@ -1,9 +1,9 @@
 <?php
-namespace frontend\models;
+namespace frontend\modules\user\models\forms;
 
 use Yii;
 use yii\base\Model;
-use common\models\User;
+
 
 /**
  * Signup form
@@ -13,7 +13,17 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $city;
 
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя',
+            'email' => 'Email',
+            'password' => 'Пароль',
+            'city' => 'Город',
+        ];
+    }
 
     /**
      * {@inheritdoc}
@@ -23,14 +33,13 @@ class SignupForm extends Model
         return [
             ['username', 'trim'],
             ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => 'frontend\modules\user\models\User', 'message' => 'Такая почта уже используется'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],

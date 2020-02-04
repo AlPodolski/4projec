@@ -1,0 +1,23 @@
+@font-face {
+    font-family: HelveticaNeueCyr-Roman; /* Имя шрифта */
+    src: url(../files/fonts/HelveticaNeueCyr-Roman.woff); /* Путь к файлу со шрифтом */
+}
+@font-face {
+    font-family: HelveticaNeueCyr-Bold; /* Имя шрифта */
+    src: url(../files/fonts/HelveticaNeueCyr-Bold.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+    font-family: HelveticaNeueCyr-Light; /* Имя шрифта */
+    src: url(../files/fonts/HelveticaNeueCyr-Light.woff); /* Путь к файлу со шрифтом */
+}
+.place{
+    font-family: HelveticaNeueCyr-Roman;
+}
+
+.place-city , .bottom-menu .top-nav li , .bottom-menu .top-nav li a {
+    font-family: HelveticaNeueCyr-Bold;
+}
+
+.top-nav li, .top-nav li a{
+    font-family: HelveticaNeueCyr-Light;
+}

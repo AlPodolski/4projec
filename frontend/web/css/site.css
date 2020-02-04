@@ -9,11 +9,6 @@ body {
     margin: 0 auto -60px;
     padding: 0 0 60px;
 }
-
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
-
 .footer {
     height: 60px;
     background-color: #f5f5f5;
@@ -117,4 +112,59 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+.place{
+    font-size: 12px;
+    color: #858c8e;
+}
+.place-city{
+    font-size: 12px;
+    color: #3f3f43;
+}
+.top-menu{
+    padding: 16px 0 11px 0;
+    border-bottom: 1px solid
+    #ececec;
+}
+.top-nav , .top-nav li, .top-nav li a{
+    list-style: none;
+    color: #373636;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.top-nav{
+    padding-left: 0px;
+    margin-bottom: 0px;
+}
+.top-nav li , .bottom-menu .top-nav li {
+    display: inline-block;
+    margin-right: 15px;
+}
+.in-cabinet i{
+    margin-right: 10px;
+}
+.cabinet-btn{
+    text-align: right;
+}
+.in-cabinet{
+    margin-right: 20px;
+    border: 1px solid#514c4c;
+    padding: 5px 20px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    color: #514c4c;
+    background: #fff;
+}
+.logo{
+    padding-top: 10px;
+}
+.bottom-menu .top-nav li , .bottom-menu .top-nav li a {
+    font-size: 22px;
+    color: #3f3f43;
+}
+.bottom-menu .top-nav{
+    line-height: 100px;
+}
+.bottom-menu .top-nav li a{
+    color: #496bef !important;
 }
