@@ -55,14 +55,30 @@ $login = new LoginForm();
                             <li>новости сайта</li>
                         </ul>
                     </div>
-                    <div class="col-3 cabinet-btn" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
+                    <div class="col-3 cabinet-btn" >
 
                         <?php if (Yii::$app->user->isGuest) : ?>
 
-                            <a class="in-cabinet" >
-                                <i class="fa fa-user" ></i>
+                            <a class="in-cabinet" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
+                                <i class="fa fa-user"></i>
                                 Вход
                             </a>
+
+                        <?php else : ?>
+
+                            <?php
+
+                                echo ''
+                                . Html::beginForm(['/user/logout'], 'post')
+                                . Html::submitButton(
+                                '<i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        Выйти (' . Yii::$app->user->identity->username . ')',
+                                ['class' => ' logout register-btn in-cabinet']
+                                )
+                                . Html::endForm()
+                                . ''
+
+                            ?>
 
                         <?php endif; ?>
 

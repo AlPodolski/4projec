@@ -47,9 +47,10 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/user/signup',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/user/login',
-                '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/user/logout',
             ],
         ],
     ],
