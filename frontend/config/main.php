@@ -13,16 +13,17 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-        'User' => [
+        'user' => [
             'class' => 'frontend\modules\user\User',
         ],
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'enableCsrfValidation' => false
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'frontend\modules\user\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
@@ -46,6 +47,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/user/signup',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/user/login',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
             ],
         ],
     ],

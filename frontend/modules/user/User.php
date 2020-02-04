@@ -10,7 +10,7 @@ class User extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'frontend\modules\controllers';
+    public $controllerNamespace = 'frontend\modules\user\controllers';
 
     /**
      * {@inheritdoc}

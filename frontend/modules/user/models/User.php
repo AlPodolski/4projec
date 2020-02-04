@@ -117,6 +117,18 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Finds user by email and city
+     *
+     * @param string $email
+     * @param string $city
+     * @return \frontend\modules\user\models\User|null
+     */
+    public static function findByEmailAndCity($email, $city)
+    {
+        return static::findOne(['email' => $email, 'city' => $city]);
+    }
+
+    /**
      * Finds out if password reset token is valid
      *
      * @param string $token password reset token
