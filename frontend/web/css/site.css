@@ -178,3 +178,33 @@ a.desc:after {
 .register-btn{
     line-height: 15px;
 }
+#addpostform-image{
+    display: none;
+}
+.img-label{
+    background: url('/files/img/nophoto.png') , #fff;
+    display: block;
+    background-position: center;
+    width:100%;
+    min-height: 225px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.wrap{
+    background: #cacaca;
+}
+header{
+    background: #fff;
+}
+.img-label p{
+    text-align: center;
+    padding-top: 180px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #767676;
+    line-height: 17px;
+    font-weight: bold;
+}

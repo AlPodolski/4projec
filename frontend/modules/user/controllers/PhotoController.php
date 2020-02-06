@@ -19,15 +19,27 @@ class PhotoController extends Controller
 
             $file = UploadedFile::getInstance($model, 'file');
 
-            $model->file = 'photo-'.Yii::$app->user->id.'-'.\md5($file->name).\time();
+            $model->file = 'photo-'.Yii::$app->user->id.'-'.\md5($file->name).\time().'.jpg';
 
-            $dir = Yii::$app->params['photo_path'].DirHelprer::generateDirNameHash($model->file).'/';
+            $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
+
+            $dir = Yii::$app->params['photo_path'].$dir_hash;
 
             $save_dir = DirHelprer::prepareDir(Yii::getAlias('@webroot').$dir);
 
-            ImageHelper::prepareImage($file, $model, $save_dir, $model->file.'.jpg');
+            ImageHelper::prepareImage($file, $model, $save_dir, $model->file);
 
-            return  $dir.$model->file.'.jpg';
+            $model->user_id = Yii::$app->user->id;
+
+            $model->avatar = 1;
+
+            $model->unsetAvatarStatus();
+
+            $model->file = $dir.$model->file;
+
+            $model->save();
+
+            return $model->file;
 
         }
 

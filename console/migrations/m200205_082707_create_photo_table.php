@@ -15,7 +15,7 @@ class m200205_082707_create_photo_table extends Migration
         $this->createTable('{{%photo}}', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->unsigned(),
-            'file' => $this->string(50),
+            'file' => $this->string(255),
             'avatar' => $this->integer(1)->unsigned()->defaultValue(0),
         ]);
     }

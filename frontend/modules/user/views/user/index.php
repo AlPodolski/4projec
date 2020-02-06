@@ -12,7 +12,7 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 
 ?>
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         <?php
 
         $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data']]); ?>
@@ -20,6 +20,8 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
         <label for="addpostform-image"  class=" img-label">
 
             <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image' , 'onchange' => 'send_img(this)' ])->label(false) ?>
+
+            <p>Загрузите <br> свое фото</p>
 
         </label>
 

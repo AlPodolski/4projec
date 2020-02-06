@@ -30,13 +30,13 @@ class Photo extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'avatar'], 'integer'],
-            [['file'], 'string', 'max' => 50],
+            [['file'], 'safe'],
         ];
     }
 
-    public static function addNewAvatar($user_id, $avatar){
+    public function unsetAvatarStatus(){
 
-
+        Photo::updateAll(['avatar' => 0], ['user_id' => $this->user_id]);
 
     }
 
