@@ -51,6 +51,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/auth/signup',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/auth/login',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
             ],
         ],
     ],

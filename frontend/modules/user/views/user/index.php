@@ -1,9 +1,42 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>user/index</h1>
+/* @var $photo Photo */
+use frontend\modules\user\models\Photo;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
+use yii\helpers\Url;
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+$this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
+?>
+<div class="row">
+    <div class="col-4">
+        <?php
+
+        $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data']]); ?>
+
+        <label for="addpostform-image"  class=" img-label">
+
+            <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image' , 'onchange' => 'send_img(this)' ])->label(false) ?>
+
+        </label>
+
+        <?php ActiveForm::end();
+
+        ?>
+    </div>
+    <div class="col-8">
+
+    </div>
+</div>
+<div class="wrap-avatar">
+
+
+</div>
+
+
+
+
+
