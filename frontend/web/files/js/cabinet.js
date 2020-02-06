@@ -46,7 +46,7 @@ $('#addpostform-image').on('change', function(){
 });
 
 $(function(){
-    $('#my_form').on('submit', function(e){
-
+    $('.user-manu').on('click', function(e){
+            $('.user-menu-list').toggle('slow')
     });
 });

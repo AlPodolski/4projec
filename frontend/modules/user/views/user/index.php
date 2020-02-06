@@ -10,6 +10,7 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 ?>
 <div class="row">
     <div class="col-3">
+
         <?php
 
         $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data']]); ?>
@@ -29,6 +30,34 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
         <?php ActiveForm::end();
 
         ?>
+
+        <div class="user-menu">
+
+            <div class="row">
+                <div class="col-9">
+                    <p class="user-name">
+                        <?php echo Yii::$app->user->identity->username ?>
+                    </p>
+                </div>
+                <div class="col-3">
+                    <span class="user-manu ">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="user-menu-list">
+            <ul class="user-menu-ul">
+                <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="">Моя страница</a></span></li>
+                <li class="user-menu-item my-message"><i class="fas fa-envelope"></i> <span class="text "><a href="">Мои сообщения</a></span></li>
+                <li class="user-menu-item my-favorite"><i class="fas fa-heart"></i> <span class="text "><a href="">Избранные</a></span></li>
+                <li class="user-menu-item my-settings"><i class="fas fa-cog"></i> <span class="text "><a href="">Настройки</a></span></li>
+                <li class="user-menu-item my-logout"><i class="fas fa-sign-out-alt"></i> <span class="text "><a href="">Выйти</a></span></li>
+            </ul>
+        </div>
+
     </div>
     <div class="col-8">
 

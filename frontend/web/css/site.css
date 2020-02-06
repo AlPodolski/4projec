@@ -211,3 +211,57 @@ header{
 .form-info{
     display: none;
 }
+.user-menu p {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    line-height: 15px;
+}
+.user-menu{
+    background:  #fff;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+.user-menu div{
+    line-height: 15px;
+}
+.user-menu-list{
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 5px;
+}
+.user-menu-ul {
+    list-style: none;
+    padding-left: 0px;
+}
+.user-menu-item {
+    border-bottom: 1px solid #ededed;
+    line-height: 45px;
+    padding-left: 18px;
+}
+.my-page i{
+    color:#9ed88a ;
+}
+.my-message i{
+    color:#6b91ea ;
+}
+.my-favorite i{
+    color:#e06562 ;
+}
+.my-settings i{
+    color:#7fb28a ;
+}
+.my-logout i{
+    color:#be9353 ;
+}
+.text {
+    padding-left: 20px;
+}
+.user-menu-item .text{
+    color: #858c8e;
+}
+.text  a{
+    color: #858c8e;
+}
+.user-manu{
+    cursor: pointer;
+}

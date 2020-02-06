@@ -10,14 +10,21 @@
     font-family: HelveticaNeueCyr-Light; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Light.woff); /* Путь к файлу со шрифтом */
 }
+@font-face {
+    font-family: HelveticaNeueCyr-Medium; /* Имя шрифта */
+    src: url(../files/fonts/HelveticaNeueCyr-Medium.ttf); /* Путь к файлу со шрифтом */
+}
 .place{
     font-family: HelveticaNeueCyr-Roman;
+}
+.text  a{
+    font-family: HelveticaNeueCyr-Medium;
 }
 
 .place-city , .bottom-menu .top-nav li , .bottom-menu .top-nav li a {
     font-family: HelveticaNeueCyr-Bold;
 }
 
-.top-nav li, .top-nav li a{
+.top-nav li, .top-nav li a , .user-menu p{
     font-family: HelveticaNeueCyr-Light;
 }
