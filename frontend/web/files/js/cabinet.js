@@ -24,11 +24,11 @@ $('#addpostform-image').on('change', function(){
         datatype:'json',
         // async: false,
         beforeSend: function() {
-            // do some loading options
+            $('#w0 .form-text').css('display', 'none');
         },
         success: function (data) {
-            // on success do some validation or refresh the content div to display the uploaded images
-            jQuery("#list-of-post").load("<?php echo Yii::app()->createUrl('//forumPost/forumPostDisplay'); ?>");
+            $('.form-info p').text('Фото загружено');
+            $('.form-info').css('display', 'block');
         },
 
         complete: function() {

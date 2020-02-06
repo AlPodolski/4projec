@@ -208,3 +208,6 @@ header{
     line-height: 17px;
     font-weight: bold;
 }
+.form-info{
+    display: none;
+}

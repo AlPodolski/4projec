@@ -2,10 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $photo Photo */
 use frontend\modules\user\models\Photo;
-use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\file\FileInput;
-use yii\helpers\Url;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
  $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -21,9 +18,13 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 
             <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image' , 'onchange' => 'send_img(this)' ])->label(false) ?>
 
-            <p>Загрузите <br> свое фото</p>
+            <p class="form-text">Загрузите <br> свое фото </p>
 
         </label>
+
+        <div class="form-info">
+            <p class="alert alert-success"></p>
+        </div>
 
         <?php ActiveForm::end();
 
