@@ -14,6 +14,13 @@
     font-family: HelveticaNeueCyr-Medium; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Medium.ttf); /* Путь к файлу со шрифтом */
 }
+@font-face {
+    font-family: HelveticaNeueCyr; /* Имя шрифта */
+    src: url(../files/fonts/HelveticaNeueCyr-Black.ttf); /* Путь к файлу со шрифтом */
+}
+.user-ab .name{
+    font-family: HelveticaNeueCyr;
+}
 .place{
     font-family: HelveticaNeueCyr-Roman;
 }

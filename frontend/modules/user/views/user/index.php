@@ -9,6 +9,7 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 
 ?>
 <div class="row">
+
     <div class="col-3">
 
         <?php
@@ -58,7 +59,86 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
             </ul>
         </div>
 
+        <div class="user-menu">
+
+            <div class="row">
+                <div class="col-9">
+                    <p class="user-name">
+                        интим объявления
+                    </p>
+                </div>
+                <div class="col-3">
+                    <span class="user-ab ">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="user-ab-wrap">
+
+            <div class="user-ab-item">
+                <div class="row">
+                    <div class="col-2">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="col-10">
+                        <div class="name">Alexa fexa</div>
+                        <div class="text-ab">
+                            прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехам
+                            и прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехами
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-ab-item">
+                <div class="row">
+                    <div class="col-2">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="col-10">
+                        <div class="name">Alexa fexa</div>
+                        <div class="text-ab">
+                            прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехам
+                            и прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехами
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-ab-item">
+                <div class="row">
+                    <div class="col-2">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="col-10">
+                        <div class="name">Alexa fexa</div>
+                        <div class="text-ab">
+                            прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехам
+                            и прекрасная девушка ищет при-
+                            нца на белом коне и с большой
+                            елдой доспехами
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+
     <div class="col-8">
 
     </div>
