@@ -13,6 +13,8 @@ use frontend\assets\FontAwesomeAsset;
 use common\widgets\Alert;
 use frontend\modules\user\widgets\RegisterWidget;
 use frontend\modules\user\widgets\LoginWidget;
+use frontend\widgets\CityWidget;
+
 AppAsset::register($this);
 FontAwesomeAsset::register($this);
 
@@ -42,10 +44,7 @@ $login = new LoginForm();
             <div class="top-menu">
                 <div class="row">
                     <div class="col-2">
-                        <div class="place">
-                            <span>Местоположение : </span>
-                            <span class="place-city">Москва</span>
-                        </div>
+                        <?php echo CityWidget::widget() ?>
                     </div>
                     <div class="col-7">
                         <ul class="top-nav">

@@ -329,3 +329,9 @@ img{
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
     background:hsla(0, 0%, 0%, 0.52)!important;
 }
+.anket{
+    background: #fff;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+}

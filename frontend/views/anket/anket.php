@@ -24,7 +24,7 @@ $photo = Photo::getUserphoto($model->id);
 
 <div class="anket">
     <div class="row">
-        <div class="col-7">
+        <div class="col-6">
             <div class="single-photo">
 
                 <div class="slider slider-for">
@@ -63,7 +63,7 @@ $photo = Photo::getUserphoto($model->id);
 
             </div>
         </div>
-        <div class="col-5">
+        <div class="col-6">
 
         </div>
     </div>

@@ -9,7 +9,7 @@ use frontend\modules\user\models\Profile;
 class UserController extends \yii\web\Controller
 {
 
-    public function actionIndex()
+    public function actionIndex($city)
     {
 
         $model = Profile::find()->where(['id' => \Yii::$app->user->id])->one();
