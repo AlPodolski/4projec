@@ -7,7 +7,7 @@ use yii\web\Controller;
 
 class AnketController extends Controller
 {
-    public function actionView($id){
+    public function actionView($city, $id){
 
         $model = Profile::find()->where(['id' => $id])->one();
 

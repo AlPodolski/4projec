@@ -18,7 +18,7 @@
     font-family: HelveticaNeueCyr; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Black.ttf); /* Путь к файлу со шрифтом */
 }
-.user-ab .name{
+.user-ab .name , .city-name{
     font-family: HelveticaNeueCyr;
 }
 .place{
@@ -28,7 +28,7 @@
     font-family: HelveticaNeueCyr-Medium;
 }
 
-.place-city , .bottom-menu .top-nav li , .bottom-menu .top-nav li a {
+.place-city , .bottom-menu .top-nav li , .bottom-menu .top-nav li a , .user-name , #nav-tab a{
     font-family: HelveticaNeueCyr-Bold;
 }
 

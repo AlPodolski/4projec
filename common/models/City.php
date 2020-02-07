@@ -33,7 +33,7 @@ class City extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getCurrentCity($city){
+    public static function getCity($city){
 
         return City::find()->select('city')->where(['url' => $city])->orWhere(['city' => $city])->asArray()->one();
 

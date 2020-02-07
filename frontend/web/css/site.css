@@ -335,3 +335,35 @@ img{
     margin-top: 5px;
     padding: 10px;
 }
+.city-name{
+    color: #838c8e;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.user-name{
+    color: #1f1f1f;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+#nav-tab a{
+    font-size: 9px;
+    text-transform: uppercase;
+    color: #838d8f;
+    border-radius: 22px;
+    padding: 7px 30px;
+    line-height: 16px;
+}
+#nav-tab .active{
+    color: #fff;
+    background: #838d8f;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border: none;
+}
+.nav-tabs {
+    border: none;
+}
+.nav-tabs .nav-link {
+    border: none;
+}

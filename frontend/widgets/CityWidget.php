@@ -12,7 +12,7 @@ class CityWidget extends Widget
     public function run()
     {
 
-        if (isset(Yii::$app->controller->actionParams['city']) and $city = City::getCurrentCity(Yii::$app->controller->actionParams['city'])) {
+        if (isset(Yii::$app->controller->actionParams['city']) and $city = City::getCity(Yii::$app->controller->actionParams['city'])) {
 
             ?>
 

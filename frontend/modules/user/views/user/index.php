@@ -13,7 +13,7 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 
     <?php echo UserSideBarWidget::Widget()?>
 
-    <div class="col-8">
+    <div class="col-9">
 
         <?php echo $this->renderFile('@app/views/anket/anket.php',
                 [
@@ -22,11 +22,6 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
             ) ?>
 
     </div>
-
-</div>
-
-<div class="wrap-avatar">
-
 
 </div>
 
