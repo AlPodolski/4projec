@@ -2,7 +2,10 @@
 
 namespace frontend\modules\user\models;
 
+use common\models\Service;
+use frontend\models\UserService;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "user".
@@ -67,5 +70,21 @@ class Profile extends \yii\db\ActiveRecord
             'verification_token' => 'Verification Token',
             'city' => 'City',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserServiceRelations()
+    {
+        return $this->hasMany(UserService::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public function getService()
+    {
+        return $this->hasMany(Service::className(), ['id' => 'service_id'])->via('userServiceRelations')->all();
     }
 }

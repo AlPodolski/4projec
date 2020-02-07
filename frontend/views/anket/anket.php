@@ -20,6 +20,7 @@ SlickAsset::register($this);
 $this->registerJsFile('/files/js/single.js', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
+$service = $model->getService();
 
 ?>
 
@@ -98,6 +99,27 @@ $photo = Photo::getUserphoto($model->id);
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+            </div>
+
+
+
+            <div class="service-block">
+
+                <?php if ($service) : ?>
+
+                <p class="sex-pred">Сексуальные предпочтения</p>
+
+                <ul>
+
+                    <?php foreach ($service as $item) : ?>
+
+                        <li><?php echo $item->value ?></li>
+
+                    <?php endforeach; ?>
+
+                </ul>
+
+                <?php endif; ?>
             </div>
 
         </div>

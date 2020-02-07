@@ -23,7 +23,7 @@
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
 }
 
-.user-ab .name , .city-name{
+.user-ab .name , .city-name , .sex-pred {
     font-family: HelveticaNeueCyr;
 }
 .place{

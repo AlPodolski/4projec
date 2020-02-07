@@ -374,3 +374,20 @@ img{
     padding-top: 10px;
     padding-left: 15px;
 }
+.service-block ul li{
+    margin-right: 20px;
+    color: #838d8f;
+    font-size: 11px;
+    float: left;
+    width: 44%;
+}
+.service-block ul{
+    padding-left:25px;
+}
+.sex-pred {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #838d8f;
+    padding-left: 15px;
+    letter-spacing: 2px;
+}
