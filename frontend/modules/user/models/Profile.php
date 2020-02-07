@@ -2,7 +2,9 @@
 
 namespace frontend\modules\user\models;
 
+use common\models\Params;
 use common\models\Service;
+use frontend\models\UserParams;
 use frontend\models\UserService;
 use Yii;
 use yii\db\ActiveRecord;
@@ -86,5 +88,24 @@ class Profile extends \yii\db\ActiveRecord
     public function getService()
     {
         return $this->hasMany(Service::className(), ['id' => 'service_id'])->via('userServiceRelations')->all();
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserParamRelations()
+    {
+        return $this->hasMany(UserParams::class, ['user_id' => 'id']);
+    }
+
+    /**
+     * @return array|ActiveRecord[]
+     */
+    public function getParams()
+    {
+        return $this->hasMany(Params::class, ['id' => 'param_id'])->via('userParamRelations')->all();
+    }
+
+    public function getUserParams(){
+        return $this->hasMany(UserParams::class, ['user_id' => 'id'])->asArray()->all();
     }
 }

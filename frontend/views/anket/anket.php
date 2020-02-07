@@ -1,6 +1,7 @@
 <?php
 
 use common\models\City;
+use common\models\Params;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\assets\SlickAsset;
@@ -21,6 +22,8 @@ $this->registerJsFile('/files/js/single.js', ['depends' => [SlickAsset::classNam
 
 $photo = Photo::getUserphoto($model->id);
 $service = $model->getService();
+$params = Params::find()->asArray()->all();
+$postParams = $model->getUserParams();
 
 ?>
 
@@ -97,7 +100,25 @@ $service = $model->getService();
                         <p><?php  echo $model->text ?></p>
                     <?php endif; ?>
                 </div>
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                <div class="tab-pane fade param-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+                    <?php if ($params) : ?>
+
+                        <?php foreach ($params as $param) : ?>
+
+                            <p class="param"> <?php echo $param['param']  ?> :
+
+                                <?php foreach ($postParams as $postParam) : ?>
+
+                                    <?php if ($postParam['param_id'] == $param['id']) echo $postParam['value'] ?>
+
+                                <?php endforeach; ?> </p>
+
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                </div>
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
             </div>
 
@@ -113,7 +134,11 @@ $service = $model->getService();
 
                     <?php foreach ($service as $item) : ?>
 
-                        <li><?php echo $item->value ?></li>
+                        <li>
+
+                            <?php echo $item->value ?>
+
+                        </li>
 
                     <?php endforeach; ?>
 
