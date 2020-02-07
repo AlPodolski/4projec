@@ -193,12 +193,14 @@ a.desc:after {
     margin-top: 5px;
     background-repeat: no-repeat;
     border-radius: 5px;
+    overflow: hidden;
 }
 .wrap{
     background: #cacaca;
 }
 header{
     background: #fff;
+    margin-bottom: 25px;
 }
 .img-label p{
     text-align: center;
@@ -285,4 +287,45 @@ header{
 .text-ab{
     font-size: 12px;
     color: #777;
+}
+img{
+    max-width: 100%;
+}
+.exist-img .form-text{
+    display: none;
+}
+.exist-img .form-group{
+    margin-bottom: 0px;
+}
+.exist-img {
+    min-height: auto;
+}
+.slider-nav .slick-current{
+    filter: brightness(45%);
+}
+.slider-for .item.slick-slide {
+    max-height: 250px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.slider-nav .item {
+    margin: 0 5px;
+}
+.slider-nav .slick-prev , .slider-nav .slick-next{
+    height: 100%;
+    background:hsla(0, 0%, 0%, 0.52);
+    width: 35px;
+    z-index: 2;
+}
+.slider-nav .slick-prev:hover , .slider-nav .slick-next:hover{
+    background:hsla(0, 0%, 0%, 0.52);
+}
+.slider-nav .slick-prev{
+    left: 0px;
+}
+.slider-nav .slick-next{
+    right: 0px;
+}
+.slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
+    background:hsla(0, 0%, 0%, 0.52)!important;
 }

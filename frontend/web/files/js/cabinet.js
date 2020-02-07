@@ -27,7 +27,9 @@ $('#addpostform-image').on('change', function(){
             $('#w0 .form-text').css('display', 'none');
         },
         success: function (data) {
+
             $('.form-info p').text('Фото загружено');
+            $('.main-img').attr('src', data);
             $('.form-info').css('display', 'block');
         },
 

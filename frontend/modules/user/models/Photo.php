@@ -40,6 +40,17 @@ class Photo extends \yii\db\ActiveRecord
 
     }
 
+    public static function getUserPhoto($id){
+
+        return Photo::find()->where(['user_id' => $id])->orderBy('avatar desc')->all();
+
+    }
+
+    public static function getAvatar($user_id)
+    {
+        return Photo::find()->where(['user_id' => $user_id, 'avatar' => 1])->one();
+    }
+
     /**
      * {@inheritdoc}
      */

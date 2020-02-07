@@ -21,6 +21,7 @@
         "bower-asset/bootstrap": "4.3.1",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "bower-asset/fontawesome": "5.3.1",
+        "bower-asset/slick-carousel": "1.8.1",
         "yiisoft/yii2-imagine": "*",
         "iutbay/yii2-imagecache" : "*"
     },
