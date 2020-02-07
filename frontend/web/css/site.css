@@ -367,3 +367,10 @@ img{
 .nav-tabs .nav-link {
     border: none;
 }
+#nav-tabContent div p{
+    font-size: 13px;
+}
+#nav-home {
+    padding-top: 10px;
+    padding-left: 15px;
+}

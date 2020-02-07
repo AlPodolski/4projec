@@ -18,6 +18,7 @@ use Yii;
  * @property int $updated_at
  * @property string|null $verification_token
  * @property string|null $city
+ * @property string|null $text
  */
 class Profile extends \yii\db\ActiveRecord
 {

@@ -18,6 +18,11 @@
     font-family: HelveticaNeueCyr; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Black.ttf); /* Путь к файлу со шрифтом */
 }
+@font-face {
+    font-family: futuralightc; /* Имя шрифта */
+    src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
+}
+
 .user-ab .name , .city-name{
     font-family: HelveticaNeueCyr;
 }
@@ -32,6 +37,10 @@
     font-family: HelveticaNeueCyr-Bold;
 }
 
-.top-nav li, .top-nav li a , .user-menu p{
+.top-nav li, .top-nav li a , .user-menu p {
     font-family: HelveticaNeueCyr-Light;
+}
+
+#nav-tabContent {
+    font-family: futuralightc;
 }
