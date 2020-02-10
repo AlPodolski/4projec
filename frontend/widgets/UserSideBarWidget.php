@@ -71,13 +71,13 @@ class UserSideBarWidget extends Widget
 
             <div class="user-menu-list">
                 <ul class="user-menu-ul">
-                    <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="">Моя страница</a></span>
+                    <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="/user">Моя страница</a></span>
                     </li>
                     <li class="user-menu-item my-message"><i class="fas fa-envelope"></i> <span class="text "><a
                                     href="">Мои сообщения</a></span></li>
                     <li class="user-menu-item my-favorite"><i class="fas fa-heart"></i> <span class="text "><a href="">Избранные</a></span>
                     </li>
-                    <li class="user-menu-item my-settings"><i class="fas fa-cog"></i> <span class="text "><a href="">Настройки</a></span>
+                    <li class="user-menu-item my-settings"><i class="fas fa-cog"></i> <span class="text "><a href="/user/setting">Настройки</a></span>
                     </li>
                     <li class="user-menu-item my-logout"><i class="fas fa-sign-out-alt"></i> <span class="text "><a
                                     href="">Выйти</a></span></li>

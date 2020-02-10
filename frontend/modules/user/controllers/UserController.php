@@ -20,4 +20,10 @@ class UserController extends \yii\web\Controller
 
     }
 
+    public function actionEdit($city){
+
+        return $this->render('edit' );
+
+    }
+
 }
