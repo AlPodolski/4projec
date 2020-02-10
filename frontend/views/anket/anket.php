@@ -126,7 +126,7 @@ $postPrice = $model->getUserPrice();
                     <?php endif; ?>
 
                 </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <div class="tab-pane param-tab fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
                     <?php if ($price) : ?>
 
