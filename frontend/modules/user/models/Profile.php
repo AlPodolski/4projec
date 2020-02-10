@@ -8,7 +8,7 @@ use frontend\models\UserParams;
 use frontend\models\UserService;
 use Yii;
 use yii\db\ActiveRecord;
-
+use frontend\models\UserPrice;
 /**
  * This is the model class for table "user".
  *
@@ -107,5 +107,9 @@ class Profile extends \yii\db\ActiveRecord
 
     public function getUserParams(){
         return $this->hasMany(UserParams::class, ['user_id' => 'id'])->asArray()->all();
+    }
+
+    public function getUserPrice(){
+        return $this->hasMany(UserPrice::class, ['user_id' => 'id'])->asArray()->all();
     }
 }

@@ -2,6 +2,7 @@
 
 use common\models\City;
 use common\models\Params;
+use common\models\Price;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\assets\SlickAsset;
@@ -24,6 +25,8 @@ $photo = Photo::getUserphoto($model->id);
 $service = $model->getService();
 $params = Params::find()->asArray()->all();
 $postParams = $model->getUserParams();
+$price = Price::find()->asArray()->all();
+$postPrice = $model->getUserPrice();
 
 ?>
 
@@ -106,20 +109,46 @@ $postParams = $model->getUserParams();
 
                         <?php foreach ($params as $param) : ?>
 
-                            <p class="param"> <?php echo $param['param']  ?> :
+                            <p class="param">
+
+                                <?php echo $param['param']  ?> :
 
                                 <?php foreach ($postParams as $postParam) : ?>
 
                                     <?php if ($postParam['param_id'] == $param['id']) echo $postParam['value'] ?>
 
-                                <?php endforeach; ?> </p>
+                                <?php endforeach; ?>
+
+                            </p>
 
                         <?php endforeach; ?>
 
                     <?php endif; ?>
 
                 </div>
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+
+                    <?php if ($price) : ?>
+
+                        <?php foreach ($price as $param) : ?>
+
+                            <p class="param">
+
+                                <?php echo $param['name']  ?> :
+
+                                <?php foreach ($postPrice as $item) : ?>
+
+                                    <?php if ($item['price_id'] == $param['id']) echo $item['value'] ?>
+
+                                <?php endforeach; ?>
+
+                            </p>
+
+                        <?php endforeach; ?>
+
+                    <?php endif; ?>
+
+                </div>
             </div>
 
 
