@@ -54,6 +54,7 @@ class Profile extends \yii\db\ActiveRecord
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['phone', 'pol', 'birthday'], 'safe'],
         ];
     }
 
@@ -117,5 +118,11 @@ class Profile extends \yii\db\ActiveRecord
 
     public function getUserPrice(){
         return $this->hasMany(UserPrice::class, ['user_id' => 'id'])->asArray()->all();
+    }
+
+    public function formatDate(){
+
+        $this->birthday = \date('d.m.Y' , $this->birthday );
+
     }
 }

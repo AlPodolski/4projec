@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\controllers;
 
+use frontend\modules\user\components\helpers\TimeHelper;
 use frontend\modules\user\models\Profile;
 use yii\web\Controller;
 use Yii;
@@ -27,6 +28,23 @@ class EditController extends Controller
     public function actionEditProfile($city){
 
         $model = Profile::findOne(Yii::$app->user->id);
+
+        if (Yii::$app->request->isPost){
+
+            $data = Yii::$app->request->post();
+
+            $data['Profile']['birthday'] = TimeHelper::getTimestampFromString($data['Profile']['birthday']) + 3600 * 12;
+
+            if ($model->load($data) and $model->save()) {
+
+                Yii::$app->session->setFlash('success', "Данные обновлены");
+
+                return $this->redirect('/user');
+            }else{
+                Yii::$app->session->setFlash('warning', "Ошибка");
+            }
+
+        }
 
         return $this->render('edit_profile', [
             'model' => $model,

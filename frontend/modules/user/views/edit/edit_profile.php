@@ -8,6 +8,7 @@ use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
 
@@ -40,15 +41,22 @@ $pol = Pol::find()->asArray()->all();
                 <div class="col-4"> <?= $form ->field($model, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value')); ?></div>
 
                 <div class="col-4">
-                    <?= $form ->field($model, 'birthday')->widget(DatePicker::classname(), [
+
+                    <?php $model->formatDate() ?>
+
+                    <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
                         'options' => ['placeholder' => 'Дата рождения'],
-                        'value' => $model->birthday,
+                        'value' => date('d.m.Y', $model->birthday),
                         'pluginOptions' => [
-                            'autoclose'=>true
+                            'autoclose'=>true,
                         ]
                     ]); ?>
                 </div>
 
+            </div>
+
+            <div class="form-group">
+                <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
             </div>
 
             <?php
