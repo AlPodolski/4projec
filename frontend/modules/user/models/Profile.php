@@ -24,6 +24,7 @@ use frontend\models\UserPrice;
  * @property string|null $verification_token
  * @property string|null $city
  * @property string|null $text
+ * @property string|null $birthday
  */
 class Profile extends \yii\db\ActiveRecord
 {

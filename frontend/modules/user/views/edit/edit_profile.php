@@ -17,7 +17,24 @@ $this->title = 'Редактировать профиль'
 
     <div class="col-9">
 
+        <div class="edit-form">
 
+            <div class="row">
+            </div>
+
+            <?php $form = ActiveForm::begin(); ?>
+
+                <div class="col-4"> <?= $form ->field($model, 'username')->textInput(); ?></div>
+
+                <div class="col-4"> <?= $form ->field($model, 'birthday')->textInput(); ?> </div>
+
+            <?php
+
+                ActiveForm::end();
+
+            ?>
+
+        </div>
 
     </div>
 
