@@ -1,14 +1,25 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $photo Photo */
+/* @var $model Profile */
+
+use common\models\Pol;
 use frontend\modules\user\models\Photo;
+use frontend\modules\user\models\Profile;
 use frontend\widgets\UserSideBarWidget;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
+
+$this->registerJsFile('/files/js/jquery.maskedinput.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
-$this->title = 'Редактировать профиль'
+
+$this->title = 'Редактировать профиль';
+
+$pol = Pol::find()->asArray()->all();
 
 ?>
 <div class="row">
@@ -19,20 +30,34 @@ $this->title = 'Редактировать профиль'
 
         <div class="edit-form">
 
-            <div class="row">
-            </div>
 
             <?php $form = ActiveForm::begin(); ?>
 
-                <div class="col-4"> <?= $form ->field($model, 'username')->textInput(); ?></div>
+            <div class="row">
 
-                <div class="col-4"> <?= $form ->field($model, 'birthday')->textInput(); ?> </div>
+                <div class="col-4"> <?= $form ->field($model, 'username')->textInput(); ?></div>
+                <div class="col-4"> <?= $form ->field($model, 'phone')->textInput(['maxlength' => true , 'placeholder' => "+7(999)99 99 999"]); ?></div>
+                <div class="col-4"> <?= $form ->field($model, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value')); ?></div>
+
+                <div class="col-4">
+                    <?= $form ->field($model, 'birthday')->widget(DatePicker::classname(), [
+                        'options' => ['placeholder' => 'Дата рождения'],
+                        'value' => $model->birthday,
+                        'pluginOptions' => [
+                            'autoclose'=>true
+                        ]
+                    ]); ?>
+                </div>
+
+            </div>
 
             <?php
 
                 ActiveForm::end();
 
             ?>
+
+
 
         </div>
 

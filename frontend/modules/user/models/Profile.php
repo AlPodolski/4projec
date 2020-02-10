@@ -24,7 +24,9 @@ use frontend\models\UserPrice;
  * @property string|null $verification_token
  * @property string|null $city
  * @property string|null $text
- * @property string|null $birthday
+ * @property integer|null $birthday
+ * @property integer|null $pol
+ * @property string|null $phone
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -62,16 +64,19 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Имя',
             'auth_key' => 'Auth Key',
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
-            'email' => 'Email',
+            'email' => 'Почта',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
-            'city' => 'City',
+            'city' => 'Город',
+            'pol' => 'Пол',
+            'phone' => 'Телефон',
+            'birthday' => 'Дата рождения',
         ];
     }
 

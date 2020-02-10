@@ -9,6 +9,10 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $("#profile-phone").mask("+7(999)99-99-999");
+});
+
 $('#addpostform-image').on('change', function(){
 /*    files = this.files[0];
 
