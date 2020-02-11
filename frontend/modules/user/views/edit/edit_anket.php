@@ -14,6 +14,8 @@ $hair_color = HairColor::find()->where(['pol' => Yii::$app->user->identity->pol]
 $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 
+$model->getParams(Yii::$app->user->id);
+
 ?>
 <div class="row">
     <?php echo UserSideBarWidget::Widget() ?>

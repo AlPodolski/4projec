@@ -56,6 +56,24 @@ class EditController extends Controller
 
         $model = new Params();
 
+        if (Yii::$app->request->isPost){
+
+            $data = Yii::$app->request->post();
+
+            if ($model->load($data) and $model->save(Yii::$app->user->id)) {
+
+                Yii::$app->session->setFlash('success', "Информация обновлена");
+
+                return $this->redirect('/user');
+
+            }else{
+
+                Yii::$app->session->setFlash('warning', "Ошибка");
+
+            }
+
+        }
+
         return $this->render('edit_anket' , [
             'model' => $model
         ] );
