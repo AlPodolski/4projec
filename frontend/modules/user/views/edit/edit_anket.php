@@ -1,6 +1,7 @@
 <?php use common\models\BodyType;
 use common\models\EyeColor;
 use common\models\HairColor;
+use common\models\Service;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -15,6 +16,8 @@ $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 
 $model->getParams(Yii::$app->user->id);
+
+$service_list_sex = Service::find()->asArray()->all();
 
 ?>
 <div class="row">
@@ -45,6 +48,12 @@ $model->getParams(Yii::$app->user->id);
 
                 <div class="col-12">
 
+                    <?= $form->field($model, 'service')->checkboxList(ArrayHelper::map($service_list_sex, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+
+                </div>
+
+                <div class="col-12">
+
                     <div class="form-group">
                         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
                     </div>
@@ -52,6 +61,8 @@ $model->getParams(Yii::$app->user->id);
                 </div>
 
             </div>
+
+
 
             <?php ActiveForm::end() ?>
 

@@ -29,7 +29,7 @@ $pol = Pol::find()->asArray()->all();
 
     <div class="col-9">
 
-        <div class="edit-form">
+        <div class="edit-form anket">
 
 
             <?php $form = ActiveForm::begin(); ?>

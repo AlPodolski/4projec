@@ -4,6 +4,8 @@
 namespace frontend\modules\user\models\forms;
 
 use frontend\models\UserHairColor;
+use frontend\models\UserService;
+use frontend\models\UserToService;
 use yii\base\Model;
 use frontend\models\UserParams;
 use frontend\models\UserEyeColor;
@@ -11,7 +13,9 @@ use frontend\models\UserBody;
 use frontend\models\UserBreastSize;
 use frontend\models\UserVes;
 use frontend\models\UserRost;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use common\models\Service;
 
 class Params extends Model
 {
@@ -21,6 +25,7 @@ class Params extends Model
     public $ves;
     public $body;
     public $breast_size;
+    public $service;
 
     public function attributeLabels()
     {
@@ -31,6 +36,7 @@ class Params extends Model
             'eye_color' => 'Цвет глаз',
             'body' => 'Телосложение',
             'breast_size' => 'Размер груди',
+            'service' => 'Сексуальные предпочтения',
         ];
 
     }
@@ -42,6 +48,7 @@ class Params extends Model
     {
         return [
             [['hair_color', 'rost', 'ves', 'eye_color', 'body', 'breast_size'], 'integer'],
+            [['service'], 'safe'],
         ];
     }
 
@@ -52,8 +59,8 @@ class Params extends Model
         $this->rost = ArrayHelper::getValue(UserRost::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->ves = ArrayHelper::getValue(UserVes::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->body = ArrayHelper::getValue(UserBody::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->breast_size = ArrayHelper::getValue(UserBody::find()->where(['user_id'=> $user_id])->one(), 'value');
-
+        $this->breast_size = ArrayHelper::getValue(UserBreastSize::find()->where(['user_id'=> $user_id])->one(), 'value');
+        $this->service = ArrayHelper::getColumn(UserService::find()->where(['user_id'=> $user_id])->asArray()->all(), 'service_id'); ;
     }
 
     public function save($user_id){
@@ -64,8 +71,27 @@ class Params extends Model
         if ($this->breast_size) $this->saveUserBreast($user_id);
         if ($this->rost) $this->saveUserRost($user_id);
         if ($this->ves) $this->saveUserVes($user_id);
+        if ($this->service) $this->saveService($user_id);
 
         return true;
+
+    }
+
+    public function saveService($id){
+
+        UserService::deleteAll('user_id = '.$id);
+
+        foreach ($this->service  as $item){
+
+            $user_to_service = new UserService();
+
+            $user_to_service->user_id = $id;
+
+            $user_to_service->service_id = $item;
+
+            $user_to_service->save();
+
+        }
 
     }
 
