@@ -89,7 +89,9 @@ $login = new LoginForm();
                 <div class="row">
                     <div class="col-2">
                         <div class="logo">
-                            <img src="/files/img/DOSUG.png" alt="">
+                            <a href="/">
+                                <img src="/files/img/DOSUG.png" alt="">
+                            </a>
                         </div>
                     </div>
                     <div class="col-7">

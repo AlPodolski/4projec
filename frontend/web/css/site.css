@@ -400,3 +400,12 @@ img{
     color: #393d3f;
     text-align: center;
 }
+#addpostform-service label{
+    width: 24%;
+}
+label{
+    margin-bottom: 5px;
+}
+.edit-form{
+    padding: 15px;
+}
