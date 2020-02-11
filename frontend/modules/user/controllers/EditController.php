@@ -4,6 +4,7 @@
 namespace frontend\modules\user\controllers;
 
 use frontend\modules\user\components\helpers\TimeHelper;
+use frontend\modules\user\models\forms\Params;
 use frontend\modules\user\models\Profile;
 use yii\web\Controller;
 use Yii;
@@ -53,7 +54,11 @@ class EditController extends Controller
     }
     public function actionEditAnket($city){
 
-        return $this->render('edit' );
+        $model = new Params();
+
+        return $this->render('edit_anket' , [
+            'model' => $model
+        ] );
 
     }
 }
