@@ -131,7 +131,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public function getAvatar(){
-        $this->avatar = ArrayHelper::getValue(Photo::find()->where(['avatar' => 1])->asArray()->one(), 'file');
+        $this->avatar = ArrayHelper::getValue(Photo::find()->where(['avatar' => 1])->andWhere(['user_id' => $this->id])->asArray()->one(), 'file');
     }
 
 }

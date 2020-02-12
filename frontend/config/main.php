@@ -22,6 +22,17 @@ return [
             'csrfParam' => '_csrf-frontend',
             'enableCsrfValidation' => false
         ],
+        'imageCache' => [
+            'class' => 'iutbay\yii2imagecache\ImageCache',
+            'sourcePath' => '@app/web/files/uploads',
+            'sourceUrl' => '@web/files/uploads',
+            'thumbsPath' => '@app/web/thumbs',
+            'sizes' => [
+                'popular' => [180, 200],
+                'medium' => [300, 300],
+                'large' => [600, 600],
+            ],
+        ],
         'user' => [
             'identityClass' => 'frontend\modules\user\models\User',
             'enableAutoLogin' => true,
@@ -55,6 +66,9 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/auth/login',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
+
+                'thumbs/<path:.*>' => 'site/thumb',
+
             ],
         ],
     ],

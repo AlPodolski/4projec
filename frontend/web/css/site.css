@@ -474,3 +474,10 @@ label{
     text-align: center;
     margin-top: 10px;
 }
+.img-wrap{
+    min-height: 200px;
+}
+.img-wrap img{
+    display: block;
+    margin: 0 auto;
+}

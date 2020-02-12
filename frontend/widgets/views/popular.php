@@ -39,7 +39,19 @@ use frontend\modules\user\models\Profile; ?>
 
                     <div class="col-3">
                         <div class="popular-anket-wrap">
-                            <img src="<?php echo $popularUsers->avatar ?>" alt="">
+
+                            <div class="img-wrap">
+
+                            <?php if ($popularUsers->avatar) : ?>
+
+                            <?= Yii::$app->imageCache->thumb($popularUsers->avatar, 'popular', ['class'=>'img']) ?>
+
+                            <?php else : ?>
+
+                                <img src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+                            </div>
                             <div class="razd">
 
                             </div>
