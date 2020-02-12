@@ -41,6 +41,8 @@ class SiteController extends Controller
      */
     public function actionIndex($city)
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'city' => $city
+        ]);
     }
 }

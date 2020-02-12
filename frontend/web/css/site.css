@@ -409,3 +409,68 @@ label{
 .edit-form{
     padding: 15px;
 }
+.popular-block {
+    background: #496bef;
+    padding: 30px;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0px;
+}
+.popular-block span{
+    color: #fff;
+}
+.best-nad{
+    font-size: 12px;
+}
+.popular-anket{
+    font-size: 32px;
+    margin-bottom: 23px;
+}
+.popular-anket {
+    font-weight: bold;
+    line-height: 32px;
+}
+.best-nad {
+    margin-bottom: 42px;
+}
+.popular-block a{
+    font-size: 12px;
+    color: #fff;
+    letter-spacing: 3px;
+    margin-top: 30px;
+    border: 1px solid
+    #7a92ee;
+    padding: 12px 17px;
+    border-radius: 25px;
+    display: inline-block;
+}
+.check-nad {
+    margin-top: 12px;
+    display: block;
+}
+.popular-wrap{
+    background: #fff;
+    margin-left: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.popular-block-wrap{
+    padding-left: 0;
+}
+.popular-anket-wrap{
+    padding-top: 20px;
+}
+.razd{
+    border: 1px solid
+    #939a9b;
+    width: 34px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: 22px;
+}
+.popular-anket-wrap .name{
+    font-size: 14px;
+    color:#3d3f41;
+    text-align: center;
+    margin-top: 10px;
+}

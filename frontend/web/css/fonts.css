@@ -23,13 +23,13 @@
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
 }
 
-.user-ab .name , .city-name , .sex-pred {
+.user-ab .name , .city-name , .sex-pred .popular-anket , .popular-block a , .popular-anket-wrap .name{
     font-family: HelveticaNeueCyr;
 }
 .place{
     font-family: HelveticaNeueCyr-Roman;
 }
-.text  a{
+.text  a , .best-nad{
     font-family: HelveticaNeueCyr-Medium;
 }
 

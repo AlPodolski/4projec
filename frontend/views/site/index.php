@@ -1,14 +1,17 @@
 <?php
 
 /* @var $this yii\web\View */
-
-$this->title = 'My Yii Application';
+/* @var $city string */
+use frontend\widgets\PopularWidget;
+$this->title = 'Знакомства';
 ?>
 <div class="site-index">
 
     <div class="body-content">
 
         <div class="row">
+
+            <?php echo PopularWidget::widget(['city' => $city]); ?>
 
         </div>
 

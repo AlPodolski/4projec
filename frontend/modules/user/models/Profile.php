@@ -9,6 +9,8 @@ use frontend\models\UserService;
 use Yii;
 use yii\db\ActiveRecord;
 use frontend\models\UserPrice;
+use yii\helpers\ArrayHelper;
+
 /**
  * This is the model class for table "user".
  *
@@ -121,8 +123,15 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public function formatDate(){
-
         $this->birthday = \date('d.m.Y' , $this->birthday );
-
     }
+
+    public static function getPopular($city){
+        return Profile::find()->limit(12)->where(['city' => $city])->all();
+    }
+
+    public function getAvatar(){
+        $this->avatar = ArrayHelper::getValue(Photo::find()->where(['avatar' => 1])->asArray()->one(), 'file');
+    }
+
 }
