@@ -5,20 +5,20 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "price".
+ * This is the model class for table "national".
  *
  * @property int $id
  * @property string|null $url
  * @property string|null $value
  */
-class Price extends \yii\db\ActiveRecord
+class National extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'price';
+        return 'national';
     }
 
     /**
