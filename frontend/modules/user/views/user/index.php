@@ -3,7 +3,6 @@
 /* @var $photo Photo */
 use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
-use yii\widgets\ActiveForm;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
  $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);

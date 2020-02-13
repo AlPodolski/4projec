@@ -11,7 +11,7 @@ class AnketController extends Controller
 
         $model = Profile::find()->where(['id' => $id])->one();
 
-        return $this->render('anket' , [
+        return $this->render('single' , [
             'model' => $model
         ]);
 

@@ -42,15 +42,18 @@ use frontend\modules\user\models\Profile; ?>
 
                             <div class="img-wrap">
 
-                            <?php if ($popularUsers->avatar) : ?>
+                                <a href="/user/<?php echo $popularUsers->id ?>">
 
-                            <?= Yii::$app->imageCache->thumb($popularUsers->avatar, 'popular', ['class'=>'img']) ?>
+                                    <?php if ($popularUsers->avatar) : ?>
 
-                            <?php else : ?>
+                                    <?= Yii::$app->imageCache->thumb($popularUsers->avatar, 'popular', ['class'=>'img']) ?>
 
-                                <img src="/files/img/nophoto.png" alt="">
+                                    <?php else : ?>
 
-                            <?php endif; ?>
+                                        <img src="/files/img/nophoto.png" alt="">
+
+                                    <?php endif; ?>
+                                </a>
                             </div>
                             <div class="razd">
 
