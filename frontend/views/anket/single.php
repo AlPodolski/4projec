@@ -1,3 +1,4 @@
+<?php $this->title = $model->username; ?>
 <div class="row">
 
     <?php use frontend\widgets\SideBarWidget;

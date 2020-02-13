@@ -16,6 +16,9 @@ return [
         'user' => [
             'class' => 'frontend\modules\user\User',
         ],
+        'advert' => [
+            'class' => 'frontend\modules\advert\advert',
+        ],
     ],
     'components' => [
         'request' => [
@@ -67,6 +70,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
 
                 'thumbs/<path:.*>' => 'site/thumb',
 

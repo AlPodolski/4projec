@@ -1,8 +1,6 @@
 <?php
 
 namespace frontend\modules\user\controllers;
-
-use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 
 
