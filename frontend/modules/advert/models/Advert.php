@@ -2,7 +2,9 @@
 
 namespace frontend\modules\advert\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "advert".
@@ -32,6 +34,12 @@ class Advert extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['text'], 'required'],
         ];
+    }
+
+    public function getUserName(){
+
+        return ArrayHelper::getValue(Profile::find()->where(['id' => $this->user_id])->asArray()->one(), 'username');
+
     }
 
     /**

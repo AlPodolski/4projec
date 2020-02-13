@@ -5,6 +5,7 @@ use common\models\BodyType;
 use common\models\National;
 use common\models\Place;
 use common\models\Price;
+use frontend\widgets\AdvertWidget;
 
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
@@ -121,5 +122,11 @@ $bodyList = BodyType::find()->asArray()->all();
 
         </div>
     </div>
+
+    <?php
+
+    echo AdvertWidget::widget();
+
+    ?>
 
 </div>

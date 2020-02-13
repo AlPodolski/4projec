@@ -19,7 +19,9 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 
             <div class="col-12">
 
-                <?= $form->field($model, 'text')->textarea(['id' => 'advert-text-add']) ?>
+                <p class="name heading-anket">Добавить объявление</p>
+
+                <?= $form->field($model, 'text')->textarea(['id' => 'advert-text-add'])->label(false) ?>
 
             </div>
 

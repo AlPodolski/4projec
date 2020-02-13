@@ -507,3 +507,11 @@ label{
 .card-body{
     background: #f7f7f7;
 }
+.user-ab-wrapper{
+    max-height: 500px;
+    overflow-y: scroll;
+    margin-right: -12px;
+}
+.user-ab-wrap{
+    overflow: hidden;
+}
