@@ -35,7 +35,7 @@ $this->registerJsFile('/files/js/advert.js', ['depends' => [\frontend\assets\App
                     </div>
                     <div class="col-10">
                         <div class="name">
-                            <a href="/user/<?php echo $advert->user_id ?>">
+                            <a class="name" href="/user/<?php echo $advert->user_id ?>">
                                 <?php echo $advert->getUserName() ?>
                             </a>
                         </div>
@@ -50,6 +50,12 @@ $this->registerJsFile('/files/js/advert.js', ['depends' => [\frontend\assets\App
 
     </div>
 
-
+    <div class="user-ab-item">
+        <div class="row">
+            <div class="col-12">
+                <a class="all-advert" href="/adverts">Все объявления</a>
+            </div>
+        </div>
+    </div>
 
 </div>

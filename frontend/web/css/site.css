@@ -515,3 +515,16 @@ label{
 .user-ab-wrap{
     overflow: hidden;
 }
+.all-advert{
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: #858b8b;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.name{
+    color: #3f3f43;
+    font-size: 10px;
+    text-transform: uppercase;
+}
