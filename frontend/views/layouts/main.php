@@ -50,7 +50,7 @@ $login = new LoginForm();
                         <ul class="top-nav">
                             <li><a href="/polzovatelskoe-soglashenie">пользовательское соглашение</a></li>
                             <li><a href="/adverts">объявления</a></li>
-                            <li>новости сайта</li>
+                            <li><a href="/novosti">новости сайта</a></li>
                         </ul>
                     </div>
                     <div class="col-3 cabinet-btn" >

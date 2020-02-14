@@ -62,6 +62,8 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/novosti' => 'news/list',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/novosti/more' => 'news/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/polzovatelskoe-soglashenie' => 'site/agree',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/auth/signup',
