@@ -28,8 +28,7 @@ $(window).scroll(function(){
 
                 }else{
 
-                    $('.footer').remove();
-                    $('.img-pre').remove();
+                    $(target).remove();
 
                 }
 
