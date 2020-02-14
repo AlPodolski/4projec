@@ -32,4 +32,14 @@ class AdvertController extends Controller
         ]);
 
     }
+
+    public function actionList($city){
+
+        $advertList = Advert::find()->limit(40)->orderBy('id DESC')->all();
+
+        return $this->render('advert', [
+            'advertList' => $advertList
+        ]);
+    }
+
 }

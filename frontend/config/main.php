@@ -71,6 +71,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',
 
                 'thumbs/<path:.*>' => 'site/thumb',
 

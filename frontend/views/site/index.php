@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $city string */
 use frontend\widgets\PopularWidget;
+use frontend\widgets\SidebarWidget;
 $this->title = 'Знакомства';
 ?>
 <div class="site-index">
@@ -13,6 +14,14 @@ $this->title = 'Знакомства';
 
             <?php echo PopularWidget::widget(['city' => $city]); ?>
 
+        </div>
+
+        <div class="row">
+            <?php
+
+                echo SidebarWidget::Widget()
+
+            ?>
         </div>
 
     </div>

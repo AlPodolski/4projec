@@ -469,7 +469,6 @@ label{
     margin-top: 22px;
 }
 .popular-anket-wrap .name{
-    font-size: 14px;
     color:#3d3f41;
     text-align: center;
     margin-top: 10px;
@@ -527,4 +526,13 @@ label{
     color: #3f3f43;
     font-size: 10px;
     text-transform: uppercase;
+}
+.advert-item{
+    margin-bottom: 15px;
+}
+.advert-item-icon{
+    text-align: center;
+}
+h1{
+    font-size: 32px;
 }
