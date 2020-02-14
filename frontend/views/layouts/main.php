@@ -48,9 +48,8 @@ $login = new LoginForm();
                     </div>
                     <div class="col-7">
                         <ul class="top-nav">
-                            <li>пользовательское соглашение</li>
+                            <li><a href="/polzovatelskoe-soglashenie">пользовательское соглашение</a></li>
                             <li><a href="/adverts">объявления</a></li>
-                            <li>вопросы и ответы</li>
                             <li>новости сайта</li>
                         </ul>
                     </div>

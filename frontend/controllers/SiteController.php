@@ -46,4 +46,9 @@ class SiteController extends Controller
             'city' => $city
         ]);
     }
+
+    public function actionAgree()
+    {
+        return $this->render('agree');
+    }
 }
