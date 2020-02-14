@@ -1,11 +1,15 @@
 <?php
 /* @var $advertList Advert[] */
+/* @var $this View */
 
+use frontend\assets\SlickAsset;
 use frontend\modules\advert\models\Advert;
 use frontend\widgets\SidebarWidget;
+use yii\web\View;
 
-$this->title = 'интим объявления';
+$this->title = 'Интим объявления';
 
+$this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>
 <div class="row">
     <?php
@@ -22,27 +26,17 @@ $this->title = 'интим объявления';
 
             <?php foreach ($advertList as $advert) : ?>
 
-            <div class="row advert-item">
-                <div class="col-1 advert-item-icon">
-                    <i class="fas fa-comment"></i>
-                </div>
-                <div class="col-11">
-                    <div class="name">
-                        <a class="name" href="/user/<?php echo $advert->user_id ?>">
-                            <?php echo $advert->getUserName() ?>
-                        </a>
-                    </div>
-                    <div class="text-ab">
-                        <?php echo $advert->text; ?>
-                    </div>
-                </div>
-            </div>
+                <?php echo  $this->renderFile('@app/modules/advert/views/advert/item.php' , [
+                        'advert' => $advert
+                ]) ?>
 
             <?php endforeach; ?>
 
         </div>
 
     </div>
+
+    <div class="col-12 advert-pager" data-page="1"></div>
 
 </div>
 

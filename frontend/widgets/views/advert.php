@@ -2,7 +2,7 @@
 
 use frontend\modules\advert\models\Advert;
 
-$this->registerJsFile('/files/js/advert.js', ['depends' => [\frontend\assets\AppAsset::class]]);
+$this->registerJsFile('/files/js/obuavi.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
 ?>
 <div class="user-menu">
