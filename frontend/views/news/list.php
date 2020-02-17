@@ -8,8 +8,6 @@ use frontend\widgets\SidebarWidget;
 use yii\web\View;
 
 $this->title = 'Интим объявления';
-
-$this->registerJsFile('/files/js/news.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>
 <div class="row">
     <?php
