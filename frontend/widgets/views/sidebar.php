@@ -64,7 +64,7 @@ $bodyList = BodyType::find()->asArray()->all();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($ageList as $age) : ?>
-                            <a href="/<?php echo $age['url'] ?>"><?php echo $age['value'] ?></a>
+                            <a href="/vozrast-<?php echo $age['url'] ?>"><?php echo $age['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

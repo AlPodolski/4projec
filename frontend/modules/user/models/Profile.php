@@ -285,61 +285,50 @@ class Profile extends \yii\db\ActiveRecord
                 $age_params = array();
 
                 if ($url == 'ot-18-do-20-let') {
-                    $age_params[] = ['>=', 'age' , 18];
-                    $age_params[] = ['<=', 'age' , 20];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 18 ];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 20];
                 }
 
                 if ($url == 'ot-21-do-25-let') {
-                    $age_params[] = ['>=', 'age' , 21];
-                    $age_params[] = ['<=', 'age' , 25];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 21];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 25];
                 }
 
                 if ($url == 'ot-26-do-30-let') {
-                    $age_params[] = ['>=', 'age' , 26];
-                    $age_params[] = ['<=', 'age' , 30];
+                    $age_params[] = ['<=', 'birthday' , \time() - (24 * 3600 * 365 * 26)];
+                    $age_params[] = ['>=', 'birthday' , \time() - (24 * 3600 * 365 * 30)];
                 }
 
                 if ($url == 'ot-31-do-35-let') {
-                    $age_params[] = ['>=', 'age' , 31];
-                    $age_params[] = ['<=', 'age' , 35];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 31];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 35];
                 }
 
                 if ($url == 'ot-36-do-40-let') {
-                    $age_params[] = ['>=', 'age' , 36];
-                    $age_params[] = ['<=', 'age' , 40];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 36];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 40];
                 }
 
                 if ($url == 'ot-41-do-45-let') {
-                    $age_params[] = ['>=', 'age' , 41];
-                    $age_params[] = ['<=', 'age' , 45];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 41];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 45];
                 }
 
                 if ($url == 'ot-46-do-50-let') {
-                    $age_params[] = ['>=', 'age' , 46];
-                    $age_params[] = ['<=', 'age' , 50];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 46];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 50];
                 }
 
                 if ($url == 'ot-51-do-55-let') {
-                    $age_params[] = ['>=', 'age' , 51];
-                    $age_params[] = ['<=', 'age' , 55];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 51];
+                    $age_params[] = ['>=', 'birthday' , \time() - 24 * 3600 * 365 * 55];
                 }
 
                 if ($url == 'starshe-55') {
-                    $age_params[] = ['>=', 'age' , 55];
+                    $age_params[] = ['<=', 'birthday' , \time() - 24 * 3600 * 365 * 55];
                 }
 
-                $age = Age::find()->where(['url' => $url])->asArray()->one();
-
-                if ($age){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $age['value']
-                    ];
-
-                }
-
-                $id = AgeToUser::find();
+                $id = Profile::find();
 
                 foreach ($age_params as $age_param){
                     $id->andWhere($age_param);
@@ -356,7 +345,7 @@ class Profile extends \yii\db\ActiveRecord
 
                         foreach ($id as $id_item){
 
-                            $result[] = ArrayHelper::getValue($id_item, 'post_id');
+                            $result[] = ArrayHelper::getValue($id_item, 'id');
 
                         }
 
@@ -366,7 +355,7 @@ class Profile extends \yii\db\ActiveRecord
 
                             foreach ($ids as $item2){
 
-                                if ($item['id'] == $item2['post_id']) $result_id_array[] = $item2;
+                                if ($item['id'] == $item2['user_id']) $result_id_array[] = $item2;
 
                             }
 
@@ -378,7 +367,7 @@ class Profile extends \yii\db\ActiveRecord
 
                         foreach ($id as $id_item){
 
-                            $result[] = ArrayHelper::getValue($id_item, 'post_id');
+                            $result[] = ArrayHelper::getValue($id_item, 'id');
 
                         }
 
@@ -609,8 +598,6 @@ class Profile extends \yii\db\ActiveRecord
             }
 
         }
-
-        $result = array();
 
         if ($ids) {
 
