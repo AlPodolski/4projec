@@ -80,7 +80,7 @@ $bodyList = BodyType::find()->asArray()->all();
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($priceList as $price) : ?>
-                            <a href="/<?php echo $price['url'] ?>"><?php echo $price['value'] ?></a>
+                            <a href="/cena-<?php echo $price['url'] ?>"><?php echo $price['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ $bodyList = BodyType::find()->asArray()->all();
                 <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($nationalList as $national) : ?>
-                            <a href="/<?php echo $national['url'] ?>"><?php echo $national['value'] ?></a>
+                            <a href="/nacionalnost-<?php echo $national['url'] ?>"><?php echo $national['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

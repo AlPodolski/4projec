@@ -4,6 +4,7 @@ namespace frontend\modules\user\models;
 
 use common\models\Params;
 use common\models\Service;
+use frontend\models\UserNational;
 use frontend\models\UserParams;
 use frontend\models\UserService;
 use Yii;
@@ -12,6 +13,8 @@ use frontend\models\UserPrice;
 use yii\helpers\ArrayHelper;
 use common\models\Place;
 use frontend\models\UserToPlace;
+use common\models\National;
+
 
 /**
  * This is the model class for table "user".
@@ -379,43 +382,33 @@ class Profile extends \yii\db\ActiveRecord
 
             }
 
-            if (strstr($value, 'price')){
+            if (strstr($value, 'cena')){
 
-                $url = str_replace('price-', '', $value);
+                $url = str_replace('cena-', '', $value);
 
                 $price_params = array();
 
-                if ($url == 'do-1500') $price_params[] = ['<', 'price' , 1500];
+                if ($url == 'do-1500') $price_params[] = ['<', 'value' , 1500];
 
                 if ($url == 'ot-1500-do-2000') {
-                    $price_params[] = ['>=', 'price' , 1500];
-                    $price_params[] = ['<=', 'price' , 1999];
+                    $price_params[] = ['>=', 'value' , 1500];
+                    $price_params[] = ['<=', 'value' , 1999];
                 }
                 if ($url == 'ot-2000-do-3000') {
-                    $price_params[] = ['>=', 'price' , 2000];
-                    $price_params[] = ['<=', 'price' , 2999];
+                    $price_params[] = ['>=', 'value' , 2000];
+                    $price_params[] = ['<=', 'value' , 2999];
                 }
                 if ($url == 'ot-3000-do-6000') {
-                    $price_params[] = ['>=', 'price' , 3000];
-                    $price_params[] = ['<=', 'price' , 6000];
+                    $price_params[] = ['>=', 'value' , 3000];
+                    $price_params[] = ['<=', 'value' , 6000];
                 }
 
                 if ($url == 'ot-6000') {
-                    $price_params[] = ['>=', 'price' , 6001];
+                    $price_params[] = ['>=', 'value' , 6001];
                 }
 
-                $price = Price::find()->where(['url' => $url])->asArray()->one();
 
-                if ($price){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $price['value']
-                    ];
-
-                }
-
-                $id = UserToPrice::find();
+                $id = UserPrice::find();
 
                 foreach ($price_params as $price_param){
                     $id->andWhere($price_param);
@@ -435,17 +428,17 @@ class Profile extends \yii\db\ActiveRecord
 
                         foreach ($id as $id_item){
 
-                            $result[] = ArrayHelper::getValue($id_item, 'post_id');
+                            $result[] = ArrayHelper::getValue($id_item, 'user_id');
 
                         }
 
-                        $ids2 = UserToPrice::find()->where(['in', 'post_id', $result])->asArray()->all();
+                        $ids2 = UserPrice::find()->where(['in', 'user_id', $result])->asArray()->all();
 
                         foreach ($ids2 as $item){
 
                             foreach ($ids as $item2){
 
-                                if ($item['post_id'] == $item2['post_id']) $result_id_array[] = $item2;
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
 
                             }
 
@@ -457,11 +450,11 @@ class Profile extends \yii\db\ActiveRecord
 
                         foreach ($id as $id_item){
 
-                            $result[] = ArrayHelper::getValue($id_item, 'post_id');
+                            $result[] = ArrayHelper::getValue($id_item, 'user_id');
 
                         }
 
-                        $ids = UserToPrice::find()->where(['in', 'post_id', $result])->asArray()->all();
+                        $ids = UserPrice::find()->where(['in', 'user_id', $result])->asArray()->all();
 
                     }
 
@@ -469,9 +462,9 @@ class Profile extends \yii\db\ActiveRecord
 
             }
 
-            if (strstr($value, 'national')){
+            if (strstr($value, 'nacionalnost')){
 
-                $url = str_replace('national-', '', $value);
+                $url = str_replace('nacionalnost-', '', $value);
 
                 $national = National::find()->where(['url' => $url])->asArray()->one();
 
@@ -482,7 +475,7 @@ class Profile extends \yii\db\ActiveRecord
                         'label' => $national['value']
                     ];
 
-                    $ids = UserToNational::find()->where(['national_id' => $national['id']])->asArray()->all();
+                    $ids = UserNational::find()->where(['national_id' => $national['id']])->asArray()->all();
 
                     if (empty($ids)){
                         $ids[] = [
