@@ -536,3 +536,41 @@ label{
 h1{
     font-size: 32px;
 }
+.content{
+    margin-top: 15px;
+}
+.article-anket-wrap{
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.article-anket-wrap .name{
+    text-align: center;
+    margin-top: 5px;
+}
+.like-wrap div{
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+    font-size: 21px;
+    cursor: pointer;
+    color: #797e7f;
+    padding: 8px 0;
+}
+.like-wrap{
+    border-top: 1px solid #f3f3f3;
+    border-bottom: 1px solid #f3f3f3;
+    margin-top: 10px;
+}
+.message , .favorite{
+    border-right: 1px solid #ededed;
+}
+.phone{
+    text-align: center;
+    color: #858b8c;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}

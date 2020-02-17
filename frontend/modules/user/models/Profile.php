@@ -10,6 +10,8 @@ use Yii;
 use yii\db\ActiveRecord;
 use frontend\models\UserPrice;
 use yii\helpers\ArrayHelper;
+use common\models\Place;
+use frontend\models\UserToPlace;
 
 /**
  * This is the model class for table "user".
@@ -151,11 +153,12 @@ class Profile extends \yii\db\ActiveRecord
         //Перебираем параметры
         foreach ($params as $value) {
 
-            if (strstr($value, 'metro')){
+            if (strstr($value, 'mesto')){
 
-                $url = str_replace('metro-', '', $value);
+                $url = str_replace('mesto-vstreji-', '', $value);
 
-                $id = Metro::find()->where(['url' => $url])->asArray()->one();
+                $id = Place::find()->where(['url' => $url])->asArray()->one();
+
 
                 if($id){
 
@@ -164,15 +167,17 @@ class Profile extends \yii\db\ActiveRecord
                         'label' => $id['value']
                     ];
 
+                    $result_id_array = array();
+
                     if (!empty($ids)){
 
-                        $ids2 = UserToMetro::find()->where(['metro_id' => $id['id']])->asArray()->all();
+                        $ids2 = UserToPlace::find()->where(['place_id' => $id['id']])->asArray()->all();
 
                         foreach ($ids2 as $item){
 
                             foreach ($ids as $item2){
 
-                                if ($item['post_id'] == $item2['post_id']) $result_id_array[] = $item2;
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
 
                             }
 
@@ -182,60 +187,8 @@ class Profile extends \yii\db\ActiveRecord
 
                     }else{
 
-                        $ids = UserToMetro::find()->where(['metro_id' => $id['id']])->asArray()->all();
+                        $ids = UserToPlace::find()->where(['place_id' => $id['id']])->asArray()->all();
 
-                    }
-
-                    if (empty($ids)){
-                        $ids[] = [
-                            '0' => 0
-                        ];
-                    }
-
-                }
-
-            }
-
-            if (strstr($value, 'rayon')){
-
-                $url = str_replace('rayon-', '', $value);
-
-                $id = Rayon::find()->where(['url' => $url])->andWhere('')->asArray()->one();
-
-                if($id){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $id['value']
-                    ];
-
-
-                    if (!empty($ids)){
-
-                        $ids2 = UserToRayon::find()->where(['rayon_id' => $id['id']])->asArray()->all();
-
-                        foreach ($ids2 as $item){
-
-                            foreach ($ids as $item2){
-
-                                if ($item['post_id'] == $item2['post_id']) $result_id_array[] = $item2;
-
-                            }
-
-                        }
-
-                        $ids = $result_id_array;
-
-                    }else{
-
-                        $ids = UserToRayon::find()->where(['rayon_id' => $id['id']])->asArray()->all();
-
-                    }
-
-                    if (empty($ids)){
-                        $ids[] = [
-                            '0' => 0
-                        ];
                     }
 
                 }
@@ -318,48 +271,6 @@ class Profile extends \yii\db\ActiveRecord
                     }else{
 
                         $ids = UserToService::find()->where(['service_id' => $id['id']])->asArray()->all();
-
-                    }
-
-                }
-
-            }
-
-            if (strstr($value, 'place')){
-
-                $url = str_replace('place-', '', $value);
-
-                $id = Place::find()->where(['url' => $url])->asArray()->one();
-
-
-                if($id){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $id['value']
-                    ];
-
-                    $result_id_array = array();
-
-                    if (!empty($ids)){
-
-                        $ids2 = UserToPlace::find()->where(['place_id' => $id['id']])->asArray()->all();
-
-                        foreach ($ids2 as $item){
-
-                            foreach ($ids as $item2){
-
-                                if ($item['post_id'] == $item2['post_id']) $result_id_array[] = $item2;
-
-                            }
-
-                        }
-
-                        $ids = $result_id_array;
-
-                    }else{
-
-                        $ids = UserToPlace::find()->where(['place_id' => $id['id']])->asArray()->all();
 
                     }
 
@@ -705,7 +616,7 @@ class Profile extends \yii\db\ActiveRecord
 
             foreach ($ids as $id){
 
-                $result[] = ArrayHelper::getValue($id, 'post_id');
+                $result[] = ArrayHelper::getValue($id, 'user_id');
 
                 if (!empty($result)) Yii::$app->params['result_id'] = $result;
 

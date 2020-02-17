@@ -48,7 +48,7 @@ $bodyList = BodyType::find()->asArray()->all();
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($placeList as $place) : ?>
-                            <a href="/<?php echo $place['url'] ?>"><?php echo $place['value'] ?></a>
+                            <a href="/mesto-vstreji-<?php echo $place['url'] ?>"><?php echo $place['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

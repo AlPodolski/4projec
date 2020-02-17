@@ -32,7 +32,7 @@ return [
             'thumbsPath' => '@app/web/thumbs',
             'sizes' => [
                 'popular' => [180, 200],
-                'medium' => [300, 300],
+                'listing' => [277, 266],
                 'large' => [600, 600],
             ],
         ],
@@ -76,6 +76,9 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/more-adverds' => 'advert/advert/more',
+
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:[a-z-0-9]+>' => 'filter/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:([a-z-0-9]+/)+[a-z-0-9]+>' => 'filter/index',
 
                 'thumbs/<path:.*>' => 'site/thumb',
 
