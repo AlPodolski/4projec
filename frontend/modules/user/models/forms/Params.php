@@ -6,17 +6,15 @@ namespace frontend\modules\user\models\forms;
 use frontend\models\UserHairColor;
 use frontend\models\UserService;
 use frontend\models\UserSexual;
-use frontend\models\UserToService;
+use frontend\models\UserToMetro;
+use frontend\models\UserToRayon;
 use yii\base\Model;
-use frontend\models\UserParams;
 use frontend\models\UserEyeColor;
 use frontend\models\UserBody;
 use frontend\models\UserBreastSize;
 use frontend\models\UserVes;
 use frontend\models\UserRost;
-use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
-use common\models\Service;
 
 class Params extends Model
 {
@@ -28,6 +26,8 @@ class Params extends Model
     public $breast_size;
     public $service;
     public $sexual;
+    public $rayon;
+    public $metro;
 
     public function attributeLabels()
     {
@@ -40,6 +40,8 @@ class Params extends Model
             'breast_size' => 'Размер груди',
             'service' => 'Сексуальные предпочтения',
             'sexual' => 'Сексуальная ориентация',
+            'metro' => 'Метро',
+            'rayon' => 'Район',
         ];
 
     }
@@ -51,7 +53,7 @@ class Params extends Model
     {
         return [
             [['hair_color', 'rost', 'ves', 'eye_color', 'body', 'breast_size', 'sexual'], 'integer'],
-            [['service'], 'safe'],
+            [['service', 'metro', 'rayon'], 'safe'],
         ];
     }
 
@@ -64,6 +66,8 @@ class Params extends Model
         $this->body = ArrayHelper::getValue(UserBody::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->breast_size = ArrayHelper::getValue(UserBreastSize::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->service = ArrayHelper::getColumn(UserService::find()->where(['user_id'=> $user_id])->asArray()->all(), 'service_id');
+        $this->metro = ArrayHelper::getColumn(UserToMetro::find()->where(['user_id'=> $user_id])->asArray()->all(), 'metro_id');
+        $this->rayon = ArrayHelper::getColumn(UserToRayon::find()->where(['user_id'=> $user_id])->asArray()->all(), 'rayon_id');
         $this->sexual = ArrayHelper::getValue(UserSexual::find()->where(['user_id'=> $user_id])->asArray()->one(), 'sexual_id');
     }
 
@@ -76,7 +80,9 @@ class Params extends Model
         if ($this->rost) $this->saveUserRost($user_id);
         if ($this->ves) $this->saveUserVes($user_id);
         if ($this->service) $this->saveService($user_id);
-        if ($this->service) $this->saveSexual($user_id);
+        if ($this->sexual) $this->saveSexual($user_id);
+        if ($this->metro) $this->saveMetro($user_id);
+        if ($this->rayon) $this->saveRayon($user_id);
 
         return true;
 
@@ -108,6 +114,42 @@ class Params extends Model
             $user_to_service->service_id = $item;
 
             $user_to_service->save();
+
+        }
+
+    }
+
+    public function saveMetro($id){
+
+        UserToMetro::deleteAll('user_id = '.$id);
+
+        foreach ($this->metro  as $item){
+
+            $user_to_metro = new UserToMetro();
+
+            $user_to_metro->user_id = $id;
+
+            $user_to_metro->metro_id = $item;
+
+            $user_to_metro->save();
+
+        }
+
+    }
+
+    public function saveRayon($id){
+
+        UserToRayon::deleteAll('user_id = '.$id);
+
+        foreach ($this->rayon  as $item){
+
+            $user_to_rayon = new UserToRayon();
+
+            $user_to_rayon->user_id = $id;
+
+            $user_to_rayon->rayon_id = $item;
+
+            $user_to_rayon->save();
 
         }
 

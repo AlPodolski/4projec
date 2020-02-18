@@ -1,12 +1,16 @@
 <?php use common\models\BodyType;
 use common\models\EyeColor;
 use common\models\HairColor;
+use common\models\Rayon;
 use common\models\Service;
 use common\models\Sexual;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm; ?>
+use yii\widgets\ActiveForm;
+use common\models\Metro;
+
+?>
 <?php
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -17,6 +21,8 @@ $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 $sexualList = Sexual::find()->asArray()->all();
+$metroList = Metro::find()->asArray()->all();
+$rayonList = Rayon::find()->asArray()->all();
 
 $model->getParams(Yii::$app->user->id);
 
@@ -58,6 +64,26 @@ $service_list_sex = Service::find()->asArray()->all();
                     <?= $form->field($model, 'service')->checkboxList(ArrayHelper::map($service_list_sex, 'id', 'value'), ['id' => 'addpostform-service']) ?>
 
                 </div>
+
+                <?php if ($metroList) : ?>
+
+                    <div class="col-12">
+
+                        <?= $form->field($model, 'metro')->checkboxList(ArrayHelper::map($metroList, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if ($rayonList) : ?>
+
+                    <div class="col-12">
+
+                        <?= $form->field($model, 'rayon')->checkboxList(ArrayHelper::map($rayonList, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+
+                    </div>
+
+                <?php endif; ?>
 
                 <div class="col-12">
 
