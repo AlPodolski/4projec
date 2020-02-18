@@ -378,7 +378,7 @@ class Profile extends \yii\db\ActiveRecord
 
                 $url = str_replace('usluga-', '', $value);
 
-                $id = \frontend\models\Service::find()->where(['url' => $url])->asArray()->one();
+                $id = Service::find()->where(['url' => $url])->asArray()->one();
 
 
                 if($id){
@@ -392,13 +392,13 @@ class Profile extends \yii\db\ActiveRecord
 
                     if (!empty($ids)){
 
-                        $ids2 = UserToService::find()->where(['service_id' => $id['id']])->asArray()->all();
+                        $ids2 = UserService::find()->where(['service_id' => $id['id']])->asArray()->all();
 
                         foreach ($ids2 as $item){
 
                             foreach ($ids as $item2){
 
-                                if ($item['post_id'] == $item2['post_id']) $result_id_array[] = $item2;
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
 
                             }
 
@@ -408,7 +408,7 @@ class Profile extends \yii\db\ActiveRecord
 
                     }else{
 
-                        $ids = UserToService::find()->where(['service_id' => $id['id']])->asArray()->all();
+                        $ids = UserService::find()->where(['service_id' => $id['id']])->asArray()->all();
 
                     }
 

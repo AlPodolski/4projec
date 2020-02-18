@@ -5,6 +5,7 @@ use common\models\BodyType;
 use common\models\National;
 use common\models\Place;
 use common\models\Price;
+use common\models\Service;
 use frontend\widgets\AdvertWidget;
 use common\models\Metro;
 use common\models\Rayon;
@@ -16,6 +17,7 @@ $ageList = Age::find()->asArray()->all();
 $priceList = Price::find()->asArray()->all();
 $nationalList = National::find()->asArray()->all();
 $bodyList = BodyType::find()->asArray()->all();
+$serviceList = Service::find()->asArray()->all();
 $metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
 $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
 
@@ -78,6 +80,28 @@ $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams
                     <div class="card-body">
                         <?php foreach ($rayonList as $rayon) : ?>
                             <a href="/rayon-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($serviceList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
+                            Услуги
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($serviceList as $service) : ?>
+                            <a href="/usluga-<?php echo $service['url'] ?>"><?php echo $service['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
