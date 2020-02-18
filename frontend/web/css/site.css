@@ -453,6 +453,7 @@ label{
     margin-left: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    margin-bottom: 15px;
 }
 .popular-block-wrap{
     padding-left: 0;
@@ -574,4 +575,38 @@ h1{
     letter-spacing: 1px;
     font-weight: bold;
     cursor: pointer;
+}
+.main-banner{
+    background: #fff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+.main-banner-wrap{
+    padding-right: 0;
+}
+.text-main{
+    font-size: 14px;
+    color: #3c3e3f;
+}
+.baner-menu-img{
+    margin: 0 auto;
+    display: block;
+}
+.banner-menu-list{
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0px;
+}
+.banner-menu-list li a{
+    font-size: 23px;
+}
+.banner-menu-list li{
+    line-height: 26px;
+}
+.main-banner-item{
+    margin-bottom: 15px;
+}
+.main-banner-item img{
+    margin-top: 10px;
 }
