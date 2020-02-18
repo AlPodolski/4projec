@@ -27,6 +27,7 @@ class BodyType extends \yii\db\ActiveRecord
     {
         return [
             [['value'], 'string', 'max' => 50],
+            [['url'], 'string', 'max' => 50],
         ];
     }
 

@@ -114,7 +114,7 @@ $bodyList = BodyType::find()->asArray()->all();
                 <div id="collapse5" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($bodyList as $body) : ?>
-                            <a href="/<?php echo $body['url'] ?>"><?php echo $body['value'] ?></a>
+                            <a href="/teloslozhenie-<?php echo $body['url'] ?>"><?php echo $body['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

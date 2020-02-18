@@ -7,7 +7,6 @@ use frontend\modules\user\models\Profile;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
 
-$this->registerJsFile('/files/js/script.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $this->title = 'Знакомства фильтр';
 ?>

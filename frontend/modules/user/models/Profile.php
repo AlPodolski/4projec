@@ -2,8 +2,10 @@
 
 namespace frontend\modules\user\models;
 
+use common\models\BodyType;
 use common\models\Params;
 use common\models\Service;
+use frontend\models\UserBody;
 use frontend\models\UserNational;
 use frontend\models\UserParams;
 use frontend\models\UserService;
@@ -191,6 +193,44 @@ class Profile extends \yii\db\ActiveRecord
                     }else{
 
                         $ids = UserToPlace::find()->where(['place_id' => $id['id']])->asArray()->all();
+
+                    }
+
+                }
+
+            }
+
+            if (strstr($value, 'teloslozhenie')){
+
+                $url = str_replace('teloslozhenie-', '', $value);
+
+                $id = BodyType::find()->where(['url' => $url])->asArray()->one();
+
+
+                if($id){
+
+
+                    $result_id_array = array();
+
+                    if (!empty($ids)){
+
+                        $ids2 = UserBody::find()->where(['value' => $id['id']])->asArray()->all();
+
+                        foreach ($ids2 as $item){
+
+                            foreach ($ids as $item2){
+
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
+
+                            }
+
+                        }
+
+                        $ids = $result_id_array;
+
+                    }else{
+
+                        $ids = UserBody::find()->where(['value' => $id['id']])->asArray()->all();
 
                     }
 
@@ -476,83 +516,6 @@ class Profile extends \yii\db\ActiveRecord
                     ];
 
                     $ids = UserNational::find()->where(['national_id' => $national['id']])->asArray()->all();
-
-                    if (empty($ids)){
-                        $ids[] = [
-                            '0' => 0
-                        ];
-                    }
-
-                }
-
-            }
-
-            if (strstr($value, 'breast')){
-
-                $url = str_replace('breast-', '', $value);
-
-                $national = Breast::find()->where(['url' => $url])->asArray()->one();
-
-                if ($national){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $national['value']
-                    ];
-
-                    $ids = UserToBreast::find()->where(['breast_id' => $national['id']])->asArray()->all();
-
-                    if (empty($ids)){
-                        $ids[] = [
-                            '0' => 0
-                        ];
-                    }
-
-                }
-
-
-
-            }
-
-            if (strstr($value, 'intimnaya-strizhka')){
-
-                $url = str_replace('intimnaya-strizhka-', '', $value);
-
-                $national = IntimHaircut::find()->where(['url' => $url])->asArray()->one();
-
-                if ($national){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $national['value']
-                    ];
-
-                    $ids = UserToIntimHaircut::find()->where(['haircut_id' => $national['id']])->asArray()->all();
-
-                    if (empty($ids)){
-                        $ids[] = [
-                            '0' => 0
-                        ];
-                    }
-
-                }
-
-            }
-
-            if (strstr($value, 'figura')){
-
-                $url = str_replace('figura-', '', $value);
-
-                $national = Body::find()->where(['url' => $url])->asArray()->one();
-
-                if ($national){
-
-                    $bread_crumbs_params[] = [
-                        'url' => '/'.$value,
-                        'label' => $national['value']
-                    ];
-
-                    $ids = UserToBody::find()->where(['body_id' => $national['id']])->asArray()->all();
 
                     if (empty($ids)){
                         $ids[] = [
