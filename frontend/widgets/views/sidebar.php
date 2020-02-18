@@ -6,6 +6,8 @@ use common\models\National;
 use common\models\Place;
 use common\models\Price;
 use frontend\widgets\AdvertWidget;
+use common\models\Metro;
+use common\models\Rayon;
 
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
@@ -14,6 +16,8 @@ $ageList = Age::find()->asArray()->all();
 $priceList = Price::find()->asArray()->all();
 $nationalList = National::find()->asArray()->all();
 $bodyList = BodyType::find()->asArray()->all();
+$metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
+$rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
 
 ?>
 <div class="col-3">
@@ -36,6 +40,51 @@ $bodyList = BodyType::find()->asArray()->all();
 
     <div class="sidebar-menu-list">
         <div id="accordion">
+
+            <?php if ($metroList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapseOne">
+                            Метро
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse6" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($metroList as $metro) : ?>
+                            <a href="/mesto-vstreji-<?php echo $metro['url'] ?>"><?php echo $metro['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($rayonList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseOne">
+                            Район
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($rayonList as $rayon) : ?>
+                            <a href="/mesto-vstreji-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
@@ -45,7 +94,7 @@ $bodyList = BodyType::find()->asArray()->all();
                     </h5>
                 </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($placeList as $place) : ?>
                             <a href="/mesto-vstreji-<?php echo $place['url'] ?>"><?php echo $place['value'] ?></a>
@@ -53,6 +102,7 @@ $bodyList = BodyType::find()->asArray()->all();
                     </div>
                 </div>
             </div>
+
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
