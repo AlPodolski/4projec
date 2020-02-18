@@ -55,7 +55,7 @@ $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams
                 <div id="collapse6" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($metroList as $metro) : ?>
-                            <a href="/mesto-vstreji-<?php echo $metro['url'] ?>"><?php echo $metro['value'] ?></a>
+                            <a href="/metro-<?php echo $metro['url'] ?>"><?php echo $metro['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -77,7 +77,7 @@ $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams
                 <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($rayonList as $rayon) : ?>
-                            <a href="/mesto-vstreji-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+                            <a href="/rayon-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

@@ -5,10 +5,14 @@ namespace frontend\modules\user\models;
 use common\models\BodyType;
 use common\models\Params;
 use common\models\Service;
+use common\models\Metro;
+use common\models\Rayon;
 use frontend\models\UserBody;
 use frontend\models\UserNational;
 use frontend\models\UserParams;
 use frontend\models\UserService;
+use frontend\models\UserToMetro;
+use frontend\models\UserToRayon;
 use Yii;
 use yii\db\ActiveRecord;
 use frontend\models\UserPrice;
@@ -157,6 +161,97 @@ class Profile extends \yii\db\ActiveRecord
 
         //Перебираем параметры
         foreach ($params as $value) {
+
+            if (strstr($value, 'metro')){
+
+                $url = str_replace('metro-', '', $value);
+
+                $id = Metro::find()->where(['url' => $url])->asArray()->one();
+
+                if($id){
+
+                    $bread_crumbs_params[] = [
+                        'url' => '/'.$value,
+                        'label' => $id['value']
+                    ];
+
+                    if (!empty($ids)){
+
+                        $ids2 = UserToMetro::find()->where(['metro_id' => $id['id']])->asArray()->all();
+
+                        foreach ($ids2 as $item){
+
+                            foreach ($ids as $item2){
+
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
+
+                            }
+
+                        }
+
+                        $ids = $result_id_array;
+
+                    }else{
+
+                        $ids = UserToMetro::find()->where(['metro_id' => $id['id']])->asArray()->all();
+
+                    }
+
+                    if (empty($ids)){
+                        $ids[] = [
+                            '0' => 0
+                        ];
+                    }
+
+                }
+
+            }
+
+            if (strstr($value, 'rayon')){
+
+                $url = str_replace('rayon-', '', $value);
+
+                $id = Rayon::find()->where(['url' => $url])->andWhere('')->asArray()->one();
+
+                if($id){
+
+                    $bread_crumbs_params[] = [
+                        'url' => '/'.$value,
+                        'label' => $id['value']
+                    ];
+
+
+                    if (!empty($ids)){
+
+                        $ids2 = UserToRayon::find()->where(['rayon_id' => $id['id']])->asArray()->all();
+
+                        foreach ($ids2 as $item){
+
+                            foreach ($ids as $item2){
+
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
+
+                            }
+
+                        }
+
+                        $ids = $result_id_array;
+
+                    }else{
+
+                        $ids = UserToRayon::find()->where(['rayon_id' => $id['id']])->asArray()->all();
+
+                    }
+
+                    if (empty($ids)){
+                        $ids[] = [
+                            '0' => 0
+                        ];
+                    }
+
+                }
+
+            }
 
             if (strstr($value, 'mesto')){
 
