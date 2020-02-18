@@ -2,6 +2,7 @@
 use common\models\EyeColor;
 use common\models\HairColor;
 use common\models\Service;
+use common\models\Sexual;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -14,6 +15,8 @@ $this->title = 'Редактировать информация о себе';
 $hair_color = HairColor::find()->where(['pol' => Yii::$app->user->identity->pol])->asArray()->all();
 $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
+$eye_color = EyeColor::find()->asArray()->all();
+$sexualList = Sexual::find()->asArray()->all();
 
 $model->getParams(Yii::$app->user->id);
 
@@ -25,12 +28,16 @@ $service_list_sex = Service::find()->asArray()->all();
     <div class="col-9">
         <div class="edit-form anket">
 
-            <p class="name heading-anket">Редактировать внешность</p>
+            <p class="name heading-anket">Редактировать информацию</p>
 
             <?php $form = ActiveForm::begin(); ?>
 
             <div class="row">
 
+                <div class="col-4">
+                    <?= $form->field($model, 'sexual')
+                        ->dropDownList(ArrayHelper::map($sexualList, 'id', 'value')); ?>
+                </div>
                 <div class="col-4"> <?= $form->field($model, 'hair_color')
                         ->dropDownList(ArrayHelper::map($hair_color, 'id', 'value')); ?> </div>
                 <div class="col-4"> <?= $form->field($model, 'rost')->textInput(); ?> </div>

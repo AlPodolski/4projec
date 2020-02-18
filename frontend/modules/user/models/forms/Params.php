@@ -5,6 +5,7 @@ namespace frontend\modules\user\models\forms;
 
 use frontend\models\UserHairColor;
 use frontend\models\UserService;
+use frontend\models\UserSexual;
 use frontend\models\UserToService;
 use yii\base\Model;
 use frontend\models\UserParams;
@@ -26,6 +27,7 @@ class Params extends Model
     public $body;
     public $breast_size;
     public $service;
+    public $sexual;
 
     public function attributeLabels()
     {
@@ -37,6 +39,7 @@ class Params extends Model
             'body' => 'Телосложение',
             'breast_size' => 'Размер груди',
             'service' => 'Сексуальные предпочтения',
+            'sexual' => 'Сексуальная ориентация',
         ];
 
     }
@@ -47,7 +50,7 @@ class Params extends Model
     public function rules()
     {
         return [
-            [['hair_color', 'rost', 'ves', 'eye_color', 'body', 'breast_size'], 'integer'],
+            [['hair_color', 'rost', 'ves', 'eye_color', 'body', 'breast_size', 'sexual'], 'integer'],
             [['service'], 'safe'],
         ];
     }
@@ -60,7 +63,8 @@ class Params extends Model
         $this->ves = ArrayHelper::getValue(UserVes::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->body = ArrayHelper::getValue(UserBody::find()->where(['user_id'=> $user_id])->one(), 'value');
         $this->breast_size = ArrayHelper::getValue(UserBreastSize::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->service = ArrayHelper::getColumn(UserService::find()->where(['user_id'=> $user_id])->asArray()->all(), 'service_id'); ;
+        $this->service = ArrayHelper::getColumn(UserService::find()->where(['user_id'=> $user_id])->asArray()->all(), 'service_id');
+        $this->sexual = ArrayHelper::getValue(UserSexual::find()->where(['user_id'=> $user_id])->asArray()->one(), 'sexual_id');
     }
 
     public function save($user_id){
@@ -72,11 +76,25 @@ class Params extends Model
         if ($this->rost) $this->saveUserRost($user_id);
         if ($this->ves) $this->saveUserVes($user_id);
         if ($this->service) $this->saveService($user_id);
+        if ($this->service) $this->saveSexual($user_id);
 
         return true;
 
     }
 
+    public function saveSexual($id){
+
+        UserSexual::deleteAll('user_id = '.$id);
+
+        $user_to_service = new UserSexual();
+
+        $user_to_service->user_id = $id;
+
+        $user_to_service->sexual_id = $this->sexual;
+
+        $user_to_service->save();
+
+    }
     public function saveService($id){
 
         UserService::deleteAll('user_id = '.$id);
