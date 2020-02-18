@@ -50,7 +50,7 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="">Ищу мужчину</a></li>
+                                        <li><a href="/pol-muzhskoj">Ищу мужчину</a></li>
                                         <li><a href="">Ищу любовника</a></li>
                                         <li><a href="">Ищу гея</a></li>
                                         <li><a href="">Ищу спонсора</a></li>
@@ -65,7 +65,7 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="">Ищу женщину</a></li>
+                                        <li><a href="/pol-zhenskij">Ищу женщину</a></li>
                                         <li><a href="">Ищу любовницу</a></li>
                                         <li><a href="">Ищу лесбиянку</a></li>
                                         <li><a href="">Ищу спонсора</a></li>
