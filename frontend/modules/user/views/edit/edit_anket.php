@@ -1,9 +1,11 @@
-<?php use common\models\BodyType;
+<?php
+use common\models\BodyType;
 use common\models\EyeColor;
 use common\models\HairColor;
 use common\models\Rayon;
 use common\models\Service;
 use common\models\Sexual;
+use frontend\models\UserPol;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -16,7 +18,9 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->title = 'Редактировать информация о себе';
 
-$hair_color = HairColor::find()->where(['pol' => Yii::$app->user->identity->pol])->asArray()->all();
+$pol = UserPol::find()->where(['user_id' => Yii::$app->user->id])->asArray()->one();
+
+$hair_color = HairColor::find()->where(['pol' => $pol['pol_id']])->asArray()->all();
 $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
@@ -53,7 +57,7 @@ $service_list_sex = Service::find()->asArray()->all();
                 <div class="col-4"> <?= $form->field($model, 'body')
                         ->dropDownList(ArrayHelper::map($body_type, 'id', 'value')); ?> </div>
 
-                <?php if (Yii::$app->user->identity->pol != 1) : ?>
+                <?php if ($pol['pol_id'] != 1) : ?>
 
                     <div class="col-4"> <?= $form->field($model, 'breast_size')->textInput(); ?> </div>
 
