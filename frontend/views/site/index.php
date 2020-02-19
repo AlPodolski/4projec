@@ -52,7 +52,7 @@ $this->title = 'Знакомства';
                                     <ul class="banner-menu-list">
                                         <li><a href="/pol-muzhskoj">Ищу мужчину</a></li>
                                         <li><a href="/orientaciya-gei">Ищу гея</a></li>
-                                        <li><a href="">Ищу спонсора</a></li>
+                                        <li><a href="/pol-muzhskoj/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ $this->title = 'Знакомства';
                                     <ul class="banner-menu-list">
                                         <li><a href="/pol-zhenskij">Ищу женщину</a></li>
                                         <li><a href="/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
-                                        <li><a href="">Ищу спонсора</a></li>
+                                        <li><a href="/pol-zhenskij/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
                                     </ul>
                                 </div>
                             </div>
