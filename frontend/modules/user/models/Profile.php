@@ -8,6 +8,7 @@ use common\models\Pol;
 use common\models\Service;
 use common\models\Metro;
 use common\models\Rayon;
+use common\models\Sexual;
 use frontend\models\UserBody;
 use frontend\models\UserNational;
 use frontend\models\UserParams;
@@ -363,6 +364,47 @@ class Profile extends \yii\db\ActiveRecord
                     }else{
 
                         $ids = UserPol::find()->where(['pol_id' => $id['id']])->asArray()->all();
+
+                    }
+
+                }
+
+            }
+
+            if (strstr($value, 'sexual')){
+
+                $url = str_replace('sexual-', '', $value);
+
+                $id = Sexual::find()->where(['url' => $url])->asArray()->one();
+
+                if($id){
+
+                    $bread_crumbs_params[] = [
+                        'url' => '/'.$value,
+                        'label' => $id['value']
+                    ];
+
+                    $result_id_array = array();
+
+                    if (!empty($ids)){
+
+                        $ids2 = UserSexual::find()->where(['sexual_id' => $id['id']])->asArray()->all();
+
+                        foreach ($ids2 as $item){
+
+                            foreach ($ids as $item2){
+
+                                if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
+
+                            }
+
+                        }
+
+                        $ids = $result_id_array;
+
+                    }else{
+
+                        $ids = UserSexual::find()->where(['sexual_id' => $id['id']])->asArray()->all();
 
                     }
 
