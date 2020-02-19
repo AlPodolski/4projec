@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use frontend\models\Posts;
+use frontend\modules\user\components\helpers\QueryParamsHelper;
 use frontend\modules\user\models\Profile;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -12,7 +13,7 @@ class FilterController extends Controller
 {
     public function actionIndex($city, $param)
     {
-        $query_params = Profile::getByParams( $param);
+        $query_params = QueryParamsHelper::getParams( $param);
 
         $posts = '';
         $pages = null;
