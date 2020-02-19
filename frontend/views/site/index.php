@@ -51,8 +51,7 @@ $this->title = 'Знакомства';
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
                                         <li><a href="/pol-muzhskoj">Ищу мужчину</a></li>
-                                        <li><a href="">Ищу любовника</a></li>
-                                        <li><a href="/pol-muzhskoj/sexual-gomo">Ищу гея</a></li>
+                                        <li><a href="/orientaciya-gei">Ищу гея</a></li>
                                         <li><a href="">Ищу спонсора</a></li>
                                     </ul>
                                 </div>
@@ -66,8 +65,7 @@ $this->title = 'Знакомства';
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
                                         <li><a href="/pol-zhenskij">Ищу женщину</a></li>
-                                        <li><a href="">Ищу любовницу</a></li>
-                                        <li><a href="/pol-zhenskij/sexual-gomo">Ищу лесбиянку</a></li>
+                                        <li><a href="/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
                                         <li><a href="">Ищу спонсора</a></li>
                                     </ul>
                                 </div>

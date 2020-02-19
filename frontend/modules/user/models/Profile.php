@@ -371,9 +371,9 @@ class Profile extends \yii\db\ActiveRecord
 
             }
 
-            if (strstr($value, 'sexual')){
+            if (strstr($value, 'orientaciya')){
 
-                $url = str_replace('sexual-', '', $value);
+                $url = str_replace('orientaciya-', '', $value);
 
                 $id = Sexual::find()->where(['url' => $url])->asArray()->one();
 

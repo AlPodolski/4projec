@@ -21,7 +21,7 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 $this->title = 'Редактировать профиль';
 
 $pol = Pol::find()->asArray()->all();
-
+$model->pol = $model->getPol();
 ?>
 <div class="row">
 
