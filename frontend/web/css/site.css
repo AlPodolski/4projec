@@ -544,6 +544,7 @@ h1{
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 .article-anket-wrap .name{
     text-align: center;
@@ -581,6 +582,7 @@ h1{
     padding: 15px;
     margin-top: 10px;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
 .main-banner-wrap{
     padding-right: 0;

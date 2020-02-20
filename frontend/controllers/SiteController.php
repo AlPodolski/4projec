@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\modules\user\models\Profile;
 use yii\web\Controller;
 
 /**
@@ -42,8 +43,11 @@ class SiteController extends Controller
      */
     public function actionIndex($city)
     {
+        $posts = Profile::find()->all();
+
         return $this->render('index', [
-            'city' => $city
+            'city' => $city,
+            'posts' => $posts
         ]);
     }
 

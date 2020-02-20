@@ -2,6 +2,9 @@
 
 /* @var $this yii\web\View */
 /* @var $city string */
+/* @var $posts Profile[] */
+
+use frontend\modules\user\models\Profile;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
 $this->title = 'Знакомства';
@@ -102,7 +105,24 @@ $this->title = 'Знакомства';
                     </div>
 
                 </div>
+
+                <div class="row">
+
+
+
+                    <?php foreach ($posts as $post) : ?>
+
+                        <?php echo $this->renderFile('@app/views/layouts/article.php', [
+                            'post' => $post
+                        ]) ?>
+
+                    <?php endforeach; ?>
+
+
+                </div>
+
             </div>
+
 
         </div>
 
