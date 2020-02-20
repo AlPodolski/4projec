@@ -1,5 +1,5 @@
 <?php
-namespace frontend\modules\user\models;
+namespace common\models;
 
 use Yii;
 use yii\base\NotSupportedException;
@@ -120,12 +120,11 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by email and city
      *
      * @param string $email
-     * @param string $city
      * @return \frontend\modules\user\models\User|null
      */
-    public static function findByEmailAndCity($email, $city)
+    public static function findByEmail($email)
     {
-        return static::findOne(['email' => $email, 'city' => $city]);
+        return static::findOne(['email' => $email]);
     }
 
     /**
