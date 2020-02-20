@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $value
  * @property string|null $url
  * @property string|null $category
+ * @property integer|null $pol
  */
 class Service extends \yii\db\ActiveRecord
 {

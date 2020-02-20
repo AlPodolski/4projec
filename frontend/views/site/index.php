@@ -91,9 +91,9 @@ $this->title = 'Знакомства';
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
                                         <li><a href="/prostitutki">Ищу проститутку</a></li>
-                                        <li><a href="">Ищу массажистку</a></li>
-                                        <li><a href="">Ищу стриптизершу</a></li>
-                                        <li><a href="">Ищу эскорт девушку</a></li>
+                                        <li><a href="/prostitutki/usluga-eroticheskiy">Ищу массажистку</a></li>
+                                        <li><a href="/prostitutki/usluga-striptiz">Ищу стриптизершу</a></li>
+                                        <li><a href="/prostitutki/usluga-eskort">Ищу эскорт девушку</a></li>
                                         <li><a href="/zhigalo">Ищу жигало</a></li>
                                     </ul>
                                 </div>
