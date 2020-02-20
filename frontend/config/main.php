@@ -37,7 +37,7 @@ return [
             ],
         ],
         'user' => [
-            'identityClass' => 'frontend\modules\user\models\User',
+            'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
