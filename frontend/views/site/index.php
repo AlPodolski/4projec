@@ -74,11 +74,11 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="">Ищу BDSM</a></li>
-                                        <li><a href="">Ищу госпажу</a></li>
-                                        <li><a href="">Ищу рабыню</a></li>
-                                        <li><a href="">Ищу госпадина</a></li>
-                                        <li><a href="">Ищу раба</a></li>
+                                        <li><a href="/usluga-bdsm">Ищу BDSM</a></li>
+                                        <li><a href="/usluga-gospogha">Ищу госпажу</a></li>
+                                        <li><a href="/usluga-rabynya">Ищу рабыню</a></li>
+                                        <li><a href="/usluga-gospodin">Ищу господина</a></li>
+                                        <li><a href="/usluga-rab">Ищу раба</a></li>
                                     </ul>
                                 </div>
                             </div>
