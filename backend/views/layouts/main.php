@@ -88,7 +88,7 @@ AdminLteAsset::register($this);
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer navbar-fixed-bottom row-fluid">
 
 </footer>
 
