@@ -1,0 +1,29 @@
+<?php
+
+use yii\db\Migration;
+
+/**
+ * Handles the creation of table `{{%smoking}}`.
+ */
+class m200225_152621_create_smoking_table extends Migration
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function safeUp()
+    {
+        $this->createTable('{{%smoking}}', [
+            'id' => $this->primaryKey(),
+            'value' => $this->string(50),
+            'url' => $this->string(50),
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function safeDown()
+    {
+        $this->dropTable('{{%smoking}}');
+    }
+}
