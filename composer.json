@@ -25,7 +25,8 @@
         "bower-asset/admin-lte": "3.0.2",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "yiisoft/yii2-imagine": "*",
-        "iutbay/yii2-imagecache" : "*"
+        "iutbay/yii2-imagecache" : "*",
+        "dastanaron/yii2-translit": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
