@@ -5,7 +5,7 @@ namespace console\controllers;
 
 use yii\console\Controller;
 use dastanaron\translit\Translit;
-use common\models\Vneshnost;
+use common\models\VajnoeVPartnere;
 
 class ImportController extends Controller
 {
@@ -14,11 +14,11 @@ class ImportController extends Controller
 
         $translit = new Translit();
 
-        $params = ['великолепна', 'вполне привлекательна', 'обыкновенная', 'себе не нравлюсь', 'не мне судить'];
+        $params = ['фигура', 'смазливое лицо', 'ум', 'характер', 'секс', 'материальнгое положение'];
 
         foreach ($params as $param){
 
-            $model = new Vneshnost();
+            $model = new VajnoeVPartnere();
 
             $model->value = $param;
             $model->url = $translit->translit($param, true, 'ru-en');
