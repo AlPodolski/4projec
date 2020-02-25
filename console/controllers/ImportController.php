@@ -5,7 +5,7 @@ namespace console\controllers;
 
 use yii\console\Controller;
 use dastanaron\translit\Translit;
-use common\models\Family;
+use common\models\WantFind as Model;
 
 class ImportController extends Controller
 {
@@ -14,11 +14,11 @@ class ImportController extends Controller
 
         $translit = new Translit();
 
-        $params = ['холост', 'одинока', 'замужем', 'женат', 'разведен', 'разведена', "вдова", 'вдовец', 'гражданский брак', 'встречаемся', 'все сложно', 'в активном поиске'];
+        $params = ['Парня ', 'Девушку', 'Пару ', 'Женщину ', 'Мужчину'];
 
         foreach ($params as $param){
 
-            $model = new Family();
+            $model = new Model();
 
             $model->value = $param;
             $model->url = $translit->translit($param, true, 'ru-en');
