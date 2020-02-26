@@ -40,10 +40,10 @@ class FilterParams extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'url' => 'Url',
-            'class_name' => 'Class Name',
-            'relation_class' => 'Relation Class',
-            'column_param_name' => 'Column Param Name',
+            'url' => 'Урл',
+            'class_name' => 'Имя класса',
+            'relation_class' => 'Связаный класс',
+            'column_param_name' => 'Название поля в связаной таблице',
         ];
     }
 }
