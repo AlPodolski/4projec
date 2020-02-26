@@ -5,7 +5,7 @@ namespace console\controllers;
 
 use yii\console\Controller;
 use dastanaron\translit\Translit;
-use common\models\Alcogol as Model;
+use common\models\Education as Model;
 
 class ImportController extends Controller
 {
@@ -14,7 +14,7 @@ class ImportController extends Controller
 
         $translit = new Translit();
 
-        $params = ['не пью вообще', 'пью в компаниях изредка', 'люблю выпить'];
+        $params = ['среднее', 'среднее специальное', 'неполное высшее', 'высшее', 'несколько высших', 'ученая степень'];
 
         foreach ($params as $param){
 
