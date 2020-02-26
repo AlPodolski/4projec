@@ -9,6 +9,13 @@ use common\models\Service;
 use frontend\widgets\AdvertWidget;
 use common\models\Metro;
 use common\models\Rayon;
+use \common\models\Interesting;
+use \common\models\Children;
+use common\models\Family;
+use common\models\CeliZnakomstvamstva;
+use common\models\Smoking;
+use common\models\Alcogol;
+
 
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
@@ -20,6 +27,12 @@ $bodyList = BodyType::find()->asArray()->all();
 $serviceList = Service::find()->asArray()->all();
 $metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
 $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
+$interesi = Interesting::find()->asArray()->all();
+$deti = Children::find()->asArray()->all();
+$semeinoePolojenie = Family::find()->asArray()->all();
+$celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
+$smoke = Smoking::find()->asArray()->all();
+$alcogol = Alcogol::find()->asArray()->all();
 
 ?>
 <div class="col-3">
@@ -67,19 +80,151 @@ $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams
 
             <?php if ($rayonList) : ?>
 
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseOne">
+                                Район
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($rayonList as $rayon) : ?>
+                                <a href="/rayon-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if ($interesi) : ?>
+
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseOne">
-                            Район
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
+                            Интересы
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapse9" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        <?php foreach ($rayonList as $rayon) : ?>
-                            <a href="/rayon-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+                        <?php foreach ($interesi as $interesiitem) : ?>
+                            <a href="/interesy-<?php echo $interesiitem['url'] ?>"><?php echo $interesiitem['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($deti) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapseOne">
+                            Дети
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse10" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($deti as $detiItem) : ?>
+                            <a href="/deti-<?php echo $detiItem['url'] ?>"><?php echo $detiItem['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($semeinoePolojenie) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapseOne">
+                            Семейное положение
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($semeinoePolojenie as $semeinoePolojenieItem) : ?>
+                            <a href="/semejnoe-polozhenie-<?php echo $semeinoePolojenieItem['url'] ?>"><?php echo $semeinoePolojenieItem['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($celiZnakomstva) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapseOne">
+                            Цели знакомства
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($celiZnakomstva as $celiZnakomstvaItem) : ?>
+                            <a href="/semejnoe-polozhenie-<?php echo $celiZnakomstvaItem['url'] ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($smoke) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse12" aria-expanded="true" aria-controls="collapseOne">
+                            отношение к курению
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse12" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($smoke as $smokeItem) : ?>
+                            <a href="/otnoshenie-k-kureniyu-<?php echo $smokeItem['url'] ?>"><?php echo $smokeItem['value'] ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($alcogol) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
+                            Отношение к лкоголю
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse13" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($alcogol as $alcogolItem) : ?>
+                            <a href="/otnoshenie-k-akogolyu-<?php echo $alcogolItem['url'] ?>"><?php echo $alcogolItem['value'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>
