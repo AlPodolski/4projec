@@ -33,9 +33,9 @@ class QueryParamsHelper
                     $classRelationName = $filter_param['relation_class'];
 
                     //тире нужно так как урл указывается без тире
-                    $url = str_replace($filter_param['url'].'-', '', $value);
+                    $url = str_replace($filter_param['url'], '', \str_replace('-', '',$value));
 
-                    $id = $className::find()->where(['url' => $url])->asArray()->one();
+                    if ($url) $id = $className::find()->where(['url' => $url])->asArray()->one();
 
                     if ($id and $classRelationName) {
 
