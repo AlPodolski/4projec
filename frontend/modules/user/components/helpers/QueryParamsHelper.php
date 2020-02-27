@@ -22,10 +22,14 @@ class QueryParamsHelper
         $query_params = array();
         $bread_crumbs_params = array();
 
+        $stem = 0;
+
         //Перебираем параметры
         foreach ($params as $value) {
 
             foreach ($filter_params as $filter_param){
+
+                $result_id_array = array();
 
                 if (strstr($value, $filter_param['url'])) {
 
@@ -53,13 +57,15 @@ class QueryParamsHelper
 
                                 foreach ($ids as $item2) {
 
-                                    if ($item['user_id'] == $item2['user_id']) $result_id_array[] = $item2;
+                                    if ($item['user_id'] == $item2['user_id']) {
+                                        $result_id_array[] = $item2;
+                                    }
 
                                 }
 
                             }
 
-                            $ids = $result_id_array;
+                           $ids = $result_id_array;
 
                         } else {
 
@@ -78,6 +84,8 @@ class QueryParamsHelper
                 }
 
             }
+
+
 
 
             if (strstr($value, 'vozrast')) {

@@ -1,38 +1,10 @@
 <?php
 
-use common\models\Age;
-use common\models\BodyType;
-use common\models\National;
-use common\models\Place;
-use common\models\Price;
-use common\models\Service;
 use frontend\widgets\AdvertWidget;
-use common\models\Metro;
-use common\models\Rayon;
-use \common\models\Interesting;
-use \common\models\Children;
-use common\models\Family;
-use common\models\CeliZnakomstvamstva;
-use common\models\Smoking;
-use common\models\Alcogol;
-
+use frontend\components\UrlBuilder;
 
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
-$placeList = Place::find()->asArray()->all();
-$ageList = Age::find()->asArray()->all();
-$priceList = Price::find()->asArray()->all();
-$nationalList = National::find()->asArray()->all();
-$bodyList = BodyType::find()->asArray()->all();
-$serviceList = Service::find()->asArray()->all();
-$metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
-$rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
-$interesi = Interesting::find()->asArray()->all();
-$deti = Children::find()->asArray()->all();
-$semeinoePolojenie = Family::find()->asArray()->all();
-$celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
-$smoke = Smoking::find()->asArray()->all();
-$alcogol = Alcogol::find()->asArray()->all();
 
 ?>
 <div class="col-3">
@@ -70,7 +42,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse6" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($metroList as $metro) : ?>
-                            <a href="/metro-<?php echo $metro['url'] ?>"><?php echo $metro['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/metro-'.$metro['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $metro['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -92,7 +68,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                     <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <?php foreach ($rayonList as $rayon) : ?>
-                                <a href="/rayon-<?php echo $rayon['url'] ?>"><?php echo $rayon['value'] ?></a>
+
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/rayon-'.$rayon['url']) ?>
+
+                                <a href="/<?php echo $url; ?>"><?php echo $rayon['value'] ?></a>
+
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -114,7 +94,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse9" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($interesi as $interesiitem) : ?>
-                            <a href="/interesy-<?php echo $interesiitem['url'] ?>"><?php echo $interesiitem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/interesy-'.$interesiitem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $interesiitem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -136,7 +120,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse10" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($deti as $detiItem) : ?>
-                            <a href="/deti-<?php echo $detiItem['url'] ?>"><?php echo $detiItem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/deti-'.$detiItem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $detiItem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -158,7 +146,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($semeinoePolojenie as $semeinoePolojenieItem) : ?>
-                            <a href="/semejnoe-polozhenie-<?php echo $semeinoePolojenieItem['url'] ?>"><?php echo $semeinoePolojenieItem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/semejnoe-polozhenie-'.$semeinoePolojenieItem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $semeinoePolojenieItem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -171,16 +163,20 @@ $alcogol = Alcogol::find()->asArray()->all();
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse14" aria-expanded="true" aria-controls="collapseOne">
                             Цели знакомства
                         </button>
                     </h5>
                 </div>
 
-                <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapse14" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($celiZnakomstva as $celiZnakomstvaItem) : ?>
-                            <a href="/semejnoe-polozhenie-<?php echo $celiZnakomstvaItem['url'] ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/semejnoe-polozhenie-'.$celiZnakomstvaItem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -202,7 +198,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse12" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($smoke as $smokeItem) : ?>
-                            <a href="/otnoshenie-k-kureniyu-<?php echo $smokeItem['url'] ?>"><?php echo $smokeItem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-kureniyu-'.$smokeItem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $smokeItem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -224,7 +224,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse13" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($alcogol as $alcogolItem) : ?>
-                            <a href="/otnoshenie-k-akogolyu-<?php echo $alcogolItem['url'] ?>"><?php echo $alcogolItem['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-akogolyu-'.$alcogolItem['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $alcogolItem['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -246,7 +250,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($serviceList as $service) : ?>
-                            <a href="/usluga-<?php echo $service['url'] ?>"><?php echo $service['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/usluga-'.$service['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $service['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -266,7 +274,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($placeList as $place) : ?>
-                            <a href="/mesto-vstreji-<?php echo $place['url'] ?>"><?php echo $place['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/mesto-vstreji-'.$place['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $place['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -283,7 +295,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($ageList as $age) : ?>
-                            <a href="/vozrast-<?php echo $age['url'] ?>"><?php echo $age['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/vozrast-'.$age['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $age['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -299,7 +315,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($priceList as $price) : ?>
-                            <a href="/cena-<?php echo $price['url'] ?>"><?php echo $price['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/cena-'.$price['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $price['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -316,7 +336,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($nationalList as $national) : ?>
-                            <a href="/nacionalnost-<?php echo $national['url'] ?>"><?php echo $national['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/nacionalnost-'.$national['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $national['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -333,7 +357,11 @@ $alcogol = Alcogol::find()->asArray()->all();
                 <div id="collapse5" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
                         <?php foreach ($bodyList as $body) : ?>
-                            <a href="/teloslozhenie-<?php echo $body['url'] ?>"><?php echo $body['value'] ?></a>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/teloslozhenie-'.$body['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $body['value'] ?></a>
+
                         <?php endforeach; ?>
                     </div>
                 </div>

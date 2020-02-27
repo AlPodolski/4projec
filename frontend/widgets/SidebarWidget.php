@@ -4,12 +4,78 @@
 namespace frontend\widgets;
 
 use yii\base\Widget;
+use common\models\Age;
+use common\models\BodyType;
+use common\models\National;
+use common\models\Place;
+use common\models\Price;
+use common\models\Service;
+use Yii;
+use common\models\Metro;
+use common\models\Rayon;
+use \common\models\Interesting;
+use \common\models\Children;
+use common\models\Family;
+use common\models\CeliZnakomstvamstva;
+use common\models\Smoking;
+use common\models\Alcogol;
 
 class SidebarWidget extends Widget
 {
+
+    private function getAvalibleIds(){
+
+        if (isset (Yii::$app->params['result_id'])) return Yii::$app->params['result_id'];
+        return false;
+
+    }
+
     public function run()
     {
-        return $this->render('sidebar');
+
+        $param = '';
+
+        $placeList = Place::find()->asArray()->all();
+        $ageList = Age::find()->asArray()->all();
+        $priceList = Price::find()->asArray()->all();
+        $nationalList = National::find()->asArray()->all();
+        $bodyList = BodyType::find()->asArray()->all();
+        $serviceList = Service::find()->asArray()->all();
+        $metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
+        $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
+        $interesi = Interesting::find()->asArray()->all();
+        $deti = Children::find()->asArray()->all();
+        $semeinoePolojenie = Family::find()->asArray()->all();
+        $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
+        $smoke = Smoking::find()->asArray()->all();
+        $alcogol = Alcogol::find()->asArray()->all();
+
+        if (isset(Yii::$app->controller->actionParams['param'])) $param =
+            $this->prepereParam(Yii::$app->controller->actionParams['param']);
+
+        return $this->render('sidebar', [
+            'placeList' => $placeList,
+            'ageList' => $ageList,
+            'priceList' => $priceList,
+            'nationalList' => $nationalList,
+            'bodyList' => $bodyList,
+            'serviceList' => $serviceList,
+            'metroList' => $metroList,
+            'rayonList' => $rayonList,
+            'interesi' => $interesi,
+            'deti' => $deti,
+            'semeinoePolojenie' => $semeinoePolojenie,
+            'celiZnakomstva' => $celiZnakomstva,
+            'smoke' => $smoke,
+            'alcogol' => $alcogol,
+            'param' => $param,
+        ]);
+    }
+
+    private function prepereParam($param){
+
+        return explode('/',$param);
+
     }
 
     public function init()
