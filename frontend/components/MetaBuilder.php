@@ -69,7 +69,7 @@ class MetaBuilder
 
             $uri = self::prepareTemplate($uri);
 
-            if ($tamplate = MetaTemplate::find()->select($find)->where(['url' => $uri])->asArray()->one()) return
+            if ($uri and $tamplate = MetaTemplate::find()->select($find)->where(['url' => $uri])->asArray()->one()) return
                 $tamplate;
 
             else return MetaTemplate::find()->select($find)->where(['url' => 'default'])->asArray()->one();
