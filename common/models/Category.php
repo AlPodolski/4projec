@@ -1,26 +1,24 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "meta_template".
+ * This is the model class for table "category".
  *
  * @property int $id
+ * @property string|null $value
  * @property string|null $url
- * @property string|null $title
- * @property string|null $des
- * @property string|null $h1
  */
-class MetaTemplate extends \yii\db\ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'meta_template';
+        return 'category';
     }
 
     /**
@@ -29,8 +27,7 @@ class MetaTemplate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'des'], 'string'],
-            [['url', 'h1'], 'string', 'max' => 255],
+            [['value', 'url'], 'string', 'max' => 50],
         ];
     }
 
@@ -41,10 +38,8 @@ class MetaTemplate extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'value' => 'Value',
             'url' => 'Url',
-            'title' => 'Title',
-            'des' => 'Des',
-            'h1' => 'H1',
         ];
     }
 }

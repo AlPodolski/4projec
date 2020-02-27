@@ -1,7 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\components\MetaBuilder;
 use frontend\modules\user\models\Profile;
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -44,6 +46,8 @@ class SiteController extends Controller
     public function actionIndex($city)
     {
         $posts = Profile::find()->all();
+
+        Yii::$app->view->title = MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
 
         return $this->render('index', [
             'city' => $city,

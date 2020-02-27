@@ -1,6 +1,9 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $posts Profile[] */
+/* @var $title string */
+/* @var $h1 string */
+/* @var $des string */
 
 /* @var $city string */
 
@@ -9,8 +12,15 @@ use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
 
 
-$this->title = 'Знакомства фильтр';
+$this->title = $title;
+
+Yii::$app->view->registerMetaTag([
+    'name' => 'description',
+    'content' => $des
+]);
+
 ?>
+
 <div class="site-index">
 
     <div class="body-content">
@@ -31,6 +41,8 @@ $this->title = 'Знакомства фильтр';
             <div class="col-9">
 
                 <div class="content">
+
+                    <h1><?php echo $h1; ?></h1>
 
                     <div class="row">
 

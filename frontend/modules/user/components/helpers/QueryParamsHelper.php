@@ -37,7 +37,7 @@ class QueryParamsHelper
 
                     $id = $className::find()->where(['url' => $url])->asArray()->one();
 
-                    if ($id) {
+                    if ($id and $classRelationName) {
 
                         $bread_crumbs_params[] = [
                             'url' => '/' . $value,
