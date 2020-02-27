@@ -49,9 +49,9 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="/pol-muzhskoj">Ищу мужчину</a></li>
-                                        <li><a href="/orientaciya-gei">Ищу гея</a></li>
-                                        <li><a href="/pol-muzhskoj/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
+                                        <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
+                                        <li><a href="/znakomstva/orientaciya-gei">Ищу гея</a></li>
+                                        <li><a href="/znakomstva/pol-muzhskoj/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -63,9 +63,9 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="/pol-zhenskij">Ищу женщину</a></li>
-                                        <li><a href="/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
-                                        <li><a href="/pol-zhenskij/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
+                                        <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
+                                        <li><a href="/znakomstva/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
+                                        <li><a href="/znakomstva/pol-zhenskij/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -77,11 +77,11 @@ $this->title = 'Знакомства';
                                 </div>
                                 <div class="col-7">
                                     <ul class="banner-menu-list">
-                                        <li><a href="/usluga-bdsm">Ищу BDSM</a></li>
-                                        <li><a href="/usluga-gospogha">Ищу госпажу</a></li>
-                                        <li><a href="/usluga-rabynya">Ищу рабыню</a></li>
-                                        <li><a href="/usluga-gospodin">Ищу господина</a></li>
-                                        <li><a href="/usluga-rab">Ищу раба</a></li>
+                                        <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
+                                        <li><a href="/znakomstva/usluga-gospogha">Ищу госпажу</a></li>
+                                        <li><a href="/znakomstva/usluga-rabynya">Ищу рабыню</a></li>
+                                        <li><a href="/znakomstva/usluga-gospodin">Ищу господина</a></li>
+                                        <li><a href="/znakomstva/usluga-rab">Ищу раба</a></li>
                                     </ul>
                                 </div>
                             </div>

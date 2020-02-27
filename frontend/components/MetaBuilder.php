@@ -46,11 +46,13 @@ class MetaBuilder
 
          foreach ($subject as $value){
 
-             $meta_subject = trim(preg_replace( '#\[(.+)\]#', '', $value));
+             $meta_subject = trim(preg_replace( '#\[.*?\]#', '', $value));
 
             if ($meta_subject != '') $result[] = $meta_subject;
 
          }
+
+
 
          return StringHelper::str_replace_once(',', ' ', implode(',', $result));
 

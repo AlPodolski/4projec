@@ -46,6 +46,8 @@ Yii::$app->view->registerMetaTag([
 
                     <div class="row">
 
+                        <?php if ($posts) : ?>
+
                         <?php foreach ($posts as $post) : ?>
 
                             <?php echo $this->renderFile('@app/views/layouts/article.php', [
@@ -53,6 +55,12 @@ Yii::$app->view->registerMetaTag([
                             ]) ?>
 
                         <?php endforeach; ?>
+
+                        <?php else : ?>
+
+                            <p>Ничего нет</p>
+
+                        <?php endif; ?>
 
                     </div>
                 </div>
