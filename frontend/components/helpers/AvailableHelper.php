@@ -13,7 +13,7 @@ class AvailableHelper
 
             $available_ids = $classInfo['relation_class']::find();
 
-            if ($ids) $available_ids->where(['in' , $classInfo['column_param_name'] , $ids]);
+            if ($ids) $available_ids->where(['in' , 'user_id', $ids]);
 
             $available_ids = $available_ids->distinct()->asArray()->all();
 
