@@ -19,6 +19,7 @@ use common\models\Family;
 use common\models\CeliZnakomstvamstva;
 use common\models\Smoking;
 use common\models\Alcogol;
+use frontend\components\helpers\AvailableHelper;
 
 class SidebarWidget extends Widget
 {
@@ -35,20 +36,21 @@ class SidebarWidget extends Widget
 
         $param = '';
 
-        $placeList = Place::find()->asArray()->all();
-        $ageList = Age::find()->asArray()->all();
-        $priceList = Price::find()->asArray()->all();
-        $nationalList = National::find()->asArray()->all();
-        $bodyList = BodyType::find()->asArray()->all();
-        $serviceList = Service::find()->asArray()->all();
-        $metroList = Metro::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
-        $rayonList = Rayon::find()->where(['city' => Yii::$app->controller->actionParams['city']])->asArray()->all();
-        $interesi = Interesting::find()->asArray()->all();
-        $deti = Children::find()->asArray()->all();
-        $semeinoePolojenie = Family::find()->asArray()->all();
-        $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
-        $smoke = Smoking::find()->asArray()->all();
-        $alcogol = Alcogol::find()->asArray()->all();
+        $placeList = AvailableHelper::getAvailable(Place::class, $this->getAvalibleIds());
+        $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
+        $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
+        $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds());
+        $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds());
+        $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds());
+        $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds());
+        $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds());
+        $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds());
+        $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds());
+        $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds());
+        $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds());
+        $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds());
+        $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds());
+
 
         if (isset(Yii::$app->controller->actionParams['param'])) $param =
             $this->prepereParam(Yii::$app->controller->actionParams['param']);

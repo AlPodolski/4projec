@@ -262,6 +262,8 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
             <?php endif; ?>
 
+            <?php if ($placeList) : ?>
+
             <div class="card">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
@@ -284,6 +286,11 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                 </div>
             </div>
 
+            <?php endif; ?>
+
+            <?php if ($ageList) : ?>
+
+
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
@@ -304,6 +311,11 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                     </div>
                 </div>
             </div>
+
+            <?php endif; ?>
+
+            <?php if ($priceList) : ?>
+
             <div class="card">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
@@ -324,6 +336,11 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                     </div>
                 </div>
             </div>
+
+            <?php endif; ?>
+
+            <?php if ($nationalList) : ?>
+
 
             <div class="card">
                 <div class="card-header" id="headingThree">
@@ -346,6 +363,11 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                 </div>
             </div>
 
+            <?php endif; ?>
+
+            <?php if ($bodyList) : ?>
+
+
             <div class="card">
                 <div class="card-header" id="headingThree">
                     <h5 class="mb-0">
@@ -366,6 +388,8 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                     </div>
                 </div>
             </div>
+
+            <?php endif; ?>
 
         </div>
     </div>
