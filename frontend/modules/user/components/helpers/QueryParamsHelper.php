@@ -39,48 +39,52 @@ class QueryParamsHelper
 
                     $url = self::prepareUrl($filter_param['url'],$value );
 
-                    if ($url) $id = $className::find()->where(['url' => $url])->asArray()->one();
-                    //если не нашли то скорее всего это категория
-                    else $id = $className::find()->where(['url' => $filter_param['url']])->asArray()->one();
+                    if ($url) {
 
-                    $bread_crumbs_params[] = [
-                        'url' => '/' . $value,
-                        'label' => $id['value']
-                    ];
+                        $id = $className::find()->where(['url' => $url])->asArray()->one();
 
-                    if ($id and $classRelationName) {
+                        $bread_crumbs_params[] = [
+                            'url' => '/' . $value,
+                            'label' => $id['value']
+                        ];
 
-                        if (!empty($ids)) {
+                        if ($id and $classRelationName) {
 
-                            $relationsIds = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
+                            if (!empty($ids)) {
 
-                            foreach ($relationsIds as $item) {
+                                $relationsIds = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
 
-                                foreach ($ids as $item2) {
+                                foreach ($relationsIds as $item) {
 
-                                    if ($item['user_id'] == $item2['user_id']) {
-                                        $result_id_array[] = $item2;
+                                    foreach ($ids as $item2) {
+
+                                        if ($item['user_id'] == $item2['user_id']) {
+                                            $result_id_array[] = $item2;
+                                        }
+
                                     }
 
                                 }
 
+                                $ids = $result_id_array;
+
+                            } else {
+
+                                $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
+
                             }
 
-                           $ids = $result_id_array;
+                            if (empty($ids)) {
+                                $ids[] = [
+                                    '0' => 0
+                                ];
+                            }
 
-                        } else {
-
-                            $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
-
-                        }
-
-                        if (empty($ids)) {
-                            $ids[] = [
-                                '0' => 0
-                            ];
                         }
 
                     }
+
+
 
                 }
 
