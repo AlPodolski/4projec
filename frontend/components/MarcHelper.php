@@ -18,13 +18,19 @@ class MarcHelper
 
             foreach ($params as $param){
 
-                $marck_url = '';
+                if ($param['label']){
 
-                $marck_url = rtrim(str_replace(trim($param['url'], '/'), '', $path), '/');
+                    $marck_url = '';
 
-                $close = '<span><i class="fa fa-times" aria-hidden="true"></i></span>';
+                    if (\in_array(\trim($param['url'], '/'), Yii::$app->params['sort_url'])) $marck_url = $param['url'] ;
 
-                $url[] = str_replace('//', '/','<a class="marc" href="/'.$marck_url.'"> <span class="marc-text"> '.$param['label'].' </span> '.$close.'  </a>');
+                    else $marck_url = rtrim(str_replace(trim($param['url'], '/'), '', $path), '/');
+
+                    $close = '<span><i class="fa fa-times" aria-hidden="true"></i></span>';
+
+                    $url[] = str_replace('//', '/','<a class="marc" href="/'.$marck_url.'"> <span class="marc-text"> '.$param['label'].' </span> '.$close.'  </a>');
+
+                }
 
             }
 
