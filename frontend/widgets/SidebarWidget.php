@@ -56,15 +56,21 @@ class SidebarWidget extends Widget
         $breastSizeList = AvailableHelper::getAvailable(Breast::class, $this->getAvalibleIds());
         $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds());
 
-        //znakom
-        $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds());
-        $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds());
-        $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds());
-        $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds());
-        $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds());
+        if (\strstr($param, 'znakomstva')){
+            //znakom
+            $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds());
+            $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds());
+            $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds());
+            $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds());
+            $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds());
+        }else{
+            //pr
+            $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds());
+        }
 
-        //pr
-        $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds());
+
+
+
 
 
 
