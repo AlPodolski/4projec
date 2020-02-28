@@ -5,6 +5,8 @@ namespace frontend\widgets;
 
 use common\models\Breast;
 use common\models\HairColor;
+use common\models\IntimHair;
+use common\models\Pol;
 use yii\base\Widget;
 use common\models\Age;
 use common\models\BodyType;
@@ -39,6 +41,7 @@ class SidebarWidget extends Widget
         $param = '';
 
         //objee
+        $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds());
         $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
         $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
         $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds());
@@ -50,6 +53,7 @@ class SidebarWidget extends Widget
         $placeList = AvailableHelper::getAvailable(Place::class, $this->getAvalibleIds());
         $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds());
         $breastSizeList = AvailableHelper::getAvailable(Breast::class, $this->getAvalibleIds());
+        $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds());
 
         //znakom
         $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds());
@@ -83,6 +87,8 @@ class SidebarWidget extends Widget
             'alcogol' => $alcogol,
             'hairColorList' => $hairColorList,
             'breastSizeList' => $breastSizeList,
+            'polList' => $polList,
+            'intimHairList' => $intimHairList,
             'param' => $param,
         ]);
     }

@@ -28,6 +28,110 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
     <div class="sidebar-menu-list">
         <div id="accordion">
 
+            <?php if ($polList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse15" aria-expanded="true" aria-controls="collapseOne">
+                            Пол
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse15" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($polList as $item) : ?>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/pol-'.$item['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($breastSizeList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse16" aria-expanded="true" aria-controls="collapseOne">
+                            Размер груди
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse16" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($breastSizeList as $item) : ?>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/grud-'.$item['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($hairColorList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
+                            Цвет волос
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse17" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($hairColorList as $item) : ?>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/cvet-volos-'.$item['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
+            <?php if ($intimHairList) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse18" aria-expanded="true" aria-controls="collapseOne">
+                            Интимная стрижка
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse18" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($intimHairList as $item) : ?>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/intimnaya-strizhka-'.$item['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
+
             <?php if ($metroList) : ?>
 
             <div class="card">
