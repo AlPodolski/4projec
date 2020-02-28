@@ -42,6 +42,12 @@ Yii::$app->view->registerMetaTag([
 
                 <div class="content">
 
+                    <?php if (!empty(Yii::$app->view->params['marks'])) : ?>
+
+                        <?php echo Yii::$app->view->params['marks'] ?>
+
+                    <?php endif; ?>
+
                     <h1><?php echo $h1; ?></h1>
 
                     <div class="row">

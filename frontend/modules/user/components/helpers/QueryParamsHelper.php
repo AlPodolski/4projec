@@ -3,6 +3,7 @@
 namespace frontend\modules\user\components\helpers;
 
 use common\models\FilterParams;
+use frontend\components\MarcHelper;
 use frontend\models\UserPrice;
 use frontend\modules\user\models\Profile;
 use yii\helpers\ArrayHelper;
@@ -284,6 +285,8 @@ class QueryParamsHelper
 
 
         }
+
+        MarcHelper::AddMarc($bread_crumbs_params);
 
         if (!empty($query_params)) {
 

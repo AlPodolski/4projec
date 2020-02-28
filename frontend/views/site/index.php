@@ -15,6 +15,12 @@ $this->title = 'Знакомства';
 
         <div class="row">
 
+            <?php if (!empty(Yii::$app->view->params['marks'])) : ?>
+
+                <?php echo Yii::$app->view->params['marks'] ?>
+
+            <?php endif; ?>
+
             <?php echo PopularWidget::widget(['city' => $city]); ?>
 
         </div>
