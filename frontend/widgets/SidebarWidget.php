@@ -38,7 +38,7 @@ class SidebarWidget extends Widget
     public function run()
     {
 
-        $param = '';
+        $param = 'znakomstva/';
 
         //objee
         $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds());
