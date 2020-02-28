@@ -53,20 +53,29 @@ $login = new LoginForm();
                             <li><a href="/novosti">новости сайта</a></li>
                         </ul>
                     </div>
-                    <div class="col-3 cabinet-btn" >
+
 
                         <?php if (Yii::$app->user->isGuest) : ?>
-
-                            <a class="in-cabinet" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
-                                <i class="fa fa-user"></i>
-                                Вход
-                            </a>
+                            <div class="col-3 cabinet-btn" >
+                                <a class="in-cabinet" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
+                                    <i class="fa fa-user"></i>
+                                    Вход
+                                </a>
+                            </div>
 
                         <?php else : ?>
 
+                                <div class="col-3 cabinet-btn" >
+
+                                    <a href="/user" class="in-cabinet" >
+                                        <i class="fa fa-user"></i>
+                                        Кабинет
+                                    </a>
+                                </div>
+
                             <?php
 
-                                echo ''
+                               /* echo ''
                                 . Html::beginForm(['/user/logout'], 'post')
                                 . Html::submitButton(
                                 '<i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -74,13 +83,12 @@ $login = new LoginForm();
                                 ['class' => ' logout register-btn in-cabinet']
                                 )
                                 . Html::endForm()
-                                . ''
+                                . ''*/
 
                             ?>
 
-                        <?php endif; ?>
 
-                    </div>
+                        <?php endif; ?>
 
                 </div>
             </div>
@@ -100,11 +108,6 @@ $login = new LoginForm();
                             <li>БДСМ</li>
                             <li>$ интим $</li>
                         </ul>
-                    </div>
-                    <div class="col-3">
-                        <div class="search-block">
-                            <a ><i class="fa fa-search" aria-hidden="true"></i></a>
-                        </div>
                     </div>
                 </div>
 
