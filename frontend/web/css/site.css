@@ -663,3 +663,7 @@ h1{
     background: none !important;
     top: -1px !important;
 }
+.btn-viiti{
+    padding-left: 0;
+    padding-top: 0;
+}

@@ -2,6 +2,7 @@
 use frontend\modules\user\models\Photo;
 use yii\widgets\ActiveForm;
 use frontend\widgets\AdvertWidget;
+use yii\helpers\Html;
 ?>
 <div class="col-3">
 
@@ -67,7 +68,21 @@ use frontend\widgets\AdvertWidget;
             <li class="user-menu-item my-settings"><i class="fas fa-cog"></i> <span class="text "><a href="/user/setting/profile">Настройки профиля</a></span>
             <li class="user-menu-item my-settings"><i class="far fa-user"></i> <span class="text "><a href="/user/setting/anket">Настройки анкеты</a></span>
             </li>
-            <li class="user-menu-item my-logout"><i class="fas fa-sign-out-alt"></i> <span class="text "><a href="">Выйти</a></span></li>
+            <li class="user-menu-item my-logout">
+            <?php
+
+                             echo ''
+                . Html::beginForm(['/user/logout'], 'post')
+                . Html::submitButton(
+                '<i class="fas fa-sign-out-alt"></i>
+                     Выйти (' . Yii::$app->user->identity->username . ')',
+                ['class' => ' btn-viiti btn text']
+                )
+                . Html::endForm()
+                . ''
+
+            ?>
+            </li>
         </ul>
     </div>
 

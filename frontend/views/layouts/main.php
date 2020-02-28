@@ -73,21 +73,6 @@ $login = new LoginForm();
                                     </a>
                                 </div>
 
-                            <?php
-
-                               /* echo ''
-                                . Html::beginForm(['/user/logout'], 'post')
-                                . Html::submitButton(
-                                '<i class="fa fa-sign-out" aria-hidden="true"></i>
-                                        Выйти (' . Yii::$app->user->identity->username . ')',
-                                ['class' => ' logout register-btn in-cabinet']
-                                )
-                                . Html::endForm()
-                                . ''*/
-
-                            ?>
-
-
                         <?php endif; ?>
 
                 </div>
