@@ -131,6 +131,31 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
             </div>
 
             <?php endif; ?>
+            <?php if ($materialnoePolojenie) : ?>
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse19" aria-expanded="true" aria-controls="collapseOne">
+                            Материальное положение
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapse19" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <?php foreach ($materialnoePolojenie as $item) : ?>
+
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/materialnoe-polozhenie-'.$item['url']) ?>
+
+                            <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <?php endif; ?>
 
             <?php if ($metroList) : ?>
 

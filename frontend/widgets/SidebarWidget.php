@@ -4,6 +4,7 @@
 namespace frontend\widgets;
 
 use common\models\Breast;
+use common\models\FinancialSituation;
 use common\models\HairColor;
 use common\models\IntimHair;
 use common\models\Pol;
@@ -60,6 +61,7 @@ class SidebarWidget extends Widget
         $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds());
         $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds());
         $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds());
+        $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds());
 
         //pr
         $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds());
@@ -89,6 +91,7 @@ class SidebarWidget extends Widget
             'breastSizeList' => $breastSizeList,
             'polList' => $polList,
             'intimHairList' => $intimHairList,
+            'materialnoePolojenie' => $materialnoePolojenie,
             'param' => $param,
         ]);
     }
