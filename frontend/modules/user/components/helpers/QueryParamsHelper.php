@@ -37,18 +37,18 @@ class QueryParamsHelper
                     $className = $filter_param['class_name'];
                     $classRelationName = $filter_param['relation_class'];
 
-                    $url = str_replace($filter_param['url'], '', \str_replace('-', '',$value));
+                    $url = self::prepareUrl($filter_param['url'],$value );
 
                     if ($url) $id = $className::find()->where(['url' => $url])->asArray()->one();
                     //если не нашли то скорее всего это категория
                     else $id = $className::find()->where(['url' => $filter_param['url']])->asArray()->one();
 
-                    if ($id and $classRelationName) {
+                    $bread_crumbs_params[] = [
+                        'url' => '/' . $value,
+                        'label' => $id['value']
+                    ];
 
-                        $bread_crumbs_params[] = [
-                            'url' => '/' . $value,
-                            'label' => $id['value']
-                        ];
+                    if ($id and $classRelationName) {
 
                         if (!empty($ids)) {
 
@@ -306,4 +306,14 @@ class QueryParamsHelper
 
         }
     }
+
+    public static function prepareUrl($url, $value){
+
+        if ($url == $value) return $url;
+
+        return str_replace($url. '-', '', $value);
+
+
+    }
+
 }
