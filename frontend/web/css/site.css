@@ -708,3 +708,6 @@ ul li .secodn-menu:hover {
     display: block!important;
     text-align: center!important;
 }
+.small-nav{
+    padding-top: 25px;
+}

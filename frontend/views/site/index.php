@@ -54,7 +54,7 @@ $this->title = 'Знакомства';
                                     <img class="baner-menu-img" src="/files/img/dandy.png" alt="">
                                 </div>
                                 <div class="col-7">
-                                    <ul class="banner-menu-list">
+                                    <ul class="banner-menu-list small-nav">
                                         <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
                                         <li><a href="/znakomstva/orientaciya-gei">Ищу гея</a></li>
                                         <li><a href="/znakomstva/pol-muzhskoj/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
@@ -68,7 +68,7 @@ $this->title = 'Знакомства';
                                     <img class="baner-menu-img" src="/files/img/canary.png" alt="">
                                 </div>
                                 <div class="col-7">
-                                    <ul class="banner-menu-list">
+                                    <ul class="banner-menu-list small-nav">
                                         <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
                                         <li><a href="/znakomstva/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
                                         <li><a href="/znakomstva/pol-zhenskij/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
