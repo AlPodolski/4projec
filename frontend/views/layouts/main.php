@@ -88,10 +88,28 @@ $login = new LoginForm();
                     </div>
                     <div class="col-7">
                         <ul class="top-nav">
-                            <li>ищу мужчину</li>
-                            <li>ищу женщину </li>
-                            <li>БДСМ</li>
-                            <li>$ интим $</li>
+                            <li><a href="/znakomstva/pol-muzhskoj">ищу мужчину</a></li>
+                            <li><a href="/znakomstva/pol-zhenskij">ищу женщину</a></li>
+                            <li>
+                                <a href="#">БДСМ</a>
+                                <ul class="secodn-menu">
+                                    <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
+                                    <li><a href="/znakomstva/usluga-gospogha">Ищу госпажу</a></li>
+                                    <li><a href="/znakomstva/usluga-rabynya">Ищу рабыню</a></li>
+                                    <li><a href="/znakomstva/usluga-gospodin">Ищу господина</a></li>
+                                    <li><a href="/znakomstva/usluga-rab">Ищу раба</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">$ интим $</a>
+                                <ul class="secodn-menu">
+                                    <li><a href="/prostitutki">Ищу проститутку</a></li>
+                                    <li><a href="/prostitutki/usluga-eroticheskiy">Ищу массажистку</a></li>
+                                    <li><a href="/prostitutki/usluga-striptiz">Ищу стриптизершу</a></li>
+                                    <li><a href="/prostitutki/usluga-eskort">Ищу эскорт девушку</a></li>
+                                    <li><a href="/zhigalo">Ищу жигало</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

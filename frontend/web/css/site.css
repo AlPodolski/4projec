@@ -167,10 +167,10 @@ a.desc:after {
     font-size: 22px;
     color: #3f3f43;
 }
-.bottom-menu .top-nav{
+.bottom-menu .top-nav > li{
     line-height: 100px;
 }
-.bottom-menu .top-nav li a{
+.bottom-menu .top-nav li a:hover{
     color: #496bef !important;
 }
 .top-menu .cabinet-btn{
@@ -666,4 +666,45 @@ h1{
 .btn-viiti{
     padding-left: 0;
     padding-top: 0;
+}
+.top-nav li{
+    position: relative;
+}
+.secodn-menu{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+    z-index: 1;
+    background: #496bef;
+    top: 84px
+}
+.bottom-menu .secodn-menu li a{
+    color: #fff;
+}
+.bottom-menu .secodn-menu li a:hover{
+    color: #fff!important;
+}
+ul li:hover > .secodn-menu,
+ul li .secodn-menu:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+.secodn-menu{
+    padding: 20px;
+}
+.secodn-menu li a{
+    font-size: 14px!important;
+    text-transform: none;
+}
+.secodn-menu li {
+    margin-right: 0!important;
+    line-height: 30px!important;
+    white-space: pre;
+    display: block!important;
+    text-align: center!important;
 }
