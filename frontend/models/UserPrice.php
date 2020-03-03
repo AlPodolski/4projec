@@ -27,7 +27,7 @@ class UserPrice extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price_id', 'user_id'], 'integer'],
+            [[ 'user_id'], 'integer'],
             [['value'], 'string', 'max' => 255],
         ];
     }
