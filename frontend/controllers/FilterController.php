@@ -18,7 +18,6 @@ class FilterController extends Controller
         $query_params = QueryParamsHelper::getParams($param);
 
         $posts = '';
-        $pages = null;
 
         if (!empty($query_params)){
 
@@ -30,11 +29,7 @@ class FilterController extends Controller
 
             }
 
-            $countQuery = clone $posts;
-
-            $pages = new Pagination(['totalCount' => $countQuery->count()]);
-
-            $posts = $posts->offset($pages->offset)->limit(12)->with('userAvatarRelations')->all();
+            $posts = $posts->limit(12)->with('userAvatarRelations')->all();
 
         }
 
