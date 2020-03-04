@@ -11,7 +11,7 @@ class AvailableHelper
 
         if ($classInfo = RelationHelper::gerClassRelation($class)){
 
-            $available_ids = $classInfo['relation_class']::find();
+            $available_ids = $classInfo['relation_class']::find()->select($classInfo['column_param_name']);
 
             if ($ids) $available_ids->where(['in' , 'user_id', $ids]);
 
@@ -25,7 +25,7 @@ class AvailableHelper
 
                 }
 
-                 $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , \array_unique($available_service_ids)])->asArray();
+                $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , \array_unique($available_service_ids)])->asArray();
 
                 if ($city) $available_service->andWhere(['city' => $city]);
 

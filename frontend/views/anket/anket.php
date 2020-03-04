@@ -22,11 +22,15 @@ SlickAsset::register($this);
 $this->registerJsFile('/files/js/single.js', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
-$service = $model->getService();
 $params = Params::find()->asArray()->all();
-$postParams = $model->getUserParams();
 $price = Price::find()->asArray()->all();
-$postPrice = $model->getUserPrice();
+
+if ($model){
+    $service = $model->getService();
+    $postParams = $model->getUserParams();
+    $postPrice = $model->getUserPrice();
+}
+
 
 ?>
 
@@ -128,7 +132,7 @@ $postPrice = $model->getUserPrice();
                 </div>
                 <div class="tab-pane param-tab fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 
-                    <?php if ($price) : ?>
+                    <?php if ($postPrice) : ?>
 
                         <?php foreach ($price as $param) : ?>
 

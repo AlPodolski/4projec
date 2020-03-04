@@ -34,7 +34,7 @@ class FilterController extends Controller
 
             $pages = new Pagination(['totalCount' => $countQuery->count()]);
 
-            $posts = $posts->offset($pages->offset)->limit(12)->all();
+            $posts = $posts->offset($pages->offset)->limit(12)->with('userAvatarRelations')->all();
 
         }
 

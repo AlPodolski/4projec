@@ -35,8 +35,8 @@ $this->registerJsFile('/files/js/obuavi.js', ['depends' => [\frontend\assets\App
                     </div>
                     <div class="col-10">
                         <div class="name">
-                            <a class="name" href="/user/<?php echo $advert->user_id ?>">
-                                <?php echo $advert->getUserName() ?>
+                            <a class="name" href="/user/<?php echo $advert->userRelations['id']?>">
+                                <?php echo $advert->userRelations['username']?>
                             </a>
                         </div>
                         <div class="text-ab">

@@ -2,6 +2,7 @@
 
 namespace frontend\modules\advert\models;
 
+use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -34,6 +35,14 @@ class Advert extends \yii\db\ActiveRecord
             [['text'], 'string'],
             [['text'], 'required'],
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRelations()
+    {
+        return $this->hasOne(Profile::class, ['id' =>  'user_id']);
     }
 
     public function getUserName(){

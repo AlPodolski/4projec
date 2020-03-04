@@ -8,6 +8,7 @@ use frontend\models\UserParams;
 use frontend\models\UserPol;
 use frontend\models\UserService;
 use frontend\models\UserSexual;
+use frontend\models\UserToMetro;
 use yii\db\ActiveRecord;
 use frontend\models\UserPrice;
 use yii\helpers\ArrayHelper;
@@ -136,6 +137,14 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserAvatarRelations()
+    {
+        return $this->hasOne(Photo::className(), ['user_id' => 'id'])->where(['avatar' => 1]);
+    }
+
+    /**
      * @return array|ActiveRecord[]
      */
     public function getParams()
@@ -156,7 +165,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public static function getPopular($city){
-        return Profile::find()->limit(4)->where(['city' => $city])->all();
+        return Profile::find()->limit(4)->where(['city' => $city])->with('userAvatarRelations')->all();
     }
 
     public function getAvatar(){

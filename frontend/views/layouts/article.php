@@ -4,7 +4,6 @@
 
 ?>
 
-<?php $post->getAvatar() ?>
 
 <div class="col-4">
 
@@ -14,9 +13,9 @@
 
             <a href="/user/<?php echo $post->id ?>">
 
-                <?php if ($post->avatar) : ?>
+                <?php if ($post->userAvatarRelations['file']) : ?>
 
-                    <?= Yii::$app->imageCache->thumb($post->avatar, 'listing', ['class'=>'img']) ?>
+                    <?= Yii::$app->imageCache->thumb($post->userAvatarRelations['file'], 'listing', ['class'=>'img']) ?>
 
                 <?php else : ?>
 

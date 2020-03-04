@@ -10,7 +10,7 @@ class AdvertWidget extends Widget
 {
     public function run()
     {
-        $lastAdvert = Advert::find()->limit(12)->orderBy('id DESC')->all();
+        $lastAdvert = Advert::find()->limit(12)->orderBy('id DESC')->with('userRelations')->all();
 
         return $this->render('advert', [
             'lastAdvert' => $lastAdvert,

@@ -35,8 +35,6 @@ use frontend\modules\user\models\Profile; ?>
             <div class="row">
                 <?php foreach ($popularUsers as $popularUsers) : ?>
 
-                    <?php $popularUsers->getAvatar() ?>
-
                     <div class="col-3">
                         <div class="popular-anket-wrap">
 
@@ -44,9 +42,9 @@ use frontend\modules\user\models\Profile; ?>
 
                                 <a href="/user/<?php echo $popularUsers->id ?>">
 
-                                    <?php if ($popularUsers->avatar) : ?>
+                                    <?php if ($popularUsers->userAvatarRelations['file']) : ?>
 
-                                    <?= Yii::$app->imageCache->thumb($popularUsers->avatar, 'popular', ['class'=>'img']) ?>
+                                    <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class'=>'img']) ?>
 
                                     <?php else : ?>
 
