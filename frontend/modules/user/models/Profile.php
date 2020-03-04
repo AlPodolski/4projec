@@ -156,7 +156,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public static function getPopular($city){
-        return Profile::find()->limit(12)->where(['city' => $city])->all();
+        return Profile::find()->limit(4)->where(['city' => $city])->all();
     }
 
     public function getAvatar(){
