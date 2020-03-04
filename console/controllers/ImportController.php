@@ -48,7 +48,7 @@ class ImportController extends Controller
     public function actionIndex()
     {
 
-        $stream = \fopen(Yii::getAlias('@app/files/article_all_1.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/content.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
