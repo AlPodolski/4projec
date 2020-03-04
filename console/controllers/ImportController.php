@@ -61,7 +61,7 @@ class ImportController extends Controller
 
         $records = $stmt->process($csv);
 
-        $i = 0;
+        $i = 44667;
 
         foreach ($records as $record) {
 
