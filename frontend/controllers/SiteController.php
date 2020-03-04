@@ -45,7 +45,7 @@ class SiteController extends Controller
      */
     public function actionIndex($city)
     {
-        $posts = Profile::find()->where(['city' => $city])->all();
+        $posts = Profile::find()->where(['city' => $city])->limit(24)->all();
 
         Yii::$app->view->title = MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
 
