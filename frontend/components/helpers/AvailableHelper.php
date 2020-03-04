@@ -25,7 +25,7 @@ class AvailableHelper
 
                 }
 
-                 $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , $available_service_ids])->asArray();
+                 $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , \array_unique($available_service_ids)])->asArray();
 
                 if ($city) $available_service->andWhere(['city' => $city]);
 
