@@ -190,6 +190,8 @@ class ImportController extends Controller
             }
 
         }
+
+        echo $i;
     }
 
     public function actionPropPr()
