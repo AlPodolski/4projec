@@ -126,6 +126,7 @@ class ImportController extends Controller
 
                                 $userPr->user_id = $user->id;
                                 $userPr->param_id = 1;
+                                $userPr->city_id = $item['id'];
 
                                 $userPr->save();
 
@@ -133,6 +134,7 @@ class ImportController extends Controller
                                 $userZnakom = new UserZnakomstva();
                                 $userZnakom->user_id = $user->id;
                                 $userZnakom->param_id = 1;
+                                $userZnakom->save();
                             }
 
                         }
@@ -144,7 +146,7 @@ class ImportController extends Controller
                             $userVes->user_id = $user->id;
                             $userVes->value = $record['ves'];
 
-                            $userVes->save();
+                            //$userVes->save();
 
                         }
 

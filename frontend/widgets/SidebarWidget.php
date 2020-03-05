@@ -78,6 +78,8 @@ class SidebarWidget extends Widget
         if (isset(Yii::$app->controller->actionParams['param'])) $param =
             $this->prepereParam(Yii::$app->controller->actionParams['param']);
 
+        return true;
+
         return $this->render('sidebar', [
             'placeList' => $placeList,
             'ageList' => $ageList,

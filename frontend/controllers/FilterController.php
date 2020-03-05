@@ -4,18 +4,16 @@
 namespace frontend\controllers;
 
 use frontend\components\MetaBuilder;
-use frontend\models\Posts;
 use frontend\modules\user\components\helpers\QueryParamsHelper;
 use frontend\modules\user\models\Profile;
 use Yii;
-use yii\data\Pagination;
 use yii\web\Controller;
 
 class FilterController extends Controller
 {
     public function actionIndex($city, $param)
     {
-        $query_params = QueryParamsHelper::getParams($param);
+        $query_params = QueryParamsHelper::getParams($param, $city);
 
         $posts = '';
 

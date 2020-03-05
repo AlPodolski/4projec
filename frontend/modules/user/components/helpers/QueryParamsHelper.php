@@ -2,6 +2,7 @@
 
 namespace frontend\modules\user\components\helpers;
 
+use common\models\City;
 use common\models\FilterParams;
 use frontend\components\MarcHelper;
 use frontend\models\UserPrice;
@@ -11,8 +12,10 @@ use Yii;
 
 class QueryParamsHelper
 {
-    public static function getParams($params)
+    public static function getParams($params,$city)
     {
+
+        $city = City::find()->select('id')->where(['url' => $city])->asArray()->one();
 
         $params = explode('/', $params);
 
@@ -52,7 +55,7 @@ class QueryParamsHelper
 
                             if (!empty($ids)) {
 
-                                $relationsIds = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
+                                $relationsIds = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->andWhere(['city_id' => $city['id']])->asArray()->all();
 
                                 foreach ($relationsIds as $item) {
 
@@ -70,7 +73,7 @@ class QueryParamsHelper
 
                             } else {
 
-                                $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->asArray()->all();
+                                $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->andWhere(['city_id' => 1])->asArray()->all();
 
                             }
 
