@@ -149,7 +149,14 @@ class MetaBuilder
 
                     if ($url){
 
-                        $result = $class->select('value')->where(['url' => $url])->asArray()->one();
+                        $result = Yii::$app->cache->get('4dosug_filter_param'.$className.'_value_'.$url);
+
+                        if ($result === false) {
+                            // $data нет в кэше, вычисляем заново
+                            $result = $class->select('value')->where(['url' => $url])->asArray()->one();
+                            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                            Yii::$app->cache->set('4dosug_filter_param'.$className.'_value_'.$url, $result);
+                        }
 
                         if ($result) $string = self::replacePlaceholders($param, $result['value'], $string);
 
