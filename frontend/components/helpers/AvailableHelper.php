@@ -17,9 +17,9 @@ class AvailableHelper
 
             $available_ids = $available_ids->distinct();
 
-            if (!$findMetroOrRayon) $available_ids-> andWhere(['city_id' => $city_id ]);
+            if (!$findMetroOrRayon) $available_ids->andWhere(['city_id' => $city_id ]);
 
-            $available_ids->asArray()->all();
+            $available_ids = $available_ids->asArray()->all();
 
             if ($available_ids){
 
