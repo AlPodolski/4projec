@@ -88,6 +88,7 @@ class ImportController extends Controller
 
                        $userPol = new UserPol();
                        $userPol->user_id = $user->id;
+                       $userPol->city_id = $item['id'];
                        $userPol->pol_id = 2;
 
                        $userPol->save();
@@ -96,6 +97,7 @@ class ImportController extends Controller
 
                             $userHair = new UserHairColor();
                             $userHair->user_id = $user->id;
+                            $userHair->city_id = $item['id'];
 
                             if ($record['volosi'] == 'Брюнетка' or $record['volosi'] == 'Шатенка') {
                                 $userHair->value = 2;
@@ -119,6 +121,7 @@ class ImportController extends Controller
 
                                 $userPrice->user_id = $user->id;
                                 $userPrice->value = $record['price'];
+                                $userPrice->city_id = $item['id'];
 
                                 $userPrice->save();
 
@@ -134,6 +137,7 @@ class ImportController extends Controller
                                 $userZnakom = new UserZnakomstva();
                                 $userZnakom->user_id = $user->id;
                                 $userZnakom->param_id = 1;
+                                $userZnakom->city_id = $item['id'];
                                 $userZnakom->save();
                             }
 
@@ -145,8 +149,9 @@ class ImportController extends Controller
 
                             $userVes->user_id = $user->id;
                             $userVes->value = $record['ves'];
+                            $userVes->city_id = $item['id'];
 
-                            //$userVes->save();
+                            $userVes->save();
 
                         }
 
