@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 
 class AvailableHelper
 {
-    public static function getAvailable($class, $ids, $city = false){
+    public static function getAvailable($class, $ids, $city_id, $findMetroOrRayon = false){
 
         if ($classInfo = RelationHelper::gerClassRelation($class)){
 
@@ -15,7 +15,11 @@ class AvailableHelper
 
             if ($ids) $available_ids->where(['in' , 'user_id', $ids]);
 
-            $available_ids = $available_ids->distinct()->asArray()->all();
+            $available_ids = $available_ids->distinct();
+
+            if (!$findMetroOrRayon) $available_ids-> andWhere(['city_id' => $city_id ]);
+
+            $available_ids->asArray()->all();
 
             if ($available_ids){
 
@@ -27,7 +31,7 @@ class AvailableHelper
 
                 $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , \array_unique($available_service_ids)])->asArray();
 
-                if ($city) $available_service->andWhere(['city' => $city]);
+                //if ($findMetroOrRayon) $available_service->andWhere(['city' => $city_id]);
 
                 return $available_service->all();
 

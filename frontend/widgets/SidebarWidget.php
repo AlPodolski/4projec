@@ -4,6 +4,7 @@
 namespace frontend\widgets;
 
 use common\models\Breast;
+use common\models\City;
 use common\models\FinancialSituation;
 use common\models\HairColor;
 use common\models\IntimHair;
@@ -25,6 +26,7 @@ use common\models\CeliZnakomstvamstva;
 use common\models\Smoking;
 use common\models\Alcogol;
 use frontend\components\helpers\AvailableHelper;
+use yii\helpers\ArrayHelper;
 
 class SidebarWidget extends Widget
 {
@@ -41,31 +43,34 @@ class SidebarWidget extends Widget
 
         $param = 'znakomstva/';
 
+        $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
+
         //objee
-        $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds());
-        $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
-        $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), Yii::$app->controller->actionParams['city']);
-        $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds());
-        $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds());
-        $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds());
-        $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds());
-        $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds());
-        $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds());
-        $placeList = AvailableHelper::getAvailable(Place::class, $this->getAvalibleIds());
-        $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds());
-        $breastSizeList = AvailableHelper::getAvailable(Breast::class, $this->getAvalibleIds());
-        $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds());
+        $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
+        $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
+
+        $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds(),  $city_id);
+        $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds(),  $city_id);
+        $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds(),  $city_id);
+        $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds(),  $city_id);
+        $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds(),  $city_id);
+        $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
+        $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
+        $placeList = AvailableHelper::getAvailable(Place::class, $this->getAvalibleIds(),  $city_id);
+        $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
+        $breastSizeList = AvailableHelper::getAvailable(Breast::class, $this->getAvalibleIds(),  $city_id);
+        $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds(),  $city_id);
 
         if (\strstr($param, 'znakomstva')){
             //znakom
-            $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds());
-            $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds());
-            $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds());
-            $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds());
-            $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds());
+            $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds(),  $city_id);
+            $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
+            $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
+            $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
+            $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
         }else{
             //pr
-            $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds());
+            $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
         }
 
 
@@ -77,8 +82,6 @@ class SidebarWidget extends Widget
 
         if (isset(Yii::$app->controller->actionParams['param'])) $param =
             $this->prepereParam(Yii::$app->controller->actionParams['param']);
-
-        return true;
 
         return $this->render('sidebar', [
             'placeList' => $placeList,
