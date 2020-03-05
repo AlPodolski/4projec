@@ -65,7 +65,16 @@ class MetaBuilder
      */
     public static function getTemplate($find, $uri){
 
-        if ($tamplate = MetaTemplate::find()->select($find)->where(['url' => $uri])->asArray()->one()) return $tamplate;
+        $tamplate = Yii::$app->cache->get('4dosug_meta_template'.$find.'_'.$uri);
+
+        if ($tamplate === false) {
+            // $data нет в кэше, вычисляем заново
+            $tamplate = MetaTemplate::find()->select($find)->where(['url' => $uri])->asArray()->one();
+            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+            Yii::$app->cache->set('4dosug_meta_template'.$find.'_'.$uri, $tamplate);
+        }
+
+        if ($tamplate) return $tamplate;
 
         else{
 
@@ -74,7 +83,20 @@ class MetaBuilder
             if ($uri and $tamplate = MetaTemplate::find()->select($find)->where(['url' => $uri])->asArray()->one()) return
                 $tamplate;
 
-            else return MetaTemplate::find()->select($find)->where(['url' => 'default'])->asArray()->one();
+            else {
+
+                $tamplate = Yii::$app->cache->get('4dosug_meta_template'.$find.'_default');
+
+                if ($tamplate === false) {
+                    // $data нет в кэше, вычисляем заново
+                    $tamplate = MetaTemplate::find()->select($find)->where(['url' => 'default'])->asArray()->one();
+                    // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                    Yii::$app->cache->set('4dosug_meta_template'.$find.'_default' , $tamplate);
+                }
+
+                if ($tamplate) return $tamplate;
+
+            }
 
         }
 
@@ -95,13 +117,29 @@ class MetaBuilder
 
             $className = preg_replace('#[0-9]+#', '', $param_name = trim($param, ':'));
 
-            if ($class = ArrayHelper::getValue(FilterParams::find()->where(['url' => $className])->asArray()->one(), 'class_name')){
+            $class = Yii::$app->cache->get('4dosug_filter_param'.$className);
+
+            if ($class === false) {
+                // $data нет в кэше, вычисляем заново
+                $class = ArrayHelper::getValue(FilterParams::find()->where(['url' => $className])->asArray()->one(), 'class_name');
+                // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                Yii::$app->cache->set('4dosug_filter_param'.$className, $class);
+            }
+
+            if ($class){
 
                 $class = $class::find();
 
                 if ($className == 'city'){
 
-                    $result = $class->select($param_name)->where(['url' => $city])->asArray()->one();
+                    $result = Yii::$app->cache->get('4dosug_filter_param'.$className.'_'.$param_name.'_'.$city);
+
+                    if ($result === false) {
+                        // $data нет в кэше, вычисляем заново
+                        $result = $class->select($param_name)->where(['url' => $city])->asArray()->one();
+                        // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                        Yii::$app->cache->set('4dosug_filter_param'.$className.'_'.$param_name.'_'.$city, $result);
+                    }
 
                     $string = str_replace($param, $result[$param_name], $string);
 
