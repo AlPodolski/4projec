@@ -13,7 +13,7 @@
 
             <a href="/user/<?php echo $post->id ?>">
 
-                <?php if ($post->userAvatarRelations['file'] and false) : ?>
+                <?php if ($post->userAvatarRelations['file']) : ?>
 
                     <?= Yii::$app->imageCache->thumb($post->userAvatarRelations['file'], 'listing', ['class'=>'img']) ?>
 
