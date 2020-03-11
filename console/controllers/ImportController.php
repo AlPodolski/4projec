@@ -4,8 +4,14 @@
 namespace console\controllers;
 
 use common\models\Alcogol;
+use common\models\BodyType;
+use common\models\CeliZnakomstvamstva;
+use common\models\Children;
 use common\models\City;
 use common\models\Education;
+use common\models\EyeColor;
+use common\models\Family;
+use common\models\FinancialSituation;
 use common\models\Haracter;
 use common\models\Interesting;
 use common\models\IntimHair;
@@ -14,23 +20,41 @@ use common\models\Metro;
 use common\models\Place;
 use common\models\Pol;
 use common\models\Rayon;
+use common\models\Sexual;
+use common\models\SferaDeyatelnosti;
 use common\models\Smoking;
+use common\models\Transport;
+use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
+use common\models\Zhile;
+use frontend\models\relation\TaborUser;
 use frontend\models\relation\UserAlcogol;
+use frontend\models\relation\UserCeliZnakomstvamstva;
+use frontend\models\relation\UserChildren;
 use frontend\models\relation\UserEducation;
+use frontend\models\relation\UserFamily;
 use frontend\models\relation\UserHaracter;
 use frontend\models\relation\UserIntimHair;
 use frontend\models\relation\UserLifeGoals;
+use frontend\models\relation\UserSferaDeyatelnosti;
 use frontend\models\relation\UserSmoking;
+use frontend\models\relation\UserTransport;
+use frontend\models\relation\UserZhile;
 use frontend\models\relation\UserZnakomstva;
+use frontend\models\UserBody;
+use frontend\models\UserEyeColor;
+use frontend\models\UserFinancialSituation;
 use frontend\models\UserInteresting;
 use frontend\models\UserPol;
 use frontend\models\UserPrice;
 use frontend\models\UserProstitutki;
+use frontend\models\UserRost;
 use frontend\models\UserService;
+use frontend\models\UserSexual;
 use frontend\models\UserToMetro;
 use frontend\models\UserToPlace;
 use frontend\models\UserToRayon;
+use frontend\models\UserVajnoeVPartnere;
 use frontend\models\UserVes;
 use frontend\models\UserVneshnost;
 use frontend\modules\user\models\Photo;
@@ -43,12 +67,32 @@ use frontend\models\UserHairColor;
 use yii\helpers\ArrayHelper;
 use common\models\Service;
 
+
 class ImportController extends Controller
 {
     public function actionIndex()
     {
 
-        $stream = \fopen(Yii::getAlias('@app/files/content_pr.csv'), 'r');
+        $celiZnakomstva =  CeliZnakomstvamstva::find()->asArray()->all();
+        $vajmoeVPartnere =  VajnoeVPartnere::find()->asArray()->all();
+        $semeinoePolojenie =  Family::find()->asArray()->all();
+        $sexual =  Sexual::find()->asArray()->all();
+        $diti =  Children::find()->asArray()->all();
+        $body =  BodyType::find()->asArray()->all();
+        $glaza =  EyeColor::find()->asArray()->all();
+        $vneshnost =  Vneshnost::find()->asArray()->all();
+        $sfera_deyatelnosti =  SferaDeyatelnosti::find()->asArray()->all();
+        $zhile =  Zhile::find()->asArray()->all();
+        $materialnoePolozhenie =  FinancialSituation::find()->asArray()->all();
+        $transport =  Transport::find()->asArray()->all();
+        $obrazovanie =  Education::find()->asArray()->all();
+        $lifeGoals =  LifeGoals::find()->asArray()->all();
+        $haracter =  Haracter::find()->asArray()->all();
+        $interesi =  Interesting::find()->asArray()->all();
+        $smoking =  Smoking::find()->asArray()->all();
+        $alcogol =  Alcogol::find()->asArray()->all();
+
+        $stream = \fopen(Yii::getAlias('@app/files/content_men.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -61,7 +105,7 @@ class ImportController extends Controller
 
         $records = $stmt->process($csv);
 
-        $i = 44667;
+        $i = 0;
 
         foreach ($records as $record) {
 
@@ -69,110 +113,468 @@ class ImportController extends Controller
 
                 if ($item['city'] == $record['city']) {
 
+
                     $user = new Profile();
 
                     $user->username = $record['name'];
                     $user->password_hash = Yii::$app->security->generateRandomString(60);
                     $user->auth_key = Yii::$app->security->generateRandomString();
-                    $user->email = 'admin@mail.com'.$i;
+                    $user->email = 'admin@mail.com';
                     $user->status = 10;
                     $user->created_at = $time = \time();
                     $user->updated_at = $time;
                     $user->verification_token = Yii::$app->security->generateRandomString(43);
                     $user->city = $item['url'];
-                    $user->phone = $record['phone'];
 
                     $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
                     $i++;
                     if ($user->save()) {
 
+                        if (isset($record['znakom'])){
+
+                            $znakom =  (array) \json_decode($record['znakom']);
+
+                            if (isset($znakom['cel-znakomstva'])){
+
+                                $params = \explode(',', $znakom['cel-znakomstva']);
+
+                                foreach ($params as $param){
+
+                                    foreach ($celiZnakomstva as $itemCel){
+
+                                        if ($itemCel['value'] == $param){
+
+                                            $class = new UserCeliZnakomstvamstva();
+
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $itemCel['id'];
+                                            $class->city_id = $item['id'];
+
+                                            $class->save();
+
+                                        }
+
+                                    }
+
+
+                                }
+
+                            }
+
+                            if (isset($znakom['vazhnoe-v-partnere'])){
+
+                                $params = \explode(',', $znakom['vazhnoe-v-partnere']);
+
+                                foreach ($params as $param){
+
+                                    foreach ($vajmoeVPartnere as $itemCel){
+
+                                        if ($itemCel['value'] == $param){
+
+                                            $class = new UserVajnoeVPartnere();
+
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $itemCel['id'];
+                                            $class->city_id = $item['id'];
+
+                                            $class->save();
+
+                                        }
+
+                                    }
+
+
+                                }
+
+                            }
+
+                            if (isset($znakom['semejnoe-polozhenie'])){
+
+                                $params =  \explode(',', $znakom['semejnoe-polozhenie']);
+
+                                foreach ($params as $param){
+
+                                    foreach ($semeinoePolojenie as $itemCel){
+
+                                        if ($itemCel['value'] == $param){
+
+                                            $class = new UserFamily();
+
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $itemCel['id'];
+                                            $class->city_id = $item['id'];
+
+                                            $class->save();
+
+                                        }
+
+                                    }
+
+
+                                }
+
+                            }
+
+                            if (isset($znakom['orientaciya'])){
+
+                                if ($znakom['orientaciya'] == 'традиционная') $param_id = 1;
+                                elseif ($znakom['orientaciya'] == 'гей') $param_id = 2;
+                                else $param_id = 3;
+
+                                $class = new UserSexual();
+
+                                $class->user_id = $user->id;
+                                $class->sexual_id = $param_id;
+                                $class->city_id = $item['id'];
+
+                                $class->save();
+
+                            }
+
+                            if (isset($znakom['deti'])){
+
+                                foreach ($diti as $item2){
+
+                                    if ($item2['value'] == $znakom['deti']){
+
+                                        $class = new UserChildren();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+
+                        }
+
+                        if (isset($record['tipaj'])){
+
+                            $znakom = (array) \json_decode($record['tipaj']);
+
+                            if (isset($znakom['teloslozhenie'])){
+
+                                foreach ($body as $item2){
+
+                                    if ($item2['value'] == $znakom['teloslozhenie']){
+
+                                        $class = new UserBody();
+
+                                        $class->user_id = $user->id;
+                                        $class->value = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['rost'])){
+
+                                  $class = new UserRost();
+
+                                  $class->user_id = $user->id;
+                                  $class->value = $znakom['rost'];
+                                  $class->city_id = $item['id'];
+
+                                  $class->save();
+
+                            }
+
+                            if (isset($znakom['cvet-glaz'])){
+
+                                foreach ($glaza as $item2){
+
+                                    if ($znakom['cvet-glaz'] == $item2['value']){
+
+                                        $class = new UserEyeColor();
+
+                                        $class->user_id = $user->id;
+                                        $class->value = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+
+                                    }
+
+                                }
+
+                            }
+
+                            if (isset($znakom['moya-vneshnost'])){
+
+                                foreach ($vneshnost as $item2){
+
+                                    if ($znakom['moya-vneshnost'] == $item2['value']){
+
+                                        $class = new UserVneshnost();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                        if (isset($record['projee'])){
+
+                            $znakom = (array) \json_decode($record['projee']);
+
+                            if (isset($znakom['sfera-deyatelnosti'])){
+
+                                foreach ($sfera_deyatelnosti as $item2){
+
+                                    if ($item2['value'] == $znakom['sfera-deyatelnosti']){
+
+                                        $class = new UserSferaDeyatelnosti();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['zhile'])){
+
+                                foreach ($zhile as $item2){
+
+                                    if ($item2['value'] == $znakom['zhile']){
+
+                                        $class = new UserZhile();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['materialnoe-polozhenie'])){
+
+                                foreach ($materialnoePolozhenie as $item2){
+
+                                    if ($item2['value'] == $znakom['materialnoe-polozhenie']){
+
+                                        $class = new UserFinancialSituation();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['transport'])){
+
+                                foreach ($transport as $item2){
+
+                                    if ($item2['value'] == $znakom['transport']){
+
+                                        $class = new UserTransport();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['obrazovanie'])){
+
+                                foreach ($obrazovanie as $item2){
+
+                                    if ($item2['value'] == $znakom['obrazovanie']){
+
+                                        $class = new UserEducation();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['zhiznennie-prioriteti'])){
+
+                                foreach ($lifeGoals as $item2){
+
+                                    $params = \explode(',', $znakom['zhiznennie-prioriteti']);
+
+                                    foreach ($params as $param)
+
+                                    if ($item2['value'] == $param){
+
+                                        $class = new UserLifeGoals();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['cherti-haraktera'])){
+
+                                foreach ($haracter as $item2){
+
+                                    $params = \explode(',', $znakom['cherti-haraktera']);
+
+                                    foreach ($params as $param)
+
+                                    if ($item2['value'] == $param){
+
+                                        $class = new UserHaracter();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['interesi-i-uvlecheniya'])){
+
+                                foreach ($interesi as $item2){
+
+                                    $params = \explode(',', $znakom['interesi-i-uvlecheniya']);
+
+                                    foreach ($params as $param)
+
+                                    if ($item2['value'] == $param){
+
+                                        $class = new UserInteresting();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['otnoshenie-k-kureniyu'])){
+
+                                foreach ($smoking as $item2){
+
+                                    if ($item2['value'] == $znakom['otnoshenie-k-kureniyu']){
+
+                                        $class = new UserSmoking();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+                            if (isset($znakom['otnoshenie-k-alkogolyu'])){
+
+                                foreach ($alcogol as $item2){
+
+                                    if ($item2['value'] == $znakom['otnoshenie-k-alkogolyu']){
+
+                                        $class = new UserAlcogol();
+
+                                        $class->user_id = $user->id;
+                                        $class->param_id = $item2['id'];
+                                        $class->city_id = $item['id'];
+
+                                        $class->save();
+                                    }
+                                }
+
+                            }
+
+
+                        }
+
                        $userPol = new UserPol();
                        $userPol->user_id = $user->id;
                        $userPol->city_id = $item['id'];
-                       $userPol->pol_id = 2;
+                       $userPol->pol_id = 1;
+
+                       if (isset($record['tabor_id'])){
+                           $userTabor = new TaborUser();
+
+                           $userTabor->user_id = $user->id;
+                           $userTabor->tabor_id = $record['tabor_id'];
+                           $userTabor->save();
+                       }
 
                        $userPol->save();
 
-                        if ($record['volosi']) {
 
-                            $userHair = new UserHairColor();
-                            $userHair->user_id = $user->id;
-                            $userHair->city_id = $item['id'];
-
-                            if ($record['volosi'] == 'Брюнетка' or $record['volosi'] == 'Шатенка') {
-                                $userHair->value = 2;
-                            }
-                            if ($record['volosi'] == 'Блондинка') {
-                                $userHair->value = 1;
-                            }
-                            if ($record['volosi'] == 'Рыжая') {
-                                $userHair->value = 3;
-                            }
-
-                            $userHair->save();
-
-                        }
-
-                        if ($record['price']) {
-
-                                $userPrice = new UserPrice();
-
-                                $userPrice->user_id = $user->id;
-                                $userPrice->value = $record['price'];
-                                $userPrice->city_id = $item['id'];
-
-                                $userPrice->save();
-
-                                $userPr = new UserProstitutki();
-
-                                $userPr->user_id = $user->id;
-                                $userPr->param_id = 1;
-                                $userPr->city_id = $item['id'];
-
-                                $userPr->save();
-
-                        }
-
-                        if ($record['ves']) {
-
-                            $userVes = new UserVes();
-
-                            $userVes->user_id = $user->id;
-                            $userVes->value = $record['ves'];
-                            $userVes->city_id = $item['id'];
-
-                            $userVes->save();
-
-                        }
-
-                        if ($record['photo_mii']) {
+                        if (isset($record['photo_mii'])) {
 
                             $userPhoto = new Photo();
 
                             $userPhoto->user_id = $user->id;
-                            $userPhoto->file = \str_replace('files', '/files/uploads/aa1', $record['photo_mii']);
+                            $userPhoto->file = \str_replace('files', '/files/uploads/aa2', $record['photo_mii']);
                             $userPhoto->avatar = 1;
 
                             $userPhoto->save();
 
                         }
 
-                        if ($record['gal']) {
+                        if (isset($record['gal'])) {
 
 
-                            $gall = \explode('/', $record['gal']);
+                            $gall = \explode(',', $record['gal']);
 
                             if ($gall) {
 
                                 foreach ($gall as $gallitem) {
 
-                                    $userPhoto = new Photo();
+                                    if ($gallitem){
 
-                                    $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = \str_replace('files', '/files/uploads/aa1', $record['photo_mii']);
-                                    $userPhoto->avatar = 0;
+                                        $userPhoto = new Photo();
 
-                                    $userPhoto->save();
+                                        $userPhoto->user_id = $user->id;
+                                        $userPhoto->file = '/files/uploads/aa2/'. $gallitem;
+                                        $userPhoto->avatar = 0;
+
+                                        $userPhoto->save();
+
+                                    }
 
                                 }
 
