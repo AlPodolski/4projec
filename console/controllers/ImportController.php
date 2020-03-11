@@ -532,6 +532,15 @@ class ImportController extends Controller
                        $userPol->city_id = $item['id'];
                        $userPol->pol_id = 1;
 
+                       $userZnakom = new UserZnakomstva();
+
+                        $userZnakom->user_id = $user->id;
+                        $userZnakom->param_id = 1;
+                        $userZnakom->city_id = $item['id'];
+
+                        $userZnakom->save();
+
+
                        if (isset($record['tabor_id'])){
                            $userTabor = new TaborUser();
 
