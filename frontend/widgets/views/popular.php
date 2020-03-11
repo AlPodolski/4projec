@@ -42,7 +42,7 @@ use frontend\modules\user\models\Profile; ?>
 
                                 <a href="/user/<?php echo $popularUsers->id ?>">
 
-                                    <?php if ($popularUsers->userAvatarRelations['file']) : ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot').$popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
 
                                     <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class'=>'img']) ?>
 
