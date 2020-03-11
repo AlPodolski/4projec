@@ -18,7 +18,7 @@ class m200311_070659_create_sfera_deyatelnosti_table extends Migration
             'url' => $this->string(50),
         ]);
 
-        $this->execute('INSERT INTO `sfera_deyatelnosti` (`id`, `value`, `url`) VALUES
+        $this->execute('INSERT INTO `sfera_deyatelnosti` ( `value`, `url`) VALUES
                         ( \'благоустройство\', \'blagoustrojstvo\'),
                         ( \'вооруженные силы\', \'vooruzhennye-sily\'),
                         ( \'госуправление\', \'gosupravlenie\'),
