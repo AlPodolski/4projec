@@ -302,7 +302,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                     <div class="card-body">
                         <?php foreach ($celiZnakomstva as $celiZnakomstvaItem) : ?>
 
-                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/semejnoe-polozhenie-'.$celiZnakomstvaItem['url']) ?>
+                            <?php $url = UrlBuilder::buildUrlForFilter($param, '/celi-znakomstva-'.$celiZnakomstvaItem['url']) ?>
 
                             <a href="/<?php echo $url; ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
 
@@ -371,7 +371,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
-                            Услуги
+                            Сексуальные предпочтения
                         </button>
                     </h5>
                 </div>
