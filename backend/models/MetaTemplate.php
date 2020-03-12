@@ -29,8 +29,8 @@ class MetaTemplate extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'des'], 'string'],
-            [['url', 'h1'], 'string', 'max' => 255],
+            [['title', 'des', 'h1'], 'string'],
+            [['url'], 'string', 'max' => 255],
         ];
     }
 
