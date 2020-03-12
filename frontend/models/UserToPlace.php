@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int|null $user_id
  * @property int|null $place_id
+ * @property int|null $city_id
  */
 class UserToPlace extends \yii\db\ActiveRecord
 {

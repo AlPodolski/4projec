@@ -605,22 +605,48 @@ class ImportController extends Controller
     public function actionPropPr()
     {
 
-        $profiles = Profile::find()->asArray()->all();
+        $city = City::find()->asArray()->all();
+
+        $userProstitutki = UserProstitutki::find()->select('user_id')->distinct('user_id')->asArray()->all();
+
+        foreach ($userProstitutki as $id_item) {
+
+            $result[] = ArrayHelper::getValue($id_item, 'user_id');
+
+        }
+
+        $profiles = Profile::find()->where(['in', 'id', $result])->asArray()->all();
 
         foreach ($profiles as $profile) {
 
-            $rayon = $this->addRayon($profile['city'], $profile['id']);
-            $this->addMetro($profile['city'], $profile['id'], $rayon);
-            $this->addService($profile['city'], $profile['id']);
-            $this->addCeli($profile['city'], $profile['id']);
-            $this->addSmoke($profile['city'], $profile['id']);
-            $this->addAlcohol($profile['city'], $profile['id']);
-            $this->addObrazovanie($profile['city'], $profile['id']);
-            $this->addIntimHair($profile['city'], $profile['id']);
-            $this->addInteresy($profile['city'], $profile['id']);
-            $this->addHaracter($profile['city'], $profile['id']);
-            $this->addVneshnost($profile['city'], $profile['id']);
-            $this->addMestoVstreji($profile['city'], $profile['id']);
+            foreach ($city as $cityItem){
+
+                if ($cityItem['url'] == $profile['city']){
+                    /*$rayon = $this->addRayon($profile['city'], $profile['id']);
+                    $this->addMetro($profile['city'], $profile['id'], $rayon);*/
+                    $this->addService($cityItem['id'], $profile['id']);
+                    $this->addTransport($cityItem['id'], $profile['id']);
+                    $this->addZhile($cityItem['id'], $profile['id']);
+                    $this->addEducation($cityItem['id'], $profile['id']);
+                    $this->addCeliZnakomstvamstva($cityItem['id'], $profile['id']);
+                    $this->addDeti($cityItem['id'], $profile['id']);
+                    $this->addVajnoeVPartnere($cityItem['id'], $profile['id']);
+                    $this->addPlace($cityItem['id'], $profile['id']);
+                    $this->addFinPolojenie($cityItem['id'], $profile['id']);
+                    $this->addSexual($cityItem['id'], $profile['id']);
+                    $this->addBody($cityItem['id'], $profile['id']);
+                    $this->addCeli($cityItem['id'], $profile['id']);
+                    $this->addSmoke($cityItem['id'], $profile['id']);
+                    $this->addAlcohol($cityItem['id'], $profile['id']);
+                    $this->addObrazovanie($cityItem['id'], $profile['id']);
+                    $this->addIntimHair($cityItem['id'], $profile['id']);
+                    $this->addInteresy($cityItem['id'], $profile['id']);
+                    $this->addHaracter($cityItem['id'], $profile['id']);
+                    $this->addVneshnost($cityItem['id'], $profile['id']);
+                    $this->addMestoVstreji($cityItem['id'], $profile['id']);
+                }
+
+            }
 
         }
 
@@ -697,7 +723,7 @@ class ImportController extends Controller
 
     }
 
-    public function addService($city = 'msk', $user_id = 1){
+    public function addService($cityId , $user_id = 1){
 
         if($service = Service::find()->asArray()->all()){
 
@@ -708,6 +734,7 @@ class ImportController extends Controller
                     $user_place = new UserService();
                     $user_place->user_id = $user_id;
                     $user_place->service_id = $item['id'];
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -721,7 +748,57 @@ class ImportController extends Controller
 
     }
 
-    public function addCeli($city = 'msk', $user_id = 1){
+    public function addVajnoeVPartnere($cityId , $user_id = 1){
+
+        if($service = VajnoeVPartnere::find()->asArray()->all()){
+
+            foreach ($service as $item){
+
+                if(\rand(0,2) != 2){
+
+                    $user_place = new UserVajnoeVPartnere();
+                    $user_place->user_id = $user_id;
+                    $user_place->param_id = $item['id'];
+                    $user_place->city_id = $cityId;
+
+                    $user_place->save();
+
+                }
+
+            }
+
+        }
+
+
+
+    }
+
+    public function addCeliZnakomstvamstva($cityId , $user_id = 1){
+
+        if($service = CeliZnakomstvamstva::find()->asArray()->all()){
+
+            foreach ($service as $item){
+
+                if(\rand(0,2) != 2){
+
+                    $user_place = new UserCeliZnakomstvamstva();
+                    $user_place->user_id = $user_id;
+                    $user_place->param_id = $item['id'];
+                    $user_place->city_id = $cityId;
+
+                    $user_place->save();
+
+                }
+
+            }
+
+        }
+
+
+
+    }
+
+    public function addCeli($cityId, $user_id = 1){
 
         if($service = LifeGoals::find()->asArray()->all()){
 
@@ -732,6 +809,7 @@ class ImportController extends Controller
                     $user_place = new UserLifeGoals();
                     $user_place->user_id = $user_id;
                     $user_place->param_id = $item['id'];
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -745,13 +823,142 @@ class ImportController extends Controller
 
     }
 
-    public function addSmoke($city = 'msk', $user_id = 1){
+    public function addSexual($cityId, $user_id = 1){
+
+        if($service = Sexual::find()->where(['pol_id' => 2])->asArray()->all()){
+
+             $user_place = new UserSexual();
+             $user_place->user_id = $user_id;
+             $user_place->sexual_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+             $user_place->city_id = $cityId;
+
+             $user_place->save();
+
+        }
+
+
+
+    }
+
+    public function addEducation($cityId, $user_id = 1){
+
+        if($service = Education::find()->asArray()->all()){
+
+             $user_place = new UserEducation();
+             $user_place->user_id = $user_id;
+             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+             $user_place->city_id = $cityId;
+
+             $user_place->save();
+
+        }
+
+
+
+    }
+
+    public function addTransport($cityId, $user_id = 1){
+
+        if($service = Transport::find()->asArray()->all()){
+
+             $user_place = new UserTransport();
+             $user_place->user_id = $user_id;
+             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+             $user_place->city_id = $cityId;
+
+             $user_place->save();
+
+        }
+
+
+
+    }
+
+    public function addZhile($cityId, $user_id = 1){
+
+        if($service = Zhile::find()->asArray()->all()){
+
+             $user_place = new UserZhile();
+             $user_place->user_id = $user_id;
+             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+             $user_place->city_id = $cityId;
+
+             $user_place->save();
+
+        }
+
+
+
+    }
+
+    public function addBody($cityId, $user_id = 1){
+
+        if($service = BodyType::find()->asArray()->all()){
+
+             $user_place = new UserBody();
+             $user_place->user_id = $user_id;
+             $user_place->value = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+             $user_place->city_id = $cityId;
+
+             $user_place->save();
+
+        }
+
+    }
+
+    public function addFinPolojenie($cityId, $user_id = 1){
+
+         $user_place = new UserFinancialSituation();
+         $user_place->user_id = $user_id;
+         $user_place->param_id = 1;
+         $user_place->city_id = $cityId;
+
+         $user_place->save();
+
+    }
+
+    public function addDeti($cityId, $user_id = 1){
+
+         $user_place = new UserChildren();
+         $user_place->user_id = $user_id;
+         $user_place->param_id = 1;
+         $user_place->city_id = $cityId;
+
+         $user_place->save();
+
+    }
+
+    public function addPlace($cityId, $user_id = 1){
+
+        if($service = Place::find()->asArray()->all()){
+
+            foreach ($service as $item){
+
+                if(\rand(0,2) != 2){
+
+                    $user_place = new UserToPlace();
+                    $user_place->user_id = $user_id;
+                    $user_place->place_id = $item['id'];
+                    $user_place->city_id = $cityId;
+
+                    $user_place->save();
+
+                }
+
+            }
+
+        }
+
+    }
+
+    public function addSmoke($cityId, $user_id = 1){
 
         if($service = Smoking::find()->asArray()->all()){
 
                     $user_place = new UserSmoking();
                     $user_place->user_id = $user_id;
                     $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -759,13 +966,14 @@ class ImportController extends Controller
 
     }
 
-    public function addAlcohol($city = 'msk', $user_id = 1){
+    public function addAlcohol($cityId, $user_id = 1){
 
         if($service = Alcogol::find()->asArray()->all()){
 
                     $user_place = new UserAlcogol();
                     $user_place->user_id = $user_id;
                     $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -773,13 +981,14 @@ class ImportController extends Controller
 
     }
 
-    public function addObrazovanie($city = 'msk', $user_id = 1){
+    public function addObrazovanie($cityId, $user_id = 1){
 
         if($service = Education::find()->asArray()->all()){
 
                     $user_place = new UserEducation();
                     $user_place->user_id = $user_id;
                     $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -787,13 +996,14 @@ class ImportController extends Controller
 
     }
 
-    public function addIntimHair($city = 'msk', $user_id = 1){
+    public function addIntimHair($cityId, $user_id = 1){
 
         if($service = IntimHair::find()->asArray()->all()){
 
                     $user_place = new UserIntimHair();
                     $user_place->user_id = $user_id;
                     $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
@@ -801,7 +1011,7 @@ class ImportController extends Controller
 
     }
 
-    public function addInteresy($city = 'msk', $user_id = 1){
+    public function addInteresy($cityId, $user_id = 1){
 
         if($service = Interesting::find()->asArray()->all()){
 
@@ -812,6 +1022,7 @@ class ImportController extends Controller
                     $class = new UserInteresting();
                     $class->user_id = $user_id;
                     $class->param_id = $item['id'];
+                    $class->city_id = $cityId;
 
                     $class->save();
 
@@ -823,7 +1034,7 @@ class ImportController extends Controller
 
     }
 
-    public function addHaracter($city = 'msk', $user_id = 1){
+    public function addHaracter($cityId, $user_id = 1){
 
         if($service = Haracter::find()->asArray()->all()){
 
@@ -834,6 +1045,7 @@ class ImportController extends Controller
                     $class = new UserHaracter();
                     $class->user_id = $user_id;
                     $class->param_id = $item['id'];
+                    $class->city_id = $cityId;
 
                     $class->save();
 
@@ -845,7 +1057,7 @@ class ImportController extends Controller
 
     }
 
-    public function addVneshnost($city = 'msk', $user_id = 1){
+    public function addVneshnost($cityId, $user_id = 1){
 
         if($service = Vneshnost::find()->asArray()->all()){
 
@@ -854,13 +1066,14 @@ class ImportController extends Controller
             $class = new UserVneshnost();
             $class->user_id = $user_id;
             $class->param_id = $service['id'];
+            $class->city_id = $cityId;
             $class->save();
 
         }
 
     }
 
-    public function addMestoVstreji($city = 'msk', $user_id = 1){
+    public function addMestoVstreji($cityId, $user_id = 1){
 
         if($mesto = Place::find()->asArray()->all()){
 
@@ -871,6 +1084,7 @@ class ImportController extends Controller
                     $user_place = new UserToPlace();
                     $user_place->user_id = $user_id;
                     $user_place->place_id = $mestoItem['id'];
+                    $user_place->city_id = $cityId;
 
                     $user_place->save();
 
