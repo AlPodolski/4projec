@@ -652,6 +652,159 @@ class ImportController extends Controller
 
     }
 
+    public function actionTresh()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/article_all_2_laguna.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        foreach ($records as $record) {
+
+            if ($record['znakomstva'] == 1){
+
+                foreach ($city as $item) {
+
+                $user = new Profile();
+
+                $user->username = $record['h1'];
+                $user->password_hash = Yii::$app->security->generateRandomString(60);
+                $user->auth_key = Yii::$app->security->generateRandomString();
+                $user->email = 'admin@mail.com';
+                $user->status = 10;
+                $user->created_at = $time = \time();
+                $user->updated_at = $time;
+                $user->verification_token = Yii::$app->security->generateRandomString(43);
+                $user->city = $item['url'];
+                $user->text = $record['obyav'];
+
+                $i++;
+
+                if ($user->save()) {
+
+                    if (isset($record['img'])) {
+
+                        $userPhoto = new Photo();
+
+                        $userPhoto->user_id = $user->id;
+                        $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $record['img']);
+                        $userPhoto->avatar = 1;
+
+                        $userPhoto->save();
+
+                    }
+
+                    if (isset($record['gal'])) {
+
+                        $gall = \explode(',', $record['gal']);
+
+                        if ($gall) {
+
+                            foreach ($gall as $gallitem) {
+
+                                if ($gallitem){
+
+                                    $userPhoto = new Photo();
+
+                                    $userPhoto->user_id = $user->id;
+                                    $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $gallitem);
+                                    $userPhoto->avatar = 0;
+
+                                    $userPhoto->save();
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                    if ($record['kat'] == 'virt') {
+
+                        $user_place = new UserCeliZnakomstvamstva();
+                        $user_place->user_id = $user->id;
+                        $user_place->param_id = 8;
+                        $user_place->city_id = $item['id'];
+
+                        $user_place->save();
+
+                    }
+                    else{
+                        $this->addCeliZnakomstvamstva($item['id'],$user->id);
+                    }
+
+                    if ($record['kat'] == 'nujen_sponsor') {
+
+                        $user_place = new UserFinancialSituation();
+                        $user_place->user_id = $user->id;
+                        $user_place->param_id = 1;
+                        $user_place->city_id = $item['id'];
+
+                        $user_place->save();
+
+                    }else {
+                        $this->addFinPolojenie($item['id'], $user->id);
+                    }
+
+                    if ($record['orientaciya']){
+                        $class = new UserSexual();
+
+                        $class->user_id = $user->id;
+                        $class->sexual_id = $record['orientaciya'];
+                        $class->city_id = $item['id'];
+
+                        $class->save();
+                    }
+
+                    if ($record['pol']){
+
+                        $userPol = new UserPol();
+                        $userPol->user_id = $user->id;
+                        $userPol->city_id = $item['id'];
+                        $userPol->pol_id = 1;
+
+                        $userPol->save();
+
+                    }
+
+
+                    $this->addService($item['id'], $user->id);
+                    $this->addTransport($item['id'], $user->id);
+                    $this->addZhile($item['id'], $user->id);
+                    $this->addEducation($item['id'], $user->id);
+                    $this->addVajnoeVPartnere($item['id'], $user->id);
+                    $this->addPlace($item['id'], $user->id);
+                    $this->addFinPolojenie($item['id'], $user->id);
+                    $this->addBody($item['id'], $user->id);
+                    $this->addCeli($item['id'], $user->id);
+                    $this->addSmoke($item['id'], $user->id);
+                    $this->addAlcohol($item['id'], $user->id);
+                    $this->addObrazovanie($item['id'], $user->id);
+                    $this->addIntimHair($item['id'], $user->id);
+                    $this->addInteresy($item['id'], $user->id);
+                    $this->addHaracter($item['id'], $user->id);
+                    $this->addVneshnost($item['id'], $user->id);
+                    $this->addMestoVstreji($item['id'], $user->id);
+
+                }
+
+            }
+
+            }
+        }
+    }
+
     private function addRayon($city, $user_id)
     {
 
