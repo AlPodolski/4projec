@@ -692,6 +692,14 @@ class ImportController extends Controller
 
                 if ($user->save()) {
 
+                    $userZnakom = new UserZnakomstva();
+
+                    $userZnakom->user_id = $user->id;
+                    $userZnakom->param_id = 1;
+                    $userZnakom->city_id = $item['id'];
+
+                    $userZnakom->save();
+
                     if (isset($record['img'])) {
 
                         $userPhoto = new Photo();
