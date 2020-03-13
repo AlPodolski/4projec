@@ -772,7 +772,7 @@ class ImportController extends Controller
                         $userPol = new UserPol();
                         $userPol->user_id = $user->id;
                         $userPol->city_id = $item['id'];
-                        $userPol->pol_id = 1;
+                        $userPol->pol_id = $record['pol'];
 
                         $userPol->save();
 
