@@ -18,4 +18,14 @@ class UserController extends \yii\web\Controller
 
     }
 
+    public function actionView($city, $id){
+
+        $model = Profile::find()->where(['id' => $id])->one();
+
+        return $this->render('single' , [
+            'model' => $model
+        ]);
+
+    }
+
 }
