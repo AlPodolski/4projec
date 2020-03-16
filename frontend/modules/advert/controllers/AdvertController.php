@@ -6,6 +6,7 @@ namespace frontend\modules\advert\controllers;
 use yii\web\Controller;
 use frontend\modules\advert\models\Advert;
 use Yii;
+
 class AdvertController extends Controller
 {
     public function actionAd()

@@ -66,7 +66,7 @@ use frontend\modules\user\models\Profile;
 use frontend\models\UserHairColor;
 use yii\helpers\ArrayHelper;
 use common\models\Service;
-
+use frontend\modules\advert\models\Advert;
 
 class ImportController extends Controller
 {
@@ -600,6 +600,37 @@ class ImportController extends Controller
         }
 
         echo $i;
+    }
+
+    public function actionAdvert(){
+        $stream = \fopen(Yii::getAlias('@app/files/advert_import_16_03_2020.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        foreach ($records as $record) {
+
+            $advert = new Advert();
+
+            $advert->title = $record['h1'];
+            $advert->text = $record['content'].' '.$record['contact'];
+            $advert->timestamp = \time() - \rand(0 , 365 * 2) * 3600 * 24;
+
+            $advert->save();
+
+            $i++;
+
+        }
     }
 
     public function actionPropPr()
