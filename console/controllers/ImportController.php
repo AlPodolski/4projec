@@ -92,7 +92,7 @@ class ImportController extends Controller
         $smoking =  Smoking::find()->asArray()->all();
         $alcogol =  Alcogol::find()->asArray()->all();
 
-        $stream = \fopen(Yii::getAlias('@app/files/content_men.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/babi_tabor_13_03_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -113,6 +113,7 @@ class ImportController extends Controller
 
                 if ($item['city'] == $record['city']) {
 
+                    \dd($record);
 
                     $user = new Profile();
 
@@ -125,6 +126,7 @@ class ImportController extends Controller
                     $user->updated_at = $time;
                     $user->verification_token = Yii::$app->security->generateRandomString(43);
                     $user->city = $item['url'];
+                    $user->text = $record['status'];
 
                     $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
                     $i++;
@@ -530,7 +532,9 @@ class ImportController extends Controller
                        $userPol = new UserPol();
                        $userPol->user_id = $user->id;
                        $userPol->city_id = $item['id'];
-                       $userPol->pol_id = 1;
+                       $userPol->pol_id = 2;
+
+                        $userPol->save();
 
                        $userZnakom = new UserZnakomstva();
 
@@ -549,15 +553,13 @@ class ImportController extends Controller
                            $userTabor->save();
                        }
 
-                       $userPol->save();
-
 
                         if (isset($record['photo_mii'])) {
 
                             $userPhoto = new Photo();
 
                             $userPhoto->user_id = $user->id;
-                            $userPhoto->file = \str_replace('files', '/files/uploads/aa2', $record['photo_mii']);
+                            $userPhoto->file = \str_replace('files', '/files/uploads/aa4', $record['photo_mii']);
                             $userPhoto->avatar = 1;
 
                             $userPhoto->save();
@@ -578,7 +580,7 @@ class ImportController extends Controller
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file = '/files/uploads/aa2/'. $gallitem;
+                                        $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/aa4/'. $gallitem );
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();
