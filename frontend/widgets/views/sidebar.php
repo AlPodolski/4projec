@@ -345,7 +345,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
-                            Отношение к лкоголю
+                            Отношение к алкоголю
                         </button>
                     </h5>
                 </div>

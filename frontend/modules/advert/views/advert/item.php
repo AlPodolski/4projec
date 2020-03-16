@@ -7,8 +7,8 @@ use frontend\modules\advert\models\Advert; ?>
     </div>
     <div class="col-11">
         <div class="name">
-            <a class="name" href="/user/<?php echo $advert->user_id ?>">
-                <?php echo $advert->getUserName() ?>
+            <a class="name" href="/adverts/<?php echo $advert->id ?>">
+                <?php echo $advert->title; ?>
             </a>
         </div>
         <div class="text-ab">

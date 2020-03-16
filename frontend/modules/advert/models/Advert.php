@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
  * @property int|null $user_id
  * @property int|null $timestamp
  * @property string|null $text
+ * @property string|null $title
  */
 class Advert extends \yii\db\ActiveRecord
 {

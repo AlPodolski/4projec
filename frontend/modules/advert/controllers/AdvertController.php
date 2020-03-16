@@ -42,6 +42,15 @@ class AdvertController extends Controller
         ]);
     }
 
+    public function actionView($city, $id)
+    {
+        $advert = Advert::find()->where(['id' => $id])->asArray()->one();
+
+        return $this->render('view', [
+            'advert' => $advert
+        ]);
+    }
+
     public function actionMore()
     {
         if (Yii::$app->request->isPost){
