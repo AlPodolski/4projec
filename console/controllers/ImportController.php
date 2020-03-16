@@ -113,8 +113,6 @@ class ImportController extends Controller
 
                 if ($item['city'] == $record['city']) {
 
-                    \dd($record);
-
                     $user = new Profile();
 
                     $user->username = $record['name'];
