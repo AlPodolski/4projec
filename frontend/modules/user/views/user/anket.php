@@ -261,25 +261,25 @@ if ($model){
 
                     <?php if (!empty($model['intimHair'])) :  ?>
 
-                        <p class="param"> Интимная стрижка : <?php foreach ($model['breast'] as $item) echo $item['value']. ' ' ?>  </p>
+                        <p class="param"> Интимная стрижка : <?php foreach ($model['intimHair'] as $item) echo $item['value']. ' ' ?>  </p>
 
                     <?php endif;  ?>
 
                     <?php if (!empty($model['hairColor'])) :  ?>
 
-                        <p class="param"> Цвет волос : <?php foreach ($model['breast'] as $item) echo $item['value']. ' ' ?>  </p>
+                        <p class="param"> Цвет волос : <?php foreach ($model['hairColor'] as $item) echo $item['value']. ' ' ?>  </p>
 
                     <?php endif;  ?>
 
                     <?php if (!empty($model['sferaDeyatelnosti'])) :  ?>
 
-                        <p class="param"> Сфера деятельности : <?php foreach ($model['breast'] as $item) echo $item['value']. ' ' ?>  </p>
+                        <p class="param"> Сфера деятельности : <?php foreach ($model['sferaDeyatelnosti'] as $item) echo $item['value']. ' ' ?>  </p>
 
                     <?php endif;  ?>
 
                     <?php if (!empty($model['zhile'])) :  ?>
 
-                        <p class="param"> Жилье : <?php foreach ($model['breast'] as $item) echo $item['value']. ' ' ?>  </p>
+                        <p class="param"> Жилье : <?php foreach ($model['zhile'] as $item) echo $item['value']. ' ' ?>  </p>
 
                     <?php endif;  ?>
 

@@ -6,6 +6,7 @@ use common\models\Alcogol;
 use common\models\BodyType;
 use common\models\Breast;
 use common\models\CeliZnakomstvamstva;
+use common\models\Children;
 use common\models\Education;
 use common\models\Family;
 use common\models\FinancialSituation;
@@ -21,18 +22,22 @@ use common\models\Rayon;
 use common\models\Service;
 use common\models\Sexual;
 use common\models\SferaDeyatelnosti;
+use common\models\Smoking;
 use common\models\Transport;
+use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
 use common\models\WantFind;
 use common\models\Zhile;
 use frontend\models\relation\UserAlcogol;
 use frontend\models\relation\UserBreast;
 use frontend\models\relation\UserCeliZnakomstvamstva;
+use frontend\models\relation\UserChildren;
 use frontend\models\relation\UserEducation;
 use frontend\models\relation\UserFamily;
 use frontend\models\relation\UserIntimHair;
 use frontend\models\relation\UserLifeGoals;
 use frontend\models\relation\UserSferaDeyatelnosti;
+use frontend\models\relation\UserSmoking;
 use frontend\models\relation\UserTransport;
 use frontend\models\relation\UserWantFind;
 use frontend\models\relation\UserZhile;
@@ -49,6 +54,7 @@ use frontend\models\UserSexual;
 use frontend\models\UserToMetro;
 use frontend\models\UserToPlace;
 use frontend\models\UserToRayon;
+use frontend\models\UserVajnoeVPartnere;
 use frontend\models\UserVneshnost;
 use frontend\modules\user\User;
 use yii\db\ActiveRecord;
@@ -345,28 +351,28 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getUserVajnoeVPartnereRelations()
     {
-        return $this->hasMany(UserVneshnost::class, ['user_id' => 'id']);
+        return $this->hasMany(UserVajnoeVPartnere::class, ['user_id' => 'id']);
     }
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getVajnoeVPartnere()
     {
-        return $this->hasMany(Vneshnost::class, ['id' => 'param_id'])->via('userVajnoeVPartnereRelations');
+        return $this->hasMany(VajnoeVPartnere::class, ['id' => 'param_id'])->via('userVajnoeVPartnereRelations');
     }
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getUserChildrenRelations()
     {
-        return $this->hasMany(UserVneshnost::class, ['user_id' => 'id']);
+        return $this->hasMany(UserChildren::class, ['user_id' => 'id']);
     }
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getChildren()
     {
-        return $this->hasMany(Vneshnost::class, ['id' => 'param_id'])->via('userChildrenRelations');
+        return $this->hasMany(Children::class, ['id' => 'param_id'])->via('userChildrenRelations');
     }
     /**
      * @return \yii\db\ActiveQuery
@@ -492,7 +498,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getHairColor()
     {
-        return $this->hasMany(HairColor::class, ['id' => 'param_id'])->via('userHairColorRelations');
+        return $this->hasMany(HairColor::class, ['id' => 'value'])->via('userHairColorRelations');
     }
     /**
      * @return \yii\db\ActiveQuery
@@ -555,14 +561,14 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getUserSmokingRelations()
     {
-        return $this->hasMany(UserFamily::class, ['user_id' => 'id']);
+        return $this->hasMany(UserSmoking::class, ['user_id' => 'id']);
     }
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getSmoking()
     {
-        return $this->hasMany(Family::class, ['id' => 'param_id'])->via('userSmokingRelations');
+        return $this->hasMany(Smoking::class, ['id' => 'param_id'])->via('userSmokingRelations');
     }
 
 
