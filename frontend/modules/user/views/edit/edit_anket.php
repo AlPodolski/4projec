@@ -20,11 +20,11 @@ $this->title = 'Редактировать информация о себе';
 
 $pol = UserPol::find()->where(['user_id' => Yii::$app->user->id])->asArray()->one();
 
-$hair_color = HairColor::find()->where(['pol' => $pol['pol_id']])->asArray()->all();
+$hair_color = HairColor::find()->asArray()->all();
 $body_type = BodyType::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
 $eye_color = EyeColor::find()->asArray()->all();
-$sexualList = Sexual::find()->asArray()->all();
+$sexualList = Sexual::find()->where(['pol_id' => $pol['pol_id']])->asArray()->all();
 $metroList = Metro::find()->asArray()->all();
 $rayonList = Rayon::find()->asArray()->all();
 

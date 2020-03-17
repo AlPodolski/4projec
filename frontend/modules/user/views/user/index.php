@@ -14,7 +14,7 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 
     <div class="col-9">
 
-        <?php echo $this->renderFile('@app/views/anket/anket.php',
+        <?php echo $this->renderFile('@app/modules/user/views/user/anket.php',
                 [
                         'model' => $model,
                 ]

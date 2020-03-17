@@ -1,7 +1,6 @@
 <?php
 
 namespace frontend\modules\user\controllers;
-use backend\models\MetaTemplate;
 use frontend\modules\user\models\Profile;
 use Yii;
 
@@ -22,7 +21,7 @@ class UserController extends \yii\web\Controller
 
     public function actionView($city, $id){
 
-        $model = Yii::$app->cache->get('4dosug_profile_data_'.$id);
+        $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id);
 
         if ($model === false) {
             // $data нет в кэше, вычисляем заново
@@ -52,7 +51,7 @@ class UserController extends \yii\web\Controller
                 ->with('transport')
                 ->one();
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
-            Yii::$app->cache->set('4dosug_profile_data_'.$id, $model);
+            Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
         }
 
 
