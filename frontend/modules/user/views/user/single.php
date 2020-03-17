@@ -1,4 +1,8 @@
-<?php $this->title = $model->username; ?>
+<?php
+
+/* @var $model frontend\modules\user\models\Profile */
+
+$this->title = $model->username; ?>
 <div class="row">
 
     <?php use frontend\widgets\SideBarWidget;
