@@ -1,11 +1,11 @@
 <?php
 
 /* @var $model frontend\modules\user\models\Profile */
-
+use frontend\widgets\SidebarWidget;
 $this->title = $model->username; ?>
 <div class="row">
 
-    <?php use frontend\widgets\SideBarWidget;
+    <?php
 
     echo SidebarWidget::Widget() ?>
 
