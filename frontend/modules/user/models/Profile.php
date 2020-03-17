@@ -310,7 +310,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getInteresting()
     {
-        return $this->hasMany(Interesting::class, ['id' => 'value'])->via('userInterestingRelations');
+        return $this->hasMany(Interesting::class, ['id' => 'param_id'])->via('userInterestingRelations');
     }
     /**
      * @return \yii\db\ActiveQuery
