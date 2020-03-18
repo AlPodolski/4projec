@@ -130,32 +130,21 @@ class Params extends Model
 
         $filterParams = FilterParams::find()->asArray()->all();
 
-        \d($this);
-
         foreach ($this as $key => $value){
 
             foreach ($filterParams as $filterParam){
 
                 if (\strtolower($filterParam['short_name']) == \strtolower($key)){
 
-                    \d($key);
+                    $filterParam['relation_class']::deleteAll('user_id = '.$user_id);
 
-                    $transaction = Yii::$app->db->beginTransaction();
+                    SaveAnketInfoHelper::save($value, $user_id, $filterParam['relation_class'], $filterParam['column_param_name']);
 
-                    if ($filterParam['relation_class']::deleteAll('user_id = '.$user_id)
-                        and SaveAnketInfoHelper::save($value, $user_id, $filterParam['relation_class'], $filterParam['column_param_name'])){
-
-                        $transaction->commit();
-
-                    }
-                    else $transaction->rollBack();
                 }
 
             }
 
         }
-
-        \dd();
 
         return true;
 
