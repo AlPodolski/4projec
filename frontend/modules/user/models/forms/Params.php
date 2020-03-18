@@ -82,7 +82,7 @@ class Params extends Model
 
     }
 
-    private $must_be_array = ['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'];
+    private $must_be_array = ['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals', 'wantFind', 'haracter'];
 
     /**
      * {@inheritdoc}
