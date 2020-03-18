@@ -10,6 +10,7 @@ use yii\web\View;
 $this->title = 'Интим объявления';
 
 $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 ?>
 <div class="row">
     <?php
@@ -20,7 +21,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
     <div class="col-9">
 
-        <div class="anket">
+        <div class="anket content">
 
             <h1>Интим объявления</h1>
 
@@ -36,7 +37,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
     </div>
 
-    <div class="col-12 advert-pager" data-page="1"></div>
+    <div class="col-12 pager" data-url="/more-adverds" data-page="1"></div>
 
 </div>
 

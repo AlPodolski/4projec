@@ -8,6 +8,9 @@ use frontend\modules\user\models\Profile;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
 $this->title = 'Знакомства';
+
+$this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 ?>
 <div class="site-index">
 
@@ -112,9 +115,7 @@ $this->title = 'Знакомства';
 
                 </div>
 
-                <div class="row">
-
-
+                <div class="row content">
 
                     <?php foreach ($posts as $post) : ?>
 
@@ -125,10 +126,12 @@ $this->title = 'Знакомства';
                     <?php endforeach; ?>
 
 
+
                 </div>
 
             </div>
 
+            <div class="col-12 pager" data-page="1" data-url="/" data-reqest="<?php echo Yii::$app->request->url ?>"></div>
 
         </div>
 

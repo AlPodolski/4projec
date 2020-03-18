@@ -26,12 +26,6 @@ Yii::$app->view->registerMetaTag([
     <div class="body-content">
 
         <div class="row">
-
-            <?php echo PopularWidget::widget(['city' => $city]); ?>
-
-        </div>
-
-        <div class="row">
             <?php
 
             echo SidebarWidget::Widget()
@@ -74,6 +68,8 @@ Yii::$app->view->registerMetaTag([
             </div>
 
         </div>
+
+        <div class="col-12 advert-pager" data-page="1" data-url="/<?php echo Yii::$app->request->url ?>"></div>
 
     </div>
 

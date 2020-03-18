@@ -45,7 +45,27 @@ class SiteController extends Controller
      */
     public function actionIndex($city)
     {
-        $posts = Profile::find()->where(['city' => $city])->limit(24)->with('userAvatarRelations')->all();
+        $posts = Profile::find()->where(['city' => $city])->limit(24)->with('userAvatarRelations');
+
+        if (Yii::$app->request->isPost){
+
+            $posts->offset(Yii::$app->params['post_limit'] * Yii::$app->request->post('page'));
+
+            $posts = $posts->all();
+
+            foreach ($posts as $post){
+
+                echo $this->renderFile('@app/views/layouts/article.php', [
+                    'post' => $post
+                ]);
+
+            }
+
+            exit();
+
+        }
+
+        $posts = $posts->all();
 
         Yii::$app->view->title = MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
 
