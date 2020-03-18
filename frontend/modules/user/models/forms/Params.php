@@ -3,39 +3,54 @@
 
 namespace frontend\modules\user\models\forms;
 
-use frontend\models\UserHairColor;
-use frontend\models\UserService;
-use frontend\models\UserSexual;
-use frontend\models\UserToMetro;
-use frontend\models\UserToRayon;
+use common\models\FilterParams;
+use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use yii\base\Model;
-use frontend\models\UserEyeColor;
-use frontend\models\UserBody;
-use frontend\models\UserBreastSize;
-use frontend\models\UserVes;
-use frontend\models\UserRost;
 use yii\helpers\ArrayHelper;
+use Yii;
 
 class Params extends Model
 {
-    public $hair_color;
-    public $eye_color;
+    public $hairColor;
+    public $eyeColor;
     public $rost;
-    public $ves;
+    public $userVes;
     public $body;
-    public $breast_size;
+    public $breastSize;
     public $service;
     public $sexual;
     public $rayon;
     public $metro;
 
+    public $place;
+    public $national;
+    public $financialSituation;
+    public $interesting;
+    public $professionals;
+    public $vneshnost;
+    public $vajnoeVPartnere;
+    public $children;
+    public $family;
+    public $wantFind;
+    public $celiZnakomstvamstva;
+    public $haracter;
+    public $lifeGoals;
+    public $smoking;
+    public $alcogol;
+    public $education;
+    public $breast;
+    public $intimHair;
+    public $sferaDeyatelnosti;
+    public $zhile;
+    public $transport;
+
     public function attributeLabels()
     {
         return [
-            'hair_color' => 'Цвет волос',
+            'hairColor' => 'Цвет волос',
             'rost' => 'Рост',
-            'ves' => 'Вес',
-            'eye_color' => 'Цвет глаз',
+            'userVes' => 'Вес',
+            'eyeColor' => 'Цвет глаз',
             'body' => 'Телосложение',
             'breast_size' => 'Размер груди',
             'service' => 'Сексуальные предпочтения',
@@ -46,178 +61,73 @@ class Params extends Model
 
     }
 
+    private $must_be_array = ['service', 'metro', 'rayon'];
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['hair_color', 'rost', 'ves', 'eye_color', 'body', 'breast_size', 'sexual'], 'integer'],
+            [['hairColor', 'rost', 'userVes', 'eyeColor', 'body', 'breastSize', 'sexual'], 'integer'],
             [['service', 'metro', 'rayon'], 'safe'],
         ];
     }
 
     public function getParams($user_id){
 
-        $this->hair_color = ArrayHelper::getValue(UserHairColor::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->eye_color = ArrayHelper::getValue(UserEyeColor::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->rost = ArrayHelper::getValue(UserRost::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->ves = ArrayHelper::getValue(UserVes::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->body = ArrayHelper::getValue(UserBody::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->breast_size = ArrayHelper::getValue(UserBreastSize::find()->where(['user_id'=> $user_id])->one(), 'value');
-        $this->service = ArrayHelper::getColumn(UserService::find()->where(['user_id'=> $user_id])->asArray()->all(), 'service_id');
-        $this->metro = ArrayHelper::getColumn(UserToMetro::find()->where(['user_id'=> $user_id])->asArray()->all(), 'metro_id');
-        $this->rayon = ArrayHelper::getColumn(UserToRayon::find()->where(['user_id'=> $user_id])->asArray()->all(), 'rayon_id');
-        $this->sexual = ArrayHelper::getValue(UserSexual::find()->where(['user_id'=> $user_id])->asArray()->one(), 'sexual_id');
+        $filterParams = FilterParams::find()->asArray()->all();
+
+        foreach ($this as $key => $value){
+
+            foreach ($filterParams as $filterParam){
+
+                if (\strtolower($filterParam['short_name']) == \strtolower($key)){
+
+                    if (\in_array($key, $this->must_be_array)){
+
+                        $this->$key = ArrayHelper::getColumn($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->all(), $filterParam['column_param_name']);
+
+                    }else{
+
+                        $this->$key = ArrayHelper::getValue($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->one(), $filterParam['column_param_name']);
+
+                    }
+
+                }
+
+            }
+
+        }
+
     }
 
     public function save($user_id){
 
-        if ($this->hair_color) $this->saveHairColor($user_id);
-        if ($this->eye_color) $this->saveEyeColor($user_id);
-        if ($this->body) $this->saveUserBody($user_id);
-        if ($this->breast_size) $this->saveUserBreast($user_id);
-        if ($this->rost) $this->saveUserRost($user_id);
-        if ($this->ves) $this->saveUserVes($user_id);
-        if ($this->service) $this->saveService($user_id);
-        if ($this->sexual) $this->saveSexual($user_id);
-        if ($this->metro) $this->saveMetro($user_id);
-        if ($this->rayon) $this->saveRayon($user_id);
+        $filterParams = FilterParams::find()->asArray()->all();
+
+        foreach ($this as $key => $value){
+
+            foreach ($filterParams as $filterParam){
+
+                if (\strtolower($filterParam['short_name']) == \strtolower($key)){
+
+                    $transaction = Yii::$app->db->beginTransaction();
+
+                    if ($filterParam['relation_class']::deleteAll('user_id = '.$user_id)
+                        and SaveAnketInfoHelper::save($value, $user_id, $filterParam['relation_class'], $filterParam['column_param_name'])){
+
+                        $transaction->commit();
+
+                    }
+                    else $transaction->rollBack();
+                }
+
+            }
+
+        }
 
         return true;
-
-    }
-
-    public function saveSexual($id){
-
-        UserSexual::deleteAll('user_id = '.$id);
-
-        $user_to_service = new UserSexual();
-
-        $user_to_service->user_id = $id;
-
-        $user_to_service->sexual_id = $this->sexual;
-
-        $user_to_service->save();
-
-    }
-    public function saveService($id){
-
-        UserService::deleteAll('user_id = '.$id);
-
-        foreach ($this->service  as $item){
-
-            $user_to_service = new UserService();
-
-            $user_to_service->user_id = $id;
-
-            $user_to_service->service_id = $item;
-
-            $user_to_service->save();
-
-        }
-
-    }
-
-    public function saveMetro($id){
-
-        UserToMetro::deleteAll('user_id = '.$id);
-
-        foreach ($this->metro  as $item){
-
-            $user_to_metro = new UserToMetro();
-
-            $user_to_metro->user_id = $id;
-
-            $user_to_metro->metro_id = $item;
-
-            $user_to_metro->save();
-
-        }
-
-    }
-
-    public function saveRayon($id){
-
-        UserToRayon::deleteAll('user_id = '.$id);
-
-        foreach ($this->rayon  as $item){
-
-            $user_to_rayon = new UserToRayon();
-
-            $user_to_rayon->user_id = $id;
-
-            $user_to_rayon->rayon_id = $item;
-
-            $user_to_rayon->save();
-
-        }
-
-    }
-
-    private function saveUserVes($user_id){
-
-        $user_hair = new UserVes();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->ves;
-
-        $user_hair->save();
-
-    }
-
-    private function saveUserRost($user_id){
-
-        $user_hair = new UserRost();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->rost;
-
-        $user_hair->save();
-
-    }
-
-    private function saveUserBreast($user_id){
-
-        $user_hair = new UserBreastSize();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->breast_size;
-
-        $user_hair->save();
-
-    }
-
-    private function saveUserBody($user_id){
-
-        $user_hair = new UserBody();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->body;
-
-        $user_hair->save();
-
-    }
-
-    private function saveEyeColor($user_id){
-
-        $user_hair = new UserEyeColor();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->eye_color;
-
-        $user_hair->save();
-
-    }
-
-    private function saveHairColor($user_id){
-
-        $user_hair = new UserHairColor();
-
-        $user_hair->user_id = $user_id;
-        $user_hair->value = $this->hair_color;
-
-        $user_hair->save();
 
     }
 

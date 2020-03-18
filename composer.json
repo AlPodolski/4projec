@@ -27,7 +27,8 @@
         "yiisoft/yii2-imagine": "*",
         "iutbay/yii2-imagecache" : "*",
         "dastanaron/yii2-translit": "*",
-        "league/csv": "*"
+        "league/csv": "*",
+        "kartik-v/yii2-widget-select2": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

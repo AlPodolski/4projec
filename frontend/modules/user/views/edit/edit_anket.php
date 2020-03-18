@@ -48,24 +48,32 @@ $service_list_sex = Service::find()->asArray()->all();
                     <?= $form->field($model, 'sexual')
                         ->dropDownList(ArrayHelper::map($sexualList, 'id', 'value')); ?>
                 </div>
-                <div class="col-4"> <?= $form->field($model, 'hair_color')
+                <div class="col-4"> <?= $form->field($model, 'hairColor')
                         ->dropDownList(ArrayHelper::map($hair_color, 'id', 'value')); ?> </div>
                 <div class="col-4"> <?= $form->field($model, 'rost')->textInput(); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'ves')->textInput(); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'eye_color')
+                <div class="col-4"> <?= $form->field($model, 'userVes')->textInput(); ?> </div>
+                <div class="col-4"> <?= $form->field($model, 'eyeColor')
                         ->dropDownList(ArrayHelper::map($eye_color, 'id', 'value')); ?> </div>
                 <div class="col-4"> <?= $form->field($model, 'body')
                         ->dropDownList(ArrayHelper::map($body_type, 'id', 'value')); ?> </div>
 
                 <?php if ($pol['pol_id'] != 1) : ?>
 
-                    <div class="col-4"> <?= $form->field($model, 'breast_size')->textInput(); ?> </div>
+                    <div class="col-4"> <?= $form->field($model, 'breastSize')->textInput(); ?> </div>
 
                 <?php endif; ?>
 
                 <div class="col-12">
 
-                    <?= $form->field($model, 'service')->checkboxList(ArrayHelper::map($service_list_sex, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+                    <?= $form->field($model, 'service')->widget(\kartik\select2\Select2::classname(), [
+                        'data' =>  ArrayHelper::map($service_list_sex, 'id', 'value'),
+                        'language' => 'de',
+                        'options' => ['placeholder' => 'Выбрать предпочтение ...'],
+                        'pluginOptions' => [
+                            'allowClear' => true,
+                            'multiple' => true,
+                        ],
+                    ]) ?>
 
                 </div>
 
@@ -73,7 +81,15 @@ $service_list_sex = Service::find()->asArray()->all();
 
                     <div class="col-12">
 
-                        <?= $form->field($model, 'metro')->checkboxList(ArrayHelper::map($metroList, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+                        <?= $form->field($model, 'metro')->widget(\kartik\select2\Select2::classname(), [
+                            'data' =>  ArrayHelper::map($metroList, 'id', 'value'),
+                            'language' => 'de',
+                            'options' => ['placeholder' => 'Выбрать метро ...'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
+                                'multiple' => true,
+                            ],
+                        ]) ?>
 
                     </div>
 
@@ -83,7 +99,15 @@ $service_list_sex = Service::find()->asArray()->all();
 
                     <div class="col-12">
 
-                        <?= $form->field($model, 'rayon')->checkboxList(ArrayHelper::map($rayonList, 'id', 'value'), ['id' => 'addpostform-service']) ?>
+                        <?= $form->field($model, 'rayon')->widget(\kartik\select2\Select2::classname(), [
+                            'data' =>  ArrayHelper::map($rayonList, 'id', 'value'),
+                            'language' => 'de',
+                            'options' => ['placeholder' => 'Выбрать район ...'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
+                                'multiple' => true,
+                            ],
+                        ]) ?>
 
                     </div>
 
