@@ -57,11 +57,32 @@ class Params extends Model
             'sexual' => 'Сексуальная ориентация',
             'metro' => 'Метро',
             'rayon' => 'Район',
+            'place' => 'Место встречи',
+            'national' => 'Начиональность',
+            'financialSituation' => 'Финансовое положение',
+            'interesting' => 'Интересы',
+            'professionals' => 'Профессия',
+            'vneshnost' => 'Внешность',
+            'vajnoeVPartnere' => 'Важное в партнере',
+            'children' => 'Дети',
+            'family' => 'Семья',
+            'wantFind' => 'Хочу найти',
+            'celiZnakomstvamstva' => 'Цели знакомства',
+            'haracter' => 'Характер',
+            'lifeGoals' => 'Жизненые приоритеты',
+            'smoking' => 'Отношение к курению',
+            'alcogol' => 'Отношение к алкоголю',
+            'education' => 'Образование',
+            'breast' => 'Размер груди',
+            'intimHair' => 'Интимная стрижка',
+            'sferaDeyatelnosti' => 'Сфера деятельности',
+            'zhile' => 'Жилье',
+            'transport' => 'Транспорт',
         ];
 
     }
 
-    private $must_be_array = ['service', 'metro', 'rayon'];
+    private $must_be_array = ['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'];
 
     /**
      * {@inheritdoc}
@@ -69,8 +90,11 @@ class Params extends Model
     public function rules()
     {
         return [
-            [['hairColor', 'rost', 'userVes', 'eyeColor', 'body', 'breastSize', 'sexual'], 'integer'],
-            [['service', 'metro', 'rayon'], 'safe'],
+            [['hairColor', 'rost', 'userVes', 'eyeColor', 'body', 'breastSize', 'sexual','national',
+            'financialSituation', 'professionals', 'vneshnost', 'children', 'family', 'wantFind', 'haracter',
+                'smoking', 'alcogol', 'education', 'breast', 'intimHair', 'sferaDeyatelnosti', 'zhile', 'transport'
+            ], 'integer'],
+            [['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'], 'safe'],
         ];
     }
 
@@ -106,11 +130,15 @@ class Params extends Model
 
         $filterParams = FilterParams::find()->asArray()->all();
 
+        \d($this);
+
         foreach ($this as $key => $value){
 
             foreach ($filterParams as $filterParam){
 
                 if (\strtolower($filterParam['short_name']) == \strtolower($key)){
+
+                    \d($key);
 
                     $transaction = Yii::$app->db->beginTransaction();
 
@@ -126,6 +154,8 @@ class Params extends Model
             }
 
         }
+
+        \dd();
 
         return true;
 
