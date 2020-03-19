@@ -16,7 +16,7 @@ class CityWidget extends Widget
 
             ?>
 
-                <div class="place">
+                <div class="place" data-toggle="modal" data-target="#cityModal" aria-hidden="true">
                     <span>Местоположение : </span>
                     <span class="place-city"><?php echo $city['city'] ?></span>
                 </div>

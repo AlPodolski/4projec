@@ -541,6 +541,12 @@ h1{
 .content-wrap{
     margin-top: 15px;
 }
+.city-list {
+    list-style: none;
+    column-count: 2;
+    padding: 15px;
+    margin-bottom: 0;
+}
 .article-anket-wrap{
     background: #fff;
     border-radius: 10px;
