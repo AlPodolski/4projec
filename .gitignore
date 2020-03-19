@@ -44,3 +44,4 @@ phpunit.phar
 /frontend/web/files/uploads/
 /frontend/web/files/uploads_cache/
 /frontend/web/thumbs/
+/frontend/web/files/presents/

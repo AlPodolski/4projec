@@ -19,6 +19,8 @@ use common\models\LifeGoals;
 use common\models\Metro;
 use common\models\Place;
 use common\models\Pol;
+use common\models\Presents;
+use common\models\PresentsCategory;
 use common\models\Rayon;
 use common\models\Sexual;
 use common\models\SferaDeyatelnosti;
@@ -27,6 +29,7 @@ use common\models\Transport;
 use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
 use common\models\Zhile;
+use frontend\models\relation\PresentToCategory;
 use frontend\models\relation\TaborUser;
 use frontend\models\relation\UserAlcogol;
 use frontend\models\relation\UserCeliZnakomstvamstva;
@@ -600,6 +603,51 @@ class ImportController extends Controller
         }
 
         echo $i;
+    }
+
+    public function actionPresents(){
+
+        $category = PresentsCategory::find()->asArray()->all();
+
+        $stream = \fopen(Yii::getAlias('@app/files/presents.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        foreach ($records as $record) {
+
+            foreach ($category as $item){
+
+                if ($item['category_name'] == $record['category']){
+
+                    $present = new Presents();
+                    $present->name = $record['name'];
+                    $present->img = '/files/presents/'. $record['img'];
+                    $present->status = Presents::PODAROK_DOSTUPEN;
+
+                    if ($present->save()){
+
+                        $present_to_category = new PresentToCategory();
+                        $present_to_category->present_id = $present->id;
+                        $present_to_category->category_id = $item['id'];
+
+                        if ($present_to_category->save()) echo 'da';
+
+                    }
+
+                }
+
+            }
+
+        }
     }
 
     public function actionAdvert(){
