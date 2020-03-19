@@ -27,7 +27,28 @@ class FilterController extends Controller
 
             }
 
-            $posts = $posts->limit(12)->with('userAvatarRelations')->all();
+            $posts = $posts->limit(Yii::$app->params['post_limit'])->with('userAvatarRelations');
+
+            if (Yii::$app->request->isPost){
+
+                $posts->offset(Yii::$app->params['post_limit'] * Yii::$app->request->post('page'));
+
+                $posts = $posts->all();
+
+                foreach ($posts as $post){
+
+                    echo $this->renderFile('@app/views/layouts/article.php', [
+                        'post' => $post
+                    ]);
+
+                }
+
+                exit();
+
+            }
+
+            $posts = $posts->all();
+
 
         }
 

@@ -18,7 +18,7 @@ Yii::$app->view->registerMetaTag([
     'name' => 'description',
     'content' => $des
 ]);
-
+$this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 ?>
 
 <div class="site-index">
@@ -34,7 +34,7 @@ Yii::$app->view->registerMetaTag([
 
             <div class="col-9">
 
-                <div class="content">
+                <div class="content-wrap">
 
                     <?php if (!empty(Yii::$app->view->params['marks'])) : ?>
 
@@ -44,7 +44,7 @@ Yii::$app->view->registerMetaTag([
 
                     <h1><?php echo $h1; ?></h1>
 
-                    <div class="row">
+                    <div class="row content">
 
                         <?php if ($posts) : ?>
 
@@ -69,7 +69,7 @@ Yii::$app->view->registerMetaTag([
 
         </div>
 
-        <div class="col-12 advert-pager" data-page="1" data-url="/<?php echo Yii::$app->request->url ?>"></div>
+        <div class="col-12 pager" data-page="1" data-url="<?php echo Yii::$app->request->url ?>" data-reqest="<?php echo Yii::$app->request->url ?>"></div>
 
     </div>
 
