@@ -547,6 +547,15 @@ h1{
     padding: 15px;
     margin-bottom: 0;
 }
+.user-name{
+    margin-bottom: 0px;
+}
+.present{
+    margin-bottom: 10px
+}
+.present-item{
+    text-align: center;
+}
 .article-anket-wrap{
     background: #fff;
     border-radius: 10px;

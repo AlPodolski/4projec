@@ -98,6 +98,10 @@ if ($model){
                 </p>
             </div>
 
+            <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
+                <i class="fas fa-gift"></i> <span> Подарить подарок</span>
+            </div>
+
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
