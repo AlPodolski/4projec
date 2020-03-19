@@ -34,6 +34,7 @@ if ($model){
     $postPrice = $model->getUserPrice();
 }
 
+\frontend\assets\LightGalleryAsset::register($this);
 
 ?>
 
@@ -48,7 +49,7 @@ if ($model){
 
                         <?php foreach ($photo as $item) : ?>
 
-                            <div class="item">
+                            <div class="item" href="<?php echo $item->file?>">
                                 <img src="<?php echo $item->file?>" alt="<?php echo $model['username']  ?>">
                             </div>
 
