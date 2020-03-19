@@ -56,7 +56,8 @@ class UserController extends \yii\web\Controller
 
 
         return $this->render('single' , [
-            'model' => $model
+            'model' => $model,
+            'city' => $city,
         ]);
 
     }
