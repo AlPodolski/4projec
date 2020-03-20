@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $name
  * @property string|null $img
  * @property int|null $status
+ * @property int|null $price
  */
 class Presents extends \yii\db\ActiveRecord
 {

@@ -46,7 +46,8 @@
                                 <div class="col-4 present-item">
                                     <img src="<?php echo $item['img'] ?>" alt="">
                                     <span class="present-name">
-                                        <?php echo $item['name'] ?>
+                                        <?php echo $item['name'] ?> -  <?php echo $item['price'] ?>
+                                        <img src="/files/img/icn-lg-coins.png" alt="">
                                     </span>
                                 </div>
 

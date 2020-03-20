@@ -630,6 +630,7 @@ class ImportController extends Controller
 
                     $present = new Presents();
                     $present->name = $record['name'];
+                    $present->price = $record['cifr'];
                     $present->img = '/files/presents/'. $record['img'];
                     $present->status = Presents::PODAROK_DOSTUPEN;
 
