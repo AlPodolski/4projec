@@ -23,3 +23,23 @@ $(document).ready(function() {
     });
 
 });
+$(document).ready(function() {
+
+    $('.present-btn ').on('click', function(e){
+
+        var present_id = $(this).attr('data-present-id');
+        var user_id = $(this).attr('data-user-id');
+
+        $.ajax({
+            url: '/present/get-form',
+            type: 'POST',
+            data: 'present_id='+present_id+'&user_id='+user_id,
+            datatype:'json',
+            success: function (data) {
+                $('.modal-gift-present').html(data);
+            },
+
+        });
+    });
+
+});

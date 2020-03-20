@@ -53,6 +53,7 @@ use frontend\modules\user\models\Profile; ?>
                                     <?php endif; ?>
                                 </a>
                             </div>
+
                             <div class="razd">
 
                             </div>

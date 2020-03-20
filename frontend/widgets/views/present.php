@@ -1,4 +1,5 @@
 <?php /* @var $data array */ ?>
+<?php /* @var $user_id integer */ ?>
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -39,21 +40,22 @@
 
             <div class="service-block">
 
-                        <div class="row">
+                <div class="row">
 
-                            <?php foreach ($value[0]['presents'] as $item) : ?>
+                    <?php foreach ($value[0]['presents'] as $item) : ?>
 
-                                <div class="col-4 present-item">
-                                    <img src="<?php echo $item['img'] ?>" alt="">
-                                    <span class="present-name">
-                                        <?php echo $item['name'] ?> -  <?php echo $item['price'] ?>
-                                        <img src="/files/img/icn-lg-coins.png" alt="">
-                                    </span>
-                                </div>
-
-                            <?php endforeach; ?>
-
+                        <div class="col-4 present-item">
+                            <img src="<?php echo $item['img'] ?>" alt="">
+                            <span class="present-name">
+                                <?php echo $item['name'] ?> -  <?php echo $item['price'] ?>
+                                <img src="/files/img/icn-lg-coins.png" alt="">
+                            </span>
+                            <div class="btn btn-primary present-btn" data-toggle="modal" data-user-id="<?php echo $user_id; ?>" data-present-id="<?php echo $item['id'] ?>" data-target="#checkPresentModal" aria-hidden="true">Подарить</div>
                         </div>
+
+                    <?php endforeach; ?>
+
+                </div>
 
             </div>
 

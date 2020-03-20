@@ -556,6 +556,24 @@ h1{
 .present-item{
     text-align: center;
 }
+.present-item .btn{
+    display: block;
+    margin: 10px 0;
+}
+.present-recepient{
+    display: inline-block;
+}
+.modal-gift-present .form-group{
+    margin-bottom: 0px;
+}
+.present-profile{
+    text-align: center;
+}
+.modal-gift-present .img-wrap {
+
+    min-height: inherit;
+
+}
 .article-anket-wrap{
     background: #fff;
     border-radius: 10px;
