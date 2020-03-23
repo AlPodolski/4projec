@@ -41,4 +41,21 @@ class PresentController extends Controller
             exit();
         }
     }
+
+    public function actionGift($city){
+
+        if (Yii::$app->request->isPost){
+
+            $model = new BuyPresentForm();
+
+            if ($model->load(Yii::$app->request->post()) and $model->save()){
+                Yii::$app->session->setFlash('success', 'Подарок отправлен!');
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+
+        }
+
+        return $this->goHome();
+
+    }
 }

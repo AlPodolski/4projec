@@ -3,6 +3,7 @@
 
 namespace frontend\models\forms;
 
+use frontend\models\relation\UserPresents;
 use yii\base\Model;
 
 class BuyPresentForm extends Model
@@ -21,6 +22,15 @@ class BuyPresentForm extends Model
     }
 
     public function save(){
+
+        $userPresent = new UserPresents();
+
+        $userPresent->resent_id = $this->present_id;
+        $userPresent->from = $this->from_id;
+        $userPresent->to = $this->to_id;
+        $userPresent->timestamp = \time();
+
+        return $userPresent->save();
 
     }
 }

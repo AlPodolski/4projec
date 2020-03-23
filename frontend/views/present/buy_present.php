@@ -9,11 +9,12 @@ use yii\helpers\Html;
 
 $form = ActiveForm::begin([
     'id' => 'login-form',
+    'action' => '/present/gift',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
 <?= $form->field($model, 'present_id')->hiddenInput(['value' => $present['id']])->label(false) ?>
 <?= $form->field($model, 'from_id')->hiddenInput(['value' => $from_user_id['id']])->label(false) ?>
-<?= $form->field($model, 'to_id')->hiddenInput(['value' => $giftForUser->username])->label(false) ?>
+<?= $form->field($model, 'to_id')->hiddenInput(['value' => $giftForUser['id']])->label(false) ?>
 <?php $giftForUser->getAvatar() ?>
 <div class="row">
     <div class="col-3">

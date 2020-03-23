@@ -80,6 +80,7 @@ return [
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:[a-z-0-9]+>' => 'filter/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:([a-z-0-9]+/)+[a-z-0-9]+>' => 'filter/index',
 
