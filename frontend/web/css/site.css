@@ -570,9 +570,10 @@ h1{
     text-align: center;
 }
 .modal-gift-present .img-wrap {
-
     min-height: inherit;
-
+}
+.user-presents-list .present-name{
+    font-size: 12px
 }
 .article-anket-wrap{
     background: #fff;

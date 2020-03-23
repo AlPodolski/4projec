@@ -2,6 +2,7 @@
 
 namespace frontend\models\relation;
 
+use common\models\Presents;
 use Yii;
 
 /**
@@ -31,6 +32,10 @@ class UserPresents extends \yii\db\ActiveRecord
         return [
             [['from', 'to', 'resent_id', 'timestamp'], 'integer'],
         ];
+    }
+
+    public function getPresent(){
+        return $this->hasOne(Presents::class, ['id' => 'resent_id']);
     }
 
     /**

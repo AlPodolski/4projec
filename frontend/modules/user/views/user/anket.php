@@ -29,13 +29,14 @@ $metro = $model->getMetro();
 $rayon = $model->getRayon();
 
 
+$userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id ])->with('present')->all();
+
 if ($model){
     $service = $model->getService();
     $postPrice = $model->getUserPrice();
 }
 
 \frontend\assets\LightGalleryAsset::register($this);
-
 ?>
 
 <div class="anket">
@@ -96,10 +97,6 @@ if ($model){
                 <p class="user-name">
                     <?php echo $model->username ?>
                 </p>
-            </div>
-
-            <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
-                <i class="fas fa-gift"></i> <span> Подарить подарок</span>
             </div>
 
             <nav>
@@ -306,7 +303,30 @@ if ($model){
 
                 </div>
             </div>
+            <br>
+            <br>
+            <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
+                <i class="fas fa-gift"></i> <span> Подарить подарок</span>
+            </div>
+            <?php if (!empty($userPresent)) : ?>
+                <div class="user-present">
+                    <i class="fas fa-gift"></i> <span> Подарки</span>
+                    <div class="user-presents-list">
+                        <div class="row">
+                            <?php foreach ($userPresent as $present) : ?>
+                                <div class="col-4">
+                                    <img src="<?php echo $present['present']['img'] ?>" alt="">
+                                    <span class="present-name">
+                                <?php echo $present['present']['name'] ?>
+                            </span>
+                                </div>
 
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
 
         </div>
     </div>
