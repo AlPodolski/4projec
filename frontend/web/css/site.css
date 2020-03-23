@@ -575,6 +575,90 @@ h1{
 .user-presents-list .present-name{
     font-size: 12px
 }
+.dialog_list{
+    padding: 14px;
+    background: #fff;
+    border-radius: 4px 4px 0 0;
+    padding-top: 20px;
+    padding-top: 0;
+    height: 100%;
+}
+.read-dialog{
+    background: #fff!important;
+}
+.dialog_item .dialog-text{
+    height: 71px;
+    box-sizing: border-box;
+    padding: 3px 0;
+}
+.nim-dialog--inner-text{
+    background: #f0f2f5;
+    border-radius: 3px;
+    padding: 5px 0 5px 8px;
+    display: inline-block;
+    width: 95%;
+    box-sizing: border-box;
+    color: #4e5966;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 13px;
+}
+.nim-dialog--content{
+    border-top: 1px solid #e7e8ec;
+}
+.dialog_item .dialog-text .dialog-name{
+    height: 19px;
+    color: #222;
+    margin-top: 3px;
+    font-size: 13px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+.dialog_item_ul{
+    padding-left: 0;
+}
+.dialog_item_ul .dialog_item:first-child .nim-dialog--content{
+    border-top: none;
+}
+.im-prebody img {
+    position: relative;
+    overflow: hidden;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -moz-force-broken-image-icon: 0;
+    background-color: #f0f2f5;
+    position: relative;
+}
+.dialog_list .dialog_item_ul{
+    overflow: visible;
+    min-height: 100%;
+    background: #fff;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    padding-bottom: 45px;
+}
+.dialog_item_ul .dialog_item{
+    height: 71px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    padding: 0 0 0 15px;
+    padding-left: 15px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+.dialog-photo{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 10px;
+}
 .article-anket-wrap{
     background: #fff;
     border-radius: 10px;
