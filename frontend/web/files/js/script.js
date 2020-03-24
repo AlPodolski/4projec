@@ -5,7 +5,17 @@ function showPhone(object) {
     $(phone).html($(object).attr('data-phone'));
 
 }
+$(document).ready(function() {
 
+    var sliderFor = $('.slider-popular');
+
+    sliderFor.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+
+});
 $(document).ready(function () {
 
     $('.city-search').bind("input", function () {

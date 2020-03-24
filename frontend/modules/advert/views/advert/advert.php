@@ -2,7 +2,6 @@
 /* @var $advertList Advert[] */
 /* @var $this View */
 
-use frontend\assets\SlickAsset;
 use frontend\modules\advert\models\Advert;
 use frontend\widgets\SidebarWidget;
 use yii\web\View;

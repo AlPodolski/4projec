@@ -1,8 +1,53 @@
 <?php /* @var $popularUsers Profile[] */
 
-use frontend\modules\user\models\Profile; ?>
+use frontend\assets\SlickAsset;
+use frontend\modules\user\models\Profile;
+
+SlickAsset::register($this);
+?>
 <div class="col-12">
+    <div class="row popular-block-mobile">
+        <div class="col-12">
+            <div class="popular-block-wrap-mobile">
+                <div class="col-12">
+                    <span class="popular-anket">Популярные анкеты </span>
+                </div>
+                <div class="col-12 slider-popular">
+                    <?php foreach ($popularUsers as $popularUsers) : ?>
+
+                            <div class="popular-anket-wrap">
+
+                                <div class="img-wrap">
+
+                                    <a href="/user/<?php echo $popularUsers->id ?>">
+
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+
+                                            <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+
+                                        <?php else : ?>
+
+                                            <img src="/files/img/nophoto.png" alt="">
+
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+
+                                <div class="razd">
+
+                                </div>
+                                <div class="name">
+                                    <?php echo $popularUsers->username; ?>
+                                </div>
+                            </div>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row popular-wrap">
+
         <div class="col-3 popular-block-wrap">
             <div class="popular-block">
                 <div class="row">
@@ -42,9 +87,9 @@ use frontend\modules\user\models\Profile; ?>
 
                                 <a href="/user/<?php echo $popularUsers->id ?>">
 
-                                    <?php if (file_exists(Yii::getAlias('@webroot').$popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
 
-                                    <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class'=>'img']) ?>
+                                        <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
 
                                     <?php else : ?>
 
