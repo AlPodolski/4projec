@@ -29,11 +29,13 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
         </div>
 
         <div class="row">
-            <?php
 
-                echo SidebarWidget::Widget()
 
-            ?>
+                <?php
+                    echo SidebarWidget::Widget()
+                ?>
+
+
 
             <div class="col-12 main-banner-wrap">
                 <div class="main-banner">

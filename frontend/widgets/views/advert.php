@@ -5,11 +5,11 @@ use frontend\modules\advert\models\Advert;
 $this->registerJsFile('/files/js/obuavi.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
 ?>
-<div class="user-menu">
+<div class="user-menu menu-nav">
 
     <div class="row">
         <div class="col-9">
-            <p class="user-name">
+            <p class="user-name ">
                 интим объявления
             </p>
         </div>
