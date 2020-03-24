@@ -78,6 +78,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'user/user/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]>' => 'chat/chat/dialog',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts/<id:[0-9]+>' => 'advert/advert/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',

@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $user_id integer */
 
 use frontend\widgets\UserSideBarWidget;
 use frontend\modules\chat\widgets\MessageListWidget;
@@ -15,7 +16,7 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
     <div class="col-9">
 
         <?php
-            echo MessageListWidget::widget();
+            echo MessageListWidget::widget(['user_id' => $user_id]);
          ?>
 
     </div>

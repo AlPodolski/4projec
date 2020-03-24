@@ -8,7 +8,6 @@
 /* @var $city string */
 
 use frontend\modules\user\models\Profile;
-use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
 
 
