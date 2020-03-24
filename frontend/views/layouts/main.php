@@ -43,14 +43,14 @@ $login = new LoginForm();
         <div class="container">
             <div class="mobile-header">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5 col-sm-4 col-md-4">
                         <div class="logo">
                             <a href="/">
                                 <img src="/files/img/DOSUG.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-5 col-sm-6 col-md-6">
                         <?php echo CityWidget::widget() ?>
                     </div>
                     <div class="col-2">
