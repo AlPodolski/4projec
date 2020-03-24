@@ -830,3 +830,82 @@ ul li .secodn-menu:hover {
 .small-nav{
     padding-top: 25px;
 }
+.mobile-header{
+    display: none;
+}
+.mobile-nav{
+    list-style: none;
+    padding:0;
+}
+.mobile-icon{
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    width: 38px;
+    height: 21px;
+    font-size: 21px;
+    line-height: 40px;
+}
+.mobile-nav{
+    text-align: center;
+}
+.mobile-nav li a {
+    color:#000;
+}
+
+.mobile-nav li .in-cabinet {
+    margin-right: 0px;
+    border:inherit;
+}
+.place-mobile{
+    display: none;
+}
+@media (max-width: 1280px) {
+    .mobile-header .logo{
+        padding-top: 0px;
+    }
+    .place-mobile{
+        display: inline;
+    }
+    .place-desc{
+        display: none;
+    }
+    .mobile-nav li{
+        margin-bottom: 5px;
+    }
+    .mobile-header .place{
+        line-height: 40px;
+    }
+    .mobile-header{
+        display: block;
+        padding: 10px 0;
+    }
+    .icon-close i{
+        font-size: 19px;
+    }
+    .icon-close {
+        cursor: pointer;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 6px;
+        background-position-x: 0%;
+        background-repeat: repeat;
+        background-size: auto;
+        background-repeat: no-repeat;
+        height: 34px;
+        background-position-x: center;
+        margin-top: -10px;
+        background-size: contain;
+        padding-right: 20px;
+    }
+    .mobile-menu {
+        background: #fff;
+        left: -285px;
+        height: 100%;
+        position: fixed;
+        z-index: 12;
+        width: 285px;
+    }
+    .top-menu , .bottom-menu{
+        display: none;
+    }
+}

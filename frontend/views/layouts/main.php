@@ -41,6 +41,57 @@ $login = new LoginForm();
 
     <header>
         <div class="container">
+            <div class="mobile-header">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="/files/img/DOSUG.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <?php echo CityWidget::widget() ?>
+                    </div>
+                    <div class="col-2">
+                        <div class="mobile-icon">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                        <div class="mobile-menu">
+                            <ul class="mobile-nav">
+                                <div class="icon-close">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <li><a href="/znakomstva/pol-muzhskoj">ищу мужчину</a></li>
+                                <li><a href="/znakomstva/pol-zhenskij">ищу женщину</a></li>
+                                <li><a href="/polzovatelskoe-soglashenie">пользовательское соглашение</a></li>
+                                <li><a href="/adverts">объявления</a></li>
+                                <li><a href="/novosti">новости сайта</a></li>
+                                <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
+                                <li><a href="/prostitutki">Ищу проститутку</a></li>
+                                <li>
+                                    <?php if (Yii::$app->user->isGuest) : ?>
+
+                                        <a class="in-cabinet" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
+                                            <i class="fa fa-user"></i>
+                                            Вход
+                                        </a>
+
+                                    <?php else : ?>
+
+                                        <a href="/user" class="in-cabinet" >
+                                            <i class="fa fa-user"></i>
+                                            Кабинет
+                                        </a>
+
+                                    <?php endif; ?>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="top-menu">
                 <div class="row">
                     <div class="col-2">
@@ -176,7 +227,7 @@ $login = new LoginForm();
         <div class="modal-content">
 
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Войти</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Выбрать город</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>

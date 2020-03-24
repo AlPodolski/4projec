@@ -17,7 +17,8 @@ class CityWidget extends Widget
             ?>
 
                 <div class="place" data-toggle="modal" data-target="#cityModal" aria-hidden="true">
-                    <span>Местоположение : </span>
+                    <span class="place-mobile"><i class="fas fa-location-arrow"></i></span>
+                    <span class="place-desc">Местоположение : </span>
                     <span class="place-city"><?php echo $city['city'] ?></span>
                 </div>
 
