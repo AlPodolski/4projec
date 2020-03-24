@@ -35,7 +35,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
             ?>
 
-            <div class="col-9 main-banner-wrap">
+            <div class="col-12 main-banner-wrap">
                 <div class="main-banner">
                     <div class="row">
                         <div class="col-12">
@@ -47,7 +47,8 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row banner-wrap">
+
                         <div class="col-12">
                             <h5>Выберите раздел для поиска секса:</h5>
                         </div>
@@ -111,6 +112,76 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="row main-banner-wrap-mobile">
+
+                        <div class="col-12">
+                            <h5>Выберите раздел для поиска секса:</h5>
+                        </div>
+                        <div class="banner-item-wrap">
+                            <div class=" main-banner-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img class="baner-menu-img" src="/files/img/dandy.png" alt="">
+                                    </div>
+                                    <div class="col-7">
+                                        <ul class="banner-menu-list small-nav">
+                                            <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
+                                            <li><a href="/znakomstva/orientaciya-gei">Ищу гея</a></li>
+                                            <li><a href="/znakomstva/pol-muzhskoj/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-banner-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img class="baner-menu-img" src="/files/img/canary.png" alt="">
+                                    </div>
+                                    <div class="col-7">
+                                        <ul class="banner-menu-list small-nav">
+                                            <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
+                                            <li><a href="/znakomstva/orientaciya-lesbiyanka">Ищу лесбиянку</a></li>
+                                            <li><a href="/znakomstva/pol-zhenskij/materialnoe-polozhenie-gotov-stat-sponsorom">Ищу спонсора</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" main-banner-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img class="baner-menu-img" src="/files/img/catwoman.png" alt="">
+                                    </div>
+                                    <div class="col-7">
+                                        <ul class="banner-menu-list">
+                                            <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
+                                            <li><a href="/znakomstva/usluga-gospogha">Ищу госпажу</a></li>
+                                            <li><a href="/znakomstva/usluga-rabynya">Ищу рабыню</a></li>
+                                            <li><a href="/znakomstva/usluga-gospodin">Ищу господина</a></li>
+                                            <li><a href="/znakomstva/usluga-rab">Ищу раба</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" main-banner-item">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <img class="baner-menu-img" src="/files/img/nick.png" alt="">
+                                    </div>
+                                    <div class="col-7">
+                                        <ul class="banner-menu-list">
+                                            <li><a href="/prostitutki">Ищу проститутку</a></li>
+                                            <li><a href="/prostitutki/usluga-eroticheskiy">Ищу массажистку</a></li>
+                                            <li><a href="/prostitutki/usluga-striptiz">Ищу стриптизершу</a></li>
+                                            <li><a href="/prostitutki/usluga-eskort">Ищу эскорт девушку</a></li>
+                                            <li><a href="/zhigalo">Ищу жигало</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

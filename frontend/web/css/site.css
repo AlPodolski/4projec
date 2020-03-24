@@ -859,19 +859,35 @@ ul li .secodn-menu:hover {
 .place-mobile , .popular-block-mobile{
     display: none;
 }
-
+.main-banner-wrap-mobile{
+    display: none;
+}
 @media (max-width: 1280px) {
-    .popular-block-mobile .slick-prev::before, .slick-next::before{
+    .banner-menu-list li a {
+        font-size: 14px;
+    }
+    .main-banner-wrap-mobile{
+        display: block;
+    }
+    .main-banner-wrap {
+        padding-right: 15px;
+    }
+    .filter-sidebar, .banner-wrap{
+        display: none;
+    }
+    .slick-prev::before, .slick-next::before{
         color: #000!important;
     }
-    .popular-block-mobile .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+     .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
         background: none !important;
     }
-    .popular-block-mobile .slick-next {
-        right: 0px;
+    .popular-block-mobile .slick-next , .main-banner-wrap-mobile .slick-next{
+        right: 10px;
+        z-index: 2;
     }
-    .popular-block-mobile .slick-prev {
-        left: 0px;
+    .popular-block-mobile .slick-prev , .main-banner-wrap-mobile .slick-prev {
+        left: 10px;
+        z-index: 2;
     }
     .popular-block-wrap-mobile .popular-anket{
         font-size: 24px;

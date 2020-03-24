@@ -7,7 +7,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
 
 ?>
-<div class="col-3">
+<div class="col-3 filter-sidebar">
     <div class="user-menu">
         <div class="row">
             <div class="col-9">
