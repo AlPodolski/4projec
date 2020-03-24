@@ -37,7 +37,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
 
 
-            <div class="col-12 main-banner-wrap">
+            <div class="col-12 col-xl-9 main-banner-wrap">
                 <div class="main-banner">
                     <div class="row">
                         <div class="col-12">

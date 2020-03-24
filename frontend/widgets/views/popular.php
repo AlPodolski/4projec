@@ -13,17 +13,17 @@ SlickAsset::register($this);
                     <span class="popular-anket">Популярные анкеты </span>
                 </div>
                 <div class="col-12 slider-popular">
-                    <?php foreach ($popularUsers as $popularUsers) : ?>
+                    <?php foreach ($popularUsers as $popularItem) : ?>
 
                             <div class="popular-anket-wrap">
 
                                 <div class="img-wrap">
 
-                                    <a href="/user/<?php echo $popularUsers->id ?>">
+                                    <a href="/user/<?php echo $popularItem->id ?>">
 
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
 
-                                            <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+                                            <?= Yii::$app->imageCache->thumb($popularItem->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
 
                                         <?php else : ?>
 
@@ -37,7 +37,7 @@ SlickAsset::register($this);
 
                                 </div>
                                 <div class="name">
-                                    <?php echo $popularUsers->username; ?>
+                                    <?php echo $popularItem->username; ?>
                                 </div>
                             </div>
 

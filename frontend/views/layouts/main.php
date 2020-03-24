@@ -62,11 +62,11 @@ $login = new LoginForm();
                                 <div class="icon-close">
                                     <i class="fas fa-times"></i>
                                 </div>
-                                <li><a href="/znakomstva/pol-muzhskoj">ищу мужчину</a></li>
-                                <li><a href="/znakomstva/pol-zhenskij">ищу женщину</a></li>
-                                <li><a href="/polzovatelskoe-soglashenie">пользовательское соглашение</a></li>
-                                <li><a href="/adverts">объявления</a></li>
-                                <li><a href="/novosti">новости сайта</a></li>
+                                <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
+                                <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
+                                <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
+                                <li><a href="/adverts">Объявления</a></li>
+                                <li><a href="/novosti">Новости сайта</a></li>
                                 <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
                                 <li><a href="/prostitutki">Ищу проститутку</a></li>
                                 <li>
@@ -99,9 +99,9 @@ $login = new LoginForm();
                     </div>
                     <div class="col-7">
                         <ul class="top-nav">
-                            <li><a href="/polzovatelskoe-soglashenie">пользовательское соглашение</a></li>
-                            <li><a href="/adverts">объявления</a></li>
-                            <li><a href="/novosti">новости сайта</a></li>
+                            <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
+                            <li><a href="/adverts">Объявления</a></li>
+                            <li><a href="/novosti">Новости сайта</a></li>
                         </ul>
                     </div>
 
@@ -139,8 +139,8 @@ $login = new LoginForm();
                     </div>
                     <div class="col-7">
                         <ul class="top-nav">
-                            <li><a href="/znakomstva/pol-muzhskoj">ищу мужчину</a></li>
-                            <li><a href="/znakomstva/pol-zhenskij">ищу женщину</a></li>
+                            <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
+                            <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
                             <li>
                                 <a href="#">БДСМ</a>
                                 <ul class="secodn-menu">

@@ -31,7 +31,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
             ?>
 
-            <div class="col-9">
+            <div class="col-12 col-xl-9">
 
                 <div class="content-wrap">
 
