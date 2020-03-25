@@ -6,6 +6,7 @@ use common\models\Price;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\assets\SlickAsset;
+
 /* @var $model Profile */
 
 $this->registerJsFile('/files/js/lightgallery-all.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -29,9 +30,9 @@ $metro = $model->getMetro();
 $rayon = $model->getRayon();
 
 
-$userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id ])->with('present')->all();
+$userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id])->with('present')->all();
 
-if ($model){
+if ($model) {
     $service = $model->getService();
     $postPrice = $model->getUserPrice();
 }
@@ -41,268 +42,424 @@ if ($model){
 
 <div class="anket">
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <div class="single-photo">
 
-                <div class="slider slider-for">
+                <div class="single-left-column page-block page_photo">
 
-                    <?php if (!empty($photo)) : ?>
+                    <?php foreach ($photo as $item) : ?>
 
-                        <?php foreach ($photo as $item) : ?>
+                        <?php if ($item['avatar'] == 1) : ?>
 
-                            <div class="item" href="<?php echo $item->file?>">
-                                <img src="<?php echo $item->file?>" alt="<?php echo $model['username']  ?>">
+                            <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
+
+                                <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
+
+                            <?php else : ?>
+
+                                <img src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+
+                        <?php endif; ?>
+
+                    <?php endforeach; ?>
+
+                    <div class="profile_actions">
+                        <div class="profile_action_btn profile_msg_split" id="profile_message_send">
+                            <div class="clear_fix">
+                                <a href="#" class="button_link cut_left">
+                                    <button class="flat_button profile_btn_cut_left">Написать сообщение</button>
+                                </a>
+                                <a href="#" class="button_link cut_right" id="profile_send_gift_btn">
+                                    <button class="flat_button profile_btn_cut_right">
+                                        <span class="profile_gift_icon"></span>
+                                        <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
+                                    </button>
+                                </a>
                             </div>
-
-                        <?php endforeach; ?>
-
-                    <?php endif; ?>
-
+                        </div>
+                    </div>
                 </div>
 
-                <div class="slider slider-nav">
+                <!--                <div class="slider">
 
-                    <?php if (!empty($photo)) : ?>
+                    <?php /*if (!empty($photo)) : */ ?>
 
-                        <?php foreach ($photo as $item) : ?>
+                        <?php /*foreach ($photo as $item) : */ ?>
 
                         <div class="item">
-                            <img src="<?php echo $item->file?>" alt="<?php echo $model['username']  ?>">
+                            <img src="<?php /*echo $item->file*/ ?>" alt="<?php /*echo $model['username']  */ ?>">
                         </div>
 
-                        <?php endforeach; ?>
+                        <?php /*endforeach; */ ?>
 
-                    <?php endif; ?>
+                    <?php /*endif; */ ?>
 
-                </div>
-
+                </div>-->
 
 
             </div>
         </div>
-        <div class="col-6">
-            <br>
-            <div class="user-city">
-                <?php
-
-                    $city = City::getCity($model->city);
-
-                ?>
-
-                <p class="city-name"><?php echo $city['city'] ?></p>
-
-            </div>
-
-            <div class="user-name">
-                <p class="user-name">
-                    <?php echo $model->username ?>
-                </p>
-            </div>
-
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Описание</a>
-
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Парметры</a>
-
-                    <?php if ($postPrice) :  ?>
-
-                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Цена</a>
-
-                    <?php endif;  ?>
-
+        <div class="col-8">
+            <div class="page-block profile_info">
+                <div class="page_top">
+                    <div class="user-name">
+                        <p class="user-name">
+                            <?php echo $model->username ?>
+                        </p>
+                    </div>
                 </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <?php if ($model->text) : ?>
-                        <p><?php  echo $model->text ?></p>
-                    <?php endif; ?>
+                <div class="">
+                    <div class="clear_fix profile_info_row ">
+                        <div class="label fl_l">Город:</div>
+                        <?php
 
+                            $city = City::getCity($model->city);
 
-                    <div class="service-block">
+                        ?>
+                        <div class="labeled"><?php echo $city['city'] ?></div>
+                    </div>
 
-                        <?php if ($service) : ?>
+                    <div class="clear_fix profile_info_row ">
 
-                            <p class="sex-pred">Сексуальные предпочтения</p>
+                        <?php if ($postPrice) : ?>
 
-                            <ul>
+                            <div class="label fl_l">Цена:</div>
+                            <?php
 
-                                <?php foreach ($service as $item) : ?>
+                                $city = City::getCity($model->city);
 
-                                    <li>
-
-                                        <?php echo $item->value ?>
-
-                                    </li>
-
-                                <?php endforeach; ?>
-
-                            </ul>
+                            ?>
+                            <div class="labeled"> <?php echo $postPrice['value'] ?> рублей</div>
 
                         <?php endif; ?>
+
+                    </div>
+
+                    <div class="clear_fix profile_info_row ">
+
+                        <?php if (!empty($model['sexual'])) : ?>
+
+                            <div class="label fl_l">Моя ориентация:</div>
+                            <?php
+
+                                $city = City::getCity($model->city);
+
+                            ?>
+                            <div class="labeled"> <?php foreach ($model['sexual'] as $item) echo $item['value'] . ' ' ?></div>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div class="clear_fix profile_info_row ">
+
+                        <?php if (!empty($model['wantFind'])) : ?>
+
+                            <div class="label fl_l">Хочу найти:</div>
+                            <?php
+
+                                $city = City::getCity($model->city);
+
+                            ?>
+                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo $item['value'] . ' ' ?> </div>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div class="clear_fix profile_info_row ">
+
+                        <?php if (!empty($model['celiZnakomstvamstva'])) : ?>
+
+                            <div class="label fl_l">Цели знакомства:</div>
+
+                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo $item['value'] . ' ' ?> </div>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                    <?php if (!empty($model['vneshnost'])) : ?>
+
+
+                    <div class="clear_fix profile_info_row ">
+
+                        <div class="label fl_l">Моя внешность:</div>
+
+                        <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                    </div>
+
+                    <?php endif; ?>
+
+                    <?php if ($service) : ?>
+
+                    <div class="clear_fix profile_info_row ">
+
+                            <div class="label fl_l">Сексуальные предпочтения:</div>
+
+                            <div class="labeled"> <?php foreach ($service as $item) echo $item->value  . ' ' ?> </div>
+
+                    </div>
+
+                    <?php endif; ?>
+
+                    <?php if ($model->text) : ?>
+
+                    <div class="clear_fix profile_info_row ">
+
+                            <div class="label fl_l">Обо мне:</div>
+
+                            <div class="labeled black-text"> <?php echo $model->text ?> </div>
+
+                    </div>
+
+                    <?php endif; ?>
+
+                    <div class="profile_more_info">
+                        <a class="profile_more_info_link">
+                            <span class="profile_label_more">Показать подробную информацию</span>
+                            <span class="profile_label_less">Скрыть подробную информацию</span>
+                        </a>
+                    </div>
+
+                    <div class="profile_full">
+
+                        <?php if (!empty($metro)) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Метро:</div>
+
+                                <div class="labeled"> <?php foreach ($metro as $item) echo $item['value'] . ' ' ?> </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($rayon)) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Район:</div>
+
+                                <div class="labeled"> <?php foreach ($rayon as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['place'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Место встречи:</div>
+
+                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['bodyType'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Телосложение:</div>
+
+                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['national'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Национальность:</div>
+
+                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo $item['value'] . ' ' ?>   </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['financialSituation'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Материальное положение:</div>
+
+                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo $item['value'] . ' ' ?>    </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['interesting'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Интересы:</div>
+
+                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['professionals'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Профессия:</div>
+
+                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['vajnoeVPartnere'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Важное в партнере:</div>
+
+                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['children'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Дети: </div>
+
+                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['family'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Семья: </div>
+
+                                <div class="labeled">   <?php foreach ($model['family'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['alcogol'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Отношение к алкоголю: </div>
+
+                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['education'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Образование: </div>
+
+                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['breast'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Размер груди: </div>
+
+                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['intimHair'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Интимная стрижка: </div>
+
+                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['hairColor'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Цвет волос: </div>
+
+                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['sferaDeyatelnosti'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Сфера деятельности: </div>
+
+                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['zhile'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Жилье: </div>
+
+                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['transport'])) : ?>
+
+                            <div class="clear_fix profile_info_row ">
+
+                                <div class="label fl_l">Транспорт: </div>
+
+                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo $item['value'] . ' ' ?>  </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
                     </div>
 
                 </div>
-                <div class="tab-pane fade param-tab" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
-                    <?php if (!empty($metro)) :  ?>
-
-                        <p class="param"> Метро : <?php foreach ($metro as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($rayon)) :  ?>
-
-                        <p class="param"> Район : <?php foreach ($rayon as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['place'])) :  ?>
-
-                        <p class="param"> Место встречи : <?php foreach ($model['place'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['sexual'])) :  ?>
-
-                        <p class="param"> Моя ориентация : <?php foreach ($model['sexual'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['bodyType'])) :  ?>
-
-                        <p class="param"> Телосложение : <?php foreach ($model['bodyType'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['national'])) :  ?>
-
-                        <p class="param"> Национальность : <?php foreach ($model['national'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['financialSituation'])) :  ?>
-
-                        <p class="param"> Материальное положение : <?php foreach ($model['financialSituation'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['interesting'])) :  ?>
-
-                        <p class="param"> Интересы : <?php foreach ($model['interesting'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['professionals'])) :  ?>
-
-                        <p class="param"> Профессия : <?php foreach ($model['professionals'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['vneshnost'])) :  ?>
-
-                        <p class="param"> Моя внешность : <?php foreach ($model['vneshnost'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['vajnoeVPartnere'])) :  ?>
-
-                        <p class="param"> Важное в партнере : <?php foreach ($model['vajnoeVPartnere'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['children'])) :  ?>
-
-                        <p class="param"> Дети : <?php foreach ($model['children'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['family'])) :  ?>
-
-                        <p class="param"> Семья : <?php foreach ($model['family'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['wantFind'])) :  ?>
-
-                        <p class="param"> Хочу найти : <?php foreach ($model['wantFind'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['celiZnakomstvamstva'])) :  ?>
-
-                        <p class="param"> Цели знакомства : <?php foreach ($model['celiZnakomstvamstva'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['lifeGoals'])) :  ?>
-
-                        <p class="param"> Жизненые приоритеты : <?php foreach ($model['lifeGoals'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['alcogol'])) :  ?>
-
-                        <p class="param"> Отношение к алкоголю : <?php foreach ($model['alcogol'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['education'])) :  ?>
-
-                        <p class="param"> Образование : <?php foreach ($model['education'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['breast'])) :  ?>
-
-                        <p class="param"> Размер груди : <?php foreach ($model['breast'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['intimHair'])) :  ?>
-
-                        <p class="param"> Интимная стрижка : <?php foreach ($model['intimHair'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['hairColor'])) :  ?>
-
-                        <p class="param"> Цвет волос : <?php foreach ($model['hairColor'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['sferaDeyatelnosti'])) :  ?>
-
-                        <p class="param"> Сфера деятельности : <?php foreach ($model['sferaDeyatelnosti'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                    <?php if (!empty($model['zhile'])) :  ?>
-
-                        <p class="param"> Жилье : <?php foreach ($model['zhile'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-
-                    <?php if (!empty($model['transport'])) :  ?>
-
-                        <p class="param"> Транспорт : <?php foreach ($model['transport'] as $item) echo $item['value']. ' ' ?>  </p>
-
-                    <?php endif;  ?>
-
-                </div>
-                <div class="tab-pane param-tab fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-
-                    <?php if ($postPrice) : ?>
-
-                        <?php echo $postPrice['value'] ?> рублей
-
-                    <?php endif; ?>
-
-                </div>
             </div>
+
             <br>
             <br>
             <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
@@ -331,7 +488,8 @@ if ($model){
         </div>
     </div>
 </div>
-<div class="modal fade" id="modal-present" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modal-present" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -361,7 +519,6 @@ if ($model){
             </div>
 
             <div class="modal-body modal-gift-present">
-
 
 
             </div>

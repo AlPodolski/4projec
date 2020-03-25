@@ -43,3 +43,12 @@ $(document).ready(function() {
     });
 
 });
+$(document).ready(function() {
+
+    $('.profile_more_info_link ').on('click', function(e){
+        $('.profile_label_more ').toggle();
+        $('.profile_label_less ').toggle();
+        $('.profile_full ').toggle();
+    });
+
+});

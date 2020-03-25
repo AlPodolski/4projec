@@ -35,6 +35,7 @@ return [
             'thumbsPath' => '@app/web/thumbs',
             'sizes' => [
                 'popular' => [180, 200],
+                'single-main' => [215, 215],
                 'listing' => [277, 266],
                 'large' => [600, 600],
                 'dialog' => [50, 50],
