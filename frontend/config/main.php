@@ -19,6 +19,9 @@ return [
         'user' => [
             'class' => 'frontend\modules\user\User',
         ],
+        'wall' => [
+            'class' => 'frontend\modules\wall\Wall',
+        ],
         'advert' => [
             'class' => 'frontend\modules\advert\advert',
         ],
@@ -85,6 +88,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/more-adverds' => 'advert/advert/more',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/add' => 'wall/wall/add',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',

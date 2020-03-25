@@ -892,6 +892,18 @@ ul li .secodn-menu:hover {
 .profile_label_less , .profile_full{
     display: none;
 }
+.wall-form{
+    margin-top: 15px;
+}
+.wall-send-btn{
+    max-width: 120px;
+}
+.wall-form .form-group{
+    text-align:right;
+}
+.wall-form .form-control{
+    font-size: 13px;
+}
 .labeled {
     overflow: hidden;
     text-overflow: ellipsis;

@@ -6,6 +6,8 @@ use common\models\Price;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\assets\SlickAsset;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
 /* @var $model Profile */
 
@@ -29,6 +31,7 @@ $price = Price::find()->asArray()->all();
 $metro = $model->getMetro();
 $rayon = $model->getRayon();
 
+$addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
 $userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id])->with('present')->all();
 
@@ -476,6 +479,25 @@ if ($model) {
                 </div>
             </div>
 
+            <div class="page-block wall-form">
+
+                <?php
+
+                $form = ActiveForm::begin([
+                    'action' => '#',
+                    'id' => 'wall-form',
+                    'options' => ['class' => 'form-horizontal'],
+                ]) ?>
+                <?= $form->field($addWallForm, 'user_id')->hiddenInput(['value' => $model->id])->label(false) ?>
+                <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+
+                <div class="form-group ">
+                    <span class="btn btn-primary wall-send-btn flat_button">Отправить</span>
+                </div>
+                <?php ActiveForm::end() ?>
+
+            </div>
+
             <br>
             <br>
             <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
@@ -500,7 +522,6 @@ if ($model) {
                 </div>
 
             <?php endif; ?>
-
         </div>
     </div>
 </div>
