@@ -904,6 +904,9 @@ ul li .secodn-menu:hover {
 .wall-form .form-control{
     font-size: 13px;
 }
+#wall-form .alert{
+    margin-bottom: 0px;
+}
 .labeled {
     overflow: hidden;
     text-overflow: ellipsis;
