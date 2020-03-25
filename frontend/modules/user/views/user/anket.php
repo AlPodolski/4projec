@@ -82,23 +82,6 @@ if ($model) {
                     </div>
                 </div>
 
-                <!--                <div class="slider">
-
-                    <?php /*if (!empty($photo)) : */ ?>
-
-                        <?php /*foreach ($photo as $item) : */ ?>
-
-                        <div class="item">
-                            <img src="<?php /*echo $item->file*/ ?>" alt="<?php /*echo $model['username']  */ ?>">
-                        </div>
-
-                        <?php /*endforeach; */ ?>
-
-                    <?php /*endif; */ ?>
-
-                </div>-->
-
-
             </div>
         </div>
         <div class="col-8">
@@ -115,7 +98,7 @@ if ($model) {
                         <div class="label fl_l">Город:</div>
                         <?php
 
-                            $city = City::getCity($model->city);
+                        $city = City::getCity($model->city);
 
                         ?>
                         <div class="labeled"><?php echo $city['city'] ?></div>
@@ -128,7 +111,7 @@ if ($model) {
                             <div class="label fl_l">Цена:</div>
                             <?php
 
-                                $city = City::getCity($model->city);
+                            $city = City::getCity($model->city);
 
                             ?>
                             <div class="labeled"> <?php echo $postPrice['value'] ?> рублей</div>
@@ -144,7 +127,7 @@ if ($model) {
                             <div class="label fl_l">Моя ориентация:</div>
                             <?php
 
-                                $city = City::getCity($model->city);
+                            $city = City::getCity($model->city);
 
                             ?>
                             <div class="labeled"> <?php foreach ($model['sexual'] as $item) echo $item['value'] . ' ' ?></div>
@@ -160,7 +143,7 @@ if ($model) {
                             <div class="label fl_l">Хочу найти:</div>
                             <?php
 
-                                $city = City::getCity($model->city);
+                            $city = City::getCity($model->city);
 
                             ?>
                             <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo $item['value'] . ' ' ?> </div>
@@ -184,37 +167,37 @@ if ($model) {
                     <?php if (!empty($model['vneshnost'])) : ?>
 
 
-                    <div class="clear_fix profile_info_row ">
+                        <div class="clear_fix profile_info_row ">
 
-                        <div class="label fl_l">Моя внешность:</div>
+                            <div class="label fl_l">Моя внешность:</div>
 
-                        <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo $item['value'] . ' ' ?>  </div>
+                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo $item['value'] . ' ' ?>  </div>
 
-                    </div>
+                        </div>
 
                     <?php endif; ?>
 
                     <?php if ($service) : ?>
 
-                    <div class="clear_fix profile_info_row ">
+                        <div class="clear_fix profile_info_row ">
 
                             <div class="label fl_l">Сексуальные предпочтения:</div>
 
-                            <div class="labeled"> <?php foreach ($service as $item) echo $item->value  . ' ' ?> </div>
+                            <div class="labeled"> <?php foreach ($service as $item) echo $item->value . ' ' ?> </div>
 
-                    </div>
+                        </div>
 
                     <?php endif; ?>
 
                     <?php if ($model->text) : ?>
 
-                    <div class="clear_fix profile_info_row ">
+                        <div class="clear_fix profile_info_row ">
 
                             <div class="label fl_l">Обо мне:</div>
 
                             <div class="labeled black-text"> <?php echo $model->text ?> </div>
 
-                    </div>
+                        </div>
 
                     <?php endif; ?>
 
@@ -339,7 +322,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Дети: </div>
+                                <div class="label fl_l">Дети:</div>
 
                                 <div class="labeled">  <?php foreach ($model['children'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -351,7 +334,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Семья: </div>
+                                <div class="label fl_l">Семья:</div>
 
                                 <div class="labeled">   <?php foreach ($model['family'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -363,7 +346,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Отношение к алкоголю: </div>
+                                <div class="label fl_l">Отношение к алкоголю:</div>
 
                                 <div class="labeled">   <?php foreach ($model['alcogol'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -375,7 +358,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Образование: </div>
+                                <div class="label fl_l">Образование:</div>
 
                                 <div class="labeled">   <?php foreach ($model['education'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -387,7 +370,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Размер груди: </div>
+                                <div class="label fl_l">Размер груди:</div>
 
                                 <div class="labeled">   <?php foreach ($model['breast'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -399,7 +382,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Интимная стрижка: </div>
+                                <div class="label fl_l">Интимная стрижка:</div>
 
                                 <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -411,7 +394,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Цвет волос: </div>
+                                <div class="label fl_l">Цвет волос:</div>
 
                                 <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -423,7 +406,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Сфера деятельности: </div>
+                                <div class="label fl_l">Сфера деятельности:</div>
 
                                 <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -435,7 +418,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Жилье: </div>
+                                <div class="label fl_l">Жилье:</div>
 
                                 <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -447,7 +430,7 @@ if ($model) {
 
                             <div class="clear_fix profile_info_row ">
 
-                                <div class="label fl_l">Транспорт: </div>
+                                <div class="label fl_l">Транспорт:</div>
 
                                 <div class="labeled">   <?php foreach ($model['transport'] as $item) echo $item['value'] . ' ' ?>  </div>
 
@@ -456,6 +439,39 @@ if ($model) {
                         <?php endif; ?>
 
                     </div>
+
+                </div>
+            </div>
+
+            <div class="page-block page-photo">
+
+                <div class="slider">
+
+                    <?php if (!empty($photo)) :  ?>
+
+                    <div class="row">
+
+                        <?php foreach ($photo as $item) :  ?>
+
+                            <div class="item">
+
+                            <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+
+                                <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
+
+                            <?php else : ?>
+
+                                <img src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+
+                            </div>
+
+                        <?php endforeach;  ?>
+
+                    </div>
+
+                    <?php endif;  ?>
 
                 </div>
             </div>
