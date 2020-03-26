@@ -89,7 +89,7 @@ $(document).ready(function() {
 
     $('.open-comment-btn').on('click', function(e){
 
-        $('.comment-wall-form-'+$('.open-comment-btn').attr('data-id')).toggleClass('d-none');
+        $('.comment-wall-form-'+$(this).attr('data-id')).toggleClass('d-none');
     });
 
 });
