@@ -201,6 +201,10 @@ class Profile extends \yii\db\ActiveRecord
         $this->avatar = ArrayHelper::getValue(Photo::find()->where(['avatar' => 1])->andWhere(['user_id' => $this->id])->asArray()->one(), 'file');
     }
 
+    public function getAvatarRelation(){
+        return $this->hasOne(Photo::class, ['user_id' => 'id'])->andWhere(['avatar' => 1]);
+    }
+
     public function getPol(){
         return ArrayHelper::getValue($this->hasOne(UserPol::class, ['user_id' => 'id'])->asArray()->one(), 'pol_id');
     }

@@ -2,6 +2,7 @@
 
 namespace frontend\modules\wall\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -44,7 +45,13 @@ class Wall extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'from' => 'From',
             'created_at' => 'Created At',
-            'text' => 'Text',
+            'text' => 'Сообщение',
         ];
+    }
+
+    public function getAuthor(){
+
+        return $this->hasOne(Profile::class, ['id' => 'from'])->with('avatarRelation');
+
     }
 }

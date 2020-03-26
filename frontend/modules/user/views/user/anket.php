@@ -498,6 +498,10 @@ if ($model) {
 
             </div>
 
+            <div class="">
+                <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
+            </div>
+
             <br>
             <br>
             <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">

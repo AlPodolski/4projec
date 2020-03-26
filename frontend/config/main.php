@@ -27,6 +27,9 @@ return [
         ],
     ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'd.MM.Y',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'enableCsrfValidation' => false
