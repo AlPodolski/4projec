@@ -2,6 +2,7 @@
 
 namespace frontend\modules\wall\models;
 
+use common\models\Comments;
 use frontend\modules\user\models\Profile;
 use Yii;
 
@@ -52,6 +53,12 @@ class Wall extends \yii\db\ActiveRecord
     public function getAuthor(){
 
         return $this->hasOne(Profile::class, ['id' => 'from'])->with('avatarRelation');
+
+    }
+
+    public function getComments(){
+
+        return $this->hasMany(Comments::class, ['related_id' => 'id'])->andWhere(['class' => Wall::class])->with('author');
 
     }
 }

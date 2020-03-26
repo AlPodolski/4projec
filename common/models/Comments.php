@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -49,5 +50,11 @@ class Comments extends \yii\db\ActiveRecord
             'related_id' => 'Related ID',
             'text' => 'Text',
         ];
+    }
+
+    public function getAuthor(){
+
+        return $this->hasOne(Profile::class, ['id' => 'author_id'])->with('avatarRelation');
+
     }
 }

@@ -20,7 +20,7 @@ class AddCommentForm extends Model
     public function rules()
     {
         return [
-            [['author_id, created_id, related_id'], 'integer'],
+            [['author_id', 'created_id', 'related_id'], 'integer'],
             [['class'], 'string', 'max' => 120],
             [['text'], 'string', 'max' => 255],
         ];

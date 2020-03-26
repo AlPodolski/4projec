@@ -13,19 +13,19 @@ if (!empty($wallItems)) : ?>
 
         <div class="post_header">
 
-        <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>" >
+            <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>" >
 
-            <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
+                <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 
-                <?= Yii::$app->imageCache->thumb($item['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                    <?= Yii::$app->imageCache->thumb($item['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
 
-            <?php else : ?>
+                <?php else : ?>
 
-                <img src="/files/img/nophoto.png" alt="">
+                    <img src="/files/img/nophoto.png" alt="">
 
-            <?php endif; ?>
+                <?php endif; ?>
 
-        </a>
+            </a>
 
         <div class="post_header_info">
 
@@ -37,6 +37,7 @@ if (!empty($wallItems)) : ?>
 
 
     </div>
+
             <div style="clear: both">
             </div>
 
@@ -44,11 +45,64 @@ if (!empty($wallItems)) : ?>
                 <?php echo $item['text'] ?>
             </div>
 
+
+
             <div class="open-comment-btn" data-id="<?php echo $item['id'] ?>">
                 <i class="far fa-comment"></i>
             </div>
 
-                <div class="comment-wall-form d-none comment-wall-form-<?php echo $item['id'] ?>">
+            <?php if (!empty($item['comments'])) : ?>
+            <?php /*комментарии к записи*/ ?>
+            <div class="comments-list">
+
+                <?php foreach ($item['comments'] as $comment) : ?>
+
+                <div class="comment-item">
+
+                <div class="post_header">
+
+                <a class="post_image " href="/user/<?php echo $comment['author']['id'] ?>" >
+
+                    <?php if (file_exists(Yii::getAlias('@webroot').$comment['author']['avatarRelation']['file']) and $comment['author']['avatarRelation']['file']) : ?>
+
+                        <?= Yii::$app->imageCache->thumb($comment['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+
+                    <?php else : ?>
+
+                        <img src="/files/img/nophoto.png" alt="">
+
+                    <?php endif; ?>
+
+                </a>
+
+                <div class="post_header_info">
+
+                    <a href="/user/<?php echo $comment['author']['id'] ?>" class="author">
+                        <?php echo $comment['author']['username'] ?>
+                    </a>
+
+                    <div class="post-text post-text-related">
+                        <?php echo $comment['text'] ?>
+                    </div>
+                    <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($comment['created_at']) ?></span></span></div>
+
+                </div>
+                </div>
+
+                <div style="clear: both">
+                </div>
+
+
+                </div>
+                <?php endforeach; ?>
+
+
+            </div>
+
+            <?php endif; ?>
+
+
+                <div class="comment-wall-form comment-wall-form-<?php echo $item['id'] ?>">
 
                     <?php
 

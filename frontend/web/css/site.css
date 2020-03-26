@@ -900,14 +900,15 @@ ul li .secodn-menu:hover {
 .open-comment-btn {
     color: #a7acb7;
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 .comment-wall-form{
     position: relative;
 }
 .comment-wall-form textarea{
-    height: 38px;
+    height: 35px;
     font-size: 13px;
 }
 .comment-wall-form{
@@ -920,6 +921,7 @@ ul li .secodn-menu:hover {
     z-index: 8;
     cursor: pointer;
 }
+
 .form-otvet{
     margin-right: 50px;
 
@@ -940,8 +942,10 @@ ul li .secodn-menu:hover {
     font-weight: 500;
 }
 .post-text{
-    margin-top:15px;
+    margin-top:0px;
     font-size:13px;
+    border-bottom: 1px solid #e7e8ec;
+    padding: 10px 0px;
 }
 .profile_info_row {
     padding-top: 5px;
@@ -1076,6 +1080,33 @@ ul li .secodn-menu:hover {
     padding: 15px 15px 7px 15px;
     border-radius: 3px;
     box-shadow: 0 1px 0 0 #d7d8db,0 0 0 1px #e3e4e8;
+}
+.comments-list .post_image{
+    max-width: 34px;
+    margin-top: 9px;
+}
+.comments-list .post_header_info{
+    margin-left: 45px;
+    padding-top: 0px;
+}
+.comments-list .post-text-related{
+    margin-top: 0;
+    padding: 0;
+}
+.comments-list {
+    margin: 0 -15px;
+    padding: 10px 15px;
+    border-top: 1px solid #ccc;
+    border-top: 1px solid #e7e8ec;
+}
+.comments-list .post-text{
+    border-bottom: none;
+}
+.comment-item{
+    margin-top: 10px;
+}
+.comments-list .comment-item:first-child{
+    margin-top: 1px;
 }
 @media (max-width: 1199px) {
     .anket{
