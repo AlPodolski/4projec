@@ -32,6 +32,16 @@ class AddToWallForm extends Model
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'text' => 'Сообщение',
+        ];
+    }
+
     public function save(){
 
         $wallItem = new Wall();

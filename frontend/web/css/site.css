@@ -897,7 +897,31 @@ ul li .secodn-menu:hover {
     padding-top: 8px;
     line-height: 16px;
 }
-.post_date{
+.open-comment-btn {
+    color: #a7acb7;
+    font-size: 18px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.comment-wall-form{
+    position: relative;
+}
+.comment-wall-form textarea{
+    height: 38px;
+    font-size: 13px;
+}
+.comment-wall-form{
+    margin-top: 5px;
+}
+.send-comment-btn {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    z-index: 8;
+    cursor: pointer;
+}
+.form-otvet{
+    margin-right: 50px;
 
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
@@ -1049,7 +1073,7 @@ ul li .secodn-menu:hover {
 }
 .page-block{
     background: #fff;
-    padding: 15px;
+    padding: 15px 15px 7px 15px;
     border-radius: 3px;
     box-shadow: 0 1px 0 0 #d7d8db,0 0 0 1px #e3e4e8;
 }

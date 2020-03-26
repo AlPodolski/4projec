@@ -92,6 +92,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/more-adverds' => 'advert/advert/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/add' => 'wall/wall/add',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/comment' => 'wall/wall/comment',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',

@@ -85,3 +85,47 @@ $(document).ready(function() {
     });
 
 });
+$(document).ready(function() {
+
+    $('.open-comment-btn').on('click', function(e){
+
+        $('.comment-wall-form-'+$('.open-comment-btn').attr('data-id')).toggleClass('d-none');
+    });
+
+});
+
+$(document).ready(function() {
+
+    $('.send-comment-btn').on('click', function(e){
+
+        var formData = new FormData($(".form-wall-comment-"+$(this).attr('data-id'))[0]);
+
+        var id = $(this).attr('data-id');
+
+        $.ajax({
+            url: '/wall/comment',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#w0 .form-text').css('display', 'none');
+            },
+            success: function (data) {
+                $(".comment-wall-form-"+id).html('<p class="alert alert-success">Запись добавлена</p>');
+            },
+
+            complete: function() {
+                // success alerts
+            },
+
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    });
+
+});
