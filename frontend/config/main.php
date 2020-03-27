@@ -27,6 +27,12 @@ return [
         ],
     ],
     'components' => [
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0,
+        ],
         'formatter' => [
             'dateFormat' => 'd.MM.Y',
         ],
@@ -93,6 +99,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/more-adverds' => 'advert/advert/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/add' => 'wall/wall/add',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/comment' => 'wall/wall/comment',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/like' => 'wall/wall/item-like',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',

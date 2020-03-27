@@ -575,5 +575,4 @@ class Profile extends \yii\db\ActiveRecord
         return $this->hasMany(Smoking::class, ['id' => 'param_id'])->via('userSmokingRelations');
     }
 
-
 }

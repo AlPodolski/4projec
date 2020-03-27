@@ -96,6 +96,32 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
+    $('.like-btn').on('click', function(e){
+
+        var id = $(this).attr('data-id');
+        var object = $(this);
+
+        if($(this).hasClass('guest')){
+            $(this).siblings('.like-info').removeClass('d-none');
+            $('.like-info').text('Требуется авторизация');
+            return true;
+        }
+
+        $.ajax({
+            url: '/wall/item/like',
+            type: 'POST',
+            data: 'id='+id,
+            success: function (data) {
+                $(object).children().toggleClass('d-none');
+            },
+        });
+
+    });
+
+});
+
+$(document).ready(function() {
+
     $('.send-comment-btn').on('click', function(e){
 
         var formData = new FormData($(".form-wall-comment-"+$(this).attr('data-id'))[0]);

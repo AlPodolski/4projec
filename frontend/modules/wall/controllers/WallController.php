@@ -7,6 +7,7 @@ use frontend\modules\wall\models\forms\AddToWallForm;
 use Yii;
 use yii\web\Controller;
 use frontend\modules\wall\models\Wall;
+use frontend\modules\wall\components\LikeHelper;
 
 class WallController extends Controller
 {
@@ -58,5 +59,20 @@ class WallController extends Controller
         }
 
         return $this->goHome();
+    }
+
+    public function actionItemLike()
+    {
+
+        if (Yii::$app->request->isPost){
+
+            if (!Yii::$app->user->isGuest){
+
+                LikeHelper::like(Yii::$app->user->id, Yii::$app->request->post('id'), Yii::$app->params['wall_item_redis_key']);
+
+            }
+
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 
 use yii\widgets\ActiveForm;
 use frontend\modules\wall\models\forms\AddCommentForm;
+use frontend\modules\wall\components\LikeHelper;
 
 $commentForm = new AddCommentForm();
 
@@ -45,11 +46,49 @@ if (!empty($wallItems)) : ?>
                 <?php echo $item['text'] ?>
             </div>
 
+            <div class="like-btn <?php echo (Yii::$app->user->isGuest) ? 'guest' : '' ?> " data-id="<?php echo $item['id'] ?>">
 
+                <?php if (!Yii::$app->user->isGuest and !LikeHelper::isLiked(Yii::$app->user->id, $item['id'], Yii::$app->params['wall_item_redis_key'] )) : ?>
 
+                    <span>
+                        <i class="far fa-heart"></i>
+                    </span>
+
+                    <span class="d-none">
+                        <i class="fas fa-heart"></i>
+                    </span>
+
+            <?php elseif(Yii::$app->user->isGuest) : ?>
+
+                    <span>
+                        <i class="far fa-heart"></i>
+                    </span>
+
+                    <span class="d-none">
+                        <i class="fas fa-heart"></i>
+                    </span>
+
+                <?php else: ?>
+
+                    <span class="d-none">
+                        <i class="far fa-heart"></i>
+                    </span>
+
+                    <span >
+                        <i class="fas fa-heart"></i>
+                    </span>
+
+            <?php endif; ?>
+
+            </div>
             <div class="open-comment-btn" data-id="<?php echo $item['id'] ?>">
                 <i class="far fa-comment"></i>
             </div>
+
+            <div style="clear: both">
+            </div>
+
+            <span class="like-info d-none"></span>
 
             <?php if (!empty($item['comments'])) : ?>
             <?php /*комментарии к записи*/ ?>
