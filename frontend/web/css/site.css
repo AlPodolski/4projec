@@ -331,8 +331,8 @@ img{
 }
 .anket{
     border-radius: 5px;
-    margin-top: 5px;
-    padding: 10px;
+    margin-top: 10px;
+    margin-right: -15px;
 }
 .city-name{
     color: #838c8e;
@@ -351,6 +351,9 @@ img{
     border-radius: 22px;
     padding: 7px 30px;
     line-height: 16px;
+}
+.single-left-column.page-block.page_photo {
+    padding: 19px;
 }
 #nav-tab .active{
     color: #fff;
@@ -1087,9 +1090,12 @@ ul li .secodn-menu:hover {
     width: 38px;
     float: left;
 }
+ .presents{
+     margin-top: 15px;
+ }
 .page-block{
     background: #fff;
-    padding: 15px 15px 7px 15px;
+    padding: 15px 15px 15px 15px;
     border-radius: 3px;
     box-shadow: 0 1px 0 0 #d7d8db,0 0 0 1px #e3e4e8;
     position: relative;
@@ -1127,6 +1133,15 @@ ul li .secodn-menu:hover {
 }
 .comments-list .comment-item:first-child{
     margin-top: 1px;
+}
+.slider .slick-dots{
+    display:none;
+}
+.slider .slick-dotted.slick-slider {
+    margin-bottom: 0px!important;
+}
+.mobile-present{
+    display:none;
 }
 @media (max-width: 1199px) {
     .anket{
@@ -1266,7 +1281,53 @@ ul li .secodn-menu:hover {
         z-index: 12;
         width: 285px;
     }
+    .single-left-column img{
+        width: 100%;
+    }
     .top-menu , .bottom-menu{
         display: none;
     }
+    .anket{
+        margin-right: 0px;
+    }
+    .profile_btn_cut_left{
+        border-radius: 5px!important;
+    }
+    .cut_left{
+        width: 100%;
+    }
+    #profile_send_gift_btn{
+        display:none;
+    }
+    .mobile-present{
+        display: block;
+    }
+}
+@media (max-width: 767px) {
+    .profile_info .label {
+        width: 100px;
+    }
+    .profile_info {
+        margin-top: 0px;
+    }
+    .single-left-column.page-block.page_photo {
+        padding: 10px;
+    }
+    .button_link.cut_left {
+        border-radius: 5px;
+    }
+}
+@media (min-width: 576px) and (max-width: 1199px) {
+    .left-column-anket {
+        padding-right: 5px;
+    }
+    .right-column-anket {
+        padding-left: 5px;
+    }
+}
+@media (max-width: 576px) {
+    .profile_info{
+        margin-top : 15px;
+    }
+
 }

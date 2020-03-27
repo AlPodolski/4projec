@@ -13,7 +13,7 @@ $this->title = $model->username; ?>
 
     <?php $this->title = $model->username; ?>
 
-    <div class="col-12 col-lg-9">
+    <div class="col-12 col-xl-9">
 
         <?php echo $this->renderFile('@app/modules/user/views/user/anket.php',
             [

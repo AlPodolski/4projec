@@ -45,7 +45,7 @@ if ($model) {
 
 <div class="anket">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-sm-5 col-lg-4 col-xl-4 left-column-anket">
             <div class="single-photo">
 
                 <div class="single-left-column page-block page_photo">
@@ -69,25 +69,59 @@ if ($model) {
                     <?php endforeach; ?>
 
                     <div class="profile_actions">
+
                         <div class="profile_action_btn profile_msg_split" id="profile_message_send">
                             <div class="clear_fix">
                                 <a href="#" class="button_link cut_left">
                                     <button class="flat_button profile_btn_cut_left">Написать сообщение</button>
                                 </a>
-                                <a href="#" class="button_link cut_right" id="profile_send_gift_btn">
+                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true" class="button_link cut_right" id="profile_send_gift_btn">
                                     <button class="flat_button profile_btn_cut_right">
                                         <span class="profile_gift_icon"></span>
                                         <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
                                     </button>
                                 </a>
+                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true" class="button_link mobile-present">
+                                    <button class="flat_button">
+                                        <span class="profile_gift_icon">
+
+                                        </span>
+                                        <span class="profile_gift_text">
+                                            Подарить подарок
+                                        </span>
+                                    </button>
+                                </a>
                             </div>
                         </div>
+
                     </div>
+
+
                 </div>
 
             </div>
+
+            <div class="page-block presents">
+                <?php if (!empty($userPresent)) : ?>
+                    <div class="user-present">
+                        <div class="user-presents-list">
+                            <div class="row">
+                                <?php foreach ($userPresent as $present) : ?>
+                                    <div class="col-4">
+                                        <img src="<?php echo $present['present']['img'] ?>" alt="">
+                                    </div>
+
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+            </div>
+
         </div>
-        <div class="col-8">
+        <div class="col-12 col-sm-7 col-lg-8 col-xl-8 right-column-anket">
+
             <div class="page-block profile_info">
                 <div class="page_top">
                     <div class="user-name">
@@ -452,25 +486,29 @@ if ($model) {
 
                     <?php if (!empty($photo)) :  ?>
 
-                    <div class="row">
+                    <div class="">
 
-                        <?php foreach ($photo as $item) :  ?>
+                        <div class="slider-items-single">
 
-                            <div class="item">
+                            <?php foreach ($photo as $item) :  ?>
 
-                            <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+                                <div class="item" href="<?php echo $item->file ?>">
 
-                                <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
 
-                            <?php else : ?>
+                                        <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
 
-                                <img src="/files/img/nophoto.png" alt="">
+                                    <?php else : ?>
 
-                            <?php endif; ?>
+                                        <img src="/files/img/nophoto.png" alt="">
 
-                            </div>
+                                    <?php endif; ?>
 
-                        <?php endforeach;  ?>
+                                </div>
+
+                            <?php endforeach;  ?>
+
+                        </div>
 
                     </div>
 
@@ -504,28 +542,7 @@ if ($model) {
 
             <br>
             <br>
-            <div class="present" data-toggle="modal" data-target="#modal-present" aria-hidden="true">
-                <i class="fas fa-gift"></i> <span> Подарить подарок</span>
-            </div>
-            <?php if (!empty($userPresent)) : ?>
-                <div class="user-present">
-                    <i class="fas fa-gift"></i> <span> Подарки</span>
-                    <div class="user-presents-list">
-                        <div class="row">
-                            <?php foreach ($userPresent as $present) : ?>
-                                <div class="col-4">
-                                    <img src="<?php echo $present['present']['img'] ?>" alt="">
-                                    <span class="present-name">
-                                <?php echo $present['present']['name'] ?>
-                            </span>
-                                </div>
 
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endif; ?>
         </div>
     </div>
 </div>
