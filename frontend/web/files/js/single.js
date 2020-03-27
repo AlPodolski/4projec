@@ -120,6 +120,20 @@ $(document).ready(function() {
 
 });
 
+function deleteWallItem(object){
+
+    var id = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/wall/item/delete',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).parent().remove();
+        },
+    });
+}
+
 $(document).ready(function() {
 
     $('.send-comment-btn').on('click', function(e){

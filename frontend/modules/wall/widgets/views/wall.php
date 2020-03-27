@@ -12,9 +12,15 @@ if (!empty($wallItems)) : ?>
 
         <div class="wall-tem page-block">
 
+            <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $item['author']['id'] or Yii::$app->user->id == $item['user_id'] ) : ?>
+
+                <span onclick="deleteWallItem(this)" data-id="<?php echo $item['id']; ?>" class="wall-tem-menu"><i class="fas fa-times"></i></span>
+
+            <?php endif; ?>
+
         <div class="post_header">
 
-            <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>" >
+            <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
 
                 <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 

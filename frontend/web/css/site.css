@@ -952,6 +952,7 @@ ul li .secodn-menu:hover {
     padding: 0px 0 10px 0;
     display: block
 }
+
 .post-text{
     margin-top:0px;
     font-size:13px;
@@ -1091,6 +1092,14 @@ ul li .secodn-menu:hover {
     padding: 15px 15px 7px 15px;
     border-radius: 3px;
     box-shadow: 0 1px 0 0 #d7d8db,0 0 0 1px #e3e4e8;
+    position: relative;
+}
+.wall-tem-menu {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #2a5885;
+    cursor: pointer;
 }
 .comments-list .post_image{
     max-width: 34px;

@@ -2,6 +2,7 @@
 
 namespace frontend\modules\wall\controllers;
 
+use frontend\modules\wall\components\WallHelper;
 use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\models\forms\AddToWallForm;
 use Yii;
@@ -69,6 +70,21 @@ class WallController extends Controller
             if (!Yii::$app->user->isGuest){
 
                 LikeHelper::like(Yii::$app->user->id, Yii::$app->request->post('id'), Yii::$app->params['wall_item_redis_key']);
+
+            }
+
+        }
+
+    }
+
+    public function actionItemDelete()
+    {
+
+        if (Yii::$app->request->isPost){
+
+            if (!Yii::$app->user->isGuest){
+
+                WallHelper::deleteItem(Yii::$app->user->id, Yii::$app->request->post('id'));
 
             }
 
