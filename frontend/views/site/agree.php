@@ -8,11 +8,17 @@
 
     use frontend\widgets\SidebarWidget;
 
-    echo SidebarWidget::Widget()
-
     ?>
+    <div class="col-3">
+        <?php
 
-<div class="col-9 anket">
+            echo SidebarWidget::Widget()
+
+        ?>
+    </div>
+
+
+<div class="col-12 col-xl-9 anket">
 
 
     <h1>Соглашение об условиях пользования сайтом</h1>
