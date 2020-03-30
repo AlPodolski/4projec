@@ -52,8 +52,10 @@ $service_list_sex = Service::find()->asArray()->all();
 
 ?>
 <div class="row">
-    <?php echo UserSideBarWidget::Widget() ?>
-    <div class="col-9">
+    <div class="col-3">
+        <?php echo UserSideBarWidget::Widget() ?>
+    </div>
+    <div class="col-12 col-xl-9">
         <div class="edit-form anket">
 
             <p class="name heading-anket">Редактировать информацию</p>
@@ -62,47 +64,47 @@ $service_list_sex = Service::find()->asArray()->all();
 
             <div class="row">
 
-                <div class="col-4">
+                <div class="col-12 col-sm-6 col-lg-4">
                     <?= $form->field($model, 'sexual')
                         ->dropDownList(ArrayHelper::map($sexualList, 'id', 'value')); ?>
                 </div>
-                <div class="col-4"> <?= $form->field($model, 'hairColor')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'hairColor')
                         ->dropDownList(ArrayHelper::map($hair_color, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'rost')->textInput(); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'userVes')->textInput(); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'eyeColor')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'rost')->textInput(); ?> </div>
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'userVes')->textInput(); ?> </div>
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'eyeColor')
                         ->dropDownList(ArrayHelper::map($eye_color, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'body')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'body')
                         ->dropDownList(ArrayHelper::map($body_type, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'national')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'national')
                         ->dropDownList(ArrayHelper::map($nacionalnost, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'financialSituation')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'financialSituation')
                         ->dropDownList(ArrayHelper::map($financialSituation, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'professionals')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'professionals')
                         ->dropDownList(ArrayHelper::map($professionals, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'children')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'children')
                         ->dropDownList(ArrayHelper::map($children, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'family')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'family')
                         ->dropDownList(ArrayHelper::map($family, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'education')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'education')
                         ->dropDownList(ArrayHelper::map($education, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'intimHair')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'intimHair')
                         ->dropDownList(ArrayHelper::map($intimHair, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'sferaDeyatelnosti')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'sferaDeyatelnosti')
                         ->dropDownList(ArrayHelper::map($sferaDeyatelnosti, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'zhile')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'zhile')
                         ->dropDownList(ArrayHelper::map($zhile, 'id', 'value')); ?> </div>
 
-                <div class="col-4"> <?= $form->field($model, 'transport')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'transport')
                         ->dropDownList(ArrayHelper::map($transport, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'smoking')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'smoking')
                         ->dropDownList(ArrayHelper::map($smoking, 'id', 'value')); ?> </div>
-                <div class="col-4"> <?= $form->field($model, 'alcogol')
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'alcogol')
                         ->dropDownList(ArrayHelper::map($alcogol, 'id', 'value')); ?> </div>
 
                 <?php if ($pol['pol_id'] != 1) : ?>
 
-                    <div class="col-4"> <?= $form->field($model, 'breastSize')->textInput(); ?> </div>
+                    <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'breastSize')->textInput(); ?> </div>
 
                 <?php endif; ?>
 

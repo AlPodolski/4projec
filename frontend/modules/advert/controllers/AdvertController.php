@@ -12,6 +12,8 @@ class AdvertController extends Controller
     public function actionAd()
     {
 
+        $this->layout = '@app/views/layouts/main-cabinet.php';
+
         if (Yii::$app->user->isGuest) return $this->goHome();
 
         $model = new Advert();

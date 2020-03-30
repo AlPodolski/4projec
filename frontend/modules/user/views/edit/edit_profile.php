@@ -25,9 +25,13 @@ $model->pol = $model->getPol();
 ?>
 <div class="row">
 
-    <?php echo UserSideBarWidget::Widget()?>
+    <div class="col-3">
+        <?php echo UserSideBarWidget::Widget()?>
 
-    <div class="col-9">
+    </div>
+
+
+    <div class="col-12 col-xl-9">
 
         <div class="edit-form anket">
 
@@ -36,11 +40,11 @@ $model->pol = $model->getPol();
 
             <div class="row">
 
-                <div class="col-4"> <?= $form ->field($model, 'username')->textInput(); ?></div>
-                <div class="col-4"> <?= $form ->field($model, 'phone')->textInput(['maxlength' => true , 'placeholder' => "+7(999)99 99 999"]); ?></div>
-                <div class="col-4"> <?= $form ->field($model, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value')); ?></div>
+                <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'username')->textInput(); ?></div>
+                <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'phone')->textInput(['maxlength' => true , 'placeholder' => "+7(999)99 99 999"]); ?></div>
+                <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value')); ?></div>
 
-                <div class="col-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <?php $model->formatDate() ?>
 

@@ -12,6 +12,9 @@ use Yii;
 class EditController extends Controller
 {
 
+    public $layout = '@app/views/layouts/main-cabinet.php';
+
+
     public function beforeAction($action)
     {
 
