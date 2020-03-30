@@ -15,7 +15,7 @@ $this->title = $model->username; ?>
 
     <div class="col-12 col-xl-9">
 
-        <?php echo $this->renderFile('@app/modules/user/views/user/anket.php',
+        <?php echo $this->renderFile('@app/views/anket/anket.php',
             [
                 'model' => $model,
             ]

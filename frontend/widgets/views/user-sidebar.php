@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 use frontend\widgets\AdvertWidget;
 use yii\helpers\Html;
 ?>
-<div class="col-3">
+<div class="col-3 user-sidebar">
 
     <?php
 
@@ -16,7 +16,7 @@ use yii\helpers\Html;
 
     <?php $avatar = Photo::getAvatar(Yii::$app->user->id); ?>
 
-    <label for="addpostform-image" class="  <?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
+    <label for="addpostform-image" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
 
         <?php if (isset($avatar->file)) : ?>
 
