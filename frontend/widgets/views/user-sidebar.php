@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 use frontend\widgets\AdvertWidget;
 use yii\helpers\Html;
 ?>
-<div class="col-3 user-sidebar">
+<div class="user-sidebar">
 
     <?php
 
@@ -16,19 +16,26 @@ use yii\helpers\Html;
 
     <?php $avatar = Photo::getAvatar(Yii::$app->user->id); ?>
 
-    <label for="addpostform-image" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
+    <div class="img-label-wrap">
+        <span class="plus">
+            <i class="fas fa-plus"></i>
+        </span>
+        <label for="addpostform-image" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
 
-        <?php if (isset($avatar->file)) : ?>
+            <?php if (isset($avatar->file)) : ?>
 
-            <img class="main-img" src="<?php echo $avatar->file ?>">
+                <img class="main-img" src="<?php echo $avatar->file ?>">
 
-        <?php endif; ?>
+            <?php endif; ?>
 
-        <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image', 'onchange' => 'send_img(this)'])->label(false) ?>
+            <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image', 'onchange' => 'send_img(this)'])->label(false) ?>
 
-        <p class="form-text">Загрузите <br> свое фото </p>
+            <p class="form-text">Загрузите <br> свое фото </p>
 
-    </label>
+        </label>
+    </div>
+
+
 
     <div class="form-info">
         <p class="alert alert-success"></p>
@@ -41,7 +48,7 @@ use yii\helpers\Html;
     <div class="user-menu">
 
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-xl-9">
                 <p class="user-name">
                     <?php echo Yii::$app->user->identity->username ?>
                 </p>
@@ -57,8 +64,8 @@ use yii\helpers\Html;
 
     <div class="user-menu-list">
         <ul class="user-menu-ul">
-            <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="/user">Моя страница</a></span>
-            </li>
+            <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="/user">Моя страница</a></span></li>
+            <li class="user-menu-item my-page"><i class="fas fa-sign-out-alt"></i> <span class="text "><a href="/">На сайт</a></span></li>
             <!--<li class="user-menu-item my-message"><i class="fas fa-envelope"></i> <span class="text "><a
                         href="/user/chat">Мои сообщения</a></span></li>
             <li class="user-menu-item my-favorite"><i class="fas fa-heart"></i> <span class="text "><a href="">Избранные</a></span>-->

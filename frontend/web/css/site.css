@@ -1140,10 +1140,49 @@ ul li .secodn-menu:hover {
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
 }
-.mobile-present{
+.mobile-present , .img-label-wrap{
     display:none;
 }
 @media (max-width: 1199px) {
+    .mobile-menu .user-sidebar{
+        max-height: 82vh;
+        overflow-x: hidden;
+    }
+    .img-label-wrap{
+        display:block;
+        position:relative;
+    }
+    .cabinet-mobile-menu .user-menu-item{
+        line-height: 35px;
+    }
+    .img-label-wrap .plus{
+        position: absolute;
+        color: #7fb28a;
+        right: 85px;
+        bottom: -5px;
+    }
+    .cabinet-mobile-menu .icon-close{
+        text-align:right;
+    }
+    .user-sidebar .user-menu-item{
+        padding-left: 0px;
+        border-bottom: inherit;
+    }
+    .user-sidebar{
+        display:none;
+    }
+    .mobile-nav .user-sidebar .img-label{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+    .user-menu span.user-manu{
+        display: none;
+    }
+    .mobile-menu .user-sidebar{
+        display:block;
+    }
     .anket{
         margin-top: 15px;
     }
