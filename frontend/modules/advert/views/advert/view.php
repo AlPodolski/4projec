@@ -13,13 +13,16 @@ $this->registerMetaTag([
 
 ?>
 <div class="row">
-    <?php
+    <div class="col-3">
+        <?php
 
         echo SidebarWidget::Widget()
 
-    ?>
+        ?>
+    </div>
 
-    <div class="col-9">
+
+    <div class="col-12 col-xl-9">
 
         <div class="anket">
 

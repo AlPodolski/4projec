@@ -1143,6 +1143,9 @@ ul li .secodn-menu:hover {
 .mobile-present , .img-label-wrap{
     display:none;
 }
+.icon-close{
+    text-align: right;
+}
 @media (max-width: 1199px) {
     .mobile-menu .user-sidebar{
         max-height: 82vh;
