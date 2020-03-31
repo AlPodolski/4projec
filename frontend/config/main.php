@@ -93,6 +93,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]>' => 'chat/chat/chat',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts/<id:[0-9]+>' => 'advert/advert/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/ad' => 'advert/advert/ad',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',

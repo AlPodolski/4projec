@@ -4,6 +4,9 @@
 
 use yii\widgets\ActiveForm;
 
+$messageForm = new \frontend\modules\chat\models\forms\SendMessageForm();
+$this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 ?>
 
 <div class="page-block chat-block ">
@@ -50,22 +53,28 @@ use yii\widgets\ActiveForm;
 
         <?php endforeach; ?>
 
-        <div class="comment-wall-form comment-wall-form-<?php echo $item['id'] ?>">
-
-            <?php
-
-            $form = ActiveForm::begin([
-                'action' => '#',
-                'id' => 'wall-form',
-                'options' => ['class' => 'form-horizontal'],
-            ]) ?>
-            <?= $form->field($commentForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
-
-            <span class="send-comment-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
-
-            <?php ActiveForm::end() ?>
-
-        </div>
-
     </div>
+
+
+</div>
+
+<div class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+
+    <?php
+
+    $form = ActiveForm::begin([
+        'action' => '#',
+        'id' => 'message-form',
+        'enableAjaxValidation' => false,
+        'enableClientValidation' => false,
+        'options' => ['class' => 'form-horizontal'],
+    ]) ?>
+    <?= $form->field($messageForm, 'chat_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $dialog['dialog_id']])->label(false) ?>
+
+    <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+
+    <span  class="message-send-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
+
+    <?php ActiveForm::end() ?>
+
 </div>

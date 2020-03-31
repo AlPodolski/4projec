@@ -917,7 +917,7 @@ ul li .secodn-menu:hover {
 .comment-wall-form{
     margin-top: 5px;
 }
-.send-comment-btn {
+.send-comment-btn  , .message-send-btn{
     position: absolute;
     top: 6px;
     right: 15px;
@@ -1166,6 +1166,9 @@ ul li .secodn-menu:hover {
 }
 .chat{
     min-height: 45vh;
+}
+#message-form{
+    position: relative;
 }
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
