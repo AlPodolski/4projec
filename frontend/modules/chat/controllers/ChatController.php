@@ -2,6 +2,7 @@
 namespace frontend\modules\chat\controllers;
 
 use frontend\modules\chat\models\forms\SendMessageForm;
+use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 
@@ -17,8 +18,12 @@ class ChatController extends Controller
 
     public function actionChat($city, $id)
     {
+
+        $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
+
         return $this->render('dialog', [
             'dialog_id' => $id,
+            'user' => $user,
         ]);
     }
 

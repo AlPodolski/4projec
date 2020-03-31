@@ -1,5 +1,5 @@
 <?php
-
+/* @var $user array*/
 
 namespace frontend\modules\chat\widgets;
 
@@ -9,6 +9,7 @@ use yii\base\Widget;
 class DialogWidget extends Widget
 {
     public $dialog_id;
+    public $user;
 
     public function init(){
 
@@ -20,7 +21,8 @@ class DialogWidget extends Widget
         $dialog = GetDialogsHelper::getDialog($this->dialog_id);
 
         return $this->render('dialog', [
-            'dialog' => $dialog
+            'dialog' => $dialog,
+            'user' => $this->user,
         ]);
     }
 }

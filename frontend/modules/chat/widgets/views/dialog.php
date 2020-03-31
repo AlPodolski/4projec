@@ -1,4 +1,5 @@
 <?php /* @var $dialog array */ ?>
+<?php /* @var $user array */ ?>
 
 <?php
 
@@ -58,7 +59,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
 </div>
 
-<div class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+<div  class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
 
     <?php
 
@@ -73,7 +74,17 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
 
-    <span  class="message-send-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
+    <?php if (file_exists(Yii::getAlias('@webroot').$user['userAvatarRelations']['file']) and $user['userAvatarRelations']['file']) : ?>
+
+        <?= Yii::$app->imageCache->thumb($user['userAvatarRelations']['file'], 'dialog', ['class'=>'img d-none user-img']) ?>
+
+    <?php else : ?>
+
+        <img class="img d-none user-img" src="/files/img/nophoto.png" alt="">
+
+    <?php endif; ?>
+
+    <span data-name="<?php echo $user['username'];  ?>" class="message-send-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
 
     <?php ActiveForm::end() ?>
 

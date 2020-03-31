@@ -3,6 +3,13 @@ $(document).ready(function() {
     $('.message-send-btn').on('click', function(e){
 
         var formData = new FormData($("#message-form")[0]);
+
+        var text = $('#message-form textarea').val();
+        var img = $('.user-img').attr('src');
+        var name = $(this).attr('data-name');
+
+        $('#message-form textarea').val('');
+
         $.ajax({
             url: '/chat/send',
             type: 'POST',
@@ -14,6 +21,33 @@ $(document).ready(function() {
             },
             success: function (data) {
 
+                $('.chat').prepend('<div class="wall-tem">\n' +
+                    '\n' +
+                    '            <div class="post_header">\n' +
+                    '\n' +
+                    '                <a class="post_image" href="/user/1">\n' +
+                    '\n' +
+                    '                    \n' +
+                    '                        <img class="img" src="'+img+'" alt="">\n' +
+                    '                    \n' +
+                    '                </a>\n' +
+                    '\n' +
+                    '                <div class="post_header_info">\n' +
+                    '\n' +
+                    '                    <a  class="author">\n' +
+                    '                        '+name+'</a>\n' +
+                    '                    <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
+                    '                    <div class="post-text">\n' +
+                    '                        '+text+'                    </div>\n' +
+                    '                </div>\n' +
+                    '\n' +
+                    '\n' +
+                    '            </div>\n' +
+                    '            <div style="clear: both">\n' +
+                    '            </div>\n' +
+                    '\n' +
+                    '\n' +
+                    '        </div>');
 
             },
 
