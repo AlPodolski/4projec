@@ -2,6 +2,7 @@
 
 namespace frontend\modules\chat\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -48,5 +49,11 @@ class Message extends \yii\db\ActiveRecord
             'status' => 'Status',
             'id' => 'ID',
         ];
+    }
+
+    public function getAuthor(){
+
+        return $this->hasOne(Profile::class, ['id' => 'from'])->with('avatarRelation');
+
     }
 }

@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="dialog-name">
-                                    Яна Беспечная
+                                    <a href="/user/chat/1">Яна Беспечная</a>
                                 </div>
                             </div>
                             <div class="col-12">

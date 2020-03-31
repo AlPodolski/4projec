@@ -2,6 +2,8 @@
 
 namespace frontend\modules\chat\models\relation;
 
+use frontend\modules\chat\models\Message;
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -41,5 +43,9 @@ class UserDialog extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'dialog_id' => 'Dialog ID',
         ];
+    }
+
+    public function getMessage(){
+        return $this->hasMany(Message::class, ['chat_id' =>'dialog_id' ] )->orderBy('created_at DESC')->with('author');
     }
 }

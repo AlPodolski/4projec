@@ -1137,6 +1137,36 @@ ul li .secodn-menu:hover {
 .slider .slick-dots{
     display:none;
 }
+.chat{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.chat .img{
+    width:35px
+}
+.chat .chat{
+    border-bottom:inherit;
+}
+.chat .post-text{
+    border-bottom: inherit;
+}
+.chat .post_header_info {
+    margin-left: 55px;
+    padding-top: 0px;
+    line-height: 10px;
+}
+.chat .wall-tem{
+    padding: 0 !important;
+}
+.dialog-name a{
+    color:#000;
+}
+.chat-block{
+    margin-top:10px;
+}
+.chat{
+    min-height: 45vh;
+}
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
 }

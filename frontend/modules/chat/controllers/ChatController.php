@@ -16,6 +16,8 @@ class ChatController extends Controller
 
     public function actionChat($city, $id)
     {
-        return $this->render('dialog');
+        return $this->render('dialog', [
+            'dialog_id' => $id,
+        ]);
     }
 }
