@@ -42,7 +42,7 @@ class QueryParamsHelper
 
                     $url = self::prepareUrl($filter_param['url'],$value );
 
-                    if ($url) {
+                    if ($url and $className) {
 
                         $id = $className::find()->where(['url' => $url])->asArray()->one();
 

@@ -12,13 +12,13 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
 ?>
 <div class="row">
-    <div class="col-3">
+
         <?php
 
         echo SidebarWidget::Widget()
 
         ?>
-    </div>
+
 
 
     <div class="col-12 col-xl-9">
