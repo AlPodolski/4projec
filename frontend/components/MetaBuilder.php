@@ -155,7 +155,7 @@ class MetaBuilder
 
                         if ($result === false) {
 
-                            $find_value = 'value'. preg_replace('#[a-zA-Z]+#', '', $param_name = trim($param, ':'));
+                            $find_value = 'value'. preg_replace('#[a-zA-Z-]+#', '', $param_name = trim($param, ':'));
 
                             // $data нет в кэше, вычисляем заново
                             $result = $class->select($find_value)->where(['url' => $url])->asArray()->one();
