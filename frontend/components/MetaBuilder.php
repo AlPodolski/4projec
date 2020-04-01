@@ -18,8 +18,6 @@ class MetaBuilder
      */
     public static function Build($uri, $city, $find){
 
-        Yii::$app->cache->flush();
-
         $tamplate = self::getTemplate($find, $uri);
 
         $subject = '';
