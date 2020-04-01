@@ -151,9 +151,9 @@ class MetaBuilder
 
                         $result = Yii::$app->cache->get('4dosug_filter_param'.$className.'_value_'.$url);
 
-                        if ($result === false) {
+                        $find_value = 'value'. preg_replace('#[a-zA-Z-]+#', '', $param_name = trim($param, ':'));
 
-                            $find_value = 'value'. preg_replace('#[a-zA-Z-]+#', '', $param_name = trim($param, ':'));
+                        if ($result === false) {
 
                             // $data нет в кэше, вычисляем заново
                             $result = $class->select($find_value)->where(['url' => $url])->asArray()->one();
