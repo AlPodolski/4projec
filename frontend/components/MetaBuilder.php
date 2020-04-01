@@ -54,7 +54,7 @@ class MetaBuilder
 
 
 
-         return StringHelper::str_replace_once(',', ' ', implode(',', $result));
+         return StringHelper::str_replace_once(',', ' ', implode(' ', $result));
 
     }
 
