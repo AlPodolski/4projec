@@ -32,7 +32,7 @@
         </div>
 
         <div class="like-wrap">
-            <div class="message"><i class="far fa-envelope"></i></div><div class="favorite"><i class="far fa-heart"></i></div><div class="like"><i class="far fa-thumbs-up"></i></div>
+            <div class="message" onclick="get_message_form(this)" data-user-id="<?php echo $post->id ?>" ><i class="far fa-envelope"></i></div><div class="favorite"><i class="far fa-heart"></i></div><div class="like"><i class="far fa-thumbs-up"></i></div>
         </div>
 
         <?php if ($post->phone) : ?>
