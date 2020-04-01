@@ -18,6 +18,8 @@ class MetaBuilder
      */
     public static function Build($uri, $city, $find){
 
+        Yii::$app->cache->flush();
+
         $tamplate = self::getTemplate($find, $uri);
 
         $subject = '';
@@ -152,13 +154,16 @@ class MetaBuilder
                         $result = Yii::$app->cache->get('4dosug_filter_param'.$className.'_value_'.$url);
 
                         if ($result === false) {
+
+                            $find_value = 'value'. preg_replace('#[a-zA-Z]+#', '', $param_name = trim($param, ':'));
+
                             // $data нет в кэше, вычисляем заново
-                            $result = $class->select('value')->where(['url' => $url])->asArray()->one();
+                            $result = $class->select($find_value)->where(['url' => $url])->asArray()->one();
                             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
                             Yii::$app->cache->set('4dosug_filter_param'.$className.'_value_'.$url, $result);
                         }
 
-                        if ($result) $string = self::replacePlaceholders($param, $result['value'], $string);
+                        if ($result) $string = self::replacePlaceholders($param, $result[$find_value], $string);
 
                     }
 

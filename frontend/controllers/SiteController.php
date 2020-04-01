@@ -79,4 +79,21 @@ class SiteController extends Controller
     {
         return $this->render('agree');
     }
+
+    public function actionCust(){
+
+        $params = \common\models\FilterParams::find()->asArray()->all();
+
+        foreach ($params as $param){
+
+            if (isset($param['class_name'])){
+
+                $table = $param['class_name']::tableName();
+
+                \d($table);
+
+            }
+
+        }
+    }
 }
