@@ -5,6 +5,59 @@ function showPhone(object) {
     $(phone).html($(object).attr('data-phone'));
 
 }
+function get_message_form(object) {
+
+    $('#messageModal').modal('show');
+
+    console.log($(object).attr('data-user-id'));
+
+    $('.user-id-class .form-control').val($(object).attr('data-user-id'));
+
+    $('#message-form .alert-success').remove();
+
+
+}
+function send_message_form(object) {
+
+
+        var formData = new FormData($("#message-form")[0]);
+
+        var text = $('#message-form textarea').val();
+        var img = $('.user-img').attr('src');
+        var name = $(this).attr('data-name');
+
+
+    $('#message-form textarea').val('');
+
+        $.ajax({
+            url: '/chat/send',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#w0 .form-text').css('display', 'none');
+            },
+            success: function (data) {
+
+                $('#message-form').append('<p class="alert alert-success">Сообщение отправлено</p>');
+
+            },
+
+            complete: function() {
+                // success alerts
+            },
+
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+
+}
 $(document).ready(function() {
 
     var sliderFor = $('.slider-popular');

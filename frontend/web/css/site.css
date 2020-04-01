@@ -924,7 +924,9 @@ ul li .secodn-menu:hover {
     z-index: 8;
     cursor: pointer;
 }
-
+#message-form .alert-success{
+    margin-top: 15px;
+}
 .form-otvet{
     margin-right: 50px;
 

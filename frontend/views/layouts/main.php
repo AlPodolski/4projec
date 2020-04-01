@@ -245,6 +245,27 @@ $login = new LoginForm();
     </div><!-- /.modal-dialog -->
 </div>
 
+<div id="messageModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Написать сообщение</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body modal-city-search">
+
+            <?php echo \frontend\modules\chat\widgets\SendMessageFormWidget::widget(); ?>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <?php $this->endBody() ?>
 
 </body>

@@ -72,8 +72,8 @@ if ($model) {
 
                         <div class="profile_action_btn profile_msg_split" id="profile_message_send">
                             <div class="clear_fix">
-                                <a href="#" class="button_link cut_left">
-                                    <button class="flat_button profile_btn_cut_left">Написать сообщение</button>
+                                <a class="button_link cut_left">
+                                    <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>" class="flat_button profile_btn_cut_left">Написать сообщение</button>
                                 </a>
                                 <a data-toggle="modal" data-target="#modal-present" aria-hidden="true" class="button_link cut_right" id="profile_send_gift_btn">
                                     <button class="flat_button profile_btn_cut_right">
