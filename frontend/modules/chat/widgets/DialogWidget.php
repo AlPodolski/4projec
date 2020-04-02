@@ -20,6 +20,8 @@ class DialogWidget extends Widget
 
         $dialog = GetDialogsHelper::getDialog($this->dialog_id);
 
+        GetDialogsHelper::serRead($dialog['dialog_id'], $this->user['id']);
+
         return $this->render('dialog', [
             'dialog' => $dialog,
             'user' => $this->user,

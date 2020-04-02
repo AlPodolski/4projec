@@ -2,6 +2,7 @@
 
 namespace frontend\modules\chat\components\helpers;
 
+use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;
 
 class GetDialogsHelper
@@ -21,6 +22,12 @@ class GetDialogsHelper
     public static function getCompanion($user_id, $chat_id){
 
         return $dialogList = UserDialog::find()->where(['dialog_id' => $chat_id])->andWhere(['user_id' => $user_id])->asArray()->one();
+
+    }
+
+    public static function serRead($chat_id, $user_id){
+
+        Message::updateAll(['status' => 1], [ 'and',  ['chat_id' => $chat_id] , ['<>', 'from' ,$user_id ]]);
 
     }
 

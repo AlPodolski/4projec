@@ -5,8 +5,6 @@
 
         <?php foreach ($dialogs as  $dialog) : ?>
 
-        <?php //dd($dialog['lastMessage']); ?>
-
             <li class="dialog_item">
                 <div class="row">
                     <div class="col-1">
@@ -48,7 +46,7 @@
                                                 <?php endif; ?>
                                             </span>
                                         </span>
-                                            <span class="nim-dialog--inner-text read-dialog"><?php echo $dialog->lastMessage['message'] ?></span>
+                                            <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog';  ?> "><?php echo $dialog->lastMessage['message'] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -58,6 +56,7 @@
                     </div>
                 </div>
             </li>
+
         <?php endforeach; ?>
     </ul>
 </div>
