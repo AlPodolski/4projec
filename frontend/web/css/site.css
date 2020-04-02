@@ -577,12 +577,11 @@ h1{
     font-size: 12px
 }
 .dialog_list{
-    padding: 14px;
     background: #fff;
     border-radius: 4px 4px 0 0;
-    padding-top: 20px;
-    padding-top: 0;
+    padding-top: 0px;
     height: 100%;
+    margin-top: 10px;
 }
 .read-dialog{
     background: #fff!important;
@@ -623,6 +622,9 @@ h1{
 }
 .dialog_item_ul .dialog_item:first-child .nim-dialog--content{
     border-top: none;
+}
+.not-read-dialog{
+    background: #f0f2f5;
 }
 .im-prebody img {
     position: relative;

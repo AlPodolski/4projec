@@ -22,6 +22,7 @@ class MessageListWidget extends Widget
 
         return $this->render('dialog_list', [
             'dialogs' => $dialogs,
+            'user_id' => $this->user_id,
         ]);
     }
 }

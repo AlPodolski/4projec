@@ -1,24 +1,25 @@
 <?php /* @var $dialogs array */ ?>
+<?php /* @var $user_id integer */ ?>
 <div class="dialog_list">
     <ul class="dialog_item_ul">
         <?php //d($dialogs); ?>
 
-        <?php foreach ($dialogs as  $dialog) : ?>
+        <?php foreach ($dialogs as $dialog) : ?>
 
-            <li class="dialog_item">
+            <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and $dialog['lastMessage']['from'] != $user_id) echo 'not-read-dialog'; ?> ">
                 <div class="row">
                     <div class="col-1">
                         <div class="dialog-photo">
 
-                                <?php if (file_exists(Yii::getAlias('@webroot').$dialog->companion['avatarRelation']['file']) and $dialog->companion['avatarRelation']['file']) : ?>
+                            <?php if (file_exists(Yii::getAlias('@webroot') . $dialog->companion['avatarRelation']['file']) and $dialog->companion['avatarRelation']['file']) : ?>
 
-                                    <?= Yii::$app->imageCache->thumb($dialog->companion['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                                <?= Yii::$app->imageCache->thumb($dialog->companion['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
 
-                                <?php else : ?>
+                            <?php else : ?>
 
-                                    <img class="img" src="/files/img/nophoto.png" alt="">
+                                <img class="img" src="/files/img/nophoto.png" alt="">
 
-                                <?php endif; ?>
+                            <?php endif; ?>
 
                         </div>
                     </div>
@@ -33,20 +34,30 @@
                                 <div class="col-12">
                                     <div class="dialog-prewiew">
                                         <div class="text-preview">
+                                            <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                         <span class="nim-dialog--who">
                                             <span class="im-prebody">
-                                                <?php if (file_exists(Yii::getAlias('@webroot').$dialog['lastMessage']['author']['avatarRelation']['file']) and $dialog['lastMessage']['author']['avatarRelation']['file']) : ?>
 
-                                                    <?= Yii::$app->imageCache->thumb($dialog['lastMessage']['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                                                <?php if ($dialog['lastMessage']['from'] != $user_id) : ?>
 
-                                                <?php else : ?>
+                                                    <?php if (file_exists(Yii::getAlias('@webroot') . $dialog['lastMessage']['author']['avatarRelation']['file']) and $dialog['lastMessage']['author']['avatarRelation']['file']) : ?>
 
-                                                    <img class="img" src="/files/img/nophoto.png" alt="">
+                                                        <?= Yii::$app->imageCache->thumb($dialog['lastMessage']['author']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+
+                                                    <?php else : ?>
+
+                                                        <img class="img" src="/files/img/nophoto.png" alt="">
+
+                                                    <?php endif; ?>
 
                                                 <?php endif; ?>
+
                                             </span>
                                         </span>
-                                            <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog';  ?> "><?php echo $dialog->lastMessage['message'] ?></span>
+                                            </a>
+                                            <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
+                                                <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog'; ?> "><?php echo $dialog->lastMessage['message'] ?></span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
