@@ -18,8 +18,10 @@ class MessageListWidget extends Widget
     public function run()
     {
 
-        $dialog = GetDialogsHelper::getDialogs($this->user_id);
+        $dialogs = GetDialogsHelper::getDialogs($this->user_id);
 
-        return $this->render('dialog_list');
+        return $this->render('dialog_list', [
+            'dialogs' => $dialogs,
+        ]);
     }
 }

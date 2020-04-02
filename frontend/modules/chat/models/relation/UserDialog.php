@@ -48,4 +48,16 @@ class UserDialog extends \yii\db\ActiveRecord
     public function getMessage(){
         return $this->hasMany(Message::class, ['chat_id' =>'dialog_id' ] )->orderBy('created_at DESC')->with('author');
     }
+
+    public function getLastMessage(){
+        return $this->hasOne(Message::class, ['chat_id' =>'dialog_id' ] )->orderBy('created_at DESC')->with('author')->asArray();
+    }
+
+    public function getAuthor(){
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->select('id, username')->with('avatarRelation');
+    }
+
+    public function getCompanion(){
+        return $this->hasOne(UserDialog::class, ['dialog_id' =>'dialog_id'] )->andWhere([ '<>' , 'user_id',  $this->user_id])->with('author')->asArray();
+    }
 }

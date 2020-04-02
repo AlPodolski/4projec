@@ -53,7 +53,7 @@ class Message extends \yii\db\ActiveRecord
 
     public function getAuthor(){
 
-        return $this->hasOne(Profile::class, ['id' => 'from'])->with('avatarRelation');
+        return $this->hasOne(Profile::class, ['id' => 'from'])->select('id, username')->with('avatarRelation');
 
     }
 }
