@@ -1,4 +1,7 @@
 <?php
+
+/* @var $form_id string */
+
 use frontend\modules\user\models\Photo;
 use yii\widgets\ActiveForm;
 use frontend\widgets\AdvertWidget;
@@ -20,7 +23,7 @@ use yii\helpers\Html;
         <span class="plus">
             <i class="fas fa-plus"></i>
         </span>
-        <label for="addpostform-image" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
+        <label for="<?php echo $form_id ?>" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
 
             <?php if (isset($avatar->file)) : ?>
 
@@ -28,7 +31,7 @@ use yii\helpers\Html;
 
             <?php endif; ?>
 
-            <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'addpostform-image', 'onchange' => 'send_img(this)'])->label(false) ?>
+            <?= $form->field($photo, 'file')->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => $form_id])->label(false) ?>
 
             <p class="form-text">Загрузите <br> свое фото </p>
 

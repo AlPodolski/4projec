@@ -64,7 +64,7 @@ $login = new LoginForm();
                                     <i class="fas fa-times"></i>
                                 </div>
                                 <div class="col-12">
-                                    <?php echo UserSideBarWidget::Widget()?>
+                                    <?php echo UserSideBarWidget::Widget(['form_id' => 'header_form'])?>
                                 </div>
                             </div>
 

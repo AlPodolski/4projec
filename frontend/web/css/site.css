@@ -179,7 +179,7 @@ a.desc:after {
 .register-btn{
     line-height: 15px;
 }
-#addpostform-image{
+#addpostform-image, #header_form , #w0 i{
     display: none;
 }
 .img-label{
@@ -1176,9 +1176,6 @@ ul li .secodn-menu:hover {
 }
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
-}
-.mobile-present , .img-label-wrap{
-    display:none;
 }
 .icon-close{
     text-align: right;

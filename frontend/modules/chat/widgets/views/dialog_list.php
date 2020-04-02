@@ -2,7 +2,7 @@
 <?php /* @var $user_id integer */ ?>
 <div class="dialog_list">
     <ul class="dialog_item_ul">
-        <?php //d($dialogs); ?>
+
 
         <?php foreach ($dialogs as $dialog) : ?>
 
