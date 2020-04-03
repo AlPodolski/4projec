@@ -18,7 +18,7 @@ class isAuth extends Behavior
 
         if (Yii::$app->user->isGuest) {
 
-            Yii::$app->response->redirect(['site/index']);
+            Yii::$app->response->redirect(['/']);
 
         }
 
