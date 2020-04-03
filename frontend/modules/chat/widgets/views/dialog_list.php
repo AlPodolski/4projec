@@ -11,9 +11,9 @@
                     <div class="col-1">
                         <div class="dialog-photo">
 
-                            <?php if (file_exists(Yii::getAlias('@webroot') . $dialog->companion['avatarRelation']['file']) and $dialog->companion['avatarRelation']['file']) : ?>
+                            <?php if (file_exists(Yii::getAlias('@webroot') . $dialog->companion['author']['avatarRelation']['file']) and $dialog->companion['author']['avatarRelation']['file']) : ?>
 
-                                <?= Yii::$app->imageCache->thumb($dialog->companion['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+                                <?= Yii::$app->imageCache->thumb( $dialog->companion['author']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
 
                             <?php else : ?>
 

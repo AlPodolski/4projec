@@ -20,6 +20,7 @@ class MetaController extends Controller
     public function behaviors()
     {
         return [
+            \common\behaviors\isAuth::class,
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

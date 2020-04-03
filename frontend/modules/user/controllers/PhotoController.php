@@ -11,6 +11,14 @@ use frontend\modules\user\components\helpers\DirHelprer;
 
 class PhotoController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            \common\behaviors\isAuth::class,
+        ];
+    }
+
     public function actionUpload(){
 
         $model = new Photo();

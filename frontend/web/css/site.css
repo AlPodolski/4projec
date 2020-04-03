@@ -331,8 +331,15 @@ img{
 }
 .anket{
     border-radius: 5px;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-right: -15px;
+}
+.user-sidebar .alert-success{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.img-wrap a, .img-wrap a .img{
+    width: 100%;
 }
 .city-name{
     color: #838c8e;

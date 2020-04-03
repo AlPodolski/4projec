@@ -8,6 +8,14 @@ use yii\web\Controller;
 
 class ChatController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            \common\behaviors\isAuth::class,
+        ];
+    }
+
     public function actionIndex($city)
     {
 

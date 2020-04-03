@@ -44,6 +44,12 @@ class PresentController extends Controller
 
     public function actionGift($city){
 
+        if (Yii::$app->user->isGuest) {
+            Yii::$app->session->setFlash('success', 'Требуется авторизация!');
+            return $this->goHome();
+
+        }
+
         if (Yii::$app->request->isPost){
 
             $model = new BuyPresentForm();
