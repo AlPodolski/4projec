@@ -9,7 +9,9 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 ?>
 
 <div class="row">
-    <?php echo UserSideBarWidget::Widget()  ?>
+    <div class="col-3">
+        <?php echo UserSideBarWidget::Widget()  ?>
+    </div>
 
     <div class="col-12 col-xl-9">
 

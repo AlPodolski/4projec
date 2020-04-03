@@ -50,38 +50,53 @@ if ($model) {
 
                 <div class="single-left-column page-block page_photo">
 
-                    <?php foreach ($photo as $item) : ?>
+                    <?php if (!empty($photo)) : ?>
 
-                        <?php if ($item['avatar'] == 1) : ?>
+                        <?php foreach ($photo as $item) : ?>
 
-                            <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
+                            <?php if ($item['avatar'] == 1) : ?>
 
-                                <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
+                                <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
-                            <?php else : ?>
+                                    <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
 
-                                <img src="/files/img/nophoto.png" alt="">
+                                <?php else : ?>
+
+                                    <img src="/files/img/nophoto.png" alt="">
+
+                                <?php endif; ?>
 
                             <?php endif; ?>
 
-                        <?php endif; ?>
+                        <?php endforeach; ?>
 
-                    <?php endforeach; ?>
+                    <?php else : ?>
+
+                    <div class="img-wrap">
+                        <img src="/files/img/nophoto.png" alt="">
+                    </div>
+
+                    <?php endif; ?>
+
 
                     <div class="profile_actions">
 
                         <div class="profile_action_btn profile_msg_split" id="profile_message_send">
                             <div class="clear_fix">
                                 <a class="button_link cut_left">
-                                    <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>" class="flat_button profile_btn_cut_left">Написать сообщение</button>
+                                    <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>"
+                                            class="flat_button profile_btn_cut_left">Написать сообщение
+                                    </button>
                                 </a>
-                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true" class="button_link cut_right" id="profile_send_gift_btn">
+                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
+                                   class="button_link cut_right" id="profile_send_gift_btn">
                                     <button class="flat_button profile_btn_cut_right">
                                         <span class="profile_gift_icon"></span>
                                         <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
                                     </button>
                                 </a>
-                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true" class="button_link mobile-present">
+                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
+                                   class="button_link mobile-present">
                                     <button class="flat_button">
                                         <span class="profile_gift_icon">
 
@@ -100,9 +115,9 @@ if ($model) {
                 </div>
 
             </div>
+            <?php if (!empty($userPresent)) : ?>
 
-            <div class="page-block presents">
-                <?php if (!empty($userPresent)) : ?>
+                <div class="page-block presents">
                     <div class="user-present">
                         <div class="user-presents-list">
                             <div class="row">
@@ -116,8 +131,8 @@ if ($model) {
                         </div>
                     </div>
 
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
 
         </div>
         <div class="col-12 col-sm-7 col-lg-8 col-xl-8 right-column-anket">
@@ -479,43 +494,44 @@ if ($model) {
 
                 </div>
             </div>
+            <?php if (!empty($photo)) : ?>
 
             <div class="page-block page-photo">
 
                 <div class="slider">
 
-                    <?php if (!empty($photo)) :  ?>
+                        <div class="">
 
-                    <div class="">
+                            <div class="slider-items-single">
 
-                        <div class="slider-items-single">
+                                <?php foreach ($photo as $item) : ?>
 
-                            <?php foreach ($photo as $item) :  ?>
+                                    <div class="item" href="<?php echo $item->file ?>">
 
-                                <div class="item" href="<?php echo $item->file ?>">
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
 
-                                    <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+                                            <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
 
-                                        <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
+                                        <?php else : ?>
 
-                                    <?php else : ?>
+                                            <img src="/files/img/nophoto.png" alt="">
 
-                                        <img src="/files/img/nophoto.png" alt="">
+                                        <?php endif; ?>
 
-                                    <?php endif; ?>
+                                    </div>
 
-                                </div>
+                                <?php endforeach; ?>
 
-                            <?php endforeach;  ?>
+                            </div>
 
                         </div>
 
-                    </div>
-
-                    <?php endif;  ?>
 
                 </div>
             </div>
+
+            <?php endif; ?>
+
 
             <div class="page-block wall-form">
 

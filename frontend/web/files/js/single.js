@@ -23,7 +23,7 @@ $(document).ready(function() {
     sliderFor1.lightGallery();
 
     console.log($(sliderFor1).slick({
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 300,
         slidesToShow: 4,

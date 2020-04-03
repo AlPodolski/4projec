@@ -9,7 +9,7 @@ use Yii;
 
 class AdvertController extends Controller
 {
-    public function actionAd()
+    public function actionAd($city)
     {
 
         $this->layout = '@app/views/layouts/main-cabinet.php';

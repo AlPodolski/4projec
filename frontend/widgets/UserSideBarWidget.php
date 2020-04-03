@@ -4,6 +4,7 @@
 namespace frontend\widgets;
 
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
+use Yii;
 use yii\base\Widget;
 
 
@@ -20,7 +21,7 @@ class UserSideBarWidget extends Widget
     public function run()
     {
 
-        $countNotRead = GetDialogsHelper::getNotReadCount(1);
+        $countNotRead = GetDialogsHelper::getNotReadCount(Yii::$app->user->id);
 
         return $this->render('user-sidebar', [
             'form_id' => $this->form_id,
