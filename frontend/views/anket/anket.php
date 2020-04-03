@@ -567,20 +567,30 @@ if ($model) {
 
             <div class="page-block wall-form">
 
-                <?php
+                <?php if (Yii::$app->user->isGuest) : ?>
 
-                $form = ActiveForm::begin([
-                    'action' => '#',
-                    'id' => 'wall-form',
-                    'options' => ['class' => 'form-horizontal'],
-                ]) ?>
-                <?= $form->field($addWallForm, 'user_id')->hiddenInput(['value' => $model->id])->label(false) ?>
-                <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+                    <p class="alert alert-info">Для того что бы оставлять записи на стене требуется авторизация</p>
 
-                <div class="form-group ">
-                    <span class="btn btn-primary wall-send-btn flat_button">Отправить</span>
-                </div>
-                <?php ActiveForm::end() ?>
+                <?php else : ?>
+
+                    <?php
+
+                    $form = ActiveForm::begin([
+                        'action' => '#',
+                        'id' => 'wall-form',
+                        'options' => ['class' => 'form-horizontal'],
+                    ]) ?>
+                    <?= $form->field($addWallForm, 'user_id')->hiddenInput(['value' => $model->id])->label(false) ?>
+                    <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+
+                    <div class="form-group ">
+                        <span class="btn btn-primary wall-send-btn flat_button">Отправить</span>
+                    </div>
+                    <?php ActiveForm::end() ?>
+
+                <?php endif; ?>
+
+
 
             </div>
 

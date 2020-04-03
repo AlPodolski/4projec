@@ -146,6 +146,11 @@ if (!empty($wallItems)) : ?>
 
             <?php endif; ?>
 
+            <?php if (Yii::$app->user->isGuest) : ?>
+
+            <p class="alert alert-info">Для того что бы комментировать стену требуется авторизация</p>
+
+        <?php else : ?>
 
                 <div class="comment-wall-form comment-wall-form-<?php echo $item['id'] ?>">
 
@@ -159,11 +164,14 @@ if (!empty($wallItems)) : ?>
                     <?= $form->field($commentForm, 'related_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $item['id']])->label(false) ?>
                     <?= $form->field($commentForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
 
-                        <span class="send-comment-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
+                    <span class="send-comment-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
 
                     <?php ActiveForm::end() ?>
 
                 </div>
+
+        <?php endif; ?>
+
 
 
 </div>
