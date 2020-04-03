@@ -558,6 +558,28 @@ h1{
 .user-name{
     margin-bottom: 10px;
 }
+#under-avatar-form .field-under-avatar-form-input{
+    display:none;
+}
+.post-photo{
+    position: relative;
+}
+#under-avatar-form .img-label-wrap{
+    position: absolute;
+    background: #0000008c;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 1;
+    height: 23px;
+    bottom:0;
+}
+.post-photo .img{
+    width: 100%;
+}
+
 .present{
     margin-bottom: 10px
 }
@@ -1100,7 +1122,7 @@ ul li .secodn-menu:hover {
     visibility: hidden;
 }
  .cut_left {
-    width: 178px;
+    width: 184px;
     float: left;
 }
  .cut_right {
@@ -1192,6 +1214,14 @@ ul li .secodn-menu:hover {
 }
 .icon-close{
     text-align: right;
+}
+#w0{
+    display:none;
+}
+.user-manu-wrap{
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 @media (max-width: 1199px) {
     .mobile-menu .user-sidebar{

@@ -57,7 +57,7 @@ use yii\helpers\Html;
                     <?php echo Yii::$app->user->identity->username ?>
                 </p>
             </div>
-            <div class="col-3">
+            <div class="col-3 user-manu-wrap">
                     <span class="user-manu ">
                         <i class="fas fa-bars"></i>
                     </span>

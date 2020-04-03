@@ -58,6 +58,45 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
 
+    $('#under-avatar-form-input').on('change', function(){
+        /*    files = this.files[0];
+
+            var form_data = new FormData();
+            form_data.append('file', files);*/
+
+
+        var formData = new FormData($("#under-avatar-form")[0]);
+        $.ajax({
+            url: '/user/photo/add',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#under-avatar-form .form-text').css('display', 'none');
+            },
+            success: function (data) {
+
+                $('#under-avatar-form .form-info p').text('Фото загружено');
+                $('.post-photo .img').attr('src', data);
+                $('#under-avatar-form .form-info').css('display', 'block');
+            },
+
+            complete: function() {
+                // success alerts
+            },
+
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+    });
+
+
     $('.wall-send-btn').on('click', function(e){
 
         var formData = new FormData($("#wall-form")[0]);

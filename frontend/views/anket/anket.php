@@ -50,33 +50,64 @@ if ($model) {
 
                 <div class="single-left-column page-block page_photo">
 
-                    <?php if (!empty($photo)) : ?>
+                    <div class="post-photo">
 
-                        <?php foreach ($photo as $item) : ?>
+                        <?php if (!empty($photo)) : ?>
 
-                            <?php if ($item['avatar'] == 1) : ?>
+                            <?php foreach ($photo as $item) : ?>
 
-                                <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
+                                <?php if ($item['avatar'] == 1) : ?>
 
-                                    <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
-                                <?php else : ?>
+                                        <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
 
-                                    <img src="/files/img/nophoto.png" alt="">
+                                    <?php else : ?>
+
+                                        <img src="/files/img/nophoto.png" alt="">
+
+                                    <?php endif; ?>
 
                                 <?php endif; ?>
 
-                            <?php endif; ?>
+                            <?php endforeach; ?>
 
-                        <?php endforeach; ?>
+                        <?php else : ?>
 
-                    <?php else : ?>
+                            <div class="img-wrap">
+                                <img src="/files/img/nophoto.png" alt="">
+                            </div>
 
-                    <div class="img-wrap">
-                        <img src="/files/img/nophoto.png" alt="">
+                        <?php endif; ?>
+
+                        <?php if (!Yii::$app->user->isGuest and $model->id == Yii::$app->user->id) : ?>
+
+                        <?php
+
+                        $photoModel = new Photo();
+
+                        $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data', 'id' => 'under-avatar-form']]);
+
+                        ?>
+
+                        <div class="img-label-wrap">
+                            <label for="under-avatar-form-input" class="">
+
+                                <span> <i class="fas fa-upload"></i> Загрузить фото </span>
+
+                                <?= $form->field($photoModel, 'file')
+                                    ->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'under-avatar-form-input'])
+                                    ->label(false) ?>
+
+                            </label>
+                        </div>
+
+                        <?php ActiveForm::end();
+
+                        ?>
+                        <?php endif; ?>
+
                     </div>
-
-                    <?php endif; ?>
 
 
                     <div class="profile_actions">
@@ -494,11 +525,12 @@ if ($model) {
 
                 </div>
             </div>
+
             <?php if (!empty($photo)) : ?>
 
-            <div class="page-block page-photo">
+                <div class="page-block page-photo">
 
-                <div class="slider">
+                    <div class="slider">
 
                         <div class="">
 
@@ -527,8 +559,8 @@ if ($model) {
                         </div>
 
 
+                    </div>
                 </div>
-            </div>
 
             <?php endif; ?>
 
