@@ -109,6 +109,9 @@ if ($model) {
 
                     </div>
 
+                    <?php if ( isset(Yii::$app->user->id) and Yii::$app->user->id == $model->id)  : ?>
+
+                    <?php else : ?>
 
                     <div class="profile_actions">
 
@@ -141,6 +144,8 @@ if ($model) {
                         </div>
 
                     </div>
+
+                    <?php endif; ?>
 
 
                 </div>
