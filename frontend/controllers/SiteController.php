@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\City;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -85,17 +86,19 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $params = \common\models\FilterParams::find()->asArray()->all();
+        $citys = City::find()->asArray()->all();
 
-        foreach ($params as $param){
+        $i = 0;
 
-            if (isset($param['class_name'])){
+        foreach ($citys as $city){
 
-                $table = $param['class_name']::tableName();
+            $i++;
 
-                \d($table);
+            echo $i;
 
-            }
+            $users = Profile::find()->where(['city' => $city['url']])->count();
+
+            if ($users > 1) echo  $city['url'].'-'.$users.''.'<br>';
 
         }
     }
