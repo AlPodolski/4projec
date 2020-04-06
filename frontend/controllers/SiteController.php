@@ -96,9 +96,9 @@ class SiteController extends Controller
 
             $users = Profile::find()->where(['city' => $city['url']])->count();
 
-            if (!$users) {
-                $city['url'].'-'.$users.''.'<br>';
-            }
+            \d($users);
+
+            echo  $city['url'].'-'.$users.''.'<br>';
 
         }
     }
