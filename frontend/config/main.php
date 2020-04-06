@@ -104,6 +104,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/like' => 'wall/wall/item-like',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/delete' => 'wall/wall/item-delete',
 
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/site/verify-email' => 'user/auth/verify-email',
+
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',

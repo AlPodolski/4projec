@@ -140,7 +140,7 @@ class AuthController extends Controller
         }
         if ($user = $model->verifyEmail()) {
             if (Yii::$app->user->login($user)) {
-                Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
+                Yii::$app->session->setFlash('success', 'Ваша почта подтверждена!');
                 return $this->goHome();
             }
         }
