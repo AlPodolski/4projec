@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\City;
 use frontend\components\MetaBuilder;
+use frontend\models\UserPol;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -94,11 +95,15 @@ class SiteController extends Controller
 
             $i++;
 
-            $users = Profile::find()->where(['city' => $city['url']])->count();
+            //$users = Profile::find()->where(['city' => $city['url']])->count();
 
-            \d($users);
+            echo $city['url'].'<br>';
 
-            echo  $city['url'].'-'.$users.''.'<br>';
+            echo 'мужчин '. UserPol::find()->where(['city_id' => $city['id']])->andWhere(['pol_id' => 1])->count();
+            echo '<br>';
+
+            echo 'женщин '. UserPol::find()->where(['city_id' => $city['id']])->andWhere(['pol_id' => 2])->count();
+            echo '<hr>';
 
         }
     }
