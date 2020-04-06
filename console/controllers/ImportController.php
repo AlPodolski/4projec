@@ -11,6 +11,7 @@ use common\models\City;
 use common\models\Education;
 use common\models\EyeColor;
 use common\models\Family;
+use common\models\FilterParams;
 use common\models\FinancialSituation;
 use common\models\Haracter;
 use common\models\Interesting;
@@ -76,24 +77,24 @@ class ImportController extends Controller
     public function actionIndex()
     {
 
-        $celiZnakomstva =  CeliZnakomstvamstva::find()->asArray()->all();
-        $vajmoeVPartnere =  VajnoeVPartnere::find()->asArray()->all();
-        $semeinoePolojenie =  Family::find()->asArray()->all();
-        $sexual =  Sexual::find()->asArray()->all();
-        $diti =  Children::find()->asArray()->all();
-        $body =  BodyType::find()->asArray()->all();
-        $glaza =  EyeColor::find()->asArray()->all();
-        $vneshnost =  Vneshnost::find()->asArray()->all();
-        $sfera_deyatelnosti =  SferaDeyatelnosti::find()->asArray()->all();
-        $zhile =  Zhile::find()->asArray()->all();
-        $materialnoePolozhenie =  FinancialSituation::find()->asArray()->all();
-        $transport =  Transport::find()->asArray()->all();
-        $obrazovanie =  Education::find()->asArray()->all();
-        $lifeGoals =  LifeGoals::find()->asArray()->all();
-        $haracter =  Haracter::find()->asArray()->all();
-        $interesi =  Interesting::find()->asArray()->all();
-        $smoking =  Smoking::find()->asArray()->all();
-        $alcogol =  Alcogol::find()->asArray()->all();
+        $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
+        $vajmoeVPartnere = VajnoeVPartnere::find()->asArray()->all();
+        $semeinoePolojenie = Family::find()->asArray()->all();
+        $sexual = Sexual::find()->asArray()->all();
+        $diti = Children::find()->asArray()->all();
+        $body = BodyType::find()->asArray()->all();
+        $glaza = EyeColor::find()->asArray()->all();
+        $vneshnost = Vneshnost::find()->asArray()->all();
+        $sfera_deyatelnosti = SferaDeyatelnosti::find()->asArray()->all();
+        $zhile = Zhile::find()->asArray()->all();
+        $materialnoePolozhenie = FinancialSituation::find()->asArray()->all();
+        $transport = Transport::find()->asArray()->all();
+        $obrazovanie = Education::find()->asArray()->all();
+        $lifeGoals = LifeGoals::find()->asArray()->all();
+        $haracter = Haracter::find()->asArray()->all();
+        $interesi = Interesting::find()->asArray()->all();
+        $smoking = Smoking::find()->asArray()->all();
+        $alcogol = Alcogol::find()->asArray()->all();
 
         $stream = \fopen(Yii::getAlias('@app/files/babi_tabor_13_03_2020.csv'), 'r');
 
@@ -133,19 +134,19 @@ class ImportController extends Controller
                     $i++;
                     if ($user->save()) {
 
-                        if (isset($record['znakom'])){
+                        if (isset($record['znakom'])) {
 
-                            $znakom =  (array) \json_decode($record['znakom']);
+                            $znakom = (array)\json_decode($record['znakom']);
 
-                            if (isset($znakom['cel-znakomstva'])){
+                            if (isset($znakom['cel-znakomstva'])) {
 
                                 $params = \explode(',', $znakom['cel-znakomstva']);
 
-                                foreach ($params as $param){
+                                foreach ($params as $param) {
 
-                                    foreach ($celiZnakomstva as $itemCel){
+                                    foreach ($celiZnakomstva as $itemCel) {
 
-                                        if ($itemCel['value'] == $param){
+                                        if ($itemCel['value'] == $param) {
 
                                             $class = new UserCeliZnakomstvamstva();
 
@@ -164,15 +165,15 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['vazhnoe-v-partnere'])){
+                            if (isset($znakom['vazhnoe-v-partnere'])) {
 
                                 $params = \explode(',', $znakom['vazhnoe-v-partnere']);
 
-                                foreach ($params as $param){
+                                foreach ($params as $param) {
 
-                                    foreach ($vajmoeVPartnere as $itemCel){
+                                    foreach ($vajmoeVPartnere as $itemCel) {
 
-                                        if ($itemCel['value'] == $param){
+                                        if ($itemCel['value'] == $param) {
 
                                             $class = new UserVajnoeVPartnere();
 
@@ -191,15 +192,15 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['semejnoe-polozhenie'])){
+                            if (isset($znakom['semejnoe-polozhenie'])) {
 
-                                $params =  \explode(',', $znakom['semejnoe-polozhenie']);
+                                $params = \explode(',', $znakom['semejnoe-polozhenie']);
 
-                                foreach ($params as $param){
+                                foreach ($params as $param) {
 
-                                    foreach ($semeinoePolojenie as $itemCel){
+                                    foreach ($semeinoePolojenie as $itemCel) {
 
-                                        if ($itemCel['value'] == $param){
+                                        if ($itemCel['value'] == $param) {
 
                                             $class = new UserFamily();
 
@@ -218,7 +219,7 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['orientaciya'])){
+                            if (isset($znakom['orientaciya'])) {
 
                                 if ($znakom['orientaciya'] == 'традиционная') $param_id = 1;
                                 elseif ($znakom['orientaciya'] == 'гей') $param_id = 2;
@@ -234,11 +235,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['deti'])){
+                            if (isset($znakom['deti'])) {
 
-                                foreach ($diti as $item2){
+                                foreach ($diti as $item2) {
 
-                                    if ($item2['value'] == $znakom['deti']){
+                                    if ($item2['value'] == $znakom['deti']) {
 
                                         $class = new UserChildren();
 
@@ -255,15 +256,15 @@ class ImportController extends Controller
 
                         }
 
-                        if (isset($record['tipaj'])){
+                        if (isset($record['tipaj'])) {
 
-                            $znakom = (array) \json_decode($record['tipaj']);
+                            $znakom = (array)\json_decode($record['tipaj']);
 
-                            if (isset($znakom['teloslozhenie'])){
+                            if (isset($znakom['teloslozhenie'])) {
 
-                                foreach ($body as $item2){
+                                foreach ($body as $item2) {
 
-                                    if ($item2['value'] == $znakom['teloslozhenie']){
+                                    if ($item2['value'] == $znakom['teloslozhenie']) {
 
                                         $class = new UserBody();
 
@@ -277,23 +278,23 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['rost'])){
+                            if (isset($znakom['rost'])) {
 
-                                  $class = new UserRost();
+                                $class = new UserRost();
 
-                                  $class->user_id = $user->id;
-                                  $class->value = $znakom['rost'];
-                                  $class->city_id = $item['id'];
+                                $class->user_id = $user->id;
+                                $class->value = $znakom['rost'];
+                                $class->city_id = $item['id'];
 
-                                  $class->save();
+                                $class->save();
 
                             }
 
-                            if (isset($znakom['cvet-glaz'])){
+                            if (isset($znakom['cvet-glaz'])) {
 
-                                foreach ($glaza as $item2){
+                                foreach ($glaza as $item2) {
 
-                                    if ($znakom['cvet-glaz'] == $item2['value']){
+                                    if ($znakom['cvet-glaz'] == $item2['value']) {
 
                                         $class = new UserEyeColor();
 
@@ -309,11 +310,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['moya-vneshnost'])){
+                            if (isset($znakom['moya-vneshnost'])) {
 
-                                foreach ($vneshnost as $item2){
+                                foreach ($vneshnost as $item2) {
 
-                                    if ($znakom['moya-vneshnost'] == $item2['value']){
+                                    if ($znakom['moya-vneshnost'] == $item2['value']) {
 
                                         $class = new UserVneshnost();
 
@@ -331,15 +332,15 @@ class ImportController extends Controller
 
                         }
 
-                        if (isset($record['projee'])){
+                        if (isset($record['projee'])) {
 
-                            $znakom = (array) \json_decode($record['projee']);
+                            $znakom = (array)\json_decode($record['projee']);
 
-                            if (isset($znakom['sfera-deyatelnosti'])){
+                            if (isset($znakom['sfera-deyatelnosti'])) {
 
-                                foreach ($sfera_deyatelnosti as $item2){
+                                foreach ($sfera_deyatelnosti as $item2) {
 
-                                    if ($item2['value'] == $znakom['sfera-deyatelnosti']){
+                                    if ($item2['value'] == $znakom['sfera-deyatelnosti']) {
 
                                         $class = new UserSferaDeyatelnosti();
 
@@ -353,11 +354,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['zhile'])){
+                            if (isset($znakom['zhile'])) {
 
-                                foreach ($zhile as $item2){
+                                foreach ($zhile as $item2) {
 
-                                    if ($item2['value'] == $znakom['zhile']){
+                                    if ($item2['value'] == $znakom['zhile']) {
 
                                         $class = new UserZhile();
 
@@ -371,11 +372,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['materialnoe-polozhenie'])){
+                            if (isset($znakom['materialnoe-polozhenie'])) {
 
-                                foreach ($materialnoePolozhenie as $item2){
+                                foreach ($materialnoePolozhenie as $item2) {
 
-                                    if ($item2['value'] == $znakom['materialnoe-polozhenie']){
+                                    if ($item2['value'] == $znakom['materialnoe-polozhenie']) {
 
                                         $class = new UserFinancialSituation();
 
@@ -389,11 +390,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['transport'])){
+                            if (isset($znakom['transport'])) {
 
-                                foreach ($transport as $item2){
+                                foreach ($transport as $item2) {
 
-                                    if ($item2['value'] == $znakom['transport']){
+                                    if ($item2['value'] == $znakom['transport']) {
 
                                         $class = new UserTransport();
 
@@ -407,11 +408,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['obrazovanie'])){
+                            if (isset($znakom['obrazovanie'])) {
 
-                                foreach ($obrazovanie as $item2){
+                                foreach ($obrazovanie as $item2) {
 
-                                    if ($item2['value'] == $znakom['obrazovanie']){
+                                    if ($item2['value'] == $znakom['obrazovanie']) {
 
                                         $class = new UserEducation();
 
@@ -425,77 +426,77 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['zhiznennie-prioriteti'])){
+                            if (isset($znakom['zhiznennie-prioriteti'])) {
 
-                                foreach ($lifeGoals as $item2){
+                                foreach ($lifeGoals as $item2) {
 
                                     $params = \explode(',', $znakom['zhiznennie-prioriteti']);
 
                                     foreach ($params as $param)
 
-                                    if ($item2['value'] == $param){
+                                        if ($item2['value'] == $param) {
 
-                                        $class = new UserLifeGoals();
+                                            $class = new UserLifeGoals();
 
-                                        $class->user_id = $user->id;
-                                        $class->param_id = $item2['id'];
-                                        $class->city_id = $item['id'];
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $item2['id'];
+                                            $class->city_id = $item['id'];
 
-                                        $class->save();
-                                    }
+                                            $class->save();
+                                        }
                                 }
 
                             }
 
-                            if (isset($znakom['cherti-haraktera'])){
+                            if (isset($znakom['cherti-haraktera'])) {
 
-                                foreach ($haracter as $item2){
+                                foreach ($haracter as $item2) {
 
                                     $params = \explode(',', $znakom['cherti-haraktera']);
 
                                     foreach ($params as $param)
 
-                                    if ($item2['value'] == $param){
+                                        if ($item2['value'] == $param) {
 
-                                        $class = new UserHaracter();
+                                            $class = new UserHaracter();
 
-                                        $class->user_id = $user->id;
-                                        $class->param_id = $item2['id'];
-                                        $class->city_id = $item['id'];
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $item2['id'];
+                                            $class->city_id = $item['id'];
 
-                                        $class->save();
-                                    }
+                                            $class->save();
+                                        }
                                 }
 
                             }
 
-                            if (isset($znakom['interesi-i-uvlecheniya'])){
+                            if (isset($znakom['interesi-i-uvlecheniya'])) {
 
-                                foreach ($interesi as $item2){
+                                foreach ($interesi as $item2) {
 
                                     $params = \explode(',', $znakom['interesi-i-uvlecheniya']);
 
                                     foreach ($params as $param)
 
-                                    if ($item2['value'] == $param){
+                                        if ($item2['value'] == $param) {
 
-                                        $class = new UserInteresting();
+                                            $class = new UserInteresting();
 
-                                        $class->user_id = $user->id;
-                                        $class->param_id = $item2['id'];
-                                        $class->city_id = $item['id'];
+                                            $class->user_id = $user->id;
+                                            $class->param_id = $item2['id'];
+                                            $class->city_id = $item['id'];
 
-                                        $class->save();
-                                    }
+                                            $class->save();
+                                        }
                                 }
 
                             }
 
-                            if (isset($znakom['otnoshenie-k-kureniyu'])){
+                            if (isset($znakom['otnoshenie-k-kureniyu'])) {
 
-                                foreach ($smoking as $item2){
+                                foreach ($smoking as $item2) {
 
-                                    if ($item2['value'] == $znakom['otnoshenie-k-kureniyu']){
+                                    if ($item2['value'] == $znakom['otnoshenie-k-kureniyu']) {
 
                                         $class = new UserSmoking();
 
@@ -509,11 +510,11 @@ class ImportController extends Controller
 
                             }
 
-                            if (isset($znakom['otnoshenie-k-alkogolyu'])){
+                            if (isset($znakom['otnoshenie-k-alkogolyu'])) {
 
-                                foreach ($alcogol as $item2){
+                                foreach ($alcogol as $item2) {
 
-                                    if ($item2['value'] == $znakom['otnoshenie-k-alkogolyu']){
+                                    if ($item2['value'] == $znakom['otnoshenie-k-alkogolyu']) {
 
                                         $class = new UserAlcogol();
 
@@ -530,14 +531,14 @@ class ImportController extends Controller
 
                         }
 
-                       $userPol = new UserPol();
-                       $userPol->user_id = $user->id;
-                       $userPol->city_id = $item['id'];
-                       $userPol->pol_id = 2;
+                        $userPol = new UserPol();
+                        $userPol->user_id = $user->id;
+                        $userPol->city_id = $item['id'];
+                        $userPol->pol_id = 2;
 
                         $userPol->save();
 
-                       $userZnakom = new UserZnakomstva();
+                        $userZnakom = new UserZnakomstva();
 
                         $userZnakom->user_id = $user->id;
                         $userZnakom->param_id = 1;
@@ -546,13 +547,13 @@ class ImportController extends Controller
                         $userZnakom->save();
 
 
-                       if (isset($record['tabor_id'])){
-                           $userTabor = new TaborUser();
+                        if (isset($record['tabor_id'])) {
+                            $userTabor = new TaborUser();
 
-                           $userTabor->user_id = $user->id;
-                           $userTabor->tabor_id = $record['tabor_id'];
-                           $userTabor->save();
-                       }
+                            $userTabor->user_id = $user->id;
+                            $userTabor->tabor_id = $record['tabor_id'];
+                            $userTabor->save();
+                        }
 
 
                         if (isset($record['photo_mii'])) {
@@ -576,12 +577,12 @@ class ImportController extends Controller
 
                                 foreach ($gall as $gallitem) {
 
-                                    if ($gallitem){
+                                    if ($gallitem) {
 
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/aa4/'. $gallitem );
+                                        $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/aa4/' . $gallitem);
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();
@@ -605,7 +606,8 @@ class ImportController extends Controller
         echo $i;
     }
 
-    public function actionPresents(){
+    public function actionPresents()
+    {
 
         $category = PresentsCategory::find()->asArray()->all();
 
@@ -624,17 +626,17 @@ class ImportController extends Controller
 
         foreach ($records as $record) {
 
-            foreach ($category as $item){
+            foreach ($category as $item) {
 
-                if ($item['category_name'] == $record['category']){
+                if ($item['category_name'] == $record['category']) {
 
                     $present = new Presents();
                     $present->name = $record['name'];
                     $present->price = $record['cifr'];
-                    $present->img = '/files/presents/'. $record['img'];
+                    $present->img = '/files/presents/' . $record['img'];
                     $present->status = Presents::PODAROK_DOSTUPEN;
 
-                    if ($present->save()){
+                    if ($present->save()) {
 
                         $present_to_category = new PresentToCategory();
                         $present_to_category->present_id = $present->id;
@@ -651,7 +653,8 @@ class ImportController extends Controller
         }
     }
 
-    public function actionAdvert(){
+    public function actionAdvert()
+    {
         $stream = \fopen(Yii::getAlias('@app/files/advert_import_16_03_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
@@ -672,8 +675,8 @@ class ImportController extends Controller
             $advert = new Advert();
 
             $advert->title = $record['h1'];
-            $advert->text = $record['content'].' '.$record['contact'];
-            $advert->timestamp = \time() - \rand(0 , 365 * 2) * 3600 * 24;
+            $advert->text = $record['content'] . ' ' . $record['contact'];
+            $advert->timestamp = \time() - \rand(0, 365 * 2) * 3600 * 24;
 
             $advert->save();
 
@@ -699,9 +702,9 @@ class ImportController extends Controller
 
         foreach ($profiles as $profile) {
 
-            foreach ($city as $cityItem){
+            foreach ($city as $cityItem) {
 
-                if ($cityItem['url'] == $profile['city']){
+                if ($cityItem['url'] == $profile['city']) {
                     /*$rayon = $this->addRayon($profile['city'], $profile['id']);
                     $this->addMetro($profile['city'], $profile['id'], $rayon);*/
                     $this->addService($cityItem['id'], $profile['id']);
@@ -751,64 +754,66 @@ class ImportController extends Controller
 
         foreach ($records as $record) {
 
-            if ($record['znakomstva'] == 1){
+            if ($record['znakomstva'] == 1) {
 
                 foreach ($city as $item) {
 
-                $user = new Profile();
+                    $user = new Profile();
 
-                $user->username = $record['h1'];
-                $user->password_hash = Yii::$app->security->generateRandomString(60);
-                $user->auth_key = Yii::$app->security->generateRandomString();
-                $user->email = 'admin@mail.com';
-                $user->status = 10;
-                $user->created_at = $time = \time();
-                $user->updated_at = $time;
-                $user->verification_token = Yii::$app->security->generateRandomString(43);
-                $user->city = $item['url'];
-                $user->text = $record['obyav'];
+                    $user->username = $record['h1'];
+                    $user->password_hash = Yii::$app->security->generateRandomString(60);
+                    $user->auth_key = Yii::$app->security->generateRandomString();
+                    $user->email = 'admin@mail.com';
+                    $user->status = 10;
+                    $user->created_at = $time = \time();
+                    $user->updated_at = $time;
+                    $user->verification_token = Yii::$app->security->generateRandomString(43);
+                    $user->city = $item['url'];
+                    $user->text = $record['obyav'];
 
-                $i++;
+                    $i++;
 
-                if ($user->save()) {
+                    if ($user->save()) {
 
-                    $userZnakom = new UserZnakomstva();
+                        $userZnakom = new UserZnakomstva();
 
-                    $userZnakom->user_id = $user->id;
-                    $userZnakom->param_id = 1;
-                    $userZnakom->city_id = $item['id'];
+                        $userZnakom->user_id = $user->id;
+                        $userZnakom->param_id = 1;
+                        $userZnakom->city_id = $item['id'];
 
-                    $userZnakom->save();
+                        $userZnakom->save();
 
-                    if (isset($record['img'])) {
+                        if (isset($record['img'])) {
 
-                        $userPhoto = new Photo();
+                            $userPhoto = new Photo();
 
-                        $userPhoto->user_id = $user->id;
-                        $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $record['img']);
-                        $userPhoto->avatar = 1;
+                            $userPhoto->user_id = $user->id;
+                            $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $record['img']);
+                            $userPhoto->avatar = 1;
 
-                        $userPhoto->save();
+                            $userPhoto->save();
 
-                    }
+                        }
 
-                    if (isset($record['gal'])) {
+                        if (isset($record['gal'])) {
 
-                        $gall = \explode(',', $record['gal']);
+                            $gall = \explode(',', $record['gal']);
 
-                        if ($gall) {
+                            if ($gall) {
 
-                            foreach ($gall as $gallitem) {
+                                foreach ($gall as $gallitem) {
 
-                                if ($gallitem){
+                                    if ($gallitem) {
 
-                                    $userPhoto = new Photo();
+                                        $userPhoto = new Photo();
 
-                                    $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $gallitem);
-                                    $userPhoto->avatar = 0;
+                                        $userPhoto->user_id = $user->id;
+                                        $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $gallitem);
+                                        $userPhoto->avatar = 0;
 
-                                    $userPhoto->save();
+                                        $userPhoto->save();
+
+                                    }
 
                                 }
 
@@ -816,78 +821,75 @@ class ImportController extends Controller
 
                         }
 
-                    }
+                        if ($record['kat'] == 'virt') {
 
-                    if ($record['kat'] == 'virt') {
+                            $user_place = new UserCeliZnakomstvamstva();
+                            $user_place->user_id = $user->id;
+                            $user_place->param_id = 8;
+                            $user_place->city_id = $item['id'];
 
-                        $user_place = new UserCeliZnakomstvamstva();
-                        $user_place->user_id = $user->id;
-                        $user_place->param_id = 8;
-                        $user_place->city_id = $item['id'];
+                            $user_place->save();
 
-                        $user_place->save();
+                        } else {
+                            $this->addCeliZnakomstvamstva($item['id'], $user->id);
+                        }
 
-                    }
-                    else{
-                        $this->addCeliZnakomstvamstva($item['id'],$user->id);
-                    }
+                        if ($record['kat'] == 'nujen_sponsor') {
 
-                    if ($record['kat'] == 'nujen_sponsor') {
+                            $user_place = new UserFinancialSituation();
+                            $user_place->user_id = $user->id;
+                            $user_place->param_id = 1;
+                            $user_place->city_id = $item['id'];
 
-                        $user_place = new UserFinancialSituation();
-                        $user_place->user_id = $user->id;
-                        $user_place->param_id = 1;
-                        $user_place->city_id = $item['id'];
+                            $user_place->save();
 
-                        $user_place->save();
+                        } else {
+                            $this->addFinPolojenie($item['id'], $user->id);
+                        }
 
-                    }else {
+                        if ($record['orientaciya']) {
+                            $class = new UserSexual();
+
+                            $class->user_id = $user->id;
+                            $class->sexual_id = $record['orientaciya'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+                        }
+
+                        if ($record['pol']) {
+
+                            $userPol = new UserPol();
+                            $userPol->user_id = $user->id;
+                            $userPol->city_id = $item['id'];
+                            $userPol->pol_id = $record['pol'];
+
+                            $userPol->save();
+
+                        }
+
+
+                        $this->addService($item['id'], $user->id);
+                        $this->addTransport($item['id'], $user->id);
+                        $this->addZhile($item['id'], $user->id);
+                        $this->addEducation($item['id'], $user->id);
+                        $this->addVajnoeVPartnere($item['id'], $user->id);
+                        $this->addPlace($item['id'], $user->id);
                         $this->addFinPolojenie($item['id'], $user->id);
-                    }
-
-                    if ($record['orientaciya']){
-                        $class = new UserSexual();
-
-                        $class->user_id = $user->id;
-                        $class->sexual_id = $record['orientaciya'];
-                        $class->city_id = $item['id'];
-
-                        $class->save();
-                    }
-
-                    if ($record['pol']){
-
-                        $userPol = new UserPol();
-                        $userPol->user_id = $user->id;
-                        $userPol->city_id = $item['id'];
-                        $userPol->pol_id = $record['pol'];
-
-                        $userPol->save();
+                        $this->addBody($item['id'], $user->id);
+                        $this->addCeli($item['id'], $user->id);
+                        $this->addSmoke($item['id'], $user->id);
+                        $this->addAlcohol($item['id'], $user->id);
+                        $this->addObrazovanie($item['id'], $user->id);
+                        $this->addIntimHair($item['id'], $user->id);
+                        $this->addInteresy($item['id'], $user->id);
+                        $this->addHaracter($item['id'], $user->id);
+                        $this->addVneshnost($item['id'], $user->id);
+                        $this->addMestoVstreji($item['id'], $user->id);
 
                     }
-
-
-                    $this->addService($item['id'], $user->id);
-                    $this->addTransport($item['id'], $user->id);
-                    $this->addZhile($item['id'], $user->id);
-                    $this->addEducation($item['id'], $user->id);
-                    $this->addVajnoeVPartnere($item['id'], $user->id);
-                    $this->addPlace($item['id'], $user->id);
-                    $this->addFinPolojenie($item['id'], $user->id);
-                    $this->addBody($item['id'], $user->id);
-                    $this->addCeli($item['id'], $user->id);
-                    $this->addSmoke($item['id'], $user->id);
-                    $this->addAlcohol($item['id'], $user->id);
-                    $this->addObrazovanie($item['id'], $user->id);
-                    $this->addIntimHair($item['id'], $user->id);
-                    $this->addInteresy($item['id'], $user->id);
-                    $this->addHaracter($item['id'], $user->id);
-                    $this->addVneshnost($item['id'], $user->id);
-                    $this->addMestoVstreji($item['id'], $user->id);
 
                 }
-
-            }
 
             }
         }
@@ -933,7 +935,7 @@ class ImportController extends Controller
 
                     if ($dostypnoe_metro = \explode(',', $record['metro'])) {
 
-                        if ($metro = Metro::find()->where(['city' => $city_user])->andWhere(['value'=> $dostypnoe_metro[\array_rand($dostypnoe_metro)]])->asArray()->one()){
+                        if ($metro = Metro::find()->where(['city' => $city_user])->andWhere(['value' => $dostypnoe_metro[\array_rand($dostypnoe_metro)]])->asArray()->one()) {
 
                             $user_to_metro = new UserToMetro();
                             $user_to_metro->user_id = $user_id;
@@ -949,8 +951,8 @@ class ImportController extends Controller
 
             }
 
-        }else{
-            if ($metro = Metro::find()->where(['city' => $city_user])->asArray()->all()){
+        } else {
+            if ($metro = Metro::find()->where(['city' => $city_user])->asArray()->all()) {
 
                 $user_to_metro = new UserToMetro();
                 $user_to_metro->user_id = ArrayHelper::getValue($metro[\array_rand($metro)], 'id');
@@ -964,13 +966,60 @@ class ImportController extends Controller
 
     }
 
-    public function addService($cityId , $user_id = 1){
+    public function actionSklon()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/sclon.csv'), 'r');
 
-        if($service = Service::find()->asArray()->all()){
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
 
-            foreach ($service as $item){
+        //build a statement
+        $stmt = (new Statement());
 
-                if(\rand(0,2) != 2){
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        foreach ($records as $record) {
+
+            if ($filter = FilterParams::find()->where(['url' => $record['filter']])->asArray()->one()) {
+
+                $class = $filter['class_name'];
+
+                $prop = $class::find()->where(['value' => $record['param']])->one();
+
+
+                if ($prop and $record['value2'] != '') {
+
+                    $prop->value2 = $record['value2'];
+
+                    if ( $record['value3'] != '') {
+
+                        $prop->value3 = $record['value3'];
+
+                    }
+
+                    if ($record['filter'] == 'metro') ;
+
+
+                    $prop->save();
+
+                }
+
+            }
+
+        }
+    }
+
+    public function addService($cityId, $user_id = 1)
+    {
+
+        if ($service = Service::find()->asArray()->all()) {
+
+            foreach ($service as $item) {
+
+                if (\rand(0, 2) != 2) {
 
                     $user_place = new UserService();
                     $user_place->user_id = $user_id;
@@ -986,16 +1035,16 @@ class ImportController extends Controller
         }
 
 
-
     }
 
-    public function addVajnoeVPartnere($cityId , $user_id = 1){
+    public function addVajnoeVPartnere($cityId, $user_id = 1)
+    {
 
-        if($service = VajnoeVPartnere::find()->asArray()->all()){
+        if ($service = VajnoeVPartnere::find()->asArray()->all()) {
 
-            foreach ($service as $item){
+            foreach ($service as $item) {
 
-                if(\rand(0,2) != 2){
+                if (\rand(0, 2) != 2) {
 
                     $user_place = new UserVajnoeVPartnere();
                     $user_place->user_id = $user_id;
@@ -1011,16 +1060,16 @@ class ImportController extends Controller
         }
 
 
-
     }
 
-    public function addCeliZnakomstvamstva($cityId , $user_id = 1){
+    public function addCeliZnakomstvamstva($cityId, $user_id = 1)
+    {
 
-        if($service = CeliZnakomstvamstva::find()->asArray()->all()){
+        if ($service = CeliZnakomstvamstva::find()->asArray()->all()) {
 
-            foreach ($service as $item){
+            foreach ($service as $item) {
 
-                if(\rand(0,2) != 2){
+                if (\rand(0, 2) != 2) {
 
                     $user_place = new UserCeliZnakomstvamstva();
                     $user_place->user_id = $user_id;
@@ -1036,16 +1085,16 @@ class ImportController extends Controller
         }
 
 
-
     }
 
-    public function addCeli($cityId, $user_id = 1){
+    public function addCeli($cityId, $user_id = 1)
+    {
 
-        if($service = LifeGoals::find()->asArray()->all()){
+        if ($service = LifeGoals::find()->asArray()->all()) {
 
-            foreach ($service as $item){
+            foreach ($service as $item) {
 
-                if(\rand(0,2) != 2){
+                if (\rand(0, 2) != 2) {
 
                     $user_place = new UserLifeGoals();
                     $user_place->user_id = $user_id;
@@ -1061,121 +1110,124 @@ class ImportController extends Controller
         }
 
 
-
     }
 
-    public function addSexual($cityId, $user_id = 1){
+    public function addSexual($cityId, $user_id = 1)
+    {
 
-        if($service = Sexual::find()->where(['pol_id' => 2])->asArray()->all()){
+        if ($service = Sexual::find()->where(['pol_id' => 2])->asArray()->all()) {
 
-             $user_place = new UserSexual();
-             $user_place->user_id = $user_id;
-             $user_place->sexual_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-             $user_place->city_id = $cityId;
+            $user_place = new UserSexual();
+            $user_place->user_id = $user_id;
+            $user_place->sexual_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-             $user_place->save();
+            $user_place->save();
 
         }
 
 
-
     }
 
-    public function addEducation($cityId, $user_id = 1){
+    public function addEducation($cityId, $user_id = 1)
+    {
 
-        if($service = Education::find()->asArray()->all()){
+        if ($service = Education::find()->asArray()->all()) {
 
-             $user_place = new UserEducation();
-             $user_place->user_id = $user_id;
-             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-             $user_place->city_id = $cityId;
+            $user_place = new UserEducation();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-             $user_place->save();
+            $user_place->save();
 
         }
 
 
-
     }
 
-    public function addTransport($cityId, $user_id = 1){
+    public function addTransport($cityId, $user_id = 1)
+    {
 
-        if($service = Transport::find()->asArray()->all()){
+        if ($service = Transport::find()->asArray()->all()) {
 
-             $user_place = new UserTransport();
-             $user_place->user_id = $user_id;
-             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-             $user_place->city_id = $cityId;
+            $user_place = new UserTransport();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-             $user_place->save();
+            $user_place->save();
 
         }
 
 
-
     }
 
-    public function addZhile($cityId, $user_id = 1){
+    public function addZhile($cityId, $user_id = 1)
+    {
 
-        if($service = Zhile::find()->asArray()->all()){
+        if ($service = Zhile::find()->asArray()->all()) {
 
-             $user_place = new UserZhile();
-             $user_place->user_id = $user_id;
-             $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-             $user_place->city_id = $cityId;
+            $user_place = new UserZhile();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-             $user_place->save();
+            $user_place->save();
 
         }
 
 
-
     }
 
-    public function addBody($cityId, $user_id = 1){
+    public function addBody($cityId, $user_id = 1)
+    {
 
-        if($service = BodyType::find()->asArray()->all()){
+        if ($service = BodyType::find()->asArray()->all()) {
 
-             $user_place = new UserBody();
-             $user_place->user_id = $user_id;
-             $user_place->value = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-             $user_place->city_id = $cityId;
+            $user_place = new UserBody();
+            $user_place->user_id = $user_id;
+            $user_place->value = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-             $user_place->save();
+            $user_place->save();
 
         }
 
     }
 
-    public function addFinPolojenie($cityId, $user_id = 1){
+    public function addFinPolojenie($cityId, $user_id = 1)
+    {
 
-         $user_place = new UserFinancialSituation();
-         $user_place->user_id = $user_id;
-         $user_place->param_id = 1;
-         $user_place->city_id = $cityId;
+        $user_place = new UserFinancialSituation();
+        $user_place->user_id = $user_id;
+        $user_place->param_id = 1;
+        $user_place->city_id = $cityId;
 
-         $user_place->save();
-
-    }
-
-    public function addDeti($cityId, $user_id = 1){
-
-         $user_place = new UserChildren();
-         $user_place->user_id = $user_id;
-         $user_place->param_id = 1;
-         $user_place->city_id = $cityId;
-
-         $user_place->save();
+        $user_place->save();
 
     }
 
-    public function addPlace($cityId, $user_id = 1){
+    public function addDeti($cityId, $user_id = 1)
+    {
 
-        if($service = Place::find()->asArray()->all()){
+        $user_place = new UserChildren();
+        $user_place->user_id = $user_id;
+        $user_place->param_id = 1;
+        $user_place->city_id = $cityId;
 
-            foreach ($service as $item){
+        $user_place->save();
 
-                if(\rand(0,2) != 2){
+    }
+
+    public function addPlace($cityId, $user_id = 1)
+    {
+
+        if ($service = Place::find()->asArray()->all()) {
+
+            foreach ($service as $item) {
+
+                if (\rand(0, 2) != 2) {
 
                     $user_place = new UserToPlace();
                     $user_place->user_id = $user_id;
@@ -1192,73 +1244,78 @@ class ImportController extends Controller
 
     }
 
-    public function addSmoke($cityId, $user_id = 1){
+    public function addSmoke($cityId, $user_id = 1)
+    {
 
-        if($service = Smoking::find()->asArray()->all()){
+        if ($service = Smoking::find()->asArray()->all()) {
 
-                    $user_place = new UserSmoking();
-                    $user_place->user_id = $user_id;
-                    $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-                    $user_place->city_id = $cityId;
+            $user_place = new UserSmoking();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-                    $user_place->save();
-
-        }
-
-    }
-
-    public function addAlcohol($cityId, $user_id = 1){
-
-        if($service = Alcogol::find()->asArray()->all()){
-
-                    $user_place = new UserAlcogol();
-                    $user_place->user_id = $user_id;
-                    $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-                    $user_place->city_id = $cityId;
-
-                    $user_place->save();
+            $user_place->save();
 
         }
 
     }
 
-    public function addObrazovanie($cityId, $user_id = 1){
+    public function addAlcohol($cityId, $user_id = 1)
+    {
 
-        if($service = Education::find()->asArray()->all()){
+        if ($service = Alcogol::find()->asArray()->all()) {
 
-                    $user_place = new UserEducation();
-                    $user_place->user_id = $user_id;
-                    $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-                    $user_place->city_id = $cityId;
+            $user_place = new UserAlcogol();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-                    $user_place->save();
-
-        }
-
-    }
-
-    public function addIntimHair($cityId, $user_id = 1){
-
-        if($service = IntimHair::find()->asArray()->all()){
-
-                    $user_place = new UserIntimHair();
-                    $user_place->user_id = $user_id;
-                    $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
-                    $user_place->city_id = $cityId;
-
-                    $user_place->save();
+            $user_place->save();
 
         }
 
     }
 
-    public function addInteresy($cityId, $user_id = 1){
+    public function addObrazovanie($cityId, $user_id = 1)
+    {
 
-        if($service = Interesting::find()->asArray()->all()){
+        if ($service = Education::find()->asArray()->all()) {
 
-            foreach ($service as $item){
+            $user_place = new UserEducation();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
 
-                if(\rand(0,2) != 2){
+            $user_place->save();
+
+        }
+
+    }
+
+    public function addIntimHair($cityId, $user_id = 1)
+    {
+
+        if ($service = IntimHair::find()->asArray()->all()) {
+
+            $user_place = new UserIntimHair();
+            $user_place->user_id = $user_id;
+            $user_place->param_id = ArrayHelper::getValue($service[\array_rand($service)], 'id');
+            $user_place->city_id = $cityId;
+
+            $user_place->save();
+
+        }
+
+    }
+
+    public function addInteresy($cityId, $user_id = 1)
+    {
+
+        if ($service = Interesting::find()->asArray()->all()) {
+
+            foreach ($service as $item) {
+
+                if (\rand(0, 2) != 2) {
 
                     $class = new UserInteresting();
                     $class->user_id = $user_id;
@@ -1275,13 +1332,14 @@ class ImportController extends Controller
 
     }
 
-    public function addHaracter($cityId, $user_id = 1){
+    public function addHaracter($cityId, $user_id = 1)
+    {
 
-        if($service = Haracter::find()->asArray()->all()){
+        if ($service = Haracter::find()->asArray()->all()) {
 
-            foreach ($service as $item){
+            foreach ($service as $item) {
 
-                if(\rand(0,3) != 3){
+                if (\rand(0, 3) != 3) {
 
                     $class = new UserHaracter();
                     $class->user_id = $user_id;
@@ -1298,9 +1356,10 @@ class ImportController extends Controller
 
     }
 
-    public function addVneshnost($cityId, $user_id = 1){
+    public function addVneshnost($cityId, $user_id = 1)
+    {
 
-        if($service = Vneshnost::find()->asArray()->all()){
+        if ($service = Vneshnost::find()->asArray()->all()) {
 
             $service = $service[\array_rand($service)];
 
@@ -1314,13 +1373,14 @@ class ImportController extends Controller
 
     }
 
-    public function addMestoVstreji($cityId, $user_id = 1){
+    public function addMestoVstreji($cityId, $user_id = 1)
+    {
 
-        if($mesto = Place::find()->asArray()->all()){
+        if ($mesto = Place::find()->asArray()->all()) {
 
-            foreach ($mesto as $mestoItem){
+            foreach ($mesto as $mestoItem) {
 
-                if(\rand(0,1) == 1){
+                if (\rand(0, 1) == 1) {
 
                     $user_place = new UserToPlace();
                     $user_place->user_id = $user_id;
@@ -1334,7 +1394,6 @@ class ImportController extends Controller
             }
 
         }
-
 
 
     }

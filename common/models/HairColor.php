@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string|null $value
- * @property int|null $pol
+ * @property string|null $url
  */
 class HairColor extends \yii\db\ActiveRecord
 {
@@ -27,8 +27,7 @@ class HairColor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pol'], 'integer'],
-            [['value'], 'string', 'max' => 100],
+            [['value', 'url'], 'string', 'max' => 100],
         ];
     }
 
@@ -40,7 +39,7 @@ class HairColor extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'value' => 'Value',
-            'pol' => 'Pol',
+            'url' => 'url',
         ];
     }
 }
