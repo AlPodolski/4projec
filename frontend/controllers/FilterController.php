@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\components\helpers\QueryParamsHelper;
 use frontend\modules\user\models\Profile;
@@ -57,9 +58,9 @@ class FilterController extends Controller
         if(\count($posts) < 4) $more_posts = Profile::find()->limit(8)
             ->all();
 
-        $title = MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
-        $des = MetaBuilder::Build(Yii::$app->request->url, $city, 'des');
-        $h1 = MetaBuilder::Build(Yii::$app->request->url, $city, 'h1');
+        $title = MetaFilterHelper::Filter( MetaBuilder::Build(Yii::$app->request->url, $city, 'Title'));
+        $des = MetaFilterHelper::Filter(MetaBuilder::Build(Yii::$app->request->url, $city, 'des'));
+        $h1 = MetaFilterHelper::Filter(MetaBuilder::Build(Yii::$app->request->url, $city, 'h1'));
 
         return $this->render('index', [
             'posts' => $posts,
