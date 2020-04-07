@@ -1,6 +1,9 @@
 <?php
 namespace frontend\modules\user\models\forms;
 
+use common\models\City;
+use common\models\Pol;
+use frontend\models\UserPol;
 use Yii;
 use yii\base\Model;
 use common\models\User;
@@ -14,6 +17,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $city;
+    public $pol;
 
     public function attributeLabels()
     {
@@ -22,6 +26,7 @@ class SignupForm extends Model
             'email' => 'Email',
             'password' => 'Пароль',
             'city' => 'Город',
+            'pol' => 'Пол',
         ];
     }
 
@@ -43,6 +48,8 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['pol', 'integer']
         ];
     }
 
@@ -63,7 +70,21 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
-        return $user->save() && $this->sendEmail($user);
+        if ($user->save() && $this->sendEmail($user)){
+
+            $city_id = City::find()->where(['url' => $this->city])->select('id')->asArray()->one();
+
+            $userPol = new UserPol();
+
+            $userPol->user_id = $user->id;
+            $userPol->city_id =$city_id['id'];
+            $userPol->pol_id = $this->pol;
+
+            return $userPol->save();
+
+        }
+
+        return false;
 
     }
 
@@ -80,9 +101,9 @@ class SignupForm extends Model
                 ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' '])
             ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setSubject('Регистрация ' . Yii::$app->name)
             ->send();
     }
 }

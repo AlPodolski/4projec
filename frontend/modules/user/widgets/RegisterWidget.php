@@ -3,10 +3,10 @@ namespace frontend\modules\user\widgets;
 
 use frontend\modules\user\models\forms\SignupForm;
 use yii\base\Widget;
-
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use common\models\Pol;
 
 class RegisterWidget extends Widget
 {
@@ -19,6 +19,8 @@ class RegisterWidget extends Widget
     {
         $signup = new SignupForm();
 
+        $pol = Pol::find()->asArray()->all();
+
         $form = ActiveForm::begin(['id' => 'form-signup', 'action' => '/user/signup']);
 
         echo $form->field($signup, 'username')->textInput(['autofocus' => true]);
@@ -26,6 +28,8 @@ class RegisterWidget extends Widget
         echo $form->field($signup, 'email');
 
         echo $form->field($signup, 'password')->passwordInput();
+
+        echo $form ->field($signup, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value'));
 
         echo '<div class="form-group">';
 

@@ -42,7 +42,6 @@ $model->pol = $model->getPol();
 
                 <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'username')->textInput(); ?></div>
                 <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'phone')->textInput(['maxlength' => true , 'placeholder' => "+7(999)99 99 999"]); ?></div>
-                <div class="col-12 col-sm-6 col-lg-4""> <?= $form ->field($model, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value')); ?></div>
 
                 <div class="col-12 col-sm-6 col-lg-4">
 
