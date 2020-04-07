@@ -197,11 +197,6 @@ if ($model) {
                         <?php if ($postPrice) : ?>
 
                             <div class="label fl_l">Цена:</div>
-                            <?php
-
-                            $city = City::getCity($model->city);
-
-                            ?>
                             <div class="labeled"> <?php echo $postPrice['value'] ?> рублей</div>
 
                         <?php endif; ?>
@@ -213,11 +208,7 @@ if ($model) {
                         <?php if (!empty($model['sexual'])) : ?>
 
                             <div class="label fl_l">Моя ориентация:</div>
-                            <?php
 
-                            $city = City::getCity($model->city);
-
-                            ?>
                             <div class="labeled"> <?php foreach ($model['sexual'] as $item) echo $item['value'] . ' ' ?></div>
 
                         <?php endif; ?>
@@ -229,11 +220,7 @@ if ($model) {
                         <?php if (!empty($model['wantFind'])) : ?>
 
                             <div class="label fl_l">Хочу найти:</div>
-                            <?php
 
-                            $city = City::getCity($model->city);
-
-                            ?>
                             <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo $item['value'] . ' ' ?> </div>
 
                         <?php endif; ?>

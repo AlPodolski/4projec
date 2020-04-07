@@ -7,17 +7,15 @@ use common\models\News;
 use frontend\widgets\SidebarWidget;
 use yii\web\View;
 
-$this->title = 'Интим объявления';
+$this->title = 'Новости';
 ?>
 <div class="row">
 
         <?php
 
-        echo SidebarWidget::Widget()
+            echo SidebarWidget::Widget()
 
         ?>
-
-
 
     <div class="col-12 col-xl-9">
 

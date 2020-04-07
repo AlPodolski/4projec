@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use common\models\City;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -44,10 +45,13 @@ class AnketController extends Controller
             Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
         }
 
+        $cityInfo = City::find()->where(['url' => $city])->asArray()->one();
+
 
         return $this->render('single' , [
             'model' => $model,
             'city' => $city,
+            'cityInfo' => $cityInfo,
         ]);
 
     }

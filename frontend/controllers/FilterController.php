@@ -28,7 +28,7 @@ class FilterController extends Controller
 
             }
 
-            $posts = $posts->limit(Yii::$app->params['post_limit'])->with('userAvatarRelations');
+            $posts = $posts->limit(Yii::$app->params['post_limit'])->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
 
             if (Yii::$app->request->isPost){
 

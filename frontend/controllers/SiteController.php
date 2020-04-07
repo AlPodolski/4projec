@@ -48,7 +48,7 @@ class SiteController extends Controller
     public function actionIndex($city)
     {
 
-        $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )->with('userAvatarRelations');
+        $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
 
         if (Yii::$app->request->isPost){
 
