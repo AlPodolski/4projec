@@ -10,13 +10,13 @@ use yii\web\View;
 $this->title = 'Интим объявления';
 ?>
 <div class="row">
-    <div class="col-3">
+
         <?php
 
         echo SidebarWidget::Widget()
 
         ?>
-    </div>
+
 
 
     <div class="col-12 col-xl-9">
