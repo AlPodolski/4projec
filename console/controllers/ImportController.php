@@ -96,7 +96,7 @@ class ImportController extends Controller
         $smoking = Smoking::find()->asArray()->all();
         $alcogol = Alcogol::find()->asArray()->all();
 
-        $stream = \fopen(Yii::getAlias('@app/files/babi_tabor_13_03_2020.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/tabor06_04_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -112,6 +112,7 @@ class ImportController extends Controller
         $i = 0;
 
         foreach ($records as $record) {
+
 
             foreach ($city as $item) {
 
@@ -221,9 +222,16 @@ class ImportController extends Controller
 
                             if (isset($znakom['orientaciya'])) {
 
-                                if ($znakom['orientaciya'] == 'традиционная') $param_id = 1;
-                                elseif ($znakom['orientaciya'] == 'гей') $param_id = 2;
-                                else $param_id = 3;
+                                if ($record['pol'] == 'true'){
+                                    if ($znakom['orientaciya'] == 'традиционная') $param_id = 1;
+                                    elseif ($znakom['orientaciya'] == 'гей') $param_id = 2;
+                                    elseif ($znakom['orientaciya'] == 'би') $param_id = 3;
+                                }else{
+                                    if ($znakom['orientaciya'] == 'традиционная') $param_id = 4;
+                                    elseif ($znakom['orientaciya'] == 'лесби') $param_id = 5;
+                                    else  $param_id = 6;
+
+                                }
 
                                 $class = new UserSexual();
 
@@ -534,7 +542,15 @@ class ImportController extends Controller
                         $userPol = new UserPol();
                         $userPol->user_id = $user->id;
                         $userPol->city_id = $item['id'];
-                        $userPol->pol_id = 2;
+
+                        if ($record['pol'] == 'true'){
+                            $userPol->pol_id = 1;
+
+                        }else{
+                            $userPol->pol_id = 2;
+                        }
+
+
 
                         $userPol->save();
 
@@ -561,7 +577,7 @@ class ImportController extends Controller
                             $userPhoto = new Photo();
 
                             $userPhoto->user_id = $user->id;
-                            $userPhoto->file = \str_replace('files', '/files/uploads/aa4', $record['photo_mii']);
+                            $userPhoto->file = \str_replace('files', '/files/uploads/aa5', $record['photo_mii']);
                             $userPhoto->avatar = 1;
 
                             $userPhoto->save();
@@ -582,7 +598,7 @@ class ImportController extends Controller
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/aa4/' . $gallitem);
+                                        $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/aa5/' . $gallitem);
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();
