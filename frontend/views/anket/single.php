@@ -1,22 +1,16 @@
 <?php
 
+/* @var $this \yii\web\View */
 /* @var $model frontend\modules\user\models\Profile */
 /* @var $cityInfo array */
 use frontend\widgets\SidebarWidget;
 
-$title = $model->username .' из города '.$cityInfo['city'];
+$this->title = \frontend\components\SingleMetaHelper::Title($model, $cityInfo) ;
 
- if (!empty($model['sexual'])) {
-     $title .= ' ориентация ';
-     foreach ($model['sexual'] as $item) $title .=' '. $item['value'] . ' ' ;
-}
-
-if (!empty($model['wantFind'])){
-    $title .= ' хочу найти ';
-    foreach ($model['wantFind'] as $item) $title .=' '. $item['value'] . ' ' ;
-}
-
-$this->title = $title ;
+$this->registerMetaTag([
+        'name' => 'description',
+        'content' => \frontend\components\SingleMetaHelper::Description($model)
+]);
 
 ?>
 <div class="row">
