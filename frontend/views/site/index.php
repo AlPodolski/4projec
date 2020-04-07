@@ -2,13 +2,19 @@
 
 /* @var $this yii\web\View */
 /* @var $city string */
+/* @var $title string */
+/* @var $des string */
+/* @var $h1 string */
 /* @var $posts Profile[] */
 
 use frontend\modules\user\models\Profile;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
-$this->title = 'Знакомства';
-
+$this->title = $title;
+Yii::$app->view->registerMetaTag([
+    'name' => 'description',
+    'content' => $des
+]);
 $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 ?>
@@ -41,7 +47,7 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
                 <div class="main-banner">
                     <div class="row">
                         <div class="col-12">
-                            <h1>Секс знакомства Москва</h1>
+                            <h1><?php echo $h1 ?></h1>
                             <div class="text-main">
                                 <p>Привет мой похотливый друг! Мы рады видеть тебя на сайте Intim DOSUG, здесь ты найдешь
                                     для себя самые интересные анкеты  </p>

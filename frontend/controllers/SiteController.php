@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
 use frontend\models\UserPol;
 use frontend\modules\user\models\Profile;
@@ -70,11 +71,16 @@ class SiteController extends Controller
 
         $posts = $posts->all();
 
-        Yii::$app->view->title = MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
+        $title =  MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
+        $des = MetaBuilder::Build(Yii::$app->request->url, $city, 'des');
+        $h1 = MetaBuilder::Build(Yii::$app->request->url, $city, 'h1');
 
         return $this->render('index', [
             'city' => $city,
-            'posts' => $posts
+            'posts' => $posts,
+            'title' => $title,
+            'des' => $des,
+            'h1' => $h1,
         ]);
     }
 
