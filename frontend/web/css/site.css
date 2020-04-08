@@ -1161,6 +1161,9 @@ ul li .secodn-menu:hover {
 .all-photo .img{
     width: 100%;
 }
+.like-count{
+    display:inline;
+}
 .item .wall-tem-menu i{
     position: relative;
     top: -2px;

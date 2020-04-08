@@ -69,7 +69,7 @@ class WallController extends Controller
 
             if (!Yii::$app->user->isGuest){
 
-                LikeHelper::like(Yii::$app->user->id, Yii::$app->request->post('id'), Yii::$app->params['wall_item_redis_key']);
+                return LikeHelper::like(Yii::$app->user->id, Yii::$app->request->post('id'), Yii::$app->params['wall_item_redis_key']);
 
             }
 

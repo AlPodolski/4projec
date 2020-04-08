@@ -164,7 +164,8 @@ $(document).ready(function() {
             type: 'POST',
             data: 'id='+id,
             success: function (data) {
-                $(object).children().toggleClass('d-none');
+                $(object).children('span').toggleClass('d-none');
+                $(object).children('.like-count').html(data);
             },
         });
 

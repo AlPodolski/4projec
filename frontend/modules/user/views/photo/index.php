@@ -6,6 +6,7 @@ use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
 
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+$this->title = 'Все фото';
 
 ?>
 <div class="row">

@@ -18,6 +18,8 @@ class LikeHelper
             $redis->sadd($key.":{$item_id}:likes", $user_id);
         }
 
+        return LikeHelper::countLike($item_id , $key);
+
     }
 
     public static function isLiked($user_id, $item_id , $key){
@@ -27,4 +29,12 @@ class LikeHelper
         return (bool) $redis->sismember($key.":{$item_id}:likes", $user_id);
 
     }
+
+    public static function countLike($item_id , $key)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->scard ($key.":{$item_id}:likes");
+    }
+
 }

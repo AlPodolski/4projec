@@ -7,6 +7,7 @@ use frontend\components\MetaBuilder;
 use frontend\models\UserPol;
 use frontend\modules\user\models\Profile;
 use Yii;
+use yii\redis\Connection;
 use yii\web\Controller;
 
 /**
@@ -91,6 +92,17 @@ class SiteController extends Controller
 
     public function actionCust(){
 
+
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        \dd($redis->scard ('wall_item:5:likes'));
+
+        if(  (bool) $redis->sismember('1'.":1:likes", 1) ){
+            $redis->srem($key.":{$item_id}:likes", $user_id);
+        }else{
+            $redis->sadd($key.":{$item_id}:likes", $user_id);
+        }
 
         $citys = City::find()->asArray()->all();
 

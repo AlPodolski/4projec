@@ -86,6 +86,10 @@ if (!empty($wallItems)) : ?>
 
             <?php endif; ?>
 
+            <div class="like-count">
+                <?php echo LikeHelper::countLike($item['id'], Yii::$app->params['wall_item_redis_key'] ); ?>
+            </div>
+
             </div>
             <div class="open-comment-btn" data-id="<?php echo $item['id'] ?>">
                 <i class="far fa-comment"></i>
