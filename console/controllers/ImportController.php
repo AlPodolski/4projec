@@ -706,24 +706,16 @@ class ImportController extends Controller
 
         $city = City::find()->asArray()->all();
 
-        $userProstitutki = UserProstitutki::find()->select('user_id')->distinct('user_id')->asArray()->all();
-
-        foreach ($userProstitutki as $id_item) {
-
-            $result[] = ArrayHelper::getValue($id_item, 'user_id');
-
-        }
-
-        $profiles = Profile::find()->where(['in', 'id', $result])->asArray()->all();
+        $profiles = Profile::find()->where(['city' => 'msk'])->asArray()->all();
 
         foreach ($profiles as $profile) {
 
             foreach ($city as $cityItem) {
 
                 if ($cityItem['url'] == $profile['city']) {
-                    /*$rayon = $this->addRayon($profile['city'], $profile['id']);
-                    $this->addMetro($profile['city'], $profile['id'], $rayon);*/
-                    $this->addService($cityItem['id'], $profile['id']);
+                    $rayon = $this->addRayon($cityItem['id'], $profile['id']);
+                    $this->addMetro($cityItem['id'], $profile['id'], $rayon);
+                    /*$this->addService($cityItem['id'], $profile['id']);
                     $this->addTransport($cityItem['id'], $profile['id']);
                     $this->addZhile($cityItem['id'], $profile['id']);
                     $this->addEducation($cityItem['id'], $profile['id']);
@@ -742,7 +734,7 @@ class ImportController extends Controller
                     $this->addInteresy($cityItem['id'], $profile['id']);
                     $this->addHaracter($cityItem['id'], $profile['id']);
                     $this->addVneshnost($cityItem['id'], $profile['id']);
-                    $this->addMestoVstreji($cityItem['id'], $profile['id']);
+                    $this->addMestoVstreji($cityItem['id'], $profile['id']);*/
                 }
 
             }
@@ -911,13 +903,14 @@ class ImportController extends Controller
         }
     }
 
-    private function addRayon($city, $user_id)
+    private function addRayon($city_id, $user_id)
     {
 
-        if ($rayon = Rayon::find()->where(['city' => $city])->asArray()->all()) {
+        if ($rayon = Rayon::find()->where(['city_id' => $city_id])->asArray()->all()) {
 
             $user_to_raton = new UserToRayon();
             $user_to_raton->user_id = $user_id;
+            $user_to_raton->city_id = $city_id;
             $user_to_raton->rayon_id = ArrayHelper::getValue($return_rayon = $rayon[\array_rand($rayon)], 'id');
 
             if ($user_to_raton->save()) return $return_rayon;
@@ -926,7 +919,7 @@ class ImportController extends Controller
 
     }
 
-    public function addMetro($city_user = 'msk', $user_id = 1, $rayon = false)
+    public function addMetro($city_user , $user_id = 1, $rayon = false)
     {
 
 
@@ -947,15 +940,16 @@ class ImportController extends Controller
 
             foreach ($records as $record) {
 
-                if ($rayon['value'] == $record['rayon']) {
+                if ($rayon['value'] == $record['rayon'] and \rand(1,3) != 3) {
 
                     if ($dostypnoe_metro = \explode(',', $record['metro'])) {
 
-                        if ($metro = Metro::find()->where(['city' => $city_user])->andWhere(['value' => $dostypnoe_metro[\array_rand($dostypnoe_metro)]])->asArray()->one()) {
+                        if ($metro = Metro::find()->where(['city_id' => $city_user])->andWhere(['value' => $dostypnoe_metro[\array_rand($dostypnoe_metro)]])->asArray()->one()) {
 
                             $user_to_metro = new UserToMetro();
                             $user_to_metro->user_id = $user_id;
                             $user_to_metro->metro_id = $metro['id'];
+                            $user_to_metro->city_id = $city_user;
 
                             $user_to_metro->save();
 

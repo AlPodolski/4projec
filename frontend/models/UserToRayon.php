@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int|null $user_id
  * @property int|null $rayon_id
+ * @property int|null $city_id
  */
 class UserToRayon extends \yii\db\ActiveRecord
 {
