@@ -522,7 +522,7 @@ if ($model) {
 
                 <div class="page-block page-photo">
 
-                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $item['user_id'] ) : ?>
+                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $model->id  ) : ?>
 
                         <a href="/user/photo">Все фото</a>
 
