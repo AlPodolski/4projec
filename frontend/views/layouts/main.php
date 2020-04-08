@@ -68,7 +68,6 @@ $login = new LoginForm();
                                 <li><a href="/adverts">Объявления</a></li>
                                 <li><a href="/novosti">Новости сайта</a></li>
                                 <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
-                                <li><a href="/prostitutki">Ищу проститутку</a></li>
                                 <li>
                                     <?php if (Yii::$app->user->isGuest) : ?>
 
@@ -151,16 +150,7 @@ $login = new LoginForm();
                                     <li><a href="/znakomstva/usluga-rab">Ищу раба</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#">$ интим $</a>
-                                <ul class="secodn-menu">
-                                    <li><a href="/prostitutki">Ищу проститутку</a></li>
-                                    <li><a href="/prostitutki/usluga-eroticheskiy">Ищу массажистку</a></li>
-                                    <li><a href="/prostitutki/usluga-striptiz">Ищу стриптизершу</a></li>
-                                    <li><a href="/prostitutki/usluga-eskort">Ищу эскорт девушку</a></li>
-                                    <li><a href="/zhigalo">Ищу жигало</a></li>
-                                </ul>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
