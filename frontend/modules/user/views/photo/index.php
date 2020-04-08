@@ -44,7 +44,7 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 
         <?php else : ?>
 
-        <p class="alert alert-info">Пока нет фото</p>
+        <p class="alert alert-info">Для того что бы удалить что то ненужное с начала нужно добавить что то ненужное</p>
 
         <?php endif;  ?>
 
