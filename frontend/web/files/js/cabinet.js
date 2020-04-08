@@ -58,6 +58,21 @@ $('#addpostform-image').on('change', function(){
     });
 
 });
+function deletePhotoItem(object){
+
+    var id = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/user/photo/delete',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).parent().remove();
+        },
+    });
+
+    return false;
+}
 $('#header_form').on('change', function(){
 /*    files = this.files[0];
 

@@ -91,6 +91,7 @@ class SiteController extends Controller
 
     public function actionCust(){
 
+
         $citys = City::find()->asArray()->all();
 
         $i = 0;

@@ -2,6 +2,7 @@
 
 
 namespace frontend\modules\user\controllers;
+use frontend\modules\user\components\helpers\DeleteImgHelper;
 use frontend\modules\user\components\helpers\ImageHelper;
 use yii\web\Controller;
 use Yii;
@@ -17,6 +18,16 @@ class PhotoController extends Controller
         return [
             \common\behaviors\isAuth::class,
         ];
+    }
+
+    public function actionIndex($city)
+    {
+        $photo = Photo::getUserphoto(Yii::$app->user->id);
+
+        return $this->render('index', [
+            'photo' => $photo,
+        ]);
+
     }
 
     public function actionUpload(){
@@ -50,6 +61,24 @@ class PhotoController extends Controller
             return $model->file;
 
         }
+
+    }
+
+    public function actionDelete(){
+
+        if (Yii::$app->request->isPost){
+
+            $id = Yii::$app->user->id;
+
+            $photoId = Yii::$app->request->post('id');
+
+            DeleteImgHelper::delete($id,$photoId );
+
+            return true;
+
+        }
+
+        return $this->goHome();
 
     }
 }

@@ -331,7 +331,7 @@ img{
 }
 .anket{
     border-radius: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-right: -15px;
 }
 .user-sidebar .alert-success{
@@ -1145,6 +1145,25 @@ ul li .secodn-menu:hover {
     top: 15px;
     color: #2a5885;
     cursor: pointer;
+}
+.slider .item{
+    position:relative;
+}
+.item .wall-tem-menu{
+    width: 20px;
+    height: 20px;
+    right: 30px;
+    top: 5px;
+    background: #fff;
+    border-radius: 50%;
+    text-align:center;
+}
+.all-photo .img{
+    width: 100%;
+}
+.item .wall-tem-menu i{
+    position: relative;
+    top: -2px;
 }
 .comments-list .post_image{
     max-width: 34px;

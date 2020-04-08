@@ -92,6 +92,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/auth/login',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo' => 'user/photo/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/delete' => 'user/photo/delete',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]>' => 'chat/chat/chat',

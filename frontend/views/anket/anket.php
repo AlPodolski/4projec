@@ -75,7 +75,7 @@ if ($model) {
                         <?php else : ?>
 
                             <div class="img-wrap">
-                                <img src="/files/img/nophoto.png" alt="">
+                                <img class="img" src="/files/img/nophoto.png" alt="">
                             </div>
 
                         <?php endif; ?>
@@ -521,6 +521,12 @@ if ($model) {
             <?php if (!empty($photo)) : ?>
 
                 <div class="page-block page-photo">
+
+                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $item['user_id'] ) : ?>
+
+                        <a href="/user/photo">Все фото</a>
+
+                    <?php endif; ?>
 
                     <div class="slider">
 
