@@ -5,6 +5,7 @@ namespace frontend\modules\user\models\forms;
 
 use common\models\FilterParams;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
+use frontend\modules\user\models\Profile;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use Yii;
@@ -21,6 +22,7 @@ class Params extends Model
     public $sexual;
     public $rayon;
     public $metro;
+    public $about;
 
     public $place;
     public $national;
@@ -78,6 +80,7 @@ class Params extends Model
             'sferaDeyatelnosti' => 'Сфера деятельности',
             'zhile' => 'Жилье',
             'transport' => 'Транспорт',
+            'about' => 'Обо мне',
         ];
 
     }
@@ -95,6 +98,7 @@ class Params extends Model
                 'smoking', 'alcogol', 'education', 'breast', 'intimHair', 'sferaDeyatelnosti', 'zhile', 'transport'
             ], 'integer'],
             [['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'], 'safe'],
+            [['about'], 'string'],
         ];
     }
 
@@ -124,6 +128,9 @@ class Params extends Model
 
         }
 
+        $profile = Profile::find()->where(['id' => $user_id])->select('text')->asArray()->one();
+        $this->about = $profile['text'];
+
     }
 
     public function save($user_id){
@@ -143,6 +150,14 @@ class Params extends Model
                 }
 
             }
+
+        }
+
+        if($this->about){
+
+            $profile = Profile::find()->where(['id' => $user_id])->one();
+            $profile->text = \strip_tags($this->about);
+            $profile->save();
 
         }
 

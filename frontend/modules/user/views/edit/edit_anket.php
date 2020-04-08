@@ -248,6 +248,10 @@ $service_list_sex = Service::find()->asArray()->all();
 
                 <?php endif; ?>
 
+                <div class="col-12 "> <?= $form->field($model, 'about')
+                        ->textarea(); ?>
+                </div>
+
                 <div class="col-12">
 
                     <div class="form-group">

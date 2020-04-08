@@ -544,7 +544,7 @@ if ($model) {
 
                                         <?php else : ?>
 
-                                            <img src="/files/img/nophoto.png" alt="">
+                                            <img class="img" src="/files/img/nophoto.png" alt="">
 
                                         <?php endif; ?>
 
