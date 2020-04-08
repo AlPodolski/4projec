@@ -50,6 +50,8 @@ $model->getParams(Yii::$app->user->id);
 
 $service_list_sex = Service::find()->asArray()->all();
 
+$cityList = \common\models\City::find()->asArray()->select('url, city')->all();
+
 ?>
 <div class="row">
     <div class="col-3">
@@ -63,6 +65,9 @@ $service_list_sex = Service::find()->asArray()->all();
             <?php $form = ActiveForm::begin(); ?>
 
             <div class="row">
+
+                <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'city')
+                        ->dropDownList(ArrayHelper::map($cityList, 'url', 'city')); ?> </div>
 
                 <div class="col-12 col-sm-6 col-lg-4">
                     <?= $form->field($model, 'sexual')
@@ -100,7 +105,8 @@ $service_list_sex = Service::find()->asArray()->all();
                 <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'smoking')
                         ->dropDownList(ArrayHelper::map($smoking, 'id', 'value')); ?> </div>
                 <div class="col-12 col-sm-6 col-lg-4"> <?= $form->field($model, 'alcogol')
-                        ->dropDownList(ArrayHelper::map($alcogol, 'id', 'value')); ?> </div>
+                        ->dropDownList(ArrayHelper::map($alcogol, 'id', 'value')); ?>
+                </div>
 
                 <?php if ($pol['pol_id'] != 1) : ?>
 

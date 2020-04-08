@@ -45,6 +45,7 @@ class Params extends Model
     public $sferaDeyatelnosti;
     public $zhile;
     public $transport;
+    public $city;
 
     public function attributeLabels()
     {
@@ -81,6 +82,7 @@ class Params extends Model
             'zhile' => 'Жилье',
             'transport' => 'Транспорт',
             'about' => 'Обо мне',
+            'city' => 'Город',
         ];
 
     }
@@ -98,7 +100,7 @@ class Params extends Model
                 'smoking', 'alcogol', 'education', 'breast', 'intimHair', 'sferaDeyatelnosti', 'zhile', 'transport'
             ], 'integer'],
             [['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'], 'safe'],
-            [['about'], 'string'],
+            [['about', 'city'], 'string'],
         ];
     }
 
@@ -118,7 +120,7 @@ class Params extends Model
 
                     }else{
 
-                        $this->$key = ArrayHelper::getValue($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->one(), $filterParam['column_param_name']);
+                        if ($filterParam['relation_class']) $this->$key = ArrayHelper::getValue($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->one(), $filterParam['column_param_name']);
 
                     }
 
@@ -130,6 +132,7 @@ class Params extends Model
 
         $profile = Profile::find()->where(['id' => $user_id])->select('text')->asArray()->one();
         $this->about = $profile['text'];
+        $this->city = $profile['city'];
 
     }
 
@@ -141,7 +144,7 @@ class Params extends Model
 
             foreach ($filterParams as $filterParam){
 
-                if (\strtolower($filterParam['short_name']) == \strtolower($key)){
+                if (\strtolower($filterParam['short_name']) == \strtolower($key) and $filterParam['relation_class']){
 
                     $filterParam['relation_class']::deleteAll('user_id = '.$user_id);
 
@@ -152,14 +155,17 @@ class Params extends Model
             }
 
         }
+        $profile = Profile::find()->where(['id' => $user_id])->one();
 
         if($this->about){
-
-            $profile = Profile::find()->where(['id' => $user_id])->one();
             $profile->text = \strip_tags($this->about);
-            $profile->save();
-
         }
+        if($this->city){
+            $profile->city = \strip_tags($this->city);
+        }
+
+        $profile->save();
+
 
         return true;
 
