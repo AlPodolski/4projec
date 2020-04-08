@@ -18,7 +18,8 @@ $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\Ap
 
         <?php echo $this->renderFile('@app/views/anket/anket.php',
                 [
-                        'model' => $model,
+                    'model' => $model,
+                    'city' => $city,
                 ]
             ) ?>
 

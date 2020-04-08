@@ -21,6 +21,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $city
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -54,6 +55,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            ['city', 'string'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
