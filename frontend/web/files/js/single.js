@@ -188,6 +188,8 @@ function addToFriends(object){
         type: 'POST',
         data: 'id='+id,
         success: function (data) {
+            $(object).children().children().text(data);
+            $(object).attr('data-message', data);
             $(object).children('.profile_gift_text').html(data);
         },
     });

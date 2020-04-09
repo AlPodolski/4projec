@@ -145,7 +145,7 @@ if ($model) {
 
                                 <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)  ) : ?>
 
-                                    <?php if (Yii::$app->user->isGuest and  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
+                                    <?php if (Yii::$app->user->isGuest or  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
                                         $onclick = 'onclick="addToFriends(this)"';
                                     } else {
                                         $onclick = '';
