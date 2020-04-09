@@ -28,7 +28,7 @@ if (!empty($wallItems)) : ?>
 
                 <?php else : ?>
 
-                    <img src="/files/img/nophoto.png" alt="">
+                    <img class="img" src="/files/img/nophoto.png" alt="">
 
                 <?php endif; ?>
 

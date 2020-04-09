@@ -931,6 +931,11 @@ ul li .secodn-menu:hover {
     float: left;
     border-radius: 50%;
     overflow: hidden;
+    width: 50px;
+}
+.post-photo img{
+    display: block;
+    margin: 0 auto;
 }
 .post_header_info {
     margin-left: 65px;
@@ -1245,7 +1250,13 @@ ul li .secodn-menu:hover {
     display: flex;
     justify-content: center;
 }
+.mobile-present{
+    display: none;
+}
 @media (max-width: 1199px) {
+    .mobile-present{
+        display: block;
+    }
     .mobile-menu .user-sidebar{
         max-height: 82vh;
         overflow-x: hidden;
