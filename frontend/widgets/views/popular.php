@@ -69,7 +69,7 @@ SlickAsset::register($this);
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <a href="#">посмотреть</a>
+                        <a href="/znakomstva">посмотреть</a>
                     </div>
                 </div>
             </div>
