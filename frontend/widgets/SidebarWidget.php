@@ -56,9 +56,7 @@ class SidebarWidget extends Widget
         $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds(),  $city_id);
         $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
         $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
-        $placeList = AvailableHelper::getAvailable(Place::class, $this->getAvalibleIds(),  $city_id);
         $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
-        $breastSizeList = AvailableHelper::getAvailable(Breast::class, $this->getAvalibleIds(),  $city_id);
         $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds(),  $city_id);
 
         if (\strstr($param, 'znakomstva')){

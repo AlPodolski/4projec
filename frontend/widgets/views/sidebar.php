@@ -111,31 +111,6 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($intimHairList) : ?>
-
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse18" aria-expanded="true" aria-controls="collapseOne">
-                                    Интимная стрижка
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse18" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($intimHairList as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/intimnaya-strizhka-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
                 <?php if ($materialnoePolojenie) : ?>
 
                     <div class="card">
@@ -370,32 +345,6 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($serviceList) : ?>
-
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
-                                    Сексуальные предпочтения
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($serviceList as $service) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/usluga-'.$service['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $service['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-
-                <?php endif; ?>
-
                 <?php if ($placeList) : ?>
 
                     <div class="card">
@@ -517,6 +466,58 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                                     <?php $url = UrlBuilder::buildUrlForFilter($param, '/teloslozhenie-'.$body['url']) ?>
 
                                     <a href="/<?php echo $url; ?>"><?php echo $body['value'] ?></a>
+
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if ($intimHairList) : ?>
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse18" aria-expanded="true" aria-controls="collapseOne">
+                                    Интимная стрижка
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse18" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <?php foreach ($intimHairList as $item) : ?>
+
+                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/intimnaya-strizhka-'.$item['url']) ?>
+
+                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+
+                <?php if ($serviceList) : ?>
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
+                                    Сексуальные предпочтения
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <?php foreach ($serviceList as $service) : ?>
+
+                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/usluga-'.$service['url']) ?>
+
+                                    <a href="/<?php echo $url; ?>"><?php echo $service['value'] ?></a>
 
                                 <?php endforeach; ?>
                             </div>
