@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -45,6 +46,8 @@ class AnketController extends Controller
             Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
         }
 
+        $userFriends = Friends::find()->where(['user_id' => $model->id])->with('friendsProfiles')->limit(6)->asArray()->all();
+
         $cityInfo = City::find()->where(['url' => $city])->asArray()->one();
 
 
@@ -52,6 +55,7 @@ class AnketController extends Controller
             'model' => $model,
             'city' => $city,
             'cityInfo' => $cityInfo,
+            'userFriends' => $userFriends,
         ]);
 
     }

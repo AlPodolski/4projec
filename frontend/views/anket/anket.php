@@ -11,6 +11,7 @@ use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
 /* @var $model Profile */
+/* @var $userFriends array */
 
 $this->registerJsFile('/files/js/lightgallery-all.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/owl.carousel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -177,6 +178,7 @@ if ($model) {
                 </div>
 
             </div>
+
             <?php if (!empty($userPresent)) : ?>
 
                 <div class="page-block presents">
@@ -195,6 +197,47 @@ if ($model) {
 
                 </div>
             <?php endif; ?>
+
+            <div class="page-block friends">
+                <span class="small-heading">Друзья</span>
+                <div class="user-friends">
+                    <div class="user-friends-list">
+                        <div class="row">
+
+                            <?php if ($userFriends) :?>
+
+                                <? foreach ($userFriends as $userFriend) : ?>
+
+                                    <div class="col-4">
+                                        <a class="post_image" href="/user/<?php echo $userFriend['friendsProfiles']['id'] ?>">
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['friendsProfiles']['avatarRelation']['file']) and $userFriend['friendsProfiles']['avatarRelation']['file']) : ?>
+
+                                            <?= Yii::$app->imageCache->thumb($userFriend['friendsProfiles']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+
+                                        <?php else : ?>
+
+                                            <img src="/files/img/nophoto.png" alt="">
+
+                                        <?php endif; ?>
+                                        </a>
+                                        <span class="author"><?php echo $userFriend['friendsProfiles']['username'] ?></span>
+
+                                    </div>
+
+                                <?php endforeach; ?>
+
+                            <?php else : ?>
+
+                                <div class="col-12">
+                                    <p class="small-heading">Пока нет друзей</p>
+                                </div>
+
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <div class="col-12 col-sm-7 col-lg-8 col-xl-8 right-column-anket">

@@ -1253,6 +1253,23 @@ ul li .secodn-menu:hover {
 .mobile-present{
     display: none;
 }
+.friends{
+    margin-top:15px;
+}
+.user-friends-list .post_image{
+    margin: 0 auto;
+    float:none;
+}
+.user-friends-list .author{
+    font-size:12px;
+}
+.small-heading{
+    color: #2a5885;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom:10px;
+    display: block;
+}
 @media (max-width: 1199px) {
     .mobile-present{
         display: block;

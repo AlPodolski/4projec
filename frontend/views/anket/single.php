@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $model frontend\modules\user\models\Profile */
 /* @var $cityInfo array */
+/* @var $userFriends array */
 use frontend\widgets\SidebarWidget;
 
 $this->title = \frontend\components\SingleMetaHelper::Title($model, $cityInfo) ;
@@ -26,6 +27,7 @@ $this->registerMetaTag([
         <?php echo $this->renderFile('@app/views/anket/anket.php',
             [
                 'model' => $model,
+                'userFriends' => $userFriends,
             ]
         ) ?>
 

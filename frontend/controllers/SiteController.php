@@ -93,5 +93,11 @@ class SiteController extends Controller
 
     public function actionCust(){
 
+        $friends = new Friends();
+        $friends->user_id = '20827';
+        $friends->friend_user_id = '23215';
+
+        $friends->save();
+
     }
 }
