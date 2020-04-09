@@ -5,6 +5,7 @@ use common\models\City;
 use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
 use frontend\models\UserPol;
+use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\redis\Connection;
@@ -92,36 +93,5 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-
-        /* @var $redis Connection */
-        $redis = Yii::$app->redis;
-
-        \dd($redis->scard ('wall_item:5:likes'));
-
-        if(  (bool) $redis->sismember('1'.":1:likes", 1) ){
-            $redis->srem($key.":{$item_id}:likes", $user_id);
-        }else{
-            $redis->sadd($key.":{$item_id}:likes", $user_id);
-        }
-
-        $citys = City::find()->asArray()->all();
-
-        $i = 0;
-
-        foreach ($citys as $city){
-
-            $i++;
-
-            //$users = Profile::find()->where(['city' => $city['url']])->count();
-
-            echo $city['url'].'<br>';
-
-            echo 'мужчин '. UserPol::find()->where(['city_id' => $city['id']])->andWhere(['pol_id' => 1])->count();
-            echo '<br>';
-
-            echo 'женщин '. UserPol::find()->where(['city_id' => $city['id']])->andWhere(['pol_id' => 2])->count();
-            echo '<hr>';
-
-        }
     }
 }

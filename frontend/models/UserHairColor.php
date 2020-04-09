@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int|null $user_id
  * @property int|null $value
+ * @property int|null $city_id
  */
 class UserHairColor extends \yii\db\ActiveRecord
 {

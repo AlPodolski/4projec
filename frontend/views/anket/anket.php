@@ -7,7 +7,8 @@ use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use frontend\assets\SlickAsset;
 use yii\widgets\ActiveForm;
-use yii\helpers\Html;
+use frontend\modules\user\components\helpers\FriendsHelper;
+use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
 /* @var $model Profile */
 
@@ -140,6 +141,31 @@ if ($model) {
                                         </span>
                                     </button>
                                 </a>
+
+                                <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)  ) : ?>
+
+                                    <?php if (Yii::$app->user->isGuest and  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
+                                        $onclick = 'onclick="addToFriends(this)"';
+                                    } else {
+                                        $onclick = '';
+                                    }?>
+
+                                    <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?> data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
+                                        <button class="flat_button">
+                                            <span class="profile_gift_text">
+                                                <?php if (FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id)) : ?>
+                                                    Заявка отправлена
+                                                <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id,$model->id )) : ?>
+                                                    У Вас в друзьях
+                                                <?php else : ?>
+                                                    Добавить в друзья
+                                                <?php endif; ?>
+                                            </span>
+                                        </button>
+                                    </a>
+
+                                <?php endif; ?>
+
                             </div>
                         </div>
 

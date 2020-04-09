@@ -173,6 +173,26 @@ $(document).ready(function() {
 
 });
 
+function addToFriends(object){
+
+    var id = $(object).attr('data-id');
+    var message = $(object).attr('data-message');
+
+    if(message != ''){
+        $(object).children().children().text(message);
+        return false;
+    }
+
+    $.ajax({
+        url: '/user/friends/add',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).children('.profile_gift_text').html(data);
+        },
+    });
+
+}
 function deleteWallItem(object){
 
     var id = $(object).attr('data-id');
