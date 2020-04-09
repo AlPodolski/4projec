@@ -8,7 +8,7 @@ class MetaFilterHelper
 {
     public static function Filter($string)
     {
-        if (\strstr($string, 'Мужчин') or \strstr($string, 'Женщи') ){
+        if (\strstr(\mb_strtolower($string), 'мужчин') or \strstr(\mb_strtolower($string), 'женщи') ){
             return $string;
         }
 
