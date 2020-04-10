@@ -202,3 +202,8 @@ $(document).ready(function () {
     });
 
 });
+$(function(){
+    $('.user-manu').on('click', function(e){
+        $('.user-menu-list').toggle('slow')
+    });
+});

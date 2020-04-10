@@ -110,9 +110,3 @@ $('#header_form').on('change', function(){
     });
 
 });
-
-$(function(){
-    $('.user-manu').on('click', function(e){
-            $('.user-menu-list').toggle('slow')
-    });
-});
