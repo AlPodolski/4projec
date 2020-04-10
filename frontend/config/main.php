@@ -53,6 +53,7 @@ return [
                 'listing' => [277, 266],
                 'large' => [600, 600],
                 'dialog' => [50, 50],
+                '80' => [80, 80],
             ],
         ],
         'user' => [
@@ -96,6 +97,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/delete' => 'user/photo/delete',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/add' => 'user/friends/add',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/<id:[0-9]+>' => 'user/friends/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]>' => 'chat/chat/chat',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',

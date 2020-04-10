@@ -202,7 +202,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public function getAvatarRelation(){
-        return $this->hasOne(Photo::class, ['user_id' => 'id'])->andWhere(['avatar' => 1])->select('file');
+        return $this->hasOne(Photo::class, ['user_id' => 'id'])->andWhere(['avatar' => 1]);
     }
 
     public function getPol(){

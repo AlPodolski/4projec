@@ -1264,11 +1264,77 @@ ul li .secodn-menu:hover {
     font-size:12px;
 }
 .small-heading{
-    color: #2a5885;
+    color: #2a5885!important;
     font-size: 14px;
     font-weight: 500;
     margin-bottom:10px;
     display: block;
+}
+.user-friends-list{
+    text-align: center;
+}
+.friends_user_row:first-child {
+    border-top: none;
+}
+.friends_user_row {
+    border-top: 1px solid #e7e8ec;
+    padding: 12px 0;
+    clear: both;
+    position: relative;
+}
+.friends_photo_wrap {
+    float: left;
+    margin: 0 15px 0 0;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+.friends_photo_img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -moz-force-broken-image-icon: 0;
+    background-color: #f0f2f5;
+    position: relative;
+    position: static;
+}
+.friends-list{
+    margin-top: 10px;
+}
+.friends_user_info {
+    padding: 5px 10px 0 0;
+    overflow: hidden;
+}
+.friends_field_title {
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 13px;
+    color: #42648b;
+}
+.friends_field {
+    margin-bottom: 9px;
+    color: #656565;
+    word-wrap: break-word;
+}
+.friends_field_act {
+    float: left;
+    padding: 0 0 4px 0;
+}
+a {
+    color: #2a5885;
+    text-decoration: none;
+    cursor: pointer;
+}
+.clear_fix::after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
 }
 @media (max-width: 1199px) {
     .mobile-present{

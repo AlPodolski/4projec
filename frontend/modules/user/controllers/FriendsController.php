@@ -5,6 +5,7 @@ namespace frontend\modules\user\controllers;
 
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\FriendsRequest;
+use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 
@@ -37,5 +38,18 @@ class FriendsController extends Controller
         }
 
         return $this->goHome();
+    }
+
+    public function actionList($city, $id)
+    {
+        $userFriends = Friends::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
+
+        $userName = Profile::find()->where(['id' => $id])->asArray()->select('username')->one();
+
+        return $this->render('list', [
+            'userFriends' => $userFriends,
+            'city' => $city,
+            'userName' => $userName,
+        ]);
     }
 }

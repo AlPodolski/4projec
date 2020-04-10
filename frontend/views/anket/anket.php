@@ -186,7 +186,7 @@ if ($model) {
                         <div class="user-presents-list">
                             <div class="row">
                                 <?php foreach ($userPresent as $present) : ?>
-                                    <div class="col-4">
+                                    <div class="col-4 col-sm-6 col-md-4">
                                         <img src="<?php echo $present['present']['img'] ?>" alt="">
                                     </div>
 
@@ -199,7 +199,9 @@ if ($model) {
             <?php endif; ?>
 
             <div class="page-block friends">
-                <span class="small-heading">Друзья</span>
+                <span class="small-heading">
+                    <a href="/user/friends/<?php echo $model->id ?>">Друзья</a>
+                </span>
                 <div class="user-friends">
                     <div class="user-friends-list">
                         <div class="row">
