@@ -24,6 +24,6 @@ class FriendsRequest extends ActiveRecord
 
     public function getFriendsProfiles()
     {
-        return $this->hasMany(Profile::class, ['id' => 'user_id']);
+        return $this->hasOne(Profile::class, ['id' => 'request_user_id']);
     }
 }

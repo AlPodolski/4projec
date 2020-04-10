@@ -1319,7 +1319,6 @@ ul li .secodn-menu:hover {
     word-wrap: break-word;
 }
 .friends_field_act {
-    float: left;
     padding: 0 0 4px 0;
 }
 a {
@@ -1335,6 +1334,9 @@ a {
     line-height: 0;
     clear: both;
     visibility: hidden;
+}
+.friends_user_info .small-heading{
+    margin-bottom:0px;
 }
 @media (max-width: 1199px) {
     .mobile-present{

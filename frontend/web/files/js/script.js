@@ -17,6 +17,21 @@ function get_message_form(object) {
 
 
 }
+function check_friend_request(object) {
+
+    var id = $(object).attr('data-user-id');
+
+    $.ajax({
+        url: '/user/friends/check',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).text(data);
+        },
+    });
+
+
+}
 function send_message_form(object) {
 
 

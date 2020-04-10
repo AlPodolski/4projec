@@ -6,6 +6,7 @@ use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
 use frontend\models\UserPol;
 use frontend\modules\user\models\Friends;
+use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\redis\Connection;
@@ -93,9 +94,9 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $friends = new Friends();
-        $friends->user_id = '20827';
-        $friends->friend_user_id = '15203';
+        $friends = new FriendsRequest();
+        $friends->user_id = '23215';
+        $friends->request_user_id = '15203';
 
         $friends->save();
 

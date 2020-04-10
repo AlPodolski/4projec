@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\controllers;
 
+use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
@@ -12,16 +13,9 @@ use yii\web\Controller;
 class FriendsController extends Controller
 {
 
-    public function behaviors()
-    {
-        return [
-            \common\behaviors\isAuth::class,
-        ];
-    }
-
     public function actionAdd($city)
     {
-        if (Yii::$app->request->isPost){
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost){
 
             if(!Friends::find()->where(['friend_user_id'=> Yii::$app->user->id])->andWhere(['user_id' => Yii::$app->request->post('id')])->one()
                 and
@@ -40,13 +34,27 @@ class FriendsController extends Controller
         return $this->goHome();
     }
 
+    public function actionCheck(){
+
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost){
+
+            if (FriendsHelper::confirmFriendship(Yii::$app->request->post('id'), Yii::$app->user->id)) return 'Заявка подтверждена';
+
+            return 'Ошибка';
+
+        }
+
+        return $this->goHome();
+
+    }
+
     public function actionList($city, $id)
     {
         $userFriends = Friends::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
 
         $userFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
 
-        $userName = Profile::find()->where(['id' => $id])->asArray()->select('username')->one();
+        $userName = Profile::find()->where(['id' => $id])->asArray()->select('id,username')->one();
 
         return $this->render('list', [
             'userFriends' => $userFriends,
