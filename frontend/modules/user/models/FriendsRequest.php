@@ -22,7 +22,7 @@ class FriendsRequest extends ActiveRecord
         return ['id', 'user_id', 'request_user_id'];
     }
 
-    public function getProfiles()
+    public function getFriendsProfiles()
     {
         return $this->hasMany(Profile::class, ['id' => 'user_id']);
     }

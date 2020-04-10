@@ -5,7 +5,6 @@
 
 use frontend\modules\user\models\Photo;
 use yii\widgets\ActiveForm;
-use frontend\widgets\AdvertWidget;
 use yii\helpers\Html;
 ?>
 <div class="user-sidebar">
@@ -69,7 +68,6 @@ use yii\helpers\Html;
     <div class="user-menu-list">
         <ul class="user-menu-ul">
             <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="/user">Моя страница</a></span></li>
-            <li class="user-menu-item my-page"><i class="fas fa-sign-out-alt"></i> <span class="text "><a href="/">На сайт</a></span></li>
             <li class="user-menu-item my-message"><i class="fas fa-envelope"></i> <span class="text "><a
                         href="/user/chat">Мои сообщения <?php if ($countNotRead > 0) echo $countNotRead?></a></span></li>
             <!--<li class="user-menu-item my-favorite"><i class="fas fa-heart"></i> <span class="text "><a href="">Избранные</a></span>-->
@@ -93,10 +91,5 @@ use yii\helpers\Html;
         </ul>
     </div>
 
-    <?php
-
-        echo AdvertWidget::widget();
-
-    ?>
 
 </div>

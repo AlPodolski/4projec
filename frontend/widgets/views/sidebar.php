@@ -2,16 +2,23 @@
 
 use frontend\widgets\AdvertWidget;
 use frontend\components\UrlBuilder;
+use frontend\widgets\UserSideBarWidget;
 
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
-
 ?>
+<div class="col-3 filter-sidebar">
+
+<?php if (!Yii::$app->user->isGuest) : ?>
+
+        <?php echo UserSideBarWidget::Widget()?>
+
+<?php endif; ?>
+
 <div class="mobile-filter-icon">
     <i class="fas fa-filter"></i>
 </div>
 
-    <div class="col-3 filter-sidebar">
         <div class="sidebar-wrap">
         <div class="user-menu menu-nav">
             <div class="row">
@@ -528,12 +535,6 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
             </div>
         </div>
-
-        <?php
-
-        echo AdvertWidget::widget();
-
-        ?>
 
     </div>
 </div>

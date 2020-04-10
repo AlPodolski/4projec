@@ -355,9 +355,9 @@ img{
     font-size: 9px;
     text-transform: uppercase;
     color: #838d8f;
-    border-radius: 22px;
     padding: 7px 30px;
     line-height: 16px;
+    border-radius: 0px;
 }
 .single-left-column.page-block.page_photo {
     padding: 19px;

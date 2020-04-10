@@ -44,10 +44,13 @@ class FriendsController extends Controller
     {
         $userFriends = Friends::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
 
+        $userFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
+
         $userName = Profile::find()->where(['id' => $id])->asArray()->select('username')->one();
 
         return $this->render('list', [
             'userFriends' => $userFriends,
+            'userFriendsRequest' => $userFriendsRequest,
             'city' => $city,
             'userName' => $userName,
         ]);

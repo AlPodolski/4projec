@@ -10,9 +10,9 @@ $this->title = $model->username;
 ?>
 <div class="row">
 
-    <div class="col-3">
-        <?php echo UserSideBarWidget::Widget()?>
-    </div>
+
+        <?php echo \frontend\widgets\SidebarWidget::Widget()?>
+
 
     <div class="col-12 col-xl-9">
 
