@@ -247,9 +247,9 @@ if ($model) {
             <div class="page-block profile_info">
                 <div class="page_top">
                     <div class="user-name">
-                        <p class="user-name">
+                        <h1 class="user-name">
                             <?php echo $model->username ?>
-                        </p>
+                        </h1>
                     </div>
                 </div>
                 <div class="">
