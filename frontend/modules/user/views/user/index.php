@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $photo Photo */
+/* @var $userFriends array */
 use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
 
@@ -20,6 +21,7 @@ $this->title = $model->username;
                 [
                     'model' => $model,
                     'city' => $city,
+                    'userFriends' => $userFriends,
                 ]
             ) ?>
 
