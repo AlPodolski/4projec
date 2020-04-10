@@ -31,7 +31,7 @@ $this->registerMetaTag([
 
                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-all-friends"
                    role="tab" aria-controls="nav-home" aria-selected="true">Все друзья</a>
-                <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $userName['id']) : ?>
+                <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $userName['id'] and $userFriendsRequest) : ?>
                     <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-friends-request"
                        role="tab" aria-controls="nav-home" aria-selected="true">Заявки в друзья</a>
                 <?php endif; ?>
