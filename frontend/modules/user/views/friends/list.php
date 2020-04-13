@@ -120,7 +120,11 @@ $this->registerMetaTag([
                                 <a onclick="check_friend_request(this)"
                                    data-user-id="<?php echo $userFriendsRequestItem['friendsProfiles']['id'] ?>"
                                    class="friends_field_act small-heading">Принять заявку</a>
+                            <span onclick="remove_friend_request(this)" class="remove-friend-request" data-user-id="<?php echo $userFriendsRequestItem['friendsProfiles']['id'] ?>">
+                                <i class="far fa-trash-alt"></i>
+                            </span>
                             <?php endif; ?>
+
                         </div>
 
                     </div>

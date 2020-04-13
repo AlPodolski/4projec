@@ -926,6 +926,16 @@ ul li .secodn-menu:hover {
     font-size: 13px;
     color: #2a5885;
 }
+.friends_user_info{
+    position:relative;
+}
+.remove-friend-request{
+    color: #2a5885 !important;
+    z-index: 1;
+    right: 10px;
+    top: 0px;
+    position:absolute;
+}
 .post_image {
     display: block;
     float: left;

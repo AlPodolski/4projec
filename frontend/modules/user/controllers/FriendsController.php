@@ -4,6 +4,7 @@
 namespace frontend\modules\user\controllers;
 
 use frontend\modules\user\components\helpers\FriendsHelper;
+use frontend\modules\user\components\helpers\FriendsRequestHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
@@ -31,6 +32,15 @@ class FriendsController extends Controller
 
         }
 
+        return $this->goHome();
+    }
+    public function actionRemoveRequest($city)
+    {
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost and FriendsRequestHelper::isFiendsRequest(Yii::$app->request->post('id'), Yii::$app->user->id)){
+
+            return FriendsRequestHelper::removeFriendsRequest(Yii::$app->request->post('id'), Yii::$app->user->id);
+
+        }
         return $this->goHome();
     }
 

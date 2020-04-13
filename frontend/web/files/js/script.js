@@ -18,9 +18,7 @@ function get_message_form(object) {
 
 }
 function check_friend_request(object) {
-
     var id = $(object).attr('data-user-id');
-
     $.ajax({
         url: '/user/friends/check',
         type: 'POST',
@@ -29,8 +27,18 @@ function check_friend_request(object) {
             $(object).text(data);
         },
     });
+}
 
-
+function remove_friend_request(object) {
+    var id = $(object).attr('data-user-id');
+    $.ajax({
+        url: '/user/friends/request/remove',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).closest('.friends_user_row').remove();
+        },
+    });
 }
 function send_message_form(object) {
 

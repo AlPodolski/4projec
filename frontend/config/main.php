@@ -96,6 +96,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo' => 'user/photo/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/delete' => 'user/photo/delete',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/add' => 'user/friends/add',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/request/remove' => 'user/friends/remove-request',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/<id:[0-9]+>' => 'user/friends/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/check' => 'user/friends/check',
