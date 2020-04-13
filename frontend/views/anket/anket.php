@@ -145,7 +145,9 @@ if ($model) {
 
                                 <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)  ) : ?>
 
-                                    <?php if (Yii::$app->user->isGuest or  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
+                                    <?php
+                                    /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
+                                    if (Yii::$app->user->isGuest or  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
                                         $onclick = 'onclick="addToFriends(this)"';
                                     } else {
                                         $onclick = '';
@@ -158,6 +160,10 @@ if ($model) {
                                                     Заявка отправлена
                                                 <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id,$model->id )) : ?>
                                                     У Вас в друзьях
+                                                <?php elseif (FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id )) : ?>
+                                                    <span onclick="check_friend_request(this)"
+                                                       data-user-id="<?php echo $model->id ?>"
+                                                       >Принять заявку</span>
                                                 <?php else : ?>
                                                     Добавить в друзья
                                                 <?php endif; ?>
