@@ -43,6 +43,15 @@ class FriendsController extends Controller
         }
         return $this->goHome();
     }
+    public function actionRemoveSendRequest($city)
+    {
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost and FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, Yii::$app->request->post('id') )){
+
+            return FriendsRequestHelper::removeFriendsRequest( Yii::$app->user->id, Yii::$app->request->post('id'));
+
+        }
+        //return $this->goHome();
+    }
     public function actionRemoveFriend($city)
     {
         if (!Yii::$app->user->isGuest and Yii::$app->request->isPost and FriendsHelper::isFiends(Yii::$app->request->post('id'), Yii::$app->user->id)){
@@ -73,9 +82,13 @@ class FriendsController extends Controller
 
         $userFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
 
+        $sendUserFriendsRequest = FriendsRequest::find()->where(['request_user_id' => $id])->with('sendFriendsProfiles')->asArray()->all();
+
         $userName = Profile::find()->where(['id' => $id])->asArray()->select('id,username')->one();
 
-        $countFriendsRequest = FriendsRequest::find()->where(['user_id' => Yii::$app->user->id])->count();
+        $countFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->count();
+
+        $countUserSendFriendsRequest = FriendsRequest::find()->where(['request_user_id' => $id])->count();
 
         return $this->render('list', [
             'userFriends' => $userFriends,
@@ -83,6 +96,8 @@ class FriendsController extends Controller
             'city' => $city,
             'userName' => $userName,
             'countFriendsRequest' => $countFriendsRequest,
+            'sendUserFriendsRequest' => $sendUserFriendsRequest,
+            'countUserSendFriendsRequest' => $countUserSendFriendsRequest,
         ]);
     }
 }
