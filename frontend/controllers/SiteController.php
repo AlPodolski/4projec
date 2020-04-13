@@ -96,7 +96,7 @@ class SiteController extends Controller
 
         $friends = new FriendsRequest();
         $friends->user_id = '23215';
-        $friends->request_user_id = '15203';
+        $friends->request_user_id = '20899';
 
         $friends->save();
 

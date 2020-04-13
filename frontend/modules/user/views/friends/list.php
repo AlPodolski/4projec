@@ -7,6 +7,7 @@ use frontend\widgets\SidebarWidget;
 /* @var $city string */
 /* @var $userName array */
 /* @var $userFriendsRequest array */
+/* @var $countFriendsRequest integer */
 
 $this->title = 'Друзья пользователя ' . $userName['username'];
 
@@ -33,7 +34,7 @@ $this->registerMetaTag([
                    role="tab" aria-controls="nav-home" aria-selected="true">Все друзья</a>
                 <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $userName['id'] and $userFriendsRequest) : ?>
                     <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-friends-request"
-                       role="tab" aria-controls="nav-home" aria-selected="true">Заявки в друзья</a>
+                       role="tab" aria-controls="nav-home" aria-selected="true">Заявки в друзья <?php if ($countFriendsRequest > 0) echo '+'. $countFriendsRequest ?></a>
                 <?php endif; ?>
             </div>
         </nav>

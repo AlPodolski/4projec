@@ -56,11 +56,14 @@ class FriendsController extends Controller
 
         $userName = Profile::find()->where(['id' => $id])->asArray()->select('id,username')->one();
 
+        $countFriendsRequest = FriendsRequest::find()->where(['user_id' => Yii::$app->user->id])->count();
+
         return $this->render('list', [
             'userFriends' => $userFriends,
             'userFriendsRequest' => $userFriendsRequest,
             'city' => $city,
             'userName' => $userName,
+            'countFriendsRequest' => $countFriendsRequest,
         ]);
     }
 }
