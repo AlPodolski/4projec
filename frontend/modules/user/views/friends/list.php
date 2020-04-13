@@ -173,7 +173,7 @@ $this->registerMetaTag([
 
                             <div class="friends_photo_wrap ui_zoom_wrap">
                                 <a href="/user/<?php echo $sendUserFriendsRequestItem['sendFriendsProfiles']['id']; ?>">
-                                    <?php if (file_exists(Yii::getAlias('@webroot') . $sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file']) and $sendUserFriendsRequestItem['friendsProfiles']['avatarRelation']['file']) : ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot') . $sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file']) and $sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file']) : ?>
 
                                         <?= Yii::$app->imageCache->thumb($sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file'], '80', ['class' => 'friends_photo_img']) ?>
 
