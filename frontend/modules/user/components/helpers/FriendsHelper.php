@@ -25,6 +25,20 @@ class FriendsHelper
 
     }
 
+    public static function deleteFriend($who_id, $whom_id){
+
+        return self::deleteItem($who_id) && self::deleteItem($whom_id);
+
+    }
+
+    public static function deleteItem($who_id){
+
+        if ($friend = Friends::find()->where(['user_id' => $who_id])->one()) return $friend->delete();
+
+        return false;
+
+    }
+
     public static function addToFriends($who_id, $whom_id){
 
         $friend = new Friends();

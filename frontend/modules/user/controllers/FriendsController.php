@@ -43,6 +43,15 @@ class FriendsController extends Controller
         }
         return $this->goHome();
     }
+    public function actionRemoveFriend($city)
+    {
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost and FriendsHelper::isFiends(Yii::$app->request->post('id'), Yii::$app->user->id)){
+
+            return FriendsHelper::deleteFriend(Yii::$app->request->post('id'), Yii::$app->user->id);
+
+        }
+        return $this->goHome();
+    }
 
     public function actionCheck(){
 

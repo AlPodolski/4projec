@@ -933,7 +933,7 @@ ul li .secodn-menu:hover {
     color: #2a5885 !important;
     z-index: 1;
     right: 10px;
-    top: 0px;
+    top: 10px;
     position:absolute;
 }
 .post_image {

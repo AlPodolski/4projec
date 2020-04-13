@@ -40,6 +40,18 @@ function remove_friend_request(object) {
         },
     });
 }
+
+function remove_friend(object) {
+    var id = $(object).attr('data-user-id');
+    $.ajax({
+        url: '/user/friends/remove',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).closest('.friends_user_row').remove();
+        },
+    });
+}
 function send_message_form(object) {
 
 

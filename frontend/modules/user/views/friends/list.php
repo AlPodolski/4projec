@@ -73,6 +73,12 @@ $this->registerMetaTag([
                                    class="friends_field_act small-heading">Написать сообщение</a>
                             </div>
 
+                            <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $userName['id']) : ?>
+                                <span onclick="remove_friend(this)" class="remove-friend-request" data-user-id="<?php echo $userFriend['friendsProfiles']['id'] ?>">
+                                <i class="fas fa-times"></i>
+                            </span>
+                            <?php endif; ?>
+
                         </div>
 
                     <?php endforeach; ?>
@@ -121,7 +127,7 @@ $this->registerMetaTag([
                                    data-user-id="<?php echo $userFriendsRequestItem['friendsProfiles']['id'] ?>"
                                    class="friends_field_act small-heading">Принять заявку</a>
                             <span onclick="remove_friend_request(this)" class="remove-friend-request" data-user-id="<?php echo $userFriendsRequestItem['friendsProfiles']['id'] ?>">
-                                <i class="far fa-trash-alt"></i>
+                                <i class="fas fa-times"></i>
                             </span>
                             <?php endif; ?>
 
