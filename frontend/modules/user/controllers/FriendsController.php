@@ -50,7 +50,7 @@ class FriendsController extends Controller
             return FriendsRequestHelper::removeFriendsRequest( Yii::$app->user->id, Yii::$app->request->post('id'));
 
         }
-        //return $this->goHome();
+        return $this->goHome();
     }
     public function actionRemoveFriend($city)
     {

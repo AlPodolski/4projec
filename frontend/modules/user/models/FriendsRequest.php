@@ -24,10 +24,10 @@ class FriendsRequest extends ActiveRecord
 
     public function getFriendsProfiles()
     {
-        return $this->hasOne(Profile::class, ['id' => 'request_user_id']);
+        return $this->hasOne(Profile::class, ['id' => 'request_user_id'])->with('avatarRelation');
     }
     public function getSendFriendsProfiles()
     {
-        return $this->hasOne(Profile::class, ['id' => 'user_id']);
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->with('avatarRelation');
     }
 }
