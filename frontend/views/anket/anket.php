@@ -147,7 +147,10 @@ if ($model) {
 
                                     <?php
                                     /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
-                                    if (Yii::$app->user->isGuest or  (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id ) and !FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id ) and !FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
+                                    if (Yii::$app->user->isGuest or
+                                        (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id )
+                                            and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id )
+                                            and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
                                         $onclick = 'onclick="addToFriends(this)"';
                                     } else {
                                         $onclick = '';
@@ -156,11 +159,11 @@ if ($model) {
                                     <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?> data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
                                         <button class="flat_button">
                                             <span class="profile_gift_text">
-                                                <?php if (FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id)) : ?>
+                                                <?php if ($isFriendsRequestTo) : ?>
                                                     Заявка отправлена
                                                 <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id,$model->id )) : ?>
                                                     У Вас в друзьях
-                                                <?php elseif (FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id )) : ?>
+                                                <?php elseif ($isFriendsRequestFrom) : ?>
                                                     <span onclick="check_friend_request(this)"
                                                        data-user-id="<?php echo $model->id ?>"
                                                        >Принять заявку</span>

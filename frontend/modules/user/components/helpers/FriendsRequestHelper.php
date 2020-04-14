@@ -9,7 +9,7 @@ class FriendsRequestHelper
 {
     public static function isFiendsRequest($who_id, $whom_id)
     {
-        return (bool) FriendsRequest::find()->where(['user_id' => $whom_id])->andWhere(['request_user_id' => $who_id])->one();
+        return (bool) FriendsRequest::find()->where(['user_id' => $whom_id, 'request_user_id' => $who_id])->count();
     }
 
     public static function removeFriendsRequest($who_id, $whom_id){

@@ -62,6 +62,9 @@ use frontend\models\UserVajnoeVPartnere;
 use frontend\models\UserVes;
 use frontend\models\UserVneshnost;
 use frontend\modules\user\models\Photo;
+use frontend\modules\wall\models\forms\AddCommentForm;
+use frontend\modules\wall\models\forms\AddToWallForm;
+use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\console\Controller;
 use League\Csv\Reader;
@@ -74,6 +77,50 @@ use frontend\modules\advert\models\Advert;
 
 class ImportController extends Controller
 {
+
+    public function actionWall()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/stena_com.csv'), 'r');
+
+        $profiles = Profile::find()->asArray()->all();
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        $items = array();
+
+        foreach ($records as $record) {
+
+            $i++;
+
+            $items[] = $record;
+
+        }
+
+        foreach ($profiles as $profile){
+
+            $model = new AddToWallForm();
+
+            $model->from = Yii::$app->user->id;
+            $model->created_at = \time();
+
+
+
+        }
+
+        \dd($items);
+    }
+
     public function actionIndex()
     {
 
