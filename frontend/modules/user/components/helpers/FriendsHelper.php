@@ -10,7 +10,8 @@ class FriendsHelper
 {
     public static function isFiends($who_id, $whom_id)
     {
-        return (bool) Friends::find()->where(['user_id' => $whom_id])->andWhere(['friend_user_id' => $who_id])->one();
+        return (bool) Friends::find()->where(['user_id' => $whom_id , 'friend_user_id' => $who_id])
+            ->orWhere(['user_id' => $who_id , 'friend_user_id' =>  $whom_id])->one();
     }
 
     public static function confirmFriendship($who_id, $whom_id){
