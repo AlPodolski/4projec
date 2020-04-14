@@ -41,6 +41,7 @@ class AnketController extends Controller
                 ->with('sferaDeyatelnosti')
                 ->with('zhile')
                 ->with('transport')
+                ->with('vajnoeVPartnere')
                 ->one();
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
             Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
