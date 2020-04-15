@@ -77,7 +77,6 @@ use yii\helpers\Html;
 
             <li class="user-menu-item my-advert"><i class="fas fa-comment"></i> <span class="text "><a href="/user/ad">Добавить объявление</a></span>
             </li>
-            <li class="user-menu-item my-settings"><i class="fas fa-cog"></i> <span class="text "><a href="/user/setting/profile">Настройки профиля</a></span>
             <li class="user-menu-item my-settings"><i class="far fa-user"></i> <span class="text "><a href="/user/setting/anket">Настройки анкеты</a></span>
             </li>
             <li class="user-menu-item my-logout">

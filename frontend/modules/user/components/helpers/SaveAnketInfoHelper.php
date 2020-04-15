@@ -13,7 +13,7 @@ class SaveAnketInfoHelper
 
                 $model = new $class_name();
 
-                $model->$column_param_name = $item;
+                $model->$column_param_name = \strip_tags($item);
                 $model->user_id = $user_id;
 
                 if(!$model->save()) return false;

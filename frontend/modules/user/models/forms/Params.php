@@ -12,6 +12,10 @@ use Yii;
 
 class Params extends Model
 {
+
+    public $username;
+    public $phone;
+    public $birthday;
     public $hairColor;
     public $eyeColor;
     public $rost;
@@ -83,6 +87,9 @@ class Params extends Model
             'transport' => 'Транспорт',
             'about' => 'Обо мне',
             'city' => 'Город',
+            'username' => 'Имя',
+            'phone' => 'Телефон',
+            'birthday' => 'Дата рождения',
         ];
 
     }
@@ -100,27 +107,28 @@ class Params extends Model
                 'smoking', 'alcogol', 'education', 'breast', 'intimHair', 'sferaDeyatelnosti', 'zhile', 'transport'
             ], 'integer'],
             [['service', 'metro', 'rayon', 'place', 'interesting', 'vajnoeVPartnere', 'celiZnakomstvamstva', 'lifeGoals'], 'safe'],
-            [['about', 'city'], 'string'],
+            [['about', 'city', 'username', 'phone' , 'birthday'], 'string'],
         ];
     }
 
-    public function getParams($user_id){
+    public function getParams($user_id)
+    {
 
         $filterParams = FilterParams::find()->asArray()->all();
 
-        foreach ($this as $key => $value){
+        foreach ($this as $key => $value) {
 
-            foreach ($filterParams as $filterParam){
+            foreach ($filterParams as $filterParam) {
 
-                if (\strtolower($filterParam['short_name']) == \strtolower($key)){
+                if (\strtolower($filterParam['short_name']) == \strtolower($key)) {
 
-                    if (\in_array($key, $this->must_be_array)){
+                    if (\in_array($key, $this->must_be_array)) {
 
-                        $this->$key = ArrayHelper::getColumn($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->all(), $filterParam['column_param_name']);
+                        $this->$key = ArrayHelper::getColumn($filterParam['relation_class']::find()->where(['user_id' => $user_id])->all(), $filterParam['column_param_name']);
 
-                    }else{
+                    } else {
 
-                        if ($filterParam['relation_class']) $this->$key = ArrayHelper::getValue($filterParam['relation_class']::find()->where(['user_id'=> $user_id])->one(), $filterParam['column_param_name']);
+                        if ($filterParam['relation_class']) $this->$key = ArrayHelper::getValue($filterParam['relation_class']::find()->where(['user_id' => $user_id])->one(), $filterParam['column_param_name']);
 
                     }
 
@@ -130,10 +138,16 @@ class Params extends Model
 
         }
 
-        $profile = Profile::find()->where(['id' => $user_id])->select('text')->asArray()->one();
+        $profile = Profile::find()->where(['id' => $user_id])->asArray()->one();
         $this->about = $profile['text'];
         $this->city = $profile['city'];
+        $this->username = $profile['username'];
+        $this->birthday = $profile['birthday'];
+        $this->phone = $profile['phone'];
+    }
 
+    public function formatDate(){
+        $this->birthday = \date('d.m.Y' , $this->birthday );
     }
 
     public function save($user_id){
