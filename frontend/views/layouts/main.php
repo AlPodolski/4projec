@@ -67,7 +67,6 @@ $login = new LoginForm();
                                 <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                                 <li><a href="/adverts">Объявления</a></li>
                                 <li><a href="/novosti">Новости сайта</a></li>
-                                <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
                                 <li>
                                     <?php if (Yii::$app->user->isGuest) : ?>
 
@@ -140,16 +139,6 @@ $login = new LoginForm();
                         <ul class="top-nav">
                             <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
                             <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
-                            <li>
-                                <a href="#">БДСМ</a>
-                                <ul class="secodn-menu">
-                                    <li><a href="/znakomstva/usluga-bdsm">Ищу BDSM</a></li>
-                                    <li><a href="/znakomstva/usluga-gospogha">Ищу госпажу</a></li>
-                                    <li><a href="/znakomstva/usluga-rabynya">Ищу рабыню</a></li>
-                                    <li><a href="/znakomstva/usluga-gospodin">Ищу господина</a></li>
-                                    <li><a href="/znakomstva/usluga-rab">Ищу раба</a></li>
-                                </ul>
-                            </li>
 
                         </ul>
                     </div>
