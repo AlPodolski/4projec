@@ -82,64 +82,70 @@ class ImportController extends Controller
     {
         // 1 m 2 j
 
+        $citys = City::find()->asArray()->all();
         $stream = \fopen(Yii::getAlias('@app/files/stena_com.csv'), 'r');
 
-        $profiles = Profile::find()->asArray()->with('polRelation')->all();
+        foreach ($citys as $city){
 
-        $csv = Reader::createFromStream($stream);
-        $csv->setDelimiter(';');
-        $csv->setHeaderOffset(0);
+            $profiles = Profile::find()->asArray()->where(['city' => $city['url']])->with('polRelation')->all();
 
-        $userPol = UserPol::find()->asArray()->all();
+            $csv = Reader::createFromStream($stream);
+            $csv->setDelimiter(';');
+            $csv->setHeaderOffset(0);
 
-        //build a statement
-        $stmt = (new Statement());
+            $userPol = UserPol::find()->asArray()->all();
 
-        $city = City::find()->asArray()->all();
+            //build a statement
+            $stmt = (new Statement());
 
-        $records = $stmt->process($csv);
+            $records = $stmt->process($csv);
 
-        $i = 0;
+            $i = 0;
 
-        $items = array();
+            $items = array();
 
-        foreach ($records as $record) {
+            foreach ($records as $record) {
 
-            $i++;
+                $i++;
 
-            $items[] = $record;
-
-        }
-
-
-        foreach ($profiles as $profile) {
-
-            if ($profile['polRelation']['pol_id']){
-
-                if ($profile['polRelation']['pol_id'] == 1){
-                    $userToInfo = $this->getNeedPolData(2,$userPol );
-                }else{
-                    $userToInfo = $this->getNeedPolData(1,$userPol );
-                }
-
-
-                $data = $this->getMessageData($profile['polRelation']['pol_id'], $items);
-
-                if($data){
-                    $model = new AddToWallForm();
-
-                    $model->from = $profile['id'];
-                    $model->user_id = $userToInfo['user_id'];
-                    $model->created_at = \time() - (rand(1, 365) * 3600 * 24);
-                    $model->text = $data['text'];
-
-                    $model->save();
-                }
+                $items[] = $record;
 
             }
 
 
+            foreach ($profiles as $profile) {
+
+                if ($profile['polRelation']['pol_id']){
+
+                    if ($profile['polRelation']['pol_id'] == 1){
+                        $userToInfo = $this->getNeedPolData(2,$userPol );
+                    }else{
+                        $userToInfo = $this->getNeedPolData(1,$userPol );
+                    }
+
+
+                    $data = $this->getMessageData($profile['polRelation']['pol_id'], $items);
+
+                    if($data){
+                        $model = new AddToWallForm();
+
+                        $model->from = $profile['id'];
+                        $model->user_id = $userToInfo['user_id'];
+                        $model->created_at = \time() - (rand(1, 365) * 3600 * 24);
+                        $model->text = $data['text'];
+
+                        $model->save();
+                    }
+
+                }
+
+
+            }
+
+            echo $city['url'].', ';
+
         }
+
 
     }
 
