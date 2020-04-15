@@ -78,7 +78,11 @@ class FriendsController extends Controller
 
     public function actionList($city, $id)
     {
-        $userFriends = Friends::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
+        $userFriends = Profile::find()
+            ->where(['in', 'id', \frontend\modules\user\components\Friends::getFriendsIds($id) ])
+            ->select('id, username')
+            ->with('userAvatarRelations')
+            ->asArray()->all();
 
         $userFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->with('friendsProfiles')->asArray()->all();
 
