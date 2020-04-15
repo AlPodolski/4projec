@@ -80,13 +80,17 @@ class ImportController extends Controller
 
     public function actionWall()
     {
+        // 1 m 2 j
+
         $stream = \fopen(Yii::getAlias('@app/files/stena_com.csv'), 'r');
 
-        $profiles = Profile::find()->asArray()->all();
+        $profiles = Profile::find()->asArray()->with('polRelation')->all();
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
         $csv->setHeaderOffset(0);
+
+        $userPol = UserPol::find()->asArray()->all();
 
         //build a statement
         $stmt = (new Statement());
@@ -107,18 +111,57 @@ class ImportController extends Controller
 
         }
 
-        foreach ($profiles as $profile){
 
-            $model = new AddToWallForm();
+        foreach ($profiles as $profile) {
 
-            $model->from = Yii::$app->user->id;
-            $model->created_at = \time();
+            if ($profile['polRelation']['pol_id']){
 
+                if ($profile['polRelation']['pol_id'] == 1){
+                    $userToInfo = $this->getNeedPolData(2,$userPol );
+                }else{
+                    $userToInfo = $this->getNeedPolData(1,$userPol );
+                }
+
+
+                $data = $this->getMessageData($profile['polRelation']['pol_id'], $items);
+
+                if($data){
+                    $model = new AddToWallForm();
+
+                    $model->from = $profile['id'];
+                    $model->user_id = $userToInfo['user_id'];
+                    $model->created_at = \time() - (rand(1, 365) * 3600 * 24);
+                    $model->text = $data['text'];
+
+                    $model->save();
+                }
+
+            }
 
 
         }
 
-        \dd($items);
+    }
+
+    private function getMessageData($nujnui_pol, $items)
+    {
+        \shuffle($items);
+
+        foreach ($items as $item) {
+            if ($item['who'] == $nujnui_pol) {
+                return $item;
+            }
+        }
+    }
+
+    private function getNeedPolData($nujnui_pol, $userPol)
+    {
+        \shuffle($userPol);
+        foreach ($userPol as $item) {
+            if ($item['pol_id'] == $nujnui_pol) {
+                return $item;
+            }
+        }
     }
 
     public function actionIndex()
@@ -269,11 +312,11 @@ class ImportController extends Controller
 
                             if (isset($znakom['orientaciya'])) {
 
-                                if ($record['pol'] == 'true'){
+                                if ($record['pol'] == 'true') {
                                     if ($znakom['orientaciya'] == 'традиционная') $param_id = 1;
                                     elseif ($znakom['orientaciya'] == 'гей') $param_id = 2;
                                     elseif ($znakom['orientaciya'] == 'би') $param_id = 3;
-                                }else{
+                                } else {
                                     if ($znakom['orientaciya'] == 'традиционная') $param_id = 4;
                                     elseif ($znakom['orientaciya'] == 'лесби') $param_id = 5;
                                     else  $param_id = 6;
@@ -590,13 +633,12 @@ class ImportController extends Controller
                         $userPol->user_id = $user->id;
                         $userPol->city_id = $item['id'];
 
-                        if ($record['pol'] == 'true'){
+                        if ($record['pol'] == 'true') {
                             $userPol->pol_id = 1;
 
-                        }else{
+                        } else {
                             $userPol->pol_id = 2;
                         }
-
 
 
                         $userPol->save();
@@ -966,7 +1008,7 @@ class ImportController extends Controller
 
     }
 
-    public function addMetro($city_user , $user_id = 1, $rayon = false)
+    public function addMetro($city_user, $user_id = 1, $rayon = false)
     {
 
 
@@ -987,7 +1029,7 @@ class ImportController extends Controller
 
             foreach ($records as $record) {
 
-                if ($rayon['value'] == $record['rayon'] and \rand(1,3) != 3) {
+                if ($rayon['value'] == $record['rayon'] and \rand(1, 3) != 3) {
 
                     if ($dostypnoe_metro = \explode(',', $record['metro'])) {
 
@@ -1051,7 +1093,7 @@ class ImportController extends Controller
 
                     $prop->value2 = $record['value2'];
 
-                    if ( $record['value3'] != '') {
+                    if ($record['value3'] != '') {
 
                         $prop->value3 = $record['value3'];
 

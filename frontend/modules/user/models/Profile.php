@@ -208,6 +208,9 @@ class Profile extends \yii\db\ActiveRecord
     public function getPol(){
         return ArrayHelper::getValue($this->hasOne(UserPol::class, ['user_id' => 'id'])->asArray()->one(), 'pol_id');
     }
+    public function getPolRelation(){
+        return $this->hasOne(UserPol::class, ['user_id' => 'id']);
+    }
     /**
      * @return \yii\db\ActiveQuery
      */
