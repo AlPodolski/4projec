@@ -31,7 +31,6 @@ class ConsoleController extends Controller
                     if (!FriendsHelper::isFiends($profile['id'], $profiles_from_my_city_item['id'])){
 
                         FriendsHelper::addToFriends($profiles_from_my_city_item['id'], $profile['id']);
-                        FriendsHelper::addToFriends( $profile['id'], $profiles_from_my_city_item['id']);
 
                     }
 
@@ -41,7 +40,6 @@ class ConsoleController extends Controller
                     if (!FriendsHelper::isFiends($profile['id'], $profiles_not_from_my_city_item['id'])){
 
                         FriendsHelper::addToFriends($profiles_not_from_my_city_item['id'], $profile['id']);
-                        FriendsHelper::addToFriends( $profile['id'], $profiles_not_from_my_city_item['id']);
 
                     }
 
