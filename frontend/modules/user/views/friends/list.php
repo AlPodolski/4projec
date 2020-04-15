@@ -61,10 +61,10 @@ $this->registerMetaTag([
                         <div class="friends_user_row clear_fix">
 
                             <div class="friends_photo_wrap ui_zoom_wrap">
-                                <a href="/user/<?php echo $userFriend['friendsProfiles']['id']; ?>">
-                                    <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['friendsProfiles']['avatarRelation']['file']) and $userFriend['friendsProfiles']['avatarRelation']['file']) : ?>
+                                <a href="/user/<?php echo $userFriend['id']; ?>">
+                                    <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) : ?>
 
-                                        <?= Yii::$app->imageCache->thumb($userFriend['friendsProfiles']['avatarRelation']['file'], '80', ['class' => 'friends_photo_img']) ?>
+                                        <?= Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], '80', ['class' => 'friends_photo_img']) ?>
 
                                     <?php else : ?>
 
@@ -76,18 +76,18 @@ $this->registerMetaTag([
 
                             <div class="friends_user_info">
                                 <div class="friends_field friends_field_title">
-                                    <a href="/user/<?php echo $userFriend['friendsProfiles']['id']; ?>">
-                                        <?php echo $userFriend['friendsProfiles']['username']; ?>
+                                    <a href="/user/<?php echo $userFriend['id']; ?>">
+                                        <?php echo $userFriend['username']; ?>
                                     </a>
                                 </div>
                                 <a onclick="get_message_form(this)"
-                                   data-user-id="<?php echo $userFriend['friendsProfiles']['id'] ?>"
+                                   data-user-id="<?php echo $userFriend['id'] ?>"
                                    class="friends_field_act small-heading">Написать сообщение</a>
                             </div>
 
                             <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $userName['id']) : ?>
                                 <span onclick="remove_friend(this)" class="remove-friend-request"
-                                      data-user-id="<?php echo $userFriend['friendsProfiles']['id'] ?>">
+                                      data-user-id="<?php echo $userFriend['id'] ?>">
                                 <i class="fas fa-times"></i>
                             </span>
                             <?php endif; ?>
