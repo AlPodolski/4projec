@@ -24,7 +24,12 @@ class UserController extends \yii\web\Controller
 
         $model = Profile::find()->where(['id' => Yii::$app->user->id])->one();
 
-        $userFriends = Friends::find()->where(['user_id' => Yii::$app->user->id])->with('friendsProfiles')->limit(6)->asArray()->all();
+        $userFriends = Profile::find()
+            ->where(['in', 'id', \frontend\modules\user\components\Friends::getFriendsIds(Yii::$app->user->id) ])
+            ->select('id, username')
+            ->with('userAvatarRelations')
+            ->limit(6)
+            ->asArray()->all();
 
         return $this->render('index', [
             'model' => $model,

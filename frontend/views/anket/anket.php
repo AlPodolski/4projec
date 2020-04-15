@@ -220,10 +220,10 @@ if ($model) {
                                 <? foreach ($userFriends as $userFriend) : ?>
 
                                     <div class="col-4">
-                                        <a class="post_image" href="/user/<?php echo $userFriend['friendsProfiles']['id'] ?>">
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['friendsProfiles']['avatarRelation']['file']) and $userFriend['friendsProfiles']['avatarRelation']['file']) : ?>
+                                        <a class="post_image" href="/user/<?php echo $userFriend['id'] ?>">
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) : ?>
 
-                                            <?= Yii::$app->imageCache->thumb($userFriend['friendsProfiles']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+                                            <?= Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
 
                                         <?php else : ?>
 
@@ -231,7 +231,7 @@ if ($model) {
 
                                         <?php endif; ?>
                                         </a>
-                                        <span class="author"><?php echo $userFriend['friendsProfiles']['username'] ?></span>
+                                        <span class="author"><?php echo $userFriend['username'] ?></span>
 
                                     </div>
 

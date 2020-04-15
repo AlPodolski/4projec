@@ -47,7 +47,12 @@ class AnketController extends Controller
             Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
         }
 
-        $userFriends = Friends::find()->where(['user_id' => $model->id])->with('friendsProfiles')->limit(6)->asArray()->all();
+        $userFriends = Profile::find()
+            ->where(['in', 'id', \frontend\modules\user\components\Friends::getFriendsIds($id) ])
+            ->select('id, username')
+            ->limit(6)
+            ->with('userAvatarRelations')
+            ->asArray()->all();
 
         $cityInfo = Yii::$app->cache->get(Yii::$app->params['cache_name']['city_info'].$city);
 

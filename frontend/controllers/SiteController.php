@@ -1,15 +1,10 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\City;
-use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
-use frontend\models\UserPol;
-use frontend\modules\user\models\Friends;
-use frontend\modules\user\models\FriendsRequest;
+use frontend\modules\user\components\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
-use yii\redis\Connection;
 use yii\web\Controller;
 
 /**
@@ -94,11 +89,14 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $friends = new FriendsRequest();
+        //Friends::addToFriends(1, 4);
+        \dd();
+
+/*        $friends = new FriendsRequest();
         $friends->user_id = '23215';
         $friends->request_user_id = '16017';
 
-        $friends->save();
+        $friends->save();*/
 
     }
 }

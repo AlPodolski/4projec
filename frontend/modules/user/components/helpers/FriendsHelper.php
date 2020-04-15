@@ -4,21 +4,20 @@
 namespace frontend\modules\user\components\helpers;
 
 
-use frontend\modules\user\models\Friends;
+use frontend\modules\user\components\Friends;
 
 class FriendsHelper
 {
     public static function isFiends($who_id, $whom_id)
     {
-        return (bool) Friends::find()->where(['user_id' => $whom_id , 'friend_user_id' => $who_id])
-            ->orWhere(['user_id' => $who_id , 'friend_user_id' =>  $whom_id])->one();
+        return (bool) Friends::isFriends($who_id, $whom_id);
     }
 
     public static function confirmFriendship($who_id, $whom_id){
 
         if (!FriendsHelper::isFiends($who_id, $whom_id) and FriendsRequestHelper::isFiendsRequest($who_id, $whom_id) and FriendsRequestHelper::removeFriendsRequest($who_id, $whom_id)){
 
-            return FriendsHelper::addToFriends($who_id, $whom_id) && FriendsHelper::addToFriends( $whom_id, $who_id);
+            return FriendsHelper::addToFriends($who_id, $whom_id);
 
         }
 
@@ -28,26 +27,13 @@ class FriendsHelper
 
     public static function deleteFriend($who_id, $whom_id){
 
-        return self::deleteItem($who_id) && self::deleteItem($whom_id);
-
-    }
-
-    public static function deleteItem($who_id){
-
-        if ($friend = Friends::find()->where(['user_id' => $who_id])->one()) return $friend->delete();
-
-        return false;
+        return Friends::removeFriend($who_id, $whom_id);
 
     }
 
     public static function addToFriends($who_id, $whom_id){
 
-        $friend = new Friends();
-
-        $friend->user_id = $who_id;
-        $friend->friend_user_id = $whom_id;
-
-        return $friend->save();
+        return Friends::addToFriends($who_id, $whom_id);
 
     }
 }
