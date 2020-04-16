@@ -231,7 +231,7 @@ if ($model) {
 
                                         <?php endif; ?>
                                         </a>
-                                        <span class="author"><?php echo $userFriend['username'] ?></span>
+                                        <span class="author"><?php echo strstr($userFriend['username'], ' ', true) ?: $userFriend['username']; ?></span>
 
                                     </div>
 
