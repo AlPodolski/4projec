@@ -18,7 +18,7 @@ class WallWidget extends Widget
 
     public function run()
     {
-        $wallItems = Wall::find()->where(['user_id' => $this->user_id])->limit(Yii::$app->params['wall_items_limit'])->with('author')->with('comments')->asArray()->all();
+        $wallItems = Wall::find()->where(['user_id' => $this->user_id])->limit(Yii::$app->params['wall_items_limit'])->orderBy('id DESC')->with('author')->with('comments')->asArray()->all();
 
         return $this->render('wall', [
             'wallItems' => $wallItems,

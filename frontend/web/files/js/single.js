@@ -110,8 +110,7 @@ $(document).ready(function() {
                 $('#w0 .form-text').css('display', 'none');
             },
             success: function (data) {
-
-                $('#wall-form').html('<p class="alert alert-success">Запись добавлена</p>');
+                $('.wall-wrapper').prepend(data);
             },
 
             complete: function() {
@@ -145,33 +144,25 @@ $(document).ready(function() {
     });
 
 });
+function like(object){
+    var id = $(object).attr('data-id');
 
-$(document).ready(function() {
+    if($(this).hasClass('guest')){
+        $(this).siblings('.like-info').removeClass('d-none');
+        $('.like-info').text('Требуется авторизация');
+        return true;
+    }
 
-    $('.like-btn').on('click', function(e){
-
-        var id = $(this).attr('data-id');
-        var object = $(this);
-
-        if($(this).hasClass('guest')){
-            $(this).siblings('.like-info').removeClass('d-none');
-            $('.like-info').text('Требуется авторизация');
-            return true;
-        }
-
-        $.ajax({
-            url: '/wall/item/like',
-            type: 'POST',
-            data: 'id='+id,
-            success: function (data) {
-                $(object).children('span').toggleClass('d-none');
-                $(object).children('.like-count').html(data);
-            },
-        });
-
+    $.ajax({
+        url: '/wall/item/like',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).children('span').toggleClass('d-none');
+            $(object).children('.like-count').html(data);
+        },
     });
-
-});
+}
 
 function addToFriends(object){
 
@@ -209,38 +200,34 @@ function deleteWallItem(object){
     });
 }
 
-$(document).ready(function() {
+function send_comment(object){
 
-    $('.send-comment-btn').on('click', function(e){
+    var formData = new FormData($(".form-wall-comment-"+$(object).attr('data-id'))[0]);
 
-        var formData = new FormData($(".form-wall-comment-"+$(this).attr('data-id'))[0]);
+    var id = $(object).attr('data-id');
 
-        var id = $(this).attr('data-id');
+    $.ajax({
+        url: '/wall/comment',
+        type: 'POST',
+        data: formData,
+        datatype:'json',
+        // async: false,
+        beforeSend: function() {
+            $('#w0 .form-text').css('display', 'none');
+        },
+        success: function (data) {
+            $(".comment-wall-form-"+id).html('<p class="alert alert-success">Запись добавлена</p>');
+        },
 
-        $.ajax({
-            url: '/wall/comment',
-            type: 'POST',
-            data: formData,
-            datatype:'json',
-            // async: false,
-            beforeSend: function() {
-                $('#w0 .form-text').css('display', 'none');
-            },
-            success: function (data) {
-                $(".comment-wall-form-"+id).html('<p class="alert alert-success">Запись добавлена</p>');
-            },
+        complete: function() {
+            // success alerts
+        },
 
-            complete: function() {
-                // success alerts
-            },
-
-            error: function (data) {
-                alert("There may a error on uploading. Try again later");
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
     });
-
-});
+}

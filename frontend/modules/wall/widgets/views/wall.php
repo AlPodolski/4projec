@@ -5,6 +5,11 @@ use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\components\LikeHelper;
 
 $commentForm = new AddCommentForm();
+?>
+
+
+
+<?php
 
 if (!empty($wallItems)) : ?>
 
@@ -52,7 +57,7 @@ if (!empty($wallItems)) : ?>
                 <?php echo $item['text'] ?>
             </div>
 
-            <div class="like-btn <?php echo (Yii::$app->user->isGuest) ? 'guest' : '' ?> " data-id="<?php echo $item['id'] ?>">
+            <div onclick="like(this)" class="like-btn <?php echo (Yii::$app->user->isGuest) ? 'guest' : '' ?> " data-id="<?php echo $item['id'] ?>">
 
                 <?php if (!Yii::$app->user->isGuest and !LikeHelper::isLiked(Yii::$app->user->id, $item['id'], Yii::$app->params['wall_item_redis_key'] )) : ?>
 
@@ -168,7 +173,7 @@ if (!empty($wallItems)) : ?>
                     <?= $form->field($commentForm, 'related_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $item['id']])->label(false) ?>
                     <?= $form->field($commentForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
 
-                    <span class="send-comment-btn" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
+                    <span class="send-comment-btn" onclick="send_comment(this)" data-id="<?php echo $item['id']; ?>"><i class="far fa-paper-plane"></i></span>
 
                     <?php ActiveForm::end() ?>
 
@@ -186,4 +191,5 @@ if (!empty($wallItems)) : ?>
 
 <?php else : ?>
 
-<?php endif;
+<?php endif;?>
+

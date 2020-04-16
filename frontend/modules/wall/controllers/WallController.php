@@ -23,9 +23,13 @@ class WallController extends Controller
                 $model->from = Yii::$app->user->id;
                 $model->created_at = \time();
 
-                if ($model->load(Yii::$app->request->post()) and $model->save()){
+                if ($model->load(Yii::$app->request->post()) and $wallItem[] = (array) $model->save()){
 
-                    return true;
+                    echo $this->renderFile('@app/modules/wall/views/wall/item.php', [
+                        'wallItem' => $wallItem
+                    ]);
+
+                    exit();
 
                 }
 

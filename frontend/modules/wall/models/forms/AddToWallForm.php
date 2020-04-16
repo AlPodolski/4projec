@@ -4,6 +4,7 @@
 namespace frontend\modules\wall\models\forms;
 
 use frontend\modules\wall\models\Wall;
+use Yii;
 use yii\base\Model;
 
 /**
@@ -51,7 +52,10 @@ class AddToWallForm extends Model
         $wallItem->created_at = $this->created_at;
         $wallItem->text = $this->text;
 
-        return $wallItem->save();
+        $wallItem->save();
+
+        return Wall::find()->where(['id' => $wallItem->id])->with('author')->with('comments')->asArray()->one();
+
 
     }
 }

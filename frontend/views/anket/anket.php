@@ -672,7 +672,7 @@ if ($model) {
 
             </div>
 
-            <div class="">
+            <div class="wall-wrapper">
                 <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
             </div>
 
