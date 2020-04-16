@@ -44,9 +44,9 @@ class SidebarWidget extends Widget
 
         $param = 'znakomstva/';
 
+        $url = Yii::$app->request->url;
 
-
-        $html = Yii::$app->cache->get('4dosug_sidebar'.$param);
+        $html = Yii::$app->cache->get('4dosug_sidebar'.$url);
 
         if ($html === false) {
             // $data нет в кэше, вычисляем заново
@@ -102,7 +102,7 @@ class SidebarWidget extends Widget
                 'param' => $param,
             ]);
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
-            Yii::$app->cache->set('4dosug_sidebar'.$param, $html);
+            Yii::$app->cache->set('4dosug_sidebar'.$url, $html);
         }
 
         return $html;
