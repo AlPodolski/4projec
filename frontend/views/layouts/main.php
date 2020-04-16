@@ -14,6 +14,7 @@ use common\widgets\Alert;
 use frontend\modules\user\widgets\RegisterWidget;
 use frontend\modules\user\widgets\LoginWidget;
 use frontend\widgets\CityWidget;
+use frontend\widgets\MetricaWidget;
 
 AppAsset::register($this);
 FontAwesomeAsset::register($this);
@@ -244,7 +245,7 @@ $login = new LoginForm();
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
-
+<?php echo MetricaWidget::widget(); ?>
 <?php $this->endBody() ?>
 
 </body>
