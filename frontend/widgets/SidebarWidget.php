@@ -3,6 +3,7 @@
 
 namespace frontend\widgets;
 
+use backend\models\MetaTemplate;
 use common\models\Breast;
 use common\models\City;
 use common\models\FinancialSituation;
@@ -43,66 +44,68 @@ class SidebarWidget extends Widget
 
         $param = 'znakomstva/';
 
-        $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
-
-        //objee
-        $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
-        $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
-
-        $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds(),  $city_id);
-        $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds(),  $city_id);
-        $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds(),  $city_id);
-        $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds(),  $city_id);
-        $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds(),  $city_id);
-        $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
-        $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
-        $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
-        $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds(),  $city_id);
-
-        if (\strstr($param, 'znakomstva')){
-            //znakom
-            $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds(),  $city_id);
-            $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
-            $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
-            $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
-            $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
-        }else{
-            //pr
-            $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
-        }
-
-
-
-
-
-
-
-
         if (isset(Yii::$app->controller->actionParams['param'])) $param =
             $this->prepereParam(Yii::$app->controller->actionParams['param']);
 
-        return $this->render('sidebar', [
-            'placeList' => $placeList,
-            'ageList' => $ageList,
-            'priceList' => $priceList,
-            'nationalList' => $nationalList,
-            'bodyList' => $bodyList,
-            'serviceList' => $serviceList,
-            'metroList' => $metroList,
-            'rayonList' => $rayonList,
-            'interesi' => $interesi,
-            'deti' => $deti,
-            'semeinoePolojenie' => $semeinoePolojenie,
-            'celiZnakomstva' => $celiZnakomstva,
-            'smoke' => $smoke,
-            'alcogol' => $alcogol,
-            'hairColorList' => $hairColorList,
-            'breastSizeList' => $breastSizeList,
-            'polList' => $polList,
-            'intimHairList' => $intimHairList,
-            'materialnoePolojenie' => $materialnoePolojenie,
-            'param' => $param,
-        ]);
+        $html = Yii::$app->cache->get('4dosug_sidebar'.$param);
+
+        if ($html === false) {
+            // $data нет в кэше, вычисляем заново
+            $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
+
+            //objee
+            $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
+            $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
+
+            $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds(),  $city_id);
+            $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds(),  $city_id);
+            $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds(),  $city_id);
+            $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds(),  $city_id);
+            $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds(),  $city_id);
+            $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
+            $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
+            $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
+            $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds(),  $city_id);
+
+            if (\strstr($param, 'znakomstva')){
+                //znakom
+                $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds(),  $city_id);
+                $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
+                $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
+                $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
+                $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
+            }else{
+                //pr
+                $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
+            }
+
+            $html =  $this->render('sidebar', [
+                'ageList' => $ageList,
+                'priceList' => $priceList,
+                'nationalList' => $nationalList,
+                'bodyList' => $bodyList,
+                'serviceList' => $serviceList,
+                'metroList' => $metroList,
+                'rayonList' => $rayonList,
+                'interesi' => $interesi,
+                'deti' => $deti,
+                'semeinoePolojenie' => $semeinoePolojenie,
+                'celiZnakomstva' => $celiZnakomstva,
+                'smoke' => $smoke,
+                'alcogol' => $alcogol,
+                'hairColorList' => $hairColorList,
+                'polList' => $polList,
+                'intimHairList' => $intimHairList,
+                'materialnoePolojenie' => $materialnoePolojenie,
+                'param' => $param,
+            ]);
+            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+            Yii::$app->cache->set('4dosug_sidebar'.$param, $html);
+        }
+
+        return $html;
+
+
     }
 
     private function prepereParam($param){
