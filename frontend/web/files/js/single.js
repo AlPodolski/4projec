@@ -216,7 +216,7 @@ function send_comment(object){
             $('#w0 .form-text').css('display', 'none');
         },
         success: function (data) {
-            $(".comment-wall-form-"+id).html('<p class="alert alert-success">Запись добавлена</p>');
+            $(object).closest('.comment-wall-form').siblings('.comments-list').append(data);
         },
 
         complete: function() {

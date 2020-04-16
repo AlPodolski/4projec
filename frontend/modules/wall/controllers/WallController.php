@@ -2,6 +2,7 @@
 
 namespace frontend\modules\wall\controllers;
 
+use common\models\Comments;
 use frontend\modules\wall\components\WallHelper;
 use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\models\forms\AddToWallForm;
@@ -53,9 +54,13 @@ class WallController extends Controller
                 $model->created_at = \time();
                 $model->class = Wall::class;
 
-                if ($model->load(Yii::$app->request->post()) and $model->save()){
+                if ($model->load(Yii::$app->request->post()) and $id = $model->save()){
 
-                    return true;
+                    $comment = Comments::find()->where(['id' => $id])->with('author')->asArray()->one();
+
+                    return  $this->renderFile('@app/modules/wall/widgets/views/comment-item.php', [
+                        'comment' => $comment
+                    ]);
 
                 }
 

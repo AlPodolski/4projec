@@ -45,7 +45,9 @@ class AddCommentForm extends Model
         $comment->related_id = $this->related_id;
         $comment->created_at = $this->created_at;
 
-        return $comment->save();
+        $comment->save();
+
+        return $comment->id;
 
     }
 }
