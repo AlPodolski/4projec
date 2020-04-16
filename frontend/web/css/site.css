@@ -1067,6 +1067,19 @@ ul li .secodn-menu:hover {
 .profile_more_info_link {
     line-height: 32px;
 }
+.right-column-anket .friends_user_info{
+    padding-left: 10px;
+    padding-top: 0;
+}
+.back-link{
+    padding-right: 0px;
+}
+.back-link-left{
+    display: none;
+}
+.right-column-anket .friends_field{
+    margin-bottom: 0px;
+}
 .profile_more_info_link:hover {
     background-color: #f0f2f5;
     text-decoration: none;
@@ -1354,6 +1367,9 @@ a {
     margin-bottom:0px;
 }
 @media (max-width: 1199px) {
+    .back-link-left{
+        display: block;
+    }
     .mobile-present{
         display: block;
     }

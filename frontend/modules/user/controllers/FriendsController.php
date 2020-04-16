@@ -88,7 +88,7 @@ class FriendsController extends Controller
 
         $sendUserFriendsRequest = FriendsRequest::find()->where(['request_user_id' => $id])->with('sendFriendsProfiles')->asArray()->all();
 
-        $userName = Profile::find()->where(['id' => $id])->asArray()->select('id,username')->one();
+        $userName = Profile::find()->where(['id' => $id])->asArray()->select('id,username')->with('avatarRelation')->one();
 
         $countFriendsRequest = FriendsRequest::find()->where(['user_id' => $id])->count();
 
