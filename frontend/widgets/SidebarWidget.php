@@ -44,8 +44,7 @@ class SidebarWidget extends Widget
 
         $param = 'znakomstva/';
 
-        if (isset(Yii::$app->controller->actionParams['param'])) $param =
-            $this->prepereParam(Yii::$app->controller->actionParams['param']);
+
 
         $html = Yii::$app->cache->get('4dosug_sidebar'.$param);
 
@@ -78,6 +77,9 @@ class SidebarWidget extends Widget
                 //pr
                 $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
             }
+
+            if (isset(Yii::$app->controller->actionParams['param'])) $param =
+                $this->prepereParam(Yii::$app->controller->actionParams['param']);
 
             $html =  $this->render('sidebar', [
                 'ageList' => $ageList,
