@@ -39,6 +39,11 @@ class SidebarWidget extends Widget
 
     }
 
+    private function prepareHash($ids){
+        if ($ids) return \md5(\implode(' ', $ids));
+        return '_';
+    }
+
     public function run()
     {
 
@@ -46,7 +51,9 @@ class SidebarWidget extends Widget
 
         $url = Yii::$app->request->url;
 
-        $html = Yii::$app->cache->get('4dosug_sidebar'.$url);
+        $hash = $this->prepareHash($this->getAvalibleIds());
+
+        $html = Yii::$app->cache->get('4dosug_sidebar'.$hash);
 
         if ($html === false) {
             // $data нет в кэше, вычисляем заново
@@ -102,7 +109,7 @@ class SidebarWidget extends Widget
                 'param' => $param,
             ]);
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
-            Yii::$app->cache->set('4dosug_sidebar'.$url, $html);
+            Yii::$app->cache->set('4dosug_sidebar'.$hash, $html, 24 * 3600);
         }
 
         return $html;
