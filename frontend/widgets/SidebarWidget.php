@@ -90,7 +90,6 @@ class SidebarWidget extends Widget
 
             $html =  $this->render('sidebar', [
                 'ageList' => $ageList,
-                'priceList' => $priceList,
                 'nationalList' => $nationalList,
                 'bodyList' => $bodyList,
                 'serviceList' => $serviceList,
