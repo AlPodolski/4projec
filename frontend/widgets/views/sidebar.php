@@ -66,7 +66,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($breastSizeList) : ?>
+                <?php if (isset($breastSizeList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -92,7 +92,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($hairColorList) : ?>
+                <?php if (isset($hairColorList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -118,7 +118,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($materialnoePolojenie) : ?>
+                <?php if (isset($materialnoePolojenie)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -144,7 +144,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($metroList) : ?>
+                <?php if (isset($metroList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -170,7 +170,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($rayonList) : ?>
+                <?php if (isset($rayonList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -196,7 +196,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($interesi) : ?>
+                <?php if (isset($interesi)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -222,7 +222,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($deti) : ?>
+                <?php if (isset($deti) ): ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -248,7 +248,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($semeinoePolojenie) : ?>
+                <?php if (isset($semeinoePolojenie)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -274,7 +274,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($celiZnakomstva) : ?>
+                <?php if (isset($celiZnakomstva)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -300,7 +300,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($smoke) : ?>
+                <?php if (isset($smoke)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -326,7 +326,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($alcogol) : ?>
+                <?php if (isset($alcogol)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -352,7 +352,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($placeList) : ?>
+                <?php if (isset($placeList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -378,7 +378,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($ageList) : ?>
+                <?php if (isset($ageList)) : ?>
 
 
                     <div class="card">
@@ -404,7 +404,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($priceList) : ?>
+                <?php if (isset($priceList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingThree">
@@ -429,7 +429,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($nationalList) : ?>
+                <?php if (isset($nationalList)) : ?>
 
 
                     <div class="card">
@@ -455,7 +455,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($bodyList) : ?>
+                <?php if (isset($bodyList) ): ?>
 
 
                     <div class="card">
@@ -481,7 +481,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($intimHairList) : ?>
+                <?php if (isset($intimHairList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -507,7 +507,7 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
                 <?php endif; ?>
 
-                <?php if ($serviceList) : ?>
+                <?php if (isset($serviceList)) : ?>
 
                     <div class="card">
                         <div class="card-header" id="headingOne">
