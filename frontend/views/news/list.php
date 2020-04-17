@@ -6,16 +6,24 @@
 use common\models\News;
 use frontend\widgets\SidebarWidget;
 use yii\web\View;
+use frontend\widgets\UserSideBarWidget;
 
 $this->title = 'Новости';
 ?>
 <div class="row">
 
+    <div class="col-3 filter-sidebar">
+
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
         <?php
-
-            echo SidebarWidget::Widget()
-
+        echo SidebarWidget::Widget()
         ?>
+    </div>
 
     <div class="col-12 col-xl-9">
 

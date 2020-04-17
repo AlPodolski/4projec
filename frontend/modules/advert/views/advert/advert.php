@@ -5,6 +5,7 @@
 use frontend\modules\advert\models\Advert;
 use frontend\widgets\SidebarWidget;
 use yii\web\View;
+use frontend\widgets\UserSideBarWidget;
 
 $this->title = 'Интим объявления';
 
@@ -13,11 +14,18 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 ?>
 <div class="row">
 
+    <div class="col-3 filter-sidebar">
+
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
         <?php
-
         echo SidebarWidget::Widget()
-
         ?>
+    </div>
 
 
 

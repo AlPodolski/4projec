@@ -9,6 +9,7 @@
 
 use frontend\modules\user\models\Profile;
 use frontend\widgets\SidebarWidget;
+use frontend\widgets\UserSideBarWidget;
 
 
 $this->title = $title;
@@ -25,11 +26,18 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
     <div class="body-content">
 
         <div class="row">
-            <?php
+            <div class="col-3 filter-sidebar">
 
-            echo SidebarWidget::Widget()
+                <?php if (!Yii::$app->user->isGuest) : ?>
 
-            ?>
+                    <?php echo UserSideBarWidget::Widget()?>
+
+                <?php endif; ?>
+
+                <?php
+                echo SidebarWidget::Widget()
+                ?>
+            </div>
 
             <div class="col-12 col-xl-9">
 

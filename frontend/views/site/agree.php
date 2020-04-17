@@ -1,5 +1,5 @@
 <?php
-
+use frontend\widgets\UserSideBarWidget;
 ?>
 
 <div class="row">
@@ -10,11 +10,18 @@
 
     ?>
 
+    <div class="col-3 filter-sidebar">
+
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
         <?php
-
-            echo SidebarWidget::Widget()
-
+        echo SidebarWidget::Widget()
         ?>
+    </div>
 
 
 

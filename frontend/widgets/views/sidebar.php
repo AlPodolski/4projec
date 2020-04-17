@@ -7,13 +7,7 @@ use frontend\widgets\UserSideBarWidget;
 $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\AppAsset::class]]);
 
 ?>
-<div class="col-3 filter-sidebar">
 
-<?php if (!Yii::$app->user->isGuest) : ?>
-
-        <?php echo UserSideBarWidget::Widget()?>
-
-<?php endif; ?>
 
 <div class="mobile-filter-icon">
     <i class="fas fa-filter"></i>
@@ -537,4 +531,4 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
         </div>
 
     </div>
-</div>
+

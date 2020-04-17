@@ -10,6 +10,7 @@
 use frontend\modules\user\models\Profile;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\SidebarWidget;
+use frontend\widgets\UserSideBarWidget;
 $this->title = $title;
 Yii::$app->view->registerMetaTag([
     'name' => 'description',
@@ -36,11 +37,18 @@ $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\App
 
         <div class="row">
 
+            <div class="col-3 filter-sidebar">
+
+                <?php if (!Yii::$app->user->isGuest) : ?>
+
+                    <?php echo UserSideBarWidget::Widget()?>
+
+                <?php endif; ?>
 
                 <?php
                     echo SidebarWidget::Widget()
                 ?>
-
+            </div>
 
 
             <div class="col-12 col-xl-9 main-banner-wrap">

@@ -1,6 +1,7 @@
 <?php
 
 use frontend\widgets\SidebarWidget;
+use frontend\widgets\UserSideBarWidget;
 
 /* @var $this \yii\web\View */
 /* @var $userFriends array */
@@ -23,9 +24,18 @@ $this->registerMetaTag([
 
     <?php echo \frontend\widgets\PopularWidget::widget(['city' => $city]); ?>
 
-    <?php
+    <div class="col-3 filter-sidebar">
 
-    echo SidebarWidget::Widget() ?>
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
+        <?php
+        echo SidebarWidget::Widget()
+        ?>
+    </div>
 
     <div class="col-12 back-link-left ">
 

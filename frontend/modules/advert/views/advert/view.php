@@ -4,6 +4,7 @@
 /* @var $this yii\web\View */
 
 use frontend\widgets\SidebarWidget;
+use frontend\widgets\UserSideBarWidget;
 
 $this->registerMetaTag([
         'name' => 'description',
@@ -14,11 +15,18 @@ $this->registerMetaTag([
 ?>
 <div class="row">
 
+    <div class="col-3 filter-sidebar">
+
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
         <?php
-
         echo SidebarWidget::Widget()
-
         ?>
+    </div>
 
 
 
