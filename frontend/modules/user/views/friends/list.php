@@ -272,9 +272,9 @@ $this->registerMetaTag([
 
             <div class=" ui_zoom_wrap">
                 <a class="post_image" href="/user/<?php echo $userName['id']; ?>">
-                    <?php if (file_exists(Yii::getAlias('@webroot') . $userName['userAvatarRelations']['file']) and $userName['userAvatarRelations']['file']) : ?>
+                    <?php if (file_exists(Yii::getAlias('@webroot') . $userName['avatarRelation']['file']) and $userName['avatarRelation']['file']) : ?>
 
-                        <?= Yii::$app->imageCache->thumb($userName['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
+                        <?= Yii::$app->imageCache->thumb($userName['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
 
                     <?php else : ?>
 
