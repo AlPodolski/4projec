@@ -21,6 +21,7 @@ class UserController extends \yii\web\Controller
 
     public function actionIndex($city)
     {
+        if (Yii::$app->user->isGuest) return $this->goHome();
 
         $model = Profile::find()->where(['id' => Yii::$app->user->id])->one();
 
