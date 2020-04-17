@@ -62,7 +62,7 @@ $this->registerMetaTag([
                     </a>
                 </div>
                 <a href="/user/<?php echo $userName['id']; ?>"
-                   class="friends_field_act small-heading">Назад на странцу</a>
+                   class="friends_field_act small-heading">Назад на страницу</a>
             </div>
 
         </div>
@@ -291,7 +291,7 @@ $this->registerMetaTag([
                     </a>
                 </div>
                 <a href="/user/<?php echo $userName['id']; ?>"
-                   class="friends_field_act small-heading">Назад на странцу</a>
+                   class="friends_field_act small-heading">Назад на страницу</a>
             </div>
 
         </div>
