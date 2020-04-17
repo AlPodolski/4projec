@@ -221,15 +221,15 @@ if ($model) {
 
                                     <div class="col-4">
                                         <a class="post_image" href="/user/<?php echo $userFriend['id'] ?>">
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) : ?>
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) { ?>
 
                                             <?= Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
 
-                                        <?php else : ?>
+                                        <?php } else { ?>
 
                                             <img src="/files/img/nophoto.png" alt="">
 
-                                        <?php endif; ?>
+                                        <?php } ?>
                                         </a>
                                         <span class="author"><?php echo strstr($userFriend['username'], ' ', true) ?: $userFriend['username']; ?></span>
 
