@@ -217,7 +217,7 @@ if ($model) {
 
                             <?php if (isset($userFriends)) { ?>
 
-                                <? foreach ($userFriends as $userFriend) : ?>
+                                <? foreach ($userFriends as $userFriend) { ?>
 
                                     <div class="col-4">
                                         <a class="post_image" href="/user/<?php echo $userFriend['id'] ?>">
@@ -235,7 +235,7 @@ if ($model) {
 
                                     </div>
 
-                                <?php endforeach; ?>
+                                <?php } ?>
 
                             <?php }else { ?>
 
