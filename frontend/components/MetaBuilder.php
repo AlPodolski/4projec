@@ -237,7 +237,8 @@ class MetaBuilder
      */
     public static function replaceParamsFromUrl($url){
 
-        $params = Yii::$app->params['replaceParams'];
+        if (isset(Yii::$app->params['replaceParams'])) $params = Yii::$app->params['replaceParams'];
+        else $params = '';
 
         return trim(str_replace($params, '', $url), '-');
 
