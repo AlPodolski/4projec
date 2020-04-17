@@ -84,102 +84,103 @@ if ($model) {
 
                         <?php if (!Yii::$app->user->isGuest and $model->id == Yii::$app->user->id) : ?>
 
-                        <?php
+                            <?php
 
-                        $photoModel = new Photo();
+                            $photoModel = new Photo();
 
-                        $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data', 'id' => 'under-avatar-form']]);
+                            $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data', 'id' => 'under-avatar-form']]);
 
-                        ?>
+                            ?>
 
-                        <div class="img-label-wrap">
-                            <label for="under-avatar-form-input" class="">
+                            <div class="img-label-wrap">
+                                <label for="under-avatar-form-input" class="">
 
-                                <span> <i class="fas fa-upload"></i> Загрузить фото </span>
+                                    <span> <i class="fas fa-upload"></i> Загрузить фото </span>
 
-                                <?= $form->field($photoModel, 'file')
-                                    ->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'under-avatar-form-input'])
-                                    ->label(false) ?>
+                                    <?= $form->field($photoModel, 'file')
+                                        ->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'under-avatar-form-input'])
+                                        ->label(false) ?>
 
-                            </label>
-                        </div>
+                                </label>
+                            </div>
 
-                        <?php ActiveForm::end();
+                            <?php ActiveForm::end();
 
-                        ?>
+                            ?>
                         <?php endif; ?>
 
                     </div>
 
-                    <?php if ( isset(Yii::$app->user->id) and Yii::$app->user->id == $model->id)  : ?>
+                    <?php if (isset(Yii::$app->user->id) and Yii::$app->user->id == $model->id)  : ?>
 
                     <?php else : ?>
 
-                    <div class="profile_actions">
+                        <div class="profile_actions">
 
-                        <div class="profile_action_btn profile_msg_split" id="profile_message_send">
-                            <div class="clear_fix">
-                                <a class="button_link cut_left">
-                                    <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>"
-                                            class="flat_button profile_btn_cut_left">Написать сообщение
-                                    </button>
-                                </a>
-                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
-                                   class="button_link cut_right" id="profile_send_gift_btn">
-                                    <button class="flat_button profile_btn_cut_right">
-                                        <span class="profile_gift_icon"></span>
-                                        <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
-                                    </button>
-                                </a>
-                                <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
-                                   class="button_link mobile-present">
-                                    <button class="flat_button">
+                            <div class="profile_action_btn profile_msg_split" id="profile_message_send">
+                                <div class="clear_fix">
+                                    <a class="button_link cut_left">
+                                        <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>"
+                                                class="flat_button profile_btn_cut_left">Написать сообщение
+                                        </button>
+                                    </a>
+                                    <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
+                                       class="button_link cut_right" id="profile_send_gift_btn">
+                                        <button class="flat_button profile_btn_cut_right">
+                                            <span class="profile_gift_icon"></span>
+                                            <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
+                                        </button>
+                                    </a>
+                                    <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
+                                       class="button_link mobile-present">
+                                        <button class="flat_button">
                                         <span class="profile_gift_icon">
 
                                         </span>
-                                        <span class="profile_gift_text">
+                                            <span class="profile_gift_text">
                                             Подарить подарок
                                         </span>
-                                    </button>
-                                </a>
+                                        </button>
+                                    </a>
 
-                                <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)  ) : ?>
+                                    <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)) : ?>
 
-                                    <?php
-                                    /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
-                                    if (Yii::$app->user->isGuest or
-                                        (!FriendsHelper::isFiends(Yii::$app->user->id,$model->id )
-                                            and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id )
-                                            and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id,$model->id))) {
-                                        $onclick = 'onclick="addToFriends(this)"';
-                                    } else {
-                                        $onclick = '';
-                                    }?>
+                                        <?php
+                                        /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
+                                        if (Yii::$app->user->isGuest or
+                                            (!FriendsHelper::isFiends(Yii::$app->user->id, $model->id)
+                                                and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id)
+                                                and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $model->id))) {
+                                            $onclick = 'onclick="addToFriends(this)"';
+                                        } else {
+                                            $onclick = '';
+                                        } ?>
 
-                                    <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?> data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
-                                        <button class="flat_button">
+                                        <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?>
+                                           data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
+                                            <button class="flat_button">
                                             <span class="profile_gift_text">
                                                 <?php if ($isFriendsRequestTo) : ?>
                                                     Заявка отправлена
-                                                <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id,$model->id )) : ?>
+                                                <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id, $model->id)) : ?>
                                                     У Вас в друзьях
                                                 <?php elseif ($isFriendsRequestFrom) : ?>
                                                     <span onclick="check_friend_request(this)"
-                                                       data-user-id="<?php echo $model->id ?>"
-                                                       >Принять заявку</span>
+                                                          data-user-id="<?php echo $model->id ?>"
+                                                    >Принять заявку</span>
                                                 <?php else : ?>
                                                     Добавить в друзья
                                                 <?php endif; ?>
                                             </span>
-                                        </button>
-                                    </a>
+                                            </button>
+                                        </a>
 
-                                <?php endif; ?>
+                                    <?php endif; ?>
 
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
+                        </div>
 
                     <?php endif; ?>
 
@@ -217,27 +218,22 @@ if ($model) {
 
                             <?php if (isset($userFriends)) { ?>
 
-                                <? foreach ($userFriends as $userFriend) { ?>
+                                <?php foreach ($userFriends as $userFriend) { ?>
 
                                     <div class="col-4">
                                         <a class="post_image" href="/user/<?php echo $userFriend['id'] ?>">
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) { ?>
-
-                                            <?= Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
-
-                                        <?php } else { ?>
-
-                                            <img src="/files/img/nophoto.png" alt="">
-
-                                        <?php } ?>
+                                            <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) {
+                                                echo Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], 'dialog', ['class' => 'img']);
+                                            } else {
+                                                echo '<img src="/files/img/nophoto.png" alt="">';
+                                            }  ?>
                                         </a>
                                         <span class="author"><?php echo strstr($userFriend['username'], ' ', true) ?: $userFriend['username']; ?></span>
-
                                     </div>
 
                                 <?php } ?>
 
-                            <?php }else { ?>
+                            <?php } else { ?>
 
                                 <div class="col-12">
                                     <p class="small-heading">Пока нет друзей</p>
@@ -290,7 +286,7 @@ if ($model) {
                             <div class="label fl_l">Моя ориентация:</div>
 
                             <div class="labeled">
-                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?>
+                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
                             </div>
 
                         <?php endif; ?>
@@ -303,7 +299,7 @@ if ($model) {
 
                             <div class="label fl_l">Хочу найти:</div>
 
-                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
+                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         <?php endif; ?>
 
@@ -315,7 +311,7 @@ if ($model) {
 
                             <div class="label fl_l">Цели знакомства:</div>
 
-                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
+                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         <?php endif; ?>
 
@@ -328,7 +324,7 @@ if ($model) {
 
                             <div class="label fl_l">Моя внешность:</div>
 
-                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                         </div>
 
@@ -340,7 +336,7 @@ if ($model) {
 
                             <div class="label fl_l">Сексуальные предпочтения:</div>
 
-                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?> </div>
+                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         </div>
 
@@ -373,7 +369,7 @@ if ($model) {
 
                                 <div class="label fl_l">Метро:</div>
 
-                                <div class="labeled"> <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
+                                <div class="labeled"> <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                             </div>
 
@@ -385,7 +381,7 @@ if ($model) {
 
                                 <div class="label fl_l">Район:</div>
 
-                                <div class="labeled"> <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled"> <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -397,7 +393,7 @@ if ($model) {
 
                                 <div class="label fl_l">Место встречи:</div>
 
-                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -409,7 +405,7 @@ if ($model) {
 
                                 <div class="label fl_l">Телосложение:</div>
 
-                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -421,7 +417,7 @@ if ($model) {
 
                                 <div class="label fl_l">Национальность:</div>
 
-                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>   </div>
+                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>   </div>
 
                             </div>
 
@@ -433,7 +429,7 @@ if ($model) {
 
                                 <div class="label fl_l">Материальное положение:</div>
 
-                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-'.$item['url'].'">'. $item['value'] . ' </a> ' ?>    </div>
+                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>    </div>
 
                             </div>
 
@@ -445,7 +441,7 @@ if ($model) {
 
                                 <div class="label fl_l">Интересы:</div>
 
-                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -457,7 +453,7 @@ if ($model) {
 
                                 <div class="label fl_l">Профессия:</div>
 
-                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-'.$item['url'].'">'. $item['value'] . ' </a> '?>  </div>
+                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -469,7 +465,7 @@ if ($model) {
 
                                 <div class="label fl_l">Важное в партнере:</div>
 
-                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -481,7 +477,7 @@ if ($model) {
 
                                 <div class="label fl_l">Дети:</div>
 
-                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -493,7 +489,7 @@ if ($model) {
 
                                 <div class="label fl_l">Семья:</div>
 
-                                <div class="labeled">   <?php foreach ($model['family'] as $item)echo '<a href="/znakomstva/semejnoe-polozhenie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['family'] as $item) echo '<a href="/znakomstva/semejnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -505,7 +501,7 @@ if ($model) {
 
                                 <div class="label fl_l">Отношение к алкоголю:</div>
 
-                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item)echo '<a href="/znakomstva/otnoshenie-k-akogolyu-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item) echo '<a href="/znakomstva/otnoshenie-k-akogolyu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -517,7 +513,7 @@ if ($model) {
 
                                 <div class="label fl_l">Образование:</div>
 
-                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -529,7 +525,7 @@ if ($model) {
 
                                 <div class="label fl_l">Размер груди:</div>
 
-                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -541,7 +537,7 @@ if ($model) {
 
                                 <div class="label fl_l">Интимная стрижка:</div>
 
-                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -553,7 +549,7 @@ if ($model) {
 
                                 <div class="label fl_l">Цвет волос:</div>
 
-                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -565,7 +561,7 @@ if ($model) {
 
                                 <div class="label fl_l">Сфера деятельности:</div>
 
-                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -577,7 +573,7 @@ if ($model) {
 
                                 <div class="label fl_l">Жилье:</div>
 
-                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -589,7 +585,7 @@ if ($model) {
 
                                 <div class="label fl_l">Транспорт:</div>
 
-                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -604,7 +600,7 @@ if ($model) {
 
                 <div class="page-block page-photo">
 
-                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $model->id  ) : ?>
+                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $model->id) : ?>
 
                         <a href="/user/photo">Все фото</a>
 
@@ -669,7 +665,6 @@ if ($model) {
                     <?php ActiveForm::end() ?>
 
                 <?php endif; ?>
-
 
 
             </div>
