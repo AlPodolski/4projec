@@ -66,7 +66,6 @@ class FilterController extends Controller
             'posts' => $posts,
             'city' => $city,
             'param' => $param,
-            'pages' => $pages,
             'title' => $title,
             'des' => $des,
             'h1' => $h1,
