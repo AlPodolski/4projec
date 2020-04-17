@@ -33,7 +33,7 @@ $this->registerMetaTag([
         <?php endif; ?>
 
         <?php
-        echo SidebarWidget::Widget()
+            echo SidebarWidget::Widget()
         ?>
     </div>
 
@@ -43,7 +43,7 @@ $this->registerMetaTag([
 
             <div class=" ui_zoom_wrap">
                 <a class="post_image" href="/user/<?php echo $userName['id']; ?>">
-                    <?php if (file_exists(Yii::getAlias('@webroot') . $userName['userAvatarRelations']['file']) and $userName['userAvatarRelations']['file']) : ?>
+                    <?php if (isset ($userName['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $userName['userAvatarRelations']['file']) and $userName['userAvatarRelations']['file']) : ?>
 
                         <?= Yii::$app->imageCache->thumb($userName['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
 
