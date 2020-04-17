@@ -4,6 +4,7 @@
 /* @var $userFriends array */
 use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
+use frontend\widgets\SidebarWidget;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -12,7 +13,18 @@ $this->title = $model->username;
 <div class="row">
 
 
-        <?php echo \frontend\widgets\SidebarWidget::Widget()?>
+    <div class="col-3 filter-sidebar">
+
+        <?php if (!Yii::$app->user->isGuest) : ?>
+
+            <?php echo UserSideBarWidget::Widget()?>
+
+        <?php endif; ?>
+
+        <?php
+        echo SidebarWidget::Widget()
+        ?>
+    </div>
 
 
     <div class="col-12 col-xl-9">
