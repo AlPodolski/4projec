@@ -160,11 +160,11 @@ if ($model) {
                                            data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
                                             <button class="flat_button">
                                             <span class="profile_gift_text">
-                                                <?php if ($isFriendsRequestTo) : ?>
+                                                <?php if (!Yii::$app->user->isGuest and $isFriendsRequestTo) : ?>
                                                     Заявка отправлена
                                                 <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id, $model->id)) : ?>
                                                     У Вас в друзьях
-                                                <?php elseif ($isFriendsRequestFrom) : ?>
+                                                <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
                                                     <span onclick="check_friend_request(this)"
                                                           data-user-id="<?php echo $model->id ?>"
                                                     >Принять заявку</span>
