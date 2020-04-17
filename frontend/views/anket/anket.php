@@ -215,7 +215,7 @@ if ($model) {
                     <div class="user-friends-list">
                         <div class="row">
 
-                            <?php if ($userFriends) :?>
+                            <?php if (isset($userFriends)) : ?>
 
                                 <? foreach ($userFriends as $userFriend) : ?>
 
@@ -289,7 +289,9 @@ if ($model) {
 
                             <div class="label fl_l">Моя ориентация:</div>
 
-                            <div class="labeled"> <?php foreach ($model['sexual'] as $item) echo $item['value'] . ' ' ?></div>
+                            <div class="labeled">
+                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?>
+                            </div>
 
                         <?php endif; ?>
 
@@ -301,7 +303,7 @@ if ($model) {
 
                             <div class="label fl_l">Хочу найти:</div>
 
-                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo $item['value'] . ' ' ?> </div>
+                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
 
                         <?php endif; ?>
 
@@ -313,7 +315,7 @@ if ($model) {
 
                             <div class="label fl_l">Цели знакомства:</div>
 
-                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo $item['value'] . ' ' ?> </div>
+                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
 
                         <?php endif; ?>
 
@@ -326,7 +328,7 @@ if ($model) {
 
                             <div class="label fl_l">Моя внешность:</div>
 
-                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo $item['value'] . ' ' ?>  </div>
+                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                         </div>
 
@@ -338,7 +340,7 @@ if ($model) {
 
                             <div class="label fl_l">Сексуальные предпочтения:</div>
 
-                            <div class="labeled"> <?php foreach ($service as $item) echo $item->value . ' ' ?> </div>
+                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?> </div>
 
                         </div>
 
@@ -371,7 +373,7 @@ if ($model) {
 
                                 <div class="label fl_l">Метро:</div>
 
-                                <div class="labeled"> <?php foreach ($metro as $item) echo $item['value'] . ' ' ?> </div>
+                                <div class="labeled"> <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-'.$item['url'].'">'. $item['value'] . ' </a> '  ?> </div>
 
                             </div>
 
@@ -383,7 +385,7 @@ if ($model) {
 
                                 <div class="label fl_l">Район:</div>
 
-                                <div class="labeled"> <?php foreach ($rayon as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled"> <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -395,7 +397,7 @@ if ($model) {
 
                                 <div class="label fl_l">Место встречи:</div>
 
-                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -407,7 +409,7 @@ if ($model) {
 
                                 <div class="label fl_l">Телосложение:</div>
 
-                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -419,7 +421,7 @@ if ($model) {
 
                                 <div class="label fl_l">Национальность:</div>
 
-                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo $item['value'] . ' ' ?>   </div>
+                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>   </div>
 
                             </div>
 
@@ -431,7 +433,7 @@ if ($model) {
 
                                 <div class="label fl_l">Материальное положение:</div>
 
-                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo $item['value'] . ' ' ?>    </div>
+                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-'.$item['url'].'">'. $item['value'] . ' </a> ' ?>    </div>
 
                             </div>
 
@@ -443,7 +445,7 @@ if ($model) {
 
                                 <div class="label fl_l">Интересы:</div>
 
-                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -455,7 +457,7 @@ if ($model) {
 
                                 <div class="label fl_l">Профессия:</div>
 
-                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-'.$item['url'].'">'. $item['value'] . ' </a> '?>  </div>
 
                             </div>
 
@@ -467,7 +469,7 @@ if ($model) {
 
                                 <div class="label fl_l">Важное в партнере:</div>
 
-                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -479,7 +481,7 @@ if ($model) {
 
                                 <div class="label fl_l">Дети:</div>
 
-                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -491,7 +493,7 @@ if ($model) {
 
                                 <div class="label fl_l">Семья:</div>
 
-                                <div class="labeled">   <?php foreach ($model['family'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['family'] as $item)echo '<a href="/znakomstva/semejnoe-polozhenie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -503,7 +505,7 @@ if ($model) {
 
                                 <div class="label fl_l">Отношение к алкоголю:</div>
 
-                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item)echo '<a href="/znakomstva/otnoshenie-k-akogolyu-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -515,7 +517,7 @@ if ($model) {
 
                                 <div class="label fl_l">Образование:</div>
 
-                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -527,7 +529,7 @@ if ($model) {
 
                                 <div class="label fl_l">Размер груди:</div>
 
-                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -539,7 +541,7 @@ if ($model) {
 
                                 <div class="label fl_l">Интимная стрижка:</div>
 
-                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -551,7 +553,7 @@ if ($model) {
 
                                 <div class="label fl_l">Цвет волос:</div>
 
-                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -563,7 +565,7 @@ if ($model) {
 
                                 <div class="label fl_l">Сфера деятельности:</div>
 
-                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -575,7 +577,7 @@ if ($model) {
 
                                 <div class="label fl_l">Жилье:</div>
 
-                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
@@ -587,7 +589,7 @@ if ($model) {
 
                                 <div class="label fl_l">Транспорт:</div>
 
-                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo $item['value'] . ' ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/'.$item['url'].'">'. $item['value'] . ' </a> '  ?>  </div>
 
                             </div>
 
