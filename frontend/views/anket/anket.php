@@ -215,7 +215,7 @@ if ($model) {
                     <div class="user-friends-list">
                         <div class="row">
 
-                            <?php if (isset($userFriends)) : ?>
+                            <?php if (isset($userFriends)) { ?>
 
                                 <? foreach ($userFriends as $userFriend) : ?>
 
@@ -237,13 +237,13 @@ if ($model) {
 
                                 <?php endforeach; ?>
 
-                            <?php else : ?>
+                            <?php }else { ?>
 
                                 <div class="col-12">
                                     <p class="small-heading">Пока нет друзей</p>
                                 </div>
 
-                            <?php endif; ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
