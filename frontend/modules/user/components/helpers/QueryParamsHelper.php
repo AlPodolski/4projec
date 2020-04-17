@@ -75,7 +75,7 @@ class QueryParamsHelper
 
                             } else {
 
-                                $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->andWhere(['city_id' => 1])->asArray()->all();
+                                $ids = $classRelationName::find()->where([$filter_param['column_param_name'] => $id['id']])->andWhere(['city_id' => $city['id']])->asArray()->all();
 
                             }
 

@@ -14,6 +14,7 @@ class FilterController extends Controller
 {
     public function actionIndex($city, $param)
     {
+
         $query_params = QueryParamsHelper::getParams($param, $city);
 
         $posts = '';
