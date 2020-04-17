@@ -165,9 +165,7 @@ if ($model) {
                                                 <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id, $model->id)) : ?>
                                                     У Вас в друзьях
                                                 <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
-                                                    <span onclick="check_friend_request(this)"
-                                                          data-user-id="<?php echo $model->id ?>"
-                                                    >Принять заявку</span>
+                                                    <span onclick="check_friend_request(this)" data-user-id="<?php echo $model->id ?>">Принять заявку</span>
                                                 <?php else : ?>
                                                     Добавить в друзья
                                                 <?php endif; ?>
