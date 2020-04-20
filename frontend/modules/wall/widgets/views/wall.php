@@ -27,7 +27,7 @@ if (!empty($wallItems)) : ?>
 
             <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
 
-                <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
+                <?php if (isset($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 
                     <?= Yii::$app->imageCache->thumb($item['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
 
