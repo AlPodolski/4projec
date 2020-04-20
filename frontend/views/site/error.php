@@ -8,6 +8,7 @@
 use yii\helpers\Html;
 
 $this->title = $name;
+Yii::$app->response->redirect(['/']);
 ?>
 <div class="site-error">
 
