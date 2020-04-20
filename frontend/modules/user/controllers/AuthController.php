@@ -53,7 +53,7 @@ class AuthController extends Controller
 
         $model->city = $city;
 
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post()) and $model->login()) {
             return $this->redirect('/user');
         } else {
             $model->password = '';
