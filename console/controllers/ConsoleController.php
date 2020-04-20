@@ -98,6 +98,8 @@ class ConsoleController extends Controller
 
                 }
 
+                Profile::deleteAll('id = '.$profile['id']);
+
             }
 
         }
