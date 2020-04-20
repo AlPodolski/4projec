@@ -5,6 +5,7 @@ namespace frontend\modules\user\models\forms;
 
 use common\models\FilterParams;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
+use frontend\modules\user\components\helpers\TimeHelper;
 use frontend\modules\user\models\Profile;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -176,6 +177,15 @@ class Params extends Model
         }
         if($this->city){
             $profile->city = \strip_tags($this->city);
+        }
+        if($this->birthday){
+            $profile->birthday = TimeHelper::getTimestampFromString($this->birthday) + 3600 * 12;
+        }
+        if($this->username){
+            $profile->username = $this->username;
+        }
+        if($this->phone){
+            $profile->phone = $this->phone;
         }
 
         $profile->save();

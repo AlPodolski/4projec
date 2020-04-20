@@ -81,7 +81,7 @@ $cityList = \common\models\City::find()->asArray()->select('url, city')->all();
 
             <?= $form->field($model, 'birthday')->widget(DatePicker::classname(), [
                 'options' => ['placeholder' => 'Дата рождения'],
-                'value' => date('d.m.Y', $model->birthday),
+                'value' => $model->birthday,
                 'pluginOptions' => [
                     'autoclose' => true,
                 ]
