@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\Meta;
+use frontend\models\Meta;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\components\Friends;
 use frontend\modules\user\models\Profile;
