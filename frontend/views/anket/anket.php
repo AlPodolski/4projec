@@ -284,7 +284,7 @@ if ($model) {
                             <div class="label fl_l">Моя ориентация:</div>
 
                             <div class="labeled">
-                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/orientaciya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
                             </div>
 
                         <?php endif; ?>
@@ -297,7 +297,7 @@ if ($model) {
 
                             <div class="label fl_l">Хочу найти:</div>
 
-                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
+                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/kogo-ishchu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         <?php endif; ?>
 
@@ -309,7 +309,7 @@ if ($model) {
 
                             <div class="label fl_l">Цели знакомства:</div>
 
-                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
+                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/celi-znakomstva-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         <?php endif; ?>
 
@@ -322,7 +322,7 @@ if ($model) {
 
                             <div class="label fl_l">Моя внешность:</div>
 
-                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/vneshnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                         </div>
 
@@ -334,7 +334,7 @@ if ($model) {
 
                             <div class="label fl_l">Сексуальные предпочтения:</div>
 
-                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
+                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/usluga-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
 
                         </div>
 
@@ -523,7 +523,7 @@ if ($model) {
 
                                 <div class="label fl_l">Размер груди:</div>
 
-                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/grud-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -535,7 +535,7 @@ if ($model) {
 
                                 <div class="label fl_l">Интимная стрижка:</div>
 
-                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/intimnaya-strizhka-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -547,7 +547,7 @@ if ($model) {
 
                                 <div class="label fl_l">Цвет волос:</div>
 
-                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/cvet-volos-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -559,7 +559,7 @@ if ($model) {
 
                                 <div class="label fl_l">Сфера деятельности:</div>
 
-                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/sfera-deyatelnosti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -571,7 +571,7 @@ if ($model) {
 
                                 <div class="label fl_l">Жилье:</div>
 
-                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/zhile-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -583,7 +583,7 @@ if ($model) {
 
                                 <div class="label fl_l">Транспорт:</div>
 
-                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
+                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
 
                             </div>
 
@@ -614,7 +614,7 @@ if ($model) {
 
                                     <div class="item" href="<?php echo $item->file ?>">
 
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+                                        <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
 
                                             <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
 
