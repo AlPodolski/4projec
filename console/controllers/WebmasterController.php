@@ -99,8 +99,6 @@ class WebmasterController extends Controller
 
             $meta_model->save();
 
-            return true;
-
         }
     }
 }
