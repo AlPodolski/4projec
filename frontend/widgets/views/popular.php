@@ -21,7 +21,7 @@ SlickAsset::register($this);
 
                                     <a href="/user/<?php echo $popularItem->id ?>">
 
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
+                                        <?php if (isset($popularItem->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
 
                                             <?= Yii::$app->imageCache->thumb($popularItem->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
 
