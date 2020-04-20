@@ -67,7 +67,7 @@ $login = new LoginForm();
                                 <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
                                 <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                                 <li><a href="/adverts">Объявления</a></li>
-                                <li><a href="/novosti">Новости сайта</a></li>
+                                <!--<li><a href="/novosti">Новости сайта</a></li>-->
                                 <li>
                                     <?php if (Yii::$app->user->isGuest) : ?>
 
@@ -100,7 +100,7 @@ $login = new LoginForm();
                         <ul class="top-nav">
                             <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                             <li><a href="/adverts">Объявления</a></li>
-                            <li><a href="/novosti">Новости сайта</a></li>
+                            <!--<li><a href="/novosti">Новости сайта</a></li>-->
                         </ul>
                     </div>
 
