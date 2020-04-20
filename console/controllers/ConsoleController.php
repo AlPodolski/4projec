@@ -3,6 +3,7 @@
 
 namespace console\controllers;
 
+use common\models\City;
 use common\models\FilterParams;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
@@ -103,5 +104,84 @@ class ConsoleController extends Controller
             }
 
         }
+    }
+
+    public function actionDns(){
+
+        $citys = City::find()->asArray()->all();
+
+        $host = Yii::$app->params['site_name'];
+        $ip = Yii::$app->params['server_ip'];
+
+        foreach ($citys as $city){
+
+            //$city = $city['city'];
+
+
+            echo $city['url'];
+
+
+            $content = array(
+                'type' => "A",
+                'name' => $city['url'],
+                'content' => $ip,
+
+            );
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,"https://api.cloudflare.com/client/v4/zones/bc5cb29c869f8ab1fce24e63a175c9d4/dns_records");
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($content));  //Post Fields
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $headers = [
+                'X-Auth-Email: '.Yii::$app->params['cloud_email'],
+                'X-Auth-Key: '.Yii::$app->params['cloud_api'],
+                'Content-Type: application/json',
+            ];
+
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $server_output = curl_exec ($ch);
+
+            $object = json_decode($server_output);
+
+            if (!isset($object->result->id)) continue;
+
+            $zapid = $object->result->id;
+
+
+            curl_close ($ch);
+
+            // пытаемся поставить галочку на облаке
+            $zoneindetif="https://api.cloudflare.com/client/v4/zones/bc5cb29c869f8ab1fce24e63a175c9d4/dns_records/$zapid";
+
+
+            $content = array(
+                'type' => "A",
+                'name' => $city['url'],
+                'content' => $ip,
+                'proxied' => true,
+            );
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,$zoneindetif);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+            curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($content));
+
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            $headers = [
+                'X-Auth-Email: '.Yii::$app->params['cloud_email'],
+                'X-Auth-Key: '.Yii::$app->params['cloud_api'],
+                'Content-Type: application/json',
+            ];
+
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $server_output = curl_exec ($ch);
+
+        }
+
     }
 }
