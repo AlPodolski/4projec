@@ -17,7 +17,7 @@ Yii::$app->view->registerMetaTag([
     'content' => $des
 ]);
 $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-
+if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verification', 'content' => $yandex_meta['tag']]);
 ?>
 <div class="site-index">
 

@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Meta;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\components\Friends;
 use frontend\modules\user\models\Profile;
@@ -73,12 +74,15 @@ class SiteController extends Controller
         $des = MetaBuilder::Build(Yii::$app->request->url, $city, 'des');
         $h1 = MetaBuilder::Build(Yii::$app->request->url, $city, 'h1');
 
+        $yandex_meta = Meta::find()->where(['city' => $city])->asArray()->one();
+
         return $this->render('index', [
             'city' => $city,
             'posts' => $posts,
             'title' => $title,
             'des' => $des,
             'h1' => $h1,
+            'yandex_meta' => $yandex_meta,
         ]);
     }
 
