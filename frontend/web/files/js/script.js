@@ -104,6 +104,38 @@ function send_message_form(object) {
 
 
 }
+function send_feedback(object) {
+
+
+        var formData = new FormData($("#feedback-form")[0]);
+
+        if(object)
+
+        $.ajax({
+            url: '/feedback',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#w0 .form-text').css('display', 'none');
+            },
+            success: function (data) {
+                $('#feedback-form').html('<p class="alert alert-success">Сообщение отправлено</p>');
+            },
+            complete: function() {
+                // success alerts
+            },
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+
+}
 $(document).ready(function() {
 
     var sliderFor = $('.slider-popular');

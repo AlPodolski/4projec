@@ -117,6 +117,7 @@ $login = new LoginForm();
                         <ul class="top-nav">
                             <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                             <li><a href="/adverts">Объявления</a></li>
+                            <li data-toggle="modal" data-target="#modal-feed-back" aria-hidden="true"><a href="#">Обратная связь</a></li>
                             <!--<li><a href="/novosti">Новости сайта</a></li>-->
                         </ul>
                     </div>
@@ -257,6 +258,24 @@ $login = new LoginForm();
 
             <?php echo \frontend\modules\chat\widgets\SendMessageFormWidget::widget(); ?>
 
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<div id="modal-feed-back" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Обратная связь</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body modal-city-search">
+                <?php  echo \frontend\widgets\FeedBackFormWidget::widget() ?>
             </div>
 
         </div><!-- /.modal-content -->

@@ -11,6 +11,10 @@ $this->title = 'Интим объявления';
 
 $this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
+Yii::$app->view->registerMetaTag([
+    'name' => 'description',
+    'content' => 'Объявления интим знакомств с девушками, парнями и парами для общения, отношений и секса. Без регистрации! Бесплатно!'
+]);
 ?>
 <div class="row">
 

@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\components\Friends;
@@ -84,6 +85,27 @@ class SiteController extends Controller
             'h1' => $h1,
             'yandex_meta' => $yandex_meta,
         ]);
+    }
+
+    public function actionFeedBack()
+    {
+        if (Yii::$app->request->isPost){
+
+            $model = new FeedBackForm();
+
+            if ($model->load(Yii::$app->request->post()) and $model->save()){
+
+                Yii::$app->session->setFlash('success' , 'Сообщение отправлено');
+
+                return $this->redirect(Yii::$app->request->referrer, 301);
+
+            }
+
+        }
+
+        return $this->redirect(Yii::$app->request->referrer, 301);
+
+
     }
 
     public function actionAgree()
