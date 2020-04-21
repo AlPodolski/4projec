@@ -54,11 +54,12 @@ class AuthController extends Controller
         $model->city = $city;
 
         if ($model->load(Yii::$app->request->post()) and $model->login()) {
-            return $this->redirect('/user');
+            Yii::$app->response->redirect(['/user'], 301, false);
+
         } else {
             $model->password = '';
 
-            return $this->redirect('/');
+            Yii::$app->response->redirect(['/'], 301, false);
 
         }
     }
@@ -86,7 +87,8 @@ class AuthController extends Controller
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
-                return $this->goHome();
+                Yii::$app->response->redirect(['/'], 301, false);
+
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
             }
