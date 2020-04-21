@@ -115,7 +115,7 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->session->setFlash('success', 'New password saved.');
 
-            return $this->goHome();
+            Yii::$app->response->redirect(['/'], 301, false);
         }
 
         return $this->render('resetPassword', [
@@ -140,7 +140,7 @@ class AuthController extends Controller
         if ($user = $model->verifyEmail()) {
             if (Yii::$app->user->login($user)) {
                 Yii::$app->session->setFlash('success', 'Ваша почта подтверждена!');
-                return $this->redirect('/user/setting/anket');
+                return Yii::$app->response->redirect('/user/setting/anket', 301, false);
             }
         }
 
@@ -159,7 +159,7 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-                return $this->goHome();
+                Yii::$app->response->redirect(['/'], 301, false);
             }
             Yii::$app->session->setFlash('error', 'Sorry, we are unable to resend verification email for the provided email address.');
         }

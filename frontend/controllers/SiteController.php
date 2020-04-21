@@ -97,6 +97,8 @@ class SiteController extends Controller
 
                 Yii::$app->session->setFlash('success' , 'Сообщение отправлено');
 
+                \dd(\getallheaders());
+
                 Yii::$app->response->redirect(['/'], 301, false);
 
             }
