@@ -108,7 +108,7 @@ class SiteController extends Controller
 
     }
 
-    public function actionAgree()
+    public function actionAgree($city)
     {
         return $this->render('agree');
     }
