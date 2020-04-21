@@ -73,7 +73,7 @@ class AuthController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        Yii::$app->response->redirect(['/'], 301, false);
     }
     /**
      * Requests password reset.
