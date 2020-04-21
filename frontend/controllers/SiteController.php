@@ -99,14 +99,12 @@ class SiteController extends Controller
 
                 Yii::$app->response->redirect(['/']);
 
-                exit();
-
             }
 
         }
 
         Yii::$app->response->redirect(['/']);
-        exit();
+
 
     }
 
