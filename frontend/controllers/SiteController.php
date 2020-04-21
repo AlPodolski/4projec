@@ -97,7 +97,7 @@ class SiteController extends Controller
 
                 Yii::$app->session->setFlash('success' , 'Сообщение отправлено');
 
-                return $this->redirect(Yii::$app->request->referrer, 301);
+                return $this->redirect('/', 301);
 
             }
 
