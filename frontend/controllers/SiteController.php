@@ -97,7 +97,7 @@ class SiteController extends Controller
 
                 Yii::$app->session->setFlash('success' , 'Сообщение отправлено');
 
-                return $this->goHome();
+                header('Location: /');
 
                 exit();
 
@@ -105,7 +105,9 @@ class SiteController extends Controller
 
         }
 
-        return $this->redirect();
+        header('Location: /');
+
+        exit();
 
 
     }
