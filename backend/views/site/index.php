@@ -31,7 +31,7 @@ $this->title = 'My Yii Application';
 
                     </div>
                     <div class="icon">
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-user"></i>
                     </div>
                 </div>
             </div>
