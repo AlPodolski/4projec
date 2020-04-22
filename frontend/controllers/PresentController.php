@@ -4,6 +4,8 @@
 namespace frontend\controllers;
 
 use common\models\Presents;
+use frontend\components\helpers\CashHelper;
+use frontend\components\helpers\GiftHelper;
 use frontend\models\forms\BuyPresentForm;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -54,9 +56,16 @@ class PresentController extends Controller
 
             $model = new BuyPresentForm();
 
-            if ($model->load(Yii::$app->request->post()) and $model->save()){
-                Yii::$app->session->setFlash('success', 'Подарок отправлен!');
-                return $this->redirect(Yii::$app->request->referrer);
+            if ($model->load(Yii::$app->request->post()) and $model->validate()){
+
+                if(\is_bool($info = GiftHelper::gift(Yii::$app->user->identity, $model)) === true){
+                    Yii::$app->session->setFlash('success', 'Подарок отправлен!');
+                    return $this->redirect(Yii::$app->request->referrer);
+                }else{
+                    Yii::$app->session->setFlash('success', $info);
+                    return $this->redirect(Yii::$app->request->referrer);
+                }
+
             }
 
         }

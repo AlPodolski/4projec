@@ -69,6 +69,9 @@ use yii\helpers\Html;
     <div class="user-menu-list">
         <ul class="user-menu-ul">
             <li class="user-menu-item my-page"><i class="fas fa-user"></i> <span class="text "><a href="/user">Моя страница</a></span></li>
+            <li class="user-menu-item my-page"><i class="fas fa-wallet"></i> <span class="text "><a href="#">
+                        Баланс <?php echo Yii::$app->user->identity['cash'] ?>
+                    </a></span></li>
             <li class="user-menu-item my-page"><i class="fas fa-users"></i> <span class="text ">
                     <a href="/user/friends/<?php echo Yii::$app->user->id; ?>">Мои друзья <?php if ($countFriendsRequest > 0) echo '+'. $countFriendsRequest ?></a></span></li>
             <li class="user-menu-item my-message"><i class="fas fa-envelope"></i> <span class="text "><a
