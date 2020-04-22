@@ -60,7 +60,7 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $profiles = Profile::find()->asArray()->all();
+        $profiles = Profile::find()->asArray()->where([ '>' , 'CHAR_LENGTH( `username` )' , '30'])->asArray()->all();
 
         foreach ($profiles as $profile){
 
@@ -82,7 +82,7 @@ class ConsoleController extends Controller
 
                     foreach ($photo as $item){
 
-                        if (\file_exists($path.'/web'.$item['file'])) unlink($path.'/web'.$item['file']);
+                        if (isset ($item['file']) and !empty($item['file']) and \file_exists($path.'/web'.$item['file'])) unlink($path.'/web'.$item['file']);
 
                     }
 
