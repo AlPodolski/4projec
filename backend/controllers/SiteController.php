@@ -63,11 +63,13 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $profiles = Profile::find()->where(['>', 'created_at' , \time() - (3600 * 24)])->asArray()->all();
+        $profilesCount = Profile::find()->count();
 
         $userCountWhoRegister24HourAgo = LastVisitHelper::todayCount($profiles);
 
         return $this->render('index' , [
             'userCountWhoRegister24HourAgo' => $userCountWhoRegister24HourAgo,
+            'profilesCount' => $profilesCount,
         ]);
     }
 

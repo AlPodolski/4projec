@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $userCountWhoRegister24HourAgo integer*/
+/* @var $profilesCount integer*/
 
 $this->title = 'My Yii Application';
 ?>
@@ -15,6 +16,18 @@ $this->title = 'My Yii Application';
                     <div class="inner">
                         <p>Регистраций сегодня</p>
                         <h3><?php echo $userCountWhoRegister24HourAgo ?></h3>
+
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <p>Всего пользователей</p>
+                        <h3><?php echo $profilesCount ?></h3>
 
                     </div>
                     <div class="icon">
