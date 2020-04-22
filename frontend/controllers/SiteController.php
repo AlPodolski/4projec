@@ -97,7 +97,7 @@ class SiteController extends Controller
 
                 Yii::$app->response->redirect(['/'], 301, false);
 
-                exit();
+                return true;
             }
 
 
@@ -113,7 +113,8 @@ class SiteController extends Controller
 
                 Yii::$app->response->redirect(['/'], 301, false);
 
-                exit();
+                return true;
+
 
             }
 
