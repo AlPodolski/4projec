@@ -122,3 +122,9 @@ a.desc:after {
 .wrap{
     min-height: 96vh;
 }
+.grid-view .pagination li{
+    margin-right: 15px;
+}
+.breadcrumb li{
+    margin-right: 15px;
+}
