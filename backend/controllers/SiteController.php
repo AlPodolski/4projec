@@ -1,6 +1,8 @@
 <?php
 namespace backend\controllers;
 
+use backend\components\LastVisitHelper;
+use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -60,7 +62,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $profiles = Profile::find()->where(['>', 'created_at' , \time() - (3600 * 24)])->asArray()->all();
+
+        $userCountWhoRegister24HourAgo = LastVisitHelper::todayCount($profiles);
+
+        return $this->render('index' , [
+            'userCountWhoRegister24HourAgo' => $userCountWhoRegister24HourAgo,
+        ]);
     }
 
     /**
