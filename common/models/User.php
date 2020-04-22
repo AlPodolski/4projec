@@ -22,6 +22,7 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  * @property string $city
+ * @property string $role
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -122,11 +123,23 @@ class User extends ActiveRecord implements IdentityInterface
      * Finds user by email and city
      *
      * @param string $email
-     * @return \frontend\modules\user\models\User|null
+     * @return User|null
      */
     public static function findByEmail($email)
     {
         return static::findOne(['email' => $email]);
+    }
+
+    /**
+     * Finds user by email and city
+     *
+     * @param string $email
+     * @param string $role
+     * @return User|null
+     */
+    public static function findByEmailAndRole($email, $role)
+    {
+        return static::findOne(['email' => $email, 'role' => $role]);
     }
 
     /**
