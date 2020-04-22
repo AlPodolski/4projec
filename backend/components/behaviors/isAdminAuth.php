@@ -16,7 +16,7 @@ class isAdminAuth extends Behavior
 
     public function checkAuth(){
 
-        if (Yii::$app->user->isGuest and Yii::$app->user->identity['role'] != 'admin') {
+        if (Yii::$app->user->isGuest or Yii::$app->user->identity['role'] != 'admin') {
 
             Yii::$app->response->redirect(['/'], 301, false);
 
