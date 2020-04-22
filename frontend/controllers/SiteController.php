@@ -91,6 +91,33 @@ class SiteController extends Controller
     {
         if (Yii::$app->request->isPost){
 
+            if ( !$_POST['g-recaptcha-response'] ) {
+
+                Yii::$app->session->setFlash('warning' , 'Сообщение не отправлено, нужно заполнить капчу');
+
+                Yii::$app->response->redirect(['/'], 301, false);
+
+                exit();
+            }
+
+
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $key = Yii::$app->params['recaptcha-key'];
+            $query = $url.'?secret='.$key.'&response='.$_POST['g-recaptcha-response'].'&remoteip='.$_SERVER['REMOTE_ADDR'];
+
+            $data = json_decode(file_get_contents($query));
+
+            if ( $data->success == false) {
+
+                Yii::$app->session->setFlash('warning' , 'Сообщение не отправлено, капча введена неверно');
+
+                Yii::$app->response->redirect(['/'], 301, false);
+
+                exit();
+
+            }
+
+
             $model = new FeedBackForm();
 
             if ($model->load(Yii::$app->request->post()) and $model->save()){

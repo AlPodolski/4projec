@@ -12,6 +12,8 @@ $form = ActiveForm::begin([
 <?= $form->field($model, 'text')->textarea() ?>
 
     <div class="form-group">
+        <script defer src='https://www.google.com/recaptcha/api.js'></script>
+        <div class="g-recaptcha" data-sitekey="6LfjluwUAAAAAOP7w0FozfGwfuIC3FXy1E3Jxf9X"></div>
         <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
     </div>
 
