@@ -63,7 +63,7 @@ SlickAsset::register($this);
                 <div class="row">
                     <div class="col-12">
                         <span class="check-nad">
-                            Проверенные девушки с рекомендацией портала
+                            Проверенные анкеты с рекомендацией портала
                         </span>
                     </div>
                 </div>
