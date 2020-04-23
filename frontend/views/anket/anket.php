@@ -209,7 +209,8 @@ if ($model) {
             <div class="page-block friends">
                 <span class="small-heading">
                     <a href="/user/friends/<?php echo $model->id ?>">Друзья <?php
-                        if ($count = \frontend\modules\user\components\Friends::countFriends($model->id) > 0) echo $count ?></a>
+                        if ( \frontend\modules\user\components\Friends::countFriends($model->id) > 0)
+                            echo \frontend\modules\user\components\Friends::countFriends($model->id) ?></a>
                 </span>
                 <div class="user-friends">
                     <div class="user-friends-list">
