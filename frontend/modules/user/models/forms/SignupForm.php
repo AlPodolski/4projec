@@ -69,6 +69,7 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->city = $this->city;
         $user->fake = 1;
+        $user->sort = \time();
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();

@@ -194,7 +194,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public static function getPopular($city){
-        return Profile::find()->limit(4)->where(['city' => $city])->with('userAvatarRelations')->orderBy(['rand()' => SORT_DESC])->all();
+        return Profile::find()->limit(4)->where(['city' => $city])->with('userAvatarRelations')->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC, 'rand()' => SORT_DESC])->all();
     }
 
     public function getAvatar(){
