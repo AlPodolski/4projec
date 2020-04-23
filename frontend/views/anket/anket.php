@@ -206,10 +206,12 @@ if ($model) {
                 </div>
             <?php endif; ?>
 
-            <div class="page-block friends">
+            <?php  if ( \frontend\modules\user\components\Friends::countFriends($model->id) > 0) : ?>
+
+                <div class="page-block friends">
                 <span class="small-heading">
                     <a href="/user/friends/<?php echo $model->id ?>">Друзья <?php
-                        if ( \frontend\modules\user\components\Friends::countFriends($model->id) > 0)
+
                             echo \frontend\modules\user\components\Friends::countFriends($model->id) ?></a>
                 </span>
                 <div class="user-friends">
@@ -245,6 +247,8 @@ if ($model) {
                 </div>
 
             </div>
+
+            <?php endif; ?>
 
         </div>
         <div class="col-12 col-sm-7 col-lg-8 col-xl-8 right-column-anket">
