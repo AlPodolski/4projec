@@ -32,6 +32,9 @@ $this->title = 'My Yii Application';
 
                         <p>Настоящих Пользователей <?php echo $realProfileCount ?> </p>
                     </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
             </div>
         </div>
