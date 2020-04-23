@@ -39,4 +39,11 @@ class Friends
         return $redis->smembers ("friends:{$who_id}:friends");
     }
 
+    public static function countFriends($who_id)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->scard ("friends:{$who_id}:friends");
+    }
+
 }
