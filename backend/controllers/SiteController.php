@@ -65,11 +65,14 @@ class SiteController extends Controller
         $profiles = Profile::find()->where(['>', 'created_at' , \time() - (3600 * 24)])->asArray()->all();
         $profilesCount = Profile::find()->count();
 
+        $realProfileCount = Profile::find()->where(['fake' => 1])->count();
+
         $userCountWhoRegister24HourAgo = LastVisitHelper::todayCount($profiles);
 
         return $this->render('index' , [
             'userCountWhoRegister24HourAgo' => $userCountWhoRegister24HourAgo,
             'profilesCount' => $profilesCount,
+            'realProfileCount' => $realProfileCount,
         ]);
     }
 
