@@ -66,6 +66,7 @@ class AuthHandler
         $name = ArrayHelper::getValue($attributes, 'name');
 
         if ($email !== null && User::find()->where(['email' => $email])->exists()) {
+            \dd($attributes);
             return;
         }
 
