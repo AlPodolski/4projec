@@ -29,7 +29,15 @@ class AuthHandler
 
         $attributes = $this->client->getUserAttributes();
 
+        $this->client->attributeNames[] = 'email';
+
+        \d($this);
+        \d($this->client->attributeNames);
+
+        \d($this->client->getId());
+
         \dd($attributes);
+
 
         $auth = $this->findAuth($attributes);
         if ($auth) {
