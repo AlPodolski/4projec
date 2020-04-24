@@ -39,6 +39,8 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             <div class="col-3 filter-sidebar">
 
+
+
                 <?php if (!Yii::$app->user->isGuest) : ?>
 
                     <?php echo UserSideBarWidget::Widget()?>
@@ -56,6 +58,12 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
                     <div class="row">
                         <div class="col-12">
                             <h1><?php echo $h1 ?></h1>
+                            <div class="" style="display: none">
+                                <?= yii\authclient\widgets\AuthChoice::widget([
+                                    'baseAuthUrl' => ['/auth'],
+                                    'popupMode' => false,
+                                ]) ?>
+                            </div>
                             <div class="text-main">
                                 <p>Если Вы хотите стать счастливым человеком, а в обычной жизни никак не получается найти свою любовь, испытайте удачу и попробуйте познакомиться бесплатно на сайте знакомств 4dosug .  А интернет сближает людей, проживающих на разных краях необъятной родины. Никто за Вас не сделает первый шаг, смелее бесплатно регистрируйтесь и ищите свою вторую половину!  </p>
                             </div>

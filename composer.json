@@ -30,6 +30,7 @@
         "dastanaron/yii2-translit": "*",
         "league/csv": "*",
         "kartik-v/yii2-widget-select2": "@dev",
+        "yiisoft/yii2-authclient": "~2.2.0",
         "yiisoft/yii2-redis": "~2.0.0"
     },
     "require-dev": {

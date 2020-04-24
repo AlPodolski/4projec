@@ -8,6 +8,7 @@ use frontend\modules\user\components\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
+use frontend\modules\user\components\AuthHandler;
 
 /**
  * Site controller
@@ -30,6 +31,10 @@ class SiteController extends Controller
     public function actions()
     {
         return [
+            'auth' => [
+                'class' => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'onAuthSuccess'],
+            ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
@@ -39,6 +44,11 @@ class SiteController extends Controller
             ],
             'thumb' => 'iutbay\yii2imagecache\ThumbAction',
         ];
+    }
+
+    public function onAuthSuccess($client)
+    {
+        (new AuthHandler($client))->handle();
     }
 
     /**
