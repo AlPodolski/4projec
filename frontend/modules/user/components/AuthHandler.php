@@ -27,9 +27,9 @@ class AuthHandler
             return;
         }
 
-        \dd($this);
-
         $attributes = $this->client->getUserAttributes();
+
+        \dd($attributes);
 
         $auth = $this->findAuth($attributes);
         if ($auth) {
