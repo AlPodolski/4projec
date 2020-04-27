@@ -2,11 +2,14 @@
 
 
 namespace frontend\modules\user\components;
+use common\models\City;
 use common\models\User;
+use frontend\models\UserPol;
 use yii\authclient\ClientInterface;
 use Yii;
 use frontend\modules\user\models\Auth;
 use yii\helpers\ArrayHelper;
+use function Composer\Autoload\includeFile;
 
 class AuthHandler
 {
@@ -28,15 +31,6 @@ class AuthHandler
         }
 
         $attributes = $this->client->getUserAttributes();
-
-
-        \d($this);
-        \d($this->client->attributeNames);
-
-        \d($this->client->getId());
-
-        \dd($attributes);
-
 
         $auth = $this->findAuth($attributes);
         if ($auth) {
@@ -72,19 +66,28 @@ class AuthHandler
     {
         $email = ArrayHelper::getValue($attributes, 'email');
         $id = ArrayHelper::getValue($attributes, 'id');
-        $name = ArrayHelper::getValue($attributes, 'name');
+        $sex = ArrayHelper::getValue($attributes, 'sex');
+        $name = ArrayHelper::getValue($attributes, 'first_name'). ' '. ArrayHelper::getValue($attributes, 'last_name');
 
-        if ($email !== null && User::find()->where(['email' => $email])->exists()) {
-            \dd($attributes);
+        if (!User::find()->where(['email' => $email])->exists()) {
             return;
         }
 
-        $user = $this->createUser($email, $name);
+        $cityInfo = City::find()->where(['url' => Yii::$app->controller->actionParams['city']])->asArray()->one() ;
+
+        $user = $this->createUser($email, $name, $cityInfo['url']);
 
         $transaction = User::getDb()->beginTransaction();
         if ($user->save()) {
+            
             $auth = $this->createAuth($user->id, $id);
             if ($auth->save()) {
+
+                if (isset($sex) and !empty($sex)){
+                    if ($sex == 1) $this->savePol($user->id, 2,$cityInfo['id'] );
+                    else $this->savePol($user->id, 1,$cityInfo['id'] );
+                }
+
                 $transaction->commit();
                 return $user;
             }
@@ -92,7 +95,7 @@ class AuthHandler
         $transaction->rollBack();
     }
 
-    private function createUser($email, $name)
+    private function createUser($email, $name, $city)
     {
         return new User([
             'username' => $name,
@@ -102,8 +105,22 @@ class AuthHandler
             'created_at' => $time = time(),
             'updated_at' => $time,
             'fake' => 1,
+            'status' => 10,
             'sort' => time(),
+            'city' => $city,
         ]);
+    }
+    
+    private function savePol($user_id, $pol, $city_id){
+        
+        $userPol = new UserPol();
+        $userPol->city_id = $city_id;
+        $userPol->user_id = $user_id;
+        $userPol->pol_id = $pol;
+
+        return $userPol->save();
+        
+        
     }
 
     private function createAuth($userId, $sourceId)
