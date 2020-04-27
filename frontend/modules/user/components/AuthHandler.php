@@ -73,10 +73,6 @@ class AuthHandler
         $name = ArrayHelper::getValue($attributes, 'first_name'). ' '. ArrayHelper::getValue($attributes, 'last_name');
         $avatar = ArrayHelper::getValue($attributes, 'photo_max_orig');
 
-        if (User::find()->where(['email' => $email])->exists()) {
-            return;
-        }
-
         $cityUrl = $this->prepareCityUrl(Yii::$app->request->headers['host']);
 
         $cityInfo = City::find()->where(['url' => $cityUrl])->asArray()->one() ;
@@ -85,7 +81,7 @@ class AuthHandler
 
         $transaction = User::getDb()->beginTransaction();
         if ($user->save()) {
-            
+
             $auth = $this->createAuth($user->id, $id);
             if ($auth->save()) {
 
@@ -153,17 +149,17 @@ class AuthHandler
             'city' => $city,
         ]);
     }
-    
+
     private function savePol($user_id, $pol, $city_id){
-        
+
         $userPol = new UserPol();
         $userPol->city_id = $city_id;
         $userPol->user_id = $user_id;
         $userPol->pol_id = $pol;
 
         return $userPol->save();
-        
-        
+
+
     }
 
     private function createAuth($userId, $sourceId)
