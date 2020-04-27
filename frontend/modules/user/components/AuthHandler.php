@@ -69,11 +69,13 @@ class AuthHandler
         $sex = ArrayHelper::getValue($attributes, 'sex');
         $name = ArrayHelper::getValue($attributes, 'first_name'). ' '. ArrayHelper::getValue($attributes, 'last_name');
 
-        if (!User::find()->where(['email' => $email])->exists()) {
+        if (User::find()->where(['email' => $email])->exists()) {
             return;
         }
 
-        $cityInfo = City::find()->where(['url' => Yii::$app->controller->actionParams['city']])->asArray()->one() ;
+        $cityUrl = $this->prepareCityUrl(Yii::$app->request->headers['host']);
+
+        $cityInfo = City::find()->where(['url' => $cityUrl])->asArray()->one() ;
 
         $user = $this->createUser($email, $name, $cityInfo['url']);
 
@@ -93,6 +95,11 @@ class AuthHandler
             }
         }
         $transaction->rollBack();
+    }
+
+    private function prepareCityUrl($host){
+        $city = \explode('.', $host);
+        return $city[0];
     }
 
     private function createUser($email, $name, $city)

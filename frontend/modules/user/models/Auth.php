@@ -3,6 +3,7 @@
 namespace frontend\modules\user\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "auth".
