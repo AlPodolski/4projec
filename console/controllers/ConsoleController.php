@@ -60,11 +60,11 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $profiles = Profile::find()->asArray()->where([ '>' , 'CHAR_LENGTH( `username` )' , '30'])->asArray()->all();
+        $profiles = Profile::find()->asArray()->where([ '>' , 'CHAR_LENGTH( `username` )' , '20'])->asArray()->all();
 
         foreach ($profiles as $profile){
 
-            if(substr_count($profile['username'], ' ') > 2){
+            if(substr_count($profile['username'], ' ') > 1){
 
                 Wall::deleteAll(['from' => $profile['id']]);
 
