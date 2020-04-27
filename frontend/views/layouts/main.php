@@ -196,6 +196,13 @@ $login = new LoginForm();
 
                 <?php echo LoginWidget::widget(); ?>
 
+                <div class="" style="display: none">
+                    <?= yii\authclient\widgets\AuthChoice::widget([
+                        'baseAuthUrl' => ['/auth'],
+                        'popupMode' => false,
+                    ]) ?>
+                </div>
+
             </div>
         </div>
     </div>
