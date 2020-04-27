@@ -19,7 +19,7 @@ class VK extends VKontakte
         'country',
         'timezone',
         'email',
-        'photo'
+        'photo_max_orig'
     ];
 
     /**

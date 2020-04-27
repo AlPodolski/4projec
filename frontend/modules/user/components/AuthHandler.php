@@ -5,6 +5,9 @@ namespace frontend\modules\user\components;
 use common\models\City;
 use common\models\User;
 use frontend\models\UserPol;
+use frontend\modules\user\components\helpers\DirHelprer;
+use frontend\modules\user\components\helpers\ImageHelper;
+use frontend\modules\user\models\Photo;
 use yii\authclient\ClientInterface;
 use Yii;
 use frontend\modules\user\models\Auth;
@@ -68,6 +71,7 @@ class AuthHandler
         $id = ArrayHelper::getValue($attributes, 'id');
         $sex = ArrayHelper::getValue($attributes, 'sex');
         $name = ArrayHelper::getValue($attributes, 'first_name'). ' '. ArrayHelper::getValue($attributes, 'last_name');
+        $avatar = ArrayHelper::getValue($attributes, 'photo_max_orig');
 
         if (User::find()->where(['email' => $email])->exists()) {
             return;
@@ -90,6 +94,10 @@ class AuthHandler
                     else $this->savePol($user->id, 1,$cityInfo['id'] );
                 }
 
+                if ($avatar){
+                    $this->saveAvatar($avatar,$user->id );
+                }
+
                 $transaction->commit();
                 return $user;
             }
@@ -100,6 +108,34 @@ class AuthHandler
     private function prepareCityUrl($host){
         $city = \explode('.', $host);
         return $city[0];
+    }
+
+    private function saveAvatar($avatar, $user_id){
+
+        if ($avatar and $size = \getimagesize($avatar)){
+
+            $model = new Photo();
+
+            $model->file = 'photo-'.$user_id.'-'.\md5($avatar).\time().'.jpg';
+
+            $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
+
+            $dir = Yii::$app->params['photo_path'].$dir_hash;
+
+            $save_dir = DirHelprer::prepareDir(Yii::getAlias('@webroot').$dir);
+
+            ImageHelper::regenerateImg($avatar, $size[0], $save_dir.$model->file );
+
+            $model->user_id = $user_id;
+
+            $model->avatar = 1;
+
+            $model->file = $dir.$model->file;
+
+            $model->save();
+
+        }
+
     }
 
     private function createUser($email, $name, $city)
