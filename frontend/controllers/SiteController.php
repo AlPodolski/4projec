@@ -33,6 +33,7 @@ class SiteController extends Controller
         return [
             'auth' => [
                 'class' => 'frontend\components\AuthAction',
+                'city' => Yii::$app->controller->actionParams['city'],
                 'successCallback' => [$this, 'onAuthSuccess'],
             ],
             'error' => [
