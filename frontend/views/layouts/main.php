@@ -126,7 +126,7 @@ $login = new LoginForm();
 
                         <?php if (Yii::$app->user->isGuest) : ?>
                             <div class="col-3 cabinet-btn" >
-                                <a class="in-cabinet" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
+                                <a class="type-btn" data-toggle="modal" data-target="#modal-in" aria-hidden="true">
                                     <i class="fa fa-user"></i>
                                     Вход
                                 </a>
@@ -136,8 +136,7 @@ $login = new LoginForm();
 
                                 <div class="col-3 cabinet-btn" >
 
-                                    <a href="/user" class="in-cabinet" >
-                                        <i class="fa fa-user"></i>
+                                    <a href="/user" class="type-btn" >
                                         Кабинет
                                     </a>
                                 </div>
