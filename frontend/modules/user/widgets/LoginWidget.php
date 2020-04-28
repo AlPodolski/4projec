@@ -7,6 +7,7 @@ use yii\base\Widget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\LoginForm;
+use yii\authclient\widgets\AuthChoice;
 
 class LoginWidget extends Widget
 {
@@ -22,25 +23,47 @@ class LoginWidget extends Widget
 
          $form = ActiveForm::begin(['id' => 'login-form' , 'action' => '/user/login']); ?>
 
-                <?= $form->field($login, 'email')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($login, 'email')->textInput(['autofocus' => true, 'placeholder' => 'Email'])->label(false) ?>
 
-                <?= $form->field($login, 'password')->passwordInput() ?>
+                <?= $form->field($login, 'password')->passwordInput(['placeholder' => 'Пароль'])->label(false) ?>
 
-                <?= $form->field($login, 'rememberMe')->checkbox() ?>
+                <div class="remember-me-wrap">
+                    <?= $form->field($login, 'rememberMe', [
+                        'template' => "{input} {label} {error}",
+                        ])->checkbox(['label' => false])->label('Запомнить меня ',[
+                        'class' => 'loginform-rememberme-label',
+                        'for' => 'loginform-rememberme',
+                    ]) ?>
+                </div>
 
-                <div style="color:#999;margin:1em 0">
+                    <div class="form-group text-center in-btn">
+                        <?= Html::submitButton('Войти', ['class' => 'type-btn', 'name' => 'login-button']) ?>
+                    </div>
+
+                    <div class="form-group text-center register-btn ">
+                        <a class="text-blue" data-toggle="modal" data-target="#modal-register" aria-hidden="true"  >
+                            Регистрация
+                        </a>
+                    </div>
+
+                <div style="color:#999;margin-bottom: 25px;line-height: 30px;" class="text-center text-black " >
                     Забыли пароль <?= Html::a('Сбросить', ['site/request-password-reset']) ?>.
                     <br>
                     Отправить письмо еще раз <?= Html::a('Отправить', ['site/resend-verification-email']) ?>
                 </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('<i class="fa fa-user"></i> Войти', ['class' => 'in-cabinet', 'name' => 'login-button']) ?>
-                    <a class="in-cabinet" data-toggle="modal" data-target="#modal-register" aria-hidden="true"  >
-                        <i class="fa fa-user" ></i>
-                        Регистрация
-                    </a>
-                </div>
+                        <div class="social-in text-center">
+
+                            <p class="text-blue">Войдите с помощью:</p>
+
+                            <?= AuthChoice::widget([
+                                'baseAuthUrl' => ['/auth'],
+                                'popupMode' => false,
+                            ]) ?>
+
+                        </div>
+
+
 
                 <?php ActiveForm::end();
 

@@ -188,20 +188,10 @@ $login = new LoginForm();
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Войти</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
 
                 <?php echo LoginWidget::widget(); ?>
-
-
-                    <?= yii\authclient\widgets\AuthChoice::widget([
-                        'baseAuthUrl' => ['/auth'],
-                        'popupMode' => false,
-                    ]) ?>
-
 
             </div>
         </div>
@@ -214,9 +204,6 @@ $login = new LoginForm();
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Регистрация</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
 

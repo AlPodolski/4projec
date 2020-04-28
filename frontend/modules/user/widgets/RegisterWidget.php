@@ -23,17 +23,17 @@ class RegisterWidget extends Widget
 
         $form = ActiveForm::begin(['id' => 'form-signup', 'action' => '/user/signup']);
 
-        echo $form->field($signup, 'username')->textInput(['autofocus' => true]);
+        echo $form->field($signup, 'username')->textInput(['autofocus' => true, 'placeholder' => 'Имя пользователя'])->label(false);
 
-        echo $form->field($signup, 'email');
+        echo $form->field($signup, 'email')->textInput(['placeholder' => 'Email'])->label(false);
 
-        echo $form->field($signup, 'password')->passwordInput();
+        echo $form->field($signup, 'password')->passwordInput(['placeholder' => 'Пароль'])->label(false);
 
         echo $form ->field($signup, 'pol')->dropDownList(ArrayHelper::map($pol, 'id', 'value'));
 
-        echo '<div class="form-group">';
+        echo '<div class="form-group text-center">';
 
-        echo Html::submitButton('<i class="fa fa-user" ></i> Регистрация', ['class' => 'in-cabinet', 'name' =>
+        echo Html::submitButton('Регистрация', ['class' => 'type-btn', 'name' =>
             'signup-button']);
         echo '</div>';
 
