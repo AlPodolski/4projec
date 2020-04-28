@@ -1449,7 +1449,7 @@ a {
     font-weight: 500;
     font-size: 18px;
     line-height: 18px;
-    color: #FFFFFF;
+    color: #FFFFFF!important;
     border:none;
     padding: 9px 34px;
 }
