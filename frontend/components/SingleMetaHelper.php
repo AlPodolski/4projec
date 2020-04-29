@@ -10,7 +10,7 @@ class SingleMetaHelper
     {
         /* @var $model Profile */
 
-        $title = $model->username .' из '. \ucfirst($cityInfo['city2']);
+        $title = $model->username .' из '. \my_mb_ucfirst($cityInfo['city2']);
 
         if (!empty($model['sexual'])) {
             $title .= ' с ';
