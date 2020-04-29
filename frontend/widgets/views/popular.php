@@ -35,7 +35,7 @@ SlickAsset::register($this);
                                     </div>
 
                                     <div class="name text-blue">
-                                        <?php echo $popularItem->username; ?>
+                                        <?php echo explode(' ', $popularItem->username)[0]; ?>
                                     </div>
                                 </div>
 
@@ -85,7 +85,7 @@ SlickAsset::register($this);
                                     </div>
 
                                     <div class="name text-blue">
-                                        <?php echo $popularUsers->username; ?>
+                                        <?php echo explode(' ', $popularItem->username)[0]; ?>
                                     </div>
                                 </div>
                             </div>
