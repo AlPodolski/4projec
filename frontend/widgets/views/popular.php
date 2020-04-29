@@ -85,7 +85,7 @@ SlickAsset::register($this);
                                     </div>
 
                                     <div class="name text-blue">
-                                        <?php echo explode(' ', $popularItem->username)[0]; ?>
+                                        <?php echo explode(' ', $popularUsers->username)[0]; ?>
                                     </div>
                                 </div>
                             </div>
