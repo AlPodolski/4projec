@@ -31,8 +31,6 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             <?php endif; ?>
 
-            <?php echo PopularWidget::widget(['city' => $city]); ?>
-
         </div>
 
         <div class="row">

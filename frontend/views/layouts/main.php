@@ -15,6 +15,7 @@ use frontend\modules\user\widgets\RegisterWidget;
 use frontend\modules\user\widgets\LoginWidget;
 use frontend\widgets\CityWidget;
 use frontend\widgets\MetricaWidget;
+use frontend\widgets\PopularWidget;
 
 AppAsset::register($this);
 FontAwesomeAsset::register($this);
@@ -166,6 +167,9 @@ $login = new LoginForm();
         </div>
 
     </header>
+
+    <?php echo PopularWidget::widget(); ?>
+
 
     <div class="container">
         <?= Breadcrumbs::widget([

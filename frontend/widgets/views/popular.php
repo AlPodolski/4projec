@@ -5,113 +5,95 @@ use frontend\modules\user\models\Profile;
 
 SlickAsset::register($this);
 ?>
-<div class="col-12">
-    <div class="row popular-block-mobile">
-        <div class="col-12">
-            <div class="popular-block-wrap-mobile">
-                <div class="col-12">
-                    <span class="popular-anket">Популярные анкеты </span>
-                </div>
-                <div class="col-12 slider-popular">
-                    <?php foreach ($popularUsers as $popularItem) : ?>
-
-                            <div class="popular-anket-wrap">
-
-                                <div class="img-wrap">
-
-                                    <a href="/user/<?php echo $popularItem->id ?>">
-
-                                        <?php if (isset($popularItem->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
-
-                                            <?= Yii::$app->imageCache->thumb($popularItem->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
-
-                                        <?php else : ?>
-
-                                            <img src="/files/img/nophoto.png" alt="">
-
-                                        <?php endif; ?>
-                                    </a>
-                                </div>
-
-                                <div class="razd">
-
-                                </div>
-                                <div class="name">
-                                    <?php echo $popularItem->username; ?>
-                                </div>
-                            </div>
-
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row popular-wrap">
-
-        <div class="col-3 popular-block-wrap">
-            <div class="popular-block">
-                <div class="row">
-                    <div class="col-12"><span class="best-nad">Лучшие</span></div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <span class="popular-anket">
-                            Популярные анкеты
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <span class="check-nad">
-                            Проверенные анкеты с рекомендацией портала
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <a href="/znakomstva">посмотреть</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-9">
+    <div class="popular-block-mobile">
+        <div class="container">
             <div class="row">
-                <?php foreach ($popularUsers as $popularUsers) : ?>
+                <div class="col-12">
+                    <div class="popular-block-wrap-mobile">
+                        <div class="col-12">
+                            <span class="popular-anket">Популярные анкеты </span>
+                        </div>
+                        <div class="col-12 slider-popular">
+                            <?php foreach ($popularUsers as $popularItem) : ?>
 
-                    <div class="col-3">
-                        <div class="popular-anket-wrap">
+                                <div class="popular-anket-wrap">
 
-                            <div class="img-wrap">
+                                    <div class="img-wrap">
 
-                                <a href="/user/<?php echo $popularUsers->id ?>">
+                                        <a href="/user/<?php echo $popularItem->id ?>">
 
-                                    <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+                                            <?php if (isset($popularItem->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
 
-                                        <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+                                                <?= Yii::$app->imageCache->thumb($popularItem->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
 
-                                    <?php else : ?>
+                                            <?php else : ?>
 
-                                        <img src="/files/img/nophoto.png" alt="">
+                                                <?= Yii::$app->imageCache->thumb('/files/uploads/no-photo.jpg', 'popular_big', ['class' => 'img']) ?>
 
-                                    <?php endif; ?>
-                                </a>
-                            </div>
+                                            <?php endif; ?>
+                                        </a>
+                                    </div>
 
-                            <div class="razd">
+                                    <div class="name text-blue">
+                                        <?php echo $popularItem->username; ?>
+                                    </div>
+                                </div>
 
-                            </div>
-                            <div class="name">
-                                <?php echo $popularUsers->username; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    </div>
+    <div class="popular-wrap">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2 popular-block-wrap">
+                    <div class="popular-block">
+                        <div class="want-here">
+                            <div class="want-btn">
+                                <span>Популярные анкеты</span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                <?php endforeach; ?>
+                <div class="col-10">
+                    <div class="row">
+                        <?php foreach ($popularUsers as $popularUsers) : ?>
+
+                            <div class="col-2">
+                                <div class="popular-anket-wrap">
+
+                                    <div class="img-wrap">
+
+                                        <a href="/user/<?php echo $popularUsers->id ?>">
+
+                                            <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+
+                                                <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+
+                                            <?php else : ?>
+
+                                                <img src="/files/img/no-photo.jpg" alt="">
+
+                                            <?php endif; ?>
+                                        </a>
+                                    </div>
+
+                                    <div class="name text-blue">
+                                        <?php echo $popularUsers->username; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
         </div>
 
     </div>
-
-</div>

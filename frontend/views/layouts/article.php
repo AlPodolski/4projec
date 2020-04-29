@@ -28,7 +28,7 @@
 
         </div>
         <div class="name">
-            <?php echo $post->username; ?>
+            <?php echo explode(' ', $post->username)[0]; ?>
         </div>
 
         <div class="like-wrap">

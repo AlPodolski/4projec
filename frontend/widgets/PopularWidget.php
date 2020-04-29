@@ -19,7 +19,7 @@ class PopularWidget extends Widget
     public function run()
     {
 
-        $popularUsers = Profile::getPopular($this->city);
+        $popularUsers = Profile::getPopular();
 
         return $this->render('popular', [
             'popularUsers' => $popularUsers,

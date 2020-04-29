@@ -22,10 +22,6 @@
     font-family: futuralightc; /* Имя шрифта */
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
 }
-
-.user-ab .name , .city-name , .sex-pred .popular-anket , .popular-block a , .popular-anket-wrap .name , .sidebar-menu-list .card-header .btn-link , .all-advert, .name ,h1{
-    font-family: HelveticaNeueCyr;
-}
 .place{
     font-family: HelveticaNeueCyr-Roman;
 }

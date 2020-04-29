@@ -200,7 +200,6 @@ a.desc:after {
 }
 header{
     background: #fff;
-    margin-bottom: 25px;
 }
 .img-label p{
     text-align: center;
@@ -419,11 +418,12 @@ label{
     padding: 15px;
 }
 .popular-block {
-    background: #496bef;
-    padding: 30px;
-    border-radius: 5px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0px;
+    background: #fff;
+    padding: 8px;
+    width: 147px;
+    height: 147px;
+    border-radius: 50%;
+    border: 3px solid RGBA(72, 107, 239, 0.7);
 }
 .popular-block span{
     color: #fff;
@@ -463,12 +463,7 @@ label{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-bottom: 15px;
-}
-.popular-block-wrap{
-    padding-left: 0;
-}
-.popular-anket-wrap{
-    padding-top: 20px;
+    padding-bottom: 40px;
 }
 .razd{
     border: 1px solid
@@ -479,12 +474,12 @@ label{
     margin-top: 22px;
 }
 .popular-anket-wrap .name{
-    color:#3d3f41;
     text-align: center;
     margin-top: 10px;
-}
-.img-wrap{
-    min-height: 200px;
+    font-family: Muller;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 18px;
 }
 .img-wrap img{
     display: block;
@@ -529,11 +524,6 @@ label{
     width: 100%;
     display: block;
     color: #858b8b;
-    font-size: 10px;
-    text-transform: uppercase;
-}
-.name{
-    color: #3f3f43;
     font-size: 10px;
     text-transform: uppercase;
 }
@@ -903,7 +893,7 @@ ul li .secodn-menu:hover {
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
     background: hsla(0, 0%, 100%, 0.52) !important;
 }
-.article-anket-wrap .img-wrap {
+.article-anket-wrap .img-wrap , .popular-anket-wrap .img-wrap {
     min-height: 260px;
     align-items: center;
     display: flex;
@@ -1495,7 +1485,46 @@ a {
 .register-btn{
     margin-bottom: 23px;
 }
+.want-btn{
+    background: linear-gradient(142.84deg, #80DFFD 14.15%, rgba(120, 153, 238, 0) 84.7%), #486BEF;
+    box-shadow: 0px 4px 25px rgba(36, 122, 239, 0.5);
+    width: 126px;
+    height: 126px;
+    border-radius: 50%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.popular-anket-wrap .img-wrap{
+    border-radius: 50%;
+    overflow: hidden;
+    min-height: 128px;
+    min-width: 128px;
+}
+.want-btn span{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
 @media (max-width: 1199px) {
+    .img-wrap img{
+        max-width:inherit;
+    }
+    .popular-anket-wrap{
+        padding:5px;
+    }
+    .popular-anket-wrap .img-wrap{
+        min-width:inherit;
+        min-height:inherit;
+    }
+    .popular-anket-wrap .img-wrap{
+        border-radius: 50%;
+        overflow: hidden;
+    }
     .modal-dialog {
         width: auto;
         height: auto;
@@ -1613,21 +1642,30 @@ a {
         display: none;
     }
     .slick-prev::before, .slick-next::before{
-        color: #000!important;
+        color: #5399f7 !important;
     }
      .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
         background: none !important;
     }
     .popular-block-mobile .slick-next , .main-banner-wrap-mobile .slick-next{
-        right: 10px;
+        right: -10px;
         z-index: 2;
     }
     .popular-block-mobile .slick-prev , .main-banner-wrap-mobile .slick-prev {
-        left: 10px;
+        left: -10px;
         z-index: 2;
     }
     .popular-block-wrap-mobile .popular-anket{
-        font-size: 24px;
+        font-family: Muller;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+
+        /* identical to box height */
+        text-transform: uppercase;
+
+        color: #486BEF;
     }
     .popular-block-wrap-mobile{
         background: #fff;
@@ -1639,6 +1677,7 @@ a {
     }
     .popular-block-mobile{
         display: block;
+        background: #fff;
     }
     .place-mobile{
         display: inline;
@@ -1717,6 +1756,9 @@ a {
     .button_link.cut_left {
         border-radius: 5px;
     }
+    .popular-anket-wrap .name{
+        font-size: 13px;
+    }
 }
 @media (min-width: 576px) and (max-width: 1199px) {
     .left-column-anket {
@@ -1729,5 +1771,8 @@ a {
 @media (max-width: 575px) {
     .profile_info{
         margin-top : 15px;
+    }
+    .popular-anket-wrap .img-wrap {
+        min-height: 74px;
     }
 }

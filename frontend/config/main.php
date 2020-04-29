@@ -41,7 +41,8 @@ return [
             'sourceUrl' => '@web/files/uploads',
             'thumbsPath' => '@app/web/thumbs',
             'sizes' => [
-                'popular' => [180, 200],
+                'popular' => [126, 126],
+                'popular_big' => [156, 156],
                 'single-main' => [215, 215],
                 'gallery-mini' => [123, 123],
                 'listing' => [277, 266],

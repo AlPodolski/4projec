@@ -193,8 +193,8 @@ class Profile extends \yii\db\ActiveRecord
         $this->birthday = \date('d.m.Y' , $this->birthday );
     }
 
-    public static function getPopular($city){
-        return Profile::find()->limit(4)->where(['city' => $city])->with('userAvatarRelations')->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC, 'rand()' => SORT_DESC])->all();
+    public static function getPopular(){
+        return Profile::find()->limit(6)->with('userAvatarRelations')->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC, 'rand()' => SORT_DESC])->all();
     }
 
     public function getAvatar(){
