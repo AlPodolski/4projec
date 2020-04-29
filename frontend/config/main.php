@@ -77,6 +77,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/auth' => 'site/auth',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/cust' => 'site/cust',

@@ -154,6 +154,15 @@ class SiteController extends Controller
         return $this->render('agree');
     }
 
+    public function actionRobot($city)
+    {
+        $host = $city.'.'.Yii::$app->params['site_name'];
+
+        return $this->renderFile('@app/views/site/robot.php', [
+            'host' => $host
+        ]);
+    }
+
     public function actionCust(){
 
         $avatar = 'https://sun9-8.userapi.com/c845322/v845322176/2b1e9/xBpHOGIJz2E.jpg?ava=1';
