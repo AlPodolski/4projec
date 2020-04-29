@@ -64,6 +64,8 @@ class SiteController extends Controller
     {
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC, 'rand()' => SORT_DESC])->with('userAvatarRelations');
 
+        Yii::$app->cache->flush();
+
         if (Yii::$app->request->isPost){
 
             $posts->offset(Yii::$app->params['post_limit'] * Yii::$app->request->post('page'));

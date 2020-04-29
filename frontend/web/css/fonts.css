@@ -28,15 +28,6 @@
 .text  a , .best-nad{
     font-family: HelveticaNeueCyr-Medium;
 }
-
-.place-city , .bottom-menu .top-nav li , .bottom-menu .top-nav li a , .user-name , #nav-tab a{
-    font-family: HelveticaNeueCyr-Bold;
-}
-
-.top-nav li, .top-nav li a , .user-menu p {
-    font-family: HelveticaNeueCyr-Light;
-}
-
 #nav-tabContent {
     font-family: futuralightc;
 }
