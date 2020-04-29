@@ -54,13 +54,13 @@ class AnketController extends Controller
             ->with('userAvatarRelations')
             ->asArray()->all();
 
-        $cityInfo = Yii::$app->cache->get(Yii::$app->params['cache_name']['city_info'].$city);
+        $cityInfo = Yii::$app->cache->get(Yii::$app->params['cache_name']['city_info'].$model['city']);
 
         if ($cityInfo === false) {
             // $data нет в кэше, вычисляем заново
             $cityInfo = City::find()->where(['url' => $city])->asArray()->one();
 
-            Yii::$app->cache->set(Yii::$app->params['cache_name']['city_info'].$city, $cityInfo);
+            Yii::$app->cache->set(Yii::$app->params['cache_name']['city_info'].$model['city'], $cityInfo);
 
         }
 

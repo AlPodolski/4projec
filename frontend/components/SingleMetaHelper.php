@@ -10,15 +10,17 @@ class SingleMetaHelper
     {
         /* @var $model Profile */
 
-        $title = $model->username .' из города '.$cityInfo['city'];
+        $title = $model->username .' из '.$cityInfo['city2'];
 
         if (!empty($model['sexual'])) {
-            $title .= ' ориентация ';
+            $title .= ' с ';
             foreach ($model['sexual'] as $item) $title .=' '. $item['value'] . ' ' ;
+            $title .= ' ориентацией ';
+
         }
 
         if (!empty($model['wantFind'])){
-            $title .= ' хочу найти ';
+            $title .= ' хочет найти ';
             foreach ($model['wantFind'] as $item) $title .=' '. $item['value'] . ' ' ;
         }
 
