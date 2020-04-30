@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\controllers;
 
+use frontend\modules\user\components\helpers\DropCacheHelper;
 use frontend\modules\user\components\helpers\TimeHelper;
 use frontend\modules\user\models\forms\Params;
 use frontend\modules\user\models\Profile;
@@ -34,6 +35,8 @@ class EditController extends Controller
             if ($model->load($data) and $model->save()) {
 
                 Yii::$app->session->setFlash('success', "Данные обновлены");
+
+                DropCacheHelper::dropUser($model->id);
 
                 return $this->redirect('/user');
             }else{
