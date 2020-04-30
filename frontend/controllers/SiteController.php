@@ -4,10 +4,7 @@ namespace frontend\controllers;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
-use frontend\modules\user\components\Friends;
-use frontend\modules\user\components\helpers\DirHelprer;
-use frontend\modules\user\components\helpers\ImageHelper;
-use frontend\modules\user\models\Photo;
+use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -165,31 +162,11 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $avatar = 'https://sun9-8.userapi.com/c845322/v845322176/2b1e9/xBpHOGIJz2E.jpg?ava=1';
+                $friends = new FriendsRequest();
+                $friends->user_id = '23215';
+                $friends->request_user_id = '4';
 
-        if ($avatar and $size = \getimagesize($avatar)){
-
-            $model = new Photo();
-
-            $model->file = 'photo-'.Yii::$app->user->id.'-'.\md5($avatar).\time().'.jpg';
-
-            $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
-
-            $dir = Yii::$app->params['photo_path'].$dir_hash;
-
-            $save_dir = DirHelprer::prepareDir(Yii::getAlias('@webroot').$dir);
-
-            ImageHelper::regenerateImg($avatar, $size[0], $save_dir.$model->file );
-
-            $model->user_id = 1;
-
-            $model->avatar = 1;
-
-            $model->file = $dir.$model->file;
-
-            $model->save();
-
-        }
+                $friends->save();
 
     }
 }

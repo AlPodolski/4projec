@@ -29,6 +29,19 @@ function check_friend_request(object) {
     });
 }
 
+function check_friend_request_listing(object) {
+    var id = $(object).attr('data-user-id');
+    $.ajax({
+        url: '/user/friends/check',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).html('<i class="fas fa-user-friends"></i>');
+            $(object).attr('data-message', 'Заявка принята');
+        },
+    });
+}
+
 function remove_friend_request(object) {
     var id = $(object).attr('data-user-id');
     $.ajax({
@@ -265,6 +278,28 @@ $(document).ready(function () {
     });
 
 });
+function addToFriendsListing(object){
+
+    var id = $(object).attr('data-id');
+    var message = $(object).attr('data-message');
+
+    if(message != ''){
+        $(object).children().children().text(message);
+        return false;
+    }
+
+    $.ajax({
+        url: '/user/friends/add',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).children().children().text(data);
+            $(object).attr('data-message', data);
+            $(object).children('.profile_gift_text').html(data);
+        },
+    });
+
+}
 $(function(){
     $('.user-manu').on('click', function(e){
         $('.user-menu-list').toggle('slow')

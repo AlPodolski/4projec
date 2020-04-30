@@ -22,8 +22,6 @@ $this->registerMetaTag([
 ?>
 <div class="row">
 
-    <?php echo \frontend\widgets\PopularWidget::widget(['city' => $city]); ?>
-
     <div class="col-3 filter-sidebar">
 
         <?php if (!Yii::$app->user->isGuest) : ?>

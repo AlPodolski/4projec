@@ -146,15 +146,16 @@ if ($model) {
                                     <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)) : ?>
 
                                         <?php
-                                        /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
-                                        if (Yii::$app->user->isGuest or
-                                            (!FriendsHelper::isFiends(Yii::$app->user->id, $model->id)
-                                                and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id)
-                                                and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $model->id))) {
-                                            $onclick = 'onclick="addToFriends(this)"';
-                                        } else {
-                                            $onclick = '';
-                                        } ?>
+                                            /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
+                                            if (Yii::$app->user->isGuest or
+                                                (!FriendsHelper::isFiends(Yii::$app->user->id, $model->id)
+                                                    and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id)
+                                                    and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $model->id))) {
+                                                $onclick = 'onclick="addToFriends(this)"';
+                                            } else {
+                                                $onclick = '';
+                                            }
+                                        ?>
 
                                         <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?>
                                            data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
