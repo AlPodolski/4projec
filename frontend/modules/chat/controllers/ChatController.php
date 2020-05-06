@@ -2,8 +2,10 @@
 namespace frontend\modules\chat\controllers;
 
 use frontend\modules\chat\models\forms\SendMessageForm;
+use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\models\Profile;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 class ChatController extends Controller
@@ -33,6 +35,32 @@ class ChatController extends Controller
             'dialog_id' => $id,
             'user' => $user,
         ]);
+    }
+
+    public function actionGet($city)
+    {
+
+        $dialog_id = 0;
+
+        if (Yii::$app->request->isPost){
+
+            $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
+
+            $userDialogsId = ArrayHelper::getColumn(UserDialog::find()->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
+
+            $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
+
+            if ($dialog_id) $dialog_id = ArrayHelper::getValue($dialog_id, 'dialog_id');
+
+            return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
+                'dialog_id' => $dialog_id,
+                'user' => $user,
+            ]);
+
+        }
+
+        return false;
+
     }
 
     public function actionSend($city)

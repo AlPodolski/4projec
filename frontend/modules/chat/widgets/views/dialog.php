@@ -13,6 +13,8 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 <div class="page-block chat-block ">
     <div class="chat">
 
+        <?php if (isset($dialog['message'])) : ?>
+
         <?php foreach ($dialog['message'] as $item) : ?>
 
         <div class="wall-tem">
@@ -53,6 +55,8 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         </div>
 
         <?php endforeach; ?>
+
+        <?php endif; ?>
 
     </div>
 

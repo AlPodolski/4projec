@@ -1594,6 +1594,9 @@ a {
     font-size: 12px;
     text-align: center;
 }
+#messageModal .modal-header{
+    padding-top: 15px;
+}
 .show-message:hover::before {
     opacity: 1;
     top: -50px;

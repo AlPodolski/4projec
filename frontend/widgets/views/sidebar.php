@@ -573,6 +573,17 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap">
+                                        <svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.6032 7.96417H4.2492C2.5396 7.96417 1 9.2207 1 10.9303V15.3879C1 15.593 1.31994 15.8501 1.52508 15.8501H22.3273C22.5325 15.8501 22.6095 15.593 22.6095 15.3879V10.9303C22.6095 9.2207 21.3128 7.96417 19.6032 7.96417Z" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M22.6095 12.0226C22.6095 11.8174 22.4431 11.6511 22.238 11.6511H1.37146C1.16632 11.6511 1 11.8174 1 12.0226V15.4787C1 15.6838 1.16632 15.8501 1.37146 15.8501H22.238C22.4431 15.8501 22.6095 15.6838 22.6095 15.4787V12.0226V12.0226Z" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M20.766 6.83763V1.27212C20.766 1.06698 20.6752 1 20.47 1H3.38252C3.17738 1 2.94592 1.06698 2.94592 1.27212V6.83763" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M1 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M22.6095 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8.98 4.38879C8.98 3.80188 8.50271 3.32611 7.91385 3.32611C7.52596 3.32611 7.18656 3.53261 7.00004 3.84131C6.81352 3.53261 6.47406 3.32611 6.08617 3.32611C5.49731 3.32611 5.02002 3.80188 5.02002 4.38879C5.02002 4.69419 5.1495 4.96932 5.35649 5.16316H5.3562L6.88258 6.61897C6.91057 6.6525 6.95257 6.67387 6.99964 6.67387C7.04325 6.67387 7.0825 6.65544 7.11027 6.626L8.64404 5.16316H8.64359C8.8506 4.96935 8.98 4.69421 8.98 4.38879Z" fill="#486BEF"/>
+                                            <path d="M17.98 4.38879C17.98 3.80188 17.5027 3.32611 16.9138 3.32611C16.526 3.32611 16.1866 3.53261 16 3.84131C15.8135 3.53261 15.4741 3.32611 15.0862 3.32611C14.4973 3.32611 14.02 3.80188 14.02 4.38879C14.02 4.69419 14.1495 4.96932 14.3565 5.16316H14.3562L15.8826 6.61897C15.9106 6.6525 15.9526 6.67387 15.9996 6.67387C16.0432 6.67387 16.0825 6.65544 16.1103 6.626L17.644 5.16316H17.6436C17.8506 4.96935 17.98 4.69421 17.98 4.38879Z" fill="#486BEF"/>
+                                        </svg>
+                                    </span>
                                     Сексуальные предпочтения
                                 </button>
                             </h5>

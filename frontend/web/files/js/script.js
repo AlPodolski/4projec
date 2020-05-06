@@ -7,9 +7,19 @@ function showPhone(object) {
 }
 function get_message_form(object) {
 
-    $('#messageModal').modal('show');
 
-    console.log($(object).attr('data-user-id'));
+
+    var id = $(object).attr('data-user-id');
+
+    $.ajax({
+        url: '/user/chat/get',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $('#messageModal .modal-body').html(data);
+            $('#messageModal').modal('show');
+        },
+    });
 
     $('.user-id-class .form-control').val($(object).attr('data-user-id'));
 
