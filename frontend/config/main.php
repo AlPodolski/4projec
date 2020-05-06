@@ -1,4 +1,7 @@
 <?php
+
+use Imagine\Image\ManipulatorInterface;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -46,6 +49,7 @@ return [
                 'single-main' => [215, 215],
                 'gallery-mini' => [123, 123],
                 'listing' => [277, 266],
+                'listing_500' => [470, 9999],
                 'large' => [600, 600],
                 'dialog' => [50, 50],
                 '80' => [80, 80],

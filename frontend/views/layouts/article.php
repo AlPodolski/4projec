@@ -6,17 +6,23 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 ?>
 
 
-<div class="col-12 col-sm-6 col-md-4 col-lg-4">
+<div class="col-6 col-sm-6 col-md-4 col-lg-4 user-item">
 
     <div class="article-anket-wrap">
 
-        <div class="img-wrap">
+        <div class="img-wrap d-flex ">
 
             <a href="/user/<?php echo $post->id ?>">
 
+
+
                 <?php if (isset($post->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file']) and $post->userAvatarRelations['file']) : ?>
 
-                    <?= Yii::$app->imageCache->thumb($post->userAvatarRelations['file'], 'listing', ['class' => 'img']) ?>
+                    <picture>
+                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing_500') ?>" media="(max-width: 500px)">
+                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
+                        <img class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>" alt="My default image">
+                    </picture>
 
                 <?php else : ?>
 
@@ -36,7 +42,7 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
         <div class="like-wrap">
             <div class="row">
-                <div class="col-9 message-col">
+                <div class="col-8 col-sm-9 message-col">
                     <div class="message-wrap">
 
                         <div class="message write-message"

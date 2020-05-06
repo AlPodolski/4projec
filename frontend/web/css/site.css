@@ -918,7 +918,6 @@ ul li .secodn-menu:hover {
 .article-anket-wrap .img-wrap , .popular-anket-wrap .img-wrap {
     min-height: 250px;
     align-items: center;
-    display: flex;
     justify-content: center;
     max-height: 260px;
     overflow: hidden;
@@ -1960,5 +1959,14 @@ a {
     }
     .popular-anket-wrap .img-wrap {
         min-height: 74px;
+    }
+}
+@media (max-width: 500px) {
+    .user-item{
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .article-anket-wrap .img-wrap, .popular-anket-wrap .img-wrap {
+        max-height: initial;
     }
 }
