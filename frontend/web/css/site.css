@@ -214,7 +214,6 @@ header{
     display: none;
 }
 .user-menu{
-    background:  #fff;
     padding: 22px 20px;
     margin-top: 10px;
     border-bottom: 1px solid RGBA(72, 107, 239, 0.31);
@@ -222,7 +221,7 @@ header{
 .user-menu div{
     line-height: 15px;
 }
-.user-menu-list , .user-ab-wrap , .sidebar-menu-list{
+.user-ab-wrap , .sidebar-menu-list{
     background: #fff;
 }
 .user-menu-ul {
@@ -230,7 +229,6 @@ header{
     padding-left: 0px;
 }
 .user-menu-item {
-    border-bottom: 1px solid #ededed;
     line-height: 45px;
     padding-left: 18px;
 }
@@ -1578,7 +1576,9 @@ a {
     margin-left: 10px;
 }
 .sidebar-wrap{
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(72, 107, 239, 0.16);
+    border-radius: 10px;
 }
 .name{
     font-family: Muller;
@@ -1678,6 +1678,23 @@ a {
 }
 .post_header_info {
     background: #EDEEF0;
+}
+.user-sidebar{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(72, 107, 239, 0.16);
+    border-radius: 10px;
+}
+.user-menu-item svg{
+    max-width:25px;
+}
+
+.user-menu-item a , .user-menu-item button{
+    letter-spacing: 1px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000!important;
+    font-family: Muller;
+    font-style: normal;
 }
 @media (max-width: 1199px) {
     .img-wrap img{
