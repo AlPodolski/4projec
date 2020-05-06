@@ -10,6 +10,7 @@ class DialogWidget extends Widget
 {
     public $dialog_id;
     public $user;
+    public $recepient = false;
 
     public function init(){
 
@@ -25,6 +26,7 @@ class DialogWidget extends Widget
         return $this->render('dialog', [
             'dialog' => $dialog,
             'user' => $this->user,
+            'recepient' => $this->recepient,
         ]);
     }
 }

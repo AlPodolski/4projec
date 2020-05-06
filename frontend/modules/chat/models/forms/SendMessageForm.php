@@ -63,7 +63,6 @@ class SendMessageForm extends Model
 
             }
 
-
                 $dialog = new Chat();
                 $dialog->timestamp = \time();
 

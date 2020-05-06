@@ -30,6 +30,7 @@ class UserDialog extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'dialog_id'], 'integer'],
+            [['user_id', 'dialog_id'], 'required'],
         ];
     }
 

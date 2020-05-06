@@ -990,10 +990,24 @@ ul li .secodn-menu:hover {
 }
 .send-comment-btn  , .message-send-btn{
     position: absolute;
-    top: 6px;
+    top: -3px;
     right: 15px;
     z-index: 8;
     cursor: pointer;
+    background: #486BEF;
+    border: 1px solid #486BEF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
+    border-radius: 2px;
+    width: 171px;
+    height: 39px;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 39px;
 }
 #message-form .alert-success{
     margin-top: 15px;
@@ -1608,6 +1622,31 @@ a {
     height: 40px;
     transition: 1s;
 }
+#messageModal .modal-body {
+    padding: 0;
+}
+#messageModal .close{
+    padding: 0;
+    padding-right: 25px;
+    padding-top: 10px;
+}
+#messageModal .page-block{
+    box-shadow:none ;
+    background: none;
+}
+#messageModal .modal-content{
+    border-radius: 28px;
+}
+#messageModal .comment-wall-form{
+    border-top: 1px solid rgba(72, 107, 239, 0.22);
+}
+#messageModal .form-control{
+    border: none;
+}
+#messageModal .form-control:focus{
+    box-shadow: none;
+}
+
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

@@ -55,6 +55,7 @@ class ChatController extends Controller
             return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
                 'dialog_id' => $dialog_id,
                 'user' => $user,
+                'recepient' => Yii::$app->request->post('id'),
             ]);
 
         }
