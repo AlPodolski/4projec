@@ -1045,9 +1045,14 @@ ul li .secodn-menu:hover {
 
 .post-text{
     margin-top:0px;
-    font-size:13px;
     border-bottom: 1px solid #e7e8ec;
     padding: 10px 0px;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #606060;
 }
 .profile_info_row {
     padding-top: 5px;
@@ -1276,6 +1281,9 @@ ul li .secodn-menu:hover {
     margin-left: 55px;
     padding-top: 0px;
     line-height: 10px;
+    padding: 10px 5px 5px 5px;
+    border-radius: 5px;
+    margin-right: 42px;
 }
 .chat .wall-tem{
     padding: 0 !important;
@@ -1646,7 +1654,31 @@ a {
 #messageModal .form-control:focus{
     box-shadow: none;
 }
-
+.right-message .post_image{
+    float:right;
+}
+.right-message .post_image{
+    float:right;
+}
+.right-message .post_header_info{
+    text-align:right;
+}
+.right-message .author{
+    float: right;
+    margin-right: 12px;
+}
+.right-message .rel_date , .right-message .post-text{
+    margin-right: 12px;
+}
+.right-message .post-text{
+    margin-right: 12px;
+}
+.chat .right-message .post_header_info{
+    margin-right: 42px;
+}
+.post_header_info {
+    background: #EDEEF0;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

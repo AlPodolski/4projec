@@ -18,7 +18,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
         <?php foreach ($dialog['message'] as $item) : ?>
 
-        <div class="wall-tem">
+        <div class="wall-tem <?php if (Yii::$app->user->id == $item['author']['id']) echo 'right-message' ?>">
 
             <div class="post_header">
 
