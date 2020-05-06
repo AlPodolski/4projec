@@ -1675,7 +1675,7 @@ a {
 .chat .right-message .post_header_info{
     margin-right: 42px;
 }
-.post_header_info {
+.chat .post_header_info {
     background: #EDEEF0;
 }
 .user-sidebar{
