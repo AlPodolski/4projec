@@ -21,7 +21,7 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                     <picture>
                         <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing_500') ?>" media="(max-width: 500px)">
                         <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
-                        <img class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>" alt="My default image">
+                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>" alt="My default image">
                     </picture>
 
                 <?php else : ?>
