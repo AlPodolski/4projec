@@ -42,7 +42,7 @@ class ChatController extends Controller
 
         $dialog_id = 0;
 
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost and (Yii::$app->user->id != Yii::$app->request->post('id'))){
 
             $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
 

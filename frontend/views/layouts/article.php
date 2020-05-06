@@ -38,7 +38,13 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
             <div class="row">
                 <div class="col-9 message-col">
                     <div class="message-wrap">
-                        <div class="message write-message"  onclick="get_message_form(this)" data-user-id="<?php echo $post->id ?>">
+
+                        <div class="message write-message"
+                             <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $post->id )) : ?>
+                             onclick="get_message_form(this)"
+                             data-user-id="<?php echo $post->id ?>"
+                             <?php endif; ?>
+                            >
                             Написать
                         </div>
 
