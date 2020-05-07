@@ -661,11 +661,43 @@ if ($model) {
                         'id' => 'wall-form',
                         'options' => ['class' => 'form-horizontal'],
                     ]) ?>
+
                     <?= $form->field($addWallForm, 'user_id')->hiddenInput(['value' => $model->id])->label(false) ?>
-                    <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+
+                    <?php if (!Yii::$app->user->isGuest) : ?>
+
+                    <div class="row">
+                        <div class="col-2">
+                            <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+
+                                <?= Yii::$app->imageCache->thumb($item->file, 'dialog', ['class' => 'img']) ?>
+
+                            <?php else : ?>
+
+
+                                <img class="img" src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="col-10">
+                            <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+                        </div>
+                    </div>
+
+                    <?php else : ?>
+
+                        <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+
+                    <?php endif; ?>
+
 
                     <div class="form-group ">
-                        <span class="btn btn-primary wall-send-btn flat_button">Отправить</span>
+                        <span class="btn wall-send-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF" fill-opacity="0.13"/>
+                            </svg>
+                        </span>
                     </div>
                     <?php ActiveForm::end() ?>
 

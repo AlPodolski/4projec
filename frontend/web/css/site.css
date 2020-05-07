@@ -1062,6 +1062,9 @@ ul li .secodn-menu:hover {
 }
 .wall-send-btn{
     max-width: 120px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 .wall-form .form-group{
     text-align:right;
@@ -1694,6 +1697,37 @@ a {
     color: #000000!important;
     font-family: Muller;
     font-style: normal;
+}
+#wall-form {
+    position:relative;
+}
+
+#wall-form .form-control {
+    border:none;
+}
+#wall-form .form-control:focus{
+    box-shadow:none;
+}
+.wall-form{
+    padding:0;
+}
+#addtowallform-text{
+    height:35px;
+}
+.field-addtowallform-text{
+    padding:5px;
+}
+.wall-form .img{
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.wall-form .field-addtowallform-text{
+    margin-bottom: 0;
+}
+.wall-form #addtowallform-text{
+    margin-top: 10px;
 }
 @media (max-width: 1199px) {
     .img-wrap img{
