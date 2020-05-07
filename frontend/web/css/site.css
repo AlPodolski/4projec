@@ -965,11 +965,11 @@ ul li .secodn-menu:hover {
 }
 .post_header_info {
     margin-left: 65px;
-    padding-top: 8px;
+    padding-top: 0px;
     line-height: 16px;
 }
 .open-comment-btn , .like-btn {
-    color: #a7acb7;
+    color: #486BEF;
     font-size: 18px;
     margin-top: 10px;
     cursor: pointer;
@@ -991,12 +991,9 @@ ul li .secodn-menu:hover {
     right: 15px;
     z-index: 8;
     cursor: pointer;
-    background: #486BEF;
-    border: 1px solid #486BEF;
     box-sizing: border-box;
-    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
     border-radius: 2px;
-    width: 171px;
+    width: 15px;
     height: 39px;
     font-family: Muller;
     font-style: normal;
@@ -1009,9 +1006,8 @@ ul li .secodn-menu:hover {
 #message-form .alert-success{
     margin-top: 15px;
 }
-.form-otvet{
-    margin-right: 50px;
-
+.form-otvet {
+    margin-right: 52px;
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
     color: #939393;
@@ -1025,9 +1021,11 @@ ul li .secodn-menu:hover {
     padding: 20px !important;
 }
 .author{
-    color: #2a5885;
-    font-size: 13px;
-    font-weight: 500;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    color: #486BEF;
 }
 .open-comment-btn , .like-btn{
     margin-right: 20px;
@@ -1042,14 +1040,20 @@ ul li .secodn-menu:hover {
 
 .post-text{
     margin-top:0px;
-    border-bottom: 1px solid #e7e8ec;
     padding: 10px 0px;
     font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 18px;
-    color: #606060;
+    color: #000;
+    padding-left: 65px;
+}
+#addcommentform-text{
+    background: #FFFFFF;
+    border: 1px solid rgba(72, 107, 239, 0.15)!important;
+    box-sizing: border-box;
+    border-radius: 10px;
 }
 .profile_info_row {
     padding-top: 5px;
@@ -1201,9 +1205,9 @@ ul li .secodn-menu:hover {
 .page-block{
     background: #fff;
     padding: 15px 15px 15px 15px;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 0 #d7d8db,0 0 0 1px #e3e4e8;
     position: relative;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }
 .wall-tem-menu {
     position: absolute;
@@ -1248,9 +1252,6 @@ ul li .secodn-menu:hover {
 }
 .comments-list {
     margin: 0 -20px;
-    padding: 10px 20px;
-    border-top: 1px solid #ccc;
-    border-top: 1px solid #e7e8ec;
 }
 .comments-list .post-text{
     border-bottom: none;
@@ -1728,6 +1729,10 @@ a {
 }
 .wall-form #addtowallform-text{
     margin-top: 10px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #BABABA;
 }
 @media (max-width: 1199px) {
     .img-wrap img{
