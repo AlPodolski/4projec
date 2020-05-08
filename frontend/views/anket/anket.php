@@ -41,6 +41,12 @@ if ($model) {
     $service = $model->getService();
     $postPrice = $model->getUserPrice();
 }
+//фото для формы отправки сообщения
+if (!Yii::$app->user->isGuest){
+
+    $userPhoto = Photo::getAvatar(Yii::$app->user->id);
+
+}
 
 \frontend\assets\LightGalleryAsset::register($this);
 ?>
@@ -598,6 +604,9 @@ if ($model) {
             <?php if (!empty($userPresent)) : ?>
 
                 <div class="page-block presents">
+                     <span class="small-heading">
+                    <a>Подарки </a>
+                </span>
                     <div class="user-present">
                         <div class="user-presents-list">
                             <div class="row">
@@ -727,10 +736,10 @@ if ($model) {
                     <?php if (!Yii::$app->user->isGuest) : ?>
 
                     <div class="row">
-                        <div class="col-2">
-                            <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
+                        <div class="col-3 col-sm-2">
+                            <?php if (isset($userPhoto['file']) and file_exists(Yii::getAlias('@webroot') . $userPhoto['file']) and $userPhoto['file']) : ?>
 
-                                <?= Yii::$app->imageCache->thumb($item->file, 'dialog', ['class' => 'img']) ?>
+                                <?= Yii::$app->imageCache->thumb($userPhoto['file'], 'dialog', ['class' => 'img']) ?>
 
                             <?php else : ?>
 
@@ -740,7 +749,7 @@ if ($model) {
                             <?php endif; ?>
                         </div>
 
-                        <div class="col-10">
+                        <div class="col-9 col-sm-10">
                             <?= $form->field($addWallForm, 'text')->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
                         </div>
                     </div>
