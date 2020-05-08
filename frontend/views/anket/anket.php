@@ -47,11 +47,11 @@ if ($model) {
 
 <div class="anket">
     <div class="row">
-        <div class="col-12 col-sm-5 col-lg-4 col-xl-4 left-column-anket">
-            <div class="single-photo">
 
-                <div class="single-left-column page-block page_photo">
-
+        <div class="col-12">
+            <div class="page-block main-info-anket">
+            <div class="row">
+                <div class="col-12 col-xl-4 col-lg-4 col-md-6">
                     <div class="post-photo">
 
                         <?php if (!empty($photo)) : ?>
@@ -62,7 +62,11 @@ if ($model) {
 
                                     <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
-                                        <?= Yii::$app->imageCache->thumb($item['file'], 'single-main', ['class' => 'img']) ?>
+                                        <picture>
+                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>" media="(max-width: 767px)">
+                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>">
+                                            <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>" alt="">
+                                        </picture>
 
                                     <?php else : ?>
 
@@ -110,83 +114,486 @@ if ($model) {
                         <?php endif; ?>
 
                     </div>
+                </div>
+                <div class="col-12 col-xl-8 col-lg-8 col-md-6">
+                    <div class="anket-info">
+                        <div class="anket-info-content">
+                            <div class="row">
+                                <div class="col-12 ">
+                                    <div class="row ">
 
-                    <?php if (isset(Yii::$app->user->id) and Yii::$app->user->id == $model->id)  : ?>
+                                        <div class="col-7">
+                                            <div class="name">
+                                                <?php echo explode(' ', $model->username)[0]; ?>
+                                                <?php if ($model->birthday) { ?>
+                                                    <span class="old">
+                                               <?php echo \frontend\components\YearHelper::Year((time() - $model->birthday) / 31556926); ?>
+                                            </span>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <?php
 
-                    <?php else : ?>
+                                            $city = City::getCity($model->city);
 
-                        <div class="profile_actions">
+                                            ?>
+                                            <div class="city">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10.0002 12.9065C12.7974 12.9065 15.0649 10.6389 15.0649 7.84173C15.0649 5.04455 12.7974 2.77699 10.0002 2.77699C7.20299 2.77699 4.93542 5.04455 4.93542 7.84173C4.93542 10.6389 7.20299 12.9065 10.0002 12.9065Z" fill="#486BEF" stroke="#486BEF" stroke-miterlimit="10"/>
+                                                    <path d="M9.99989 10.8345C11.6528 10.8345 12.9927 9.4946 12.9927 7.84172C12.9927 6.18884 11.6528 4.84892 9.99989 4.84892C8.347 4.84892 7.00708 6.18884 7.00708 7.84172C7.00708 9.4946 8.347 10.8345 9.99989 10.8345Z" fill="white"/>
+                                                    <path d="M10 17.4101C9.8705 17.4101 9.68345 17.223 9.68345 17.223C4.21582 10.9353 4.93525 7.84173 4.93525 7.84173C4.93525 7.84173 6.51798 12.8921 10 12.9065" fill="#486BEF"/>
+                                                    <path d="M10 17.4101C10.1295 17.4101 10.3165 17.223 10.3165 17.223C15.7842 10.9353 15.0647 7.84173 15.0647 7.84173C15.0647 7.84173 13.482 12.8921 10 12.9065" fill="#486BEF"/>
+                                                </svg>
+                                                <?php echo $city['city'] ?>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            <div class="profile_action_btn profile_msg_split" id="profile_message_send">
-                                <div class="clear_fix">
-                                    <a class="button_link cut_left">
-                                        <button onclick="get_message_form(this)" data-user-id="<?php echo $model->id ?>"
-                                                class="flat_button profile_btn_cut_left">Написать сообщение
-                                        </button>
-                                    </a>
-                                    <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
-                                       class="button_link cut_right" id="profile_send_gift_btn">
-                                        <button class="flat_button profile_btn_cut_right">
-                                            <span class="profile_gift_icon"></span>
-                                            <span class="profile_gift_text"><i class="fas fa-gift"></i></span>
-                                        </button>
-                                    </a>
-                                    <a data-toggle="modal" data-target="#modal-present" aria-hidden="true"
-                                       class="button_link mobile-present">
-                                        <button class="flat_button">
-                                        <span class="profile_gift_icon">
+                                </div>
+                            </div>
+                            <?php if (!empty($model['celiZnakomstvamstva'])) : ?>
+                                <div class="row info-block celi-znakomsva-block">
 
-                                        </span>
-                                            <span class="profile_gift_text">
-                                            Подарить подарок
-                                        </span>
-                                        </button>
-                                    </a>
+                                    <div class="col-12">
 
-                                    <?php if (Yii::$app->user->isGuest or (!Yii::$app->user->isGuest and Yii::$app->user->id != $model->id)) : ?>
+                                        <div class="label fl_l">Цели знакомства:</div>
 
-                                        <?php
+                                        <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/celi-znakomstva-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
+
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="like-wrap info-block">
+                                <div class="row">
+                                    <div class=" col-6 col-md-6 col-lg-4 message-col">
+                                        <div class="message-wrap">
+
+                                            <div class="message write-message"
+                                                <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $model->id )) : ?>
+                                                    onclick="get_message_form(this)"
+                                                    data-user-id="<?php echo $model->id ?>"
+                                                <?php endif; ?> >
+                                                Написать
+                                            </div>
+
+                                            <?php
                                             /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
                                             if (Yii::$app->user->isGuest or
                                                 (!FriendsHelper::isFiends(Yii::$app->user->id, $model->id)
                                                     and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($model->id, Yii::$app->user->id)
                                                     and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $model->id))) {
-                                                $onclick = 'onclick="addToFriends(this)"';
+                                                $onclick = 'onclick="addToFriendsListing(this)"';
                                             } else {
                                                 $onclick = '';
                                             }
-                                        ?>
+                                            ?>
 
-                                        <a data-id="<?php echo $model->id ?>" <?php echo $onclick ?>
-                                           data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>">
-                                            <button class="flat_button">
-                                            <span class="profile_gift_text">
-                                                <?php if (!Yii::$app->user->isGuest and isset($isFriendsRequestTo) and $isFriendsRequestTo) : ?>
-                                                    Заявка отправлена
-                                                <?php elseif (FriendsHelper::isFiends(Yii::$app->user->id, $model->id)) : ?>
-                                                    У Вас в друзьях
+                                            <div data-id="<?php echo $model->id ?>" class="add-to-friends-listing message"
+                                                 data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>"
+                                                <?php echo $onclick ?>>
+                                                <?php if (!Yii::$app->user->isGuest and FriendsHelper::isFiends(Yii::$app->user->id, $model->id) ) : ?>
+                                                    <span class="show-message" data-message="Ваш друг">
+                                     <i class="fas fa-user-friends"></i>
+                                </span>
+                                                <?php elseif (!Yii::$app->user->isGuest and isset($isFriendsRequestTo) and $isFriendsRequestTo) : ?>
+                                                    <span class="show-message" data-message="Заявка отправлена">
+                                <i class="fas fa-check"></i>
+                            </span>
                                                 <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
-                                                    <span onclick="check_friend_request(this)" data-user-id="<?php echo $model->id ?>">Принять заявку</span>
+                                                    <span class="show-message" data-message="Принять заявку" onclick="check_friend_request_listing(this)" data-user-id="<?php echo $model->id ?>">
+                                    <i class="fas fa-user-check"></i>
+                                </span>
                                                 <?php else : ?>
-                                                    Добавить в друзья
+                                                    <i class="fas fa-plus"></i>
                                                 <?php endif; ?>
-                                            </span>
-                                            </button>
-                                        </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-md-3 col-lg-3" >
+                                        <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+                                            <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+                                            <path d="M10.14 12.4445H1.5V26.4445H24.18V12.4445H15.54" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+                                            <path d="M13.4999 7.28C13.4999 7.28 11.5657 7.28 9.17995 7.28C6.79423 7.28 4.31995 5.83464 4.31995 3.36C4.31995 2.33632 4.79407 1.12 6.65221 1.12C10.3874 1.12 10.456 7.28 13.4999 7.28Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M13.5 7.28C13.5 7.28 15.4343 7.28 17.82 7.28C20.2057 7.28 22.68 5.83464 22.68 3.36C22.68 2.33632 22.2059 1.12 20.3477 1.12C16.6126 1.12 16.544 7.28 13.5 7.28Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row my-data-row">
+
+                                <div class="col-12">
+                                    <div class="label margin-top-10">Мои данные:</div>
+                                </div>
+
+                                <div class="col-12 col-lg-5">
+
+                                    <?php if (!empty($model['rost']['value'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                            <div class="user-prop fl_l">Рост: </div>
+
+                                            <div class="user-prop-value">  <?php echo $model['rost']['value'] ?> см </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($model['ves']['value'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                            <div class="user-prop fl_l">Вес: </div>
+
+                                            <div class="user-prop-value">  <?php echo $model['ves']['value'] ?> кг </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($model['sexual'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap ">
+
+                                            <div class="user-prop fl_l">Моя ориентация:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/orientaciya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
 
                                     <?php endif; ?>
 
                                 </div>
-                            </div>
 
+                                <div class="col-12 col-lg-7">
+
+                                    <?php if (!empty($model['wantFind'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap ">
+
+                                            <div class="user-prop fl_l">Хочу найти:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/kogo-ishchu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($model['alcogol'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap ">
+
+                                            <div class="user-prop fl_l">Отношение к алкоголю:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($model['alcogol'] as $item) echo '<a href="/znakomstva/kogo-ishchu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($model['smoking'])) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap ">
+
+                                            <div class="user-prop fl_l">Отношение к курению:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($model['smoking'] as $item) echo '<a href="/znakomstva/kogo-ishchu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+
+                                </div>
+                            </div>
                         </div>
 
-                    <?php endif; ?>
+                        <div class="row more-info-row">
+                            <div class="profile_more_info">
+                                <a class="profile_more_info_link">
+                                    <span class="profile_label_more">Показать подробную информацию</span>
+                                    <span class="profile_label_less">Скрыть подробную информацию</span>
+                                </a>
+                            </div>
+                        </div>
 
-
+                    </div>
                 </div>
+                <div class="col-12">
+                    <div class="profile_full">
 
+                        <?php if (!empty($metro)) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Метро:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($rayon)) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop">Район:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+
+                        <?php if (!empty($model['place'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Место встречи:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['bodyType'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Телосложение:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+                        <?php if (!empty($model['national'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop">Национальность:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['financialSituation'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Материальное положение:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['interesting'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Интересы:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['professionals'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Профессия:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['vajnoeVPartnere'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Важное в партнере:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['children'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Дети:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['family'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Семья:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['family'] as $item) echo '<a href="/znakomstva/semejnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['education'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Образование:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['breast'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Размер груди:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/grud-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['intimHair'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Интимная стрижка:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/intimnaya-strizhka-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['hairColor'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Цвет волос:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/cvet-volos-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['sferaDeyatelnosti'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Сфера деятельности:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/sfera-deyatelnosti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['zhile'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Жилье:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/zhile-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($model['transport'])) : ?>
+
+                            <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                <div class="user-prop ">Транспорт:</div>
+
+                                <div class="user-prop-value">
+                                    <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
+                    </div>
+                </div>
             </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4 col-xl-4 left-column-anket">
 
             <?php if (!empty($userPresent)) : ?>
 
@@ -252,354 +659,7 @@ if ($model) {
             <?php endif; ?>
 
         </div>
-        <div class="col-12 col-sm-7 col-lg-8 col-xl-8 right-column-anket">
-
-            <div class="page-block profile_info">
-                <div class="page_top">
-                    <div class="user-name">
-                        <h1 class="user-name">
-                            <?php echo $model->username ?>
-                        </h1>
-                    </div>
-                </div>
-                <div class="">
-                    <div class="clear_fix profile_info_row ">
-                        <div class="label fl_l">Город:</div>
-                        <?php
-
-                        $city = City::getCity($model->city);
-
-                        ?>
-                        <div class="labeled"><?php echo $city['city'] ?></div>
-                    </div>
-
-                    <div class="clear_fix profile_info_row ">
-
-                        <?php if ($postPrice) : ?>
-
-                            <div class="label fl_l">Цена:</div>
-                            <div class="labeled"> <?php echo $postPrice['value'] ?> рублей</div>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                    <div class="clear_fix profile_info_row ">
-
-                        <?php if (!empty($model['sexual'])) : ?>
-
-                            <div class="label fl_l">Моя ориентация:</div>
-
-                            <div class="labeled">
-                                <?php foreach ($model['sexual'] as $item) echo '<a href="/znakomstva/orientaciya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-                            </div>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                    <div class="clear_fix profile_info_row ">
-
-                        <?php if (!empty($model['wantFind'])) : ?>
-
-                            <div class="label fl_l">Хочу найти:</div>
-
-                            <div class="labeled"> <?php foreach ($model['wantFind'] as $item) echo '<a href="/znakomstva/kogo-ishchu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                    <div class="clear_fix profile_info_row ">
-
-                        <?php if (!empty($model['celiZnakomstvamstva'])) : ?>
-
-                            <div class="label fl_l">Цели знакомства:</div>
-
-                            <div class="labeled"> <?php foreach ($model['celiZnakomstvamstva'] as $item) echo '<a href="/znakomstva/celi-znakomstva-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                    <?php if (!empty($model['vneshnost'])) : ?>
-
-
-                        <div class="clear_fix profile_info_row ">
-
-                            <div class="label fl_l">Моя внешность:</div>
-
-                            <div class="labeled"> <?php foreach ($model['vneshnost'] as $item) echo '<a href="/znakomstva/vneshnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                    <?php if ($service) : ?>
-
-                        <div class="clear_fix profile_info_row ">
-
-                            <div class="label fl_l">Сексуальные предпочтения:</div>
-
-                            <div class="labeled"> <?php foreach ($service as $item) echo '<a href="/znakomstva/usluga-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                    <?php if ($model->text) : ?>
-
-                        <div class="clear_fix profile_info_row ">
-
-                            <div class="label fl_l">Обо мне:</div>
-
-                            <div class="labeled black-text"> <?php echo $model->text ?> </div>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                    <div class="profile_more_info">
-                        <a class="profile_more_info_link">
-                            <span class="profile_label_more">Показать подробную информацию</span>
-                            <span class="profile_label_less">Скрыть подробную информацию</span>
-                        </a>
-                    </div>
-
-                    <div class="profile_full">
-
-                        <?php if (!empty($metro)) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Метро:</div>
-
-                                <div class="labeled"> <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?> </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($rayon)) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Район:</div>
-
-                                <div class="labeled"> <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['place'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Место встречи:</div>
-
-                                <div class="labeled"> <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['bodyType'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Телосложение:</div>
-
-                                <div class="labeled"> <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['national'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Национальность:</div>
-
-                                <div class="labeled"> <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>   </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['financialSituation'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Материальное положение:</div>
-
-                                <div class="labeled">  <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>    </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['interesting'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Интересы:</div>
-
-                                <div class="labeled">  <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['professionals'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Профессия:</div>
-
-                                <div class="labeled">  <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['vajnoeVPartnere'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Важное в партнере:</div>
-
-                                <div class="labeled">  <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['children'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Дети:</div>
-
-                                <div class="labeled">  <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['family'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Семья:</div>
-
-                                <div class="labeled">   <?php foreach ($model['family'] as $item) echo '<a href="/znakomstva/semejnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['alcogol'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Отношение к алкоголю:</div>
-
-                                <div class="labeled">   <?php foreach ($model['alcogol'] as $item) echo '<a href="/znakomstva/otnoshenie-k-akogolyu-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['education'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Образование:</div>
-
-                                <div class="labeled">   <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['breast'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Размер груди:</div>
-
-                                <div class="labeled">   <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/grud-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['intimHair'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Интимная стрижка:</div>
-
-                                <div class="labeled">   <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/intimnaya-strizhka-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['hairColor'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Цвет волос:</div>
-
-                                <div class="labeled">   <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/cvet-volos-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['sferaDeyatelnosti'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Сфера деятельности:</div>
-
-                                <div class="labeled">   <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/sfera-deyatelnosti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['zhile'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Жилье:</div>
-
-                                <div class="labeled">   <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/zhile-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                        <?php if (!empty($model['transport'])) : ?>
-
-                            <div class="clear_fix profile_info_row ">
-
-                                <div class="label fl_l">Транспорт:</div>
-
-                                <div class="labeled">   <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>  </div>
-
-                            </div>
-
-                        <?php endif; ?>
-
-                    </div>
-
-                </div>
-            </div>
+        <div class="col-12 col-lg-8 col-xl-8 right-column-anket">
 
             <?php if (!empty($photo)) : ?>
 

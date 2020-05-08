@@ -49,12 +49,14 @@ use frontend\models\UserNational;
 use frontend\models\UserParams;
 use frontend\models\UserPol;
 use frontend\models\UserProfessionals;
+use frontend\models\UserRost;
 use frontend\models\UserService;
 use frontend\models\UserSexual;
 use frontend\models\UserToMetro;
 use frontend\models\UserToPlace;
 use frontend\models\UserToRayon;
 use frontend\models\UserVajnoeVPartnere;
+use frontend\models\UserVes;
 use frontend\models\UserVneshnost;
 use frontend\modules\user\User;
 use yii\db\ActiveRecord;
@@ -576,6 +578,19 @@ class Profile extends \yii\db\ActiveRecord
     public function getSmoking()
     {
         return $this->hasMany(Smoking::class, ['id' => 'param_id'])->via('userSmokingRelations');
+    }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVes()
+    {
+        return $this->hasOne(UserVes::class, ['user_id' => 'id']);
+    }    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRost()
+    {
+        return $this->hasOne(UserRost::class, ['user_id' => 'id']);
     }
 
 }

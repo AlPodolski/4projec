@@ -41,6 +41,8 @@ class AnketController extends Controller
                 ->with('sferaDeyatelnosti')
                 ->with('zhile')
                 ->with('transport')
+                ->with('ves')
+                ->with('rost')
                 ->with('vajnoeVPartnere')
                 ->one();
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.

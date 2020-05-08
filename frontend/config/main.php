@@ -46,10 +46,11 @@ return [
             'sizes' => [
                 'popular' => [126, 126],
                 'popular_big' => [156, 156],
-                'single-main' => [215, 215],
+                'single-main' => [260, 320],
+                'single-510' => [510, 627],
                 'gallery-mini' => [123, 123],
                 'listing' => [277, 266],
-                'listing_500' => [470, 9999],
+                'listing_500' => [470, 500],
                 'large' => [600, 600],
                 'dialog' => [50, 50],
                 '80' => [80, 80],

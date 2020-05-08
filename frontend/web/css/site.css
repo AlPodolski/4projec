@@ -933,10 +933,6 @@ ul li .secodn-menu:hover {
     color: #828282;
     font-size: 13px;
 }
-.labeled{
-    font-size: 13px;
-    color: #2a5885;
-}
 .friends_user_info{
     position:relative;
 }
@@ -1056,10 +1052,18 @@ ul li .secodn-menu:hover {
     border-radius: 10px;
 }
 .profile_info_row {
-    padding-top: 5px;
+    padding-top: 10px;
+}
+.margin-top-10{
+    margin-top: 10px;
 }
 .profile_label_less , .profile_full{
     display: none;
+    column-count: 2;
+    padding: 15px 25px;
+}
+.profile_full .user-prop-value{
+    color:#486BEF;
 }
 .wall-form{
     margin-top: 15px;
@@ -1080,8 +1084,8 @@ ul li .secodn-menu:hover {
     margin-bottom: 0px;
 }
 .labeled {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 30px;
+    overflow: auto;
 }
 .black-text{
     color:#000;
@@ -1092,12 +1096,12 @@ ul li .secodn-menu:hover {
 
 .profile_more_info_link {
     display: block;
-    margin: 10px 0 -5px;
+    margin: 0;
     border-radius: 4px;
     height: 34px;
     line-height: 32px;
     text-align: center;
-    color: #2a5885 !important;
+    color: rgba(72, 107, 239, 0.3)!important;
     font-size: 13px;
     cursor: pointer;
 }
@@ -1116,10 +1120,6 @@ ul li .secodn-menu:hover {
 }
 .right-column-anket .friends_field{
     margin-bottom: 0px;
-}
-.profile_more_info_link:hover {
-    background-color: #f0f2f5;
-    text-decoration: none;
 }
 .fl_l {
     float: left;
@@ -1690,7 +1690,11 @@ a {
 .user-menu-item svg{
     max-width:25px;
 }
-
+.main-info-anket{
+    padding: 0;
+    overflow: hidden;
+    margin-bottom:15px;
+}
 .user-menu-item a , .user-menu-item button{
     letter-spacing: 1px;
     font-size: 13px;
@@ -1698,6 +1702,48 @@ a {
     color: #000000!important;
     font-family: Muller;
     font-style: normal;
+}
+.anket-info{
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.my-data-row{
+    flex: 1 0 auto;
+}
+.profile_full .user-prop-value a{
+    color: #486BEF;
+}
+.anket-info-content{
+    flex: 0 0 auto;
+}
+.anket-info .label{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 36px;
+    color: #486BEF;
+}
+.anket-info .city{
+    line-height: 15px;
+}
+.anket-info .labeled a{
+    background: linear-gradient(90deg, #1D61E1 0%, #80DFFD 100%);
+    border-radius: 34px;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: lowercase;
+    color: #FFFFFF;
+    padding: 5px;
+    margin-left:15px;
+}
+.anket-info .name{
+    color: #000;
 }
 #wall-form {
     position:relative;
@@ -1733,6 +1779,31 @@ a {
     font-weight: normal;
     font-size: 14px;
     color: #BABABA;
+}
+.info-block {
+    margin-top: 10px;
+}
+.main-info-anket .message-wrap{
+    justify-content: left;
+}
+.user-prop-wrap , .user-prop-wrap a{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000000;
+}
+.profile_more_info{
+    margin: 0 auto;
+}
+.left-column-anket .small-heading a , .left-column-anket .user-friends-list .author{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
 }
 @media (max-width: 1199px) {
     .img-wrap img{
@@ -1967,7 +2038,39 @@ a {
         display: block;
     }
 }
+@media (max-width: 991px) {
+    .anket-info{
+        margin-left: -15px;
+    }
+    .celi-znakomsva-block .fl_l{
+        float:none;
+    }
+    .anket-info .labeled a{
+        margin-right: 15px;
+        margin-left: 0px;
+    }
+    .main-info-anket .like-wrap{
+        margin-top: 15px;
+    }
+    .anket-info-content{
+        max-height: 356px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
 @media (max-width: 767px) {
+    .anket-info{
+        margin-left: 0px;
+        padding-left:15px;
+    }
+    .celi-znakomsva-block .labeled a{
+        display: block;
+        float: left;
+        margin-top: 5px;
+    }
+    .anket-info-content{
+        max-height: inherit;
+    }
     .profile_info .label {
         width: 100px;
     }
@@ -1985,14 +2088,12 @@ a {
     }
 }
 @media (min-width: 576px) and (max-width: 1199px) {
-    .left-column-anket {
-        padding-right: 5px;
-    }
-    .right-column-anket {
-        padding-left: 5px;
-    }
+
 }
 @media (max-width: 575px) {
+    .profile_label_less, .profile_full {
+        column-count: 1;
+    }
     .profile_info{
         margin-top : 15px;
     }
