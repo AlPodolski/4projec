@@ -20,23 +20,8 @@ class PresentWidget extends Widget
 
     public function run()
     {
-        $present_category = PresentsCategory::find()->asArray()->all();
 
-        $i = 0;
-
-        $data = array();
-
-        foreach ($present_category as $item){
-
-
-            $ids = ArrayHelper::getColumn(PresentToCategory::find()->where(['category_id' => $item['id']])->asArray()->all(), 'present_id');
-            $item['presents'] = Presents::find()->where(['in', 'id' , $ids])->asArray()->all();
-
-            $data[$i][] = $item;
-
-            $i++;
-
-        }
+        $data = Presents::find()->asArray()->all();
 
         return $this->render('present', [
                 'data' => $data,
