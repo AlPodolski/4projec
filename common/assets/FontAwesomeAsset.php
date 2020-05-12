@@ -10,4 +10,7 @@ class FontAwesomeAsset extends AssetBundle
     public $css = [
         'web-fonts-with-css/css/fontawesome-all.min.css',
     ];
+    public $depends = [
+        'yii\web\YiiAsset',
+    ];
 }

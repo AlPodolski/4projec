@@ -24,6 +24,7 @@
         "bower-asset/slick-carousel": "1.8.1",
         "bower-asset/admin-lte": "3.0.2",
         "bower-asset/lightgallery": "*",
+        "bower-asset/simple-scrollbar": "*",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "yiisoft/yii2-imagine": "*",
         "iutbay/yii2-imagecache" : "*",

@@ -807,6 +807,9 @@ if (!Yii::$app->user->isGuest){
 
                 </div>
             </div>
+                <div class="present-form">
+
+                </div>
         </div>
     </div>
 </div>
@@ -823,6 +826,7 @@ if (!Yii::$app->user->isGuest){
             </div>
 
             <div class="modal-body modal-gift-present">
+
 
 
             </div>

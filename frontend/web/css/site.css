@@ -787,7 +787,7 @@ h1{
 .message-wrap{
     align-items: center;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
 }
 .message-col{
     padding-right: 0;
@@ -987,7 +987,6 @@ ul li .secodn-menu:hover {
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 2px;
-    width: 15px;
     height: 39px;
     font-family: Muller;
     font-style: normal;
@@ -996,12 +995,17 @@ ul li .secodn-menu:hover {
     color: #FFFFFF;
     text-align: center;
     line-height: 39px;
+    background: #486BEF;
+    border: 1px solid #486BEF;
+    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
+    border-radius: 2px;
+    width: 171px;
 }
 #message-form .alert-success{
     margin-top: 15px;
 }
 .form-otvet {
-    margin-right: 52px;
+    margin-right: 193px;
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
     color: #939393;
@@ -1818,18 +1822,39 @@ a {
     line-height: 18px;
     color: #486BEF;
 }
+#modal-present .modal-dialog{
+    width: 878px;
+}
 #modal-present .modal-header{
     padding-top: 0px;
 }
+.present-wrap{
+    overflow: auto;
+}
+.present-wrap-with-form .present-item{
+    float: left;
+    width: 50%;
+}
+.present-wrap-with-form .present-name{
+    display:none;
+}
+.present-wrap-with-form{
+    width: 66%;
+}
+#modal-present .modal-content{
+    position: relative;
+}
+
 .present-modal-content-wrap .modal-title{
     color:#000;
 }
 .modal-content .present-modal-content-wrap {
     overflow-y: scroll;
-    max-height: 95vh;
+    max-height: 536px;
     margin: 12px;
     overflow-x: hidden;
     margin-right: -13px;
+    scrollbar-color: #EDEEF0 #fff;
 }
 @media (max-width: 1199px) {
     .img-wrap img{

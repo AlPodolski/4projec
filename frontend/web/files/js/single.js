@@ -1,10 +1,9 @@
 
 $(document).ready(function() {
 
-    $('.present-btn ').on('click', function(e){
-
-        var present_id = $(this).attr('data-present-id');
-        var user_id = $(this).attr('data-user-id');
+    function get_present_form(object){
+        var present_id = $(object).attr('data-present-id');
+        var user_id = $(object).attr('data-user-id');
 
         $.ajax({
             url: '/present/get-form',
@@ -16,7 +15,7 @@ $(document).ready(function() {
             },
 
         });
-    });
+    }
 
     var sliderFor1 = $('.slider-items-single');
 
