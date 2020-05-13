@@ -76,7 +76,9 @@ if (!Yii::$app->user->isGuest){
 
                                     <?php else : ?>
 
-                                        <img src="/files/img/nophoto.png" alt="">
+                                        <div class="img-wrap d-flex no-photo">
+                                            <img src="/files/img/nophoto.png" alt="">
+                                        </div>
 
                                     <?php endif; ?>
 

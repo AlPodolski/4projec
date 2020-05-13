@@ -962,7 +962,7 @@ ul li .secodn-menu:hover {
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
     background: hsla(0, 0%, 100%, 0.52) !important;
 }
-.article-anket-wrap .img-wrap , .popular-anket-wrap .img-wrap {
+.img-wrap , .popular-anket-wrap .img-wrap {
     min-height: 250px;
     align-items: center;
     justify-content: center;
@@ -1915,6 +1915,9 @@ a {
 }
 .close_present_form{
     display:none;
+}
+.no-photo{
+    min-height:320px;
 }
 @media (max-width: 1199px) {
     .img-wrap img{
