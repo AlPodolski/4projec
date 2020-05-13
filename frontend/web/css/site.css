@@ -339,10 +339,8 @@ img{
     font-size: 19px;
 }
 #nav-tab a{
-    font-size: 9px;
-    text-transform: uppercase;
+    font-size: 12px;
     color: #838d8f;
-    padding: 7px 30px;
     line-height: 16px;
     border-radius: 0px;
 }
@@ -350,8 +348,12 @@ img{
     padding: 19px;
 }
 #nav-tab .active{
-    color: #fff;
-    background: #838d8f;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
     border: none;
@@ -990,6 +992,14 @@ ul li .secodn-menu:hover {
     top: 10px;
     position:absolute;
 }
+.friends_field_title a{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    color: #486BEF;
+}
 .post_image {
     display: block;
     float: left;
@@ -1380,11 +1390,12 @@ ul li .secodn-menu:hover {
     font-size:12px;
 }
 .small-heading{
-    color: #2a5885!important;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom:10px;
-    display: block;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 18px;
+    color: #8E8E8E !important;
 }
 .user-friends-list{
     text-align: center;
@@ -1393,10 +1404,13 @@ ul li .secodn-menu:hover {
     border-top: none;
 }
 .friends_user_row {
-    border-top: 1px solid #e7e8ec;
     padding: 12px 0;
     clear: both;
     position: relative;
+}
+.main-banner-item svg{
+    width: 100px;
+    height: 145px;
 }
 .friends_photo_wrap {
     float: left;
@@ -2087,6 +2101,7 @@ a {
     .popular-block-mobile{
         display: block;
         background: #fff;
+        margin-bottom: 15px;
     }
     .place-mobile{
         display: inline;
