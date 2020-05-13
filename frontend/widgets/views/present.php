@@ -1,7 +1,7 @@
 <?php /* @var $data array */ ?>
 <?php /* @var $user_id integer */ ?>
 
-<div class="present-wrap present-wrap-with-form">
+<div class="present-wrap">
 
     <?php foreach ($data as $item) : ?>
 

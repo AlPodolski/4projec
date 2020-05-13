@@ -879,6 +879,10 @@ ul li .secodn-menu:hover {
     list-style: none;
     padding:0;
 }
+.present-form{
+    background: #fff;
+    border-left: 1px solid #EDEEF0;
+}
 .mobile-icon{
     background-repeat: repeat;
     background-repeat: no-repeat;
@@ -900,6 +904,51 @@ ul li .secodn-menu:hover {
 }
 .place-mobile , .popular-block-mobile{
     display: none;
+}
+.blue-btn {
+    background: #486BEF;
+    border: 1px solid #486BEF;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
+    border-radius: 2px;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    color: #FFFFFF;
+    padding: 9px 16px 8px;
+}
+.present-form .form-group{
+    text-align:center;
+}
+.present-img{
+    margin: 0 auto;
+    margin-top: 0px;
+    display: block;
+    margin-top: 35px;
+}
+#buypresentform-message {
+    height: 55px;
+    font-family: Muller;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+    color: #ACACAC;
+    margin-top: 30px;
+}
+#present-form .blue-btn{
+    margin-top: 20px;
+}
+.present-heading{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    color: #000000;
+    text-align: center;
 }
 .main-banner-wrap-mobile{
     display: none;
@@ -1821,6 +1870,7 @@ a {
     font-size: 18px;
     line-height: 18px;
     color: #486BEF;
+    display: block;
 }
 #modal-present .modal-dialog{
     width: 878px;
@@ -1836,10 +1886,17 @@ a {
     width: 50%;
 }
 .present-wrap-with-form .present-name{
-    display:none;
+    display:block;
 }
-.present-wrap-with-form{
-    width: 66%;
+.modal-content.row{
+    flex-direction: initial;
+}
+.present-wrap .present-item{
+    float: left;
+    width: 33%;
+}
+.present-wrap-with-form .present-wrap .present-item{
+    width: 50%;
 }
 #modal-present .modal-content{
     position: relative;

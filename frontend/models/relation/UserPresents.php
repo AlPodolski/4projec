@@ -13,6 +13,7 @@ use Yii;
  * @property int|null $to ид пользователя которому подарок
  * @property int|null $resent_id ид подарка
  * @property int|null $timestamp
+ * @property string|null $message
  */
 class UserPresents extends \yii\db\ActiveRecord
 {
@@ -31,6 +32,7 @@ class UserPresents extends \yii\db\ActiveRecord
     {
         return [
             [['from', 'to', 'resent_id', 'timestamp'], 'integer'],
+            [['message'], 'string'],
         ];
     }
 

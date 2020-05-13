@@ -5,6 +5,26 @@ function showPhone(object) {
     $(phone).html($(object).attr('data-phone'));
 
 }
+function get_present_form(object){
+
+    $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
+    $('#modal-present .present-modal-content-wrap').addClass('col-8');
+    $('#modal-present .present-form').addClass('col-4');
+
+    var present_id = $(object).attr('data-present-id');
+    var user_id = $(object).attr('data-user-id');
+
+    $.ajax({
+        url: '/present/get-form',
+        type: 'POST',
+        data: 'present_id='+present_id+'&user_id='+user_id,
+        datatype:'json',
+        success: function (data) {
+            $('.present-form').html(data);
+        },
+
+    });
+}
 function send_message(object){
     var formData = new FormData($("#message-form")[0]);
 

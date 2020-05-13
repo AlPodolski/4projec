@@ -1,21 +1,9 @@
 
+
+
 $(document).ready(function() {
 
-    function get_present_form(object){
-        var present_id = $(object).attr('data-present-id');
-        var user_id = $(object).attr('data-user-id');
 
-        $.ajax({
-            url: '/present/get-form',
-            type: 'POST',
-            data: 'present_id='+present_id+'&user_id='+user_id,
-            datatype:'json',
-            success: function (data) {
-                $('.modal-gift-present').html(data);
-            },
-
-        });
-    }
 
     var sliderFor1 = $('.slider-items-single');
 

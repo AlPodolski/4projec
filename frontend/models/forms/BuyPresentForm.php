@@ -11,6 +11,7 @@ class BuyPresentForm extends Model
     public $present_id;
     public $from_id;
     public $to_id;
+    public $message;
 
 
     public function rules()
@@ -18,6 +19,7 @@ class BuyPresentForm extends Model
         return [
             [['present_id', 'from_id', 'to_id'], 'required'],
             [['present_id', 'from_id', 'to_id'], 'integer'],
+            [['message'], 'string'],
         ];
     }
 
@@ -28,6 +30,7 @@ class BuyPresentForm extends Model
         $userPresent->resent_id = $this->present_id;
         $userPresent->from = $this->from_id;
         $userPresent->to = $this->to_id;
+        $userPresent->message = $this->message;
         $userPresent->timestamp = \time();
 
         return $userPresent->save();
