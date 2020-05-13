@@ -1913,6 +1913,9 @@ a {
     margin-right: -13px;
     scrollbar-color: #EDEEF0 #fff;
 }
+.close_present_form{
+    display:none;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;
@@ -2147,6 +2150,13 @@ a {
     }
 }
 @media (max-width: 991px) {
+    #modal-present .modal-dialog {
+        width: auto;
+        max-width: 94%;
+    }
+    #modal-present .row{
+        margin:0;
+    }
     .anket-info{
         margin-left: -15px;
     }
@@ -2194,11 +2204,23 @@ a {
     .popular-anket-wrap .name{
         font-size: 13px;
     }
+    .present-wrap-with-form .present-wrap .present-item {
+        width: 100%;
+    }
+
 }
 @media (min-width: 576px) and (max-width: 1199px) {
 
 }
 @media (max-width: 575px) {
+
+    .close_present_form{
+        display:block;
+    }
+    .present-wrap .present-item {
+        float: left;
+        width: 50%;
+    }
     .profile_label_less, .profile_full {
         column-count: 1;
     }

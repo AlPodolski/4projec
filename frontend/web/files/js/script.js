@@ -7,9 +7,19 @@ function showPhone(object) {
 }
 function get_present_form(object){
 
-    $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
-    $('#modal-present .present-modal-content-wrap').addClass('col-8');
-    $('#modal-present .present-form').addClass('col-4');
+    $('.present-form').html('');
+
+    if($(window).width() > 574){
+        $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
+        $('#modal-present .present-modal-content-wrap').addClass('col-6 col-md-8');
+        $('#modal-present .present-form').addClass('col-6 col-md-4');
+    }else{
+        $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
+        $('#modal-present .present-modal-content-wrap').addClass('d-none');
+        $('#modal-present .present-form').addClass('col-12');
+    }
+
+    $('.present-form').removeClass('d-none');
 
     var present_id = $(object).attr('data-present-id');
     var user_id = $(object).attr('data-user-id');
@@ -24,6 +34,17 @@ function get_present_form(object){
         },
 
     });
+}
+
+function close_present_form(){
+
+    $('#modal-present .modal-content').removeClass('row  present-wrap-with-form');
+    $('#modal-present .present-modal-content-wrap').removeClass('col-6 col-md-8');
+    $('#modal-present .present-form').removeClass('col-6 col-md-4');
+    $('#modal-present .present-modal-content-wrap').removeClass('d-none');
+
+    $('.present-form').addClass('d-none');
+
 }
 
 function get_presents(object){

@@ -17,6 +17,9 @@ $form = ActiveForm::begin([
 <?= $form->field($model, 'to_id')->hiddenInput(['value' => $giftForUser['id']])->label(false) ?>
 
 <?php $giftForUser->getAvatar() ?>
+<div class="close_present_form" onclick="close_present_form()">
+    <i class="fas fa-arrow-left"></i>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="present-heading">Выбранный подарок</div>
