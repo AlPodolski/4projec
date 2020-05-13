@@ -56,7 +56,7 @@ class SignupForm extends Model
     /**
      * Signs user up.
      *
-     * @return bool whether the creating new account was successful and email was sent
+     * @return bool|User whether the creating new account was successful and email was sent
      */
     public function signup()
     {
@@ -83,7 +83,7 @@ class SignupForm extends Model
             $userPol->city_id =$city_id['id'];
             $userPol->pol_id = $this->pol;
 
-            return $userPol->save();
+            if ( $userPol->save()) return $user;
 
         }
 
