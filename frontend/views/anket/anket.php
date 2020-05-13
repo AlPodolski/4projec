@@ -201,18 +201,20 @@ if (!Yii::$app->user->isGuest){
                                                 <?php echo $onclick ?>>
                                                 <?php if (!Yii::$app->user->isGuest and FriendsHelper::isFiends(Yii::$app->user->id, $model->id) ) : ?>
                                                     <span class="show-message" data-message="Ваш друг">
-                                     <i class="fas fa-user-friends"></i>
-                                </span>
+                                                         <i class="fas fa-user-friends"></i>
+                                                    </span>
                                                 <?php elseif (!Yii::$app->user->isGuest and isset($isFriendsRequestTo) and $isFriendsRequestTo) : ?>
                                                     <span class="show-message" data-message="Заявка отправлена">
-                                <i class="fas fa-check"></i>
-                            </span>
+                                                        <i class="fas fa-check"></i>
+                                                    </span>
                                                 <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
                                                     <span class="show-message" data-message="Принять заявку" onclick="check_friend_request_listing(this)" data-user-id="<?php echo $model->id ?>">
-                                    <i class="fas fa-user-check"></i>
-                                </span>
+                                                        <i class="fas fa-user-check"></i>
+                                                    </span>
                                                 <?php else : ?>
-                                                    <i class="fas fa-plus"></i>
+                                                    <span class="show-message" data-message="Добавить в друзья" >
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
                                                 <?php endif; ?>
                                             </div>
                                         </div>

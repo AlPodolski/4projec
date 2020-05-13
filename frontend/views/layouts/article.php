@@ -45,7 +45,7 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                 <div class="col-8 col-sm-9 message-col">
                     <div class="message-wrap">
 
-                        <div class="message write-message"
+                        <div class="message write-message "
                              <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $post->id )) : ?>
                              onclick="get_message_form(this)"
                              data-user-id="<?php echo $post->id ?>"
@@ -82,12 +82,14 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                                     <i class="fas fa-user-check"></i>
                                 </span>
                             <?php else : ?>
-                                <i class="fas fa-plus"></i>
+                                <span class="show-message" data-message="Добавить в друзья" >
+                                      <i class="fas fa-plus"></i>
+                                </span>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
-                <div class="col-3" data-user-id="<?php echo $post->id ?>" onclick="get_presents(this)">
+                <div class="col-3 show-message" data-user-id="<?php echo $post->id ?>" onclick="get_presents(this)" data-message="Отправить подарок">
                     <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
                         <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
                         <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
