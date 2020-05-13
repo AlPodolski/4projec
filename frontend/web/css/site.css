@@ -1933,6 +1933,9 @@ a {
 .no-photo{
     min-height:320px;
 }
+.mobile-nav .user-sidebar{
+    box-shadow: none;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

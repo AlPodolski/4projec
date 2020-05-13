@@ -16,7 +16,7 @@ use frontend\modules\user\widgets\LoginWidget;
 use frontend\widgets\CityWidget;
 use frontend\widgets\MetricaWidget;
 use frontend\widgets\PopularWidget;
-
+use frontend\widgets\UserSideBarWidget;
 AppAsset::register($this);
 FontAwesomeAsset::register($this);
 
@@ -76,17 +76,25 @@ $login = new LoginForm();
                         <div class="mobile-icon">
                             <i class="fas fa-bars"></i>
                         </div>
+
                         <div class="mobile-menu">
                             <ul class="mobile-nav">
                                 <div class="icon-close">
                                     <i class="fas fa-times"></i>
                                 </div>
+                                <?php if (!Yii::$app->user->isGuest) : ?>
+
+                                    <?php echo UserSideBarWidget::Widget(['form_id' => 'header_form'])?>
+
+                                <?php else : ?>
+
                                 <li><a href="/znakomstva/pol-muzhskoj">Ищу мужчину</a></li>
                                 <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
                                 <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                                 <li><a href="/adverts">Объявления</a></li>
                                 <li data-toggle="modal" data-target="#modal-feed-back" aria-hidden="true"><a href="#">Обратная связь</a></li>
                                 <!--<li><a href="/novosti">Новости сайта</a></li>-->
+
                                 <li>
                                     <?php if (Yii::$app->user->isGuest) : ?>
 
@@ -104,6 +112,7 @@ $login = new LoginForm();
 
                                     <?php endif; ?>
                                 </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>

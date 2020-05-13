@@ -9,6 +9,8 @@ use Yii;
 class UserController extends \yii\web\Controller
 {
 
+    //public $layout = '@app/views/layouts/main-cabinet.php';
+
     public function behaviors()
     {
         return [
