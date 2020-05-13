@@ -176,7 +176,7 @@ $login = new LoginForm();
             </div>
             <div class="modal-body">
 
-                <?php echo RegisterWidget::widget(); ?>
+                    <?php echo RegisterWidget::widget(); ?>
 
             </div>
         </div>
