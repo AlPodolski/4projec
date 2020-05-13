@@ -25,6 +25,12 @@ function get_present_form(object){
 
     });
 }
+
+function get_presents(object){
+    $('#modal-present .present-item').attr('data-user-id', $(object).attr('data-user-id'));
+    $('#modal-present').modal()
+}
+
 function send_message(object){
     var formData = new FormData($("#message-form")[0]);
 

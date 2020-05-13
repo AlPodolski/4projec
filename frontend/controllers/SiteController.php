@@ -162,11 +162,13 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-                $friends = new FriendsRequest();
-                $friends->user_id = '23215';
-                $friends->request_user_id = '4';
-
-                $friends->save();
+        Yii::$app->mailer->compose()
+            ->setFrom('info@4dosug.com')
+            ->setTo('test-kncin7kpe@srv1.mail-tester.com')
+            ->setSubject('Тема сообщения')
+            ->setTextBody('Текст сообщения')
+            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+            ->send();
 
     }
 }

@@ -25,7 +25,6 @@ class PresentWidget extends Widget
 
         return $this->render('present', [
                 'data' => $data,
-                'user_id' => $this->user_id,
             ]
             );
 
