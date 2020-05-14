@@ -35,7 +35,44 @@ function get_present_form(object){
 
     });
 }
+$('#header_form').on('change', function(){
+    /*    files = this.files[0];
 
+        var form_data = new FormData();
+        form_data.append('file', files);*/
+
+
+    var formData = new FormData($("#w1")[0]);
+    $.ajax({
+        url: '/user/photo/add',
+        type: 'POST',
+        data: formData,
+        datatype:'json',
+        // async: false,
+        beforeSend: function() {
+            $('#w1 .form-text').css('display', 'none');
+        },
+        success: function (data) {
+
+            $('#w1 .form-info p').text('Фото загружено');
+            $('#w1 .main-img').attr('src', data);
+            $('.no-photo img').attr('src', data);
+            $('#w1 .form-info').css('display', 'block');
+        },
+
+        complete: function() {
+            // success alerts
+        },
+
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+});
 function close_present_form(){
 
     $('#modal-present .modal-content').removeClass('row  present-wrap-with-form');

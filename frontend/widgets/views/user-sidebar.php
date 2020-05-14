@@ -26,11 +26,15 @@ use yii\helpers\Html;
         <span class="plus">
             <i class="fas fa-plus"></i>
         </span>
-        <label for="<?php echo $form_id ?>" class="<?php if (isset($avatar->file)) echo 'exist-img' ?> img-label">
+        <label for="<?php echo $form_id ?>" class="<?php if (isset($avatar->file)) echo '' ?>exist-img img-label">
 
             <?php if (isset($avatar->file)) : ?>
 
                 <img class="main-img" src="<?php echo $avatar->file ?>">
+
+            <?php else : ?>
+
+                <img class="main-img" src="">
 
             <?php endif; ?>
 
