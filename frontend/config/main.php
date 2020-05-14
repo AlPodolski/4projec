@@ -82,6 +82,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/auth' => 'site/auth',
@@ -96,6 +97,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/anket' => 'user/edit/edit-anket',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/auth/login',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/balance' => 'user/user/balance',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/add' => 'user/photo/upload',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo' => 'user/photo/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/photo/delete' => 'user/photo/delete',

@@ -1,6 +1,7 @@
 <?php
 
 namespace frontend\modules\user\controllers;
+use frontend\modules\user\models\forms\PayForm;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -36,6 +37,34 @@ class UserController extends \yii\web\Controller
             'userFriends' => $userFriends,
         ]);
 
+    }
+
+    public function actionBalance($city)
+    {
+
+        $payForm = new PayForm();
+
+        if ($payForm->load(Yii::$app->request->post()) and $payForm->validate()){
+
+            $order_id = Yii::$app->user->id.'_'.$city;
+
+            $sign = \md5(Yii::$app->params['merchant_id'].':'.$payForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+
+            $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
+
+            $params = 'm='.Yii::$app->params['merchant_id'].
+                '&oa='.$payForm->sum.
+                '&o='.$order_id.
+                '&s='.$sign;
+
+            Yii::$app->response->redirect($cassa_url.$params, 301, false);
+
+        }
+
+        return $this->render('balance', [
+            'city' => $city,
+            'payForm' => $payForm,
+        ]);
     }
 
 }
