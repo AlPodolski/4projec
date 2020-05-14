@@ -82,6 +82,7 @@ use yii\helpers\ArrayHelper;
  * @property integer|null $birthday
  * @property integer|null $pol
  * @property string|null $phone
+ * @property int|null $cash
  */
 class Profile extends \yii\db\ActiveRecord
 {
