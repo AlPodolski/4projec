@@ -190,7 +190,7 @@ $login = new LoginForm();
 </div>
 
 <footer class="footer">
-
+    <img src="//www.free-kassa.ru/img/fk_btn/18.png">
 </footer>
 
 <!-- Modal -->
