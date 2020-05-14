@@ -46,9 +46,9 @@ $this->title = 'Пополнить баланс';
             <?= $form->field($payForm, 'sum')->textInput(['value' => 100]) ?>
 
             <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('Пополнить', ['class' => 'btn btn-primary']) ?>
-                </div>
+
+                    <?= Html::submitButton('Пополнить', ['class' => 'type-btn']) ?>
+
             </div>
 
             <?php ActiveForm::end() ?>
