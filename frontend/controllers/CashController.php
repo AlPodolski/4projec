@@ -23,7 +23,7 @@ class CashController extends Controller
 
         Yii::$app->session->setFlash('success', 'Баланс пополнен');
 
-        Yii::$app->response->redirect('https//'.$user_data[1].'.4dosug.com', 301, false);
+        Yii::$app->response->redirect('https//'.$user_data[1].'.4dosug.com/user', 301, false);
 
     }
 }
