@@ -29,7 +29,7 @@ class AuthController extends Controller
         $model->city = $city;
 
         if ($model->load(Yii::$app->request->post()) && $user = $model->signup()) {
-            Yii::$app->user->login($user);
+            Yii::$app->user->login($user,  3600 * 24 * 30 );
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно, проверьте свой Email');
             return $this->redirect('/user');
         }
