@@ -12,10 +12,6 @@ class SlickAsset extends AssetBundle
         'slick/slick.css',
     ];
 
-    public $cssOptions = [
-        'rel'=>"preload",
-    ];
-
     public $js = [
         'slick/slick.min.js',
     ];
