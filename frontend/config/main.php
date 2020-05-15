@@ -43,6 +43,14 @@ return [
             'sourcePath' => '@app/web/files/uploads',
             'sourceUrl' => '@web/files/uploads',
             'thumbsPath' => '@app/web/thumbs',
+            'extensions' => [
+                'jpg' => 'jpeg',
+                'jpeg' => 'jpeg',
+                'png' => 'png',
+                'gif' => 'gif',
+                'bmp' => 'bmp',
+                'wepb' => 'webp',
+            ],
             'sizes' => [
                 'popular' => [126, 126],
                 'popular_big' => [156, 156],
@@ -127,6 +135,7 @@ return [
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-presents' => 'present/presents',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:[a-z-0-9]+>' => 'filter/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:([a-z-0-9]+/)+[a-z-0-9]+>' => 'filter/index',

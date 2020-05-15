@@ -101,8 +101,20 @@ function get_foto_ryad_form(){
 }
 
 function get_presents(object){
-    $('#modal-present .present-item').attr('data-user-id', $(object).attr('data-user-id'));
-    $('#modal-present').modal()
+
+    $.ajax({
+        url: '/present/get-presents',
+        type: 'POST',
+        datatype:'json',
+        success: function (data) {
+
+            $('#modal-present .modal-body').html(data);
+            $('#modal-present .present-item').attr('data-user-id', $(object).attr('data-user-id'));
+            $('#modal-present').modal()
+
+        },
+
+    });
 }
 
 function send_message(object){

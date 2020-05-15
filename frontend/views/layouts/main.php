@@ -321,7 +321,7 @@ $login = new LoginForm();
                 </div>
                 <div class="modal-body">
 
-                    <?php echo \frontend\widgets\PresentWidget::widget(); ?>
+                    <?php  ?>
 
                 </div>
             </div>

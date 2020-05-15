@@ -73,4 +73,15 @@ class PresentController extends Controller
         return $this->goHome();
 
     }
+
+    public function actionPresents()
+    {
+        if (Yii::$app->request->isPost){
+
+            return $this->renderFile('@app/views/present/present.php');
+
+        }
+
+        return $this->goHome();
+    }
 }
