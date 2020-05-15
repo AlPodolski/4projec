@@ -8,6 +8,7 @@ use yii\helpers\Html;
 
 $form = ActiveForm::begin([
     'id' => 'photo-row-form',
+    'action' => '',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
 
