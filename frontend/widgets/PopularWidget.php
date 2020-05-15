@@ -3,8 +3,8 @@
 
 namespace frontend\widgets;
 
-use frontend\modules\user\models\Profile;
 use yii\base\Widget;
+use frontend\modules\user\models\Popular;
 
 class PopularWidget extends Widget
 {
@@ -19,7 +19,7 @@ class PopularWidget extends Widget
     public function run()
     {
 
-        $popularUsers = Profile::getPopular();
+        $popularUsers = Popular::find()->asArray()->orderBy('created_at DESC')->with('profile')->all();
 
         return $this->render('popular', [
             'popularUsers' => $popularUsers,

@@ -73,6 +73,7 @@ $('#header_form').on('change', function(){
     });
 
 });
+
 function close_present_form(){
 
     $('#modal-present .modal-content').removeClass('row  present-wrap-with-form');
@@ -81,6 +82,21 @@ function close_present_form(){
     $('#modal-present .present-modal-content-wrap').removeClass('d-none');
 
     $('.present-form').addClass('d-none');
+
+}
+
+function get_foto_ryad_form(){
+
+    $.ajax({
+        url: '/photo-row/get-form',
+        type: 'POST',
+        success: function (data) {
+            $('#foto-ryad-in .modal-body').html(data);
+            $('#foto-ryad-in').modal();
+        },
+    });
+
+    $('#foto-ryad-in').modal();
 
 }
 

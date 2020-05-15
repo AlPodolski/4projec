@@ -11,7 +11,7 @@ SlickAsset::register($this);
                 <div class="col-12">
                     <div class="popular-block-wrap-mobile">
                         <div class="col-12">
-                            <span class="popular-anket">Популярные анкеты </span>
+                            <span class="popular-anket" onclick="get_foto_ryad_form()">Хочу сюда </span>
                         </div>
                         <div class="col-12 slider-popular">
                             <?php foreach ($popularUsers as $popularItem) : ?>
@@ -20,11 +20,11 @@ SlickAsset::register($this);
 
                                     <div class="img-wrap">
 
-                                        <a href="/user/<?php echo $popularItem->id ?>">
+                                        <a href="/user/<?php echo $popularItem['profile']['id']?>">
 
-                                            <?php if (isset($popularItem->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem->userAvatarRelations['file']) and $popularItem->userAvatarRelations['file']) : ?>
+                                            <?php if (isset($popularItem['profile']['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem['profile']['userAvatarRelations']['file']) and $popularItem['profile']['userAvatarRelations']['file']) : ?>
 
-                                                <?= Yii::$app->imageCache->thumb($popularItem->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+                                                <?= Yii::$app->imageCache->thumb($popularItem['profile']['userAvatarRelations']['file'], 'popular', ['class' => 'img']) ?>
 
                                             <?php else : ?>
 
@@ -35,7 +35,7 @@ SlickAsset::register($this);
                                     </div>
 
                                     <div class="name text-blue">
-                                        <?php echo explode(' ', $popularItem->username)[0]; ?>
+                                        <?php echo explode(' ', $popularItem['profile']['username'])[0]; ?>
                                     </div>
                                 </div>
 
@@ -44,18 +44,17 @@ SlickAsset::register($this);
                     </div>
                 </div>
             </div>
-
     </div>
     </div>
     <div class="popular-wrap">
 
         <div class="container">
             <div class="row">
-                <div class="col-2 popular-block-wrap">
+                <div class="col-2 popular-block-wrap" onclick="get_foto_ryad_form()">
                     <div class="popular-block">
                         <div class="want-here">
                             <div class="want-btn">
-                                <span>Популярные анкеты</span>
+                                <span>Хочу сюда</span>
                             </div>
                         </div>
                     </div>
@@ -70,22 +69,22 @@ SlickAsset::register($this);
 
                                     <div class="img-wrap">
 
-                                        <a href="/user/<?php echo $popularUsers->id ?>">
+                                        <a href="/user/<?php echo $popularItem['profile']['id']?>">
 
-                                            <?php if (file_exists(Yii::getAlias('@webroot') . $popularUsers->userAvatarRelations['file']) and $popularUsers->userAvatarRelations['file']) : ?>
+                                            <?php if (isset($popularItem['profile']['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem['profile']['userAvatarRelations']['file']) and $popularItem['profile']['userAvatarRelations']['file']) : ?>
 
-                                                <?= Yii::$app->imageCache->thumb($popularUsers->userAvatarRelations['file'], 'popular', ['class' => 'img']) ?>
+                                                <?= Yii::$app->imageCache->thumb($popularItem['profile']['userAvatarRelations']['file'], 'popular', ['class' => 'img']) ?>
 
                                             <?php else : ?>
 
-                                                <img src="/files/img/no-photo.jpg" alt="">
+                                                <?= Yii::$app->imageCache->thumb('/files/uploads/no-photo.jpg', 'popular_big', ['class' => 'img']) ?>
 
                                             <?php endif; ?>
                                         </a>
                                     </div>
 
                                     <div class="name text-blue">
-                                        <?php echo explode(' ', $popularUsers->username)[0]; ?>
+                                        <?php echo explode(' ', $popularItem['profile']['username'])[0]; ?>
                                     </div>
                                 </div>
                             </div>

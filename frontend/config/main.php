@@ -86,6 +86,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/auth' => 'site/auth',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/photo-row/get-form' => 'photo-row/get-form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/cust' => 'site/cust',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/feedback' => 'site/feed-back',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/novosti' => 'news/list',

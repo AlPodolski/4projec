@@ -8,4 +8,5 @@ return [
     'photo_path' => '/files/uploads/',
     'bsVersion' => '4.x',
     'site_name' => '4dosug.com',
+    'photo_row_pay' => 10,
 ];
