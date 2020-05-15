@@ -26,9 +26,55 @@ class PhotoRowController extends Controller
                 ]);
 
             }
+            
+            return 'Требуется авторизация';
 
         }
 
         return $this->goHome();
+    }
+
+    public function actionAdd()
+    {
+        if (Yii::$app->request->isPost) {
+
+            if (!Yii::$app->user->isGuest) {
+
+                $photoRowForm = new Popular();
+
+                $profile = Profile::findOne(Yii::$app->user->id);
+
+                if ($photoRowForm->load(Yii::$app->request->post()) and $photoRowForm->user_id == Yii::$app->user->id ){
+
+                    if ($profile->cash < Yii::$app->params['photo_row_pay']) {
+
+                        Yii::$app->session->setFlash('danger' , 'Недостаточно средств');
+
+                        return $this->goHome();
+
+                    }
+
+                    $photoRowForm->created_at = \time();
+
+                    if ($photoRowForm->save()) {
+
+                        Yii::$app->session->setFlash('success' , 'Анкета добавлена');
+
+                        return $this->goHome();
+                    }
+
+                }else{
+                    Yii::$app->session->setFlash('danger' , 'Ошибка');
+
+                    return $this->goHome();
+
+                }
+
+            }
+
+            Yii::$app->session->setFlash('danger' , 'Требуется авторизация');
+
+            return $this->goHome();
+        }
     }
 }
