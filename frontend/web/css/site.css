@@ -884,6 +884,15 @@ ul li .secodn-menu:hover {
     background: #fff;
     border-left: 1px solid #EDEEF0;
 }
+.popular-block-wrap-mobile .want-here{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.popular-block-wrap-mobile .want-here .want-btn{
+    width:auto;
+    height:auto;
+}
 .mobile-icon{
     background-repeat: repeat;
     background-repeat: no-repeat;
@@ -978,7 +987,7 @@ ul li .secodn-menu:hover {
 #photo-row-form .bottom{
     background: #486bef;
     text-align: center;
-    margin: 0 -16px;
+    margin: 0 -36px;
     padding: 8px;
     margin-bottom: -1px;
 }
