@@ -77,7 +77,10 @@ SlickAsset::register($this);
 
                 <div class="col-10">
                     <div class="row">
-                        <?php foreach ($popularUsers as $popularUsers) : ?>
+
+
+
+                        <?php foreach ($popularUsers as $popularItem) : ?>
 
                             <div class="col-2">
                                 <div class="popular-anket-wrap">
