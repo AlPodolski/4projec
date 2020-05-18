@@ -404,8 +404,8 @@ function register_slick(){
     });
 
 }
-$(document).ready(function() {
 
+$( window ).on( "load", function() {
     if($(window).width() < 1200){
 
         $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
@@ -424,8 +424,7 @@ $(document).ready(function() {
         };
 
     }
-
-});
+})
 
 $(document).ready(function () {
 
