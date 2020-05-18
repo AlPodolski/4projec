@@ -16,7 +16,7 @@ Yii::$app->view->registerMetaTag([
     'name' => 'description',
     'content' => $des
 ]);
-$this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verification', 'content' => $yandex_meta['tag']]);
 ?>
 <div class="site-index">
@@ -164,7 +164,9 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             </div>
 
-            <div class="col-12 pager" data-page="1" data-url="/" data-reqest="<?php echo Yii::$app->request->url ?>"></div>
+            <div class="col-12 pager" data-page="1" data-url="/"
+                 data-reqest="<?php echo Yii::$app->request->url ?>"
+                 data-accept="<?php echo Yii::$app->request->headers->get('Accept') ?>"></div>
 
         </div>
 

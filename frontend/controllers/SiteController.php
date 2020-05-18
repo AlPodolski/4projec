@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\City;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
@@ -162,8 +163,15 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $size = 'popular';
-        echo '<img src="/thumbs/f6d/photo-23215-f4780588baf0c9b41980eba2fd7a09b01586433274_listing.webp">';
+        $city = City::find()->asArray()->all();
+
+        foreach ($city as $item){
+
+            echo $item['city'].'<br>';
+
+        }
+
+        exit();
 
 
     }

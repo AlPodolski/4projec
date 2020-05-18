@@ -18,7 +18,7 @@ Yii::$app->view->registerMetaTag([
     'name' => 'description',
     'content' => $des
 ]);
-$this->registerJsFile('/files/js/page_a.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 ?>
 
 <div class="site-index">
