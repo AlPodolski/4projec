@@ -408,12 +408,14 @@ function register_slick(){
 $( document ).ready( function() {
     if($(window).width() < 1200){
 
+/*
         $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
         $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
 
         $( "head" ).append( "<link rel='preload' href='/files/slick/slick-theme.css' as='style'>" );
         $( "head" ).append( "<link rel='preload' href='/files/slick/slick.css' as='style'>" );
         $( "head" ).append( "<link rel='preload' href='/files/slick/fonts/slick.woff' as='font'>" );
+*/
 
         let script = document.createElement('script');
 
