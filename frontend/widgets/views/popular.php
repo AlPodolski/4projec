@@ -3,7 +3,7 @@
 use frontend\assets\SlickAsset;
 use frontend\modules\user\models\Profile;
 
-SlickAsset::register($this);
+
 ?>
     <div class="popular-block-mobile">
         <div class="container">

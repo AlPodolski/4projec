@@ -2121,9 +2121,6 @@ a {
     .banner-menu-list li a {
         font-size: 14px;
     }
-    .main-banner-wrap-mobile{
-        display: block;
-    }
     .main-banner-wrap {
         padding-right: 15px;
     }
@@ -2165,7 +2162,6 @@ a {
         padding-top: 0px;
     }
     .popular-block-mobile{
-        display: block;
         background: #fff;
         margin-bottom: 15px;
     }

@@ -301,8 +301,8 @@ function send_message_form(object) {
 
 
 }
-function send_feedback(object) {
 
+function send_feedback(object) {
 
         var formData = new FormData($("#feedback-form")[0]);
 
@@ -333,7 +333,9 @@ function send_feedback(object) {
 
 
 }
-$(document).ready(function() {
+function register_slick(){
+
+    console.log(123);
 
     var sliderFor = $('.slider-popular');
 
@@ -368,9 +370,6 @@ $(document).ready(function() {
         ]
     });
 
-});
-$(document).ready(function() {
-
     var sliderFor = $('.banner-item-wrap');
 
     sliderFor.slick({
@@ -404,7 +403,30 @@ $(document).ready(function() {
         ]
     });
 
+}
+$(document).ready(function() {
+
+    if($(window).width() < 1200){
+
+        $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
+        $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
+
+        let script = document.createElement('script');
+
+        // мы можем загрузить любой скрипт с любого домена
+        script.src = "/files/slick/slick.min.js"
+        document.head.append(script);
+
+        script.onload = function() {
+            register_slick();
+            $('.popular-block-mobile').css('display', 'block');
+            $('.main-banner-wrap-mobile').css('display', 'block');
+        };
+
+    }
+
 });
+
 $(document).ready(function () {
 
     $('.city-search').bind("input", function () {
