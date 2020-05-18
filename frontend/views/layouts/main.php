@@ -51,13 +51,13 @@ $login = new LoginForm();
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
-    <link rel="stylesheet" href="/files/slick/slick-theme.css">
-    <link rel="stylesheet" href="/files/slick/slick.css">
-
     <link rel="preload" href="/files/slick/slick.css" as="style" />
     <link rel="preload" href="/files/slick/slick-theme.css" as="style" />
     <link rel="preload" href="/files/slick/fonts/slick.woff" as="font" />
+    <link rel="stylesheet" href="/files/slick/slick-theme.css">
+    <link rel="stylesheet" href="/files/slick/slick.css">
+
+
     <?php $this->head() ?>
 </head>
 <body>
