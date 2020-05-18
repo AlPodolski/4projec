@@ -29,7 +29,7 @@ if (!empty($wallItems)) : ?>
 
                 <?php if (isset($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 
-                    <?= Yii::$app->imageCache->thumb($item['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                    <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'], 'dialog') ?>" alt="">
 
                 <?php else : ?>
 

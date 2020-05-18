@@ -8,7 +8,7 @@
 
             <?php if (isset ($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot').$comment['author']['avatarRelation']['file']) and $comment['author']['avatarRelation']['file']) : ?>
 
-                <?= Yii::$app->imageCache->thumb($comment['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($comment['author']['avatarRelation']['file'], 'dialog') ?>" alt="">
 
             <?php else : ?>
 

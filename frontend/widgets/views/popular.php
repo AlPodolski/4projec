@@ -35,11 +35,11 @@ SlickAsset::register($this);
 
                                                 <?php if (isset($popularItem['profile']['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $popularItem['profile']['userAvatarRelations']['file']) and $popularItem['profile']['userAvatarRelations']['file']) : ?>
 
-                                                    <?= Yii::$app->imageCache->thumb($popularItem['profile']['userAvatarRelations']['file'], 'popular', ['class' => 'img']) ?>
+                                                    <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($popularItem['profile']['userAvatarRelations']['file'], 'popular') ?>" alt="">
 
                                                 <?php else : ?>
 
-                                                    <?= Yii::$app->imageCache->thumb('/files/uploads/no-photo.jpg', 'popular_big', ['class' => 'img']) ?>
+                                                    <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc('/files/uploads/no-photo.jpg', 'popular_big') ?>" alt="">
 
                                                 <?php endif; ?>
                                             </a>

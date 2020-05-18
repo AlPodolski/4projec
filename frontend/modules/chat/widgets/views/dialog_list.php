@@ -13,7 +13,7 @@
 
                             <?php if (file_exists(Yii::getAlias('@webroot') . $dialog->companion['author']['avatarRelation']['file']) and $dialog->companion['author']['avatarRelation']['file']) : ?>
 
-                                <?= Yii::$app->imageCache->thumb( $dialog->companion['author']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+                                <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($dialog->companion['author']['avatarRelation']['file'], 'dialog') ?>" alt="">
 
                             <?php else : ?>
 
@@ -42,7 +42,7 @@
 
                                                     <?php if (file_exists(Yii::getAlias('@webroot') . $dialog['lastMessage']['author']['avatarRelation']['file']) and $dialog['lastMessage']['author']['avatarRelation']['file']) : ?>
 
-                                                        <?= Yii::$app->imageCache->thumb($dialog['lastMessage']['author']['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+                                                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($dialog['lastMessage']['author']['avatarRelation']['file'], 'dialog') ?>" alt="">
 
                                                     <?php else : ?>
 

@@ -26,7 +26,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
                     <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 
-                        <?= Yii::$app->imageCache->thumb($item['author']['avatarRelation']['file'], 'dialog', ['class'=>'img']) ?>
+                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'] , 'dialog') ?>" alt="">
 
                     <?php else : ?>
 
@@ -87,7 +87,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?php if (file_exists(Yii::getAlias('@webroot').$user['userAvatarRelations']['file']) and $user['userAvatarRelations']['file']) : ?>
 
-        <?= Yii::$app->imageCache->thumb($user['userAvatarRelations']['file'], 'dialog', ['class'=>'img d-none user-img']) ?>
+        <img loading="lazy" class="img d-none user-img" srcset="<?= Yii::$app->imageCache->thumbSrc($user['userAvatarRelations']['file'] , 'dialog') ?>" alt="">
 
     <?php else : ?>
 

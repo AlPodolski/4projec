@@ -43,7 +43,8 @@ $this->registerMetaTag([
                 <a class="post_image" href="/user/<?php echo $userName['id']; ?>">
                     <?php if (isset ($userName['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $userName['userAvatarRelations']['file']) and $userName['userAvatarRelations']['file']) : ?>
 
-                        <?= Yii::$app->imageCache->thumb($userName['userAvatarRelations']['file'], 'dialog', ['class' => 'img']) ?>
+                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($userName['userAvatarRelations']['file'] , 'dialog') ?>" alt="">
+
 
                     <?php else : ?>
 
@@ -108,7 +109,8 @@ $this->registerMetaTag([
                                     <a href="/user/<?php echo $userFriend['id']; ?>">
                                         <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) : ?>
 
-                                            <?= Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], '80', ['class' => 'friends_photo_img']) ?>
+                                            <img loading="lazy" class="friends_photo_img" srcset="<?= Yii::$app->imageCache->thumbSrc($userFriend['userAvatarRelations']['file'], '80') ?>" alt="">
+
 
                                         <?php else : ?>
 
@@ -160,7 +162,7 @@ $this->registerMetaTag([
                                         <a href="/user/<?php echo $userFriendsRequestItem['friendsProfiles']['id']; ?>">
                                             <?php if (isset($userName['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $userFriendsRequestItem['friendsProfiles']['avatarRelation']['file']) and $userFriendsRequestItem['friendsProfiles']['avatarRelation']['file']) : ?>
 
-                                                <?= Yii::$app->imageCache->thumb($userFriendsRequestItem['friendsProfiles']['avatarRelation']['file'], '80', ['class' => 'friends_photo_img']) ?>
+                                                <img loading="lazy" class="friends_photo_img" srcset="<?= Yii::$app->imageCache->thumbSrc($userName['avatarRelation']['file'] , '80') ?>" alt="">
 
                                             <?php else : ?>
 
@@ -219,7 +221,7 @@ $this->registerMetaTag([
                                         <a href="/user/<?php echo $sendUserFriendsRequestItem['sendFriendsProfiles']['id']; ?>">
                                             <?php if (isset ($userName['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file']) and $sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file']) : ?>
 
-                                                <?= Yii::$app->imageCache->thumb($sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file'], '80', ['class' => 'friends_photo_img']) ?>
+                                                <img loading="lazy" class="friends_photo_img" srcset="<?= Yii::$app->imageCache->thumbSrc($sendUserFriendsRequestItem['sendFriendsProfiles']['avatarRelation']['file'], '80') ?>" alt="">
 
                                             <?php else : ?>
 
@@ -273,7 +275,7 @@ $this->registerMetaTag([
 
                     <?php if (isset($userName['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $userName['avatarRelation']['file']) and $userName['avatarRelation']['file']) : ?>
 
-                        <?= Yii::$app->imageCache->thumb($userName['avatarRelation']['file'], 'dialog', ['class' => 'img']) ?>
+                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($userName['avatarRelation']['file'] , 'dialog') ?>" alt="">
 
                     <?php else : ?>
 

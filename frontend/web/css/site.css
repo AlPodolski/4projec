@@ -1496,9 +1496,6 @@ ul li .secodn-menu:hover {
     position: relative;
     position: static;
 }
-.friends-list{
-    margin-top: 10px;
-}
 .friends_user_info {
     padding: 5px 10px 0 0;
     overflow: hidden;

@@ -649,7 +649,10 @@ if (!Yii::$app->user->isGuest){
                                     <div class="col-4">
                                         <a class="post_image" href="/user/<?php echo $userFriend['id'] ?>">
                                             <?php if (file_exists(Yii::getAlias('@webroot') . $userFriend['userAvatarRelations']['file']) and $userFriend['userAvatarRelations']['file']) {
-                                                echo Yii::$app->imageCache->thumb($userFriend['userAvatarRelations']['file'], 'dialog', ['class' => 'img']);
+
+                                                ?>
+                                                <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($userFriend['userAvatarRelations']['file'], 'dialog') ?>" alt="">
+                                                <?php
                                             } else {
                                                 echo '<img src="/files/img/nophoto.png" alt="">';
                                             }  ?>
@@ -699,7 +702,7 @@ if (!Yii::$app->user->isGuest){
 
                                         <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
 
-                                            <?= Yii::$app->imageCache->thumb($item->file, 'gallery-mini', ['class' => 'img']) ?>
+                                            <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item->file, 'gallery-mini') ?>" alt="">
 
                                         <?php else : ?>
 
@@ -746,7 +749,7 @@ if (!Yii::$app->user->isGuest){
                         <div class="col-3 col-sm-2">
                             <?php if (isset($userPhoto['file']) and file_exists(Yii::getAlias('@webroot') . $userPhoto['file']) and $userPhoto['file']) : ?>
 
-                                <?= Yii::$app->imageCache->thumb($userPhoto['file'], 'dialog', ['class' => 'img']) ?>
+                                <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($userPhoto['file'], 'dialog') ?>" alt="">
 
                             <?php else : ?>
 
