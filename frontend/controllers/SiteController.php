@@ -162,13 +162,9 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        Yii::$app->mailer->compose()
-            ->setFrom('info@4dosug.com')
-            ->setTo('test-kncin7kpe@srv1.mail-tester.com')
-            ->setSubject('Тема сообщения')
-            ->setTextBody('Текст сообщения')
-            ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
-            ->send();
+        $size = 'popular';
+        echo '<img src="/thumbs/f6d/photo-23215-f4780588baf0c9b41980eba2fd7a09b01586433274_listing.webp">';
+
 
     }
 }

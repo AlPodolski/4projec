@@ -66,12 +66,15 @@ if (!Yii::$app->user->isGuest){
 
                                 <?php if ($item['avatar'] == 1) : ?>
 
+
                                     <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
                                         <picture>
-                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>" media="(max-width: 767px)">
-                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>">
+
+                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>" media="(max-width: 767px)" >
+                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>" >
                                             <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>" alt="">
+
                                         </picture>
 
                                     <?php else : ?>

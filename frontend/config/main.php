@@ -39,17 +39,18 @@ return [
             'enableCsrfValidation' => false
         ],
         'imageCache' => [
-            'class' => 'iutbay\yii2imagecache\ImageCache',
+            'class' => 'frontend\components\ImageCache',
             'sourcePath' => '@app/web/files/uploads',
             'sourceUrl' => '@web/files/uploads',
             'thumbsPath' => '@app/web/thumbs',
             'extensions' => [
-                'jpg' => 'jpeg',
-                'jpeg' => 'jpeg',
+ //               'jpg' => 'jpeg',
+/*                'jpeg' => 'jpeg',
                 'png' => 'png',
                 'gif' => 'gif',
-                'bmp' => 'bmp',
-                'wepb' => 'webp',
+                'bmp' => 'bmp',*/
+                'jpg' => 'webp',
+                'webp' => 'webp',
             ],
             'sizes' => [
                 'popular' => [126, 126],
