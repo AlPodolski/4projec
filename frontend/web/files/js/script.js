@@ -405,16 +405,21 @@ function register_slick(){
 
 }
 
-$( window ).on( "load", function() {
+$( document ).ready( function() {
     if($(window).width() < 1200){
 
         $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
         $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
 
+        $( "head" ).append( "<link rel='preload' href='/files/slick/slick-theme.css' as='style'>" );
+        $( "head" ).append( "<link rel='preload' href='/files/slick/slick.css' as='style'>" );
+        $( "head" ).append( "<link rel='preload' href='/files/slick/fonts/slick.woff' as='font'>" );
+
         let script = document.createElement('script');
 
         // мы можем загрузить любой скрипт с любого домена
         script.src = "/files/slick/slick.min.js"
+
         document.head.append(script);
 
         script.onload = function() {
