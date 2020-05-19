@@ -45,10 +45,10 @@ return [
             'thumbsPath' => '@app/web/thumbs',
             'extensions' => [
  //               'jpg' => 'jpeg',
-/*                'jpeg' => 'jpeg',
+                'jpeg' => 'jpeg',
                 'png' => 'png',
                 'gif' => 'gif',
-                'bmp' => 'bmp',*/
+                'bmp' => 'bmp',
                 'jpg' => 'webp',
                 'webp' => 'webp',
             ],
