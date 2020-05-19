@@ -60,13 +60,11 @@ class ImageCache extends Cache
         $src = str_replace('%', '%25', $src);
 
         if(strpos(Yii::$app->request->headers->get('Accept'), 'image/webp')){
-            $src = \str_replace('.jpg', '.webp', $src);
 
-
-                if (\strpos($src['srcPath'], '.jpg'))
-                    $src = \str_replace('.webp', '.jpg', $src['srcPath']);
-                if (\strpos($src['srcPath'], '.jpeg'))
-                    $src = \str_replace('.webp', '.jpeg', $src['srcPath']);
+                if (\strpos($src, '.jpg'))
+                    $src = \str_replace('.webp', '.jpg', $src);
+                if (\strpos($src, '.jpeg'))
+                    $src = \str_replace('.webp', '.jpeg', $src);
 
 
         }
