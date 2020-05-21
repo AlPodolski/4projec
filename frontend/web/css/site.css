@@ -1999,6 +1999,12 @@ a {
 .mobile-nav .user-sidebar{
     box-shadow: none;
 }
+#cityModal .modal-header{
+    padding-top: 20px;
+}
+#cityModal .modal-body{
+    padding: 0px 15px 15px 15px;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

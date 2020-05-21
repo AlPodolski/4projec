@@ -255,7 +255,24 @@ $login = new LoginForm();
 
                 <input type="text" name="city" class="form-control city-search" placeholder="Ввидите название города:">
 
-                <div class="city-wrap"></div>
+                <div class="city-wrap">
+                    <ul class="city-list">
+                        <li><a href="https://msk.4dosug.com/">Москва</a></li>
+                        <li><a href="https://sankt-piterburg.4dosug.com">Санкт-Петербург</a></li>
+                        <li><a href="https://novosibirsk.4dosug.com">Новосибирск</a></li>
+                        <li><a href="https://ekaterinburg.4dosug.com">Екатеринбург</a></li>
+                        <li><a href="https://nizhniy-novgorod.4dosug.com">Нижний Новгород</a></li>
+                        <li><a href="https://kazan.4dosug.com">Казань</a></li>
+                        <li><a href="https://chelyabinsk.4dosug.com">Челябинск</a></li>
+                        <li><a href="https://omsk.4dosug.com">Омск</a></li>
+                        <li><a href="https://samara.4dosug.com">Самара</a></li>
+                        <li><a href="https://rostov-na-dony.4dosug.com">Ростов-на-Дону</a></li>
+                        <li><a href="https://ufa.4dosug.com">Уфа</a></li>
+                        <li><a href="https://voronezh.4dosug.loc">Воронеж</a></li>
+                        <li><a href="https://perm.4dosug.loc">Пермь</a></li>
+                        <li><a href="https://volgograd.4dosug.loc">Волгоград</a></li>
+                    </ul>
+                </div>
 
             </div>
 
