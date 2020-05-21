@@ -1,6 +1,7 @@
 <?php
 return [
     'adminEmail' => 'admin@example.com',
+    'no_value_text' => 'Спроси меня',
     'advert_limit' => '40',
     'post_limit' => '12',
     'wall_items_limit' => '20',
