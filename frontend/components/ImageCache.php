@@ -2,9 +2,12 @@
 
 
 namespace frontend\components;
+use Imagine\Image\ManipulatorInterface;
+use Imagine\Image\Point;
 use iutbay\yii2imagecache\ImageCache as Cache;
 use Yii;
 use yii\helpers\ArrayHelper;
+use frontend\components\Image;
 
 class ImageCache extends Cache
 {
@@ -107,6 +110,32 @@ class ImageCache extends Cache
 
         // create thumb
         return $this->createThumb($src, $info['dstPath'], $info['size'], $this->resizeMode);
+    }
+
+    /**
+     * Create thumb
+     * @param string $srcPath
+     * @param string $dstPath
+     * @param string $size
+     * @param string $mode
+     * @return boolean
+     */
+    public function createThumb($srcPath, $dstPath, $size, $mode = ManipulatorInterface::THUMBNAIL_OUTBOUND)
+    {
+
+
+        if ($size == self::SIZE_FULL) {
+            $thumb = \frontend\components\Image::getImagine()->open($srcPath);
+        } else {
+            $width = $this->sizes[$size][0];
+            $height = $this->sizes[$size][1];
+            $thumb = \frontend\components\Image::thumbnail($srcPath, $width, $height, $mode);
+        }
+
+        if ($thumb && $thumb->save($dstPath))
+            return true;
+
+        return false;
     }
 
     /**

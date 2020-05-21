@@ -142,8 +142,6 @@ class ConsoleController extends Controller
 
         foreach ($profiles as $profile){
 
-            if(substr_count($profile['username'], ' ') > 1){
-
                 Wall::deleteAll(['from' => $profile['id']]);
 
                 if ($friends = \frontend\modules\user\components\Friends::getFriendsIds($profile['id'])){
@@ -178,8 +176,6 @@ class ConsoleController extends Controller
                 }
 
                 Profile::deleteAll('id = '.$profile['id']);
-
-            }
 
         }
     }

@@ -162,7 +162,7 @@ $this->registerMetaTag([
                                         <a href="/user/<?php echo $userFriendsRequestItem['friendsProfiles']['id']; ?>">
                                             <?php if (isset($userName['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $userFriendsRequestItem['friendsProfiles']['avatarRelation']['file']) and $userFriendsRequestItem['friendsProfiles']['avatarRelation']['file']) : ?>
 
-                                                <img loading="lazy" class="friends_photo_img" srcset="<?= Yii::$app->imageCache->thumbSrc($userName['avatarRelation']['file'] , '80') ?>" alt="">
+                                                <img loading="lazy" class="friends_photo_img" srcset="<?= Yii::$app->imageCache->thumbSrc($userFriendsRequestItem['friendsProfiles']['avatarRelation']['file'] , '80') ?>" alt="">
 
                                             <?php else : ?>
 
