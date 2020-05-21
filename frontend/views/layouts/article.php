@@ -46,9 +46,12 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                     <div class="message-wrap">
 
                         <div class="message write-message "
+
                              <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $post->id )) : ?>
                              onclick="get_message_form(this)"
                              data-user-id="<?php echo $post->id ?>"
+                             <?php elseif (Yii::$app->user->isGuest) : ?>
+                             data-toggle="modal" data-target="#modal-in" aria-hidden="true"
                              <?php endif; ?>
                             >
                             Написать
@@ -63,6 +66,10 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                                 $onclick = 'onclick="addToFriendsListing(this)"';
                             } else {
                                 $onclick = '';
+                            }
+
+                            if (Yii::$app->user->isGuest) {
+                                $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
                             }
                         ?>
 
@@ -89,7 +96,16 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                         </div>
                     </div>
                 </div>
-                <div class="col-3 show-message" data-user-id="<?php echo $post->id ?>" onclick="get_presents(this)" data-message="Отправить подарок">
+                <?php if (Yii::$app->user->isGuest) : ?>
+                    <?php
+                    $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                    ?>
+                <?php else : ?>
+                    <?php
+                    $onclick = 'onclick="get_presents(this)"';
+                    ?>
+                <?php endif; ?>
+                <div class="col-3 show-message" data-user-id="<?php echo $post->id ?>" <?php echo $onclick ?> data-message="Отправить подарок">
                     <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
                         <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
                         <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>

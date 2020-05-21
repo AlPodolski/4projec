@@ -57,7 +57,17 @@ if (!empty($wallItems)) : ?>
                 <?php echo $item['text'] ?>
             </div>
 
-            <div onclick="like(this)" class="like-btn <?php echo (Yii::$app->user->isGuest) ? 'guest' : '' ?> " data-id="<?php echo $item['id'] ?>">
+            <?php if(Yii::$app->user->isGuest) : ?>
+
+            <?php $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"' ?>
+
+            <?php else : ?>
+
+            <?php $onclick = 'onclick="like(this)"'; ?>
+
+            <?php endif; ?>
+
+            <div <?php echo $onclick; ?> class="like-btn <?php echo (Yii::$app->user->isGuest) ? 'guest' : '' ?> " data-id="<?php echo $item['id'] ?>">
 
                 <?php if (!Yii::$app->user->isGuest and !LikeHelper::isLiked(Yii::$app->user->id, $item['id'], Yii::$app->params['wall_item_redis_key'] )) : ?>
 

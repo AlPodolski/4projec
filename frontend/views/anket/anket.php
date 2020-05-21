@@ -185,7 +185,10 @@ if (!Yii::$app->user->isGuest){
                                                 <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $model->id )) : ?>
                                                     onclick="get_message_form(this)"
                                                     data-user-id="<?php echo $model->id ?>"
+                                                <?php elseif (Yii::$app->user->isGuest) : ?>
+                                                    data-toggle="modal" data-target="#modal-in" aria-hidden="true"
                                                 <?php endif; ?> >
+
                                                 Написать
                                             </div>
 
@@ -198,6 +201,9 @@ if (!Yii::$app->user->isGuest){
                                                 $onclick = 'onclick="addToFriendsListing(this)"';
                                             } else {
                                                 $onclick = '';
+                                            }
+                                            if (Yii::$app->user->isGuest) {
+                                                $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
                                             }
                                             ?>
 
@@ -224,7 +230,16 @@ if (!Yii::$app->user->isGuest){
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4 col-md-3 col-lg-3" onclick="get_presents(this)" data-user-id="<?php echo $model['id'] ?>">
+                                    <?php if (Yii::$app->user->isGuest) : ?>
+                                        <?php
+                                        $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                                        ?>
+                                    <?php else : ?>
+                                        <?php
+                                        $onclick = 'onclick="get_presents(this)"';
+                                        ?>
+                                    <?php endif; ?>
+                                    <div class="col-4 col-md-3 col-lg-3" <?php echo $onclick ?> data-user-id="<?php echo $model['id'] ?>">
                                         <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
                                             <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>

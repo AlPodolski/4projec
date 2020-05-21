@@ -4,6 +4,10 @@ use frontend\assets\SlickAsset;
 use frontend\modules\user\models\Profile;
 
 SlickAsset::register($this);
+
+if (Yii::$app->user->isGuest) $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+else $onclick = 'onclick="get_foto_ryad_form()"';
+
 ?>
     <div class="popular-block-mobile">
         <div class="container">
@@ -12,9 +16,9 @@ SlickAsset::register($this);
                     <div class="popular-block-wrap-mobile">
                         <div class="row">
                             <div class="col-12">
-                                <span class="popular-anket" onclick="get_foto_ryad_form()">Хочу сюда </span>
+                                <span class="popular-anket" <?php echo $onclick ?> >Хочу сюда </span>
                             </div>
-                            <div class="col-2 want-here" onclick="get_foto_ryad_form()">
+                            <div class="col-2 want-here" <?php echo $onclick ?>>
                                 <div class="want-here" style="align-items: center;justify-content: center;display: flex;">
                                     <div class="want-btn">
                                         <svg width="42" height="41" viewBox="0 0 42 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +69,7 @@ SlickAsset::register($this);
 
         <div class="container">
             <div class="row">
-                <div class="col-2 popular-block-wrap" onclick="get_foto_ryad_form()">
+                <div class="col-2 popular-block-wrap" <?php echo $onclick ?>>
                     <div class="popular-block">
                         <div class="want-here">
                             <div class="want-btn">
