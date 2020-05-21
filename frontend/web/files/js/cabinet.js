@@ -21,14 +21,12 @@ $(document).ready(function() {
     $("#profile-phone").mask("+7(999)99-99-999");
 });
 
-$('#addpostform-image').on('change', function(){
+$('#photo-file').on('change', function(){
 /*    files = this.files[0];
 
     var form_data = new FormData();
     form_data.append('file', files);*/
-
-
-    var formData = new FormData($("#w0")[0]);
+    var formData = new FormData($("#add-gallery-form")[0]);
     $.ajax({
         url: '/user/photo/add',
         type: 'POST',
@@ -39,10 +37,7 @@ $('#addpostform-image').on('change', function(){
             $('#w0 .form-text').css('display', 'none');
         },
         success: function (data) {
-
-            $('#w0 .form-info p').text('Фото загружено');
-            $('#w0 .main-img').attr('src', data);
-            $('#w0 .form-info').css('display', 'block');
+            $('.photo-items').prepend(data);
         },
 
         complete: function() {

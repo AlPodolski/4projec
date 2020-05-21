@@ -4,6 +4,7 @@
 namespace frontend\modules\user\controllers;
 use frontend\modules\user\components\helpers\DeleteImgHelper;
 use frontend\modules\user\components\helpers\ImageHelper;
+use frontend\modules\user\components\SavePhotoHelper;
 use yii\web\Controller;
 use Yii;
 use yii\web\UploadedFile;
@@ -36,29 +37,27 @@ class PhotoController extends Controller
 
         if (!Yii::$app->user->isGuest and Yii::$app->request->isPost){
 
-            $file = UploadedFile::getInstance($model, 'file');
+            if ($file = UploadedFile::getInstance($model, 'file')){
 
-            $model->file = 'photo-'.Yii::$app->user->id.'-'.\md5($file->name).\time().'.jpg';
+                return SavePhotoHelper::savePhoto( $file, 1);
 
-            $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
+            }elseif($files = UploadedFile::getInstances($model, 'file')){
 
-            $dir = Yii::$app->params['photo_path'].$dir_hash;
+                $resultPhotoItems = array();
 
-            $save_dir = DirHelprer::prepareDir(Yii::getAlias('@webroot').$dir);
+                foreach ($files as $file){
 
-            ImageHelper::prepareImage($file, $model, $save_dir, $model->file);
+                    $resultPhotoItems[] = SavePhotoHelper::savePhoto( $file);
 
-            $model->user_id = Yii::$app->user->id;
+                }
 
-            $model->avatar = 1;
+                return $this->renderFile(Yii::getAlias('@app/modules/user/views/photo/upload.php'), [
+                    'resultPhotoItems' => $resultPhotoItems
+                ]);
 
-            $model->unsetAvatarStatus();
 
-            $model->file = $dir.$model->file;
 
-            $model->save();
-
-            return $model->file;
+            }
 
         }
 
