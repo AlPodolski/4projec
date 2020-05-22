@@ -268,9 +268,9 @@ $login = new LoginForm();
                         <li><a href="https://samara.4dosug.com">Самара</a></li>
                         <li><a href="https://rostov-na-dony.4dosug.com">Ростов-на-Дону</a></li>
                         <li><a href="https://ufa.4dosug.com">Уфа</a></li>
-                        <li><a href="https://voronezh.4dosug.loc">Воронеж</a></li>
-                        <li><a href="https://perm.4dosug.loc">Пермь</a></li>
-                        <li><a href="https://volgograd.4dosug.loc">Волгоград</a></li>
+                        <li><a href="https://voronezh.4dosug.com">Воронеж</a></li>
+                        <li><a href="https://perm.4dosug.com">Пермь</a></li>
+                        <li><a href="https://volgograd.4dosug.com">Волгоград</a></li>
                     </ul>
                 </div>
 

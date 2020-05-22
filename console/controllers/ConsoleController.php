@@ -60,9 +60,16 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $time = 1583931203;
+        $names = ['Скайп', 'В поиске девочки',
+            'Кошечка',
+            'Возьму',
+            'Женат',
+            'Кому',
+            'Возьму'];
 
-        if($profiles = Profile::find()->asArray()->where([ '<', 'created_at' , $time])->andWhere([ '>', 'id', 1])->asArray()->all()){
+        foreach ($names as $nane){
+
+            if($profiles = Profile::find()->asArray()->where([ 'like' , 'username' , $nane])->asArray()->all()){
 
                 foreach ($profiles as $profile){
 
@@ -104,6 +111,7 @@ class ConsoleController extends Controller
                 }
             }
 
+        }
 
     }
 
