@@ -60,12 +60,10 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $names = ['Скайп', 'В поиске девочки',
-            'Кошечка',
-            'Возьму',
-            'Женат',
-            'Кому',
-            'Возьму'];
+        $names = [
+            'Тори',
+            'Выебу',
+            ];
 
         foreach ($names as $nane){
 

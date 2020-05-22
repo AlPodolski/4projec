@@ -28,9 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'username',
-            //'auth_key',
-            //'password_hash',
-            //'password_reset_token',
+                [
+                    'attribute' => 'picture',
+                    'format' => 'raw',
+                    'value' => function ($user) {
+                        /* @var $user \frontend\modules\user\models\Profile */
+                        $user->getAvatar();
+                        return Html::img('http://msk.'.Yii::$app->params['site_name'] .$user->avatar, ['width' => '50px']);
+
+                    },
+                ],
             'email',
             'cash',
             'status',
