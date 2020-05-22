@@ -62,7 +62,7 @@ class ConsoleController extends Controller
 
         $time = 1583930660;
 
-        if($profiles = Profile::find()->asArray()->where([ '<', 'created_at' , $time])->andWhere(['id' > 1])->asArray()->all()){
+        if($profiles = Profile::find()->asArray()->where([ '<', 'created_at' , $time])->andWhere([ '>', 'id', 1])->asArray()->all()){
 
                 foreach ($profiles as $profile){
 
