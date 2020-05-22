@@ -60,7 +60,7 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $time = 1583930660;
+        $time = 1583931203;
 
         if($profiles = Profile::find()->asArray()->where([ '<', 'created_at' , $time])->andWhere([ '>', 'id', 1])->asArray()->all()){
 
