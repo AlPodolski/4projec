@@ -875,7 +875,7 @@ if (!Yii::$app->user->isGuest){
 
                                         <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
 
-                                            <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item->file, 'gallery-mini') ?>" alt="">
+                                            <img loading="lazy" class="img" src="<?= Yii::$app->imageCache->thumbSrc($item->file, 'gallery-mini') ?>" alt="">
 
                                         <?php else : ?>
 
