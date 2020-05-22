@@ -1,10 +1,13 @@
 <?php /* @var $dialogs array */ ?>
 <?php /* @var $user_id integer */ ?>
 <div class="dialog_list">
+
+
+        <?php if (!empty($dialogs)) : ?>
+
     <ul class="dialog_item_ul">
 
-
-        <?php foreach ($dialogs as $dialog) : ?>
+            <?php foreach ($dialogs as $dialog) : ?>
 
             <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and $dialog['lastMessage']['from'] != $user_id) echo 'not-read-dialog'; ?> ">
                 <div class="row">
@@ -69,5 +72,14 @@
             </li>
 
         <?php endforeach; ?>
+
     </ul>
+
+        <?php else : ?>
+           <div class="col-12">
+               <p>У Вас пока нет диалогов</p>
+           </div>
+        <?php endif; ?>
+
+
 </div>
