@@ -192,7 +192,7 @@ class ImportController extends Controller
         $smoking = Smoking::find()->asArray()->all();
         $alcogol = Alcogol::find()->asArray()->all();
 
-        $stream = \fopen(Yii::getAlias('@app/files/tabor06_04_2020.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/content_22_05_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -207,8 +207,9 @@ class ImportController extends Controller
 
         $i = 0;
 
-        foreach ($records as $record) {
+        $time = \time();
 
+        foreach ($records as $record) {
 
             foreach ($city as $item) {
 
@@ -221,7 +222,7 @@ class ImportController extends Controller
                     $user->auth_key = Yii::$app->security->generateRandomString();
                     $user->email = 'admin@mail.com';
                     $user->status = 10;
-                    $user->created_at = $time = \time();
+                    $user->created_at = $time ;
                     $user->updated_at = $time;
                     $user->verification_token = Yii::$app->security->generateRandomString(43);
                     $user->city = $item['url'];
