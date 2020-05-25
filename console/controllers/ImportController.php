@@ -222,6 +222,7 @@ class ImportController extends Controller
                     $user->auth_key = Yii::$app->security->generateRandomString();
                     $user->email = 'admin@mail.com';
                     $user->status = 10;
+                    $user->fake = 0;
                     $user->created_at = $time ;
                     $user->updated_at = $time;
                     $user->verification_token = Yii::$app->security->generateRandomString(43);
