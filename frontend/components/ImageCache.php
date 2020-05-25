@@ -64,11 +64,10 @@ class ImageCache extends Cache
 
         if(strpos(Yii::$app->request->headers->get('Accept'), 'image/webp')){
 
-                if (\strpos($src, '.jpg'))
-                    $src = \str_replace('.webp', '.jpg', $src);
-                if (\strpos($src, '.jpeg'))
-                    $src = \str_replace('.webp', '.jpeg', $src);
-
+            if (\strpos($src, '.jpg'))
+                    $src = \str_replace('.jpg', '.webp' , $src);
+            if (\strpos($src, '.jpeg'))
+                    $src = \str_replace('.jpeg' , '.webp' , $src);
 
         }
 
@@ -93,10 +92,7 @@ class ImageCache extends Cache
         $src = $info['srcPath'];
 
         if (\strpos($info['srcPath'], '.webp')){
-            if (\strpos($info['srcPath'], '.jpg'))
             $src = \str_replace('.webp', '.jpg', $info['srcPath']);
-            if (\strpos($info['srcPath'], '.jpeg'))
-            $src = \str_replace('.webp', '.jpeg', $info['srcPath']);
         }
 
         if (!file_exists($src))
