@@ -60,14 +60,7 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-        $names = [
-            'Тори',
-            'Выебу',
-            ];
-
-        foreach ($names as $nane){
-
-            if($profiles = Profile::find()->asArray()->where([ 'like' , 'username' , $nane])->asArray()->all()){
+            if($profiles = Profile::find()->asArray()->where([ 'created_at' => '1590388185'])->asArray()->all()){
 
                 foreach ($profiles as $profile){
 
@@ -109,7 +102,7 @@ class ConsoleController extends Controller
                 }
             }
 
-        }
+
 
     }
 
