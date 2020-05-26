@@ -78,11 +78,11 @@ class ConsoleController extends Controller
 
                     if ($photo = Photo::find()->where(['user_id' => $profile['id'] ] )->asArray()->all() ){
 
-                        foreach ($photo as $item){
+                        /*foreach ($photo as $item){
 
                             if (isset ($item['file']) and !empty($item['file']) and \file_exists($path.'/web'.$item['file'])) unlink($path.'/web'.$item['file']);
 
-                        }
+                        }*/
 
                         Photo::deleteAll(['user_id' =>$profile['id'] ] );
 
