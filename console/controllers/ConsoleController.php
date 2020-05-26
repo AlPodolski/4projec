@@ -60,7 +60,7 @@ class ConsoleController extends Controller
 
         $path = \str_replace('console', 'frontend',Yii::getAlias('@app') );
 
-            if($profiles = Profile::find()->asArray()->where([ 'created_at' => '1590473880'])->asArray()->all()){
+            if($profiles = Profile::find()->asArray()->where([ 'created_at' => '1590473755'])->asArray()->all()){
 
                 foreach ($profiles as $profile){
 
