@@ -26,6 +26,9 @@ return [
         'wall' => [
             'class' => 'frontend\modules\wall\Wall',
         ],
+        'sympathy' => [
+            'class' => 'frontend\modules\sympathy\Sympathy',
+        ],
         'advert' => [
             'class' => 'frontend\modules\advert\advert',
         ],
@@ -63,6 +66,7 @@ return [
                 'large' => [600, 600],
                 'dialog' => [50, 50],
                 '80' => [80, 80],
+                '400_500' => [400, 500],
             ],
         ],
         'user' => [
@@ -90,6 +94,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'thumbs/<path:.*>' => 'site/thumb',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
@@ -103,6 +108,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/novosti/more' => 'news/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/polzovatelskoe-soglashenie' => 'site/agree',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy' => 'sympathy/sympathy/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/auth/signup',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/profile' => 'user/edit/edit-profile',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/anket' => 'user/edit/edit-anket',
@@ -141,7 +147,6 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:[a-z-0-9]+>' => 'filter/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/<param:([a-z-0-9]+/)+[a-z-0-9]+>' => 'filter/index',
 
-                'thumbs/<path:.*>' => 'site/thumb',
 
             ],
         ],

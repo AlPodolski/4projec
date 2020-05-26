@@ -2008,8 +2008,68 @@ a {
 #add-gallery-form .field-photo-file{
     display:none;
 }
+.post-wrapper .name{
+    color: #486BEF;
+}
+.post-wrapper .anket-info .labeled a{
+    background: #fff;
+    color: #000;
+    margin-left: 0px;
+}
+.post-photo .actions-wrap{
+    position:absolute;
+    bottom: 15px;
+    width: 100%;
+    left: 12px;
+}
+.post-photo {
+    position:relative;
+}
 #add-gallery-form{
     margin-bottom: 15px;
+}
+.dislike-post{
+    background: #fff;
+    border-radius: 50%;
+    width: 86px;
+    height: 86px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.post-wrapper .actions-wrap .present-wrap{
+    border-radius: 50%;
+    width: 86px;
+    height: 86px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.post-wrapper .actions-wrap .present-wrap{
+    border-radius: 50%;
+    width: 86px;
+    height: 86px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 3px solid #fff;
+}
+.post-wrapper .actions-wrap .present-wrap .present{
+    margin-bottom: 0px;
+}
+.post-wrapper .actions-wrap .like-wrap{
+    margin-top:0px;
+    border-radius: 50%;
+    width: 86px;
+    height: 86px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: linear-gradient(180deg, #486BEF 0%, #80DFFD 100%);
 }
 @media (max-width: 1199px) {
     .img-wrap img{
