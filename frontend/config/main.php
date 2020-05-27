@@ -109,6 +109,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/polzovatelskoe-soglashenie' => 'site/agree',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy' => 'sympathy/sympathy/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy/get-settings' => 'sympathy/sympathy/get-settings',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy/set-settings' => 'sympathy/sympathy/set-settings',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/auth/signup',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/profile' => 'user/edit/edit-profile',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/anket' => 'user/edit/edit-anket',

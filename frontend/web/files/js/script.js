@@ -5,6 +5,21 @@ function showPhone(object) {
     $(phone).html($(object).attr('data-phone'));
 
 }
+
+function get_sympathy_settings_form(object) {
+
+    $(object).siblings('.sympathy-settings-form-wrap').toggleClass('d-none');
+
+    $.ajax({
+        url: '/user/sympathy/get-settings',
+        type: 'POST',
+        success: function (data) {
+            $('.sympathy-settings-form-wrap').html(data);
+        },
+
+    });
+}
+
 function get_present_form(object){
 
     $('.present-form').html('');
@@ -284,6 +299,41 @@ function send_message_form(object) {
             success: function (data) {
 
                 $('#message-form').append('<p class="alert alert-success">Сообщение отправлено</p>');
+
+            },
+
+            complete: function() {
+                // success alerts
+            },
+
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+
+
+}
+function set_sympathy_settings(object) {
+
+        var formData = new FormData($(object).closest("#sympathy-settings-form")[0]);
+
+        $(".result-text").html('');
+
+    $.ajax({
+            url: '/user/sympathy/set-settings',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#w0 .form-text').css('display', 'none');
+            },
+            success: function (data) {
+
+                $(".result-text").html(data);
 
             },
 

@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-family: HelveticaNeueCyr-Medium;
 }
 
 .wrap {
@@ -2031,8 +2032,8 @@ a {
 .dislike-post{
     background: #fff;
     border-radius: 50%;
-    width: 86px;
-    height: 86px;
+    width: 76px;
+    height: 76px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -2040,8 +2041,8 @@ a {
 }
 .post-wrapper .actions-wrap .present-wrap{
     border-radius: 50%;
-    width: 86px;
-    height: 86px;
+    width: 76px;
+    height: 76px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -2049,8 +2050,8 @@ a {
 }
 .post-wrapper .actions-wrap .present-wrap{
     border-radius: 50%;
-    width: 86px;
-    height: 86px;
+    width: 76px;
+    height: 76px;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -2063,13 +2064,53 @@ a {
 .post-wrapper .actions-wrap .like-wrap{
     margin-top:0px;
     border-radius: 50%;
-    width: 86px;
-    height: 86px;
+    width: 76px;
+    height: 76px;
     text-align: center;
     align-items: center;
     justify-content: center;
     display: flex;
     background: linear-gradient(180deg, #486BEF 0%, #80DFFD 100%);
+}
+.filter-sympathy-icon{
+    float: right;
+    margin-right: 20px;
+    cursor:pointer;
+}
+.sympathy-settings-form-wrap{
+    position: absolute !important;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 15px rgba(72, 107, 239, 0.16);
+    border-radius: 10px;
+    z-index: 1;
+    padding: 15px;
+
+}
+.sympathy-settings-form-wrap::before{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    content: '';
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    left: 202px;
+    top: -4px;
+}
+#sympathysetting-pol_id , #sympathysetting-age_from , #sympathysetting-age_to{
+    border: 1px solid #486bef;
+    background: url('../files/img/down.png') no-repeat right center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background-position-x: 95%;
+}
+#sympathy-settings-form{
+
 }
 @media (max-width: 1199px) {
     .img-wrap img{

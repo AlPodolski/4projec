@@ -42,7 +42,7 @@ $post = \frontend\modules\user\models\Profile::find()->where(['id' => 23215])->a
     <div class="col-12 col-xl-9">
 
         <h1 class="text-center">
-            Возможно, вам кто нибудь понравится... Кликай на сердечко и найди еще больше симпатий
+            Возможно, Вам кто нибудь понравится... Кликай на сердечко и найди еще больше симпатий
         </h1>
 
         <div class="post-wrapper">
