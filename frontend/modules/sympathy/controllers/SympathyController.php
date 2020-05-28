@@ -20,9 +20,12 @@ class SympathyController extends Controller
     public function actionIndex($city)
     {
 
-        $old_sympathy = SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']);
+        $skip_id = \array_merge(
+            SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']),
+            SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_skip_key'])
+        );
 
-        $post = SympathyHelper::getProfile(Yii::$app->user->id, $old_sympathy);
+        $post = SympathyHelper::getProfile(Yii::$app->user->id, $skip_id);
 
         return $this->render('index', [
             'post' => $post,
@@ -70,15 +73,27 @@ class SympathyController extends Controller
 
         if (Yii::$app->request->isPost){
 
-            SympathyHelper::add(Yii::$app->params['users_who_like_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
+            if (Yii::$app->request->post('action') == 'like'){
 
-            SympathyHelper::add(Yii::$app->params['users_whom_like_key'],Yii::$app->request->post('id'),  Yii::$app->user->id);
+                SympathyHelper::add(Yii::$app->params['users_who_like_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
+
+                SympathyHelper::add(Yii::$app->params['users_whom_like_key'],Yii::$app->request->post('id'),  Yii::$app->user->id);
+
+            }
+            if (Yii::$app->request->post('action') == 'skip'){
+
+                SympathyHelper::add(Yii::$app->params['users_who_skip_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
+
+            }
 
         }
 
-        $old_sympathy = SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']);
+        $skip_id = \array_merge(
+            SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']),
+            SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_skip_key'])
+        );
 
-        if($post = SympathyHelper::getProfile(Yii::$app->user->id, $old_sympathy)){
+        if($post = SympathyHelper::getProfile(Yii::$app->user->id, $skip_id)){
 
             return $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/item.php'), [
                 'post' => $post

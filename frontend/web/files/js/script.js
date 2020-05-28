@@ -23,10 +23,11 @@ function get_sympathy_settings_form(object) {
 function add_sympathy(object) {
 
     var id = $(object).attr('data-id');
+    var action = $(object).attr('data-action');
 
     $.ajax({
         url: '/user/sympathy/add',
-        data: 'id='+id,
+        data: 'id='+id+'&action='+action,
         type: 'POST',
         success: function (data) {
             $('.main-info-anket').html(data);

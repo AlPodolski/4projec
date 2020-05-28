@@ -11,4 +11,5 @@ return [
     'photo_row_pay' => 10,
     'users_who_like_key' => 'users_who_like_key',
     'users_whom_like_key' => 'users_whom_like_key',
+    'users_who_skip_key' => 'users_who_skip_key',
 ];
