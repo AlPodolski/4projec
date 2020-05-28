@@ -9,4 +9,6 @@ return [
     'bsVersion' => '4.x',
     'site_name' => '4dosug.com',
     'photo_row_pay' => 10,
+    'users_who_like_key' => 'users_who_like_key',
+    'users_whom_like_key' => 'users_whom_like_key',
 ];

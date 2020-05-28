@@ -20,6 +20,22 @@ function get_sympathy_settings_form(object) {
     });
 }
 
+function add_sympathy(object) {
+
+    var id = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/user/sympathy/add',
+        data: 'id='+id,
+        type: 'POST',
+        success: function (data) {
+            $('.main-info-anket').html(data);
+        },
+
+    });
+
+}
+
 function get_present_form(object){
 
     $('.present-form').html('');
@@ -50,6 +66,7 @@ function get_present_form(object){
 
     });
 }
+
 $('#header_form').on('change', function(){
     /*    files = this.files[0];
 

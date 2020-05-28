@@ -3,14 +3,10 @@
 
 namespace frontend\modules\sympathy\controllers;
 
-use frontend\models\UserPol;
-use frontend\modules\sympathy\components\helpers\AgeHelper;
+use frontend\modules\sympathy\components\helpers\SympathyHelper;
 use frontend\modules\sympathy\models\SympathySetting;
-use frontend\modules\user\models\Profile;
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
-
 
 class SympathyController extends Controller
 {
@@ -24,26 +20,9 @@ class SympathyController extends Controller
     public function actionIndex($city)
     {
 
-        $sympathySettings = SympathySetting::find()->where(['user_id' => Yii::$app->user->id])->one();
+        $old_sympathy = SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']);
 
-        $post = Profile::find();
-
-        if ($sympathySettings){
-
-            $userPol = ArrayHelper::getColumn(UserPol::find()->where(['pol_id' => $sympathySettings->pol_id])->all(), 'user_id');
-
-            $post->andWhere(['in' , 'id' , $userPol]);
-
-            $age_from = AgeHelper::prepareAge($sympathySettings->age_from);
-            $age_to = AgeHelper::prepareAge($sympathySettings->age_to);
-
-            $post->andWhere(['<=', 'birthday' , \time() - $age_from]);
-            $post->andWhere(['>=', 'birthday' , \time() - $age_to]);
-
-
-        }
-
-        $post = $post->one();
+        $post = SympathyHelper::getProfile(Yii::$app->user->id, $old_sympathy);
 
         return $this->render('index', [
             'post' => $post,
@@ -84,6 +63,28 @@ class SympathyController extends Controller
         }
 
         return $this->goHome();
+    }
+
+    public function actionAdd()
+    {
+
+        if (Yii::$app->request->isPost){
+
+            SympathyHelper::add(Yii::$app->params['users_who_like_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
+
+            SympathyHelper::add(Yii::$app->params['users_whom_like_key'],Yii::$app->request->post('id'),  Yii::$app->user->id);
+
+        }
+
+        $old_sympathy = SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']);
+
+        if($post = SympathyHelper::getProfile(Yii::$app->user->id, $old_sympathy)){
+
+            return $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/item.php'), [
+                'post' => $post
+            ]);
+
+        }
     }
 
 }
