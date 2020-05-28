@@ -2,6 +2,7 @@
 
 namespace frontend\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -40,5 +41,9 @@ class UserPol extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'pol_id' => 'Pol ID',
         ];
+    }
+
+    public function getPost(){
+        return $this->hasOne(Profile::class, ['id' => 'user_id' ])->with('avatar');
     }
 }

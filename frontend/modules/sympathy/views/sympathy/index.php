@@ -3,6 +3,7 @@
 /* @var $photo Photo */
 
 /* @var $userFriends array */
+/* @var $post array */
 
 use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
@@ -15,11 +16,6 @@ $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAs
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $this->title = 'Симпатии';
-
-$post = \frontend\modules\user\models\Profile::find()->where(['id' => 23215])->asArray()
-    ->with('userAvatarRelations')
-    ->with('celiZnakomstvamstva')
-    ->one();
 
 ?>
 <div class="row">
@@ -50,10 +46,20 @@ $post = \frontend\modules\user\models\Profile::find()->where(['id' => 23215])->a
                 <div class="row">
                     <div class="col-12 col-xl-6 col-lg-4 col-md-6">
                         <div class="post-photo">
-                            <picture>
-                                <source srcset="<?= Yii::$app->imageCache->thumbSrc($post['userAvatarRelations']['file'], '400_500') ?>">
-                                <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post['userAvatarRelations']['file'], '400_500') ?>" alt="">
-                            </picture>
+
+                            <?php if (isset($post['userAvatarRelations']['file']) and file_exists(Yii::getAlias('@webroot') . $post['userAvatarRelations']['file']) and $post['userAvatarRelations']['file']) : ?>
+
+                                <picture>
+                                    <source srcset="<?= Yii::$app->imageCache->thumbSrc($post['userAvatarRelations']['file'], '400_500') ?>" >
+                                    <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post['userAvatarRelations']['file'], '400_500') ?>" >
+                                </picture>
+
+                            <?php else : ?>
+
+                                <img src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+
                             <div class="actions-wrap">
                                 <div class="row">
                                     <div class="col-4">

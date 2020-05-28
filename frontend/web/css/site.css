@@ -2025,6 +2025,10 @@ a {
 }
 .post-photo {
     position:relative;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 #add-gallery-form{
     margin-bottom: 15px;
@@ -2057,6 +2061,7 @@ a {
     justify-content: center;
     display: flex;
     border: 3px solid #fff;
+    background: linear-gradient(180deg, #486BEF 0%, #80DFFD 100%);
 }
 .post-wrapper .actions-wrap .present-wrap .present{
     margin-bottom: 0px;

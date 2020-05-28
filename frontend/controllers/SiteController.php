@@ -5,6 +5,8 @@ use common\models\City;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
+use frontend\models\UserPol;
+use frontend\modules\sympathy\models\SympathySetting;
 use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -163,16 +165,11 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $city = City::find()->asArray()->all();
+        $sympathySettings = SympathySetting::find()->where(['user_id' => 1])->one();
 
-        foreach ($city as $item){
+        $sympathySettings->id;
 
-            echo $item['city'].'<br>';
-
-        }
-
-        exit();
-
+        \dd($sympathySettings);
 
     }
 }
