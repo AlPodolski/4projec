@@ -8,7 +8,7 @@ function showPhone(object) {
 
 function get_sympathy_settings_form(object) {
 
-    $(object).siblings('.sympathy-settings-form-wrap').toggleClass('d-none');
+    $('.sympathy-settings-form-wrap').toggleClass('d-none');
 
     $.ajax({
         url: '/user/sympathy/get-settings',

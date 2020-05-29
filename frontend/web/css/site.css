@@ -2023,7 +2023,7 @@ a {
     width: 100%;
     left: 12px;
 }
-.post-photo {
+.post-wrapper .post-photo {
     position:relative;
     min-height: 400px;
     align-items: center;
@@ -2032,6 +2032,15 @@ a {
 }
 #add-gallery-form{
     margin-bottom: 15px;
+}
+.no-content-wrap{
+    min-height: 450px;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+}
+.no-content-wrap .blue-btn{
+    margin: 0 auto;
 }
 .dislike-post{
     background: #fff;
@@ -2105,7 +2114,7 @@ a {
     left: 202px;
     top: -4px;
 }
-#sympathysetting-pol_id , #sympathysetting-age_from , #sympathysetting-age_to{
+#sympathysetting-pol_id , #sympathysetting-age_from , #sympathysetting-age_to , #sympathysetting-city_id{
     border: 1px solid #486bef;
     background: url('../files/img/down.png') no-repeat right center;
     appearance: none;

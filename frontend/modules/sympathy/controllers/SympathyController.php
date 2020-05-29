@@ -70,9 +70,9 @@ class SympathyController extends Controller
                             'post' => $post
                         ]);
 
+                    }else{
+                        return $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/no-content.php'));
                     }
-
-                    return '';
 
                 }
 
@@ -116,6 +116,8 @@ class SympathyController extends Controller
                 'post' => $post
             ]);
 
+        }else{
+            return $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/no-content.php'));
         }
     }
 

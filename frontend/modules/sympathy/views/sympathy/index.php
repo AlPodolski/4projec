@@ -42,9 +42,10 @@ $this->title = 'Симпатии';
             <div class="page-block main-info-anket">
                 <?php
 
-                    echo $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/item.php'),[
-                            'post' => $post
-                    ])
+                if ($post) echo $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/item.php'),[
+                    'post' => $post
+                ]);
+                else echo $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/no-content.php'));
 
                 ?>
             </div>
