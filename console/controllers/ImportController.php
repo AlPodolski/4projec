@@ -913,7 +913,7 @@ class ImportController extends Controller
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file = $gallitem;
+                                        $userPhoto->file =  $gallitem;
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();

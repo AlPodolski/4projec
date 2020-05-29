@@ -351,7 +351,9 @@ function set_sympathy_settings(object) {
             },
             success: function (data) {
 
-                $(".result-text").html(data);
+                $(".main-info-anket").html(data);
+
+                $(object).closest('.sympathy-settings-form-wrap').toggleClass('d-none');
 
             },
 

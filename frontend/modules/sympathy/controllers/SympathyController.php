@@ -57,7 +57,24 @@ class SympathyController extends Controller
 
                 $model->user_id = Yii::$app->user->id;
 
-                if (($model->age_from <= $model->age_to) and $model->save()) return 'Сохранено';
+                if (($model->age_from <= $model->age_to) and $model->save()) {
+
+                    $skip_id = \array_merge(
+                        SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']),
+                        SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_skip_key'])
+                    );
+
+                    if($post = SympathyHelper::getProfile(Yii::$app->user->id, $skip_id)){
+
+                        return  $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/item.php'), [
+                            'post' => $post
+                        ]);
+
+                    }
+
+                    return '';
+
+                }
 
                 return 'Ошибка';
 

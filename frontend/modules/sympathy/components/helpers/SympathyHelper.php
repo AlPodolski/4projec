@@ -44,10 +44,13 @@ class SympathyHelper
 
         if ($sympathySettings){
 
-            $userPol = ArrayHelper::getColumn(UserPol::find()
+            $userPol = UserPol::find()
                 ->where(['pol_id' => $sympathySettings->pol_id])
-                ->andWhere(['not in', 'user_id', $not_in_id])
-                ->asArray()->all(), 'user_id');
+                ->andWhere(['not in', 'user_id', $not_in_id]);
+            if ($sympathySettings->city_id) $userPol->andWhere(['city_id' => $sympathySettings->city_id]);
+            $userPol = $userPol->asArray()->all();
+
+            $userPol = ArrayHelper::getColumn($userPol, 'user_id');
 
             $post->andWhere(['in' , 'id' , $userPol]);
 
