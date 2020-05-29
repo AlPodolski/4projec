@@ -893,7 +893,7 @@ class ImportController extends Controller
                             $userPhoto = new Photo();
 
                             $userPhoto->user_id = $user->id;
-                            $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $record['img']);
+                            $userPhoto->file = \str_replace('files', '/files/uploads/aa6', $record['img']);
                             $userPhoto->avatar = 1;
 
                             $userPhoto->save();
@@ -913,7 +913,7 @@ class ImportController extends Controller
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file = \str_replace('files', '/files/uploads/aa3', $gallitem);
+                                        $userPhoto->file = $gallitem;
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();
