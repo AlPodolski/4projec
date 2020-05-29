@@ -104,6 +104,14 @@ use frontend\modules\user\components\helpers\FriendsHelper;
                 </div>
                 <div class="row info-block celi-znakomsva-block">
 
+                    <?php if ($post['about']) : ?>
+
+                    <div class="col-12">
+                        <p><?php echo $post['about']; ?></p>
+                    </div>
+
+                    <?php endif; ?>
+
                     <div class="col-12">
 
                         <div class="label fl_l">Цель знакомства:</div>
@@ -117,6 +125,11 @@ use frontend\modules\user\components\helpers\FriendsHelper;
                                     echo '<a href="/znakomstva/celi-znakomstva-' . $item['url'] . '" > ' . $item['value'] . '</a>';
                                     if ($item != end($post['celiZnakomstvamstva'] )) echo ',';
                                 }
+
+                                else :
+
+                                    echo 'Спроси меня'
+
                                 ?>
 
                             <?php endif; ?>
