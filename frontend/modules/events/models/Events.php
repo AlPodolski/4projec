@@ -2,6 +2,7 @@
 
 namespace frontend\modules\events\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -33,6 +34,11 @@ class Events extends \yii\db\ActiveRecord
         return [
             [['user_id', 'timestamp', 'from', 'type'], 'integer'],
         ];
+    }
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'from'])->with('userAvatarRelations');
     }
 
     /**

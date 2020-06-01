@@ -6,6 +6,7 @@ use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
 use frontend\models\UserPol;
+use frontend\modules\sympathy\components\helpers\SympathyHelper;
 use frontend\modules\sympathy\models\SympathySetting;
 use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
@@ -62,7 +63,8 @@ class SiteController extends Controller
      */
     public function actionIndex($city)
     {
-        $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC])->with('userAvatarRelations');
+        $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
+            ->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC])->with('userAvatarRelations');
 
         if (Yii::$app->request->isPost){
 
@@ -165,11 +167,7 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $sympathySettings = SympathySetting::find()->where(['user_id' => 1])->one();
-
-        $sympathySettings->id;
-
-        \dd($sympathySettings);
+        SympathyHelper::add( 23221, 23215);
 
     }
 }

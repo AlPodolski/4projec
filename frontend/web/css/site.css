@@ -2123,9 +2123,38 @@ a {
     -ms-appearance: none;
     background-position-x: 95%;
 }
-#sympathy-settings-form{
-
+.page-block .blue-text{
+    text-align:left;
+    padding-left: 35px;
 }
+.alert-item .img{
+    max-width: 39px;
+    max-height: 39px;
+    overflow:hidden;
+    border-radius: 50%;
+}
+.event-block{
+    height:100%;
+    padding: 35px 0;
+}
+.alert-item{
+    padding: 22px 0px 25px 35px;
+}
+.alert-item .blue-text{
+    line-height: 40px;
+    margin-right: 10px;
+    padding-left: 0px;
+}
+.alert-item .small-text{
+    line-height: 35px;
+}
+.alert-item{
+    border-top: 2px solid #edf0fd;
+}
+.event-block .alert-item:first-child{
+    border: none;
+}
+
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

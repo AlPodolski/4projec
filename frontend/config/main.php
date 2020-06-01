@@ -20,6 +20,9 @@ return [
         'chat' => [
             'class' => 'frontend\modules\chat\Chat',
         ],
+        'events' => [
+            'class' => 'frontend\modules\events\events',
+        ],
         'user' => [
             'class' => 'frontend\modules\user\User',
         ],
@@ -96,6 +99,7 @@ return [
             'rules' => [
                 'thumbs/<path:.*>' => 'site/thumb',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/site/cust' => 'site/cust',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',
@@ -108,6 +112,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/novosti/more' => 'news/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/polzovatelskoe-soglashenie' => 'site/agree',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user' => 'user/user/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/events' => 'events/events/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy' => 'sympathy/sympathy/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy/get-settings' => 'sympathy/sympathy/get-settings',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/sympathy/set-settings' => 'sympathy/sympathy/set-settings',
