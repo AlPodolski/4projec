@@ -92,14 +92,12 @@ class SympathyController extends Controller
 
             if (Yii::$app->request->post('action') == 'like'){
 
-                SympathyHelper::add(Yii::$app->params['users_who_like_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
-
-                SympathyHelper::add(Yii::$app->params['users_whom_like_key'],Yii::$app->request->post('id'),  Yii::$app->user->id);
+                SympathyHelper::add( Yii::$app->user->id, Yii::$app->request->post('id'));
 
             }
             if (Yii::$app->request->post('action') == 'skip'){
 
-                SympathyHelper::add(Yii::$app->params['users_who_skip_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
+                SympathyHelper::set(Yii::$app->params['users_who_skip_key'], Yii::$app->user->id, Yii::$app->request->post('id'));
 
             }
 

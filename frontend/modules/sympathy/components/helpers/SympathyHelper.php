@@ -5,6 +5,7 @@ namespace frontend\modules\sympathy\components\helpers;
 
 
 use frontend\models\UserPol;
+use frontend\modules\events\models\Events;
 use frontend\modules\sympathy\models\SympathySetting;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -14,19 +15,53 @@ use yii\redis\Connection;
 class SympathyHelper
 {
     /**
-     * @param $key
-     * @param $item_id //кому нужно добавить симпатию
-     * @param $user_id //кого нужно добавить в симпатии
+     * @param $item_id //кому нужно добавить симпатию (кому понравился)
+     * @param $user_id //кого нужно добавить в симпатии (кто понравился)
      */
-    public static function add($key, $item_id, $user_id)
+    public static function add($item_id, $user_id)
+    {
+
+        if (SympathyHelper::set(Yii::$app->params['users_who_like_key'], $item_id, $user_id)
+            and SympathyHelper::set(Yii::$app->params['users_whom_like_key'], $user_id,  $item_id)){
+
+            if (self::checkReciprocity($item_id, $user_id)) {
+                echo 21;
+            }else{
+
+                $event = new Events();
+
+                $event->user_id = $user_id;
+                $event->timestamp = \time();
+                $event->from = $item_id;
+                $event->type = Events::NEW_SYMPATHY;
+
+                $event->save();
+
+            }
+
+        }
+
+    }
+
+    public static function checkReciprocity($user_id,  $item_id)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return (bool) $redis->sismember(Yii::$app->params['users_who_like_key'].":{$item_id}:sympathy", $user_id)
+            && $redis->sismember(Yii::$app->params['users_whom_like_key'].":{$user_id}:sympathy", $item_id);
+    }
+
+    public static function set($key, $item_id, $user_id)
     {
         /* @var $redis Connection */
         $redis = Yii::$app->redis;
 
         if(  !(bool) $redis->sismember($key.":{$item_id}:sympathy", $user_id) ){
-            $redis->sadd($key.":{$item_id}:sympathy", $user_id);
+            return (bool) $redis->sadd($key.":{$item_id}:sympathy", $user_id);
         }
 
+        return false;
     }
 
     public static function get($item_id, $key)
