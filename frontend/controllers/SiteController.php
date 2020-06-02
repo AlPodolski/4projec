@@ -167,7 +167,9 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        SympathyHelper::add( 23221, 23215);
+        return $this->render(Yii::getAlias('@app/modules/sympathy/views/sympathy/mutual.php'), [
+            'posts' => Profile::find()->where(['in', 'id' , [23216, 23215] ] )->asArray()->all()
+        ]);
 
     }
 }

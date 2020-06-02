@@ -18,6 +18,7 @@ class Events extends \yii\db\ActiveRecord
 {
 
     const NEW_SYMPATHY = 1;
+    const MUTUAL_SYMPATHY = 2;
     /**
      * {@inheritdoc}
      */

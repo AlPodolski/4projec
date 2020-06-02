@@ -2039,7 +2039,7 @@ a {
     justify-content: center;
     text-align:center;
 }
-.no-content-wrap .blue-btn{
+.no-content-wrap .message-wrap{
     margin: 0 auto;
 }
 .dislike-post{
@@ -2153,6 +2153,27 @@ a {
 }
 .event-block .alert-item:first-child{
     border: none;
+}
+.border-radius-50{
+    border-radius:50%;
+}
+.mutual-block .border-radius-50{
+    width: 126px;
+    height: 126px;
+    display: inline-block;
+}
+.heart-img{
+    bottom: -5px;
+    left: 395px;
+    width: 75px;
+}
+.mutual-block .w-100{
+    margin-bottom: 15px;
+}
+
+.mutual-block .blue-btn{
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 @media (max-width: 1199px) {

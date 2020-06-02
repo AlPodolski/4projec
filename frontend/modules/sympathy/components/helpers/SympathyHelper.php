@@ -14,9 +14,13 @@ use yii\redis\Connection;
 
 class SympathyHelper
 {
+    const ADD_NEW_SYMPATHY = 'new_synpathy';
+    const ADD_MUTUAL_SYMPATHY = 'mutual_synpathy';
+
     /**
      * @param $item_id //кому нужно добавить симпатию (кому понравился)
      * @param $user_id //кого нужно добавить в симпатии (кто понравился)
+     * @return  string
      */
     public static function add($item_id, $user_id)
     {
@@ -25,22 +29,31 @@ class SympathyHelper
             and SympathyHelper::set(Yii::$app->params['users_whom_like_key'], $user_id,  $item_id)){
 
             if (self::checkReciprocity($item_id, $user_id)) {
-                echo 21;
+
+                if (SympathyHelper::addEvent($user_id, $item_id,Events::MUTUAL_SYMPATHY )
+                    and SympathyHelper::addEvent($item_id, $user_id,Events::MUTUAL_SYMPATHY ))
+                    return SympathyHelper::ADD_MUTUAL_SYMPATHY;
+
             }else{
 
-                $event = new Events();
-
-                $event->user_id = $user_id;
-                $event->timestamp = \time();
-                $event->from = $item_id;
-                $event->type = Events::NEW_SYMPATHY;
-
-                $event->save();
+                if (SympathyHelper::addEvent($user_id, $item_id,Events::NEW_SYMPATHY )) return SympathyHelper::ADD_NEW_SYMPATHY ;
 
             }
 
         }
 
+    }
+
+    public static function addEvent($user_id, $item_id, $type)
+    {
+        $event = new Events();
+
+        $event->user_id = $user_id;
+        $event->timestamp = \time();
+        $event->from = $item_id;
+        $event->type = $type;
+
+        return $event->save();
     }
 
     public static function checkReciprocity($user_id,  $item_id)

@@ -230,6 +230,7 @@ if (!Yii::$app->user->isGuest){
                                             </div>
                                         </div>
                                     </div>
+
                                     <?php if (Yii::$app->user->isGuest) : ?>
                                         <?php
                                         $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
