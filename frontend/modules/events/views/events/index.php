@@ -8,10 +8,10 @@ $this->title = 'Уведомления';
 ?>
 <div class="row">
 
-    <div class="col-3">
+    <div class="col-xl-3">
         <?php echo UserSideBarWidget::Widget()?>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-xl-9">
 
         <div class="page-block event-block">
             <p class="blue-text">Уведомления</p>
@@ -20,12 +20,13 @@ $this->title = 'Уведомления';
 
                     <?php foreach ($events as $event) : ?>
 
-                        <div class="alert-item">
-                            <div class="row">
+                        <?php if ($event['type'] == \frontend\modules\events\models\Events::NEW_SYMPATHY) : ?>
 
-                                <?php if ($event['type'] == \frontend\modules\events\models\Events::NEW_SYMPATHY) : ?>
+                            <div class="alert-item">
 
-                                    <div class="col-1">
+                                <div class="row">
+
+                                    <div class="col-2 col-sm-1">
 
                                         <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
 
@@ -45,22 +46,30 @@ $this->title = 'Уведомления';
                                         </a>
 
                                     </div>
+
                                     <div class="col-10 d-flex align-center">
 
-                                            <div class="blue-text">
+                                        <div class="blue-text">
                                                 1
-                                            </div>
-                                            <div class="small-text">
+                                        </div>
+                                        <div class="small-text">
                                                 новая симпатия
-                                            </div>
+                                        </div>
+                                    </div>
 
                                     </div>
 
-                                <?php endif; ?>
+                            </div>
 
-                                <?php if ($event['type'] == \frontend\modules\events\models\Events::MUTUAL_SYMPATHY) : ?>
+                        <?php endif; ?>
 
-                                        <div class="col-2 ">
+                        <?php if ($event['type'] == \frontend\modules\events\models\Events::MUTUAL_SYMPATHY) : ?>
+
+                            <div class="alert-item mutual-item">
+
+                                <div class="row">
+
+                                    <div class="col-5 col-md-2">
 
                                             <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
 
@@ -94,23 +103,19 @@ $this->title = 'Уведомления';
                                             </a>
                                         </div>
 
-                                    <div class="col-10 d-flex align-center">
+                                    <div class="col-7 col-md-10 d-flex align-center">
 
-                                            <div class="blue-text">
-                                                1
-                                            </div>
                                             <div class="small-text">
-                                                новая взаимная симпатия
+                                                взаимная симпатия
                                             </div>
 
                                     </div>
 
-                                <?php endif; ?>
-
+                                </div>
 
                             </div>
 
-                        </div>
+                        <?php endif; ?>
 
                     <?php endforeach; ?>
 

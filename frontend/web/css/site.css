@@ -2021,7 +2021,6 @@ a {
     position:absolute;
     bottom: 15px;
     width: 100%;
-    left: 12px;
 }
 .post-wrapper .post-photo {
     position:relative;
@@ -2069,7 +2068,6 @@ a {
     align-items: center;
     justify-content: center;
     display: flex;
-    border: 3px solid #fff;
     background: linear-gradient(180deg, #486BEF 0%, #80DFFD 100%);
 }
 .post-wrapper .actions-wrap .present-wrap .present{
@@ -2100,6 +2098,9 @@ a {
     z-index: 1;
     padding: 15px;
 
+}
+.margin-auto{
+    margin:0 auto;
 }
 .sympathy-settings-form-wrap::before{
     position: absolute;
@@ -2441,9 +2442,11 @@ a {
     }
 }
 @media (max-width: 767px) {
+
     .anket-info{
         margin-left: 0px;
         padding-left:15px;
+        padding-bottom:15px;
     }
     .celi-znakomsva-block .labeled a{
         display: block;
@@ -2477,7 +2480,16 @@ a {
 
 }
 @media (max-width: 575px) {
-
+    .alert-item {
+        padding: 10px 0px 10px 10px;
+    }
+    .mutual-item .small-text{
+        font-size: 14px;
+        line-height: 40px;
+    }
+    .page-block .blue-text {
+        padding-left: 10px;
+    }
     .close_present_form{
         display:block;
     }
@@ -2490,9 +2502,6 @@ a {
     }
     .profile_info{
         margin-top : 15px;
-    }
-    .popular-anket-wrap .img-wrap {
-        min-height: 74px;
     }
 }
 @media (max-width: 500px) {

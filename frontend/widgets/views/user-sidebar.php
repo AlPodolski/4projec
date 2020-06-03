@@ -30,7 +30,7 @@ use yii\helpers\Html;
 
             <?php if (isset($avatar->file)) : ?>
 
-                <img loading="lazy" class="main-img" srcset="<?= Yii::$app->imageCache->thumbSrc($avatar->file , 'dialog') ?>" alt="">
+                <img loading="lazy" class="main-img" srcset="<?= Yii::$app->imageCache->thumbSrc($avatar->file , 'popular') ?>" alt="">
 
             <?php else : ?>
 
