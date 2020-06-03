@@ -9,6 +9,14 @@ use yii\web\Controller;
 
 class EventsController extends Controller
 {
+
+    public function behaviors()
+    {
+        return [
+            \common\behaviors\isAuth::class,
+        ];
+    }
+
     public function actionIndex($city)
     {
 
