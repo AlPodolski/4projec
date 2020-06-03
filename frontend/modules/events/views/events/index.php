@@ -28,7 +28,7 @@ $this->title = 'Уведомления';
 
                                     <div class="col-2 col-sm-1">
 
-                                        <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
+                                        <a class="position-relative" href="/user/<?php echo $event['fromProfile']['id'] ?>">
 
                                             <?php echo PhotoWidget::widget([
                                                 'path' => $event['fromProfile']['userAvatarRelations']['file'],
