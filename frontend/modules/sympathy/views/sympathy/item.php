@@ -107,7 +107,7 @@ use frontend\modules\user\components\helpers\FriendsHelper;
                     <?php if ($post['text']) : ?>
 
                     <div class="col-12">
-                        <p><?php echo $post['text']; ?></p>
+                        <p class="about"><?php echo $post['text']; ?></p>
                     </div>
 
                     <?php endif; ?>
