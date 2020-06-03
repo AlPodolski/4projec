@@ -12,7 +12,10 @@ class EventsController extends Controller
     public function actionIndex($city)
     {
 
-        $events = Events::find()->where(['user_id' => Yii::$app->user->id])->asArray()->with('profile')->all();
+        $events = Events::find()->where(['user_id' => Yii::$app->user->id])->asArray()
+            ->with('profile')
+            ->with('fromProfile')
+            ->all();
 
         return $this->render('index', [
             'events' => $events,

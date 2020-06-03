@@ -14,9 +14,9 @@ if (file_exists(Yii::getAlias('@webroot') . $path) and $path) : ?>
 
     <picture>
         <source srcset="<?= Yii::$app->imageCache->thumbSrc($path, $size) ?>" >
-        <img <?php echo $params ?> class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($path, $size) ?>">
+        <img <?php echo $params ?> srcset="<?= Yii::$app->imageCache->thumbSrc($path, $size) ?>">
     </picture>
 
 <?php else : ?>
-        <img src="/files/img/nophoto.png" alt="">
+        <img <?php echo $params ?> src="/files/img/nophoto.png" alt="">
 <?php endif;

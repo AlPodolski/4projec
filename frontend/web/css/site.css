@@ -2175,6 +2175,13 @@ a {
     max-width: 300px;
     margin: 0 auto;
 }
+.alert-item .synpathy-img{
+    max-width: 22px;
+    position: absolute;
+    bottom: -20px;
+    right: -9px;
+}
+
 
 @media (max-width: 1199px) {
     .img-wrap img{

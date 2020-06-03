@@ -1,5 +1,6 @@
 <?php
 use frontend\widgets\UserSideBarWidget;
+use frontend\widgets\PhotoWidget;
 /* @var $events array */
 
 $this->title = 'Уведомления';
@@ -21,37 +22,92 @@ $this->title = 'Уведомления';
 
                         <div class="alert-item">
                             <div class="row">
-                                <div class="col-1">
-                                    <?php if (file_exists(Yii::getAlias('@webroot') . $event['profile']['userAvatarRelations']['file'])
-                                        and $event['profile']['userAvatarRelations']['file']) : ?>
 
-                                        <picture>
-                                            <source srcset="<?= Yii::$app->imageCache->thumbSrc($event['profile']['userAvatarRelations']['file'], 'dialog') ?>" >
-                                            <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($event['profile']['userAvatarRelations']['file'], 'dialog') ?>" alt="">
-                                        </picture>
+                                <?php if ($event['type'] == \frontend\modules\events\models\Events::NEW_SYMPATHY) : ?>
 
-                                    <?php else : ?>
+                                    <div class="col-1">
 
-                                        <div class="img">
-                                            <img src="/files/img/nophoto.png" alt="">
+                                        <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
+
+                                            <?php echo PhotoWidget::widget([
+                                                'path' => $event['profile']['fromProfile']['file'],
+                                                'size' => 'dialog',
+                                                'options' => [
+                                                    'class' => 'img',
+                                                    'loading' => 'lazy',
+                                                    'alt' => $event['profile']['username'],
+                                                ],
+                                            ]  ); ?>
+
+                                            <img class="synpathy-img" src="/files/img/iconfinder_heart_216238_3.png">
+
+
+                                        </a>
+
+                                    </div>
+                                    <div class="col-10 d-flex align-center">
+
+                                            <div class="blue-text">
+                                                1
+                                            </div>
+                                            <div class="small-text">
+                                                новая симпатия
+                                            </div>
+
+                                    </div>
+
+                                <?php endif; ?>
+
+                                <?php if ($event['type'] == \frontend\modules\events\models\Events::MUTUAL_SYMPATHY) : ?>
+
+                                        <div class="col-2 ">
+
+                                            <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
+
+                                                <?php echo PhotoWidget::widget([
+                                                    'path' => $event['profile']['userAvatarRelations']['file'],
+                                                    'size' => 'dialog',
+                                                    'options' => [
+                                                        'class' => 'img',
+                                                        'loading' => 'lazy',
+                                                        'alt' => $event['profile']['username'],
+                                                    ],
+                                                ]  ); ?>
+
+                                                <img class="synpathy-img" src="/files/img/iconfinder_heart_216238_3.png">
+
+                                            </a>
+
+
+                                            <a class=" " href="/user/<?php echo $event['profile']['id'] ?>">
+
+                                                <?php echo PhotoWidget::widget([
+                                                    'path' => $event['profile']['fromProfile']['file'],
+                                                    'size' => 'dialog',
+                                                    'options' => [
+                                                        'class' => 'img',
+                                                        'loading' => 'lazy',
+                                                        'alt' => $event['profile']['username'],
+                                                    ],
+                                                ]  ); ?>
+
+                                            </a>
                                         </div>
 
-                                    <?php endif; ?>
-                                </div>
-                                <div class="col-10 d-flex align-center">
+                                    <div class="col-10 d-flex align-center">
 
-                                    <?php if ($event['type'] == \frontend\modules\events\models\Events::NEW_SYMPATHY) : ?>
+                                            <div class="blue-text">
+                                                1
+                                            </div>
+                                            <div class="small-text">
+                                                новая взаимная симпатия
+                                            </div>
 
-                                        <div class="blue-text">
-                                            1
-                                        </div>
-                                        <div class="small-text">
-                                            новая симпатия
-                                        </div>
+                                    </div>
 
-                                    <?php endif; ?>
+                                <?php endif; ?>
 
-                                </div>
+
                             </div>
 
                         </div>

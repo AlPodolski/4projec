@@ -34,7 +34,7 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                     <?php endforeach; ?>
 
                     <span class="heart-img position-absolute">
-                        <img src="/files/img/iconfinder_heart_216238 3.png">
+                        <img src="/files/img/iconfinder_heart_216238_3.png">
                     </span>
 
                 </div>
