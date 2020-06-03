@@ -88,7 +88,7 @@ $this->title = 'Уведомления';
                                             </a>
 
 
-                                            <a class=" " href="/user/<?php echo $event['profile']['id'] ?>">
+                                            <a class=" " href="/user/<?php echo $event['fromProfile']['id'] ?>">
 
                                                 <?php echo PhotoWidget::widget([
                                                     'path' => $event['fromProfile']['userAvatarRelations']['file'],
