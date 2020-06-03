@@ -104,10 +104,10 @@ use frontend\modules\user\components\helpers\FriendsHelper;
                 </div>
                 <div class="row info-block celi-znakomsva-block">
 
-                    <?php if ($post['about']) : ?>
+                    <?php if ($post['text']) : ?>
 
                     <div class="col-12">
-                        <p><?php echo $post['about']; ?></p>
+                        <p><?php echo $post['text']; ?></p>
                     </div>
 
                     <?php endif; ?>
@@ -119,7 +119,7 @@ use frontend\modules\user\components\helpers\FriendsHelper;
                         <div class="labeled">
                             <?php
 
-                            if (isset($post['celiZnakomstvamstva'] )) :
+                            if (isset($post['celiZnakomstvamstva'] ) and !empty($post['celiZnakomstvamstva'])) :
 
                                 foreach ($post['celiZnakomstvamstva'] as $item){
                                     echo '<a href="/znakomstva/celi-znakomstva-' . $item['url'] . '" > ' . $item['value'] . '</a>';

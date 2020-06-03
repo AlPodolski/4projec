@@ -1187,12 +1187,18 @@ ul li .secodn-menu:hover {
     margin-top: 10px;
 }
 .profile_label_less , .profile_full{
-    display: none;
     column-count: 2;
     padding: 15px 25px;
 }
 .profile_full .user-prop-value{
     color:#486BEF;
+}
+.profile-full-wrap , .profile_label_less{
+    display: none;
+}
+.about{
+    padding-left: 10px;
+    color: #8E8E8E;
 }
 .wall-form{
     margin-top: 15px;
@@ -2182,8 +2188,12 @@ a {
     bottom: -20px;
     right: -9px;
 }
-
-
+.post-wrapper .labeled{
+    line-height: 35px;
+}
+.about{
+    color: #8E8E8E;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

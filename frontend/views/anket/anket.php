@@ -178,6 +178,7 @@ if (!Yii::$app->user->isGuest){
 
                             <div class="like-wrap info-block">
                                 <div class="row">
+
                                     <div class=" col-6 col-md-6 col-lg-4 message-col">
                                         <div class="message-wrap">
 
@@ -410,35 +411,36 @@ if (!Yii::$app->user->isGuest){
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="profile_full">
+                    <div class="profile-full-wrap">
+                        <div class="profile_full">
 
-                        <?php if (!empty($metro)) : ?>
+                            <?php if (!empty($metro)) : ?>
 
-                            <div class="clear_fix profile_info_row user-prop-wrap">
+                                <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                <div class="user-prop ">Метро:</div>
+                                    <div class="user-prop ">Метро:</div>
 
-                                <div class="user-prop-value">
-                                    <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                    <div class="user-prop-value">
+                                        <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            <?php endif; ?>
 
-                        <?php endif; ?>
+                            <?php if (!empty($rayon)) : ?>
 
-                        <?php if (!empty($rayon)) : ?>
+                                <div class="clear_fix profile_info_row user-prop-wrap">
 
-                            <div class="clear_fix profile_info_row user-prop-wrap">
+                                    <div class="user-prop">Район:</div>
 
-                                <div class="user-prop">Район:</div>
+                                    <div class="user-prop-value">
+                                        <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                    </div>
 
-                                <div class="user-prop-value">
-                                    <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
                                 </div>
 
-                            </div>
-
-                        <?php endif; ?>
+                            <?php endif; ?>
 
 
 
@@ -761,7 +763,7 @@ if (!Yii::$app->user->isGuest){
                                 <div class="user-prop-value">
                                     <?php if (!empty($model['transport'])) : ?>
 
-                                    <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                        <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
                                     <?php else : ?>
 
@@ -774,8 +776,17 @@ if (!Yii::$app->user->isGuest){
                             </div>
 
 
+                        </div>
+                        <?php if ($model['text']) : ?>
+
+                            <div class="col-12">
+                                <p class="about"><?php echo $model['text']; ?></p>
+                            </div>
+
+                        <?php endif; ?>
                     </div>
                 </div>
+
             </div>
             </div>
         </div>
