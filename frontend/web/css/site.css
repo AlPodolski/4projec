@@ -1429,6 +1429,9 @@ ul li .secodn-menu:hover {
 .dialog-name a{
     color:#000;
 }
+.no-content-wrap .blue-btn{
+    margin: auto;
+}
 .chat{
     min-height: 45vh;
 }
