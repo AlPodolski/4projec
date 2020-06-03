@@ -13,10 +13,10 @@ $this->title = 'Диалоги';
 ?>
 <div class="row">
 
-    <div class="col-3">
+    <div class="col-xl-3">
         <?php echo UserSideBarWidget::Widget()?>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-xl-9">
 
         <?php
             echo MessageListWidget::widget(['user_id' => $user_id]);
