@@ -31,7 +31,7 @@ $this->title = 'Уведомления';
                                         <a class="position-relative" href="/user/<?php echo $event['profile']['id'] ?>">
 
                                             <?php echo PhotoWidget::widget([
-                                                'path' => $event['profile']['fromProfile']['file'],
+                                                'path' => $event['fromProfile']['userAvatarRelations']['file'],
                                                 'size' => 'dialog',
                                                 'options' => [
                                                     'class' => 'img',
@@ -91,7 +91,7 @@ $this->title = 'Уведомления';
                                             <a class=" " href="/user/<?php echo $event['profile']['id'] ?>">
 
                                                 <?php echo PhotoWidget::widget([
-                                                    'path' => $event['profile']['fromProfile']['file'],
+                                                    'path' => $event['fromProfile']['userAvatarRelations']['file'],
                                                     'size' => 'dialog',
                                                     'options' => [
                                                         'class' => 'img',
