@@ -2492,6 +2492,14 @@ a {
 
 }
 @media (max-width: 575px) {
+
+    .chat-block .form-otvet {
+        margin-right: 100px;
+    }
+    .chat-block .message-send-btn {
+        width: 90px;
+        right: 0px;
+    }
     .alert-item {
         padding: 10px 0px 10px 10px;
     }
@@ -2517,6 +2525,7 @@ a {
     }
 }
 @media (max-width: 500px) {
+
     .user-item{
         flex: 0 0 100%;
         max-width: 100%;

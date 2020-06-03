@@ -11,7 +11,7 @@
 
             <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and $dialog['lastMessage']['from'] != $user_id) echo 'not-read-dialog'; ?> ">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-2 col-md-1">
                         <div class="dialog-photo">
 
                             <?php if (file_exists(Yii::getAlias('@webroot') . $dialog->companion['author']['avatarRelation']['file']) and $dialog->companion['author']['avatarRelation']['file']) : ?>
@@ -26,7 +26,7 @@
 
                         </div>
                     </div>
-                    <div class="col-11 nim-dialog--content">
+                    <div class="col-8 col-md-11 nim-dialog--content">
                         <div class="dialog-text">
                             <div class="row">
                                 <div class="col-12">
