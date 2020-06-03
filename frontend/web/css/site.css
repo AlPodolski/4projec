@@ -1197,8 +1197,10 @@ ul li .secodn-menu:hover {
     display: none;
 }
 .about{
-    padding-left: 10px;
     color: #8E8E8E;
+}
+.profile-full-wrap .about{
+    padding-left: 10px;
 }
 .wall-form{
     margin-top: 15px;
