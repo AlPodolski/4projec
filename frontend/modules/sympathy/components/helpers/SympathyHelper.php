@@ -101,6 +101,7 @@ class SympathyHelper
             $userPol = ArrayHelper::getColumn($userPol, 'user_id');
 
             $post->andWhere(['in' , 'id' , $userPol]);
+            $post->with('userAvatarRelations');
 
             $age_from = AgeHelper::prepareAge($sympathySettings->age_from);
             $age_to = AgeHelper::prepareAge($sympathySettings->age_to);
