@@ -1429,9 +1429,6 @@ ul li .secodn-menu:hover {
 .dialog-name a{
     color:#000;
 }
-.chat-block{
-    margin-top:10px;
-}
 .chat{
     min-height: 45vh;
 }
@@ -2486,6 +2483,16 @@ a {
     .present-wrap-with-form .present-wrap .present-item {
         width: 100%;
     }
+    .dialog .form-otvet {
+        margin-right: 100px;
+    }
+    .dialog .message-send-btn {
+        width: 90px;
+        right: 0px;
+    }
+    .dialog .author , .dialog .post_date {
+        line-height: 16px;
+    }
 
 }
 @media (min-width: 576px) and (max-width: 1199px) {
@@ -2493,13 +2500,7 @@ a {
 }
 @media (max-width: 575px) {
 
-    .chat-block .form-otvet {
-        margin-right: 100px;
-    }
-    .chat-block .message-send-btn {
-        width: 90px;
-        right: 0px;
-    }
+
     .alert-item {
         padding: 10px 0px 10px 10px;
     }
