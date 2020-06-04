@@ -1432,6 +1432,15 @@ ul li .secodn-menu:hover {
 .no-content-wrap .blue-btn{
     margin: auto;
 }
+.show-event{
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #DB0505;
+    border-radius: 50%;
+    top: 0px;
+    left: 14px;
+}
 .chat{
     min-height: 45vh;
 }

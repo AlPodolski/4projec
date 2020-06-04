@@ -13,12 +13,16 @@ use Yii;
  * @property int|null $timestamp
  * @property int|null $from
  * @property int|null $type
+ * @property int|null $status
  */
 class Events extends \yii\db\ActiveRecord
 {
 
     const NEW_SYMPATHY = 1;
     const MUTUAL_SYMPATHY = 2;
+
+    const STATUS_NOT_READ = 0;
+    const STATUS_READ = 1;
     /**
      * {@inheritdoc}
      */
@@ -33,7 +37,7 @@ class Events extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'timestamp', 'from', 'type'], 'integer'],
+            [['user_id', 'timestamp', 'from', 'type', 'status'], 'integer'],
         ];
     }
 

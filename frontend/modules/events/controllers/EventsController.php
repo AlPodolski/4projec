@@ -25,6 +25,8 @@ class EventsController extends Controller
             ->with('fromProfile')
             ->all();
 
+        Events::updateAll(['status' => 1], ['user_id' => Yii::$app->user->id]);
+
         return $this->render('index', [
             'events' => $events,
             'city' => $city,

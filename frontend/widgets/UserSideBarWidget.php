@@ -4,6 +4,7 @@
 namespace frontend\widgets;
 
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
+use frontend\modules\events\models\Events;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\FriendsRequest;
 use Yii;
@@ -26,9 +27,13 @@ class UserSideBarWidget extends Widget
         $countNotRead = GetDialogsHelper::getNotReadCount(Yii::$app->user->id);
         $countFriendsRequest = FriendsRequest::find()->where(['user_id' => Yii::$app->user->id])->count();
 
+        $countNotReadEvents = Events::find()->where(['user_id' => Yii::$app->user->id])
+            ->andWhere(['status' => Events::STATUS_NOT_READ] )->count();
+
         return $this->render('user-sidebar', [
             'form_id' => $this->form_id,
             'countNotRead' => $countNotRead,
+            'countNotReadEvents' => $countNotReadEvents,
             'countFriendsRequest' => $countFriendsRequest
         ]);
 
