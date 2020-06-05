@@ -151,11 +151,15 @@ function get_presents(object){
 }
 
 function send_message(object){
+
     var formData = new FormData($("#message-form")[0]);
 
     var text = $('#message-form textarea').val();
     var img = $('.user-img').attr('src');
     var name = $(object).attr('data-name');
+    var id = $(object).attr('data-id');
+
+    console.log(img);
 
     $('#message-form textarea').val('');
 
@@ -170,11 +174,11 @@ function send_message(object){
         },
         success: function (data) {
 
-            $('.chat').prepend('<div class="wall-tem">\n' +
+            $('.chat').prepend('<div class="wall-tem right-message">\n' +
                 '\n' +
                 '            <div class="post_header">\n' +
                 '\n' +
-                '                <a class="post_image" href="/user/1">\n' +
+                '                <a class="post_image" href="/user/" '+ id +' >\n' +
                 '\n' +
                 '                    \n' +
                 '                        <img class="img" src="'+img+'" alt="">\n' +
@@ -197,6 +201,8 @@ function send_message(object){
                 '\n' +
                 '\n' +
                 '        </div>');
+
+            $('.chat-wrap').scrollTop($('.chat').height());
 
         },
 

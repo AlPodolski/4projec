@@ -13,56 +13,58 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
 <div class="page-block chat-block ">
     <a href="/user/chat"><i class="fas fa-arrow-left"></i>Назад</a>
-    <div class="chat">
+    <div class="chat-wrap-overlow overflow-hidden">
+        <div class="chat-wrap">
+            <div class="chat">
 
-        <?php if (isset($dialog['message'])) : ?>
+                <?php if (isset($dialog['message'])) : ?>
 
-        <?php foreach ($dialog['message'] as $item) : ?>
+                    <?php foreach ($dialog['message'] as $item) : ?>
 
-        <div class="wall-tem <?php if (Yii::$app->user->id == $item['author']['id']) echo 'right-message' ?>">
+                        <div class="wall-tem <?php if (Yii::$app->user->id == $item['author']['id']) echo 'right-message' ?>">
 
-            <div class="post_header">
+                            <div class="post_header">
 
-                <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
+                                <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
 
-                    <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
+                                    <?php if (file_exists(Yii::getAlias('@webroot').$item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
 
-                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'] , 'dialog') ?>" alt="">
+                                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'] , 'dialog') ?>" alt="">
 
-                    <?php else : ?>
+                                    <?php else : ?>
 
-                        <img class="img" src="/files/img/nophoto.png" alt="">
+                                        <img class="img" src="/files/img/nophoto.png" alt="">
 
-                    <?php endif; ?>
+                                    <?php endif; ?>
 
-                </a>
+                                </a>
 
-                <div class="post_header_info">
+                                <div class="post_header_info">
 
-                    <a href="/user/<?php echo $item['author']['id'] ?>" class="author">
-                        <?php echo $item['author']['username'] ?>
-                    </a>
-                    <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>
-                    <div class="post-text">
-                        <?php echo $item['message'] ?>
-                    </div>
-                </div>
+                                    <a href="/user/<?php echo $item['author']['id'] ?>" class="author">
+                                        <?php echo $item['author']['username'] ?>
+                                    </a>
+                                    <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>
+                                    <div class="post-text">
+                                        <?php echo $item['message'] ?>
+                                    </div>
+                                </div>
 
+
+                            </div>
+                            <div style="clear: both">
+                            </div>
+
+
+                        </div>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
 
             </div>
-            <div style="clear: both">
-            </div>
-
-
         </div>
-
-        <?php endforeach; ?>
-
-        <?php endif; ?>
-
     </div>
-
-
 </div>
 
 <div  class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
@@ -88,7 +90,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?php if (file_exists(Yii::getAlias('@webroot').$user['userAvatarRelations']['file']) and $user['userAvatarRelations']['file']) : ?>
 
-        <img loading="lazy" class="img d-none user-img" srcset="<?= Yii::$app->imageCache->thumbSrc($user['userAvatarRelations']['file'] , 'dialog') ?>" alt="">
+        <img loading="lazy" class="img d-none user-img" src="<?= Yii::$app->imageCache->thumbSrc($user['userAvatarRelations']['file'] , 'dialog') ?>" alt="">
 
     <?php else : ?>
 
