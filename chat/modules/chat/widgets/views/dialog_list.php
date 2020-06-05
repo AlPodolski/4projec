@@ -11,7 +11,9 @@
 
             <?php foreach ($dialogs as $dialog) : ?>
 
-            <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and !in_array($dialog['lastMessage']['from'] ,$user_id)) echo 'not-read-dialog'; ?> ">
+            <?php if ($dialog) : ?>
+
+                <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and !in_array($dialog['lastMessage']['from'] ,$user_id)) echo 'not-read-dialog'; ?> ">
                 <div class="row">
                     <div class="col-2 col-md-1">
                         <div class="dialog-photo">
@@ -68,6 +70,8 @@
                     </div>
                 </div>
             </li>
+
+            <?php endif; ?>
 
         <?php endforeach; ?>
 
