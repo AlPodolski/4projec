@@ -22,6 +22,7 @@ class MessageListWidget extends Widget
 
         $size = \sizeof($dialogs);
 
+        //сортировка по новизне
         for ($i = $size; $i>=0; $i--) {
 
             for ($j = 0; $j<=($i-1); $j++)
@@ -34,6 +35,23 @@ class MessageListWidget extends Widget
 
                     $dialogs[$j+1] = $k;
                 }
+
+        }
+
+        foreach ($dialogs as $key => $value){
+
+            if ($value){
+
+                if (\in_array($value['lastMessage']['from'], $this->user_id ) ){
+
+                    unset($dialogs[$key]);
+
+                    \array_push($dialogs, $value);
+
+                }
+
+            }
+
         }
 
         return $this->render('dialog_list', [

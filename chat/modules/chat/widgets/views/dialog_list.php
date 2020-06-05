@@ -18,13 +18,19 @@
                     <div class="col-2 col-md-1">
                         <div class="dialog-photo">
 
-                            <?php
+                            <?php  $src = 'http://msk.'.Yii::$app->params['site_name'] ; ?>
 
-                                $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog->companion['author']['avatarRelation']['file'];
+                            <a href="<?php echo $src ?>/user/<?php echo $dialog->companion['author']['id'] ?>">
 
-                                echo Html::img($src, ['width' => '50px', 'class' => 'img']);
+                                <?php
 
-                            ?>
+                                    $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog->companion['author']['avatarRelation']['file'];
+
+                                    echo Html::img($src, ['width' => '50px', 'class' => 'img']);
+
+                                ?>
+
+                            </a>
 
                         </div>
                     </div>
@@ -40,23 +46,23 @@
                                     <div class="dialog-prewiew">
                                         <div class="text-preview">
                                             <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
-                                        <span class="nim-dialog--who">
-                                            <span class="im-prebody">
+                                                <span class="nim-dialog--who">
+                                                    <span class="im-prebody">
 
-                                                <?php if (!in_array( $dialog['lastMessage']['from'], $user_id)) : ?>
+                                                        <?php if (!in_array( $dialog['lastMessage']['from'], $user_id)) : ?>
 
-                                                    <?php
+                                                            <?php
 
-                                                    $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog['lastMessage']['author']['avatarRelation']['file'];
+                                                            $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog['lastMessage']['author']['avatarRelation']['file'];
 
-                                                    echo Html::img($src, ['width' => '50px', 'class' => 'img']);
+                                                            echo Html::img($src, ['width' => '50px', 'class' => 'img']);
 
-                                                    ?>
+                                                            ?>
 
-                                                <?php endif; ?>
+                                                        <?php endif; ?>
 
-                                            </span>
-                                        </span>
+                                                    </span>
+                                                </span>
                                             </a>
                                             <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                                 <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog'; ?> "><?php echo $dialog->lastMessage['message'] ?></span>
