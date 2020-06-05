@@ -29,7 +29,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
             <div class="post_header">
 
-                <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
+                <a class="post_image" target="_blank" href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/user/<?php echo $item['author']['id'] ?>">
 
                     <?php
 
@@ -43,7 +43,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
                 <div class="post_header_info">
 
-                    <a href="/user/<?php echo $item['author']['id'] ?>" class="author">
+                    <a target="_blank" href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/<?php echo $item['author']['id'] ?>" class="author">
                         <?php echo $item['author']['username'] ?>
                     </a>
                     <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>

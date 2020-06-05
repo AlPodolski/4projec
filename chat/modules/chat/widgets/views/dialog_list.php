@@ -20,7 +20,7 @@
 
                             <?php  $src = 'http://msk.'.Yii::$app->params['site_name'] ; ?>
 
-                            <a href="<?php echo $src ?>/user/<?php echo $dialog->companion['author']['id'] ?>">
+                            <a target="_blank"  href="<?php echo $src ?>/user/<?php echo $dialog->companion['author']['id'] ?>">
 
                                 <?php
 
@@ -45,7 +45,7 @@
                                 <div class="col-12">
                                     <div class="dialog-prewiew">
                                         <div class="text-preview">
-                                            <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
+                                            <a target="_blank" href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                                 <span class="nim-dialog--who">
                                                     <span class="im-prebody">
 
