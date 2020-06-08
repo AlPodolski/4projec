@@ -25,6 +25,7 @@ class DialogWidget extends Widget
 
         return $this->render('dialog', [
             'dialog' => $dialog,
+            'dialog_id' => $dialog['dialog_id'],
             'user' => $this->user,
             'recepient' => $this->recepient,
         ]);

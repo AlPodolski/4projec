@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\assets;
+namespace chat\assets;
 
 use yii\web\AssetBundle;
 
@@ -15,9 +15,11 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'files/js/script.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
+        'yii\bootstrap4\BootstrapPluginAsset',
     ];
 }

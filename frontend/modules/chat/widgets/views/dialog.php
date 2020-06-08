@@ -1,6 +1,7 @@
 <?php /* @var $dialog array */ ?>
 <?php /* @var $user array */ ?>
 <?php /* @var $recepient integer */ ?>
+<?php /* @var $dialog_id integer */ ?>
 
 <?php
 
@@ -83,6 +84,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
     <?php if ($recepient) :?>
 
         <?= $form->field($messageForm, 'user_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $recepient])->label(false) ?>
+        <?= $form->field($messageForm, 'from_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $user['id']])->label(false) ?>
 
     <?php endif; ?>
 
@@ -98,7 +100,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?php endif; ?>
 
-    <span data-name="<?php echo $user['username'];  ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
+    <span data-name="<?php echo $user['username'];  ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
 
     <?php ActiveForm::end() ?>
 

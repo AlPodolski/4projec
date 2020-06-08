@@ -46,20 +46,18 @@ class ChatController extends Controller
     public function actionGet($city)
     {
 
-        $dialog_id = 0;
+        if (Yii::$app->request->isPost ){
 
-        if (Yii::$app->request->isPost and (Yii::$app->user->id != Yii::$app->request->post('id'))){
+            $id = Yii::$app->request->post('dialog_id');
 
-            $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
+            $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])->select('id')->asArray()->all(), 'id');
 
-            $userDialogsId = ArrayHelper::getColumn(UserDialog::find()->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
+            $userFromDialog = UserDialog::find()->where(['dialog_id' => $id])->andWhere(['in', 'user_id', $fakeUsers])->select('user_id')->asArray()->one();
 
-            $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
-
-            if ($dialog_id) $dialog_id = ArrayHelper::getValue($dialog_id, 'dialog_id');
+            $user = Profile::find()->where(['id' => ArrayHelper::getValue($userFromDialog, 'user_id')])->with('userAvatarRelations')->asArray()->one();
 
             return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
-                'dialog_id' => $dialog_id,
+                'dialog_id' => $id,
                 'user' => $user,
                 'recepient' => Yii::$app->request->post('id'),
             ]);

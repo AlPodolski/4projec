@@ -159,6 +159,23 @@ function send_message(object){
 
     $('#message-form textarea').val('');
 
+    var dialog_id = $(object).attr('data-dialog-id');
+
+
+    $('#message-form textarea').val('');
+
+    var html = '' +
+        '                                            <a target="_blank">\n' +
+        '                                                <span class="nim-dialog--who">\n' +
+        '                                                    <span class="im-prebody">\n' +
+        '\n' +
+        '                                                        \n' +
+        '                                                    </span>\n' +
+        '                                                </span>\n' +
+        '                                            </a>\n' +
+        '                                            <a>\n' +
+        '                                                <span class="nim-dialog--inner-text  ">'+text+'</span>';
+
     $.ajax({
         url: '/chat/send',
         type: 'POST',
@@ -200,6 +217,8 @@ function send_message(object){
 
             $('.chat-wrap').scrollTop($('.chat').height());
 
+            $('.dialog-item-'+dialog_id+ ' .text-preview').html(html);
+
         },
 
         complete: function() {
@@ -216,14 +235,15 @@ function send_message(object){
 }
 function get_message_form(object) {
 
-
-
     var id = $(object).attr('data-user-id');
+    var dialog_id = $(object).attr('data-dialog-id');
+
+    $('#messageModal').modal('show');
 
     $.ajax({
         url: '/user/chat/get',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id='+id+'&dialog_id='+dialog_id,
         success: function (data) {
             $('#messageModal .modal-body').html(data);
             $('#messageModal').modal('show');
@@ -234,6 +254,7 @@ function get_message_form(object) {
 
     $('#message-form .alert-success').remove();
 
+    $('.chat-wrap').scrollTop(9999999999999999999);
 
 }
 function check_friend_request(object) {
@@ -303,9 +324,24 @@ function send_message_form(object) {
         var text = $('#message-form textarea').val();
         var img = $('.user-img').attr('src');
         var name = $(this).attr('data-name');
+        var dialog_id = $(this).attr('data-dialog-id');
 
 
     $('#message-form textarea').val('');
+
+    var html = '' +
+        '                                            <a target="_blank">\n' +
+        '                                                <span class="nim-dialog--who">\n' +
+        '                                                    <span class="im-prebody">\n' +
+        '\n' +
+        '                                                        \n' +
+        '                                                    </span>\n' +
+        '                                                </span>\n' +
+        '                                            </a>\n' +
+        '                                            <a>\n' +
+        '                                                <span class="nim-dialog--inner-text  ">'+text+'</span>';
+
+    console.log(html);
 
         $.ajax({
             url: '/chat/send',
@@ -318,7 +354,12 @@ function send_message_form(object) {
             },
             success: function (data) {
 
-                $('#message-form').append('<p class="alert alert-success">Сообщение отправлено</p>');
+
+
+
+                $('.dialog-item-'+dialog_id+ ' .text-preview').html(html);
+
+
 
             },
 

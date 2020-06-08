@@ -2212,6 +2212,15 @@ a {
     max-height: 550px;
     overflow-y: scroll;
 }
+.dialog-prewiew{
+    position:relative;
+}
+.dialog-prewiew .write-message{
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    z-index: 1;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

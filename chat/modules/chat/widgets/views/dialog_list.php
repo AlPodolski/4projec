@@ -13,7 +13,7 @@
 
             <?php if ($dialog) : ?>
 
-                <li class="dialog_item <?php if ($dialog->lastMessage['status'] == 0 and !in_array($dialog['lastMessage']['from'] ,$user_id)) echo 'not-read-dialog'; ?> ">
+                <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> <?php if ($dialog->lastMessage['status'] == 0 and !in_array($dialog['lastMessage']['from'] , $user_id)) echo 'not-read-dialog'; ?> ">
                 <div class="row">
                     <div class="col-2 col-md-1">
                         <div class="dialog-photo">
@@ -67,6 +67,9 @@
                                             <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                                 <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog'; ?> "><?php echo $dialog->lastMessage['message'] ?></span>
                                             </a>
+                                        </div>
+                                        <div class="message write-message" data-dialog-id="<?php echo $dialog['dialog_id'] ?>" onclick="get_message_form(this)" data-user-id="<?php echo $dialog->companion['author']['id'] ?>">
+                                            Написать
                                         </div>
                                     </div>
                                 </div>

@@ -11,8 +11,6 @@ use yii\helpers\Html;
 $messageForm = new \frontend\modules\chat\models\forms\SendMessageForm();
 $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
-
-
 ?>
 
 <div class="page-block chat-block">
