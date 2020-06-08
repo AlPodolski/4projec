@@ -1,5 +1,6 @@
 <?php
 return [
+    'name' => 'Знакомства 4dosug',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

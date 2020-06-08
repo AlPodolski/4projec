@@ -35,7 +35,7 @@ class EventsController extends Controller
                     ->setTo($user_id['dialog']['authorNoPhoto']['email'])
                     ->setSubject('Новое сообщений ' . Yii::$app->name)
                     ->setHtmlBody('Здравствуйте '.$user_id['dialog']['authorNoPhoto']['username'].' , у Вас новое сообщение '
-                        .' <a href="https://'.$user_id['dialog']['authorNoPhoto']['city'].'.'.Yii::$app->params['site_name'].'/user/chat/">На сайте '. Yii::$app->name.'</a>')
+                        .' <a href="https://'.$user_id['dialog']['authorNoPhoto']['city'].'.'.Yii::$app->params['site_name'].'/user/chat">На сайте '. Yii::$app->name.'</a>')
                     ->setTextBody('Здравствуйте '.$user_id['dialog']['authorNoPhoto']['username'].' , у Вас новое сообщение '
                         .' На сайте '. Yii::$app->name.'')
                     ->send();
