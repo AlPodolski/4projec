@@ -13,7 +13,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 ?>
 
 <div class="page-block chat-block ">
-    <a href="/user/chat"><i class="fas fa-arrow-left"></i>Назад</a>
+
     <div class="chat-wrap-overlow overflow-hidden">
         <div class="chat-wrap">
             <div class="chat">

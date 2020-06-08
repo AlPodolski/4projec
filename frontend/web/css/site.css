@@ -1162,7 +1162,9 @@ ul li .secodn-menu:hover {
     padding: 0px 0 10px 0;
     display: block
 }
-
+.comment-wall-form{
+    border-radius:0px!important;
+}
 .post-text{
     margin-top:0px;
     padding: 10px 0px;
