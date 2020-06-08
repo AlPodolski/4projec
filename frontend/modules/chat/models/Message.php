@@ -2,6 +2,7 @@
 
 namespace frontend\modules\chat\models;
 
+use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\models\Profile;
 use Yii;
 
@@ -55,5 +56,10 @@ class Message extends \yii\db\ActiveRecord
 
         return $this->hasOne(Profile::class, ['id' => 'from'])->select('id, username')->with('avatarRelation');
 
+    }
+
+    public function getDialog()
+    {
+        return $this->hasOne(UserDialog::class, ['dialog_id' => 'chat_id'])->andWhere(['<>', 'user_id', $this->from])->with('authorNoPhoto');
     }
 }

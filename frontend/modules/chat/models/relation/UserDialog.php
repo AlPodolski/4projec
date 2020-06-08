@@ -55,7 +55,10 @@ class UserDialog extends \yii\db\ActiveRecord
     }
 
     public function getAuthor(){
-        return $this->hasOne(Profile::class, ['id' => 'user_id'])->select('id, username')->with('avatarRelation');
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->select('id, username, email')->with('avatarRelation');
+    }
+    public function getAuthorNoPhoto(){
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->select('id, username, email, city');
     }
 
     public function getCompanion(){
