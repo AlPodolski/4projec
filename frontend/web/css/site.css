@@ -602,6 +602,7 @@ h1{
 }
 .read-dialog{
     background: #fff!important;
+    width: 84%;
 }
 .dialog_item .dialog-text{
     height: 71px;
