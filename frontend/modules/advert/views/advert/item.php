@@ -11,20 +11,24 @@ use frontend\widgets\PhotoWidget;
         <div class="row user-info">
             <div class="col-3 col-sm-2 col-md-1 ">
                 <div class="dialog-photo">
-                    <?php echo PhotoWidget::widget([
-                        'path' => $advert['userRelations']['userAvatarRelations']['file'],
-                        'size' => 'dialog',
-                        'options' => [
-                            'class' => 'img',
-                            'loading' => 'lazy',
-                            'alt' => $advert['userRelations']['username'],
-                        ],
-                    ]); ?>
+                    <a class="name" href="/user/<?php echo $advert['userRelations']['id'] ?>">
+                        <?php echo PhotoWidget::widget([
+                            'path' => $advert['userRelations']['userAvatarRelations']['file'],
+                            'size' => 'dialog',
+                            'options' => [
+                                'class' => 'img',
+                                'loading' => 'lazy',
+                                'alt' => $advert['userRelations']['username'],
+                            ],
+                        ]); ?>
+                    </a>
                 </div>
             </div>
             <div class="col-9 col-sm-10 col-md-11">
                 <div class="name">
-                    <?php echo  $advert['userRelations']['username'] ?>
+                    <a class="name" href="/user/<?php echo $advert['userRelations']['id'] ?>">
+                        <?php echo  $advert['userRelations']['username'] ?>
+                    </a>
                 </div>
             </div>
         </div>
@@ -39,7 +43,9 @@ use frontend\widgets\PhotoWidget;
             </a>
         </div>
         <div class="text-ab">
-            <?php echo $advert->text; ?>
+            <a href="/adverts/<?php echo $advert->id ?>">
+                <?php echo $advert->text; ?>
+            </a>
         </div>
     </div>
 </div>

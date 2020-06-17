@@ -273,7 +273,7 @@ header{
 .user-ab-item{
     border-bottom: 1px solid #ededed;
 }
-.text-ab{
+.text-ab , .text-ab a{
     font-size: 12px;
     color: #777;
 }
