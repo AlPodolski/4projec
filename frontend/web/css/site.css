@@ -528,6 +528,21 @@ label{
 }
 .advert-item{
     margin-bottom: 15px;
+    background: #fff;
+    padding: 16px 27px;
+    border-radius: 5px;
+}
+.advert-item .dialog-photo{
+    margin-top: 0px;
+}
+.advert-item .user-info .name{
+    line-height: 50px;
+}
+.advert-item-text .name{
+    color: #000!important;
+}
+.advert-item .user-info{
+    margin-bottom: 10px;
 }
 .advert-item-icon{
     text-align: center;
@@ -2218,7 +2233,57 @@ a {
 .chat .right-message  .post_header_info{
     margin-left: 0px;
 }
-
+.add-advert-wrap{
+    background: #fff;
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    border: 3px solid RGBA(72, 107, 239, 0.7);
+    position: fixed;
+    z-index: 1;
+    bottom: 25px;
+    right: 300px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.add-advert-btn{
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(142.84deg, #80DFFD 14.15%, rgba(120, 153, 238, 0) 84.7%), #486BEF;
+    box-shadow: 0px 4px 25px rgba(36, 122, 239, 0.5);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#addAdvertModal .modal-header{
+    padding-top: 15px;
+}
+#addAdvertModal .modal-body{
+    padding: 0px 50px 15px;
+}
+#addAdvertModal .form-control{
+    font-weight: 100;
+    font-size: 14px;
+    color: #9CA4B4;
+    border: 1px solid rgba(156, 164, 180, 0.13);
+    font-family: Muller-light;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+#addAdvertModal .form-group .type-btn{
+    margin: 0 auto;
+    display: block;
+}
+.advert-page h1{
+    font-family: Muller;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 16px;
+    color: #486BEF;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

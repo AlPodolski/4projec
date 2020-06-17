@@ -33,8 +33,8 @@ class Advert extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'timestamp'], 'integer'],
-            [['text'], 'string'],
-            [['text'], 'required'],
+            [['text', 'title'], 'string'],
+            [['text', 'title'], 'required'],
         ];
     }
 
@@ -43,7 +43,7 @@ class Advert extends \yii\db\ActiveRecord
      */
     public function getUserRelations()
     {
-        return $this->hasOne(Profile::class, ['id' =>  'user_id']);
+        return $this->hasOne(Profile::class, ['id' =>  'user_id'])->with('userAvatarRelations');
     }
 
     public function getUserName(){

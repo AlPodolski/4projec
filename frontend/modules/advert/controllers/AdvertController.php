@@ -36,7 +36,11 @@ class AdvertController extends Controller
 
     public function actionList($city){
 
-        $advertList = Advert::find()->limit(Yii::$app->params['advert_limit'])->orderBy('id DESC')->all();
+        $advertList = Advert::find()
+            ->limit(Yii::$app->params['advert_limit'])
+            ->orderBy('id DESC')
+            ->with('userRelations')
+            ->all();
 
         return $this->render('advert', [
             'advertList' => $advertList
@@ -56,7 +60,10 @@ class AdvertController extends Controller
     {
         if (Yii::$app->request->isPost){
 
-            $advertList = Advert::find()->limit(Yii::$app->params['advert_limit'])->offset(Yii::$app->params['advert_limit'] * Yii::$app->request->post('page'))->orderBy('id DESC')->all();
+            $advertList = Advert::find()
+                ->limit(Yii::$app->params['advert_limit'])
+                ->offset(Yii::$app->params['advert_limit'] * Yii::$app->request->post('page'))
+                ->orderBy('id DESC')->all();
 
             if ($advertList) return $this->renderFile('@app/modules/advert/views/advert/more.php', [
                 'advertList' => $advertList

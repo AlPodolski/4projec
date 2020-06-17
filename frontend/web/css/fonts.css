@@ -22,6 +22,12 @@
     font-family: futuralightc; /* Имя шрифта */
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
 }
+@font-face {
+    font-family: 'Muller-light';
+    src : url(../files/fonts/muller/MullerLight.woff2);
+    font-weight: 300;
+    font-style: normal;
+}
 .place{
     font-family: HelveticaNeueCyr-Roman;
 }

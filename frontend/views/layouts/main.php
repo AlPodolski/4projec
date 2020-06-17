@@ -17,6 +17,7 @@ use frontend\widgets\CityWidget;
 use frontend\widgets\MetricaWidget;
 use frontend\widgets\PopularWidget;
 use frontend\widgets\UserSideBarWidget;
+use yii\widgets\ActiveForm;
 AppAsset::register($this);
 FontAwesomeAsset::register($this);
 
@@ -280,6 +281,8 @@ $login = new LoginForm();
     </div><!-- /.modal-dialog -->
 </div>
 
+<?php if (!Yii::$app->user->isGuest) : ?>
+
 <div id="messageModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -302,6 +305,54 @@ $login = new LoginForm();
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
+<div id="addAdvertModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.25 14.75L14.75 1.25" stroke="black" stroke-width="2"/>
+                        <path d="M1.25 1.25L14.75 14.75" stroke="black" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body modal-city-search">
+
+                <?php $advertForm = ActiveForm::begin(); ?>
+
+                <?php $modelAdvert = new \frontend\modules\advert\models\Advert() ?>
+
+                <div class="col-12">
+
+                    <p class="name heading-anket">Создать обьявление</p>
+
+                    <?= $advertForm->field($modelAdvert, 'title')->textInput([ 'placeholder' => 'Название заголовка' , 'id' => '' ])->label(false) ?>
+
+                    <?= $advertForm->field($modelAdvert, 'text')->textarea(['placeholder' => 'Расскажите о ваших пожелениях....' , 'id' => ''])->label(false) ?>
+
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Сохранить', ['class' => 'type-btn']) ?>
+                    </div>
+
+                </div>
+
+                <?php ActiveForm::end() ?>
+
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<?php endif; ?>
+
 <div id="modal-feed-back" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content">
