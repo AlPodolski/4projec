@@ -10,6 +10,10 @@ use frontend\widgets\CommentsFormWidget;
 
 $commentsForm = new \frontend\models\forms\AddCommentForm();
 
+if (isset($advert['title']) and !empty($advert['title'])) $this->title = mb_substr($advert['title'], 0, 125);
+else $this->title = mb_substr($advert['text'], 0, 125);
+
+
 $this->registerMetaTag([
         'name' => 'description',
         'content' =>  mb_substr($advert['text'], 0, 255),

@@ -6,7 +6,7 @@
 
         <a class="post_image " href="/user/<?php echo $comment['author']['id'] ?>" >
 
-            <?php if (isset ($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot').$comment['author']['avatarRelation']['file']) and $comment['author']['avatarRelation']['file']) : ?>
+            <?php if (isset ($comment['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot').$comment['author']['avatarRelation']['file']) and $comment['author']['avatarRelation']['file']) : ?>
 
                 <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($comment['author']['avatarRelation']['file'], 'dialog') ?>" alt="">
 
