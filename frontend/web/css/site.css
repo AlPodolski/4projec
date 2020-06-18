@@ -1165,10 +1165,10 @@ ul li .secodn-menu:hover {
 #message-form .alert-success{
     margin-top: 15px;
 }
-.form-otvet {
-    margin-right: 193px;
+#message-form .form-otvet {
+    margin-right: 200px;
 }
-.comment-wall-form .form-otvet {
+.comment-wall-form #message-form .form-otvet {
     margin-right: 55px;
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
@@ -2603,7 +2603,7 @@ a {
     .present-wrap-with-form .present-wrap .present-item {
         width: 100%;
     }
-    .dialog .form-otvet {
+    .dialog #message-form .form-otvet {
         margin-right: 100px;
     }
     .dialog .message-send-btn {
