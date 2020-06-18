@@ -2,13 +2,10 @@
 
 namespace frontend\modules\wall\controllers;
 
-use common\models\Comments;
 use frontend\modules\wall\components\WallHelper;
-use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\models\forms\AddToWallForm;
 use Yii;
 use yii\web\Controller;
-use frontend\modules\wall\models\Wall;
 use frontend\modules\wall\components\LikeHelper;
 
 class WallController extends Controller
@@ -40,35 +37,6 @@ class WallController extends Controller
 
         return $this->goHome();
 
-    }
-
-    public function actionComment()
-    {
-        if (Yii::$app->request->isPost){
-
-            if (!Yii::$app->user->isGuest){
-
-                $model = new AddCommentForm();
-
-                $model->author_id = Yii::$app->user->id;
-                $model->created_at = \time();
-                $model->class = Wall::class;
-
-                if ($model->load(Yii::$app->request->post()) and $id = $model->save()){
-
-                    $comment = Comments::find()->where(['id' => $id])->with('author')->asArray()->one();
-
-                    return  $this->renderFile('@app/modules/wall/widgets/views/comment-item.php', [
-                        'comment' => $comment
-                    ]);
-
-                }
-
-            }
-
-        }
-
-        return $this->goHome();
     }
 
     public function actionItemLike()

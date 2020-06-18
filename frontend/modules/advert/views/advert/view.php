@@ -5,6 +5,9 @@
 
 use frontend\widgets\SidebarWidget;
 use frontend\widgets\UserSideBarWidget;
+use frontend\widgets\PhotoWidget;
+
+$commentsForm = new \frontend\models\forms\AddCommentForm();
 
 $this->registerMetaTag([
         'name' => 'description',
@@ -32,19 +35,53 @@ $this->registerMetaTag([
 
     <div class="col-12 col-xl-9">
 
-        <div class="anket">
+        <div class="anket advert-view advert-item">
 
-            <?php if (isset($advert['title']) and $advert['title']) : ?>
 
-                <h1><?php echo $this->title = $advert['title'] ?></h1>
+            <?php if ($advert['userRelations']) : ?>
+
+                <div class="col-12">
+                    <div class="row user-info">
+                        <div class="col-3 col-sm-2 col-md-1 ">
+                            <div class="dialog-photo">
+                                <a class="name" href="/user/<?php echo $advert['userRelations']['id'] ?>">
+                                    <?php echo PhotoWidget::widget([
+                                        'path' => $advert['userRelations']['userAvatarRelations']['file'],
+                                        'size' => 'dialog',
+                                        'options' => [
+                                            'class' => 'img',
+                                            'loading' => 'lazy',
+                                            'alt' => $advert['userRelations']['username'],
+                                        ],
+                                    ]); ?>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-9 col-sm-10 col-md-11">
+                            <div class="name">
+                                <a class="name" href="/user/<?php echo $advert['userRelations']['id'] ?>">
+                                    <?php echo  $advert['userRelations']['username'] ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             <?php endif; ?>
 
-            <?php if (isset($advert['text']) and $advert['text']) : ?>
+            <div class="col-12 advert-item-text">
+                <div >
+                        <?php echo $advert['title']; ?>
+                </div>
+                <div class="text-ab">
 
-                <p><?php echo $advert['text'] ?></p>
+                        <?php echo $advert['text']; ?>
 
-            <?php endif ; ?>
+                </div>
+            </div>
+
+
+
 
         </div>
 

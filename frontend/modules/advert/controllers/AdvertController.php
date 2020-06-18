@@ -49,7 +49,9 @@ class AdvertController extends Controller
 
     public function actionView($city, $id)
     {
-        $advert = Advert::find()->where(['id' => $id])->asArray()->one();
+        $advert = Advert::find()->where(['id' => $id])
+            ->with('userRelations')
+            ->asArray()->one();
 
         return $this->render('view', [
             'advert' => $advert

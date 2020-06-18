@@ -276,6 +276,7 @@ header{
 .text-ab , .text-ab a{
     font-size: 12px;
     color: #777;
+    font-family: Muller-light;
 }
 img{
     max-width: 100%;
@@ -1413,6 +1414,7 @@ ul li .secodn-menu:hover {
 }
 .comment-item{
     margin-top: 10px;
+    padding-left: 20px;
 }
 .comments-list .comment-item:first-child{
     margin-top: 1px;

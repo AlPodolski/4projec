@@ -1,10 +1,11 @@
 <?php /* @var $wallItems array */
 
 use yii\widgets\ActiveForm;
-use frontend\modules\wall\models\forms\AddCommentForm;
+use frontend\models\forms\AddCommentForm;
 use frontend\modules\wall\components\LikeHelper;
-
+use frontend\widgets\CommentsFormWidget;
 $commentForm = new AddCommentForm();
+
 ?>
 
 
@@ -128,7 +129,7 @@ if (!empty($wallItems)) : ?>
 
                 <?php foreach ($item['comments'] as $comment) : ?>
 
-                <?php echo $this->renderFile('@app/modules/wall/widgets/views/comment-item.php', [
+                <?php echo $this->renderFile('@app/views/comment/comment-item.php', [
                         'comment' => $comment
                     ]); ?>
 
@@ -148,22 +149,14 @@ if (!empty($wallItems)) : ?>
 
                     <?php
 
-                    $form = ActiveForm::begin([
-                        'action' => '#',
-                        'id' => 'wall-form',
-                        'options' => ['class' => 'form-horizontal form-wall-comment-'.$item['id']],
-                    ]) ?>
-                    <?= $form->field($commentForm, 'related_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $item['id']])->label(false) ?>
-                    <?= $form->field($commentForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+                        echo CommentsFormWidget::widget([
+                                'classRelatedModel' => \frontend\modules\wall\models\Wall::class,
+                                'classCss' => 'form-horizontal form-wall-comment-'.$item['id'],
+                                'idCss' => 'wall-form',
+                                'relatedId' => $item['id'],
+                        ]);
 
-                    <span class="send-comment-btn" onclick="send_comment(this)" data-id="<?php echo $item['id']; ?>">
-                        Отправить
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF" fill-opacity="0.13"/>
-                            </svg>
-                    </span>
-
-                    <?php ActiveForm::end() ?>
+                    ?>
 
                 </div>
 

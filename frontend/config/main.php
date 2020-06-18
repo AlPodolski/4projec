@@ -142,7 +142,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/adverts' => 'advert/advert/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/more-adverds' => 'advert/advert/more',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/add' => 'wall/wall/add',
-                '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/comment' => 'wall/wall/comment',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/comment' => 'comment/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/like' => 'wall/wall/item-like',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/delete' => 'wall/wall/item-delete',
 

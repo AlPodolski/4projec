@@ -1,7 +1,7 @@
 <?php
 
 
-namespace frontend\modules\wall\models\forms;
+namespace frontend\models\forms;
 
 use yii\base\Model;
 use common\models\Comments;
@@ -37,6 +37,7 @@ class AddCommentForm extends Model
     }
 
     public function save(){
+
         $comment = new Comments();
 
         $comment->author_id = $this->author_id;

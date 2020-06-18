@@ -51,9 +51,7 @@ use yii\helpers\Html;
         <p class="alert alert-success"></p>
     </div>
 
-    <?php ActiveForm::end();
-
-    ?>
+    <?php ActiveForm::end();  ?>
 
     <div class="user-menu-list">
         <ul class="user-menu-ul">
