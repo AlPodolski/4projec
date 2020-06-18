@@ -2316,6 +2316,16 @@ a {
 #wall-form .form-otvet{
     margin-right: 50px;
 }
+.comment-count-block{
+    margin-bottom: 20px;
+    margin-left: -26px;
+    border-top: 1px solid #F4F4F4;
+    border-bottom: 1px solid #F4F4F4;
+    margin-right: -26px;
+    padding-left: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;
