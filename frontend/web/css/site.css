@@ -2313,6 +2313,9 @@ a {
     line-height: 16px;
     color: #486BEF;
 }
+#wall-form .form-otvet{
+    margin-right: 50px;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;
