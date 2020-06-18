@@ -34,7 +34,8 @@ class Comments extends \yii\db\ActiveRecord
         return [
             [['parent_id', 'related_id', 'created_at'], 'integer'],
             [['class'], 'string', 'max' => 120],
-            [['text'], 'string', 'max' => 255],
+            [['text'], 'string', 'max' => 255, 'min' => 1],
+            [['text'], 'required'],
         ];
     }
 

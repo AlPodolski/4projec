@@ -21,7 +21,7 @@ class CommentController extends Controller
                 $model->author_id = Yii::$app->user->id;
                 $model->created_at = \time();
 
-                if ($model->load(Yii::$app->request->post()) and $id = $model->save()){
+                if ($model->load(Yii::$app->request->post()) and $model->validate() and  $id = $model->save()){
 
                     $comment = Comments::find()->where(['id' => $id])->with('author')->asArray()->one();
 
@@ -35,6 +35,6 @@ class CommentController extends Controller
 
         }
 
-        return $this->goHome();
+        //return $this->goHome();
     }
 }

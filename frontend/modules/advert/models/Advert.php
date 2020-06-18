@@ -2,8 +2,10 @@
 
 namespace frontend\modules\advert\models;
 
+use common\models\Comments;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
+use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -49,6 +51,12 @@ class Advert extends \yii\db\ActiveRecord
     public function getUserName(){
 
         return ArrayHelper::getValue(Profile::find()->where(['id' => $this->user_id])->asArray()->one(), 'username');
+
+    }
+
+    public function getComments(){
+
+        return $this->hasMany(Comments::class, ['related_id' => 'id'])->andWhere(['class' => Advert::class])->with('author');
 
     }
 

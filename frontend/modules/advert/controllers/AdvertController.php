@@ -51,6 +51,7 @@ class AdvertController extends Controller
     {
         $advert = Advert::find()->where(['id' => $id])
             ->with('userRelations')
+            ->with('comments')
             ->asArray()->one();
 
         return $this->render('view', [

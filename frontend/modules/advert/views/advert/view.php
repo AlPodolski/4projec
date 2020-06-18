@@ -6,6 +6,7 @@
 use frontend\widgets\SidebarWidget;
 use frontend\widgets\UserSideBarWidget;
 use frontend\widgets\PhotoWidget;
+use frontend\widgets\CommentsFormWidget;
 
 $commentsForm = new \frontend\models\forms\AddCommentForm();
 
@@ -27,7 +28,9 @@ $this->registerMetaTag([
         <?php endif; ?>
 
         <?php
-        echo SidebarWidget::Widget()
+
+            echo SidebarWidget::Widget()
+
         ?>
     </div>
 
@@ -36,7 +39,6 @@ $this->registerMetaTag([
     <div class="col-12 col-xl-9">
 
         <div class="anket advert-view advert-item">
-
 
             <?php if ($advert['userRelations']) : ?>
 
@@ -80,8 +82,34 @@ $this->registerMetaTag([
                 </div>
             </div>
 
+            <div class="comments-list">
 
+                <?php if (!empty($advert['comments'])) : ?>
+                    <?php /*комментарии к записи*/ ?>
 
+                    <?php foreach ($advert['comments'] as $comment) : ?>
+
+                        <?php echo $this->renderFile('@app/views/comment/comment-item.php', [
+                            'comment' => $comment
+                        ]); ?>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+            </div>
+
+            <div class="comment-block comment-wall-form">
+                <?php
+
+                echo CommentsFormWidget::widget([
+                    'classRelatedModel' => \frontend\modules\advert\models\Advert::class,
+                    'classCss' => 'form-horizontal form-wall-comment-' . $advert['id'],
+                    'idCss' => 'wall-form',
+                    'relatedId' => $advert['id'],
+                ]);
+
+                ?>
+            </div>
 
         </div>
 
