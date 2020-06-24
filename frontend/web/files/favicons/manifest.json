@@ -1,5 +1,9 @@
 {
- "name": "App",
+ "lang": "ru",
+ "dir": "ltr",
+ "start_url": "/",
+ "name": "Знакомтва 4znakom.com",
+ "short_name": "4znakom.com",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
@@ -37,5 +41,9 @@
    "type": "image\/png",
    "density": "4.0"
   }
- ]
+ ],
+ "theme_color": "#ffffff",
+ "background_color": "#ffffff",
+ "display": "standalone",
+ "orientation": "natural"
 }

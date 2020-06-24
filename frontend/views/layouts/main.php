@@ -410,6 +410,21 @@ $login = new LoginForm();
 </div>
 
 <?php echo MetricaWidget::widget(); ?>
+
+<script>
+    function registerServiceWorker() {
+        // регистрирует скрипт sw в поддерживаемых браузерах
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(() => {
+                console.log('Service Worker registered successfully.');
+            }).catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+    }
+    registerServiceWorker();
+</script>
+
 <?php $this->endBody() ?>
 <link rel="preload" href="/files/slick/slick.css" as="style" />
 <link rel="preload" href="/files/slick/slick-theme.css" as="style" />
