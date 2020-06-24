@@ -254,12 +254,12 @@ function get_message_form(object) {
 
     $('#message-form .alert-success').remove();
 
-    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() );
+    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() + 99999999);
 
 }
 
 $('#messageModal').on('shown.bs.modal', function (e) {
-    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() )
+    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() + 99999999)
 });
 
 function check_friend_request(object) {
