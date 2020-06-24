@@ -2472,7 +2472,7 @@ a {
         background: none !important;
     }
     .popular-block-mobile .slick-next , .main-banner-wrap-mobile .slick-next{
-        right: -10px;
+        right: -4px;
         z-index: 2;
     }
     .popular-block-mobile .slick-prev , .main-banner-wrap-mobile .slick-prev {
