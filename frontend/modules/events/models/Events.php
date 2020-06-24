@@ -51,7 +51,12 @@ class Events extends \yii\db\ActiveRecord
 
     public function getFromProfile()
     {
-        return $this->hasOne(Profile::class, ['id' => 'from'])->with('userAvatarRelations');
+        return $this->hasOne(Profile::class, ['id' => 'from'])->with('userAvatarRelations')->with('polRelation');
+    }
+
+    public static function getParent(string $class, int $id)
+    {
+        return $class::find()->where(['id' => $id])->select('text')->asArray()->one();
     }
 
     /**

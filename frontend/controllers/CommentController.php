@@ -28,14 +28,14 @@ class CommentController extends Controller
 
                     $comment = Comments::find()->where(['id' => $id])->with('author')->asArray()->one();
 
-                    if ($user_id = CommentsHelper::getCommentOwner($comment['related_id'], $comment['class'] )){
+                    if (Yii::$app->user->id != $model->author_id and $user_id = CommentsHelper::getCommentOwner($comment['related_id'], $comment['class'] )){
 
                         AddEvent::Add(
                             $model->author_id,
                             $user_id['user_id'],
                             Events::NEW_COMMENT,
                             $comment['related_id'],
-                            Comments::class
+                            $model->class
                         );
 
                     }

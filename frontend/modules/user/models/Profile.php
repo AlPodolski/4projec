@@ -17,6 +17,7 @@ use common\models\LifeGoals;
 use common\models\Metro;
 use common\models\National;
 use common\models\Place;
+use common\models\Pol;
 use common\models\Professionals;
 use common\models\Rayon;
 use common\models\Service;
@@ -209,10 +210,19 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     public function getPol(){
+
         return ArrayHelper::getValue($this->hasOne(UserPol::class, ['user_id' => 'id'])->asArray()->one(), 'pol_id');
+
     }
     public function getPolRelation(){
+
         return $this->hasOne(UserPol::class, ['user_id' => 'id']);
+
+    }
+
+    public function getPolValue()
+    {
+        return $this->hasOne(Pol::class, ['id' => 'pol_id'])->via('polRelation');
     }
     /**
      * @return \yii\db\ActiveQuery

@@ -23,6 +23,8 @@ class EventsController extends Controller
         $events = Events::find()->where(['user_id' => Yii::$app->user->id])->asArray()
             ->with('profile')
             ->with('fromProfile')
+            ->orderBy('id DESC')
+            ->limit(12)
             ->all();
 
         Events::updateAll(['status' => 1], ['user_id' => Yii::$app->user->id]);

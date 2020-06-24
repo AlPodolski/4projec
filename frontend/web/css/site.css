@@ -2326,6 +2326,14 @@ a {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+.event-item-comment-text{
+    font-family: Muller-light;
+    font-size: 14px;
+    color:#486BEF;
+}
+.comment-event-item .blue-text , .comment-event-item .small-text{
+    line-height: 19px;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;

@@ -117,6 +117,69 @@ $this->title = 'Уведомления';
 
                         <?php endif; ?>
 
+                        <?php if ($event['type'] == \frontend\modules\events\models\Events::NEW_COMMENT) : ?>
+
+                            <div class="alert-item comment-event-item">
+
+                                <div class="row">
+
+                                    <div class="col-5 col-md-1">
+
+                                            <a class="position-relative" href="/user/<?php echo $event['fromProfile']['id'] ?>">
+
+                                                <?php echo PhotoWidget::widget([
+                                                    'path' => $event['fromProfile']['userAvatarRelations']['file'],
+                                                    'size' => 'dialog',
+                                                    'options' => [
+                                                        'class' => 'img',
+                                                        'loading' => 'lazy',
+                                                        'alt' => $event['fromProfile']['username'],
+                                                    ],
+                                                ]); ?>
+
+                                            </a>
+
+                                        </div>
+
+                                    <div class="col-7 col-md-10">
+
+                                        <div class="row">
+                                            <div class="small-text col-12">
+
+                                                <a class="position-relative blue-text" href="/user/<?php echo $event['fromProfile']['id'] ?>">
+
+                                                    <?php echo $event['fromProfile']['username'] ?>
+
+                                                </a>
+
+                                                оставил<?php if ($event['fromProfile']['polRelation']) {
+                                                    if ($event['fromProfile']['polRelation']['pol_id'] == 2) echo 'а';
+                                                }else{
+                                                    echo '(a)';
+                                                }
+                                                ?> комментарий к записи:
+
+                                            </div>
+                                            <div class="event-item-comment-text col-12">
+                                                <?php
+
+                                                $parent = \frontend\modules\events\models\Events::getParent($event['class'], $event['related_id']);
+
+                                                echo mb_substr($parent['text'], 0, 66)
+
+                                                ?>...
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        <?php endif; ?>
+
                     <?php endforeach; ?>
 
                 <?php endif; ?>
