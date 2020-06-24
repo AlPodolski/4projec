@@ -254,9 +254,14 @@ function get_message_form(object) {
 
     $('#message-form .alert-success').remove();
 
-    $('.chat-wrap').scrollTop(9999999999999999999);
+    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() );
 
 }
+
+$('#messageModal').on('shown.bs.modal', function (e) {
+    $('.chat-wrap').scrollTop($('.modal-dialog .chat-wrap').height() )
+});
+
 function check_friend_request(object) {
     var id = $(object).attr('data-user-id');
     $.ajax({
