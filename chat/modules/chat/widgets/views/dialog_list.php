@@ -64,7 +64,7 @@
                                                     </span>
                                                 </span>
                                             </a>
-                                            <a href="/user/chat/<?php echo $dialog['dialog_id'] ?>">
+                                            <a href="#">
                                                 <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog'; ?> "><?php echo $dialog->lastMessage['message'] ?></span>
                                             </a>
                                         </div>
