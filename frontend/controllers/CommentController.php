@@ -3,6 +3,9 @@
 
 namespace frontend\controllers;
 
+use frontend\components\helpers\CommentsHelper;
+use frontend\modules\events\components\helpers\AddEvent;
+use frontend\modules\events\models\Events;
 use yii\web\Controller;
 use common\models\Comments;
 use frontend\models\forms\AddCommentForm;
@@ -25,6 +28,18 @@ class CommentController extends Controller
 
                     $comment = Comments::find()->where(['id' => $id])->with('author')->asArray()->one();
 
+                    if ($user_id = CommentsHelper::getCommentOwner($comment['related_id'], $comment['class'] )){
+
+                        AddEvent::Add(
+                            $model->author_id,
+                            $user_id['user_id'],
+                            Events::NEW_COMMENT,
+                            $comment['related_id'],
+                            Comments::class
+                        );
+
+                    }
+
                     return  $this->renderFile('@app/views/comment/comment-item.php', [
                         'comment' => $comment
                     ]);
@@ -35,6 +50,5 @@ class CommentController extends Controller
 
         }
 
-        //return $this->goHome();
     }
 }

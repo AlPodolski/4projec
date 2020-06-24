@@ -643,8 +643,6 @@ $(window).scroll(function(){
 
 function send_comment(object){
 
-    console.log($(object).attr('data-id'));
-
     var formData = new FormData($(".form-wall-comment-"+$(object).attr('data-id'))[0]);
 
     var id = $(object).attr('data-id');

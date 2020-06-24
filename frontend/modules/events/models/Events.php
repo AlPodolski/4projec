@@ -14,12 +14,15 @@ use Yii;
  * @property int|null $from
  * @property int|null $type
  * @property int|null $status
+ * @property string|null $class
+ * @property int|null $related_id
  */
 class Events extends \yii\db\ActiveRecord
 {
 
     const NEW_SYMPATHY = 1;
     const MUTUAL_SYMPATHY = 2;
+    const NEW_COMMENT = 3;
 
     const STATUS_NOT_READ = 0;
     const STATUS_READ = 1;
