@@ -72,11 +72,6 @@ return [
                 '400_500' => [400, 500],
             ],
         ],
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true, 'domain' => '.4dosug.loc'],
-        ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend',
