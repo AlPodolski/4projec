@@ -1,0 +1,115 @@
+<?php
+
+
+namespace frontend\deamon;
+
+use common\models\User;
+use consik\yii2websocket\events\WSClientEvent;
+use consik\yii2websocket\WebSocketServer;
+use frontend\modules\chat\models\forms\SendMessageForm;
+use Ratchet\ConnectionInterface;
+use Yii;
+
+
+class EchoServer extends WebSocketServer
+{
+    public function init()
+    {
+        parent::init();
+
+        $this->on(self::EVENT_CLIENT_CONNECTED, function(WSClientEvent $e) {
+            $e->client->name = null;
+            $e->client->udata = $this->getData($e->client);
+        });
+    }
+
+
+    protected function getCommand(ConnectionInterface $from, $msg)
+    {
+        $request = json_decode($msg, true);
+        return !empty($request['action']) ? $request['action'] : parent::getCommand($from, $msg);
+    }
+
+    public function commandChat(ConnectionInterface $client, $msg)
+    {
+
+        $request = json_decode($msg, true);
+        $result = ['message' => ''];
+
+        echo $request;
+
+        if ($this->save_message($client->udata['id'], $request['message'], $request['to'], $request['dialog_id'])
+            && $message = trim($request['message']) ) {
+            foreach ($this->clients as $chatClient) {
+                if ($chatClient->udata['id'] == $request['to']){
+                    $chatClient->send( json_encode([
+                        'type' => 'chat',
+                        'from' => $client->udata['name'],
+                        'from_id' => $client->udata['id'],
+                        'message' => $message
+                    ]) );
+                }
+            }
+        } else {
+            $result['message'] = 'Enter message';
+        }
+
+        $client->send( json_encode($result) );
+    }
+
+    public function getData($connect)
+    {
+        $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend']);
+
+        $data = Yii::$app->getSecurity()->validateData($data, 'Uv5gSG7AYqbTm74F6b9UeTxDhI7HHD9K');
+
+        if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70000) {
+
+            $data = @unserialize($data, ['allowed_classes' => false]);
+
+        } else {
+
+            $data = @unserialize($data);
+
+        }
+
+        if (\is_array( $data)){
+
+            $data = \json_decode($data[1]);
+
+            if ($user = $this->checkUser($data[0], $data[1])){
+                return array('id' => $user['id'], 'name' => $user['username']);
+            }
+
+        }
+
+        return false;
+    }
+
+    public function checkUser($id, $auth_key)
+    {
+        return User::find()->where(['id' => $id, 'auth_key' => $auth_key])->asArray()->one();
+    }
+
+    public function save_message( $from,  $text ,  $to , $chat_id = false )
+    {
+
+        $model = new SendMessageForm();
+
+        $model->from_id = $from;
+        $model->created_at = \time();
+        $model->text = $text;
+        $model->user_id = $to;
+        $model->chat_id = $chat_id;
+
+
+        if ($model->validate() ){
+
+            return $model->save();
+
+        }
+
+        return false;
+    }
+
+}

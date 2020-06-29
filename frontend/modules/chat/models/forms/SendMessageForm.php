@@ -21,7 +21,7 @@ class SendMessageForm extends Model
         return [
             [['text', 'from_id'], 'required'],
             [['from_id', 'chat_id', 'user_id'], 'integer'],
-            [['text'], 'string'],
+            [['text'], 'string', 'min' => 1],
         ];
     }
 

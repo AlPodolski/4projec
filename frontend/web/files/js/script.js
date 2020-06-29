@@ -1,3 +1,83 @@
+var chat = new WebSocket('ws://msk.4dosug.loc:8080');
+
+function message_sound(){
+    var audio = new Audio();
+    audio.src = '/files/audio/alarm-clock-button-click_z17d0vno.mp3';
+    audio.autoplay = true;
+}
+
+chat.onclose = function(event) {
+    console.log(event);
+    if (event.wasClean) {
+        console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+    } else {
+        // например, сервер убил процесс или сеть недоступна
+        // обычно в этом случае event.code 1006
+        console.log('[close] Соединение прервано');
+    }
+};
+
+chat.onerror = function(error) {
+    console.log(`[error] ${error.message}`);
+};
+
+function add_message(img, name, id, message, class_attr = 'right-message'){
+    $('.chat').prepend('<div class="wall-tem '+class_attr+'">\n' +
+        '\n' +
+        '            <div class="post_header">\n' +
+        '\n' +
+        '                <a class="post_image" href="/user/" '+ id +' >\n' +
+        '\n' +
+        '                    \n' +
+        '                        <img class="img" src="'+img+'" alt="">\n' +
+        '                    \n' +
+        '                </a>\n' +
+        '\n' +
+        '                <div class="post_header_info">\n' +
+        '\n' +
+        '                    <a href="'+id+'" class="author">\n' +
+        '                        '+name+'</a>\n' +
+        '                    <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
+        '                    <div class="post-text">\n' +
+        '                        '+message+'                    </div>\n' +
+        '                </div>\n' +
+        '\n' +
+        '\n' +
+        '            </div>\n' +
+        '            <div style="clear: both">\n' +
+        '            </div>\n' +
+        '\n' +
+        '\n' +
+        '</div>');
+}
+
+window.chat.onmessage = function(e) {
+
+    var response = JSON.parse(e.data);
+    if (response.type && response.type == 'chat') {
+
+        if($('#messageModal').hasClass('show') && $('#messageModal').hasClass('to-'+response.from_id) || true){
+
+            var object = $('.message-send-btn');
+
+            var img = $('.user-to').attr('srcset');
+            var name = $(object).attr('data-name');
+            var id = $(object).attr('data-id');
+
+            add_message(img, name, id, response.message, '');
+
+        }
+
+        message_sound();
+
+        console.log(response);
+
+        $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+
+    }
+};
+
 function showPhone(object) {
 
     var phone = $(object);
@@ -152,75 +232,68 @@ function get_presents(object){
 
 function send_message(object){
 
-    var formData = new FormData($("#message-form")[0]);
+    var to = $(object).siblings('.field-sendmessageform-user_id').find('#sendmessageform-user_id').val();
+    var message = $(object).siblings('.field-sendmessageform-text').find('#sendmessageform-text').val();
+    var dialog_id = $(object).siblings('.field-sendmessageform-chat_id').find('#sendmessageform-chat_id').val();
+
 
     var text = $('#message-form textarea').val();
-    var img = $('.user-img').attr('src');
+    var img = $('.user-img').attr('srcset');
     var name = $(object).attr('data-name');
     var id = $(object).attr('data-id');
 
-    console.log(img);
 
-    $('#message-form textarea').val('');
+    $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999)
 
-    $.ajax({
-        url: '/chat/send',
-        type: 'POST',
-        data: formData,
-        datatype:'json',
-        // async: false,
-        beforeSend: function() {
-            $('#w0 .form-text').css('display', 'none');
-        },
-        success: function (data) {
+    console.log(window.chat);
 
-            $('.chat').prepend('<div class="wall-tem right-message">\n' +
-                '\n' +
-                '            <div class="post_header">\n' +
-                '\n' +
-                '                <a class="post_image" href="/user/" '+ id +' >\n' +
-                '\n' +
-                '                    \n' +
-                '                        <img class="img" src="'+img+'" alt="">\n' +
-                '                    \n' +
-                '                </a>\n' +
-                '\n' +
-                '                <div class="post_header_info">\n' +
-                '\n' +
-                '                    <a  class="author">\n' +
-                '                        '+name+'</a>\n' +
-                '                    <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
-                '                    <div class="post-text">\n' +
-                '                        '+text+'                    </div>\n' +
-                '                </div>\n' +
-                '\n' +
-                '\n' +
-                '            </div>\n' +
-                '            <div style="clear: both">\n' +
-                '            </div>\n' +
-                '\n' +
-                '\n' +
-                '        </div>');
+    if(true){
 
-            $('.chat-wrap').scrollTop($('.chat').height());
+        var formData = new FormData($("#message-form")[0]);
 
-        },
+        console.log(img);
 
-        complete: function() {
-            // success alerts
-        },
+        $('#message-form textarea').val('');
 
-        error: function (data) {
-            alert("There may a error on uploading. Try again later");
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-    });
+        $.ajax({
+            url: '/chat/send',
+            type: 'POST',
+            data: formData,
+            datatype:'json',
+            // async: false,
+            beforeSend: function() {
+                $('#w0 .form-text').css('display', 'none');
+            },
+            success: function (data) {
+
+                add_message(img, name, id, text);
+
+                $('.chat-wrap').scrollTop($('.chat').height());
+
+            },
+
+            complete: function() {
+                // success alerts
+            },
+
+            error: function (data) {
+                alert("There may a error on uploading. Try again later");
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }else{
+
+        window.chat.send(JSON.stringify({'action' : 'chat', 'message' : message, 'to' : to, 'dialog_id' : dialog_id}));
+
+        add_message(img, name, id, text);
+
+
+    }
 }
+
 function get_message_form(object) {
-
-
 
     var id = $(object).attr('data-user-id');
 
@@ -231,12 +304,15 @@ function get_message_form(object) {
         success: function (data) {
             $('#messageModal .modal-body').html(data);
             $('#messageModal').modal('show');
+            $('#messageModal').addClass('to-'+$(object).attr('data-user-id'));
         },
     });
 
     $('.user-id-class .form-control').val($(object).attr('data-user-id'));
 
     $('#message-form .alert-success').remove();
+
+    $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
 
 }
@@ -672,3 +748,41 @@ function send_comment(object){
         processData: false
     });
 }
+
+$(document).ready(function () {
+
+/*    var conn = new WebSocket('ws://msk.4dosug.loc:8080');
+    conn.onmessage = function(e) {
+        console.log('Response:' + e.data);
+    };
+    conn.onopen = function(e) {
+        console.log("Connection established!");
+        console.log('Hey!');
+        conn.send('Hey!');
+    };*/
+
+});
+
+$(function() {
+
+    window.chat.onopen = function(e) {
+        $('#response').text("Connection established! Please, set your username.");
+    };
+    $('#btnSend').click(function() {
+        if ($('#message').val()) {
+
+            window.chat.send( JSON.stringify({'action' : 'chat', 'message' : $('#message').val()}) );
+        } else {
+            alert('Enter the message')
+        }
+    })
+
+    $('#btnSetUsername').click(function() {
+        if ($('#username').val()) {
+            window.chat.send( JSON.stringify({'action' : 'setName', 'name' : $('#username').val()}) );
+        } else {
+            alert('Enter username')
+        }
+    })
+
+})

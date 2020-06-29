@@ -1,11 +1,13 @@
 <?php /* @var $dialog array */ ?>
 <?php /* @var $user array */ ?>
 <?php /* @var $recepient integer */ ?>
+<?php /* @var $userTo array */ ?>
 <?php /* @var $dialog_id integer */ ?>
 
 <?php
 
 use yii\widgets\ActiveForm;
+use frontend\widgets\PhotoWidget;
 
 $messageForm = new \frontend\modules\chat\models\forms\SendMessageForm();
 $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -90,17 +92,27 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
 
-    <?php if (file_exists(Yii::getAlias('@webroot').$user['userAvatarRelations']['file']) and $user['userAvatarRelations']['file']) : ?>
+    <?php echo PhotoWidget::widget([
+        'path' => $user['userAvatarRelations']['file'],
+        'size' => 'dialog',
+        'options' => [
+            'class' => 'img d-none user-img',
+            'loading' => 'lazy',
+            'alt' => $user['username'],
+        ],
+    ]  ); ?>
 
-        <img loading="lazy" class="img d-none user-img" src="<?= Yii::$app->imageCache->thumbSrc($user['userAvatarRelations']['file'] , 'dialog') ?>" alt="">
+    <?php echo PhotoWidget::widget([
+        'path' => $userTo['userAvatarRelations']['file'],
+        'size' => 'dialog',
+        'options' => [
+            'class' => 'img d-none user-img user-to',
+            'loading' => 'lazy',
+            'alt' => $userTo['username'],
+        ],
+    ]  ); ?>
 
-    <?php else : ?>
-
-        <img class="img d-none user-img" src="/files/img/nophoto.png" alt="">
-
-    <?php endif; ?>
-
-    <span data-name="<?php echo $user['username'];  ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
+    <span data-name="<?php echo $user['username'];  ?>" data-name-to="<?php echo $userTo['username']; ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
 
     <?php ActiveForm::end() ?>
 

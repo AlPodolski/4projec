@@ -46,6 +46,8 @@ class ChatController extends Controller
 
             $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
 
+            $userTo = Profile::find()->where(['id' => Yii::$app->request->post('id')])->with('userAvatarRelations')->asArray()->one();
+
             $userDialogsId = ArrayHelper::getColumn(UserDialog::find()->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
 
             $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
@@ -55,6 +57,7 @@ class ChatController extends Controller
             return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
                 'dialog_id' => $dialog_id,
                 'user' => $user,
+                'userTo' => $userTo,
                 'recepient' => Yii::$app->request->post('id'),
             ]);
 

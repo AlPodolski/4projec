@@ -18,5 +18,5 @@ if (file_exists(Yii::getAlias('@webroot') . $path) and $path) : ?>
     </picture>
 
 <?php else : ?>
-        <img <?php echo $params ?> src="/files/img/nophoto.png" alt="">
+        <img <?php echo $params ?> src="/files/img/nophoto.png" srcset="/files/img/nophoto.png" alt="">
 <?php endif;
