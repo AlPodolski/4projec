@@ -196,7 +196,7 @@ window.chat.onmessage = function(e) {
 
 function send_message(object){
 
-    var to = $(object).siblings('.field-sendmessageform-user_id').find('#sendmessageform-user_id').val();
+    var to = $(object).attr('data-user-id-to');
     var message = $(object).siblings('.field-sendmessageform-text').find('#sendmessageform-text').val();
     var dialog_id = $(object).siblings('.field-sendmessageform-chat_id').find('#sendmessageform-chat_id').val();
 
@@ -213,7 +213,7 @@ function send_message(object){
 
     console.log(window.chat.readyState);
 
-    if(true){
+    if(dialog_id != 915){
 
         var formData = new FormData($("#message-form")[0]);
 
