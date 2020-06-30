@@ -15,6 +15,7 @@ $(document).ready(function() {
         label_selected: "Загрузить основное фото",  // Default: Change File
         no_label: false                 // Default: false
     });
+
 });
 
 $(document).ready(function() {
@@ -72,6 +73,25 @@ function deletePhotoItem(object){
 var sock_url = document.getElementById('sock-addr');
 
 var chat = new WebSocket(sock_url.getAttribute('data-url'));
+
+setInterval(function() {
+    check_conection();
+}, 10000); // каждую секунду
+
+function check_conection(){
+
+    console.log(window.chat.readyState);
+
+    if(window.chat.readyState != 1){
+
+        var sock_url = document.getElementById('sock-addr');
+
+        window.chat.close();
+
+        window.chat = new WebSocket(sock_url.getAttribute('data-url'));
+
+    }
+}
 
 function message_sound(){
     var audio = new Audio();
@@ -187,11 +207,13 @@ function send_message(object){
     var id = $(object).attr('data-id');
 
 
-    $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999)
+    $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+    check_conection();
 
     console.log(window.chat.readyState);
 
-    if(window.chat.readyState != 1){
+    if(true){
 
         var formData = new FormData($("#message-form")[0]);
 
