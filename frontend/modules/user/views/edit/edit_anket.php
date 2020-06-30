@@ -20,7 +20,7 @@ use kartik\date\DatePicker;
 <?php
 $this->registerJsFile('/files/js/jquery.maskedinput.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-$this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 $this->title = 'Редактировать информацию о себе';
 
 $pol = UserPol::find()->where(['user_id' => Yii::$app->user->id])->asArray()->one();

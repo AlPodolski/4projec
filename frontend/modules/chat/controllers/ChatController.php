@@ -31,9 +31,17 @@ class ChatController extends Controller
 
         $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
 
+        $recepient_id = UserDialog::find()->where(['dialog_id' => $id])
+            ->andWhere(['<>', 'user_id', Yii::$app->user->id ])
+            ->select('user_id')
+            ->asArray()->one();
+
+        $userTo = Profile::find()->where(['id' => $recepient_id['user_id']])->with('userAvatarRelations')->asArray()->one();
+
         return $this->render('dialog', [
             'dialog_id' => $id,
             'user' => $user,
+            'userTo' => $userTo,
         ]);
     }
 

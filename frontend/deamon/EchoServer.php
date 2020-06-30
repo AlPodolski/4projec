@@ -36,8 +36,6 @@ class EchoServer extends WebSocketServer
         $request = json_decode($msg, true);
         $result = ['message' => ''];
 
-        echo $request;
-
         if ($this->save_message($client->udata['id'], $request['message'], $request['to'], $request['dialog_id'])
             && $message = trim($request['message']) ) {
             foreach ($this->clients as $chatClient) {

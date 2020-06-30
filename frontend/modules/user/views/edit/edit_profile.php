@@ -15,7 +15,7 @@ use kartik\date\DatePicker;
 $this->registerJsFile('/files/js/jquery.maskedinput.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-$this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 
 
 $this->title = 'Редактировать профиль';

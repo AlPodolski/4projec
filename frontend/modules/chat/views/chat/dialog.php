@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $dialog_id integer */
 /* @var $user array */
+/* @var $userTo array */
 
 use frontend\widgets\UserSideBarWidget;
 use frontend\modules\chat\widgets\DialogWidget;
@@ -16,7 +17,7 @@ $this->title = 'Диалог';
     </div>
     <div class="col-12 col-xl-9 dialog">
         <?php
-            echo DialogWidget::widget(['dialog_id' => $dialog_id, 'user' => $user]);
+            echo DialogWidget::widget(['dialog_id' => $dialog_id, 'user' => $user, 'userTo' => $userTo]);
         ?>
     </div>
 </div>

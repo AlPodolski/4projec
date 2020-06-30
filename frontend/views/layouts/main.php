@@ -23,7 +23,7 @@ FontAwesomeAsset::register($this);
 
 $login = new LoginForm();
 
-
+if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 ?>
 <?php $this->beginPage() ?>
@@ -67,6 +67,7 @@ $login = new LoginForm();
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+    <div id="sock-addr" data-url="<?php echo Yii::$app->params['websoket_addr'] ?>"></div>
     <audio src="/files/audio/alarm-clock-button-click_z17d0vno.mp3"></audio>
     <header>
         <div class="container">
