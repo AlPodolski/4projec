@@ -20,8 +20,9 @@ class SendMessageForm extends Model
     {
         return [
             [['text', 'from_id'], 'required'],
-            [['from_id', 'chat_id', 'user_id'], 'integer'],
+            [['from_id', 'chat_id'], 'integer'],
             [['text'], 'string', 'min' => 1],
+            [['user_id'], 'safe'],
         ];
     }
 

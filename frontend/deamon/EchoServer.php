@@ -89,7 +89,7 @@ class EchoServer extends WebSocketServer
         return User::find()->where(['id' => $id, 'auth_key' => $auth_key])->asArray()->one();
     }
 
-    public function save_message( $from,  $text ,  $to , $chat_id = false )
+    public function save_message( $from,  $text ,  $to , $chat_id = null )
     {
 
         $model = new SendMessageForm();

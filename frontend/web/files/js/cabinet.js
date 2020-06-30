@@ -23,10 +23,10 @@ $(document).ready(function() {
 });
 
 $('#photo-file').on('change', function(){
-/*    files = this.files[0];
+    /*    files = this.files[0];
 
-    var form_data = new FormData();
-    form_data.append('file', files);*/
+        var form_data = new FormData();
+        form_data.append('file', files);*/
     var formData = new FormData($("#add-gallery-form")[0]);
     $.ajax({
         url: '/user/photo/add',
@@ -76,7 +76,7 @@ var chat = new WebSocket(sock_url.getAttribute('data-url'));
 
 setInterval(function() {
     check_conection();
-}, 10000); // каждую секунду
+}, 100000); // каждую секунду
 
 function check_conection(){
 
@@ -88,7 +88,7 @@ function check_conection(){
 
         window.chat.close();
 
-        window.chat = new WebSocket(sock_url.getAttribute('data-url'));
+        var chat = new WebSocket(sock_url.getAttribute('data-url'));
 
     }
 }
@@ -129,7 +129,7 @@ function add_message(img, name, id, message, class_attr = 'right-message'){
         '\n' +
         '                <div class="post_header_info">\n' +
         '\n' +
-        '                    <a href="'+id+'" class="author">\n' +
+        '                    <a href="/user/'+id+'" class="author">\n' +
         '                        '+name+'</a>\n' +
         '                    <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
         '                    <div class="post-text">\n' +
@@ -170,6 +170,7 @@ function get_message_form(object) {
 window.chat.onmessage = function(e) {
 
     var response = JSON.parse(e.data);
+    console.log(response);
     if (response.type && response.type == 'chat') {
 
         if($('.chat-block').attr('data-to') == response.from_id){
@@ -177,8 +178,8 @@ window.chat.onmessage = function(e) {
             var object = $('.message-send-btn');
 
             var img = $('.user-to').attr('srcset');
-            var name = $(object).attr('data-name');
-            var id = $(object).attr('data-id');
+            var name = response.from;
+            var id = response.from_id;
 
             add_message(img, name, id, response.message, '');
 
@@ -236,6 +237,8 @@ function send_message(object){
 
                 $('.chat-wrap').scrollTop($('.chat').height());
 
+                $('#message-form textarea').val('');
+
             },
 
             complete: function() {
@@ -257,7 +260,10 @@ function send_message(object){
 
         $('.chat-wrap').scrollTop($('.chat').height());
 
+        $(object).siblings('.field-sendmessageform-text').find('#sendmessageform-text').val('');
+
     }
+
 }
 
 $(function() {
