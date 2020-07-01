@@ -111,8 +111,6 @@ function send_message(object){
 
         window.chat.send(JSON.stringify({'action' : 'chatAdmin', 'from_name' : from_name, 'from_id' : from_id, 'message' : message, 'to' : to, 'dialog_id' : dialog_id}));
 
-        console.log({'action' : 'chatAdmin', 'from_name' : from_name, 'from_id' : from_id, 'message' : message, 'to' : to, 'dialog_id' : dialog_id});
-
         add_message(img, name, id, text);
 
         $('.chat-wrap').scrollTop($('.chat').height());
