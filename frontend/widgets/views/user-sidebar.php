@@ -86,23 +86,29 @@ use yii\helpers\Html;
                     <a href="/user/friends/<?php echo Yii::$app->user->id; ?>">Мои друзья <?php if ($countFriendsRequest > 0) echo '+' . $countFriendsRequest ?></a>
                 </span>
             </li>
-            <li class="user-menu-item my-message">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0)">
-                        <path d="M31.36 5.12H0.640015V26.88H31.36V5.12Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-                        <path d="M21.3485 16.4237L31.2896 24.2835" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10"/>
-                        <path d="M0.710388 24.2829L11.0822 16.0813" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10"/>
-                        <path d="M0.710388 7.71393C0.710388 7.71393 12.4864 17.9776 13.4457 18.8128C14.4051 19.648 15.4041 19.84 16 19.84C16.5958 19.84 17.5949 19.6486 18.5542 18.8134C19.5136 17.9782 31.2896 7.71457 31.2896 7.71457" stroke="#486BEF" stroke-width="1.9959" stroke-miterlimit="10"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+            <li class="user-menu-item my-message message-li position-relative">
+                <spn class="position-relative">
+                    <?php if ($countNotRead > 0) : ?>
+                        <span class="show-event"></span>
+                    <?php endif; ?>
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                            <path d="M31.36 5.12H0.640015V26.88H31.36V5.12Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+                            <path d="M21.3485 16.4237L31.2896 24.2835" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M0.710388 24.2829L11.0822 16.0813" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M0.710388 7.71393C0.710388 7.71393 12.4864 17.9776 13.4457 18.8128C14.4051 19.648 15.4041 19.84 16 19.84C16.5958 19.84 17.5949 19.6486 18.5542 18.8134C19.5136 17.9782 31.2896 7.71457 31.2896 7.71457" stroke="#486BEF" stroke-width="1.9959" stroke-miterlimit="10"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="32" height="32" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </spn>
 
                 <span class="text ">
-                    <a href="/user/chat">Мои сообщения <?php if ($countNotRead > 0) echo $countNotRead ?></a></span>
+                    <a href="/user/chat">Мои сообщения</a>
+                </span>
             </li>
             <li class="user-menu-item my-message position-relative">
 

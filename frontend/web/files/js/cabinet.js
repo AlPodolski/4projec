@@ -1,5 +1,37 @@
 var chat;
 
+function socketMessageListener(e){
+    var response = JSON.parse(e.data);
+    console.log(response);
+    if (response.type && response.type == 'chat') {
+
+        if(!$('.message-li .position-relative .show-event').length){
+            $('.message-li .position-relative').append('<span class="show-event"></span>');
+        }
+
+        if($('.chat-block').attr('data-to') == response.from_id){
+
+            var object = $('.message-send-btn');
+
+            var img = $('.user-to').attr('srcset');
+            var name = response.from;
+            var id = response.from_id;
+
+            add_message(img, name, id, response.message, '', 0);
+
+            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+            var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
+            window.chat.send(JSON.stringify({'action' : 'setRead', 'dialog_id' : dialog_id}));
+
+        }
+
+        message_sound();
+
+        console.log(response);
+}
+}
+
 $(document).ready(function() {
     $.uploadPreview({
         input_field: "#addpostform-image",   // Default: .image-upload
@@ -76,6 +108,13 @@ var sock_url = document.getElementById('sock-addr');
 
 chat = new WebSocket(sock_url.getAttribute('data-url'));
 
+chat.addEventListener('message', socketMessageListener);
+chat.addEventListener('close', socketCloseListener);
+
+function socketCloseListener(){
+    check_conection();
+}
+
 setInterval(function() {
     check_conection();
 }, 10000); // каждую 10 секунду
@@ -86,11 +125,10 @@ function check_conection(){
 
     if(window.chat.readyState != 1){
 
-        var sock_url = document.getElementById('sock-addr');
-
-        window.chat.close();
-
         window.chat = new WebSocket(sock_url.getAttribute('data-url'));
+
+        window.chat.addEventListener('message', socketMessageListener);
+        chat.addEventListener('close', socketCloseListener);
 
         return true;
 
@@ -172,11 +210,13 @@ function get_message_form(object) {
 
 
 
-window.chat.onmessage = function(e) {
+/*window.chat.onmessage = function(e) {
 
     var response = JSON.parse(e.data);
     console.log(response);
     if (response.type && response.type == 'chat') {
+
+        $('.my-message').append('<div class="dropdown position-absolute sympathy-settings-form-wrap message"></div>');
 
         if($('.chat-block').attr('data-to') == response.from_id){
 
@@ -187,6 +227,8 @@ window.chat.onmessage = function(e) {
             var id = response.from_id;
 
             add_message(img, name, id, response.message, '', 0);
+
+            $('.my-message').remove('<div class="dropdown position-absolute sympathy-settings-form-wrap"></div>');
 
             $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
@@ -199,7 +241,7 @@ window.chat.onmessage = function(e) {
 
         console.log(response);
     }
-};
+};*/
 
 function send_message(object){
 
