@@ -91,7 +91,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
 
-    <span data-name="<?php echo $user['username'];  ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $user['id']; ?>">Отправить</span>
+    <span data-name="<?php echo $user['username'];  ?>" data-dialog-id="<?php echo  $dialog['dialog_id'] ?>" data-user-id-to="<?php echo $recepient ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $user['id']; ?>">Отправить</span>
 
     <?php ActiveForm::end() ?>
 

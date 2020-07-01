@@ -41,7 +41,7 @@ AdminLteAsset::register($this);
     </nav>
 </header>
 <div class="wrap">
-
+    <div id="sock-addr" data-url="<?php echo Yii::$app->params['websoket_addr'] ?>"></div>
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Sidebar -->

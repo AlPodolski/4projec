@@ -67,6 +67,26 @@ class EchoServer extends WebSocketServer
         $client->send( json_encode($result) );
     }
 
+    public function commandChatAdmin(ConnectionInterface $client, $msg)
+    {
+        $request = json_decode($msg, true);
+        $result = ['message' => ''];
+
+        if ($this->save_message($request['from_id'], $request['message'], $request['to'], $request['dialog_id'])
+            && $message = trim($request['message']) ) {
+            foreach ($this->clients as $chatClient) {
+                if ($chatClient->udata['id'] == $request['to']){
+                    $chatClient->send( json_encode([
+                        'type' => 'chat',
+                        'from' => $request['from_name'],
+                        'from_id' => $request['from_id'],
+                        'message' => $message
+                    ]) );
+                }
+            }
+        }
+    }
+
     public function getData($connect)
     {
         $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend']);
