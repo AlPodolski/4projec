@@ -98,9 +98,8 @@ function check_conection(){
 }
 
 function message_sound(){
-    var audio = new Audio();
-    audio.src = '/files/audio/alarm-clock-button-click_z17d0vno.mp3';
-    audio.autoplay = true;
+    var audio = new Audio( '/files/audio/alarm-clock-button-click_z17d0vno.mp3');
+    audio.play();
 }
 
 chat.onclose = function(event) {

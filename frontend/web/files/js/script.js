@@ -584,3 +584,41 @@ function send_comment(object){
         processData: false
     });
 }
+
+$(document).ready(function () {
+
+/*    var conn = new WebSocket('ws://msk.4dosug.loc:8080');
+    conn.onmessage = function(e) {
+        console.log('Response:' + e.data);
+    };
+    conn.onopen = function(e) {
+        console.log("Connection established!");
+        console.log('Hey!');
+        conn.send('Hey!');
+    };*/
+
+});
+
+$(function() {
+
+    window.chat.onopen = function(e) {
+        $('#response').text("Connection established! Please, set your username.");
+    };
+    $('#btnSend').click(function() {
+        if ($('#message').val()) {
+
+            window.chat.send( JSON.stringify({'action' : 'chat', 'message' : $('#message').val()}) );
+        } else {
+            alert('Enter the message')
+        }
+    })
+
+    $('#btnSetUsername').click(function() {
+        if ($('#username').val()) {
+            window.chat.send( JSON.stringify({'action' : 'setName', 'name' : $('#username').val()}) );
+        } else {
+            alert('Enter username')
+        }
+    })
+
+})
