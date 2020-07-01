@@ -207,7 +207,7 @@ function send_message(object){
     var text = $('#message-form textarea').val();
     var img = $('.user-img').attr('srcset');
     var name = $(object).attr('data-name');
-    var id = $(object).attr('data-id');
+    var id = $(object).attr('data-user-id');
 
 
     $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);

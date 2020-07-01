@@ -16,4 +16,12 @@ class DeamonController extends Controller
         }
         $server->start();
     }
+    public function actionStop($port = null)
+    {
+        $server = new EchoServer();
+
+        $server->stop();
+    }
+
+
 }

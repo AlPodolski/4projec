@@ -112,7 +112,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         ],
     ]  ); ?>
 
-    <span data-name="<?php echo $user['username'];  ?>" data-user-id-to="<?php echo $userTo['id']; ?>" data-name-to="<?php echo $userTo['username']; ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
+    <span data-name="<?php echo $user['username'];  ?>" data-user-id="<?php echo $user['id'];  ?>" data-user-id-to="<?php echo $userTo['id']; ?>" data-name-to="<?php echo $userTo['username']; ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
 
     <?php ActiveForm::end() ?>
 
