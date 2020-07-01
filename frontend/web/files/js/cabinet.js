@@ -1,3 +1,5 @@
+var chat;
+
 $(document).ready(function() {
     $.uploadPreview({
         input_field: "#addpostform-image",   // Default: .image-upload
@@ -72,11 +74,11 @@ function deletePhotoItem(object){
 
 var sock_url = document.getElementById('sock-addr');
 
-var chat = new WebSocket(sock_url.getAttribute('data-url'));
+chat = new WebSocket(sock_url.getAttribute('data-url'));
 
 setInterval(function() {
     check_conection();
-}, 100000); // каждую секунду
+}, 10000); // каждую секунду
 
 function check_conection(){
 
@@ -88,7 +90,7 @@ function check_conection(){
 
         window.chat.close();
 
-        var chat = new WebSocket(sock_url.getAttribute('data-url'));
+        window.chat = new WebSocket(sock_url.getAttribute('data-url'));
 
     }
 }
@@ -265,27 +267,3 @@ function send_message(object){
     }
 
 }
-
-$(function() {
-
-    window.chat.onopen = function(e) {
-        $('#response').text("Connection established! Please, set your username.");
-    };
-    $('#btnSend').click(function() {
-        if ($('#message').val()) {
-
-            window.chat.send( JSON.stringify({'action' : 'chat', 'message' : $('#message').val()}) );
-        } else {
-            alert('Enter the message')
-        }
-    })
-
-    $('#btnSetUsername').click(function() {
-        if ($('#username').val()) {
-            window.chat.send( JSON.stringify({'action' : 'setName', 'name' : $('#username').val()}) );
-        } else {
-            alert('Enter username')
-        }
-    })
-
-})

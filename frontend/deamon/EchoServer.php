@@ -59,7 +59,7 @@ class EchoServer extends WebSocketServer
     {
         $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend']);
 
-        $data = Yii::$app->getSecurity()->validateData($data, 'Uv5gSG7AYqbTm74F6b9UeTxDhI7HHD9K');
+        $data = Yii::$app->getSecurity()->validateData($data, Yii::$app->params['coockie_front']);
 
         if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70000) {
 
