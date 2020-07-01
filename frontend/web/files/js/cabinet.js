@@ -78,7 +78,7 @@ chat = new WebSocket(sock_url.getAttribute('data-url'));
 
 setInterval(function() {
     check_conection();
-}, 10000); // каждую секунду
+}, 10000); // каждую 10 секунду
 
 function check_conection(){
 
@@ -91,6 +91,8 @@ function check_conection(){
         window.chat.close();
 
         window.chat = new WebSocket(sock_url.getAttribute('data-url'));
+
+        return true;
 
     }
 }
@@ -116,13 +118,12 @@ chat.onerror = function(error) {
     console.log(`[error] ${error.message}`);
 };
 
-
 function add_message(img, name, id, message, class_attr = 'right-message'){
     $('.chat').prepend('<div class="wall-tem '+class_attr+'">\n' +
         '\n' +
         '            <div class="post_header">\n' +
         '\n' +
-        '                <a class="post_image" href="/user/" '+ id +' >\n' +
+        '                <a class="post_image" href="/user/ '+ id +'" >\n' +
         '\n' +
         '                    \n' +
         '                        <img class="img" src="'+img+'" alt="">\n' +
@@ -169,6 +170,9 @@ function get_message_form(object) {
     $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 }
 
+
+
+
 window.chat.onmessage = function(e) {
 
     var response = JSON.parse(e.data);
@@ -183,17 +187,18 @@ window.chat.onmessage = function(e) {
             var name = response.from;
             var id = response.from_id;
 
-            add_message(img, name, id, response.message, '');
+            add_message(img, name, id, response.message, '', 0);
+
+            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+            var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
+            window.chat.send(JSON.stringify({'action' : 'setRead', 'dialog_id' : dialog_id}));
 
         }
 
         message_sound();
 
         console.log(response);
-
-        $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
-
-
     }
 };
 
@@ -238,6 +243,8 @@ function send_message(object){
                 add_message(img, name, id, text);
 
                 $('.chat-wrap').scrollTop($('.chat').height());
+
+                $('.chat-wrap').attr('data-read', '0');
 
                 $('#message-form textarea').val('');
 

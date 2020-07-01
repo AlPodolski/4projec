@@ -17,7 +17,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 <div class="page-block chat-block " data-to="<?php echo $userTo['id']?>">
 
     <div class="chat-wrap-overlow overflow-hidden">
-        <div class="chat-wrap">
+        <div class="chat-wrap" data-read="">
             <div class="chat">
 
                 <?php if (isset($dialog['message'])) : ?>

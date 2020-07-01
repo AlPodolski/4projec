@@ -6,6 +6,7 @@ namespace frontend\deamon;
 use common\models\User;
 use consik\yii2websocket\events\WSClientEvent;
 use consik\yii2websocket\WebSocketServer;
+use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use Ratchet\ConnectionInterface;
 use Yii;
@@ -28,6 +29,17 @@ class EchoServer extends WebSocketServer
     {
         $request = json_decode($msg, true);
         return !empty($request['action']) ? $request['action'] : parent::getCommand($from, $msg);
+    }
+
+    public function commandSetRead(ConnectionInterface $client, $msg)
+    {
+
+        $request = json_decode($msg, true);
+
+        \d(Yii::$app->params['coockie_front']);
+
+        GetDialogsHelper::serRead($request['dialog_id'], $client->udata['id']);
+
     }
 
     public function commandChat(ConnectionInterface $client, $msg)
