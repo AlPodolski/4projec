@@ -276,7 +276,7 @@ header{
 .text-ab , .text-ab a{
     font-size: 12px;
     color: #777;
-    font-family: Muller, sans-serif-light;
+    font-family: Muller-light;
 }
 img{
     max-width: 100%;
@@ -350,7 +350,7 @@ img{
     padding: 19px;
 }
 #nav-tab .active{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -468,7 +468,7 @@ label{
 .popular-anket-wrap .name{
     text-align: center;
     margin-top: 10px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-size: 16px;
     line-height: 18px;
@@ -489,7 +489,7 @@ label{
     font-size: 13px;
     line-height: 16px;
     color: #000000;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
 }
 .svg-wrap {
@@ -711,7 +711,7 @@ h1{
     margin-top: 10px;
 }
 .message{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -939,7 +939,7 @@ ul li .secodn-menu:hover {
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
     border-radius: 2px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -951,7 +951,7 @@ ul li .secodn-menu:hover {
     padding: 15px 15px 0px 15px;
 }
 #foto-ryad-in p{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
@@ -973,7 +973,7 @@ ul li .secodn-menu:hover {
     background-color: #fff;
 }
 #foto-ryad-in .bottom, #foto-ryad-in .bottom a{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -981,7 +981,7 @@ ul li .secodn-menu:hover {
     color: #FFFFFF!important;
 }
 #foto-ryad-in .black-text{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -991,7 +991,7 @@ ul li .secodn-menu:hover {
     margin-bottom:20px;
 }
 .blue-text{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -1017,7 +1017,7 @@ ul li .secodn-menu:hover {
 }
 #buypresentform-message {
     height: 55px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -1029,7 +1029,7 @@ ul li .secodn-menu:hover {
     margin-top: 20px;
 }
 .present-heading{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -1078,7 +1078,7 @@ ul li .secodn-menu:hover {
     position:absolute;
 }
 .friends_field_title a{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -1149,7 +1149,7 @@ ul li .secodn-menu:hover {
     box-sizing: border-box;
     border-radius: 2px;
     height: 39px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -1183,7 +1183,7 @@ ul li .secodn-menu:hover {
     padding: 20px !important;
 }
 .author{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -1205,7 +1205,7 @@ ul li .secodn-menu:hover {
 .post-text{
     margin-top:0px;
     padding: 10px 0px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
@@ -1525,7 +1525,7 @@ ul li .secodn-menu:hover {
     font-size:12px;
 }
 .small-heading{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
@@ -1601,7 +1601,7 @@ a {
     margin-bottom:0px;
 }
 .modal-header {
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -1629,7 +1629,7 @@ a {
     border-bottom-width: medium;
     border-bottom: 1px solid rgba(72, 107, 239, 0.13);
     border-radius: 0;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 100;
     font-size: 18px;
@@ -1677,7 +1677,7 @@ a {
     background: linear-gradient(98.98deg, #486BEF 3.79%, #80DFFD 96.13%);
     box-shadow: 0px 4px 7px rgba(72, 107, 239, 0.38);
     border-radius: 31px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -1696,7 +1696,7 @@ a {
     border-radius: 50%!important;
 }
 .social-in p{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -1715,7 +1715,7 @@ a {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
 }
 #loginform-rememberme-label{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -1746,7 +1746,7 @@ a {
     min-width: 128px;
 }
 .want-btn span{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
@@ -1758,7 +1758,7 @@ a {
     color: #486BEF;
 }
 .user-name{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -1780,7 +1780,7 @@ a {
     border-radius: 10px;
 }
 .name{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -1788,7 +1788,7 @@ a {
     color: #486BEF;
 }
 .name .old{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -1896,7 +1896,7 @@ a {
     font-size: 13px;
     line-height: 16px;
     color: #000000!important;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
 }
 .anket-info{
@@ -1915,7 +1915,7 @@ a {
     flex: 1 0 auto;
 }
 .anket-info .label{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
@@ -1928,7 +1928,7 @@ a {
 .anket-info .labeled a{
     background: linear-gradient(90deg, #1D61E1 0%, #80DFFD 100%);
     border-radius: 34px;
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -1983,7 +1983,7 @@ a {
     justify-content: left;
 }
 .user-prop-wrap , .user-prop-wrap a{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -1994,7 +1994,7 @@ a {
     margin: 0 auto;
 }
 .left-column-anket .small-heading a , .left-column-anket .user-friends-list .author{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -2009,7 +2009,7 @@ a {
     padding-right: 13px;
 }
 .present-name{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -2300,7 +2300,7 @@ a {
     font-size: 14px;
     color: #9CA4B4;
     border: 1px solid rgba(156, 164, 180, 0.13);
-    font-family: Muller, sans-serif-light;
+    font-family: Muller-light;
     border-radius: 3px;
     margin-bottom: 30px;
 }
@@ -2309,7 +2309,7 @@ a {
     display: block;
 }
 .advert-page h1{
-    font-family: Muller, sans-serif;
+    font-family: Muller;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -2330,7 +2330,7 @@ a {
     padding-bottom: 15px;
 }
 .event-item-comment-text{
-    font-family: Muller, sans-serif-light;
+    font-family: Muller-light;
     font-size: 14px;
     color:#486BEF;
 }
@@ -2490,7 +2490,7 @@ a {
         z-index: 2;
     }
     .popular-block-wrap-mobile .popular-anket{
-        font-family: Muller, sans-serif;
+        font-family: Muller;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
