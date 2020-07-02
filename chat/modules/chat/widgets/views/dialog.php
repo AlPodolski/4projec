@@ -68,7 +68,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
 </div>
 
-<div class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+<div onfocusout="" class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
 
     <?php
 
@@ -92,9 +92,12 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
     <?= $form->field($messageForm, 'from_id')->hiddenInput(['value' => $user['id']])->label(false) ?>
 
     <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])
-        ->textarea(['placeholder' => 'Напишите что то', 'onkeyup' => 'sendAnswerSignal(this)', 'data-is-answer-now' => '0',
-        'data-id' => $user['id'],
-        'data-user-id-to' => $recepient,
+        ->textarea(['placeholder' => 'Напишите что то',
+            'onkeyup' => 'sendAnswerSignal(this)',
+            'onfocusout' => 'sendStopAnswerSignal(this)',
+            'data-is-answer-now' => '0',
+            'data-id' => $user['id'],
+            'data-user-id-to' => $recepient,
         ])->label(false) ?>
 
     <span data-name="<?php echo $user['username'];  ?>" data-dialog-id="<?php echo  $dialog['dialog_id'] ?>" data-user-id-to="<?php echo $recepient ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $user['id']; ?>">Отправить</span>

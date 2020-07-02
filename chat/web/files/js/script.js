@@ -30,8 +30,8 @@ function check_conection(){
 }
 
 function sendAnswerSignal(object){
-//&& $(object).attr('data-is-answer-now') == 0 && window.chat.readyState == 1
-    if ($(object).is(":focus") ) {
+
+    if ($(object).is(":focus") && $(object).attr('data-is-answer-now') == 0 && window.chat.readyState == 1) {
 
         var from_id = $(object).attr('data-id');
         var to = $(object).attr('data-user-id-to');
@@ -43,7 +43,16 @@ function sendAnswerSignal(object){
         $(object).attr('data-is-answer-now' , 1);
 
     }
+}
 
+
+function sendStopAnswerSignal(object){
+    if ($(object).attr('data-is-answer-now') == 1 && window.chat.readyState == 1) {
+        var from_id = $(object).attr('data-id');
+        var to = $(object).attr('data-user-id-to');
+        window.chat.send(JSON.stringify({'action' : 'adminStopWriteAnswerStart', 'from' : from_id,  'to' : to}));
+        $(object).attr('data-is-answer-now' , 0);
+    }
 }
 
 function add_message(img, name, id, message, class_attr = 'right-message'){

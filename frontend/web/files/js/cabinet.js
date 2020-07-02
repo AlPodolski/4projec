@@ -42,6 +42,14 @@ function socketMessageListener(e){
 
         }
     }
+    if (response.type && response.type == 'stopWriteAnswer') {
+
+        if($('.user-write-'+response.from).length){
+
+            $('.user-write-'+response.from+' .user-write-message-text').addClass('d-none');
+
+        }
+    }
 
 }
 

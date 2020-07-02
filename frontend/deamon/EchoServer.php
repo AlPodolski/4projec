@@ -104,6 +104,23 @@ class EchoServer extends WebSocketServer
         }
     }
 
+    public function commandAdminStopWriteAnswerStart(ConnectionInterface $client, $msg)
+    {
+        $request = json_decode($msg, true);
+
+        if ($request['from'] > 0 and $request['to'] > 0){
+
+            foreach ($this->clients as $chatClient) {
+                if ($chatClient->udata['id'] == $request['to']){
+                    $chatClient->send( json_encode([
+                        'type' => 'stopWriteAnswer',
+                        'from' => $request['from'],
+                    ]));
+                }
+            }
+        }
+    }
+
     public function getData($connect)
     {
         $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend']);
