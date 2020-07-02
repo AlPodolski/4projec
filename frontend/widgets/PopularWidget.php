@@ -19,7 +19,7 @@ class PopularWidget extends Widget
     public function run()
     {
 
-        $popularUsers = Popular::find()->asArray()->orderBy('created_at DESC')->with('profile')->all();
+        $popularUsers = Popular::find()->asArray()->orderBy('created_at DESC')->with('profile')->limit(6)->all();
 
         return $this->render('popular', [
             'popularUsers' => $popularUsers,
