@@ -68,7 +68,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
 </div>
 
-<div  class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+<div class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
 
     <?php
 
@@ -79,17 +79,23 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         'enableClientValidation' => false,
         'options' => ['class' => 'form-horizontal'],
     ]) ?>
-    <?= $form->field($messageForm, 'chat_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $dialog['dialog_id']])->label(false) ?>
+    <?= $form->field($messageForm, 'chat_id',['options' => ['class' => 'd-none']])
+        ->hiddenInput(['value' => $dialog['dialog_id']])->label(false) ?>
 
     <?php if ($recepient) :?>
 
-        <?= $form->field($messageForm, 'user_id',['options' => ['class' => 'd-none']])->hiddenInput(['value' => $user['id']])->label(false) ?>
+        <?= $form->field($messageForm, 'user_id',['options' => ['class' => 'd-none']])
+            ->hiddenInput(['value' => $user['id']])->label(false) ?>
 
     <?php endif; ?>
 
     <?= $form->field($messageForm, 'from_id')->hiddenInput(['value' => $user['id']])->label(false) ?>
 
-    <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+    <?= $form->field($messageForm, 'text' , ['options' => ['class' => 'form-otvet']])
+        ->textarea(['placeholder' => 'Напишите что то', 'onkeyup' => 'sendAnswerSignal(this)', 'data-is-answer-now' => '0',
+        'data-id' => $user['id'],
+        'data-user-id-to' => $recepient,
+        ])->label(false) ?>
 
     <span data-name="<?php echo $user['username'];  ?>" data-dialog-id="<?php echo  $dialog['dialog_id'] ?>" data-user-id-to="<?php echo $recepient ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $user['id']; ?>">Отправить</span>
 

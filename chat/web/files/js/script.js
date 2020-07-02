@@ -29,6 +29,23 @@ function check_conection(){
     }
 }
 
+function sendAnswerSignal(object){
+//&& $(object).attr('data-is-answer-now') == 0 && window.chat.readyState == 1
+    if ($(object).is(":focus") ) {
+
+        var from_id = $(object).attr('data-id');
+        var to = $(object).attr('data-user-id-to');
+
+        console.log(JSON.stringify({'action' : 'adminWriteAnswerStart', 'from' : from_id,  'to' : to}));
+
+        window.chat.send(JSON.stringify({'action' : 'adminWriteAnswerStart', 'from' : from_id,  'to' : to}));
+
+        $(object).attr('data-is-answer-now' , 1);
+
+    }
+
+}
+
 function add_message(img, name, id, message, class_attr = 'right-message'){
 
     $('.chat').prepend('<div class="wall-tem '+class_attr+'">\n' +

@@ -21,6 +21,8 @@ function socketMessageListener(e){
 
             $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
+            $('.user-write-'+response.from_id+' .user-write-message-text').addClass('d-none');
+
             var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
             window.chat.send(JSON.stringify({'action' : 'setRead', 'dialog_id' : dialog_id}));
 
@@ -29,7 +31,18 @@ function socketMessageListener(e){
         message_sound();
 
         console.log(response);
-}
+    }
+    if (response.type && response.type == 'writeAnswer') {
+
+        console.log('.user-write-'+response.from);
+
+        if($('.user-write-'+response.from).length){
+
+            $('.user-write-'+response.from+' .user-write-message-text').removeClass('d-none');
+
+        }
+    }
+
 }
 
 $(document).ready(function() {
@@ -206,42 +219,6 @@ function get_message_form(object) {
 
     $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 }
-
-
-
-
-/*window.chat.onmessage = function(e) {
-
-    var response = JSON.parse(e.data);
-    console.log(response);
-    if (response.type && response.type == 'chat') {
-
-        $('.my-message').append('<div class="dropdown position-absolute sympathy-settings-form-wrap message"></div>');
-
-        if($('.chat-block').attr('data-to') == response.from_id){
-
-            var object = $('.message-send-btn');
-
-            var img = $('.user-to').attr('srcset');
-            var name = response.from;
-            var id = response.from_id;
-
-            add_message(img, name, id, response.message, '', 0);
-
-            $('.my-message').remove('<div class="dropdown position-absolute sympathy-settings-form-wrap"></div>');
-
-            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
-
-            var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
-            window.chat.send(JSON.stringify({'action' : 'setRead', 'dialog_id' : dialog_id}));
-
-        }
-
-        message_sound();
-
-        console.log(response);
-    }
-};*/
 
 function send_message(object){
 

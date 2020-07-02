@@ -68,6 +68,13 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
             </div>
         </div>
     </div>
+
+    <div class="user-write-answer user-write-<?php echo $userTo['id'] ?> " >
+        <span class="user-write-message-text d-none">
+            <?php echo $userTo['username'] ?> набирает сообщение <img src="/files/img/30.gif" alt="">
+        </span>
+    </div>
+
 </div>
 
 <div  class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
