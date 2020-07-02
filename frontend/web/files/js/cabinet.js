@@ -247,7 +247,7 @@ function send_message(object){
 
     console.log(window.chat.readyState);
 
-    if(window.chat.readyState == 1){
+    if(window.chat.readyState != 1){
 
         var formData = new FormData($("#message-form")[0]);
 
