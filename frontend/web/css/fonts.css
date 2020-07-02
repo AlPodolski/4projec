@@ -29,11 +29,11 @@
     font-style: normal;
 }
 .place{
-    font-family: HelveticaNeueCyr-Roman;
+    font-family: HelveticaNeueCyr-Roman , sans-serif;
 }
 .text  a , .best-nad{
-    font-family: HelveticaNeueCyr-Medium;
+    font-family: HelveticaNeueCyr-Medium , sans-serif;
 }
 #nav-tabContent {
-    font-family: futuralightc;
+    font-family: futuralightc , sans-serif;
 }
