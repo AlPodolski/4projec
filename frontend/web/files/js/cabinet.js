@@ -131,10 +131,6 @@ chat = new WebSocket(sock_url.getAttribute('data-url'));
 
 chat.addEventListener('message', socketMessageListener);
 
-function socketCloseListener(){
-    check_conection();
-}
-
 setInterval(function() {
     check_conection();
 }, 10000); // каждую 10 секунду
@@ -168,10 +164,6 @@ chat.onclose = function(event) {
         // обычно в этом случае event.code 1006
         console.log('[close] Соединение прервано');
     }
-};
-
-chat.onerror = function(error) {
-    console.log(`[error] ${error.message}`);
 };
 
 function add_message(img, name, id, message, class_attr = 'right-message'){
