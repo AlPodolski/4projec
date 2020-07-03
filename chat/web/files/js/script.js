@@ -4,8 +4,6 @@ var sock_url = document.getElementById('sock-addr');
 
 chat = new WebSocket(sock_url.getAttribute('data-url'));
 
-chat.addEventListener('close', socketCloseListener);
-
 function socketCloseListener(){
     check_conection();
 }
@@ -26,8 +24,6 @@ function check_conection(){
     if(window.chat.readyState != 1){
 
         window.chat = new WebSocket(sock_url.getAttribute('data-url'));
-
-        window.chat.addEventListener('close', socketCloseListener);
 
         return true;
 
