@@ -10,9 +10,14 @@ function socketCloseListener(){
     check_conection();
 }
 
+function return_true(){
+    return true;
+}
+
+
 setInterval(function() {
     check_conection();
-}, 5000); // каждую 10 секунду
+}, 15000); // каждую 10 секунду
 
 function check_conection(){
 
@@ -22,7 +27,7 @@ function check_conection(){
 
         window.chat = new WebSocket(sock_url.getAttribute('data-url'));
 
-        chat.addEventListener('close', socketCloseListener);
+        window.chat.addEventListener('close', socketCloseListener);
 
         return true;
 
