@@ -46,4 +46,10 @@ class UserPol extends \yii\db\ActiveRecord
     public function getPost(){
         return $this->hasOne(Profile::class, ['id' => 'user_id' ])->with('avatar');
     }
+
+    public function getProfile(){
+        return $this->hasOne(Profile::class, ['id' => 'user_id' ]);
+    }
+
+
 }

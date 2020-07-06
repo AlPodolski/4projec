@@ -85,6 +85,7 @@ use yii\helpers\ArrayHelper;
  * @property string|null $phone
  * @property int|null $cash
  * @property int|null $fake
+ * @property int|null $vip_status_work
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -107,7 +108,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at', 'cash', 'fake'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'cash', 'fake', 'vip_status_work'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'city'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['password_reset_token'], 'unique'],
@@ -135,6 +136,7 @@ class Profile extends \yii\db\ActiveRecord
             'pol' => 'Пол',
             'phone' => 'Телефон',
             'birthday' => 'Дата рождения',
+            'vip_status_work' => 'Вип статус',
         ];
     }
 

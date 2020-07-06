@@ -5,6 +5,7 @@ namespace console\controllers;
 
 use common\models\City;
 use common\models\FilterParams;
+use frontend\models\UserPol;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use frontend\modules\user\models\Friends;
@@ -182,6 +183,28 @@ class ConsoleController extends Controller
             $server_output = curl_exec ($ch);
 
         }
+
+    }
+
+    public function actionMakeJson()
+    {
+        $city = City::find()->asArray()->all();
+
+        $result = array();
+
+        foreach ($city as $cityItem){
+
+            $users = UserPol::find()->where(['pol_id' => 2])->andWhere(['city_id' => $cityItem['id']])->with('profile')->asArray()->all();
+
+            if ($users){
+
+                $result[] = array($cityItem['url'] => $users);
+
+            }
+
+        }
+
+        \file_put_contents('result_json.json',\json_encode($result));
 
     }
 }

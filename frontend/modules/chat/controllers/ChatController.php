@@ -29,6 +29,12 @@ class ChatController extends Controller
     public function actionChat($city, $id)
     {
 
+        $usersInDialog = ArrayHelper::getColumn(UserDialog::find()->where(['dialog_id' => $id])
+            ->select('user_id')
+            ->asArray()->all(), 'user_id');
+
+        if(!\in_array(Yii::$app->user->id, $usersInDialog )) return $this->goHome();
+
         $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
 
         $recepient_id = UserDialog::find()->where(['dialog_id' => $id])
