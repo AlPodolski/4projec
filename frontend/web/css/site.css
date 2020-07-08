@@ -197,6 +197,7 @@ a.desc:after {
     border-radius: 5px;
     overflow: hidden;
 }
+
 .wrap{
     background: #edeef0;
 }
@@ -1002,7 +1003,7 @@ ul li .secodn-menu:hover {
 .present-form .form-group{
     text-align:center;
 }
-#photo-row-form .bottom{
+#photo-row-form .bottom , #modal-buy-vip .bottom{
     background: #486bef;
     text-align: center;
     margin: 0 -36px;
@@ -1621,6 +1622,36 @@ a {
 .modal-content{
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
     border-radius: 28px;
+    overflow: hidden;
+}
+.anket-info .user-image{
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 126px;
+}
+#login-form .blue-btn{
+    margin: 15px auto;
+    display: block;
+}
+#modal-buy-vip li{
+    text-align: center;
+}
+.cost{
+    text-align: center;
+    margin-bottom: 15px;
+}
+.user-image .vip-icon-wrap{
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 5px;
+}
+#modal-buy-vip ul{
+    list-style: none;
+    padding-left: 0;
 }
 .form-group input {
     border: none;
@@ -2343,6 +2374,33 @@ a {
 .user-write-message-text{
     font-size: 12px;
     color: #444;
+}
+.vip-text{
+    padding-left: 15px;
+}
+#modal-buy-vip .modal-title{
+    margin: auto;
+    color:#000;
+}
+#modal-buy-vip .modal-body{
+    padding:10px;
+    padding-top:0px;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+#modal-buy-vip .anket-info{
+    padding-top: 0;
+}
+#modal-buy-vip .close{
+    position: absolute;
+    right: 20px;
+}
+#modal-feed-back .modal-header , #modal-buy-vip .modal-header {
+    padding-top: 20px;
+    text-align:center;
+}
+#modal-buy-vip .bottom , #modal-buy-vip .bottom a{
+    color:#fff;
 }
 @media (max-width: 1199px) {
     .add-advert-wrap{

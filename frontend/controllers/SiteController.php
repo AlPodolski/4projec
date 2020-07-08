@@ -14,6 +14,9 @@ use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 use frontend\modules\user\components\AuthHandler;
+use Google\Cloud\Dialogflow\V2\TextInput;
+use Google\Cloud\Dialogflow\V2\QueryInput;
+use Google\Cloud\Dialogflow\V2\SessionsClient;
 
 /**
  * Site controller
@@ -168,17 +171,41 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-                Yii::$app
-                    ->mailer
-                    ->compose()
-                    ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' '])
-                    ->setTo('test-yompuzm5h@srv1.mail-tester.com')
-                    ->setSubject('Новое сообщений ' . Yii::$app->name)
-                    ->setHtmlBody('Здравствуйте, у Вас новое сообщение '
-                        .' <a href="https://user/chat/">На сайте '. Yii::$app->name.'</a>')
-                    ->setTextBody('Здравствуйте , у Вас новое сообщение '
-                        .' На сайте '. Yii::$app->name.'')
-                    ->send();
+        $path  = Yii::getAlias('@app/small-talk-nvwgvg-9962e005a1ff.json');
+
+        $projectId = 'small-talk-nvwgvg';
+        $sessionId = '1235566';
+        $text = 'Привет';
+        $languageCode = 'ru';
+
+        $config = [
+            'credentials' => $path,
+        ];
+        $sessionsClient = new SessionsClient($config);
+
+        $session = $sessionsClient->sessionName($projectId, $sessionId ?: uniqid());
+
+        // create text input
+        $textInput = new TextInput();
+        $textInput->setText($text);
+        $textInput->setLanguageCode($languageCode);
+
+        // create query input
+        $queryInput = new QueryInput();
+        $queryInput->setText($textInput);
+
+        // get response and relevant info
+        $response = $sessionsClient->detectIntent($session, $queryInput);
+        $queryResult = $response->getQueryResult();
+        $queryText = $queryResult->getQueryText();
+        $intent = $queryResult->getIntent();
+        $displayName = $intent->getDisplayName();
+        $confidence = $queryResult->getIntentDetectionConfidence();
+        $fulfilmentText = $queryResult->getFulfillmentText();
+
+        printf('Fulfilment text: %s' . PHP_EOL, $fulfilmentText);
+
+        $sessionsClient->close();
 
         }
 
