@@ -57,7 +57,17 @@ if (!Yii::$app->user->isGuest){
         <div class="col-12">
             <div class="page-block main-info-anket">
             <div class="row">
-                <div class="col-12 col-xl-4 col-lg-4 col-md-6">
+                <div class="col-12 col-xl-4 col-lg-4 col-md-6 position-relative">
+
+                    <?php if ($model['vip_status_work'] > time()) : ?>
+
+                        <div class="vip-icon-wrap single-vip">
+                            <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
+                        </div>
+
+                    <?php endif; ?>
+
+
                     <div class="post-photo">
 
                         <?php if (!empty($photo)) : ?>

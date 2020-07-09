@@ -1641,13 +1641,22 @@ a {
     text-align: center;
     margin-bottom: 15px;
 }
-.user-image .vip-icon-wrap{
+.user-image .vip-icon-wrap , .article-anket-wrap .vip-icon-wrap , .main-info-anket .vip-icon-wrap{
     position: absolute;
     bottom: 15px;
     right: 18px;
     background: #fff;
     border-radius: 50%;
     padding: 5px;
+}
+.article-anket-wrap .vip-icon-wrap , .main-info-anket .vip-icon-wrap{
+    top: 15px;
+    bottom: inherit;
+    right: 15px;
+    z-index: 1;
+}
+.page-block .single-vip{
+    right: 30px;
 }
 #modal-buy-vip ul{
     list-style: none;
@@ -2544,7 +2553,7 @@ a {
         z-index: 2;
     }
     .popular-block-mobile .slick-prev , .main-banner-wrap-mobile .slick-prev {
-        left: -10px;
+        left: -4px;
         z-index: 2;
     }
     .popular-block-wrap-mobile .popular-anket{

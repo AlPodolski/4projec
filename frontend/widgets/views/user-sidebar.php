@@ -79,7 +79,11 @@ use yii\helpers\Html;
                 <img src="/files/img/vip_icon.png" alt="VIP">
                 <span class="text vip-text">
                     <a href="#">
-                        Подключить VIP
+                        <?php if (Yii::$app->user->identity['vip_status_work'] > time()) : ?>
+                            Продлить VIP
+                        <?php else : ?>
+                            Подключить VIP
+                        <?php endif; ?>
                     </a>
                 </span>
             </li>

@@ -24,9 +24,9 @@ class BuyVipStatusForm extends Model
 
             $profile = Profile::find()->where(['id' => $this->user_id])->one();
 
-            if ($profile->vip_status_work > \time()) $profile->vip_status_work = $profile->vip_status_work + \time();
+            if ($profile->vip_status_work > \time()) $profile->vip_status_work = $profile->vip_status_work + (3600 * 24 * 7);
 
-            else $profile->vip_status_work = \time();
+            else $profile->vip_status_work = \time() + (3600 * 24 * 7) ;
 
             return $profile->save();
 

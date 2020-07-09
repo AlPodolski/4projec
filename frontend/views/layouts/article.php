@@ -8,7 +8,15 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
 <div class="col-6 col-sm-6 col-md-4 col-lg-4 user-item">
 
-    <div class="article-anket-wrap">
+    <div class="article-anket-wrap position-relative">
+
+        <?php if ($post['vip_status_work'] > time()) : ?>
+
+        <div class="vip-icon-wrap">
+            <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
+        </div>
+
+        <?php endif; ?>
 
         <div class="img-wrap d-flex ">
 
