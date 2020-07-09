@@ -2411,6 +2411,16 @@ a {
 #modal-buy-vip .bottom , #modal-buy-vip .bottom a{
     color:#fff;
 }
+.vip-text .valid_to{
+    font-size: 8px;
+    color: #476aee;
+    position: absolute;
+    left: 67px;
+    bottom: 0px;
+}
+.mobile-menu .vip-text .valid_to {
+    left: 118px;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;

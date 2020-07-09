@@ -75,12 +75,15 @@ use yii\helpers\Html;
                         Баланс <?php echo Yii::$app->user->identity['cash'] ?>
                     </a></span>
             </li>
-            <li class="user-menu-item my-page" data-toggle="modal" data-target="#modal-buy-vip">
+            <li class="user-menu-item my-page position-relative" data-toggle="modal" data-target="#modal-buy-vip">
                 <img src="/files/img/vip_icon.png" alt="VIP">
                 <span class="text vip-text">
                     <a href="#">
                         <?php if (Yii::$app->user->identity['vip_status_work'] > time()) : ?>
                             Продлить VIP
+                            <span class="valid_to">
+                                Действует до <?php echo Yii::$app->formatter->asDate(Yii::$app->user->identity['vip_status_work'] , 'php:Y-m-d') ?>
+                            </span>
                         <?php else : ?>
                             Подключить VIP
                         <?php endif; ?>
