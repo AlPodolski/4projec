@@ -38,7 +38,7 @@ class SendMessageForm extends Model
             $message->chat_id = $this->chat_id;
             $message->status = 0;
 
-            return $message->save();
+            if ($message->save()) return $this->chat_id;
 
         }else{
 
@@ -58,7 +58,7 @@ class SendMessageForm extends Model
                     $message->chat_id = $item['dialog_id'];
                     $message->status = 0;
 
-                    return $message->save();
+                    if ($message->save()) return $item['dialog_id'];
 
                 }
 
@@ -89,7 +89,7 @@ class SendMessageForm extends Model
                 $message->chat_id = $dialog->id;
                 $message->status = 0;
 
-                return $message->save();
+                if ($message->save()) return $dialog->id;
 
 
         }

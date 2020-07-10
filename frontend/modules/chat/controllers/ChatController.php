@@ -1,12 +1,14 @@
 <?php
 namespace frontend\modules\chat\controllers;
 
+use frontend\components\helpers\VipHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use frontend\components\helpers\CheckVipDialogHelper;
 
 class ChatController extends Controller
 {
@@ -84,16 +86,39 @@ class ChatController extends Controller
     public function actionSend($city)
     {
 
-        if (Yii::$app->request->isPost and !Yii::$app->user->isGuest){
+
+        if (Yii::$app->request->isPost){
 
             $model = new SendMessageForm();
 
             $model->from_id = Yii::$app->user->id;
             $model->created_at = \time();
 
-            if ($model->load(Yii::$app->request->post()) and $model->validate() ){
+            $model->load(Yii::$app->request->post());
 
-                $model->save();
+            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
+
+                if ($model->chat_id == ''){
+
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) return 'Превышен лимит диалогов';
+
+                }else{
+
+                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $model->chat_id) and
+                        !CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])
+                    ) return 'Превышен лимит диалогов';
+
+                }
+
+            }
+
+            if ( $model->validate() ){
+
+                if ($dialog_id = $model->save() and !CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $dialog_id)){
+
+                    CheckVipDialogHelper::addDialogIdToDay(Yii::$app->user->id, $dialog_id);
+
+                }
 
             }
 

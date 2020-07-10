@@ -1,15 +1,9 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\City;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
-use frontend\models\UserPol;
-use frontend\modules\chat\models\Message;
-use frontend\modules\sympathy\components\helpers\SympathyHelper;
-use frontend\modules\sympathy\models\SympathySetting;
-use frontend\modules\user\models\FriendsRequest;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;

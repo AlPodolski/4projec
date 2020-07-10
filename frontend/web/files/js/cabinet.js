@@ -241,8 +241,6 @@ function send_message(object){
 
         var formData = new FormData($("#message-form")[0]);
 
-        console.log(img);
-
         $('#message-form textarea').val('');
 
         $.ajax({
