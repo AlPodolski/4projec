@@ -12,6 +12,7 @@ class DialogWidget extends Widget
     public $user;
     public $recepient = false;
     public $userTo;
+    public $limitExist;
 
     public function init(){
 
@@ -30,6 +31,7 @@ class DialogWidget extends Widget
             'user' => $this->user,
             'userTo' => $this->userTo,
             'recepient' => $this->recepient,
+            'limitExist' => $this->limitExist,
         ]);
     }
 }

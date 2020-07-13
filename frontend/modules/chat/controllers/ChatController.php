@@ -57,23 +57,47 @@ class ChatController extends Controller
     {
 
         $dialog_id = 0;
+        $limitExist = false;
 
         if (Yii::$app->request->isPost and (Yii::$app->user->id != Yii::$app->request->post('id'))){
 
-            $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
+            $userDialogsId = ArrayHelper::getColumn(UserDialog::find()
+                ->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
 
-            $userTo = Profile::find()->where(['id' => Yii::$app->request->post('id')])->with('userAvatarRelations')->asArray()->one();
+            $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])
+                ->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
 
-            $userDialogsId = ArrayHelper::getColumn(UserDialog::find()->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
+            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
 
-            $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
+                if (isset($dialog_id['id'])){
+
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit'])) {
+                        $limitExist = true;
+                    }
+
+                }else{
+
+                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $dialog_id['id']) and
+                        !CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit'])
+                    ) $limitExist = true;
+
+                }
+
+            }
 
             if ($dialog_id) $dialog_id = ArrayHelper::getValue($dialog_id, 'dialog_id');
+
+            $user = Profile::find()->where(['id' => Yii::$app->user->id])
+                ->with('userAvatarRelations')->asArray()->one();
+
+            $userTo = Profile::find()->where(['id' => Yii::$app->request->post('id')])
+                ->with('userAvatarRelations')->asArray()->one();
 
             return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
                 'dialog_id' => $dialog_id,
                 'user' => $user,
                 'userTo' => $userTo,
+                'limitExist' => $limitExist,
                 'recepient' => Yii::$app->request->post('id'),
             ]);
 

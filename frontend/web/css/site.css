@@ -2408,6 +2408,14 @@ a {
     padding-top: 20px;
     text-align:center;
 }
+#messageModal .limit-dialog-block{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    background: hsla(0, 0%, 100%, 0.88);
+    backdrop-filter: blur(1px);
+}
 #modal-buy-vip .bottom , #modal-buy-vip .bottom a{
     color:#fff;
 }
@@ -2420,6 +2428,10 @@ a {
 }
 .mobile-menu .vip-text .valid_to {
     left: 118px;
+}
+.not-active{
+    background: #999;
+    border:none;
 }
 @media (max-width: 1199px) {
     .add-advert-wrap{

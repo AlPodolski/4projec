@@ -3,6 +3,7 @@
 <?php /* @var $recepient integer */ ?>
 <?php /* @var $userTo array */ ?>
 <?php /* @var $dialog_id integer */ ?>
+<?php /* @var $limitExist boolean */ ?>
 
 <?php
 
@@ -18,7 +19,9 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <div class="chat-wrap-overlow overflow-hidden">
         <div class="chat-wrap" data-read="">
-            <div class="chat">
+            <div class="chat ">
+
+                <?php  ?>
 
                 <?php if (isset($dialog['message'])) : ?>
 
@@ -119,8 +122,37 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         ],
     ]  ); ?>
 
-    <span data-name="<?php echo $user['username'];  ?>" data-user-id="<?php echo $user['id'];  ?>" data-user-id-to="<?php echo $userTo['id']; ?>" data-name-to="<?php echo $userTo['username']; ?>" data-dialog-id="<?php echo $dialog_id; ?>" onclick="send_message(this)" class="message-send-btn" data-id="<?php echo $item['id']; ?>">Отправить</span>
+    <span
+            <?php if (!$limitExist) : ?>
+          data-name="<?php echo $user['username'];  ?>"
+          data-user-id="<?php echo $user['id'];  ?>"
+          data-user-id-to="<?php echo $userTo['id']; ?>"
+          data-name-to="<?php echo $userTo['username']; ?>"
+          data-dialog-id="<?php echo $dialog_id; ?>"
+          onclick="send_message(this)"
+          data-id="<?php echo $item['id']; ?>"
+
+          class="message-send-btn"
+          <?php else : ?>
+                class="message-send-btn not-active"
+          <?php endif; ?>
+          >Отправить</span>
 
     <?php ActiveForm::end() ?>
 
 </div>
+
+<?php if ($limitExist) : ?>
+    <div class="limit-dialog-block no-content-wrap d-flex">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="h1 w-100">Достигнут лимит диалогов</h1>
+                <p class="cta-box__text w-100">На сегодня лимит диалогов изчерпан<br>
+                    Вы можете подключить Досуг <img src="/files/img/vip_icon.png" alt="VIP"> <br>
+                и общаться без ограничений</p>
+                <span class="blue-btn " data-toggle="modal" data-target="#modal-buy-vip">Подключить</span>
+            </div>
+
+        </div>
+    </div>
+<?php endif; ?>

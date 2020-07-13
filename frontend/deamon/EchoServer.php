@@ -6,6 +6,8 @@ namespace frontend\deamon;
 use common\models\User;
 use consik\yii2websocket\events\WSClientEvent;
 use consik\yii2websocket\WebSocketServer;
+use frontend\components\helpers\CheckVipDialogHelper;
+use frontend\components\helpers\VipHelper;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use Ratchet\ConnectionInterface;
@@ -48,8 +50,27 @@ class EchoServer extends WebSocketServer
         $request = json_decode($msg, true);
         $result = ['message' => ''];
 
+        if (!VipHelper::checkVip($client->udata['vip_status_work'])){
+
+            if ($request['dialog_id'] == ''){
+
+                if (!CheckVipDialogHelper::checkLimitDialog($client->udata['id'], Yii::$app->params['dialog_day_limit'])) return 'Превышен лимит диалогов';
+
+            }else{
+
+                if (!CheckVipDialogHelper::checkExistDialogId($client->udata['id'], $request['dialog_id']) and
+                    !CheckVipDialogHelper::checkLimitDialog($client->udata['id'], Yii::$app->params['dialog_day_limit'])
+                ) return 'Превышен лимит диалогов';
+
+            }
+
+        }
+
         if ($this->save_message($client->udata['id'], $request['message'], $request['to'], $request['dialog_id'])
             && $message = trim($request['message']) ) {
+
+
+
             foreach ($this->clients as $chatClient) {
                 if ($chatClient->udata['id'] == $request['to']){
                     $chatClient->send( json_encode([
@@ -142,7 +163,7 @@ class EchoServer extends WebSocketServer
             $data = \json_decode($data[1]);
 
             if ($user = $this->checkUser($data[0], $data[1])){
-                return array('id' => $user['id'], 'name' => $user['username']);
+                return array('id' => $user['id'], 'name' => $user['username'], 'vip_status_work' => $user['vip_status_work']);
             }
 
         }
