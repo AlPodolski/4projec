@@ -2408,13 +2408,14 @@ a {
     padding-top: 20px;
     text-align:center;
 }
-#messageModal .limit-dialog-block{
+#messageModal .limit-dialog-block , .dialog .limit-dialog-block{
     position: absolute;
     top: 0px;
     height: 100%;
     width: 100%;
     background: hsla(0, 0%, 100%, 0.88);
     backdrop-filter: blur(1px);
+    min-height: inherit;
 }
 #modal-buy-vip .bottom , #modal-buy-vip .bottom a{
     color:#fff;

@@ -148,6 +148,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
             <div class="col-12">
                 <h1 class="h1 w-100">Достигнут лимит диалогов</h1>
                 <p class="cta-box__text w-100">На сегодня лимит диалогов изчерпан<br>
+                    <?php echo Yii::$app->params['dialog_day_limit']; ?> активных диалогов в день <br>
                     Вы можете подключить Досуг <img src="/files/img/vip_icon.png" alt="VIP"> <br>
                 и общаться без ограничений</p>
                 <span class="blue-btn " data-toggle="modal" data-target="#modal-buy-vip">Подключить</span>

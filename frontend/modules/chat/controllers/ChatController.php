@@ -31,6 +31,30 @@ class ChatController extends Controller
     public function actionChat($city, $id)
     {
 
+        $limitExist = false;
+
+        if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
+
+            if (isset($id)){
+
+                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) {
+
+                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $id)) {
+
+                        $limitExist = true;
+
+                    }
+
+                }
+
+            }else{
+
+                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) $limitExist = true;
+
+            }
+
+        }
+
         $usersInDialog = ArrayHelper::getColumn(UserDialog::find()->where(['dialog_id' => $id])
             ->select('user_id')
             ->asArray()->all(), 'user_id');
@@ -50,6 +74,7 @@ class ChatController extends Controller
             'dialog_id' => $id,
             'user' => $user,
             'userTo' => $userTo,
+            'limitExist' => $limitExist,
         ]);
     }
 
@@ -69,17 +94,21 @@ class ChatController extends Controller
 
             if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
 
-                if (isset($dialog_id['id'])){
+                if (isset($dialog_id['dialog_id'])){
 
-                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit'])) {
-                        $limitExist = true;
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) {
+
+                        if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $dialog_id['dialog_id'])) {
+
+                            $limitExist = true;
+
+                        }
+
                     }
 
                 }else{
 
-                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $dialog_id['id']) and
-                        !CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit'])
-                    ) $limitExist = true;
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) $limitExist = true;
 
                 }
 

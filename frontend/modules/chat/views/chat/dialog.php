@@ -3,6 +3,7 @@
 /* @var $dialog_id integer */
 /* @var $user array */
 /* @var $userTo array */
+/* @var $limitExist boolean */
 
 use frontend\widgets\UserSideBarWidget;
 use frontend\modules\chat\widgets\DialogWidget;
@@ -16,8 +17,10 @@ $this->title = 'Диалог';
         <?php echo UserSideBarWidget::Widget() ?>
     </div>
     <div class="col-12 col-xl-9 dialog">
-        <?php
-            echo DialogWidget::widget(['dialog_id' => $dialog_id, 'user' => $user, 'userTo' => $userTo]);
-        ?>
+        <div class="detal-dialog-wrap">
+            <?php
+                echo DialogWidget::widget(['dialog_id' => $dialog_id, 'user' => $user, 'userTo' => $userTo, 'limitExist' => $limitExist]);
+            ?>
+        </div>
     </div>
 </div>
