@@ -1071,8 +1071,17 @@ ul li .secodn-menu:hover {
 .post_image {
     display: block;
     float: left;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
     overflow: hidden;
+    border-radius: 50%;
+}
+.post_image .img{
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    max-width:inherit;
 }
 .right-column-anket .post_image{
     max-width:50px;
@@ -1108,31 +1117,44 @@ ul li .secodn-menu:hover {
 }
 .send-comment-btn  , .message-send-btn{
     position: absolute;
-    top: -3px;
-    right: 15px;
+    top: -2px;
+    right: -5px;
     z-index: 8;
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 2px;
-    height: 39px;
-    font-family: Muller;
+    height: 40px;
+    font-family: Muller, sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
     color: #FFFFFF;
     text-align: center;
     line-height: 39px;
-    background: #486BEF;
-    border: 1px solid #486BEF;
-    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
     border-radius: 2px;
-    width: 171px;
+    width: 45px;
 }
 #message-form .alert-success{
     margin-top: 15px;
 }
 .form-otvet {
-    margin-right: 193px;
+    margin-right: 45px;
+    margin-left: 40px;
+}
+.form-otvet .form-control{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
     color: #939393;
@@ -1344,7 +1366,6 @@ ul li .secodn-menu:hover {
     padding: 15px 15px 15px 15px;
     position: relative;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
 }
 .wall-tem-menu {
     position: absolute;
@@ -1406,9 +1427,7 @@ ul li .secodn-menu:hover {
     display: flex;
     flex-direction: column-reverse;
 }
-.chat .img{
-    width:35px
-}
+
 .chat .chat{
     border-bottom:inherit;
 }
@@ -1797,8 +1816,8 @@ a {
 #messageModal .comment-wall-form{
     border-top: 1px solid rgba(72, 107, 239, 0.22);
 }
-#messageModal .form-control{
-    border: none;
+.comment-wall-form{
+    padding-top:0px;
 }
 #messageModal .form-control:focus{
     box-shadow: none;
@@ -2220,6 +2239,10 @@ a {
     right: 10px;
     bottom: 6px;
     z-index: 1;
+}
+.comment-wall-form .show-message {
+    position: absolute;
+    top: 0px;
 }
 @media (max-width: 1199px) {
     .img-wrap img{

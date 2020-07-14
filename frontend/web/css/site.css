@@ -1216,6 +1216,9 @@ ul li .secodn-menu:hover {
     color: #000;
     padding-left: 0px;
 }
+#message-form .show-message::before{
+    margin-left: 0;
+}
 #addcommentform-text{
     background: #FFFFFF;
     border: 1px solid rgba(72, 107, 239, 0.15)!important;
