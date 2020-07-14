@@ -38,8 +38,6 @@ class EchoServer extends WebSocketServer
 
         $request = json_decode($msg, true);
 
-        \d(Yii::$app->params['coockie_front']);
-
         GetDialogsHelper::serRead($request['dialog_id'], $client->udata['id']);
 
     }
@@ -66,10 +64,11 @@ class EchoServer extends WebSocketServer
 
         }
 
-        if ($this->save_message($client->udata['id'], $request['message'], $request['to'], $request['dialog_id'])
-            && $message = trim($request['message']) ) {
+        if ($dialogid = $this->save_message($client->udata['id'], $request['message'], $request['to'], $request['dialog_id'])) {
 
-
+            if (!CheckVipDialogHelper::checkExistDialogId($client->udata['id'], $dialogid)) {
+                CheckVipDialogHelper::addDialogIdToDay($client->udata['id'], $dialogid);
+            }
 
             foreach ($this->clients as $chatClient) {
                 if ($chatClient->udata['id'] == $request['to']){
@@ -77,7 +76,7 @@ class EchoServer extends WebSocketServer
                         'type' => 'chat',
                         'from' => $client->udata['name'],
                         'from_id' => $client->udata['id'],
-                        'message' => $message
+                        'message' => $request['message']
                     ]) );
                 }
             }
