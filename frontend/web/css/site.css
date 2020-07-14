@@ -1143,13 +1143,13 @@ ul li .secodn-menu:hover {
 }
 .message-send-btn{
     position: absolute;
-    top: -3px;
-    right: 15px;
+    top: -1px;
+    right: -5px;
     z-index: 8;
     cursor: pointer;
     box-sizing: border-box;
     border-radius: 2px;
-    height: 39px;
+    height: 40px;
     font-family: Muller, sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -1157,11 +1157,12 @@ ul li .secodn-menu:hover {
     color: #FFFFFF;
     text-align: center;
     line-height: 39px;
-    background: #486BEF;
-    border: 1px solid #486BEF;
-    box-shadow: 0px 4px 10px rgba(72, 107, 239, 0.3);
     border-radius: 2px;
-    width: 171px;
+    width: 45px;
+}
+.message-send-btn svg {
+    position: relative;
+    right: -3px;
 }
 #message-form .alert-success{
     margin-top: 15px;
@@ -1170,7 +1171,8 @@ ul li .secodn-menu:hover {
     margin-right: 200px;
 }
 .comment-wall-form #message-form .form-otvet {
-    margin-right: 55px;
+    margin-right: 45px;
+    margin-left: 40px;
 }
 .post_date, .post_date .post_link, .post_date .wall_text_name_explain_promoted_post {
     color: #939393;
@@ -1201,7 +1203,7 @@ ul li .secodn-menu:hover {
     display: block
 }
 .comment-wall-form{
-    border-radius:0px!important;
+    border-radius:10px!important;
 }
 .post-text{
     margin-top:0px;
@@ -2434,6 +2436,10 @@ a {
     background: #999;
     border:none;
 }
+.comment-wall-form .show-message{
+    position: absolute;
+    top: 3px;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;
@@ -2728,10 +2734,10 @@ a {
         width: 100%;
     }
     .dialog #message-form .form-otvet {
-        margin-right: 100px;
+        margin-right: 50px;
     }
     .dialog .message-send-btn {
-        width: 90px;
+        width: 45px;
         right: 0px;
     }
     .dialog .author , .dialog .post_date {
