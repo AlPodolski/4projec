@@ -91,7 +91,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $form->field($messageForm, 'from_id')->hiddenInput(['value' => $user['id']])->label(false) ?>
 
-    <div class="show-message" data-user-id="<?php echo $recepient ?>" onclick="get_presents(this)"data-message="Отправить подарок">
+    <div class="show-message" data-from="<?php echo $user['id']; ?>" data-user-id="<?php echo $recepient ?>" onclick="get_presents(this)"data-message="Отправить подарок">
         <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
             <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
             <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>

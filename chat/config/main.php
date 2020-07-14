@@ -48,6 +48,10 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]+>' => 'chat/chat/chat',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/get' => 'chat/chat/get',
+
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-presents' => 'present/presents',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',
             ],
         ],
     ],

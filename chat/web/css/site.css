@@ -1842,7 +1842,14 @@ a {
     margin-right: 12px;
 }
 .chat .right-message .post_header_info{
-    margin-right: 42px;
+    margin-right: 55px;
+}
+#modal-present{
+    z-index:1051;
+}
+#modal-present .modal-dialog {
+    width: 878px;
+    max-width: inherit!important;
 }
 .chat .post_header_info {
     background: #EDEEF0;

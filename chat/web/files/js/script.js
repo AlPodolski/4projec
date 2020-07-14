@@ -15,7 +15,7 @@ function return_true(){
 
 setInterval(function() {
     check_conection();
-}, 15000); // каждую 10 секунду
+}, 15000); // каждую 15 секунду
 
 function check_conection(){
 
@@ -147,95 +147,6 @@ function send_message(object){
     }
 
 }
-
-/*
-
-function send_message(object){
-
-    var formData = new FormData($("#message-form")[0]);
-
-    var text = $('#message-form textarea').val();
-    var img = $('.user-img').attr('src');
-    var name = $(object).attr('data-name');
-
-    $('#message-form textarea').val('');
-
-    var dialog_id = $(object).attr('data-dialog-id');
-
-
-    $('#message-form textarea').val('');
-
-    var html = '' +
-        '                                            <a target="_blank">\n' +
-        '                                                <span class="nim-dialog--who">\n' +
-        '                                                    <span class="im-prebody">\n' +
-        '\n' +
-        '                                                        \n' +
-        '                                                    </span>\n' +
-        '                                                </span>\n' +
-        '                                            </a>\n' +
-        '                                            <a>\n' +
-        '                                                <span class="nim-dialog--inner-text  ">'+text+'</span>';
-
-    $.ajax({
-        url: '/chat/send',
-        type: 'POST',
-        data: formData,
-        datatype:'json',
-        // async: false,
-        beforeSend: function() {
-            $('#w0 .form-text').css('display', 'none');
-        },
-        success: function (data) {
-
-            $('.chat').prepend('<div class="wall-tem">\n' +
-                '\n' +
-                '            <div class="post_header">\n' +
-                '\n' +
-                '                <a class="post_image" href="/user/1">\n' +
-                '\n' +
-                '                    \n' +
-                '                        <img class="img" src="'+img+'" alt="">\n' +
-                '                    \n' +
-                '                </a>\n' +
-                '\n' +
-                '                <div class="post_header_info">\n' +
-                '\n' +
-                '                    <a  class="author">\n' +
-                '                        '+name+'</a>\n' +
-                '                    <span class="post_date"><span class="post_link"><span class="rel_date">Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ñ‚Ð¾</span></span></span>\n' +
-                '                    <div class="post-text">\n' +
-                '                        '+text+'                    </div>\n' +
-                '                </div>\n' +
-                '\n' +
-                '\n' +
-                '            </div>\n' +
-                '            <div style="clear: both">\n' +
-                '            </div>\n' +
-                '\n' +
-                '\n' +
-                '        </div>');
-
-            $('.chat-wrap').scrollTop($('.chat').height());
-
-            $('.dialog-item-'+dialog_id+ ' .text-preview').html(html);
-
-        },
-
-        complete: function() {
-            // success alerts
-        },
-
-        error: function (data) {
-            alert("There may a error on uploading. Try again later");
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-    });
-}
-
-*/
 
 function get_message_form(object) {
 
@@ -393,3 +304,72 @@ $(function(){
         $('.user-menu-list').toggle('slow')
     });
 });
+
+function get_presents(object){
+
+    $.ajax({
+        url: '/present/get-presents',
+        type: 'POST',
+        datatype:'json',
+        success: function (data) {
+
+            $('#modal-present .modal-body').html(data);
+            $('#modal-present .present-item').attr('data-user-id', $(object).attr('data-user-id'));
+            $('#modal-present .present-item').attr('data-from-id', $(object).attr('data-from'));
+            $('#modal-present').modal()
+
+        },
+
+    });
+}
+
+function get_present_form(object){
+
+    $('.present-form').html('');
+
+    if($(window).width() > 574){
+        $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
+        $('#modal-present .present-modal-content-wrap').addClass('col-6 col-md-8');
+        $('#modal-present .present-form').addClass('col-6 col-md-4');
+    }else{
+        $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
+        $('#modal-present .present-modal-content-wrap').addClass('d-none');
+        $('#modal-present .present-form').addClass('col-12');
+    }
+
+    $('.present-form').removeClass('d-none');
+
+    var present_id = $(object).attr('data-present-id');
+    var user_id = $(object).attr('data-user-id');
+    var user_from_id = $(object).attr('data-from-id');
+
+    $.ajax({
+        url: '/present/get-form',
+        type: 'POST',
+        data: 'present_id='+present_id+'&user_id='+user_id+'&user_from_id='+user_from_id,
+        datatype:'json',
+        success: function (data) {
+            $('.present-form').html(data);
+        },
+
+    });
+}
+
+function send_present_to_user(object){
+
+    var from = $(object).attr('data-from');
+    var to = $(object).attr('data-to');
+    var present_id = $(object).attr('data-present-id');
+
+    $.ajax({
+        url: '/present/gift',
+        type: 'POST',
+        data: 'from='+from+'&to='+to+'&present_id='+present_id,
+        datatype:'json',
+        success: function (data) {
+            $('.present-form').html(data);
+        },
+
+    });
+
+}
