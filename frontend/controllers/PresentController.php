@@ -7,6 +7,7 @@ use common\models\Presents;
 use frontend\components\helpers\CashHelper;
 use frontend\components\helpers\GiftHelper;
 use frontend\models\forms\BuyPresentForm;
+use frontend\models\relation\UserPresents;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -79,6 +80,27 @@ class PresentController extends Controller
         if (Yii::$app->request->isPost){
 
             return $this->renderFile('@app/views/present/present.php');
+
+        }
+
+        return $this->goHome();
+    }
+
+    public function actionUserPresents()
+    {
+
+        if (!Yii::$app->user->isGuest and Yii::$app->request->isPost){
+
+            $presents = UserPresents::find()
+                ->where(['to' => (int)Yii::$app->request->post('id')])
+                ->with('present')
+                ->with('author')
+                ->asArray()
+                ->all();
+
+            return $this->renderFile('@app/views/present/user-present.php', [
+                'presents' => $presents
+            ]);
 
         }
 

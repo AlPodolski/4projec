@@ -412,6 +412,32 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal-user-present" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="present-modal-content-wrap">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Подарки</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 15.75L15.75 2.25" stroke="black" stroke-width="2"/>
+                                <path d="M2.25 2.25L15.75 15.75" stroke="black" stroke-width="2"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+            <div class="present-form">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php if (!Yii::$app->user->isGuest) : ?>
 

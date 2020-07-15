@@ -807,7 +807,12 @@ if (!Yii::$app->user->isGuest){
 
                 <div class="page-block presents">
                      <span class="small-heading">
-                    <a>Подарки </a>
+                         <?php if(Yii::$app->user->isGuest) : ?>
+                            <a>Подарки </a>
+                         <?php else: ?>
+                             <a data-id="<?php echo Yii::$app->user->id ?>" onclick="get_all_user_presents(this)">Подарки </a>
+                         <?php endif; ?>
+
                 </span>
                     <div class="user-present">
                         <div class="user-presents-list">

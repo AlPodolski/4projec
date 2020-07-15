@@ -1219,6 +1219,38 @@ ul li .secodn-menu:hover {
 #message-form .show-message::before{
     margin-left: 0;
 }
+#modal-user-present .modal-header{
+    padding-top:20px;
+}
+#modal-user-present .present-modal-content-wrap{
+    margin-top: 0;
+}
+#modal-user-present .modal-body{
+    padding: 5px;
+}
+#modal-user-present .post_image{
+    max-width: 50px;
+    max-height: 50px;
+}
+.user-info-wrap .post_date{
+    white-space: inherit;
+}
+#modal-user-present .author{
+    line-height: 15px;
+}
+#modal-user-present .post-text{
+    padding: 0;
+}
+#modal-user-present .author-info-wrap{
+    margin-left: 15px;
+}
+#modal-user-present .post-text{
+    max-height: 40px;
+    max-width: 190px;
+}
+.left-column-anket  .user-friends , .left-column-anket .user-presents-list{
+    margin-top:10px;
+}
 #addcommentform-text{
     background: #FFFFFF;
     border: 1px solid rgba(72, 107, 239, 0.15)!important;
@@ -2062,7 +2094,7 @@ a {
     color: #486BEF;
     display: block;
 }
-#modal-present .modal-dialog{
+#modal-present .modal-dialog , #modal-user-present .modal-dialog{
     width: 878px;
 }
 #modal-present .modal-header{
@@ -2443,6 +2475,9 @@ a {
     position: absolute;
     top: 3px;
 }
+#modal-user-present .close{
+    margin-right: 5px;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;
@@ -2677,7 +2712,7 @@ a {
     }
 }
 @media (max-width: 991px) {
-    #modal-present .modal-dialog {
+    #modal-present .modal-dialog , #modal-user-present .modal-dialog{
         width: auto;
         max-width: 94%;
     }

@@ -8,6 +8,22 @@ function showPhone(object) {
 
 }
 
+function get_all_user_presents(object){
+
+    var id = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/present/get-user-presents',
+        'data': 'id='+id,
+        type: 'POST',
+        success: function (data) {
+            $('#modal-user-present .modal-body').html(data);
+            $('#modal-user-present').modal();
+        },
+    });
+
+}
+
 function get_sympathy_settings_form(object) {
 
     $('.sympathy-settings-form-wrap').toggleClass('d-none');
@@ -584,20 +600,6 @@ function send_comment(object){
         processData: false
     });
 }
-
-$(document).ready(function () {
-
-/*    var conn = new WebSocket('ws://msk.4dosug.loc:8080');
-    conn.onmessage = function(e) {
-        console.log('Response:' + e.data);
-    };
-    conn.onopen = function(e) {
-        console.log("Connection established!");
-        console.log('Hey!');
-        conn.send('Hey!');
-    };*/
-
-});
 
 $(function() {
 

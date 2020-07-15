@@ -3,6 +3,7 @@
 namespace frontend\models\relation;
 
 use common\models\Presents;
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -38,6 +39,12 @@ class UserPresents extends \yii\db\ActiveRecord
 
     public function getPresent(){
         return $this->hasOne(Presents::class, ['id' => 'resent_id']);
+    }
+
+    public function getAuthor(){
+
+        return $this->hasOne(Profile::class, ['id' => 'from'])->with('userAvatarRelations');
+
     }
 
     /**

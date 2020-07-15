@@ -144,6 +144,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/verify-email' => 'user/auth/verify-email',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-user-presents' => 'present/user-presents',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-presents' => 'present/presents',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',
