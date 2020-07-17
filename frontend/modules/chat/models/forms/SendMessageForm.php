@@ -14,14 +14,16 @@ class SendMessageForm extends Model
     public $chat_id;
     public $created_at;
     public $user_id;
+    public $class;
+    public $related_id;
 
 
     public function rules()
     {
         return [
-            [['text', 'from_id'], 'required'],
-            [['from_id', 'chat_id'], 'integer'],
-            [['text'], 'string', 'min' => 1],
+            [['from_id'], 'required'],
+            [['from_id', 'chat_id', 'related_id', 'created_at'], 'integer'],
+            [['text', 'class'], 'string'],
             [['user_id'], 'safe'],
         ];
     }
@@ -37,6 +39,8 @@ class SendMessageForm extends Model
             $message->created_at = $this->created_at;
             $message->chat_id = $this->chat_id;
             $message->status = 0;
+            $message->class = $this->class;
+            $message->related_id = $this->related_id;
 
             if ($message->save()) return $this->chat_id;
 
@@ -57,6 +61,8 @@ class SendMessageForm extends Model
                     $message->created_at = $this->created_at;
                     $message->chat_id = $item['dialog_id'];
                     $message->status = 0;
+                    $message->class = $this->class;
+                    $message->related_id = $this->related_id;
 
                     if ($message->save()) return $item['dialog_id'];
 
@@ -88,6 +94,8 @@ class SendMessageForm extends Model
                 $message->created_at = $this->created_at;
                 $message->chat_id = $dialog->id;
                 $message->status = 0;
+                $message->class = $this->class;
+                $message->related_id = $this->related_id;
 
                 if ($message->save()) return $dialog->id;
 

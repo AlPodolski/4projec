@@ -21,10 +21,6 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         <div class="chat-wrap" data-read="">
             <div class="chat ">
 
-                <?php  ?>
-
-                <?php if (isset($dialog['message'])) : ?>
-
                     <?php foreach ($dialog['message'] as $item) : ?>
 
                         <div class="wall-tem <?php if (Yii::$app->user->id == $item['author']['id']) echo 'right-message' ?>">
@@ -52,6 +48,26 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                                     </a>
                                     <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>
                                     <div class="post-text">
+
+                                        <?php
+
+                                            if ($item['class']){
+
+                                                if($item['class'] == \frontend\models\relation\UserPresents::class){
+
+                                                    $userPresent = \frontend\models\relation\UserPresents::find()
+                                                        ->where(['id' => $item['related_id']])->asArray()->with('present')->one();
+
+                                                    echo '<p>'. $userPresent['message'].'</p>';
+
+                                                    echo \yii\helpers\Html::img($userPresent['present']['img']);
+
+                                                }
+
+                                            }
+
+                                        ?>
+
                                         <?php echo $item['message'] ?>
                                     </div>
                                 </div>
@@ -65,8 +81,6 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                         </div>
 
                     <?php endforeach; ?>
-
-                <?php endif; ?>
 
             </div>
         </div>

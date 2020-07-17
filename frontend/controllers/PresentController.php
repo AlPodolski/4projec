@@ -4,8 +4,10 @@
 namespace frontend\controllers;
 
 use common\models\Presents;
+use Exception;
 use frontend\components\helpers\CashHelper;
 use frontend\components\helpers\GiftHelper;
+use frontend\components\helpers\SocketHelper;
 use frontend\models\forms\BuyPresentForm;
 use frontend\models\relation\UserPresents;
 use frontend\modules\user\models\Profile;
@@ -50,7 +52,6 @@ class PresentController extends Controller
         if (Yii::$app->user->isGuest) {
             Yii::$app->session->setFlash('success', 'Требуется авторизация!');
             return $this->goHome();
-
         }
 
         if (Yii::$app->request->isPost){
@@ -59,19 +60,37 @@ class PresentController extends Controller
 
             if ($model->load(Yii::$app->request->post()) and $model->validate()){
 
-                if(\is_bool($info = GiftHelper::gift(Yii::$app->user->identity, $model)) === true){
-                    Yii::$app->session->setFlash('success', 'Подарок отправлен!');
-                    return $this->redirect(Yii::$app->request->referrer);
-                }else{
-                    Yii::$app->session->setFlash('success', $info);
-                    return $this->redirect(Yii::$app->request->referrer);
+                try {
+
+                    $present_id = GiftHelper::gift(Yii::$app->user->identity, $model);
+
+                    GiftHelper::send_message($present_id, $model->from_id, $model->to_id);
+
+                    $params = array(
+                        'present_id' => $present_id,
+                        'action' => 'sendPresent',
+                    );
+
+                    SocketHelper::send_notification($params);
+
+                    echo \json_encode(array('result' => 'success'));
+
+                }
+                catch (\Exception $exception){
+
+                    $result = array([
+                        'error' => $exception->getMessage(),
+                    ]);
+
+                    echo \json_encode($result);
+
                 }
 
             }
 
         }
 
-        return $this->goHome();
+        exit();
 
     }
 

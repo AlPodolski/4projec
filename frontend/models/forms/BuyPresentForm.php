@@ -33,7 +33,9 @@ class BuyPresentForm extends Model
         $userPresent->message = $this->message;
         $userPresent->timestamp = \time();
 
-        return $userPresent->save();
+        if ($userPresent->save()) return $userPresent->id;
+
+        return false;
 
     }
 }

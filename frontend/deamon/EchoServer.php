@@ -3,11 +3,13 @@
 
 namespace frontend\deamon;
 
+use common\models\Presents;
 use common\models\User;
 use consik\yii2websocket\events\WSClientEvent;
 use consik\yii2websocket\WebSocketServer;
 use frontend\components\helpers\CheckVipDialogHelper;
 use frontend\components\helpers\VipHelper;
+use frontend\models\relation\UserPresents;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use Ratchet\ConnectionInterface;
@@ -39,6 +41,39 @@ class EchoServer extends WebSocketServer
         $request = json_decode($msg, true);
 
         GetDialogsHelper::serRead($request['dialog_id'], $client->udata['id']);
+
+    }
+
+    /**
+     * Отправка сообщения о подарке
+     * @param ConnectionInterface $client
+     * @param $msg
+     */
+    public function commandSendPresent(ConnectionInterface $client, $msg)
+    {
+        $request = json_decode($msg, true);
+
+        if ($present = UserPresents::find()->where(['id' => $request['present_id']])->with('present')->asArray()->one()){
+
+            foreach ($this->clients as $chatClient) {
+
+                if (isset( $chatClient->udata['id'])){
+                    if ($chatClient->udata['id'] == $present['from'] or $chatClient->udata['id'] == $present['to']){
+                        $chatClient->send( json_encode([
+                            'type' => 'send_present',
+                            'from' => $present['from'],
+                            'to' => $present['to'],
+                            'img' => $present['present']['img'],
+                            'message' => $present['message']
+                        ]) );
+                    }
+                }
+
+            }
+
+        }
+
+        $client->close();
 
     }
 
@@ -143,26 +178,29 @@ class EchoServer extends WebSocketServer
 
     public function getData($connect)
     {
-        $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend']);
 
-        $data = Yii::$app->getSecurity()->validateData($data, Yii::$app->params['coockie_front']);
+        if ($connect->WebSocket->request->getCookies() and $data = \urldecode($connect->WebSocket->request->getCookies()['_identity-frontend'])){
 
-        if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70000) {
+            $data = Yii::$app->getSecurity()->validateData($data, Yii::$app->params['coockie_front']);
 
-            $data = @unserialize($data, ['allowed_classes' => false]);
+            if (defined('PHP_VERSION_ID') && PHP_VERSION_ID >= 70000) {
 
-        } else {
+                $data = @unserialize($data, ['allowed_classes' => false]);
 
-            $data = @unserialize($data);
+            } else {
 
-        }
+                $data = @unserialize($data);
 
-        if (\is_array( $data)){
+            }
 
-            $data = \json_decode($data[1]);
+            if (\is_array( $data)){
 
-            if ($user = $this->checkUser($data[0], $data[1])){
-                return array('id' => $user['id'], 'name' => $user['username'], 'vip_status_work' => $user['vip_status_work']);
+                $data = \json_decode($data[1]);
+
+                if ($user = $this->checkUser($data[0], $data[1])){
+                    return array('id' => $user['id'], 'name' => $user['username'], 'vip_status_work' => $user['vip_status_work']);
+                }
+
             }
 
         }

@@ -1,5 +1,3 @@
-
-
 function showPhone(object) {
 
     var phone = $(object);
@@ -8,13 +6,13 @@ function showPhone(object) {
 
 }
 
-function get_all_user_presents(object){
+function get_all_user_presents(object) {
 
     var id = $(object).attr('data-id');
 
     $.ajax({
         url: '/present/get-user-presents',
-        'data': 'id='+id,
+        'data': 'id=' + id,
         type: 'POST',
         success: function (data) {
             $('#modal-user-present .modal-body').html(data);
@@ -45,7 +43,7 @@ function add_sympathy(object) {
 
     $.ajax({
         url: '/user/sympathy/add',
-        data: 'id='+id+'&action='+action,
+        data: 'id=' + id + '&action=' + action,
         type: 'POST',
         success: function (data) {
             $('.main-info-anket').html(data);
@@ -55,15 +53,15 @@ function add_sympathy(object) {
 
 }
 
-function get_present_form(object){
+function get_present_form(object) {
 
     $('.present-form').html('');
 
-    if($(window).width() > 574){
+    if ($(window).width() > 574) {
         $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
         $('#modal-present .present-modal-content-wrap').addClass('col-6 col-md-8');
         $('#modal-present .present-form').addClass('col-6 col-md-4');
-    }else{
+    } else {
         $('#modal-present .modal-content').addClass('row  present-wrap-with-form');
         $('#modal-present .present-modal-content-wrap').addClass('d-none');
         $('#modal-present .present-form').addClass('col-12');
@@ -77,8 +75,8 @@ function get_present_form(object){
     $.ajax({
         url: '/present/get-form',
         type: 'POST',
-        data: 'present_id='+present_id+'&user_id='+user_id,
-        datatype:'json',
+        data: 'present_id=' + present_id + '&user_id=' + user_id,
+        datatype: 'json',
         success: function (data) {
             $('.present-form').html(data);
         },
@@ -86,7 +84,7 @@ function get_present_form(object){
     });
 }
 
-$('#header_form').on('change', function(){
+$('#header_form').on('change', function () {
     /*    files = this.files[0];
 
         var form_data = new FormData();
@@ -98,9 +96,9 @@ $('#header_form').on('change', function(){
         url: '/user/photo/add',
         type: 'POST',
         data: formData,
-        datatype:'json',
+        datatype: 'json',
         // async: false,
-        beforeSend: function() {
+        beforeSend: function () {
             $('#w1 .form-text').css('display', 'none');
         },
         success: function (data) {
@@ -111,7 +109,7 @@ $('#header_form').on('change', function(){
             $('#w1 .form-info').css('display', 'block');
         },
 
-        complete: function() {
+        complete: function () {
             // success alerts
         },
 
@@ -125,7 +123,7 @@ $('#header_form').on('change', function(){
 
 });
 
-function close_present_form(){
+function close_present_form() {
 
     $('#modal-present .modal-content').removeClass('row  present-wrap-with-form');
     $('#modal-present .present-modal-content-wrap').removeClass('col-6 col-md-8');
@@ -136,7 +134,7 @@ function close_present_form(){
 
 }
 
-function get_foto_ryad_form(){
+function get_foto_ryad_form() {
 
     $.ajax({
         url: '/photo-row/get-form',
@@ -151,12 +149,12 @@ function get_foto_ryad_form(){
 
 }
 
-function get_presents(object){
+function get_presents(object) {
 
     $.ajax({
         url: '/present/get-presents',
         type: 'POST',
-        datatype:'json',
+        datatype: 'json',
         success: function (data) {
 
             $('#modal-present .modal-body').html(data);
@@ -173,7 +171,7 @@ function check_friend_request(object) {
     $.ajax({
         url: '/user/friends/check',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).text(data);
         },
@@ -185,7 +183,7 @@ function check_friend_request_listing(object) {
     $.ajax({
         url: '/user/friends/check',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).html('<i class="fas fa-user-friends"></i>');
             $(object).attr('data-message', 'Заявка принята');
@@ -198,7 +196,7 @@ function remove_friend_request(object) {
     $.ajax({
         url: '/user/friends/request/remove',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).closest('.friends_user_row').remove();
         },
@@ -210,121 +208,124 @@ function remove_friend(object) {
     $.ajax({
         url: '/user/friends/remove',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).closest('.friends_user_row').remove();
         },
     });
 }
+
 function remove_send_friend_request(object) {
     var id = $(object).attr('data-user-id');
     $.ajax({
         url: '/user/friends/request/remove-send',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).closest('.friends_user_row').remove();
         },
     });
 }
+
 function send_message_form(object) {
 
 
-        var formData = new FormData($("#message-form")[0]);
+    var formData = new FormData($("#message-form")[0]);
 
-        var text = $('#message-form textarea').val();
-        var img = $('.user-img').attr('src');
-        var name = $(this).attr('data-name');
+    var text = $('#message-form textarea').val();
+    var img = $('.user-img').attr('src');
+    var name = $(this).attr('data-name');
 
 
     $('#message-form textarea').val('');
 
-        $.ajax({
-            url: '/chat/send',
-            type: 'POST',
-            data: formData,
-            datatype:'json',
-            // async: false,
-            beforeSend: function() {
-                $('#w0 .form-text').css('display', 'none');
-            },
-            success: function (data) {
+    $.ajax({
+        url: '/chat/send',
+        type: 'POST',
+        data: formData,
+        datatype: 'json',
+        // async: false,
+        beforeSend: function () {
+            $('#w0 .form-text').css('display', 'none');
+        },
+        success: function (data) {
 
-                $('#message-form').append('<p class="alert alert-success">Сообщение отправлено</p>');
+            $('#message-form').append('<p class="alert alert-success">Сообщение отправлено</p>');
 
-            },
+        },
 
-            complete: function() {
-                // success alerts
-            },
+        complete: function () {
+            // success alerts
+        },
 
-            error: function (data) {
-                alert("There may a error on uploading. Try again later");
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 
 
 }
+
 function set_sympathy_settings(object) {
 
-        var formData = new FormData($(object).closest("#sympathy-settings-form")[0]);
+    var formData = new FormData($(object).closest("#sympathy-settings-form")[0]);
 
-        $(".result-text").html('');
+    $(".result-text").html('');
 
     $.ajax({
-            url: '/user/sympathy/set-settings',
-            type: 'POST',
-            data: formData,
-            datatype:'json',
-            // async: false,
-            beforeSend: function() {
-                $('#w0 .form-text').css('display', 'none');
-            },
-            success: function (data) {
+        url: '/user/sympathy/set-settings',
+        type: 'POST',
+        data: formData,
+        datatype: 'json',
+        // async: false,
+        beforeSend: function () {
+            $('#w0 .form-text').css('display', 'none');
+        },
+        success: function (data) {
 
-                $(".main-info-anket").html(data);
+            $(".main-info-anket").html(data);
 
-                $(object).closest('.sympathy-settings-form-wrap').toggleClass('d-none');
+            $(object).closest('.sympathy-settings-form-wrap').toggleClass('d-none');
 
-            },
+        },
 
-            complete: function() {
-                // success alerts
-            },
+        complete: function () {
+            // success alerts
+        },
 
-            error: function (data) {
-                alert("There may a error on uploading. Try again later");
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 
 
 }
 
 function send_feedback(object) {
 
-        var formData = new FormData($("#feedback-form")[0]);
+    var formData = new FormData($("#feedback-form")[0]);
 
-        if(object)
+    if (object)
 
         $.ajax({
             url: '/feedback',
             type: 'POST',
             data: formData,
-            datatype:'json',
+            datatype: 'json',
             // async: false,
-            beforeSend: function() {
+            beforeSend: function () {
                 $('#w0 .form-text').css('display', 'none');
             },
             success: function (data) {
                 $('#feedback-form').html('<p class="alert alert-success">Сообщение отправлено</p>');
             },
-            complete: function() {
+            complete: function () {
                 // success alerts
             },
             error: function (data) {
@@ -337,9 +338,8 @@ function send_feedback(object) {
 
 
 }
-function register_slick(){
 
-    console.log(123);
+function register_slick() {
 
     var sliderFor = $('.slider-popular');
 
@@ -409,17 +409,17 @@ function register_slick(){
 
 }
 
-$( document ).ready( function() {
-    if($(window).width() < 1200){
+$(document).ready(function () {
+    if ($(window).width() < 1200) {
 
-/*
-        $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
-        $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
+        /*
+                $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
+                $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
 
-        $( "head" ).append( "<link rel='preload' href='/files/slick/slick-theme.css' as='style'>" );
-        $( "head" ).append( "<link rel='preload' href='/files/slick/slick.css' as='style'>" );
-        $( "head" ).append( "<link rel='preload' href='/files/slick/fonts/slick.woff' as='font'>" );
-*/
+                $( "head" ).append( "<link rel='preload' href='/files/slick/slick-theme.css' as='style'>" );
+                $( "head" ).append( "<link rel='preload' href='/files/slick/slick.css' as='style'>" );
+                $( "head" ).append( "<link rel='preload' href='/files/slick/fonts/slick.woff' as='font'>" );
+        */
 
         let script = document.createElement('script');
 
@@ -428,7 +428,7 @@ $( document ).ready( function() {
 
         document.head.append(script);
 
-        script.onload = function() {
+        script.onload = function () {
             register_slick();
             $('.popular-block-mobile').css('display', 'block');
             $('.main-banner-wrap-mobile').css('display', 'block');
@@ -494,12 +494,13 @@ $(document).ready(function () {
     });
 
 });
-function addToFriendsListing(object){
+
+function addToFriendsListing(object) {
 
     var id = $(object).attr('data-id');
     var message = $(object).attr('data-message');
 
-    if(message != ''){
+    if (message != '') {
         $(object).children().children().text(message);
         return false;
     }
@@ -507,7 +508,7 @@ function addToFriendsListing(object){
     $.ajax({
         url: '/user/friends/add',
         type: 'POST',
-        data: 'id='+id,
+        data: 'id=' + id,
         success: function (data) {
             $(object).attr('data-message', data);
             $(object).html('<i class="fas fa-check"></i>');
@@ -515,12 +516,13 @@ function addToFriendsListing(object){
     });
 
 }
-$(function(){
-    $('.user-manu').on('click', function(e){
+
+$(function () {
+    $('.user-manu').on('click', function (e) {
         $('.user-menu-list').toggle('slow')
     });
 });
-$(window).scroll(function(){
+$(window).scroll(function () {
 
     var target = $('.pager');
     var targetPos = target.offset().top;
@@ -536,29 +538,29 @@ $(window).scroll(function(){
 
     var accept = $(target).attr('data-accept');
 
-    if(winScrollTop > scrollToElem){
+    if (winScrollTop > scrollToElem) {
 
         console.log(url)
 
         $.ajax({
             type: 'POST',
-            url: ''+url,
-            data: 'page='+page+'&req='+request,
-            async:false,
+            url: '' + url,
+            data: 'page=' + page + '&req=' + request,
+            async: false,
             dataType: "html",
             headers: {
-                "Accept": accept ,
+                "Accept": accept,
             },
             cache: false,
-            success: function (data){
+            success: function (data) {
 
-                if(data !== ''){
+                if (data !== '') {
 
                     $('.content').append(data);
 
-                    page = $(target).attr('data-page', Number(page) + 1 );
+                    page = $(target).attr('data-page', Number(page) + 1);
 
-                }else{
+                } else {
 
                     $(target).remove();
 
@@ -569,9 +571,9 @@ $(window).scroll(function(){
     }
 });
 
-function send_comment(object){
+function send_comment(object) {
 
-    var formData = new FormData($(".form-wall-comment-"+$(object).attr('data-id'))[0]);
+    var formData = new FormData($(".form-wall-comment-" + $(object).attr('data-id'))[0]);
 
     var id = $(object).attr('data-id');
 
@@ -579,16 +581,16 @@ function send_comment(object){
         url: '/comment',
         type: 'POST',
         data: formData,
-        datatype:'json',
+        datatype: 'json',
         // async: false,
-        beforeSend: function() {
+        beforeSend: function () {
             $('#w0 .form-text').css('display', 'none');
         },
         success: function (data) {
             $(object).closest('.comment-wall-form').siblings('.comments-list').append(data);
         },
 
-        complete: function() {
+        complete: function () {
             // success alerts
         },
 
@@ -601,23 +603,23 @@ function send_comment(object){
     });
 }
 
-$(function() {
+$(function () {
 
-    window.chat.onopen = function(e) {
+    window.chat.onopen = function (e) {
         $('#response').text("Connection established! Please, set your username.");
     };
-    $('#btnSend').click(function() {
+    $('#btnSend').click(function () {
         if ($('#message').val()) {
 
-            window.chat.send( JSON.stringify({'action' : 'chat', 'message' : $('#message').val()}) );
+            window.chat.send(JSON.stringify({'action': 'chat', 'message': $('#message').val()}));
         } else {
             alert('Enter the message')
         }
     })
 
-    $('#btnSetUsername').click(function() {
+    $('#btnSetUsername').click(function () {
         if ($('#username').val()) {
-            window.chat.send( JSON.stringify({'action' : 'setName', 'name' : $('#username').val()}) );
+            window.chat.send(JSON.stringify({'action': 'setName', 'name': $('#username').val()}));
         } else {
             alert('Enter username')
         }

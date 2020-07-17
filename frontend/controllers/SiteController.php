@@ -165,42 +165,34 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $path  = Yii::getAlias('@app/small-talk-nvwgvg-9962e005a1ff.json');
+        try {
 
-        $projectId = 'small-talk-nvwgvg';
-        $sessionId = '1235566';
-        $text = 'Привет';
-        $languageCode = 'ru';
+            $socket = fsockopen(Yii::$app->params['websoket_addr_with_not_port_and_protocol'], Yii::$app->params['websoket_post']);
 
-        $config = [
-            'credentials' => $path,
-        ];
-        $sessionsClient = new SessionsClient($config);
+            \Ratchet\Client\connect(Yii::$app->params['websoket_addr'])->then(function($conn, $param  = 2) {
 
-        $session = $sessionsClient->sessionName($projectId, $sessionId ?: uniqid());
+                $result = array(
+                    'present_id' => $param,
+                    'action' => 'sendPresent',
+                );
 
-        // create text input
-        $textInput = new TextInput();
-        $textInput->setText($text);
-        $textInput->setLanguageCode($languageCode);
+                $result = \json_encode($result);
 
-        // create query input
-        $queryInput = new QueryInput();
-        $queryInput->setText($textInput);
+                echo $result;
 
-        // get response and relevant info
-        $response = $sessionsClient->detectIntent($session, $queryInput);
-        $queryResult = $response->getQueryResult();
-        $queryText = $queryResult->getQueryText();
-        $intent = $queryResult->getIntent();
-        $displayName = $intent->getDisplayName();
-        $confidence = $queryResult->getIntentDetectionConfidence();
-        $fulfilmentText = $queryResult->getFulfillmentText();
+                $conn->send($result);
 
-        printf('Fulfilment text: %s' . PHP_EOL, $fulfilmentText);
+            }, function ($e) {
+                echo "Could not connect: {$e->getMessage()}\n";
+            });
 
-        $sessionsClient->close();
+
+        }catch (yii\base\ErrorException $exception){
+
+            echo $exception->getMessage();
 
         }
+
+    }
 
 }

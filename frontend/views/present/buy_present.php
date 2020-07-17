@@ -33,6 +33,6 @@ $form = ActiveForm::begin([
 </div>
 
 <div class="form-group">
-        <?= Html::submitButton('Подтвердить', ['class' => 'blue-btn']) ?>
+    <span class="blue-btn" onclick="send_present(this)">Подтвердить</span>
 </div>
 <?php ActiveForm::end() ?>

@@ -150,6 +150,50 @@ function check_conection(){
     }
 }
 
+function send_message_with_present(present_id){
+
+    if(window.chat.readyState != 1){
+
+    }else{
+
+        window.chat.send(JSON.stringify({'action' : 'send_present', 'present_id' : present_id}));
+
+    }
+
+}
+
+function send_present(object) {
+    var formData = new FormData($(object).closest('form')[0]);
+    $.ajax({
+        url: '/present/gift',
+        type: 'POST',
+        data: formData,
+        datatype: 'json',
+        // async: false,
+        beforeSend: function (data) {
+
+        },
+        success: function (data) {
+            var result = JSON.parse(data);
+
+            if (result.from_id){
+
+                send_message_with_present(result.present_id)
+
+            }
+        },
+        complete: function () {
+
+        },
+        error: function (data) {
+
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+}
+
 function message_sound(){
     var audio = new Audio( '/files/audio/alarm-clock-button-click_z17d0vno.mp3');
     audio.play();
