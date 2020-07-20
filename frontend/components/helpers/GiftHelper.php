@@ -9,7 +9,6 @@ use common\models\User;
 use frontend\models\forms\BuyPresentForm;
 use frontend\models\relation\UserPresents;
 use frontend\modules\chat\models\forms\SendMessageForm;
-use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;
 use Yii;
 use yii\helpers\ArrayHelper;

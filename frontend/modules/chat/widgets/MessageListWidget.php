@@ -11,10 +11,6 @@ class MessageListWidget extends Widget
 
     public $user_id;
 
-    public function init(){
-
-    }
-
     public function run()
     {
 
