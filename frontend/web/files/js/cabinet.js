@@ -171,16 +171,20 @@ function send_present(object) {
         datatype: 'json',
         // async: false,
         beforeSend: function (data) {
-
+            $(object).closest('#modal-present').addClass('blur');
         },
         success: function (data) {
+
             var result = JSON.parse(data);
 
-            if (result.from_id){
+            $('#modal-present .present-form').html('');
+            $('#modal-present .present-modal-content-wrap').removeClass('col-6 col-md-8');
+            $('#modal-present .modal-body').removeClass('col-6 col-md-8');
+            $('#modal-present .present-modal-content-wrap').addClass('w-100');
+            $('#modal-present .modal-body').html(result.result);
 
-                send_message_with_present(result.present_id)
+            $('#modal-present').removeClass('blur');
 
-            }
         },
         complete: function () {
 

@@ -2478,6 +2478,9 @@ a {
 #modal-user-present .close{
     margin-right: 5px;
 }
+.blur{
+    filter: blur(2px);
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;

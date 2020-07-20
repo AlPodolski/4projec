@@ -73,16 +73,16 @@ class PresentController extends Controller
 
                     SocketHelper::send_notification($params);
 
-                    echo \json_encode(array('result' => 'success'));
+                    echo \json_encode(array('result' => $this->renderFile(Yii::getAlias('@app/views/present/send_present_info.php'), [
+                        'message' => 'Подарок отправлен'
+                    ])));
 
                 }
                 catch (\Exception $exception){
 
-                    $result = array([
-                        'error' => $exception->getMessage(),
-                    ]);
-
-                    echo \json_encode($result);
+                    echo \json_encode(array('result' => $this->renderFile(Yii::getAlias('@app/views/present/send_present_info.php'), [
+                        'message' => $exception->getMessage()
+                    ])));
 
                 }
 
