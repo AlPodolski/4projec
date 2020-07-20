@@ -55,7 +55,7 @@ function socketMessageListener(e){
         var object = $('.message-send-btn');
 
         if($('.chat-block').attr('data-to') == response.from){
-            var name = $(object).attr('data-user-id-to') ;
+            var name = $(object).attr('data-name-to') ;
             var id = $(object).attr('data-user-id-to') ;
             var className = '';
             var userImg = $('.user-to').attr('srcset');
@@ -70,15 +70,15 @@ function socketMessageListener(e){
 
         add_present(img, userImg , name, id, response.message, className);
 
-        $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
-
         var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
+
+        $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
     }
 
 }
 
-function add_present(presentImg, userImg, name, id, message, className = 'right-message'){
+function add_present(presentImg, userImg, name, id, message = '', className = 'right-message'){
 
     $('.chat').prepend(
         '<div class="wall-tem '+className+'">\n' +

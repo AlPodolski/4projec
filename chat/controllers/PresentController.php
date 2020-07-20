@@ -47,6 +47,7 @@ class PresentController extends Controller
                 $model->from_id = Yii::$app->request->post('from');
                 $model->to_id = Yii::$app->request->post('to');
                 $model->present_id = Yii::$app->request->post('present_id');
+                $model->message = Yii::$app->request->post('message');
 
                 if ($present_id = $model->save()){
 

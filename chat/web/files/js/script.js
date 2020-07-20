@@ -360,11 +360,12 @@ function send_present_to_user(object){
     var from = $(object).attr('data-from');
     var to = $(object).attr('data-to');
     var present_id = $(object).attr('data-present-id');
+    var message = $('#buypresentform-message').val();
 
     $.ajax({
         url: '/present/gift',
         type: 'POST',
-        data: 'from='+from+'&to='+to+'&present_id='+present_id,
+        data: 'from='+from+'&to='+to+'&present_id='+present_id+'&message='+message,
         datatype:'json',
         success: function (data) {
             $('.present-form').html(data);
