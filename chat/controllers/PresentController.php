@@ -5,6 +5,7 @@ namespace chat\controllers;
 
 use common\models\Presents;
 use frontend\components\helpers\GiftHelper;
+use frontend\components\helpers\SocketHelper;
 use frontend\models\forms\BuyPresentForm;
 use Yii;
 use yii\web\Controller;
@@ -47,7 +48,20 @@ class PresentController extends Controller
                 $model->to_id = Yii::$app->request->post('to');
                 $model->present_id = Yii::$app->request->post('present_id');
 
-                if ($model->save()) return 'Подарок отправлен';
+                if ($present_id = $model->save()){
+
+                    GiftHelper::send_message($present_id, $model->from_id, $model->to_id);
+
+                    $params = array(
+                        'present_id' => $present_id,
+                        'action' => 'sendPresent',
+                    );
+
+                    SocketHelper::send_notification($params);
+
+                }
+
+                return 'Подарок отправлен';
 
             }
 
