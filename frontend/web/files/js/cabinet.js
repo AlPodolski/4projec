@@ -59,6 +59,7 @@ function socketMessageListener(e){
             var id = $(object).attr('data-user-id-to') ;
             var className = '';
             var userImg = $('.user-to').attr('srcset');
+            message_sound();
         }else{
             var name = $(object).attr('data-name') ;
             var id = $(object).attr('data-user-id') ;
@@ -75,7 +76,6 @@ function socketMessageListener(e){
         if(!$('.message-li .position-relative .show-event').length){
             $('.message-li .position-relative').append('<span class="show-event"></span>');
         }
-        message_sound();
 
         $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
