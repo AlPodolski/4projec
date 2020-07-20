@@ -72,6 +72,11 @@ function socketMessageListener(e){
 
         var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
 
+        if(!$('.message-li .position-relative .show-event').length){
+            $('.message-li .position-relative').append('<span class="show-event"></span>');
+        }
+        message_sound();
+
         $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
     }
