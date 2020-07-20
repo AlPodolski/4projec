@@ -46,6 +46,24 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                     </a>
                     <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>
                     <div class="post-text">
+                        <?php
+
+                        if ($item['class']){
+
+                            if($item['class'] == \frontend\models\relation\UserPresents::class){
+
+                                $userPresent = \frontend\models\relation\UserPresents::find()
+                                    ->where(['id' => $item['related_id']])->asArray()->with('present')->one();
+
+                                echo '<p>'. $userPresent['message'].'</p>';
+
+                                echo \yii\helpers\Html::img('http://msk.'.Yii::$app->params['site_name'].$userPresent['present']['img']);
+
+                            }
+
+                        }
+
+                        ?>
                         <?php echo $item['message'] ?>
                     </div>
                 </div>

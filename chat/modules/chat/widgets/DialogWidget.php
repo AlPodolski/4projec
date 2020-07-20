@@ -13,10 +13,6 @@ class DialogWidget extends Widget
     public $fakeUsers;
     public $recepient = false;
 
-    public function init(){
-
-    }
-
     public function run()
     {
 

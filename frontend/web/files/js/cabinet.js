@@ -55,12 +55,10 @@ function socketMessageListener(e){
         var object = $('.message-send-btn');
 
         if($('.chat-block').attr('data-to') == response.from){
-
             var name = $(object).attr('data-user-id-to') ;
             var id = $(object).attr('data-user-id-to') ;
             var className = '';
             var userImg = $('.user-to').attr('srcset');
-
         }else{
             var name = $(object).attr('data-name') ;
             var id = $(object).attr('data-user-id') ;
@@ -100,8 +98,7 @@ function add_present(presentImg, userImg, name, id, message, className = 'right-
         '    </div>\n' +
         '    <div style="clear: both">\n' +
         '    </div>\n' +
-        '</div>'
-    )
+        '</div>');
 
 }
 
