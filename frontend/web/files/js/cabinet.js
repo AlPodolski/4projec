@@ -50,8 +50,61 @@ function socketMessageListener(e){
 
         }
     }
+    if (response.type && response.type == 'send_present') {
+
+        var object = $('.message-send-btn');
+
+        if($('.chat-block').attr('data-to') == response.from){
+
+            var name = $(object).attr('data-user-id-to') ;
+            var id = $(object).attr('data-user-id-to') ;
+            var className = '';
+            var userImg = $('.user-to').attr('srcset');
+
+        }else{
+            var name = $(object).attr('data-name') ;
+            var id = $(object).attr('data-user-id') ;
+            var className = 'right-message';
+            var userImg = $('.user-img').attr('srcset');
+        }
+
+        var img = response.img;
+
+        add_present(img, userImg , name, id, response.message, className);
+
+        $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+        var dialog_id = $('.field-sendmessageform-chat_id #sendmessageform-chat_id').val();
+
+    }
 
 }
+
+function add_present(presentImg, userImg, name, id, message, className = 'right-message'){
+
+    $('.chat').prepend(
+        '<div class="wall-tem '+className+'">\n' +
+        '    <div class="post_header">\n' +
+        '        <a class="post_image" href="/user/'+id+'">\n' +
+        '            <img loading="lazy" class="img"\n' +
+        '                 srcset="'+userImg+'" alt="">\n' +
+        '        </a>\n' +
+        '        <div class="post_header_info">\n' +
+        '            <a href="/user/'+id+'" class="author">\n' +
+        '                '+name+' </a>\n' +
+        '            <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
+        '            <div class="post-text">\n' +
+        '                <p>'+message+'</p><img src="'+presentImg+'" alt="">\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '    <div style="clear: both">\n' +
+        '    </div>\n' +
+        '</div>'
+    )
+
+}
+
 
 $(document).ready(function() {
     $.uploadPreview({
@@ -148,18 +201,6 @@ function check_conection(){
         return true;
 
     }
-}
-
-function send_message_with_present(present_id){
-
-    if(window.chat.readyState != 1){
-
-    }else{
-
-        window.chat.send(JSON.stringify({'action' : 'send_present', 'present_id' : present_id}));
-
-    }
-
 }
 
 function send_present(object) {

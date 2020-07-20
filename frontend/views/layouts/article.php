@@ -3,6 +3,7 @@
 use frontend\modules\user\models\Profile;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\FriendsRequestHelper;
+
 ?>
 
 
@@ -12,9 +13,9 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
         <?php if ($post['vip_status_work'] > time()) : ?>
 
-        <div class="vip-icon-wrap">
-            <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
-        </div>
+            <div class="vip-icon-wrap">
+                <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
+            </div>
 
         <?php endif; ?>
 
@@ -23,13 +24,14 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
             <a href="/user/<?php echo $post->id ?>">
 
 
-
                 <?php if (isset($post->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file']) and $post->userAvatarRelations['file']) : ?>
 
                     <picture>
-                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing_500') ?>" media="(max-width: 500px)">
+                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing_500') ?>"
+                                media="(max-width: 500px)">
                         <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
-                        <img loading="lazy" class="img" srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>" >
+                        <img loading="lazy" class="img"
+                             srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
                     </picture>
 
                 <?php else : ?>
@@ -55,49 +57,51 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
                         <div class="message write-message "
 
-                             <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $post->id )) : ?>
-                             onclick="get_message_form(this)"
-                             data-user-id="<?php echo $post->id ?>"
-                             <?php elseif (Yii::$app->user->isGuest) : ?>
-                             data-toggle="modal" data-target="#modal-in" aria-hidden="true"
-                             <?php endif; ?>
-                            >
+                            <?php if (!Yii::$app->user->isGuest and (Yii::$app->user->id != $post->id)) : ?>
+                                onclick="get_message_form(this)"
+                                data-user-id="<?php echo $post->id ?>"
+                            <?php elseif (Yii::$app->user->isGuest) : ?>
+                                data-toggle="modal" data-target="#modal-in" aria-hidden="true"
+                            <?php endif; ?>
+                        >
                             Написать
                         </div>
 
                         <?php
                         /*если пользователь не в друзьях и не отправлял заявку в друзья добавляем возможность добавление в друзья*/
-                            if (Yii::$app->user->isGuest or
-                                (!FriendsHelper::isFiends(Yii::$app->user->id, $post->id)
-                                    and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($post->id, Yii::$app->user->id)
-                                    and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $post->id))) {
-                                $onclick = 'onclick="addToFriendsListing(this)"';
-                            } else {
-                                $onclick = '';
-                            }
+                        if (Yii::$app->user->isGuest or
+                            (!FriendsHelper::isFiends(Yii::$app->user->id, $post->id)
+                                and !$isFriendsRequestFrom = FriendsRequestHelper::isFiendsRequest($post->id, Yii::$app->user->id)
+                                and !$isFriendsRequestTo = FriendsRequestHelper::isFiendsRequest(Yii::$app->user->id, $post->id))) {
+                            $onclick = 'onclick="addToFriendsListing(this)"';
+                        } else {
+                            $onclick = '';
+                        }
 
-                            if (Yii::$app->user->isGuest) {
-                                $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
-                            }
+                        if (Yii::$app->user->isGuest) {
+                            $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                        }
                         ?>
 
                         <div data-id="<?php echo $post->id ?>" class="add-to-friends-listing message"
                              data-message="<?php if (Yii::$app->user->isGuest) echo 'Требуется авторизация' ?>"
-                             <?php echo $onclick ?>>
-                            <?php if (!Yii::$app->user->isGuest and FriendsHelper::isFiends(Yii::$app->user->id, $post->id) ) : ?>
+                            <?php echo $onclick ?>>
+                            <?php if (!Yii::$app->user->isGuest and FriendsHelper::isFiends(Yii::$app->user->id, $post->id)) : ?>
                                 <span class="show-message" data-message="Ваш друг">
                                      <i class="fas fa-user-friends"></i>
                                 </span>
                             <?php elseif (!Yii::$app->user->isGuest and isset($isFriendsRequestTo) and $isFriendsRequestTo) : ?>
-                            <span class="show-message" data-message="Заявка отправлена">
+                                <span class="show-message" data-message="Заявка отправлена">
                                 <i class="fas fa-check"></i>
                             </span>
                             <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
-                                <span class="show-message" data-message="Принять заявку" onclick="check_friend_request_listing(this)" data-user-id="<?php echo $post->id ?>">
+                                <span class="show-message" data-message="Принять заявку"
+                                      onclick="check_friend_request_listing(this)"
+                                      data-user-id="<?php echo $post->id ?>">
                                     <i class="fas fa-user-check"></i>
                                 </span>
                             <?php else : ?>
-                                <span class="show-message" data-message="Добавить в друзья" >
+                                <span class="show-message" data-message="Добавить в друзья">
                                       <i class="fas fa-plus"></i>
                                 </span>
                             <?php endif; ?>
@@ -113,13 +117,21 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
                     $onclick = 'onclick="get_presents(this)"';
                     ?>
                 <?php endif; ?>
-                <div class="col-3 show-message" data-user-id="<?php echo $post->id ?>" <?php echo $onclick ?> data-message="Отправить подарок">
-                    <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                        <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-                        <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-                        <path d="M10.14 12.4445H1.5V26.4445H24.18V12.4445H15.54" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
-                        <path d="M13.4999 7.28C13.4999 7.28 11.5657 7.28 9.17995 7.28C6.79423 7.28 4.31995 5.83464 4.31995 3.36C4.31995 2.33632 4.79407 1.12 6.65221 1.12C10.3874 1.12 10.456 7.28 13.4999 7.28Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M13.5 7.28C13.5 7.28 15.4343 7.28 17.82 7.28C20.2057 7.28 22.68 5.83464 22.68 3.36C22.68 2.33632 22.2059 1.12 20.3477 1.12C16.6126 1.12 16.544 7.28 13.5 7.28Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <div class="col-3 show-message" data-user-id="<?php echo $post->id ?>" <?php echo $onclick ?>
+                     data-message="Отправить подарок">
+                    <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2"
+                              stroke-miterlimit="10" stroke-linecap="round"/>
+                        <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2"
+                              stroke-miterlimit="10" stroke-linecap="round"/>
+                        <path d="M10.14 12.4445H1.5V26.4445H24.18V12.4445H15.54" stroke="#486BEF" stroke-width="2"
+                              stroke-miterlimit="10" stroke-linecap="round"/>
+                        <path d="M13.4999 7.28C13.4999 7.28 11.5657 7.28 9.17995 7.28C6.79423 7.28 4.31995 5.83464 4.31995 3.36C4.31995 2.33632 4.79407 1.12 6.65221 1.12C10.3874 1.12 10.456 7.28 13.4999 7.28Z"
+                              stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M13.5 7.28C13.5 7.28 15.4343 7.28 17.82 7.28C20.2057 7.28 22.68 5.83464 22.68 3.36C22.68 2.33632 22.2059 1.12 20.3477 1.12C16.6126 1.12 16.544 7.28 13.5 7.28Z"
+                              stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
+                              stroke-linejoin="round"/>
                     </svg>
                 </div>
             </div>
