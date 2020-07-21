@@ -85,7 +85,7 @@ class ImportController extends Controller
         $citys = City::find()->asArray()->all();
         $stream = \fopen(Yii::getAlias('@app/files/stena_com.csv'), 'r');
 
-        foreach ($citys as $city){
+        foreach ($citys as $city) {
 
             $profiles = Profile::find()->asArray()->where(['city' => $city['url']])->with('polRelation')->all();
 
@@ -115,18 +115,18 @@ class ImportController extends Controller
 
             foreach ($profiles as $profile) {
 
-                if ($profile['polRelation']['pol_id']){
+                if ($profile['polRelation']['pol_id']) {
 
-                    if ($profile['polRelation']['pol_id'] == 1){
-                        $userToInfo = $this->getNeedPolData(2,$userPol );
-                    }else{
-                        $userToInfo = $this->getNeedPolData(1,$userPol );
+                    if ($profile['polRelation']['pol_id'] == 1) {
+                        $userToInfo = $this->getNeedPolData(2, $userPol);
+                    } else {
+                        $userToInfo = $this->getNeedPolData(1, $userPol);
                     }
 
 
                     $data = $this->getMessageData($profile['polRelation']['pol_id'], $items);
 
-                    if($data){
+                    if ($data) {
                         $model = new AddToWallForm();
 
                         $model->from = $profile['id'];
@@ -142,7 +142,7 @@ class ImportController extends Controller
 
             }
 
-            echo $city['url'].', ';
+            echo $city['url'] . ', ';
 
         }
 
@@ -223,7 +223,7 @@ class ImportController extends Controller
                     $user->email = 'admin@mail.com';
                     $user->status = 10;
                     $user->fake = 0;
-                    $user->created_at = $time ;
+                    $user->created_at = $time;
                     $user->updated_at = $time;
                     $user->verification_token = Yii::$app->security->generateRandomString(43);
                     $user->city = $item['url'];
@@ -719,6 +719,255 @@ class ImportController extends Controller
         echo $i;
     }
 
+    public function actionImport()
+    {
+
+        $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
+        $vajmoeVPartnere = VajnoeVPartnere::find()->asArray()->all();
+        $semeinoePolojenie = Family::find()->asArray()->all();
+        $sexual = Sexual::find()->asArray()->all();
+        $diti = Children::find()->asArray()->all();
+        $body = BodyType::find()->asArray()->all();
+        $glaza = EyeColor::find()->asArray()->all();
+        $vneshnost = Vneshnost::find()->asArray()->all();
+        $sfera_deyatelnosti = SferaDeyatelnosti::find()->asArray()->all();
+        $zhile = Zhile::find()->asArray()->all();
+        $materialnoePolozhenie = FinancialSituation::find()->asArray()->all();
+        $transport = Transport::find()->asArray()->all();
+        $obrazovanie = Education::find()->asArray()->all();
+        $lifeGoals = LifeGoals::find()->asArray()->all();
+        $haracter = Haracter::find()->asArray()->all();
+        $interesi = Interesting::find()->asArray()->all();
+        $smoking = Smoking::find()->asArray()->all();
+        $alcogol = Alcogol::find()->asArray()->all();
+
+        $stream = \fopen(Yii::getAlias('@app/files/article_all_20_07_2020.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $time = \time();
+
+        foreach ($records as $record) {
+
+            $articles[] = $record;
+
+        }
+
+        //  \dd($articles[\array_rand($articles)]);
+
+        foreach ($city as $item) {
+
+            $tempArticles = $articles;
+
+            $i = 0;
+
+            while ($i < 10) {
+
+                $i++;
+
+                $record = $tempArticles[\array_rand($tempArticles)];
+
+                $user = new Profile();
+
+                \d($record['name']);
+
+                $user->username = $record['name'];
+                $user->password_hash = Yii::$app->security->generateRandomString(60);
+                $user->auth_key = Yii::$app->security->generateRandomString();
+                $user->email = 'adminadult@mail.com';
+                $user->status = 10;
+                $user->fake = 0;
+                $user->created_at = 0;
+                $user->updated_at = 0;
+                $user->verification_token = Yii::$app->security->generateRandomString(43);
+                $user->city = $item['url'];
+                $user->text = \strip_tags($record['about']);
+
+                if (!empty($record['age']) and \is_numeric($record['age'])) $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
+
+                if ($user->save()) {
+
+                    foreach ($celiZnakomstva as $itemCel) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserCeliZnakomstvamstva();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $itemCel['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+
+                        }
+
+                    }
+
+                    foreach ($vajmoeVPartnere as $itemCel) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserVajnoeVPartnere();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $itemCel['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+
+                        }
+
+                    }
+
+                    foreach ($semeinoePolojenie as $itemCel) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserFamily();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $itemCel['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+
+                            break;
+
+                        }
+
+                    }
+
+                    if (isset($znakom['rost'])) {
+
+                        $class = new UserRost();
+
+                        $class->user_id = $user->id;
+                        $class->value = $znakom['rost'];
+                        $class->city_id = $item['id'];
+
+                        $class->save();
+
+                    }
+
+                    foreach ($sfera_deyatelnosti as $item2) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserSferaDeyatelnosti();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $item2['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+
+                            break;
+
+                        }
+                    }
+
+                    foreach ($zhile as $item2) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserZhile();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $item2['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+
+                            break;
+
+                        }
+                    }
+
+                    foreach ($interesi as $item2) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserInteresting();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $item2['id'];
+                            $class->city_id = $item['id'];
+
+                            $class->save();
+                        }
+                    }
+
+                    $userPol = new UserPol();
+                    $userPol->user_id = $user->id;
+                    $userPol->city_id = $item['id'];
+
+                    $userPol->pol_id = 2;
+
+                    $userPol->save();
+
+                    $userZnakom = new UserZnakomstva();
+
+                    $userZnakom->user_id = $user->id;
+                    $userZnakom->param_id = 1;
+                    $userZnakom->city_id = $item['id'];
+
+                    $userZnakom->save();
+
+                    if (isset($record['photo_mii'])) {
+
+                        $userPhoto = new Photo();
+
+                        $userPhoto->user_id = $user->id;
+                        $userPhoto->file = \str_replace('files', '/files/uploads/aa7', $record['photo_mii']);
+                        $userPhoto->avatar = 1;
+
+                        $userPhoto->save();
+
+                    }
+
+                    if (isset($record['gal'])) {
+
+                        $gall = \explode(',', $record['gal']);
+
+                        if ($gall) {
+
+                            foreach ($gall as $gallitem) {
+
+                                if ($gallitem) {
+
+                                    $userPhoto = new Photo();
+
+                                    $userPhoto->user_id = $user->id;
+                                    $userPhoto->file = \str_replace('files', '', '/files/uploads/aa7' . $gallitem);
+                                    $userPhoto->avatar = 0;
+
+                                    $userPhoto->save();
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
     public function actionPresents()
     {
 
@@ -913,7 +1162,7 @@ class ImportController extends Controller
                                         $userPhoto = new Photo();
 
                                         $userPhoto->user_id = $user->id;
-                                        $userPhoto->file =  $gallitem;
+                                        $userPhoto->file = $gallitem;
                                         $userPhoto->avatar = 0;
 
                                         $userPhoto->save();
