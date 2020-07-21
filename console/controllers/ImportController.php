@@ -922,12 +922,12 @@ class ImportController extends Controller
 
                     $userZnakom->save();
 
-                    if (isset($record['photo_mii'])) {
+                    if (isset($record['mini'])) {
 
                         $userPhoto = new Photo();
 
                         $userPhoto->user_id = $user->id;
-                        $userPhoto->file = \str_replace('files', '/files/uploads/aa7', $record['photo_mii']);
+                        $userPhoto->file = \str_replace('files', '/files/uploads/aa7', $record['mini']);
                         $userPhoto->avatar = 1;
 
                         $userPhoto->save();
@@ -947,7 +947,7 @@ class ImportController extends Controller
                                     $userPhoto = new Photo();
 
                                     $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = \str_replace('files', '', '/files/uploads/aa7' . $gallitem);
+                                    $userPhoto->file = '/files/uploads/aa7'.\str_replace('files', '',   $gallitem);
                                     $userPhoto->avatar = 0;
 
                                     $userPhoto->save();
