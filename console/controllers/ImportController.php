@@ -758,7 +758,7 @@ class ImportController extends Controller
 
                         @$post->fakeProfile->text = $text['text'];
 
-                        $post->fakeProfile->save();
+                        @$post->fakeProfile->save();
 
                     }
 
