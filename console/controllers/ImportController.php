@@ -756,9 +756,13 @@ class ImportController extends Controller
 
                     if (isset($text['text']) and !empty($text['text'])){
 
-                        @$post->fakeProfile->text = $text['text'];
+                        if($post->fakeProfile){
 
-                        @$post->fakeProfile->save();
+                            @$post->fakeProfile->text = $text['text'];
+
+                            @$post->fakeProfile->save();
+
+                        }
 
                     }
 
