@@ -21,7 +21,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         <div class="chat-wrap" data-read="">
             <div class="chat ">
 
-                    <?php foreach ($dialog['message'] as $item) : ?>
+                    <?php if (isset($dialog['message'])) foreach ($dialog['message'] as $item) : ?>
 
                         <div class="wall-tem <?php if (Yii::$app->user->id == $item['author']['id']) echo 'right-message' ?>">
 
