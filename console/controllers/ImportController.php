@@ -752,9 +752,15 @@ class ImportController extends Controller
 
                 if (\rand(0, 2) != 2){
 
-                    $post->fakeProfile->text = $descItems[\array_rand($descItems)]['text'];
+                    $text = $descItems[\array_rand($descItems)];
 
-                    $post->fakeProfile->save();
+                    if (isset($text['text']) and !empty($text['text'])){
+
+                        $post->fakeProfile->text = $descItems[\array_rand($descItems)];
+
+                        $post->fakeProfile->save();
+
+                    }
 
                 }
 
