@@ -51,5 +51,10 @@ class UserPol extends \yii\db\ActiveRecord
         return $this->hasOne(Profile::class, ['id' => 'user_id' ]);
     }
 
+    public function getFakeProfile()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'user_id' ])->where(['fake' => 0]);
+    }
+
 
 }

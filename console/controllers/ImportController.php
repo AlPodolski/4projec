@@ -719,6 +719,51 @@ class ImportController extends Controller
         echo $i;
     }
 
+    public function actionImportDescr()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/opisamie_dlya_anket_24_07_2020.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        $time = \time();
+
+        foreach ($records as $record) {
+
+            $descItems[] = $record;
+
+        }
+
+        foreach ($city as $item){
+
+            $posts = UserPol::find()->where(['pol_id' => 2, 'city_id' => $item['id']])->with('fakeProfile')->all();
+
+            foreach ($posts as $post){
+
+                if (\rand(0, 2) != 2){
+
+                    $post->fakeProfile->text = $descItems[\array_rand($descItems)]['text'];
+
+                    $post->fakeProfile->save();
+
+                }
+
+            }
+
+        }
+
+    }
+
     public function actionImport()
     {
 
