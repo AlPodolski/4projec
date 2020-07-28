@@ -2481,6 +2481,23 @@ a {
 .blur{
     filter: blur(2px);
 }
+.padding-top-0{
+    padding-top: 0px;
+}
+.padding-top-5{
+    padding-top: 5px;
+}
+.padding-left-0{
+    padding-left: 0px;
+}
+.small-black-text{
+    font-family: Muller, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;

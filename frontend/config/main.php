@@ -33,6 +33,9 @@ return [
         'advert' => [
             'class' => 'frontend\modules\advert\advert',
         ],
+        'group' => [
+            'class' => 'frontend\modules\group\group',
+        ],
     ],
     'components' => [
         'formatter' => [
@@ -126,6 +129,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/<id:[0-9]+>' => 'user/friends/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/check' => 'user/friends/check',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/group' => 'group/group/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/group/<id:[0-9]+>' => 'group/group/group',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]+>' => 'chat/chat/chat',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',
