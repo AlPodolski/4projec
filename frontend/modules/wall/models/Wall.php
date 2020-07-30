@@ -3,6 +3,8 @@
 namespace frontend\modules\wall\models;
 
 use common\models\Comments;
+use frontend\models\Files;
+use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Profile;
 use Yii;
 
@@ -54,6 +56,11 @@ class Wall extends \yii\db\ActiveRecord
 
         return $this->hasOne(Profile::class, ['id' => 'from'])->with('avatarRelation');
 
+    }
+
+    public function getFiles()
+    {
+        return $this->hasMany(Files::class, ['related_id' => 'id'])->andWhere(['related_class' => Wall::class]);
     }
 
     public function getComments(){

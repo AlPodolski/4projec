@@ -22,6 +22,34 @@ function get_all_user_presents(object) {
 
 }
 
+$(function() {
+
+    var $container 	= $('#am-container'),
+        $imgs		= $container.find('img').hide(),
+        totalImgs	= $imgs.length,
+        cnt			= 0;
+
+
+    $imgs.each(function(i) {
+        var $img	= $(this);
+        ++cnt;
+        console.log(cnt);
+        if( cnt === totalImgs ) {
+            $imgs.show();
+            $container.montage({
+                fillLastRow				: true,
+                alternateHeight			: true,
+                alternateHeightRange	: {
+                    min	: 90,
+                    max	: 240
+                }
+            });
+
+        }
+    });
+
+});
+
 function get_sympathy_settings_form(object) {
 
     $('.sympathy-settings-form-wrap').toggleClass('d-none');

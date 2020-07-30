@@ -2,6 +2,7 @@
 
 namespace frontend\modules\group\models;
 
+use frontend\models\Files;
 use Yii;
 
 /**

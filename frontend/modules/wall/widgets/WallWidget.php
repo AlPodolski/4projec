@@ -21,6 +21,7 @@ class WallWidget extends Widget
             ->limit(Yii::$app->params['wall_items_limit'])
             ->orderBy('id DESC')
             ->with('author')
+            ->with('files')
             ->with('comments')
             ->asArray()->all();
 

@@ -7,6 +7,8 @@ use frontend\modules\wall\components\LikeHelper;
 use frontend\widgets\CommentsFormWidget;
 use frontend\widgets\PhotoWidget;
 
+$this->registerJsFile('/files/js/jquery.montage.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 $commentForm = new AddCommentForm();
 
 ?>
@@ -93,6 +95,20 @@ if (!empty($wallItems)) : ?>
             <div class="post-text">
                 <?php echo $item['text'] ?>
             </div>
+
+            <?php if ($item['files']) : ?>
+
+                <div >
+                    <div class="am-container" id="am-container">
+                        <?php foreach ($item['files'] as $file) : ?>
+
+                            <a href="#"><img src="<?php echo $file['file']; ?>" title="Image 3"/></a>
+
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+            <?php endif; ?>
 
             <?php if (Yii::$app->user->isGuest) : ?>
 

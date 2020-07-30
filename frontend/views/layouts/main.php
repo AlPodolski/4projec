@@ -545,7 +545,10 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
         }
     }
     registerServiceWorker();
+
 </script>
+
+
 
 <?php $this->endBody() ?>
 <link rel="preload" href="/files/slick/slick.css" as="style" />
