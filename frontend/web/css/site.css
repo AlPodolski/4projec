@@ -1092,7 +1092,7 @@ ul li .secodn-menu:hover {
     border-radius: 50%;
     overflow: hidden;
 }
-.right-column-anket .post_image{
+.right-column-anket .post_image , .group .post_image{
     max-width:50px;
 }
 .user-friends-list .post_image{
@@ -2487,6 +2487,19 @@ a {
 .padding-top-5{
     padding-top: 5px;
 }
+.group-about{
+    font-size: 13px;
+}
+.group .no-content-wrap{
+    min-height: 100%;
+    justify-content: right;
+}
+.group .no-content-wrap .blue-btn{
+    margin-right: 15px;
+}
+.m-bottom-20{
+    margin-bottom: 20px;
+}
 .padding-left-0{
     padding-left: 0px;
 }
@@ -2497,6 +2510,9 @@ a {
     font-size: 12px;
     line-height: 18px;
     color: #000000;
+}
+.group .wall-tem{
+    margin-top: 0px;
 }
 @media (max-width: 1199px) {
     .add-advert-wrap{

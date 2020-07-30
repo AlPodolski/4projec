@@ -121,33 +121,6 @@ $(document).ready(function() {
     });
 
 });
-$(document).ready(function() {
-
-    $('.open-comment-btn').on('click', function(e){
-
-        $('.comment-wall-form-'+$(this).attr('data-id')).toggleClass('d-none');
-    });
-
-});
-function like(object){
-    var id = $(object).attr('data-id');
-
-    if($(this).hasClass('guest')){
-        $(this).siblings('.like-info').removeClass('d-none');
-        $('.like-info').text('Требуется авторизация');
-        return true;
-    }
-
-    $.ajax({
-        url: '/wall/item/like',
-        type: 'POST',
-        data: 'id='+id,
-        success: function (data) {
-            $(object).children('span').toggleClass('d-none');
-            $(object).children('.like-count').html(data);
-        },
-    });
-}
 
 function addToFriends(object){
 

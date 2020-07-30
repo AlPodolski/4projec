@@ -107,6 +107,29 @@ function add_present(presentImg, userImg, name, id, message = '', className = 'r
 
 }
 
+function like(object){
+    var id = $(object).attr('data-id');
+
+    if($(this).hasClass('guest')){
+        $(this).siblings('.like-info').removeClass('d-none');
+        $('.like-info').text('Требуется авторизация');
+        return true;
+    }
+
+    $.ajax({
+        url: '/wall/item/like',
+        type: 'POST',
+        data: 'id='+id,
+        success: function (data) {
+            $(object).children('span').toggleClass('d-none');
+            $(object).children('.like-count').html(data);
+        },
+    });
+}
+
+function open_comment_form(object){
+    $('.comment-wall-form-'+$(object).attr('data-id')).toggleClass('d-none');
+}
 
 $(document).ready(function() {
     $.uploadPreview({
