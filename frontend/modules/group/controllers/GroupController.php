@@ -23,7 +23,7 @@ class GroupController extends \yii\web\Controller
 
     public function actionGroup($city, $id)
     {
-        if ($group = Group::find()->where(['id' => $id])->asArray()->one()) {
+        if ($group = Group::find()->where(['id' => $id])->with('profile')->asArray()->one()) {
 
             return $this->render('group', [
                 'group' => $group,

@@ -3,6 +3,7 @@
 namespace frontend\modules\group\models;
 
 use frontend\models\Files;
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -44,4 +45,10 @@ class Group extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
         ];
     }
+
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->with('userAvatarRelations');
+    }
+
 }

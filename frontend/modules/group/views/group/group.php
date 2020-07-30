@@ -96,9 +96,17 @@ $this->title = $group['name'];
                                    role="tab" aria-controls="nav-home" aria-selected="true">Контакты</a>
 
                                 <div class=" ui_zoom_wrap">
-                                    <a class="post_image" href="/user/23215">
+                                    <a class="post_image" href="/user/<?php echo $group['profile']['id'] ?>">
 
-                                        <img loading="lazy" class="img" srcset="/thumbs/2c8/photo-23215-9d830ff76a92dbb37877efc8d8865bf31592908192_dialog.webp" alt="">
+                                        <?php echo PhotoWidget::widget([
+                                            'path' => $group['profile']['userAvatarRelations']['file'],
+                                            'size' => 'dialog',
+                                            'options' => [
+                                                'class' => 'img',
+                                                'loading' => 'lazy',
+                                                'alt' =>$group['profile']['username'],
+                                            ],
+                                        ]); ?>
 
                                     </a>
                                 </div>
@@ -106,8 +114,9 @@ $this->title = $group['name'];
                                 <div class="friends_user_info">
 
                                     <div class="friends_field friends_field_title">
-                                        <a href="/user/23215">Александр</a>
+                                        <a href="/user/<?php echo $group['profile']['id'] ?>"><?php echo $group['profile']['username'] ?></a>
                                     </div>
+
                                 </div>
 
                             </div>
