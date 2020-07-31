@@ -63,4 +63,11 @@ class SubscribeHelper
         return (bool) $redis->sismember($key.":{$groupId}:subscribes", $userId);
     }
 
+    public static function countSubscribers($groupId, $groupKey)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+        return $redis->scard ($groupKey.":{$groupId}:subscribes");
+    }
+
 }

@@ -3,6 +3,7 @@
 /* @var $group array */
 /* @var $groupItems array */
 /* @var $subscribers array */
+/* @var $countSubscribes integer */
 
 /* @var $this \yii\web\View */
 
@@ -170,7 +171,7 @@ $this->title = $group['name'];
                                         <a class="nav-item nav-link active padding-left-0 small-black-text"
                                            id="nav-home-tab"
                                            data-toggle="tab"
-                                           role="tab" aria-controls="nav-home" aria-selected="true">Подписчики</a>
+                                           role="tab" aria-controls="nav-home" aria-selected="true">Подписчики <?php echo $countSubscribes ?></a>
                                         <div class="user-friends-list">
                                             <div class="row">
 

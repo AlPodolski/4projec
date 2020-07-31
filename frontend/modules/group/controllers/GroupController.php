@@ -31,11 +31,15 @@ class GroupController extends \yii\web\Controller
 
             $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
-            $subscribers = Profile::find()->where(['in', 'id', $subscribersIds])->with('userAvatarRelations')->limit(6)->asArray()->all();
+            $subscribers = Profile::find()->where(['in', 'id', $subscribersIds])->with('userAvatarRelations')
+                ->limit(6)->asArray()->all();
+
+            $countSubscribes = SubscribeHelper::countSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
             return $this->render('group', [
                 'group' => $group,
                 'subscribers' => $subscribers,
+                'countSubscribes' => $countSubscribes,
             ]);
 
         }
