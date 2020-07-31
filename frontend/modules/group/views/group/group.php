@@ -2,6 +2,7 @@
 
 /* @var $group array */
 /* @var $groupItems array */
+/* @var $subscribers array */
 
 /* @var $this \yii\web\View */
 
@@ -79,13 +80,15 @@ $this->title = $group['name'];
                                                 Yii::$app->params['group_subscribe_key']
                                             )) : ?>
 
-                                                <div class="blue-btn" data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
+                                                <div class="blue-btn"
+                                                     data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
                                                     Отписаться
                                                 </div>
 
                                             <?php else : ?>
 
-                                                <div class="blue-btn" data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
+                                                <div class="blue-btn"
+                                                     data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
                                                     Подписаться
                                                 </div>
 
@@ -119,41 +122,86 @@ $this->title = $group['name'];
 
                     </div>
                     <div class="col-4">
-                        <div class="back-link back-link-right ">
 
-                            <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="back-link back-link-right m-bottom-20">
 
-                                <a class="nav-item nav-link active padding-left-0 small-black-text" id="nav-home-tab"
-                                   data-toggle="tab"
-                                   role="tab" aria-controls="nav-home" aria-selected="true">Контакты</a>
+                                    <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
 
-                                <div class=" ui_zoom_wrap">
-                                    <a class="post_image" href="/user/<?php echo $group['profile']['id'] ?>">
+                                        <a class="nav-item nav-link active padding-left-0 small-black-text"
+                                           id="nav-home-tab"
+                                           data-toggle="tab"
+                                           role="tab" aria-controls="nav-home" aria-selected="true">Контакты</a>
 
-                                        <?php echo PhotoWidget::widget([
-                                            'path' => $group['profile']['userAvatarRelations']['file'],
-                                            'size' => 'dialog',
-                                            'options' => [
-                                                'class' => 'img',
-                                                'loading' => 'lazy',
-                                                'alt' => $group['profile']['username'],
-                                            ],
-                                        ]); ?>
+                                        <div class=" ui_zoom_wrap">
+                                            <a class="post_image" href="/user/<?php echo $group['profile']['id'] ?>">
 
-                                    </a>
-                                </div>
+                                                <?php echo PhotoWidget::widget([
+                                                    'path' => $group['profile']['userAvatarRelations']['file'],
+                                                    'size' => 'dialog',
+                                                    'options' => [
+                                                        'class' => 'img',
+                                                        'loading' => 'lazy',
+                                                        'alt' => $group['profile']['username'],
+                                                    ],
+                                                ]); ?>
 
-                                <div class="friends_user_info">
+                                            </a>
+                                        </div>
 
-                                    <div class="friends_field friends_field_title">
-                                        <a href="/user/<?php echo $group['profile']['id'] ?>"><?php echo $group['profile']['username'] ?></a>
+                                        <div class="friends_user_info">
+
+                                            <div class="friends_field friends_field_title">
+                                                <a href="/user/<?php echo $group['profile']['id'] ?>"><?php echo $group['profile']['username'] ?></a>
+                                            </div>
+
+                                        </div>
+
                                     </div>
 
                                 </div>
-
                             </div>
+                            <div class="col-12">
+                                <div class="back-link back-link-right ">
 
+                                    <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
+
+                                        <a class="nav-item nav-link active padding-left-0 small-black-text"
+                                           id="nav-home-tab"
+                                           data-toggle="tab"
+                                           role="tab" aria-controls="nav-home" aria-selected="true">Подписчики</a>
+                                        <div class="user-friends-list">
+                                            <div class="row">
+
+                                                <?php if ($subscribers) foreach ($subscribers as $subscriber) : ?>
+
+                                                    <div class="col-4">
+
+                                                        <a class="post_image" href="/user/<?php echo $subscriber['id']?>">
+                                                            <?php echo PhotoWidget::widget([
+                                                                'path' => $subscriber['userAvatarRelations']['file'],
+                                                                'size' => 'dialog',
+                                                                'options' => [
+                                                                    'class' => 'img',
+                                                                    'loading' => 'lazy',
+                                                                    'alt' => $subscriber['username'],
+                                                                ],
+                                                            ]); ?>
+                                                        </a>
+                                                        <span class="author"><?php echo $subscriber['username'] ?></span>
+                                                    </div>
+
+                                                <?php endforeach; ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>

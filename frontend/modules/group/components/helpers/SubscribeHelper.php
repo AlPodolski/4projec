@@ -46,6 +46,14 @@ class SubscribeHelper
         return $redis->smembers($userGroupKey.":{$userId}:subscribe");
     }
 
+    public static function getGroupSubscribers($groupId, $groupKey)
+    {
+        /* @var $redis Connection */
+        $redis = Yii::$app->redis;
+
+        return $redis->smembers($groupKey.":{$groupId}:subscribes");
+    }
+
     public static function isSubscribe($groupId, $userId, $key)
     {
         /* @var $redis Connection */
