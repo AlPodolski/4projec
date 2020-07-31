@@ -2,9 +2,7 @@
 
 namespace frontend\modules\group\models;
 
-use frontend\models\Files;
 use frontend\modules\user\models\Profile;
-use Yii;
 
 /**
  * This is the model class for table "group".

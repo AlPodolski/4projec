@@ -22,6 +22,21 @@ function get_all_user_presents(object) {
 
 }
 
+function subscribe_group(object){
+
+    var id = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/group/subscribe',
+        data: 'group_id='+id,
+        type: 'POST',
+        success: function (data) {
+            $(object).text(data);
+        },
+    });
+
+}
+
 $(function() {
 
     var $container 	= $('#am-container'),

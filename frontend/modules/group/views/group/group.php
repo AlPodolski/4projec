@@ -2,6 +2,7 @@
 
 /* @var $group array */
 /* @var $groupItems array */
+
 /* @var $this \yii\web\View */
 
 use frontend\widgets\UserSideBarWidget;
@@ -37,7 +38,7 @@ $this->title = $group['name'];
                                                 'options' => [
                                                     'class' => 'img',
                                                     'loading' => 'lazy',
-                                                    'alt' =>$group['name'],
+                                                    'alt' => $group['name'],
                                                 ],
                                             ]); ?>
                                         </div>
@@ -45,11 +46,11 @@ $this->title = $group['name'];
                                     <div class="col-8">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="author padding-top-5"><?php echo $group['name']?></div>
+                                                <div class="author padding-top-5"><?php echo $group['name'] ?></div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="about group-about padding-top-5">
-                                                    <?php echo $group['description']?>
+                                                    <?php echo $group['description'] ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -59,9 +60,39 @@ $this->title = $group['name'];
                             <div class="col-5">
                                 <div class="no-content-wrap d-flex">
                                     <div class="row">
-                                        <div class="blue-btn">
-                                            Подписаться
-                                        </div>
+
+                                        <?php if (Yii::$app->user->isGuest) : ?>
+
+                                            <?php $onclickSubscribe = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"'; ?>
+
+                                            <div class="blue-btn" <?php echo $onclickSubscribe; ?>>
+                                                Подписаться
+                                            </div>
+
+                                        <?php else : ?>
+
+                                            <?php $onclickSubscribe = 'onclick="subscribe_group(this)"'; ?>
+
+                                            <?php if (\frontend\modules\group\components\helpers\SubscribeHelper::isSubscribe(
+                                                $group['id'],
+                                                Yii::$app->user->id,
+                                                Yii::$app->params['group_subscribe_key']
+                                            )) : ?>
+
+                                                <div class="blue-btn" data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
+                                                    Отписаться
+                                                </div>
+
+                                            <?php else : ?>
+
+                                                <div class="blue-btn" data-id="<?php echo $group['id'] ?>" <?php echo $onclickSubscribe; ?>>
+                                                    Подписаться
+                                                </div>
+
+                                            <?php endif; ?>
+
+                                        <?php endif; ?>
+
                                     </div>
                                 </div>
 
@@ -80,9 +111,9 @@ $this->title = $group['name'];
                         <div class="wall-wrapper">
 
                             <?php echo \frontend\modules\wall\widgets\WallWidget::widget([
-                                    'user_id' => $group['id'],
-                                    'group' => $group,
-                                    'relatedClass' => \frontend\modules\group\models\Group::class
+                                'user_id' => $group['id'],
+                                'group' => $group,
+                                'relatedClass' => \frontend\modules\group\models\Group::class
                             ]) ?>
                         </div>
 
@@ -92,7 +123,8 @@ $this->title = $group['name'];
 
                             <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
 
-                                <a class="nav-item nav-link active padding-left-0 small-black-text" id="nav-home-tab" data-toggle="tab"
+                                <a class="nav-item nav-link active padding-left-0 small-black-text" id="nav-home-tab"
+                                   data-toggle="tab"
                                    role="tab" aria-controls="nav-home" aria-selected="true">Контакты</a>
 
                                 <div class=" ui_zoom_wrap">
@@ -104,7 +136,7 @@ $this->title = $group['name'];
                                             'options' => [
                                                 'class' => 'img',
                                                 'loading' => 'lazy',
-                                                'alt' =>$group['profile']['username'],
+                                                'alt' => $group['profile']['username'],
                                             ],
                                         ]); ?>
 

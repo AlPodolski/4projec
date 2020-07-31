@@ -12,6 +12,8 @@ return [
     'users_who_like_key' => 'users_who_like_key',
     'users_whom_like_key' => 'users_whom_like_key',
     'users_who_skip_key' => 'users_who_skip_key',
+    'group_subscribe_key' => 'group_subscribe',
+    'user_group_subscribe_key' => 'user_group_subscribe',
     'dialog_day_limit' => 10,
     'dialog_day_key' => 'dialog_day',
 ];

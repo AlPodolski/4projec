@@ -4,6 +4,7 @@
 namespace frontend\modules\group\controllers;
 
 
+use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
 use frontend\modules\group\models\relation\UserGroup;
 use Yii;
@@ -14,7 +15,10 @@ class GroupController extends \yii\web\Controller
 
     public function actionIndex($city)
     {
-        $group = UserGroup::find()->where(['user_id' => Yii::$app->user->id])->with('group')->asArray()->all();
+
+        $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
+
+        $group = Group::find()->where(['in' , 'id' , $userGroupId])->asArray()->all();
 
         return $this->render('index', [
             'group' => $group
@@ -33,6 +37,30 @@ class GroupController extends \yii\web\Controller
 
         throw new NotFoundHttpException();
 
+    }
+
+    public function actionSubscribe()
+    {
+        if (Yii::$app->request->isPost and !Yii::$app->user->isGuest){
+
+            SubscribeHelper::Subscribe(
+                Yii::$app->request->post('group_id'),
+                Yii::$app->user->id,
+                Yii::$app->params['group_subscribe_key'],
+                Yii::$app->params['user_group_subscribe_key']
+            );
+
+            if (SubscribeHelper::isSubscribe(
+                Yii::$app->request->post('group_id'),
+                Yii::$app->user->id,
+                Yii::$app->params['group_subscribe_key'])
+            ) return 'Отписаться';
+
+            else return 'Подписаться';
+
+        }
+
+        return $this->goHome();
     }
 
 }

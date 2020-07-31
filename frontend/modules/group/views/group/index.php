@@ -37,8 +37,7 @@ $this->title = 'Мои группы';
                             <div class="friends_user_row clear_fix">
 
                             <div class="friends_photo_wrap ui_zoom_wrap">
-                                <a href="/user/23215">
-
+                                <a href="/group/<?php echo $groupItem['id'] ?>">
                                     <img loading="lazy" class="friends_photo_img"
                                          srcset="/thumbs/2c8/photo-23215-9d830ff76a92dbb37877efc8d8865bf31592908192_80.webp"
                                          alt="">
@@ -47,13 +46,9 @@ $this->title = 'Мои группы';
 
                             <div class="friends_user_info">
                                 <div class="friends_field friends_field_title">
-                                    <a href="/group/<?php echo $groupItem['group']['id'] ?> ">  <?php echo $groupItem['group']['name'] ?> </a>
+                                    <a href="/group/<?php echo $groupItem['id'] ?> ">  <?php echo $groupItem['name'] ?> </a>
                                 </div>
                             </div>
-
-                            <span onclick="remove_friend(this)" class="remove-friend-request" data-user-id="23215">
-                            <i class="fas fa-times"></i>
-                        </span>
 
                         </div>
 

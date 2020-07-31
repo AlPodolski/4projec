@@ -947,6 +947,7 @@ ul li .secodn-menu:hover {
     line-height: 18px;
     color: #FFFFFF;
     padding: 9px 16px 8px;
+    cursor: pointer;
 }
 #foto-ryad-in .modal-body{
     padding: 15px 15px 0px 15px;
