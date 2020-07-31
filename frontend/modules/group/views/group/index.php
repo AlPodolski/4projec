@@ -7,6 +7,9 @@ use frontend\widgets\UserSideBarWidget;
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->title = 'Мои группы';
+
+use frontend\widgets\PhotoWidget;
+
 ?>
 <div class="row">
     <div class="col-xl-3">
@@ -38,9 +41,16 @@ $this->title = 'Мои группы';
 
                             <div class="friends_photo_wrap ui_zoom_wrap">
                                 <a href="/group/<?php echo $groupItem['id'] ?>">
-                                    <img loading="lazy" class="friends_photo_img"
-                                         srcset="/thumbs/2c8/photo-23215-9d830ff76a92dbb37877efc8d8865bf31592908192_80.webp"
-                                         alt="">
+
+                                    <?php echo PhotoWidget::widget([
+                                        'path' => $groupItem['avatar']['file'],
+                                        'size' => 'dialog',
+                                        'options' => [
+                                            'class' => 'friends_photo_img',
+                                            'loading' => 'lazy',
+                                            'alt' => $groupItem['name'],
+                                        ],
+                                    ]); ?>
                                 </a>
                             </div>
 

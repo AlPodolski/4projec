@@ -2,6 +2,7 @@
 
 namespace frontend\modules\group\models;
 
+use frontend\models\Files;
 use frontend\modules\user\models\Profile;
 
 /**
@@ -47,6 +48,12 @@ class Group extends \yii\db\ActiveRecord
     public function getProfile()
     {
         return $this->hasOne(Profile::class, ['id' => 'user_id'])->with('userAvatarRelations');
+    }
+
+    public function getAvatar()
+    {
+        return $this->hasOne(Files::class, ['related_id' => 'id' ])
+            ->where(['main' => 1, 'related_class' => Group::class]);
     }
 
 }

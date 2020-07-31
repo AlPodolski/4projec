@@ -6,7 +6,6 @@ namespace frontend\modules\group\controllers;
 
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
-use frontend\modules\group\models\relation\UserGroup;
 use Yii;
 use yii\web\NotFoundHttpException;
 
@@ -18,7 +17,7 @@ class GroupController extends \yii\web\Controller
 
         $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
 
-        $group = Group::find()->where(['in' , 'id' , $userGroupId])->asArray()->all();
+        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray()->all();
 
         return $this->render('index', [
             'group' => $group
@@ -62,5 +61,7 @@ class GroupController extends \yii\web\Controller
 
         return $this->goHome();
     }
+
+
 
 }
