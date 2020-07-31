@@ -27,7 +27,7 @@ class GroupController extends \yii\web\Controller
 
     public function actionGroup($city, $id)
     {
-        if ($group = Group::find()->where(['id' => $id])->with('profile')->asArray()->one()) {
+        if ($group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one()) {
 
             $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
