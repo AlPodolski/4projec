@@ -3,12 +3,14 @@
 /* @var $subscribers array */
 /* @var $group array */
 /* @var $countSubscribes integer */
+/* @var $pages \yii\data\Pagination */
 
 use frontend\widgets\UserSideBarWidget;
+use yii\bootstrap4\LinkPager;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-$this->title = 'Мои группы';
+$this->title = 'Подписчики';
 
 use frontend\widgets\PhotoWidget;
 
@@ -22,9 +24,9 @@ use frontend\widgets\PhotoWidget;
     <div class="col-xl-9 col-12">
         <div class="row">
 
-            <div class="col-12 col-xl-8 dialog">
+            <div class="col-12 col-xl-8 dialog ">
 
-                <div class="page-block friends-list">
+                <div class="page-block friends-list m-bottom-20">
                     <div class="row">
                         <div class="col-8">
                             <nav>
@@ -40,33 +42,17 @@ use frontend\widgets\PhotoWidget;
 
                     <div class="tab-content" id="nav-tabContent">
 
-                        <div class="tab-pane fade active show" id="nav-all-friends" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="tab-pane fade active show content" id="nav-all-friends" role="tabpanel" aria-labelledby="nav-home-tab">
 
                             <?php foreach ($subscribers as $subscriber) : ?>
 
-                                <div class="friends_user_row clear_fix">
+                            <?php
 
-                                    <div class="friends_photo_wrap ui_zoom_wrap">
-                                        <a href="/user/<?php echo $subscriber['id'] ?>">
-                                            <?php echo PhotoWidget::widget([
-                                                'path' => $subscriber['userAvatarRelations']['file'],
-                                                'size' => '80',
-                                                'options' => [
-                                                    'class' => 'friends_photo_img',
-                                                    'loading' => 'lazy',
-                                                    'alt' => $subscriber['username'],
-                                                ],
-                                            ]); ?>
-                                        </a>
-                                    </div>
+                                echo $this->renderFile(Yii::getAlias('@app/modules/group/views/group/subscriber-item.php'), [
+                                    'subscriber' => $subscriber,
+                                ]);
 
-                                    <div class="friends_user_info">
-                                        <div class="friends_field friends_field_title">
-                                            <a href="/user/<?php echo $subscriber['id'] ?> ">  <?php echo $subscriber['username'] ?> </a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                                ?>
 
                             <?php endforeach; ?>
 
@@ -74,6 +60,23 @@ use frontend\widgets\PhotoWidget;
 
                     </div>
                 </div>
+
+                <?php $pageNumber = Yii::$app->request->get('page') ?? 1 ?>
+
+                <div class="pager" data-url="/group/<?php echo $group['id']?>/subscribers" data-page="<?php echo $pageNumber?>">
+
+                    <?php
+
+                    if ($pages)
+
+                        echo LinkPager::widget([
+                            'pagination' => $pages,
+                        ]);
+
+                    ?>
+
+                </div>
+
 
             </div>
 
@@ -155,43 +158,7 @@ use frontend\widgets\PhotoWidget;
 
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="back-link back-link-right ">
 
-                            <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
-
-                                <a class="nav-item nav-link active padding-left-0 small-black-text"
-                                   href="/group/<?php echo $group['id'] ?>/subscribers"
-                                > Подписчики <?php echo $countSubscribes ?></a>
-                                <div class="user-friends-list">
-                                    <div class="row">
-
-                                        <?php if ($subscribers) foreach ($subscribers as $subscriber) : ?>
-
-                                            <div class="col-4">
-
-                                                <a class="post_image" href="/user/<?php echo $subscriber['id']?>">
-                                                    <?php echo PhotoWidget::widget([
-                                                        'path' => $subscriber['userAvatarRelations']['file'],
-                                                        'size' => 'dialog',
-                                                        'options' => [
-                                                            'class' => 'img',
-                                                            'loading' => 'lazy',
-                                                            'alt' => $subscriber['username'],
-                                                        ],
-                                                    ]); ?>
-                                                </a>
-                                                <span class="author"><?php echo $subscriber['username'] ?></span>
-                                            </div>
-
-                                        <?php endforeach; ?>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
 
             </div>

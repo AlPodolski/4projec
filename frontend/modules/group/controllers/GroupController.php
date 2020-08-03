@@ -9,6 +9,7 @@ use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii\data\Pagination;
 
 class GroupController extends \yii\web\Controller
 {
@@ -74,20 +75,45 @@ class GroupController extends \yii\web\Controller
 
     public function actionSubscribers($city, $id)
     {
+
+
         $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
         $group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one();
 
         $subscribers = Profile::find()->where(['in', 'id', $subscribersIds])->with('userAvatarRelations')
-            ->limit(20)->asArray()->all();
+            ->asArray();
 
-        $countSubscribes = SubscribeHelper::countSubscribers($id, Yii::$app->params['group_subscribe_key']);
+        $countQuery = clone $subscribers;
 
-        return $this->render('subscribers', [
-            'subscribers' => $subscribers,
-            'group' => $group,
-            'countSubscribes' => $countSubscribes,
-        ]);
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+
+        if (Yii::$app->request->isPost){
+
+            $subscribers = $subscribers->limit($pages->limit)
+                ->offset($pages->defaultPageSize * Yii::$app->request->post('page'))->all();
+
+            return $this->renderFile(Yii::getAlias('@app/modules/group/views/group/subscribers-more.php'), [
+                'subscribers' => $subscribers,
+            ]);
+
+        }else{
+
+            $subscribers = $subscribers->limit($pages->limit)->offset($pages->offset);
+
+            $subscribers = $subscribers->all();
+
+            $countSubscribes = SubscribeHelper::countSubscribers($id, Yii::$app->params['group_subscribe_key']);
+
+            return $this->render('subscribers', [
+                'subscribers' => $subscribers,
+                'group' => $group,
+                'countSubscribes' => $countSubscribes,
+                'pages' => $pages,
+            ]);
+
+        }
+
     }
 
 }
