@@ -72,6 +72,22 @@ class GroupController extends \yii\web\Controller
         return $this->goHome();
     }
 
+    public function actionSubscribers($city, $id)
+    {
+        $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
+        $group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one();
+
+        $subscribers = Profile::find()->where(['in', 'id', $subscribersIds])->with('userAvatarRelations')
+            ->limit(20)->asArray()->all();
+
+        $countSubscribes = SubscribeHelper::countSubscribers($id, Yii::$app->params['group_subscribe_key']);
+
+        return $this->render('subscribers', [
+            'subscribers' => $subscribers,
+            'group' => $group,
+            'countSubscribes' => $countSubscribes,
+        ]);
+    }
 
 }

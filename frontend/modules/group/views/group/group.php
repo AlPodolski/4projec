@@ -169,9 +169,8 @@ $this->title = $group['name'];
                                     <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
 
                                         <a class="nav-item nav-link active padding-left-0 small-black-text"
-                                           id="nav-home-tab"
-                                           data-toggle="tab"
-                                           role="tab" aria-controls="nav-home" aria-selected="true">Подписчики <?php echo $countSubscribes ?></a>
+                                           href="/group/<?php echo $group['id'] ?>/subscribers"
+                                           > Подписчики <?php echo $countSubscribes ?></a>
                                         <div class="user-friends-list">
                                             <div class="row">
 

@@ -926,7 +926,9 @@ ul li .secodn-menu:hover {
 .mobile-nav li a {
     color:#000;
 }
-
+.dialog #nav-home-tab{
+    padding-left: 0;
+}
 .mobile-nav li .in-cabinet {
     margin-right: 0px;
     border:inherit;
