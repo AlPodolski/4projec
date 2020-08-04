@@ -1,6 +1,7 @@
 <?php /* @var $wallItems array */
  /* @var $group array */
  /* @var $wrapCssClass string */
+ /* @var $this \yii\web\View */
 
 use yii\widgets\ActiveForm;
 use frontend\models\forms\AddCommentForm;
@@ -8,8 +9,11 @@ use frontend\modules\wall\components\LikeHelper;
 use frontend\widgets\CommentsFormWidget;
 use frontend\widgets\PhotoWidget;
 
-if (!Yii::$app->request->isPost)
-    $this->registerJsFile('/files/js/jquery.montage.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+if (!Yii::$app->request->isPost) {
+    $this->registerJsFile('/files/js/images-grid.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+    $this->registerCssFile('/css/images-grid.css');
+}
+
 
 $commentForm = new AddCommentForm();
 
@@ -100,13 +104,18 @@ if (!empty($wallItems)) : ?>
 
             <?php if ($item['files']) : ?>
 
+            <?php
+
+            $images = array();
+
+                foreach ($item['files'] as $file) {
+
+                    $images[] = $file['file'];
+
+                }  ?>
+
                 <div >
-                    <div class="am-container" id="am-container">
-                        <?php foreach ($item['files'] as $file) : ?>
-
-                            <a href="#"><img src="<?php echo $file['file']; ?>"/></a>
-
-                        <?php endforeach; ?>
+                    <div class="files" data-files="<?php echo implode(', ', $images)?>">
                     </div>
                 </div>
 

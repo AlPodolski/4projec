@@ -41,21 +41,14 @@ function wall_photo_items(){
 
     $('.wall-tem').each(function(i,elem) {
 
-        if($(this).find( '.am-container').length ){
+        if($(this).find( '.files').length ){
 
-            console.log($(this).find( '.am-container'));
+            var files = $(this).find( '.files').attr('data-files').split(',');
+            console.log(files);
 
-            $(this).find( '.am-container').montage({
-
-                liquid: false,
-
-                fillLastRow: true,
-
-                margin: 4,
-
-                fixedHeight: 160
-
-            });
+            $(this).find( '.files').imagesGrid({
+                images: files
+        });
         }
 
 
