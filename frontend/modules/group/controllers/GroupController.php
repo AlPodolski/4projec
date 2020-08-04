@@ -130,4 +130,26 @@ class GroupController extends \yii\web\Controller
 
     }
 
+    public function actionList($city)
+    {
+        $group = Group::find()->with('avatar')->asArray()->limit(10);
+
+        if (Yii::$app->request->isPost){
+
+            $group = $group->limit(10)
+                ->offset(10 * Yii::$app->request->post('page'))->all();
+
+            return $this->renderFile(Yii::getAlias('@app/modules/group/views/group/group-more.php'), [
+                'group' => $group,
+            ]);
+
+        }
+
+        $group = $group->all();
+
+        return $this->render('list', [
+            'group' => $group,
+        ]);
+    }
+
 }
