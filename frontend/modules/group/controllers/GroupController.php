@@ -19,16 +19,39 @@ class GroupController extends \yii\web\Controller
 
         $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
 
-        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray()->all();
+        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray();
+
+        $countQuery = clone $group;
+
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+
+        $pages->defaultPageSize = 2;
+
+        $group->offset($pages->offset)
+                ->limit($pages->limit)
+                ->all();
 
         return $this->render('index', [
-            'group' => $group
+            'group' => $group,
+            'pages' => $pages,
         ]);
     }
 
     public function actionGroup($city, $id)
     {
         if ($group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one()) {
+
+            if (Yii::$app->request->isPost){
+
+                return  \frontend\modules\wall\widgets\WallWidget::widget([
+                    'user_id' => $group['id'],
+                    'group' => $group,
+                    'relatedClass' => \frontend\modules\group\models\Group::class,
+                    'wrapCssClass' => 'm-bottom-20',
+                    'offset' => Yii::$app->params['wall_items_limit'] * Yii::$app->request->post('page'),
+                ]);
+
+            }
 
             $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 

@@ -1,5 +1,6 @@
 <?php /* @var $wallItems array */
  /* @var $group array */
+ /* @var $wrapCssClass string */
 
 use yii\widgets\ActiveForm;
 use frontend\models\forms\AddCommentForm;
@@ -7,7 +8,8 @@ use frontend\modules\wall\components\LikeHelper;
 use frontend\widgets\CommentsFormWidget;
 use frontend\widgets\PhotoWidget;
 
-$this->registerJsFile('/files/js/jquery.montage.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+if (!Yii::$app->request->isPost)
+    $this->registerJsFile('/files/js/jquery.montage.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $commentForm = new AddCommentForm();
 
@@ -19,7 +21,7 @@ if (!empty($wallItems)) : ?>
 
     <?php foreach ($wallItems as $item) : ?>
 
-        <div class="wall-tem page-block">
+        <div class="wall-tem page-block <?php echo $wrapCssClass ?>">
 
             <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $item['author']['id'] or Yii::$app->user->id == $item['user_id']) : ?>
 
@@ -102,7 +104,7 @@ if (!empty($wallItems)) : ?>
                     <div class="am-container" id="am-container">
                         <?php foreach ($item['files'] as $file) : ?>
 
-                            <a href="#"><img src="<?php echo $file['file']; ?>" title="Image 3"/></a>
+                            <a href="#"><img src="<?php echo $file['file']; ?>"/></a>
 
                         <?php endforeach; ?>
                     </div>

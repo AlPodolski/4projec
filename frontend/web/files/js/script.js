@@ -37,31 +37,36 @@ function subscribe_group(object){
 
 }
 
+function wall_photo_items(){
+
+    $('.wall-tem').each(function(i,elem) {
+
+        if($(this).find( '.am-container').length ){
+
+            console.log($(this).find( '.am-container'));
+
+            $(this).find( '.am-container').montage({
+
+                liquid: false,
+
+                fillLastRow: true,
+
+                margin: 4,
+
+                fixedHeight: 160
+
+            });
+        }
+
+
+
+    });
+
+}
+
 $(function() {
 
-    var $container 	= $('#am-container'),
-        $imgs		= $container.find('img').hide(),
-        totalImgs	= $imgs.length,
-        cnt			= 0;
-
-
-    $imgs.each(function(i) {
-        var $img	= $(this);
-        ++cnt;
-        console.log(cnt);
-        if( cnt === totalImgs ) {
-            $imgs.show();
-            $container.montage({
-                fillLastRow				: true,
-                alternateHeight			: true,
-                alternateHeightRange	: {
-                    min	: 90,
-                    max	: 240
-                }
-            });
-
-        }
-    });
+    wall_photo_items();
 
 });
 
@@ -602,6 +607,8 @@ $(window).scroll(function () {
                     $('.content').append(data);
 
                     page = $(target).attr('data-page', Number(page) + 1);
+
+                    wall_photo_items();
 
                 } else {
 

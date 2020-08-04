@@ -12,6 +12,8 @@ class WallWidget extends Widget
     public $user_id;
     public $group = null;
     public $relatedClass = 'frontend\modules\user\models\Profile';
+    public $wrapCssClass = '';
+    public $offset = 0;
 
     public function run()
     {
@@ -19,6 +21,7 @@ class WallWidget extends Widget
         $wallItems = Wall::find()
             ->where(['user_id' => $this->user_id, 'class' => $this->relatedClass])
             ->limit(Yii::$app->params['wall_items_limit'])
+            ->offset($this->offset)
             ->orderBy('id DESC')
             ->with('author')
             ->with('files')
@@ -28,6 +31,7 @@ class WallWidget extends Widget
         return $this->render('wall', [
             'wallItems' => $wallItems,
             'group' => $this->group,
+            'wrapCssClass' => $this->wrapCssClass,
         ]);
 
     }

@@ -112,13 +112,18 @@ $this->title = $group['name'];
                 <div class="row">
                     <div class="col-8">
 
-                        <div class="wall-wrapper">
+                        <div class="wall-wrapper content">
 
                             <?php echo \frontend\modules\wall\widgets\WallWidget::widget([
                                 'user_id' => $group['id'],
                                 'group' => $group,
-                                'relatedClass' => \frontend\modules\group\models\Group::class
+                                'relatedClass' => \frontend\modules\group\models\Group::class,
+                                'wrapCssClass' => 'm-bottom-20'
                             ]) ?>
+                        </div>
+
+                        <div class="pager" data-url="/group/<?php echo $group['id']?>" data-page="1">
+
                         </div>
 
                     </div>
