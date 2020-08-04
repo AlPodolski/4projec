@@ -16,24 +16,15 @@ class GroupController extends \yii\web\Controller
 
     public function actionIndex($city)
     {
-
         $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
 
-        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray();
+        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray()->all();
 
-        $countQuery = clone $group;
-
-        $pages = new Pagination(['totalCount' => $countQuery->count()]);
-
-        $pages->defaultPageSize = 2;
-
-        $group->offset($pages->offset)
-                ->limit($pages->limit)
-                ->all();
+        $recomendGroup = Group::find()->limit(6)->orderBy(['rand()' => SORT_DESC])->with('profile')->with('avatar')->asArray()->all();
 
         return $this->render('index', [
             'group' => $group,
-            'pages' => $pages,
+            'recomendGroup' => $recomendGroup,
         ]);
     }
 

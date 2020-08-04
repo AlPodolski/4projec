@@ -1,6 +1,7 @@
 <?php
 
 /* @var $group array */
+/* @var $recomendGroup array */
 
 use frontend\widgets\UserSideBarWidget;
 
@@ -44,7 +45,7 @@ use frontend\widgets\PhotoWidget;
 
                                     <?php echo PhotoWidget::widget([
                                         'path' => $groupItem['avatar']['file'],
-                                        'size' => 'dialog',
+                                        'size' => '80',
                                         'options' => [
                                             'class' => 'friends_photo_img',
                                             'loading' => 'lazy',
@@ -78,22 +79,31 @@ use frontend\widgets\PhotoWidget;
             <a class="nav-item nav-link active padding-left-0 small-black-text" id="nav-home-tab" data-toggle="tab"
                 role="tab" aria-controls="nav-home" aria-selected="true">Популярные группы</a>
 
-            <div class=" ui_zoom_wrap">
-                <a class="post_image" href="/user/23215">
+            <?php foreach ($recomendGroup as $recomendGroupItem) : ?>
 
-                    <img loading="lazy" class="img" srcset="/thumbs/2c8/photo-23215-9d830ff76a92dbb37877efc8d8865bf31592908192_dialog.webp" alt="">
+            <div class=" ui_zoom_wrap">
+                <a class="post_image" href="/group/<?php echo $recomendGroupItem['id'] ?>">
+
+                    <?php echo PhotoWidget::widget([
+                        'path' => $recomendGroupItem['avatar']['file'],
+                        'size' => '80',
+                        'options' => [
+                            'class' => 'img',
+                            'loading' => 'lazy',
+                            'alt' => $recomendGroupItem['name'],
+                        ],
+                    ]); ?>
 
                 </a>
             </div>
 
             <div class="friends_user_info">
-
                 <div class="friends_field friends_field_title">
-                    <a href="/user/23215">
-                        Александр                    </a>
+                    <a href="/group/<?php echo $recomendGroupItem['id'] ?>"><?php echo $recomendGroupItem['name'] ?></a>
                 </div>
-                <a href="/user/23215" class="friends_field_act small-heading">Назад на страницу</a>
             </div>
+
+            <?php endforeach; ?>
 
         </div>
 
