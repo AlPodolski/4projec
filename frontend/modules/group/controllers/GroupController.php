@@ -4,12 +4,15 @@
 namespace frontend\modules\group\controllers;
 
 
+use frontend\components\helpers\SaveFileHelper;
 use frontend\modules\group\components\helpers\SubscribeHelper;
+use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\data\Pagination;
+use yii\web\UploadedFile;
 
 class GroupController extends \yii\web\Controller
 {
@@ -18,7 +21,7 @@ class GroupController extends \yii\web\Controller
     {
         $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
 
-        $group = Group::find()->where(['in' , 'id' , $userGroupId])->with('avatar')->asArray()->all();
+        $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->asArray()->all();
 
         $recomendGroup = Group::find()->limit(6)->orderBy(['rand()' => SORT_DESC])->with('profile')->with('avatar')->asArray()->all();
 
@@ -32,9 +35,9 @@ class GroupController extends \yii\web\Controller
     {
         if ($group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one()) {
 
-            if (Yii::$app->request->isPost){
+            if (Yii::$app->request->isPost) {
 
-                return  \frontend\modules\wall\widgets\WallWidget::widget([
+                return \frontend\modules\wall\widgets\WallWidget::widget([
                     'user_id' => $group['id'],
                     'group' => $group,
                     'relatedClass' => \frontend\modules\group\models\Group::class,
@@ -43,6 +46,8 @@ class GroupController extends \yii\web\Controller
                 ]);
 
             }
+
+            $model = new addGroupRecordItemForm();
 
             $subscribersIds = SubscribeHelper::getGroupSubscribers($id, Yii::$app->params['group_subscribe_key']);
 
@@ -55,6 +60,7 @@ class GroupController extends \yii\web\Controller
                 'group' => $group,
                 'subscribers' => $subscribers,
                 'countSubscribes' => $countSubscribes,
+                'model' => $model,
             ]);
 
         }
@@ -65,7 +71,7 @@ class GroupController extends \yii\web\Controller
 
     public function actionSubscribe()
     {
-        if (Yii::$app->request->isPost and !Yii::$app->user->isGuest){
+        if (Yii::$app->request->isPost and !Yii::$app->user->isGuest) {
 
             SubscribeHelper::Subscribe(
                 Yii::$app->request->post('group_id'),
@@ -102,7 +108,7 @@ class GroupController extends \yii\web\Controller
 
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
 
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost) {
 
             $subscribers = $subscribers->limit($pages->limit)
                 ->offset($pages->defaultPageSize * Yii::$app->request->post('page'))->all();
@@ -111,7 +117,7 @@ class GroupController extends \yii\web\Controller
                 'subscribers' => $subscribers,
             ]);
 
-        }else{
+        } else {
 
             $subscribers = $subscribers->limit($pages->limit)->offset($pages->offset);
 
@@ -134,7 +140,7 @@ class GroupController extends \yii\web\Controller
     {
         $group = Group::find()->with('avatar')->asArray()->limit(10);
 
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost) {
 
             $group = $group->limit(10)
                 ->offset(10 * Yii::$app->request->post('page'))->all();
@@ -152,4 +158,38 @@ class GroupController extends \yii\web\Controller
         ]);
     }
 
+    public function actionAdd()
+    {
+
+        if (!Yii::$app->user->isGuest) {
+
+            $model = new addGroupRecordItemForm();
+
+            if ($model->load(Yii::$app->request->post())  and $group = Group::find()
+                ->where(['user_id' => Yii::$app->user->id, 'id' => $model->group_id])->asArray()->one()) {
+
+                $model->class = Group::class;
+                $model->user_id = Yii::$app->user->id;
+
+                if ( $model->validate() and $item = $model->save()) {
+
+                    if ($files = UploadedFile::getInstances($model, 'file')) {
+
+                        $resultPhotoItems = array();
+
+                        foreach ($files as $file) {
+
+                            $resultPhotoItems[] = SaveFileHelper::save($file, $group['id'],\frontend\modules\wall\models\Wall::class,  $item['id']);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
 }

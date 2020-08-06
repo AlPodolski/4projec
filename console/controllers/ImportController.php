@@ -796,7 +796,7 @@ class ImportController extends Controller
         $smoking = Smoking::find()->asArray()->all();
         $alcogol = Alcogol::find()->asArray()->all();
 
-        $stream = \fopen(Yii::getAlias('@app/files/article_all_20_07_2020.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/article_all_1_05_80_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -817,15 +817,13 @@ class ImportController extends Controller
 
         }
 
-        //  \dd($articles[\array_rand($articles)]);
-
         foreach ($city as $item) {
 
             $tempArticles = $articles;
 
             $i = 0;
 
-            while ($i < 10) {
+            while ($i < 20) {
 
                 $i++;
 
@@ -982,7 +980,7 @@ class ImportController extends Controller
                         $userPhoto = new Photo();
 
                         $userPhoto->user_id = $user->id;
-                        $userPhoto->file = \str_replace('files', '/files/uploads/aa7', $record['mini']);
+                        $userPhoto->file = \str_replace('files', '/files/uploads/aa8', $record['mini']);
                         $userPhoto->avatar = 1;
 
                         $userPhoto->save();
@@ -1002,7 +1000,7 @@ class ImportController extends Controller
                                     $userPhoto = new Photo();
 
                                     $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = '/files/uploads/aa7'.\str_replace('files', '',   $gallitem);
+                                    $userPhoto->file = '/files/uploads/aa8'.\str_replace('files', '',   $gallitem);
                                     $userPhoto->avatar = 0;
 
                                     $userPhoto->save();

@@ -929,6 +929,9 @@ ul li .secodn-menu:hover {
 .dialog #nav-home-tab{
     padding-left: 0;
 }
+#add-form-record{
+    display:none;
+}
 .mobile-nav li .in-cabinet {
     margin-right: 0px;
     border:inherit;
@@ -2034,7 +2037,7 @@ a {
 .wall-form{
     padding:0;
 }
-#addtowallform-text{
+#addtowallform-text , #addgrouprecorditemform-text{
     height:35px;
 }
 .field-addtowallform-text{
@@ -2049,7 +2052,7 @@ a {
 .wall-form .field-addtowallform-text{
     margin-bottom: 0;
 }
-.wall-form #addtowallform-text{
+.wall-form #addtowallform-text , #addgrouprecorditemform-text{
     margin-top: 10px;
     font-style: normal;
     font-weight: normal;

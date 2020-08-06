@@ -400,3 +400,36 @@ function send_message(object){
     }
 
 }
+
+$( ".wall-group-send-btn" ).click(function() {
+
+    var formData = new FormData($(".wall-group-form")[0]);
+
+    $('#addgrouprecorditemform-text').val('');
+
+    $.ajax({
+        url: '/group/item/add',
+        type: 'POST',
+        data: formData,
+        datatype:'json',
+        // async: false,
+        beforeSend: function() {
+
+        },
+        success: function (data) {
+            console.log('ok');
+        },
+
+        complete: function() {
+            // success alerts
+        },
+
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+});

@@ -16,6 +16,7 @@ use Yii;
  * @property int|null $from кто автор записи
  * @property int|null $created_at время создания
  * @property string|null $text текст записи
+ * @property string|null $class текст записи
  */
 class Wall extends \yii\db\ActiveRecord
 {
@@ -34,7 +35,7 @@ class Wall extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'from', 'created_at'], 'integer'],
-            [['text'], 'string'],
+            [['text', 'class'], 'string'],
         ];
     }
 

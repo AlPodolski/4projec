@@ -14,6 +14,7 @@ use yii\base\Model;
  * @property int|null $from кто автор записи
  * @property int|null $created_at время создания
  * @property string|null $text текст записи
+ * @property string|null $class связанный класс
  */
 class AddToWallForm extends Model
 {
@@ -21,6 +22,7 @@ class AddToWallForm extends Model
     public $text;
     public $from;
     public $created_at;
+    public $class;
     /**
      * {@inheritdoc}
      */
@@ -30,6 +32,7 @@ class AddToWallForm extends Model
             [['user_id', 'from', 'created_at'], 'integer'],
             [['user_id', 'from', 'created_at', 'text'], 'required'],
             [['text'], 'string', 'max' => 600],
+            [['class'], 'string'],
         ];
     }
 
@@ -51,11 +54,11 @@ class AddToWallForm extends Model
         $wallItem->from = $this->from;
         $wallItem->created_at = $this->created_at;
         $wallItem->text = $this->text;
+        $wallItem->class = $this->class;
 
         $wallItem->save();
 
         return Wall::find()->where(['id' => $wallItem->id])->with('author')->with('comments')->asArray()->one();
-
 
     }
 }

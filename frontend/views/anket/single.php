@@ -3,15 +3,17 @@
 /* @var $this \yii\web\View */
 /* @var $model frontend\modules\user\models\Profile */
 /* @var $cityInfo array */
+
 /* @var $userFriends array */
+
 use frontend\widgets\SidebarWidget;
 use frontend\widgets\UserSideBarWidget;
 
-$this->title = \frontend\components\SingleMetaHelper::Title($model, $cityInfo) ;
+$this->title = \frontend\components\SingleMetaHelper::Title($model, $cityInfo);
 
 $this->registerMetaTag([
-        'name' => 'description',
-        'content' => \frontend\components\SingleMetaHelper::Description($model)
+    'name' => 'description',
+    'content' => \frontend\components\SingleMetaHelper::Description($model)
 ]);
 
 ?>
@@ -22,7 +24,7 @@ $this->registerMetaTag([
 
         <?php if (!Yii::$app->user->isGuest) : ?>
 
-            <?php echo UserSideBarWidget::Widget()?>
+            <?php echo UserSideBarWidget::Widget() ?>
 
         <?php endif; ?>
 

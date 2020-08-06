@@ -133,6 +133,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/<id:[0-9]+>' => 'group/group/group',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/subscribe' => 'group/group/subscribe',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/list' => 'group/group/list',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/group/item/add' => 'group/group/add',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/<id:[0-9]+>/subscribers' => 'group/group/subscribers',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]+>' => 'chat/chat/chat',

@@ -15,5 +15,6 @@ return [
     'group_subscribe_key' => 'group_subscribe',
     'user_group_subscribe_key' => 'user_group_subscribe',
     'dialog_day_limit' => 10,
+    'default_with_img' => 1024,
     'dialog_day_key' => 'dialog_day',
 ];

@@ -4,15 +4,18 @@
 /* @var $groupItems array */
 /* @var $subscribers array */
 /* @var $countSubscribes integer */
+/* @var $model \frontend\modules\group\models\forms\addGroupRecordItemForm */
 
 /* @var $this \yii\web\View */
 
 use frontend\widgets\UserSideBarWidget;
 use frontend\widgets\PhotoWidget;
+use yii\widgets\ActiveForm;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->title = $group['name'];
+
 ?>
 <div class="row">
     <div class="col-xl-3">
@@ -23,6 +26,7 @@ $this->title = $group['name'];
 
         <div class="row ">
             <div class="col-12 m-bottom-20">
+
                 <div class="page-block friends-list">
 
                     <div class="post-photo">
@@ -114,15 +118,71 @@ $this->title = $group['name'];
 
                         <div class="wall-wrapper content">
 
+                            <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $group['id']) : ?>
+
+                            <div class="wall-tem page-block m-bottom-20">
+
+                                <?php
+
+                                $form = ActiveForm::begin([
+                                    'action' => '#',
+                                    'id' => 'wall-form',
+                                    'options' => ['class' => 'form-horizontal wall-group-form'],
+                                ]) ?>
+
+                                <?php if (!Yii::$app->user->isGuest) : ?>
+
+                                    <div class="row">
+                                        <div class="col-9 col-sm-10">
+                                            <?= $form->field($model, 'text' , ['options' => ['class' => '']])
+                                                ->textarea(['placeholder' => 'Напишите что то'])->label(false) ?>
+                                        </div>
+                                    </div>
+
+                                    <?= $form->field($model, 'group_id')
+                                    ->hiddenInput(['value' => $group['id']])->label(false) ?>
+
+                                    <div class="img-label-wrap">
+                                        <label for="add-form-record" class="">
+
+                                            <span> <i class="fas fa-upload"></i> Загрузить фото </span>
+
+                                            <?= $form->field($model, 'file' , ['options' => ['class' => '']])
+                                                ->fileInput(['maxlength' => true,
+                                                    'accept' => 'image/*',
+                                                    'id' => 'add-form-record',
+                                                    'class' => ''])
+                                                ->label(false) ?>
+
+                                        </label>
+                                    </div>
+
+                                <?php endif; ?>
+
+                                    <span class=" btn wall-send-btn wall-group-send-btn">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF"
+                                                  fill-opacity="0.13"/>
+                                        </svg>
+                                    </span>
+
+                                <?php ActiveForm::end() ?>
+
+                            </div>
+
+                            <?php endif; ?>
+
                             <?php echo \frontend\modules\wall\widgets\WallWidget::widget([
                                 'user_id' => $group['id'],
                                 'group' => $group,
                                 'relatedClass' => \frontend\modules\group\models\Group::class,
                                 'wrapCssClass' => 'm-bottom-20'
                             ]) ?>
+
                         </div>
 
-                        <div class="pager" data-url="/group/<?php echo $group['id']?>" data-page="1">
+                        <div class="pager" data-url="/group/<?php echo $group['id'] ?>" data-page="1">
 
                         </div>
 
@@ -175,7 +235,7 @@ $this->title = $group['name'];
 
                                         <a class="nav-item nav-link active padding-left-0 small-black-text"
                                            href="/group/<?php echo $group['id'] ?>/subscribers"
-                                           > Подписчики <?php echo $countSubscribes ?></a>
+                                        > Подписчики <?php echo $countSubscribes ?></a>
                                         <div class="user-friends-list">
                                             <div class="row">
 
@@ -183,7 +243,8 @@ $this->title = $group['name'];
 
                                                     <div class="col-4">
 
-                                                        <a class="post_image" href="/user/<?php echo $subscriber['id']?>">
+                                                        <a class="post_image"
+                                                           href="/user/<?php echo $subscriber['id'] ?>">
                                                             <?php echo PhotoWidget::widget([
                                                                 'path' => $subscriber['userAvatarRelations']['file'],
                                                                 'size' => 'dialog',
