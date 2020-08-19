@@ -1,6 +1,7 @@
 <?php /* @var $wallItems array */
  /* @var $group array */
  /* @var $wrapCssClass string */
+ /* @var $news bool */
  /* @var $this \yii\web\View */
 
 use yii\widgets\ActiveForm;
@@ -36,62 +37,104 @@ if (!empty($wallItems)) : ?>
 
             <div class="post_header">
 
-                <?php if ($item['class'] == \frontend\modules\group\models\Group::class and $group) : ?>
+                <?php //вид для работы с лентой новостей пользователя ?>
+                <?php if ($news) : ?>
 
-                    <a class="post_image" href="/group/<?php echo $group['id'] ?>">
+                    <?php if ($item['class'] == \frontend\modules\group\models\Group::class) : ?>
 
-                        <div class="post_image">
-                            <?php echo PhotoWidget::widget([
-                                'path' => $group['avatar']['file'],
-                                'size' => 'dialog',
-                                'options' => [
-                                    'class' => 'img',
-                                    'loading' => 'lazy',
-                                    'alt' => $group['name'],
-                                ],
-                            ]); ?>
-                        </div>
+                    <?php
 
-                    </a>
+                        $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['user_id']])
+                                ->with('avatar')
+                                ->asArray()
+                                ->one();
+                        ?>
 
-                    <div class="post_header_info">
-                        <a href="/group/<?php echo $group['id'] ?>" class="author">
-                            <?php echo $group['name'] ?>
+                        <a class="post_image" href="/group/<?php echo $group['id'] ?>">
+
+                            <div class="post_image">
+                                <?php echo PhotoWidget::widget([
+                                    'path' => $group['avatar']['file'],
+                                    'size' => 'dialog',
+                                    'options' => [
+                                        'class' => 'img',
+                                        'loading' => 'lazy',
+                                        'alt' => $group['name'],
+                                    ],
+                                ]); ?>
+                            </div>
+
                         </a>
-                        <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+
+                        <div class="post_header_info">
+                            <a href="/group/<?php echo $group['id'] ?>" class="author">
+                                <?php echo $group['name'] ?>
+                            </a>
+                            <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            </div>
                         </div>
-                    </div>
+
+                    <?php endif; ?>
 
                 <?php else : ?>
 
-                    <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
+                    <?php if ($item['class'] == \frontend\modules\group\models\Group::class and $group) : ?>
 
-                        <?php if (isset($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
+                        <a class="post_image" href="/group/<?php echo $group['id'] ?>">
 
-                            <img loading="lazy" class="img"
-                                 srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'], 'dialog') ?>"
-                                 alt="">
+                            <div class="post_image">
+                                <?php echo PhotoWidget::widget([
+                                    'path' => $group['avatar']['file'],
+                                    'size' => 'dialog',
+                                    'options' => [
+                                        'class' => 'img',
+                                        'loading' => 'lazy',
+                                        'alt' => $group['name'],
+                                    ],
+                                ]); ?>
+                            </div>
 
-                        <?php else : ?>
-
-                            <img class="img" src="/files/img/nophoto.png" alt="">
-
-                        <?php endif; ?>
-
-                    </a>
-
-                    <div class="post_header_info">
-
-                        <a href="/user/<?php echo $item['author']['id'] ?>" class="author">
-                            <?php echo $item['author']['username'] ?>
                         </a>
-                        <div class="post_date"><span class="post_link"><span
-                                        class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+
+                        <div class="post_header_info">
+                            <a href="/group/<?php echo $group['id'] ?>" class="author">
+                                <?php echo $group['name'] ?>
+                            </a>
+                            <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            </div>
                         </div>
-                    </div>
+
+                    <?php else : ?>
+
+                        <a class="post_image" href="/user/<?php echo $item['author']['id'] ?>">
+
+                            <?php if (isset($item['author']['avatarRelation']['file']) and file_exists(Yii::getAlias('@webroot') . $item['author']['avatarRelation']['file']) and $item['author']['avatarRelation']['file']) : ?>
+
+                                <img loading="lazy" class="img"
+                                     srcset="<?= Yii::$app->imageCache->thumbSrc($item['author']['avatarRelation']['file'], 'dialog') ?>"
+                                     alt="">
+
+                            <?php else : ?>
+
+                                <img class="img" src="/files/img/nophoto.png" alt="">
+
+                            <?php endif; ?>
+
+                        </a>
+
+                        <div class="post_header_info">
+
+                            <a href="/user/<?php echo $item['author']['id'] ?>" class="author">
+                                <?php echo $item['author']['username'] ?>
+                            </a>
+                            <div class="post_date"><span class="post_link"><span
+                                            class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
 
                 <?php endif; ?>
-
 
             </div>
 

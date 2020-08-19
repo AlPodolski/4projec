@@ -6,6 +6,7 @@ use frontend\modules\user\models\News;
 use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\base\Widget;
+use yii\helpers\ArrayHelper;
 
 class WallWidget extends Widget
 {
@@ -22,10 +23,21 @@ class WallWidget extends Widget
 
         if ($this->news){
 
-            $wallItems = News::find()
+            $newsids = News::find()
                 ->where(['user_id' => $this->user_id])
+                ->select('news_id')
                 ->asArray()
                 ->all();
+
+            $wallItems = Wall::find()
+                ->where(['in', 'id', ArrayHelper::getColumn($newsids, 'news_id')])
+                ->limit(Yii::$app->params['wall_items_limit'])
+                ->offset($this->offset)
+                ->orderBy('id DESC')
+                ->with('author')
+                ->with('files')
+                ->with('comments')
+                ->asArray()->all();
 
         }else{
             $wallItems = Wall::find()
@@ -40,6 +52,7 @@ class WallWidget extends Widget
         }
 
         return $this->render('wall', [
+            'news' => $this->news,
             'wallItems' => $wallItems,
             'group' => $this->group,
             'wrapCssClass' => $this->wrapCssClass,

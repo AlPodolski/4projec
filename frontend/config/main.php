@@ -96,7 +96,7 @@ return [
                 'thumbs/<path:.*>' => 'site/thumb',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/cust' => 'site/cust',
-                '<protocol>://<city:[a-z-0-9]+>.<domain>/news' => 'user/news/list',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/news' => 'user/news/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',

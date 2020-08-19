@@ -24,8 +24,11 @@ $this->title = 'Новости';
 
     <div class="col-9">
 
+        <h1 class="mb-4">Новости</h1>
+
         <?php echo \frontend\modules\wall\widgets\WallWidget::widget([
             'user_id' => Yii::$app->user->id,
+            'news' => true,
             'wrapCssClass' => 'm-bottom-20'
         ]) ?>
 
