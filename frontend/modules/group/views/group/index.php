@@ -18,7 +18,7 @@ $this->title = 'Мои группы';
         <?php echo UserSideBarWidget::Widget() ?>
     </div>
 
-    <div class="col-12 col-xl-6 dialog">
+    <div class="col-12 col-lg-8 col-md-7 col-xl-6 dialog">
 
         <div class="page-block friends-list">
             <div class="row">
@@ -69,7 +69,7 @@ $this->title = 'Мои группы';
 
     </div>
 
-    <div class="col-xl-3 back-link back-link-right">
+    <div class="col-xl-3 col-12 col-md-5 col-lg-4 back-link popular-group-side-wrap back-link-right">
 
         <div class="right-column-anket page-block friends-list clear_fix padding-top-5">
 

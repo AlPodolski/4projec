@@ -2064,10 +2064,10 @@ a {
 }
 .wall-tem .post_image .img{
     max-width: 50px;
+    width:100%;
 }
 .info-block {
     margin-top: 10px;
-    width:100%;
 }
 .main-info-anket .message-wrap{
     justify-content: left;
@@ -2771,6 +2771,9 @@ a {
     }
 }
 @media (max-width: 991px) {
+    .group-contact{
+        display: none;
+    }
     #modal-present .modal-dialog , #modal-user-present .modal-dialog{
         width: auto;
         max-width: 94%;
@@ -2798,7 +2801,17 @@ a {
     }
 }
 @media (max-width: 767px) {
-
+    .popular-group-side-wrap{
+        margin-top: 15px;
+        padding-right: 15px;
+    }
+    .group .no-content-wrap {
+        justify-content: center;
+    }
+    .group .no-content-wrap .blue-btn {
+        margin-right: 0;
+        margin-top: 10px;
+    }
     .anket-info{
         margin-left: 0px;
         padding-left:15px;

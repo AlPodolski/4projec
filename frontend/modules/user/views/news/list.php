@@ -22,7 +22,7 @@ $this->title = 'Новости';
 
     </div>
 
-    <div class="col-9 content">
+    <div class="col-12 col-xl-9 content">
 
         <h1 class="mb-4">Новости</h1>
 

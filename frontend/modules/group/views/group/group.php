@@ -33,10 +33,10 @@ $this->title = $group['name'];
 
                         <div class="row">
 
-                            <div class="col-7">
+                            <div class="col-12 col-md-9 col-lg-7">
                                 <div class="row">
 
-                                    <div class="col-2">
+                                    <div class="col-3 col-md-2">
                                         <div class="post_image">
                                             <?php echo PhotoWidget::widget([
                                                 'path' => $group['avatar']['file'],
@@ -49,7 +49,7 @@ $this->title = $group['name'];
                                             ]); ?>
                                         </div>
                                     </div>
-                                    <div class="col-8">
+                                    <div class="col-9 col-md-10">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="author padding-top-5"><?php echo $group['name'] ?></div>
@@ -63,7 +63,7 @@ $this->title = $group['name'];
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-12 col-md-3 col-lg-5">
                                 <div class="no-content-wrap d-flex">
                                     <div class="row">
 
@@ -114,7 +114,7 @@ $this->title = $group['name'];
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12 col-lg-8">
 
                         <div class="wall-wrapper content">
 
@@ -187,7 +187,8 @@ $this->title = $group['name'];
                         </div>
 
                     </div>
-                    <div class="col-4">
+
+                    <div class=" col-lg-4 group-contact">
 
                         <div class="row">
                             <div class="col-12">
