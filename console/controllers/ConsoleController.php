@@ -194,7 +194,7 @@ class ConsoleController extends Controller
 
         foreach ($city as $cityItem){
 
-            $users = Profile::find()->where(['email' => 'adminadult@mail.com'])->andWhere(['city' => $cityItem['url']])->asArray()->all();
+            $users = Profile::find()->where(['email' => 'adminadultero@mail.com'])->andWhere(['city' => $cityItem['url']])->asArray()->all();
 
             if ($users){
 

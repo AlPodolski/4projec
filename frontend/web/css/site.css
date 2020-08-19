@@ -2059,6 +2059,9 @@ a {
     font-size: 14px;
     color: #BABABA;
 }
+.anket .post-photo{
+    min-height: 100%;
+}
 .info-block {
     margin-top: 10px;
 }

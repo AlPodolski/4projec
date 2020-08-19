@@ -29,7 +29,9 @@ class FilterController extends Controller
 
             }
 
-            $posts = $posts->limit(Yii::$app->params['post_limit'])->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
+            $posts = $posts->limit(Yii::$app->params['post_limit'])
+                ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
+                ->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
 
             if (Yii::$app->request->isPost){
 

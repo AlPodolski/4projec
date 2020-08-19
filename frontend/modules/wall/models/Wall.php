@@ -69,4 +69,9 @@ class Wall extends \yii\db\ActiveRecord
         return $this->hasMany(Comments::class, ['related_id' => 'id'])->andWhere(['class' => Wall::class])->with('author');
 
     }
+
+    public function getParent()
+    {
+        return $this->hasOne(Group::class, ['related_id' => 'id'])->with('avatar');
+    }
 }

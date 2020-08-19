@@ -27,9 +27,11 @@ use common\models\Sexual;
 use common\models\SferaDeyatelnosti;
 use common\models\Smoking;
 use common\models\Transport;
+use common\models\User;
 use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
 use common\models\Zhile;
+use Exception;
 use frontend\models\relation\PresentToCategory;
 use frontend\models\relation\TaborUser;
 use frontend\models\relation\UserAlcogol;
@@ -74,6 +76,8 @@ use frontend\models\UserHairColor;
 use yii\helpers\ArrayHelper;
 use common\models\Service;
 use frontend\modules\advert\models\Advert;
+use yii\imagine\Image;
+use Imagick;
 
 class ImportController extends Controller
 {
@@ -777,6 +781,8 @@ class ImportController extends Controller
     public function actionImport()
     {
 
+        $names = $this->getNames(2);
+
         $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
         $vajmoeVPartnere = VajnoeVPartnere::find()->asArray()->all();
         $semeinoePolojenie = Family::find()->asArray()->all();
@@ -796,7 +802,7 @@ class ImportController extends Controller
         $smoking = Smoking::find()->asArray()->all();
         $alcogol = Alcogol::find()->asArray()->all();
 
-        $stream = \fopen(Yii::getAlias('@app/files/article_all_1_05_80_2020.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/content_ero_17_08_2020.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -823,7 +829,9 @@ class ImportController extends Controller
 
             $i = 0;
 
-            while ($i < 20) {
+            $userCityCount = Profile::find()->where(['city' => $item['url']])->count();
+
+            while ($i < ($userCityCount / 10)) {
 
                 $i++;
 
@@ -831,21 +839,19 @@ class ImportController extends Controller
 
                 $user = new Profile();
 
-                \d($record['name']);
-
-                $user->username = $record['name'];
+                $user->username = $names[\array_rand($names)];
                 $user->password_hash = Yii::$app->security->generateRandomString(60);
                 $user->auth_key = Yii::$app->security->generateRandomString();
-                $user->email = 'adminadult@mail.com';
+                $user->email = 'adminadultero@mail.com';
                 $user->status = 10;
                 $user->fake = 0;
                 $user->created_at = 0;
                 $user->updated_at = 0;
                 $user->verification_token = Yii::$app->security->generateRandomString(43);
                 $user->city = $item['url'];
-                $user->text = \strip_tags($record['about']);
+                //$user->text = \strip_tags($record['about']);
 
-                if (!empty($record['age']) and \is_numeric($record['age'])) $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
+                //if (!empty($record['age']) and \is_numeric($record['age'])) $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
 
                 if ($user->save()) {
 
@@ -975,12 +981,20 @@ class ImportController extends Controller
 
                     $userZnakom->save();
 
+                    $userOrientaciya = new UserSexual();
+
+                    $userOrientaciya->sexual_id = 1;
+                    $userOrientaciya->city_id = $item['id'];
+                    $userOrientaciya->user_id = $user->id;
+
+                    $userOrientaciya->save();
+
                     if (isset($record['mini'])) {
 
                         $userPhoto = new Photo();
 
                         $userPhoto->user_id = $user->id;
-                        $userPhoto->file = \str_replace('files', '/files/uploads/aa8', $record['mini']);
+                        $userPhoto->file = \str_replace('files', '/files/uploads/aa10', $record['mini']);
                         $userPhoto->avatar = 1;
 
                         $userPhoto->save();
@@ -1000,7 +1014,7 @@ class ImportController extends Controller
                                     $userPhoto = new Photo();
 
                                     $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = '/files/uploads/aa8'.\str_replace('files', '',   $gallitem);
+                                    $userPhoto->file = '/files/uploads/aa10'.\str_replace('files', '',   $gallitem);
                                     $userPhoto->avatar = 0;
 
                                     $userPhoto->save();
@@ -1018,6 +1032,58 @@ class ImportController extends Controller
             }
 
         }
+
+    }
+
+    public function actionCrop()
+    {
+
+        $profiles = Profile::find()->where(['email' => 'adminadultero@mail.com'])->select('id')->asArray()
+            ->all();
+
+        $profilesId = ArrayHelper::getColumn($profiles, 'id');
+
+        $photos = Photo::find()->where(['in', 'id' , $profilesId])->asArray()->all();
+
+       foreach ($photos as $photo){
+
+            $file = Yii::getAlias('@frontend/web').$photo['file'];
+
+            $imageInfo = \getimagesize($file);
+
+            $width = $imageInfo[0];
+
+            $height = $imageInfo[1] ;
+
+           try {
+               $imagic = new Imagick($file);
+
+               $imagic->cropImage($width   , $height - 150 , 0, 50);
+
+               $imagic->setImageFormat('jpg');
+
+               file_put_contents($file, $imagic);
+
+               unset($imagic);
+           }catch (Exception $e){
+               echo $e->getMessage();
+           }
+
+
+
+        }
+
+    }
+
+    private function getNames($pol_id = 1){
+
+        $womenIds = UserPol::find()->where(['pol_id' => $pol_id])->asArray()->all();
+
+        return ArrayHelper::getColumn( Profile::find()->where(['in' , 'id' ,ArrayHelper::getColumn($womenIds, 'user_id') ])
+            ->distinct()
+            ->select('username')
+            ->asArray()
+            ->all(), 'username');
 
     }
 

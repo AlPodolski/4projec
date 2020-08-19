@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
+use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -62,6 +63,7 @@ class SiteController extends Controller
     public function actionIndex($city)
     {
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
+            ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
             ->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
 
         if (Yii::$app->request->isPost){
@@ -165,33 +167,15 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        try {
+        $item = new addGroupRecordItemForm();
 
-            $socket = fsockopen(Yii::$app->params['websoket_addr_with_not_port_and_protocol'], Yii::$app->params['websoket_post']);
+        $item->class = 'frontend\modules\group\models\Group';
+        $item->user_id = 23215;
+        $item->group_id = 1;
+        $item->text = 'frontend\modules\group\models\Group';
 
-            \Ratchet\Client\connect(Yii::$app->params['websoket_addr'])->then(function($conn, $param  = 2) {
+        $item->save();
 
-                $result = array(
-                    'present_id' => $param,
-                    'action' => 'sendPresent',
-                );
-
-                $result = \json_encode($result);
-
-                echo $result;
-
-                $conn->send($result);
-
-            }, function ($e) {
-                echo "Could not connect: {$e->getMessage()}\n";
-            });
-
-
-        }catch (yii\base\ErrorException $exception){
-
-            echo $exception->getMessage();
-
-        }
 
     }
 
