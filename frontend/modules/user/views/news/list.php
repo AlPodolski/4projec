@@ -22,7 +22,7 @@ $this->title = 'Новости';
 
     </div>
 
-    <div class="col-9">
+    <div class="col-9 content">
 
         <h1 class="mb-4">Новости</h1>
 
@@ -32,6 +32,9 @@ $this->title = 'Новости';
             'wrapCssClass' => 'm-bottom-20'
         ]) ?>
 
+    </div>
+
+    <div class="pager" data-url="/user/news" data-page="1">
     </div>
 
 </div>

@@ -9,9 +9,6 @@ use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 use frontend\modules\user\components\AuthHandler;
-use Google\Cloud\Dialogflow\V2\TextInput;
-use Google\Cloud\Dialogflow\V2\QueryInput;
-use Google\Cloud\Dialogflow\V2\SessionsClient;
 
 /**
  * Site controller
@@ -171,7 +168,7 @@ class SiteController extends Controller
 
         $item->class = 'frontend\modules\group\models\Group';
         $item->user_id = 23215;
-        $item->group_id = 1;
+        $item->group_id = 2;
         $item->text = 'frontend\modules\group\models\Group';
 
         $item->save();

@@ -2062,8 +2062,12 @@ a {
 .anket .post-photo{
     min-height: 100%;
 }
+.wall-tem .post_image .img{
+    max-width: 50px;
+}
 .info-block {
     margin-top: 10px;
+    width:100%;
 }
 .main-info-anket .message-wrap{
     justify-content: left;
