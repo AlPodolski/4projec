@@ -11,7 +11,13 @@ class PopularController extends Controller
 {
     public function actionAdd()
     {
-        $post_id = Profile::find()->where(['fake' => 0])->asArray()->orderBy(['rand()' => SORT_DESC])->select('id')->one();
+        $post_id = Profile::find()->where(['fake' => 0])
+            ->asArray()
+            ->orderBy(['rand()' => SORT_DESC])
+            ->where(['!=' , 'email', 'adminadultero@mail.com'])
+            ->andWhere(['!=' , 'email', 'adminadultgai@mail.com'])
+            ->select('id')
+            ->one();
 
         $popular = new Popular();
         $popular->user_id = $post_id['id'];
