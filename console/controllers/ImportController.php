@@ -63,6 +63,8 @@ use frontend\models\UserToRayon;
 use frontend\models\UserVajnoeVPartnere;
 use frontend\models\UserVes;
 use frontend\models\UserVneshnost;
+use frontend\modules\group\components\helpers\SubscribeHelper;
+use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Photo;
 use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\models\forms\AddToWallForm;
@@ -81,6 +83,77 @@ use Imagick;
 
 class ImportController extends Controller
 {
+
+    public function actionGroup()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/group.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $records = $stmt->process($csv);
+
+        foreach ($records as $record) {
+
+            $profile = Profile::find()->where(['email'=> 'admin@mail.com'])
+                ->orderBy(['rand()' => SORT_DESC])
+                ->asArray()->one();
+
+            $group = new Group();
+            $group->name = $record['name'];
+            $group->vk_url = $record['url'];
+            $group->category = $record['cat'];
+            $group->user_id = $profile['id'];
+
+            $group->save();
+
+            if (isset($record['mini'])) {
+
+                $userPhoto = new Photo();
+
+                $userPhoto->user_id = $group->id;
+                $userPhoto->file = \str_replace('files', '/files/uploads/aa11', $record['mini']);
+                $userPhoto->avatar = 1;
+
+                $userPhoto->save();
+
+            }
+
+        }
+
+    }
+
+    public function actionSub()
+    {
+        $groups = Group::find()->asArray()->all();
+
+        foreach ($groups as $group){
+
+            $limit = \rand(1000 , 10000);
+
+            $posts = Profile::find()->where(['fake' => 0])
+                ->limit($limit)
+                ->select('id')
+                ->orderBy(['rand()' => SORT_DESC])
+                ->asArray()->all();
+
+            foreach ($posts as $post){
+
+                SubscribeHelper::Subscribe(
+                    $group['id'],
+                    $post['id'],
+                    Yii::$app->params['group_subscribe_key'],
+                    Yii::$app->params['user_group_subscribe_key']
+                );
+
+            }
+
+        }
+    }
 
     public function actionWall()
     {

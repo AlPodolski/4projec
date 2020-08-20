@@ -11,6 +11,8 @@ use frontend\modules\user\models\Profile;
  * @property int $id
  * @property string|null $name Название группы
  * @property int|null $user_id id владельца группы
+ * @property int|null $vk_url урл группы вк
+ * @property int|null $category категория к которой относится группа
  */
 class Group extends \yii\db\ActiveRecord
 {
