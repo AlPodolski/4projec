@@ -32,6 +32,7 @@ use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
 use common\models\Zhile;
 use Exception;
+use frontend\models\Files;
 use frontend\models\relation\PresentToCategory;
 use frontend\models\relation\TaborUser;
 use frontend\models\relation\UserAlcogol;
@@ -113,11 +114,12 @@ class ImportController extends Controller
 
             if (isset($record['mini'])) {
 
-                $userPhoto = new Photo();
+                $userPhoto = new Files();
 
-                $userPhoto->user_id = $group->id;
+                $userPhoto->related_id = $group->id;
                 $userPhoto->file = \str_replace('files', '/files/uploads/aa11', $record['mini']);
-                $userPhoto->avatar = 1;
+                $userPhoto->main = 1;
+                $userPhoto->related_class = Group::class;
 
                 $userPhoto->save();
 
