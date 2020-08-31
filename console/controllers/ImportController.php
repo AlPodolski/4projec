@@ -87,6 +87,46 @@ use Imagick;
 class ImportController extends Controller
 {
 
+    public function actionCustom()
+    {
+        $profiles = Profile::find()->where(['email' => 'adminadultero@mail.com'])->asArray()->all();
+
+        foreach ($profiles as $profile){
+
+            if($files = Photo::find()->where(['user_id' => $profile['id']])->asArray()->all()){
+
+                $i = 1;
+
+                foreach ($files as $file){
+
+                    $wall = new Wall();
+
+                    $wall->class = Profile::class;
+                    $wall->text = 'Добавил(а) новое фото';
+                    $wall->created_at = $profile['created_at'] + (180 * $i);
+                    $wall->from = $profile['id'];
+                    $wall->user_id = $profile['id'];
+
+                    if( $wall->save()){
+
+                        $model = new Files();
+
+                        $model->related_class = Wall::class;
+                        $model->related_id = $wall->id;
+                        $model->main = 0;
+                        $model->file = $file['file'];
+
+                        $model->save();
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
     public function actionGroupContent()
     {
         $stream = \fopen(Yii::getAlias('@app/files/group_content.csv'), 'r');
