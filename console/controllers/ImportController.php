@@ -31,6 +31,7 @@ use common\models\User;
 use common\models\VajnoeVPartnere;
 use common\models\Vneshnost;
 use common\models\Zhile;
+use console\models\ImportNewsFromVk;
 use Exception;
 use frontend\models\Files;
 use frontend\models\relation\PresentToCategory;
@@ -65,6 +66,7 @@ use frontend\models\UserVajnoeVPartnere;
 use frontend\models\UserVes;
 use frontend\models\UserVneshnost;
 use frontend\modules\group\components\helpers\SubscribeHelper;
+use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Photo;
 use frontend\modules\wall\models\forms\AddCommentForm;
@@ -84,6 +86,68 @@ use Imagick;
 
 class ImportController extends Controller
 {
+
+    public function actionGroupContent()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/group_content.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $records = $stmt->process($csv);
+
+        $i = 0;
+
+        foreach ($records as $record) {
+
+            if (!ImportNewsFromVk::find()->where(['group_url' => $record['url'], 'time' => $record['time']])->asArray()->one()){
+
+                $groupInfo = Group::find()->where(['vk_url' => $record['url']])->with('admin')->asArray()->one();
+
+                $transaction = Yii::$app->db->beginTransaction();
+
+                $item = new addGroupRecordItemForm();
+
+                $item->class = 'frontend\modules\group\models\Group';
+                $item->user_id = $groupInfo['admin']['id'];
+                $item->group_id = $groupInfo['id'];
+                $item->text = \strip_tags($record['text']);
+                $item->time = (\time() - (3600 * 24 * 180)) + \rand(0, 3600 * 24 * 210);
+
+                $importNewsFromVk = new ImportNewsFromVk();
+
+                $importNewsFromVk->group_url = $record['url'];
+                $importNewsFromVk->time = $record['time'];
+
+                if ($importNewsFromVk->save() and $wallItem = $item->save()){
+
+                    if ($record['img']){
+
+                        $model = new Files();
+
+                        $model->related_class = Wall::class;
+                        $model->related_id = $wallItem['id'];
+                        $model->main = 0;
+                        $model->file = '/files/uploads/aa12/'.$record['img'];
+
+                        $model->save();
+
+                    }
+
+                    $transaction->commit();
+
+                }
+                else $transaction->rollBack();
+
+            }
+
+        }
+
+    }
 
     public function actionGroup()
     {

@@ -52,6 +52,11 @@ class Group extends \yii\db\ActiveRecord
         return $this->hasOne(Profile::class, ['id' => 'user_id'])->with('userAvatarRelations');
     }
 
+    public function getAdmin()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'user_id']);
+    }
+
     public function getAvatar()
     {
         return $this->hasOne(Files::class, ['related_id' => 'id' ])

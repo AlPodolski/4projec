@@ -15,6 +15,7 @@ class addGroupRecordItemForm extends Model
     public $group_id;
     public $class;
     public $file;
+    public $time = false;
 
     const EVENT_POST_CREATED = 'post_created';
 
@@ -32,7 +33,8 @@ class addGroupRecordItemForm extends Model
         $wall = new Wall();
         $wall->user_id = $this->group_id;
         $wall->from = $this->user_id;
-        $wall->created_at = \time();
+        if (!$this->time) $wall->created_at = \time();
+        else $wall->created_at = $this->time;
         $wall->text = $this->text;
         $wall->class = $this->class;
 
