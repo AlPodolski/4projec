@@ -51,12 +51,22 @@ class WallWidget extends Widget
                 ->asArray()->all();
         }
 
-        return $this->render('wall', [
+        if ($wallItems) return $this->render('wall', [
             'news' => $this->news,
             'wallItems' => $wallItems,
             'group' => $this->group,
             'wrapCssClass' => $this->wrapCssClass,
         ]);
+
+        else{
+            if (!$this->offset){
+
+                return '<p class="alert alert-info">Пока ничего нет</p>';
+
+            }
+        }
+
+        return '';
 
     }
 }

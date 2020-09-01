@@ -4,6 +4,9 @@
 namespace frontend\modules\group\components\helpers;
 
 
+use frontend\modules\group\models\Group;
+use frontend\modules\user\models\News;
+use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\redis\Connection;
 
@@ -68,6 +71,33 @@ class SubscribeHelper
         /* @var $redis Connection */
         $redis = Yii::$app->redis;
         return $redis->scard ($groupKey.":{$groupId}:subscribes");
+    }
+
+    public static function addGroupPostToUserNews($groupId, $userId, $limit = 10)
+    {
+
+        $GroupWallItems = Wall::find()
+            ->where(['user_id' => $groupId, 'class' => Group::class])
+            ->limit($limit)
+            ->orderBy('id DESC')
+            ->asArray()
+            ->all();
+
+        if ($GroupWallItems){
+
+            foreach ($GroupWallItems as $groupWallItem){
+
+                $feedItem = new News();
+                $feedItem->user_id = $userId;
+                $feedItem->timestamp = \time();
+                $feedItem->related_class = Wall::class;
+                $feedItem->news_id = $groupWallItem['id'];
+                $feedItem->save();
+
+            }
+
+        }
+
     }
 
 }

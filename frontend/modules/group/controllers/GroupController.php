@@ -84,7 +84,17 @@ class GroupController extends \yii\web\Controller
                 Yii::$app->request->post('group_id'),
                 Yii::$app->user->id,
                 Yii::$app->params['group_subscribe_key'])
-            ) return 'Отписаться';
+            ) {
+
+                SubscribeHelper::addGroupPostToUserNews(
+                    Yii::$app->request->post('group_id'),
+                    Yii::$app->user->id,
+                    Yii::$app->params['add_elements_to_news_after_subscribe']
+                );
+
+                return 'Отписаться';
+
+            }
 
             else return 'Подписаться';
 

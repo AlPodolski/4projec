@@ -36,6 +36,7 @@ class FeedService extends Component
             foreach ($followers as $follower) {
                 $feedItem = new News();
                 $feedItem->user_id = $follower;
+                $feedItem->timestamp = \time();
                 $feedItem->related_class = Wall::class;
                 $feedItem->news_id = $event->wall->id;
                 $feedItem->save();
