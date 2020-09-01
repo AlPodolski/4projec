@@ -68,6 +68,7 @@ use frontend\models\UserVneshnost;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\models\News;
 use frontend\modules\user\models\Photo;
 use frontend\modules\wall\models\forms\AddCommentForm;
 use frontend\modules\wall\models\forms\AddToWallForm;
@@ -93,38 +94,29 @@ class ImportController extends Controller
 
         foreach ($profiles as $profile){
 
-            if($files = Photo::find()->where(['user_id' => $profile['id']])->asArray()->all()){
+            $userGroupId = SubscribeHelper::getUserSubscribe($profile['id'], Yii::$app->params['user_group_subscribe_key']);
 
-                $i = 1;
+            $wallItems = Wall::find()
+                ->where(['in', 'user_id', $userGroupId])
+                ->andWhere(['class' => Group::class])
+                ->orderBy(['rand()' => SORT_DESC])
+                ->limit(\rand(20, 40))
+                ->asArray()
+                ->all();
 
-                foreach ($files as $file){
+            foreach ($wallItems as $wallItem){
 
-                    $wall = new Wall();
-
-                    $wall->class = Profile::class;
-                    $wall->text = 'Добавил(а) новое фото';
-                    $wall->created_at = $profile['created_at'] + (180 * $i);
-                    $wall->from = $profile['id'];
-                    $wall->user_id = $profile['id'];
-
-                    if( $wall->save()){
-
-                        $model = new Files();
-
-                        $model->related_class = Wall::class;
-                        $model->related_id = $wall->id;
-                        $model->main = 0;
-                        $model->file = $file['file'];
-
-                        $model->save();
-
-                    }
-
-                }
+                $feedItem = new News();
+                $feedItem->user_id = $profile['id'];
+                $feedItem->timestamp = \time();
+                $feedItem->related_class = Wall::class;
+                $feedItem->news_id = $wallItem['id'];
+                $feedItem->save();
 
             }
 
         }
+
     }
 
     public function actionGroupContent()
