@@ -34,7 +34,11 @@ $this->title = 'Новости';
 
     </div>
 
-    <div class="pager" data-url="/user/news" data-page="1">
-    </div>
+</div>
 
+<div class="row">
+    <div class="col-12">
+        <div class="pager" data-url="/user/news" data-page="1">
+        </div>
+    </div>
 </div>

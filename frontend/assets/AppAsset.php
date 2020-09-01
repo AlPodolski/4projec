@@ -17,7 +17,7 @@ class AppAsset extends AssetBundle
         'files/fonts/muller/mullernarrow.css',
     ];
     public $js = [
-        'files/js/script.js?v=3'
+        'files/js/script.js?v=4'
     ];
     public $depends = [
         'yii\web\YiiAsset',

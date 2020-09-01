@@ -579,7 +579,7 @@ $(window).scroll(function () {
 
     var accept = $(target).attr('data-accept');
 
-    if (winScrollTop > scrollToElem) {
+    if (winScrollTop > (scrollToElem - 100)) {
 
         console.log(url)
 
