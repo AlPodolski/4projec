@@ -234,6 +234,7 @@ class ImportController extends Controller
             $limit = \rand(1000 , 10000);
 
             $posts = Profile::find()->where(['fake' => 0])
+                ->andWhere(['email' => 'adminadultero@mail.com'])
                 ->limit($limit)
                 ->select('id')
                 ->orderBy(['rand()' => SORT_DESC])
