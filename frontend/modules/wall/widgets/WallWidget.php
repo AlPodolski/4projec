@@ -26,13 +26,14 @@ class WallWidget extends Widget
             $newsids = News::find()
                 ->where(['user_id' => $this->user_id])
                 ->select('news_id')
+                ->orderBy('timestamp DESC')
+                ->limit(Yii::$app->params['wall_items_limit'])
+                ->offset($this->offset)
                 ->asArray()
                 ->all();
 
             $wallItems = Wall::find()
                 ->where(['in', 'id', ArrayHelper::getColumn($newsids, 'news_id')])
-                ->limit(Yii::$app->params['wall_items_limit'])
-                ->offset($this->offset)
                 ->orderBy('id DESC')
                 ->with('author')
                 ->with('files')
