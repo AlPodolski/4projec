@@ -227,20 +227,22 @@ class ImportController extends Controller
 
     public function actionSub()
     {
-        $groups = Group::find()->asArray()->all();
 
-        foreach ($groups as $group){
+        $posts = Profile::find()->where(['fake' => 0])
+            ->andWhere(['email' => 'adminadultero@mail.com'])
+            ->select('id')
+            ->asArray()->all();
 
-            $limit = \rand(1000 , 10000);
+        foreach ($posts as $post){
 
-            $posts = Profile::find()->where(['fake' => 0])
-                ->andWhere(['email' => 'adminadultero@mail.com'])
+            $limit = \rand(10 , 30);
+
+            $groups = Group::find()->asArray()
                 ->limit($limit)
-                ->select('id')
                 ->orderBy(['rand()' => SORT_DESC])
-                ->asArray()->all();
+                ->all();
 
-            foreach ($posts as $post){
+            foreach ($groups as $group){
 
                 SubscribeHelper::Subscribe(
                     $group['id'],
