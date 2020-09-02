@@ -1,8 +1,9 @@
 <?php /* @var $wallItems array */
- /* @var $group array */
- /* @var $wrapCssClass string */
- /* @var $news bool */
- /* @var $this \yii\web\View */
+/* @var $group array */
+/* @var $wrapCssClass string */
+/* @var $news bool */
+
+/* @var $this \yii\web\View */
 
 use yii\widgets\ActiveForm;
 use frontend\models\forms\AddCommentForm;
@@ -42,12 +43,12 @@ if (!empty($wallItems)) : ?>
 
                     <?php if ($item['class'] == \frontend\modules\group\models\Group::class) : ?>
 
-                    <?php
+                        <?php
 
                         $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['user_id']])
-                                ->with('avatar')
-                                ->asArray()
-                                ->one();
+                            ->with('avatar')
+                            ->asArray()
+                            ->one();
                         ?>
 
                         <a class="post_image" href="/group/<?php echo $group['id'] ?>">
@@ -70,7 +71,8 @@ if (!empty($wallItems)) : ?>
                             <a href="/group/<?php echo $group['id'] ?>" class="author">
                                 <?php echo $group['name'] ?>
                             </a>
-                            <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            <div class="post_date"><span class="post_link"><span
+                                            class="rel_date"><?php if ($item['created_at'])  echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
                             </div>
                         </div>
 
@@ -100,7 +102,8 @@ if (!empty($wallItems)) : ?>
                             <a href="/group/<?php echo $group['id'] ?>" class="author">
                                 <?php echo $group['name'] ?>
                             </a>
-                            <div class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            <div class="post_date"><span class="post_link"><span
+                                            class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
                             </div>
                         </div>
 
@@ -128,7 +131,7 @@ if (!empty($wallItems)) : ?>
                                 <?php echo $item['author']['username'] ?>
                             </a>
                             <div class="post_date"><span class="post_link"><span
-                                            class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                                            class="rel_date"><?php if ($item['created_at']) echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
                             </div>
                         </div>
 
@@ -141,26 +144,92 @@ if (!empty($wallItems)) : ?>
             <div style="clear: both">
             </div>
 
-            <div class="post-text">
-                <?php echo $item['text'] ?>
-            </div>
+            <?php if ($item['parentWrite']) : ?>
 
-            <?php if ($item['files']) : ?>
+                <?php //сделано только для групп пофиксить по возможности ?>
 
-            <?php
+                <div class="repost-wrapper">
+                    <div class="post_header">
+                        <?php
 
-            $images = array();
+                        $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['parentWrite']['user_id']])
+                            ->with('avatar')
+                            ->asArray()
+                            ->one();
+                        ?>
 
-                foreach ($item['files'] as $file) {
+                        <a class="post_image" href="/group/<?php echo $group['id'] ?>">
 
-                    $images[] = $file['file'];
+                            <div class="post_image">
+                                <?php echo PhotoWidget::widget([
+                                    'path' => $group['avatar']['file'],
+                                    'size' => 'dialog',
+                                    'options' => [
+                                        'class' => 'img',
+                                        'loading' => 'lazy',
+                                        'alt' => $group['name'],
+                                    ],
+                                ]); ?>
+                            </div>
 
-                }  ?>
+                        </a>
 
-                <div >
-                    <div class="files" data-files="<?php echo implode(', ', $images)?>">
+                        <div class="post_header_info">
+                            <a href="/group/<?php echo $group['id'] ?>" class="author">
+                                <?php echo $group['name'] ?>
+                            </a>
+                            <div class="post_date"><span class="post_link"><span
+                                            class="rel_date"><?php if ($item['created_at'])  echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span>
+                            </div>
+                        </div>
                     </div>
+                    <div style="clear: both">
+                    </div>
+                    <div class="post-text">
+                        <?php echo $item['parentWrite']['text'] ?>
+                    </div>
+                    <?php if ($item['parentWrite']['files']) : ?>
+
+                        <?php $images = array();
+
+                        foreach ($item['parentWrite']['files'] as $file) {
+
+                            $images[] = $file['file'];
+
+                        } ?>
+
+                        <div>
+                            <div class="files" data-files="<?php echo implode(', ', $images) ?>">
+                            </div>
+                        </div>
+
+
+                    <?php endif; ?>
                 </div>
+
+
+            <?php else : ?>
+
+                <div class="post-text">
+                    <?php echo $item['text'] ?>
+                </div>
+
+                <?php if ($item['files']) : ?>
+
+                    <?php $images = array();
+
+                    foreach ($item['files'] as $file) {
+
+                        $images[] = $file['file'];
+
+                    } ?>
+
+                    <div>
+                        <div class="files" data-files="<?php echo implode(', ', $images) ?>">
+                        </div>
+                    </div>
+
+                <?php endif; ?>
 
             <?php endif; ?>
 

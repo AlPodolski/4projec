@@ -17,6 +17,7 @@ use Yii;
  * @property int|null $created_at время создания
  * @property string|null $text текст записи
  * @property string|null $class текст записи
+ * @property string|null $parent_id текст записи
  */
 class Wall extends \yii\db\ActiveRecord
 {
@@ -66,8 +67,14 @@ class Wall extends \yii\db\ActiveRecord
 
     public function getComments(){
 
-        return $this->hasMany(Comments::class, ['related_id' => 'id'])->andWhere(['class' => Wall::class])->with('author');
+        return $this->hasMany(Comments::class, ['related_id' => 'id'])
+            ->andWhere(['class' => Wall::class])->with('author');
 
+    }
+
+    public function getParentWrite()
+    {
+        return $this->hasOne(Wall::class, ['id' => 'parent_id'])->with('files');
     }
 
     public function getParent()

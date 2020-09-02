@@ -203,8 +203,12 @@ class Profile extends \yii\db\ActiveRecord
         return Profile::find()->limit(6)->with('userAvatarRelations')->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC])->all();
     }
 
-    public function getAvatar(){
+    public function getUserAvatar(){
         $this->avatar = ArrayHelper::getValue(Photo::find()->where(['avatar' => 1])->andWhere(['user_id' => $this->id])->asArray()->one(), 'file');
+    }
+
+    public function getAvatar(){
+        return $this->hasOne(Photo::class, ['user_id' => 'id'])->andWhere(['avatar' => 1]);
     }
 
     public function getAvatarRelation(){

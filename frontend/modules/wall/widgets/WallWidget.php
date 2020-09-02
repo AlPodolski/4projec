@@ -48,8 +48,26 @@ class WallWidget extends Widget
                 ->orderBy('id DESC')
                 ->with('author')
                 ->with('files')
+                ->with('parentWrite')
                 ->with('comments')
                 ->asArray()->all();
+
+            foreach ($wallItems as &$wallItem){
+
+                if ($wallItem['parentWrite']){
+
+                    $class = $wallItem['parentWrite']['class'];
+
+                    $wallItem['parentWrite']['author'] = $class::find()
+                        ->where(['id' => $wallItem['parentWrite']['user_id']])
+                        ->with('avatar')
+                        ->asArray()
+                        ->one();
+
+                }
+
+            }
+
         }
 
         if ($wallItems) return $this->render('wall', [

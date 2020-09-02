@@ -106,11 +106,11 @@ class ImportController extends Controller
 
             foreach ($wallItems as $wallItem){
 
-                $feedItem = new News();
+                $feedItem = new Wall();
                 $feedItem->user_id = $profile['id'];
-                $feedItem->timestamp = \time();
-                $feedItem->related_class = Wall::class;
-                $feedItem->news_id = $wallItem['id'];
+                $feedItem->from = $profile['id'];
+                $feedItem->class = Profile::class;
+                $feedItem->parent_id = $wallItem['id'];
                 $feedItem->save();
 
             }

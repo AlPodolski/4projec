@@ -2516,6 +2516,11 @@ a {
 .padding-left-0{
     padding-left: 0px;
 }
+.repost-wrapper{
+    padding-left: 10px;
+    margin-top: 15px;
+    border-left: 1px solid #ccc;
+}
 .small-black-text{
     font-family: Muller, sans-serif;
     font-style: normal;
