@@ -285,6 +285,22 @@ if (!Yii::$app->user->isGuest) {
 
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="position-relative margin-top-10 gift-vip"
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
+                                             data-img="<?php echo Yii::$app->imageCache->thumbSrc($item['file'], 'popular'); ?>"
+                                        <?php else : ?>
+                                            data-img="/files/img/nophoto.png"
+                                        <?php endif; ?>
+                                             data-id="<?php echo $model['id']?>" onclick="get_gift_vip_modal(this)">
+                                            <img src="/files/img/vip_icon.png" alt="VIP">
+                                            <div class="text vip-text">
+                                            <a href="#"> Подарить VIP</a> </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row my-data-row">
 
                                     <div class="col-12">

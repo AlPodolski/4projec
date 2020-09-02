@@ -7,13 +7,13 @@
 
         <?php if (!empty($dialogs)) : ?>
 
-    <ul class="dialog_item_ul">
+        <ul class="dialog_item_ul">
 
             <?php foreach ($dialogs as $dialog) : ?>
 
             <?php if ($dialog) : ?>
 
-                <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> <?php if ($dialog->lastMessage['status'] == 0 and !in_array($dialog['lastMessage']['from'] , $user_id)) echo 'not-read-dialog'; ?> ">
+                <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> <?php if ($dialog->lastMessage['status'] == 0 ) echo 'not-read-dialog'; ?> ">
                 <div class="row">
                     <div class="col-2 col-md-1">
                         <div class="dialog-photo">
@@ -48,18 +48,6 @@
                                             <a target="_blank" href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                                 <span class="nim-dialog--who">
                                                     <span class="im-prebody">
-
-                                                        <?php if (!in_array( $dialog['lastMessage']['from'], $user_id)) : ?>
-
-                                                            <?php
-
-                                                            $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog['lastMessage']['author']['avatarRelation']['file'];
-
-                                                            echo Html::img($src, ['width' => '50px', 'class' => 'img']);
-
-                                                            ?>
-
-                                                        <?php endif; ?>
 
                                                     </span>
                                                 </span>

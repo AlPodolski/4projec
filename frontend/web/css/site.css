@@ -1009,7 +1009,7 @@ ul li .secodn-menu:hover {
 .present-form .form-group{
     text-align:center;
 }
-#photo-row-form .bottom , #modal-buy-vip .bottom{
+#photo-row-form .bottom , #modal-buy-vip .bottom , #modal-gift-vip .bottom{
     background: #486bef;
     text-align: center;
     margin: 0 -36px;
@@ -1021,6 +1021,9 @@ ul li .secodn-menu:hover {
     margin-top: 0px;
     display: block;
     margin-top: 35px;
+}
+#modal-gift-vip .modal-body{
+    padding: 0;
 }
 #buypresentform-message {
     height: 55px;
@@ -2437,24 +2440,24 @@ a {
 .vip-text{
     padding-left: 15px;
 }
-#modal-buy-vip .modal-title{
+#modal-buy-vip .modal-title , #modal-gift-vip .modal-title{
     margin: auto;
     color:#000;
 }
-#modal-buy-vip .modal-body{
+#modal-buy-vip .modal-body , #modal-gift-vip .modal-body{
     padding:10px;
     padding-top:0px;
     overflow: hidden;
     padding-bottom: 0;
 }
-#modal-buy-vip .anket-info{
+#modal-buy-vip .anket-info , #modal-gift-vip .anket-info{
     padding-top: 0;
 }
-#modal-buy-vip .close{
+#modal-buy-vip .close , #modal-gift-vip .close{
     position: absolute;
     right: 20px;
 }
-#modal-feed-back .modal-header , #modal-buy-vip .modal-header {
+#modal-feed-back .modal-header , #modal-gift-vip .modal-header {
     padding-top: 20px;
     text-align:center;
 }
@@ -2467,7 +2470,7 @@ a {
     backdrop-filter: blur(1px);
     min-height: inherit;
 }
-#modal-buy-vip .bottom , #modal-buy-vip .bottom a{
+#modal-buy-vip .bottom , #modal-buy-vip .bottom a , #modal-gift-vip .bottom , #modal-gift-vip .bottom a{
     color:#fff;
 }
 .vip-text .valid_to{
@@ -2520,6 +2523,13 @@ a {
     padding-left: 10px;
     margin-top: 15px;
     border-left: 1px solid #ccc;
+}
+.gift-vip .vip-text a{
+    line-height: 38px;
+    color: #000;
+}
+.gift-vip .vip-text{
+    display:inline-block;
 }
 .small-black-text{
     font-family: Muller, sans-serif;

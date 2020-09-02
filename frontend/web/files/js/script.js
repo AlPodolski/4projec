@@ -669,3 +669,16 @@ $(function () {
     })
 
 })
+
+function get_gift_vip_modal(object){
+
+    var id = $(object).attr('data-id');
+    var img = $(object).attr('data-img');
+
+    $('#modal-gift-vip .gift-user-img img').attr('src' , img);
+    $('#modal-gift-vip #giftvipstatusform-touser').val(id);
+
+    $('#modal-gift-vip').modal('toggle');
+
+
+}

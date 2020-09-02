@@ -11,7 +11,10 @@ class GetDialogsHelper extends Helper
 {
     public static function getDialogs($user_id){
 
-        $notReadMessageDialogId = ArrayHelper::getColumn(Message::find()->select('chat_id')->groupBy('chat_id')->where(['status' => 0])
+        $notReadMessageDialogId = ArrayHelper::getColumn(Message::find()->select('chat_id')
+            ->groupBy('chat_id')
+            ->where(['status' => 0])
+            ->andWhere(['not in', 'from', $user_id])
             ->asArray()->all(), 'chat_id');
 
         $usersWithOpenDialogs = ArrayHelper::getColumn(\chat\modules\chat\models\relation\UserDialog::find()

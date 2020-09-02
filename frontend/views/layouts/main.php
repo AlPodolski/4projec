@@ -445,6 +445,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 <?php
 
     $buyVipForm = new \frontend\models\forms\BuyVipStatusForm();
+    $giftVipStatusForm = new \frontend\models\forms\GiftVipStatusForm();
 
 ?>
 
@@ -502,6 +503,81 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                         </div>
 
                         <?= Html::submitButton('Подключить', ['class' => 'blue-btn']) ?>
+
+                        <?php ActiveForm::end() ?>
+
+                        <span class="cost"> Стоимость на 7 дней <?php echo Yii::$app->params['vip_status_week_price'] ?> рублей</span>
+
+                        <div class="bottom">
+
+                            <svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.1787 18.872C18.3337 18.872 18.4564 18.9954 18.4564 19.1497V19.2925C18.8374 19.3377 19.1603 19.4604 19.4568 19.647C19.5601 19.7052 19.6512 19.802 19.6512 19.957C19.6512 20.1579 19.4897 20.3116 19.2889 20.3116C19.2243 20.3116 19.1603 20.2929 19.0958 20.2535C18.8697 20.1185 18.6508 20.0216 18.4312 19.97V21.21C19.4129 21.4547 19.8314 21.848 19.8314 22.5397C19.8314 23.2501 19.2766 23.7203 18.4564 23.7985V24.186C18.4564 24.341 18.3343 24.4637 18.1787 24.4637C18.023 24.4637 17.8952 24.3416 17.8952 24.186V23.7862C17.4108 23.7345 16.9658 23.5589 16.5718 23.2818C16.462 23.2114 16.3975 23.1074 16.3975 22.9724C16.3975 22.7716 16.5525 22.6166 16.752 22.6166C16.8302 22.6166 16.907 22.6431 16.9651 22.6883C17.2693 22.9078 17.5658 23.0551 17.921 23.1197V21.848C16.9774 21.6033 16.5383 21.2474 16.5383 20.5183C16.5383 19.8285 17.0872 19.35 17.8945 19.286V19.1497C17.8951 18.996 18.0237 18.872 18.1787 18.872ZM17.9216 21.073V19.9312C17.5076 19.9693 17.301 20.1882 17.301 20.4724C17.301 20.7443 17.4243 20.9116 17.9216 21.073ZM18.4312 21.9714V23.1455C18.8439 23.1003 19.0693 22.893 19.0693 22.5843C19.0693 22.3008 18.9278 22.1251 18.4312 21.9714Z" fill="white"/>
+                                <path d="M30.1546 30.0572H32.8994C33.6124 30.0572 34.1911 29.4786 34.1911 28.7656V14.5546C34.1911 13.8416 33.6124 13.263 32.8994 13.263H3.19108C2.47808 13.263 1.89941 13.8416 1.89941 14.5546V28.7656C1.89941 29.4786 2.47808 30.0572 3.19108 30.0572H26.3604" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M18.0451 26.6046C20.7759 26.6046 22.9896 24.3909 22.9896 21.6601C22.9896 18.9293 20.7759 16.7156 18.0451 16.7156C15.3143 16.7156 13.1006 18.9293 13.1006 21.6601C13.1006 24.3909 15.3143 26.6046 18.0451 26.6046Z" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M29.6029 2.82048C29.4343 2.18821 28.7853 1.81427 28.1549 1.98413L1.8779 9.02436C1.24563 9.19421 0.871051 9.84198 1.04091 10.473" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M32.4019 13.2655L29.6029 2.82048C29.4343 2.18821 28.7853 1.81427 28.1549 1.98413L1.8779 9.02436C1.24563 9.19421 0.871051 9.84198 1.04091 10.473L1.89922 13.8345" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M27.6573 10.6138L17.7715 13.263" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.04 8.12794L30.222 5.13192L31.422 9.60561L29.5387 10.11" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M1.66016 12.7844L15.4287 9.09605" stroke="white" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+
+                            <span class="">Ваш баланс : <?php echo Yii::$app->user->identity['cash'] ?> руб <a href="/user/balance">Пополнить</a></span>
+
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-gift-vip" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Подарить Досуг <img src="/files/img/vip_icon.png" alt="VIP"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 15.75L15.75 2.25" stroke="black" stroke-width="2"/>
+                                <path d="M2.25 2.25L15.75 15.75" stroke="black" stroke-width="2"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <?php $avatar = Photo::getAvatar(Yii::$app->user->id); ?>
+
+                    <div class="anket-info">
+
+                        <?php
+
+                        $form = ActiveForm::begin([
+                            'id' => 'login-form',
+                            'options' => ['class' => 'form-horizontal'],
+                            'action' => '/vip/gift'
+                        ])
+
+                        ?>
+
+                        <div class="user-image position-relative">
+
+                            <div class="gift-user-img">
+                                <img src="" alt="">
+                            </div>
+
+                            <?= $form->field($giftVipStatusForm, 'toUser')
+                                ->hiddenInput()->label(false) ?>
+
+                            <div class="vip-icon-wrap">
+                                <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
+                            </div>
+
+                        </div>
+
+                        <?= Html::submitButton('Подарить', ['class' => 'blue-btn']) ?>
 
                         <?php ActiveForm::end() ?>
 
