@@ -76,6 +76,7 @@ if (!Yii::$app->user->isGuest) {
 
                                     <?php if ($item['avatar'] == 1) : ?>
 
+                                    <?php $photo = $item['file']; ?>
 
                                         <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
@@ -288,8 +289,8 @@ if (!Yii::$app->user->isGuest) {
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="position-relative margin-top-10 gift-vip"
-                                        <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
-                                             data-img="<?php echo Yii::$app->imageCache->thumbSrc($item['file'], 'popular'); ?>"
+                                        <?php if (file_exists(Yii::getAlias('@webroot') . $photo) and $photo) : ?>
+                                             data-img="<?php echo Yii::$app->imageCache->thumbSrc($photo, 'popular'); ?>"
                                         <?php else : ?>
                                             data-img="/files/img/nophoto.png"
                                         <?php endif; ?>
