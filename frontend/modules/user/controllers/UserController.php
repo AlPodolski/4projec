@@ -44,20 +44,29 @@ class UserController extends \yii\web\Controller
 
         $payForm = new PayForm();
 
+
         if ($payForm->load(Yii::$app->request->post()) and $payForm->validate()){
 
-            $order_id = Yii::$app->user->id.'_'.$city;
+            if ($payForm->sum > 199){
 
-            $sign = \md5(Yii::$app->params['merchant_id'].':'.$payForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+                $order_id = Yii::$app->user->id.'_'.$city;
 
-            $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
+                $sign = \md5(Yii::$app->params['merchant_id'].':'.$payForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
 
-            $params = 'm='.Yii::$app->params['merchant_id'].
-                '&oa='.$payForm->sum.
-                '&o='.$order_id.
-                '&s='.$sign;
+                $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
 
-            Yii::$app->response->redirect($cassa_url.$params, 301, false);
+                $params = 'm='.Yii::$app->params['merchant_id'].
+                    '&oa='.$payForm->sum.
+                    '&o='.$order_id.
+                    '&s='.$sign;
+
+                Yii::$app->response->redirect($cassa_url.$params, 301, false);
+
+            }else{
+
+                Yii::$app->session->setFlash('warning', 'Минимальная сумма пополнения 200 рублей');
+
+            }
 
         }
 

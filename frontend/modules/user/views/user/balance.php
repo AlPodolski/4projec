@@ -43,7 +43,7 @@ $this->title = 'Пополнить баланс';
 
             ?>
 
-            <?= $form->field($payForm, 'sum')->textInput(['value' => 100]) ?>
+            <?= $form->field($payForm, 'sum')->textInput(['value' => 200]) ?>
 
             <div class="form-group">
 
