@@ -28,6 +28,19 @@ class SympathyController extends Controller
 
         $post = SympathyHelper::getProfile(Yii::$app->user->id, $skip_id);
 
+        if (!$post) {
+
+            SympathyHelper::unset(Yii::$app->user->id, Yii::$app->params['users_who_skip_key']);
+
+            $skip_id = \array_merge(
+                SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_like_key']),
+                SympathyHelper::get(Yii::$app->user->id, Yii::$app->params['users_who_skip_key'])
+            );
+
+            $post = SympathyHelper::getProfile(Yii::$app->user->id, $skip_id);
+
+        }
+
         return $this->render('index', [
             'post' => $post,
         ]);
@@ -72,6 +85,9 @@ class SympathyController extends Controller
                         ]);
 
                     }else{
+
+                        SympathyHelper::unset(Yii::$app->user->id, Yii::$app->params['users_who_like_key']);
+
                         return $this->renderFile(Yii::getAlias('@app/modules/sympathy/views/sympathy/no-content.php'));
                     }
 

@@ -83,6 +83,22 @@ class SympathyHelper
         $redis = Yii::$app->redis;
         return $redis->smembers ($key.":{$item_id}:sympathy");
     }
+    public static function unset($item_id, $key)
+    {
+        $items = SympathyHelper::get($item_id, $key);
+
+        if ($items) {
+
+            foreach ($items as $item){
+
+                /* @var $redis Connection */
+                $redis = Yii::$app->redis;
+                $redis->srem($key.":{$item_id}:sympathy", $item);
+
+            }
+
+        }
+    }
 
     public static function getProfile($user_id, $not_in_id)
     {
