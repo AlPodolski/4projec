@@ -4,6 +4,8 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\modules\group\components\helpers\SubscribeHelper;
+use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -66,11 +68,16 @@ class AnketController extends Controller
 
         }
 
+        $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
+
+        $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->limit(6)->asArray()->all();
+
         return $this->render('single' , [
             'model' => $model,
             'city' => $city,
             'cityInfo' => $cityInfo,
             'userFriends' => $userFriends,
+            'group' => $group,
         ]);
 
     }

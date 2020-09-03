@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $model frontend\modules\user\models\Profile */
 /* @var $cityInfo array */
+/* @var $group array */
 
 /* @var $userFriends array */
 
@@ -38,6 +39,7 @@ $this->registerMetaTag([
         <?php echo $this->renderFile('@app/views/anket/anket.php',
             [
                 'model' => $model,
+                'group' => $group,
                 'userFriends' => $userFriends,
             ]
         ) ?>

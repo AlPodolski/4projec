@@ -11,6 +11,7 @@ use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\FriendsRequestHelper;
 
 /* @var $model Profile */
+/* @var $group array */
 /* @var $userFriends array */
 
 $this->registerJsFile('/files/js/lightgallery-all.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -857,8 +858,8 @@ if (!Yii::$app->user->isGuest) {
                 <div class="page-block friends">
                 <span class="small-heading">
                     <a href="/user/friends/<?php echo $model->id ?>">Друзья <?php
-
-                        echo \frontend\modules\user\components\Friends::countFriends($model->id) ?></a>
+                        echo \frontend\modules\user\components\Friends::countFriends($model->id) ?>
+                    </a>
                 </span>
                     <div class="user-friends">
                         <div class="user-friends-list">
@@ -896,7 +897,52 @@ if (!Yii::$app->user->isGuest) {
                             </div>
                         </div>
                     </div>
+                </div>
 
+            <?php endif; ?>
+
+            <?php if ($group) : ?>
+
+                <div class="page-block friends">
+                <span class="small-heading">
+                    <a href="/user/group/<?php echo $model->id ?>">Группы</a>
+                </span>
+                    <div class="user-friends">
+                        <div class="user-friends-list">
+                            <div class="row">
+
+                                <?php if (isset($group)) { ?>
+
+                                    <?php foreach ($group as $item) { ?>
+
+                                        <div class="col-4">
+                                            <a class="post_image" href="/group/<?php echo $item['id'] ?>">
+                                                <?php if (file_exists(Yii::getAlias('@webroot') . $item['avatar']['file']) and $item['avatar']['file']) {
+
+                                                    ?>
+                                                    <img loading="lazy" class="img"
+                                                         srcset="<?= Yii::$app->imageCache->thumbSrc($item['avatar']['file'], 'dialog') ?>"
+                                                         alt="">
+                                                    <?php
+                                                } else {
+                                                    echo '<img src="/files/img/nophoto.png" alt="">';
+                                                } ?>
+                                            </a>
+                                            <span class="author"><?php echo strstr($item['name'], ' ', true) ?: $item['name']; ?></span>
+                                        </div>
+
+                                    <?php } ?>
+
+                                <?php } else { ?>
+
+                                    <div class="col-12">
+                                        <p class="small-heading">Пока групп нет</p>
+                                    </div>
+
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             <?php endif; ?>

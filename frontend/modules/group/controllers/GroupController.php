@@ -31,6 +31,20 @@ class GroupController extends \yii\web\Controller
         ]);
     }
 
+    public function actionUserGroup($city, $id)
+    {
+        $userGroupId = SubscribeHelper::getUserSubscribe($id, Yii::$app->params['user_group_subscribe_key']);
+
+        $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->asArray()->all();
+
+        $recomendGroup = Group::find()->limit(6)->orderBy(['rand()' => SORT_DESC])->with('profile')->with('avatar')->asArray()->all();
+
+        return $this->render('index', [
+            'group' => $group,
+            'recomendGroup' => $recomendGroup,
+        ]);
+    }
+
     public function actionGroup($city, $id)
     {
         if ($group = Group::find()->where(['id' => $id])->with('profile')->with('avatar')->asArray()->one()) {

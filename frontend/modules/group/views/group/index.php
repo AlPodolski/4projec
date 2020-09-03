@@ -9,7 +9,7 @@ use frontend\widgets\PhotoWidget;
 
 $this->registerJsFile('/files/js/prev.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-$this->title = 'Мои группы';
+$this->title = 'Группы';
 
 ?>
 <div class="row">
@@ -26,7 +26,7 @@ $this->title = 'Мои группы';
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-                            <a class="nav-item nav-link active" id="nav-home-tab">Мои группы</a>
+                            <a class="nav-item nav-link active" id="nav-home-tab">Группы</a>
 
                         </div>
                     </nav>

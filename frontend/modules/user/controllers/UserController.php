@@ -1,6 +1,8 @@
 <?php
 
 namespace frontend\modules\user\controllers;
+use frontend\modules\group\components\helpers\SubscribeHelper;
+use frontend\modules\group\models\Group;
 use frontend\modules\user\models\forms\PayForm;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
@@ -31,10 +33,15 @@ class UserController extends \yii\web\Controller
             ->limit(6)
             ->asArray()->all();
 
+        $userGroupId = SubscribeHelper::getUserSubscribe(Yii::$app->user->id, Yii::$app->params['user_group_subscribe_key']);
+
+        $group = Group::find()->where(['in', 'id', $userGroupId])->limit(6)->with('avatar')->asArray()->all();
+
         return $this->render('index', [
             'model' => $model,
             'city' => $city,
             'userFriends' => $userFriends,
+            'group' => $group,
         ]);
 
     }
