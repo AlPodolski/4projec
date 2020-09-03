@@ -90,7 +90,7 @@ class ImportController extends Controller
 
     public function actionCustom()
     {
-        $profiles = Profile::find()->where(['email' => 'adminadultero@mail.com'])->asArray()->all();
+        $profiles = Profile::find()->where(['not in', 'email', 'adminadultero@mail.com'])->andWhere(['fake' => 0])->asArray()->all();
 
         foreach ($profiles as $profile){
 
