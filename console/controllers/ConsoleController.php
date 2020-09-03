@@ -19,7 +19,7 @@ class ConsoleController extends Controller
 {
     public function actionFriends()
     {
-        $profiles = Profile::find()->asArray()->all();
+        $profiles = Profile::find()->asArray()->where(['email' => 'adminadultero@mail.com'])->all();
 
         foreach ($profiles as $profile){
 
