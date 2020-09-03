@@ -13,6 +13,7 @@ class SendPhotoForm extends Model
     public $user_id;
     public $dialog_id;
     public $photo_id;
+    public $to;
 
     /**
      * {@inheritdoc}
@@ -21,7 +22,7 @@ class SendPhotoForm extends Model
     {
         return [
             [['user_id', 'dialog_id'], 'integer'],
-            [['file'], 'safe'],
+            [['file' , 'to'], 'safe'],
         ];
     }
 

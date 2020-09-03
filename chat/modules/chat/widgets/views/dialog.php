@@ -4,6 +4,7 @@
 <?php /* @var $recepient integer */ ?>
 
 <?php
+$photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
@@ -95,7 +96,39 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
 </div>
 
+
 <div onfocusout="" class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+
+    <?php $photoForm = ActiveForm::begin([
+        'action' => '#',
+        'id' => 'send-message-photo-form',
+        'enableAjaxValidation' => false,
+        'enableClientValidation' => false,
+        'options' => ['class' => 'form-horizontal' , 'data-action' => 'http://msk.'.Yii::$app->params['site_name'].'/chat/send/send-photo'],
+    ]) ?>
+    <?= $photoForm->field($photoModel, 'user_id',['options' => ['class' => 'd-none']])
+        ->hiddenInput(['value' => $user['id']])->label(false) ?>
+
+    <?= $photoForm->field($photoModel, 'dialog_id',['options' => ['class' => 'd-none']])
+        ->hiddenInput(['value' => $dialog['dialog_id']])->label(false) ?>
+
+    <?= $photoForm->field($photoModel, 'to',['options' => ['class' => 'd-none']])
+        ->hiddenInput(['value' => $recepient])->label(false) ?>
+
+    <div class="img-label-wrap send-message-photo">
+        <label for="send-message-photo-input" class="">
+
+            <i class="fas fa-camera"></i>
+
+            <?= $photoForm->field($photoModel, 'photo')
+                ->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'send-message-photo-input', 'onchange' => 'send_photo_to_user()'])
+                ->label(false) ?>
+
+        </label>
+    </div>
+
+
+    <?php ActiveForm::end() ?>
 
     <?php
 

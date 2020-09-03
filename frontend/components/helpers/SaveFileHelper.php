@@ -27,7 +27,7 @@ class SaveFileHelper
 
         $dir = Yii::$app->params['photo_path'].$dir_hash;
 
-        $save_dir = DirHelprer::prepareDir(Yii::getAlias('@webroot').$dir);
+        $save_dir = DirHelprer::prepareDir(Yii::getAlias('@frontend').'/web/'.$dir);
 
         ImageHelper::regenerateImg($file->tempName, Yii::$app->params['default_with_img'], $save_dir.$model->file);
 

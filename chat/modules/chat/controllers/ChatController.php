@@ -2,12 +2,17 @@
 namespace chat\modules\chat\controllers;
 
 use chat\modules\chat\components\helpers\GetDialogsHelper;
+use frontend\components\helpers\SaveFileHelper;
+use frontend\components\helpers\SocketHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
+use frontend\modules\chat\models\forms\SendPhotoForm;
+use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class ChatController extends Controller
 {
@@ -83,5 +88,47 @@ class ChatController extends Controller
             }
 
         }
+    }
+
+    public function actionSendPhoto()
+    {
+        $model = new SendPhotoForm();
+
+        \d(Yii::$app->request->post());
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            if ($file = UploadedFile::getInstance($model, 'photo')) {
+
+                $photo = SaveFileHelper::save($file, '', Message::class, '');
+
+                $model->photo_id = $photo->id;
+
+                $photoModel = $model->save();
+
+                $photo->related_id = $photoModel->id;
+
+                $photo->save();
+
+                $params = array(
+                    'file' => $photo->file,
+                    'action' => 'sendPhoto',
+                    'from' => $model->user_id,
+                    'to' => $model->to,
+                );
+
+                \d($params);
+
+                SocketHelper::send_notification($params);
+
+                echo \json_encode(array('img' => $photo->file));
+
+                exit();
+
+
+            }
+
+        }
+
     }
 }

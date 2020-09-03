@@ -202,12 +202,18 @@ class ChatController extends Controller
 
                 $photo->save();
 
-                $params = array(
-                    'message_id' => $photoModel->id,
-                    'action' => 'sendPhoto',
-                );
+                if ($model->to){
 
-                //SocketHelper::send_notification($params);
+                    $params = array(
+                        'file' => $photo->file,
+                        'action' => 'sendPhoto',
+                        'from' => $model->user_id,
+                        'to' => $model->to,
+                    );
+
+                    SocketHelper::send_notification($params);
+
+                }
 
                 echo \json_encode(array('img' => $photo->file));
 

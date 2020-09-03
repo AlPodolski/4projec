@@ -33,6 +33,17 @@ body {
     color: #c55;
     font-style: italic;
 }
+.send-message-photo {
+    float: left;
+    margin-right: 0px;
+    color: #486bef;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+#send-message-photo-input {
+    display: none;
+}
 
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
@@ -1465,6 +1476,7 @@ ul li .secodn-menu:hover {
 }
 #message-form{
     position: relative;
+    padding-left: 40px;
 }
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;

@@ -374,3 +374,46 @@ function send_present_to_user(object){
     });
 
 }
+
+function send_photo_to_user(){
+
+    var formData = new FormData($("#send-message-photo-form")[0]);
+
+    var action = $('#send-message-photo-form').attr('data-action')
+
+    $.ajax({
+        url: '/chat/send/send-photo',
+        type: 'POST',
+        data: formData,
+        datatype:'json',
+        // async: false,
+        beforeSend: function() {
+
+        },
+        success: function (data) {
+
+            var result = JSON.parse(data);
+
+            var user_img = $('.user-img').attr('srcset');
+            var user_name = $('.message-send-btn').attr('data-name');
+            var user_id = $('.message-send-btn').attr('data-user-id');
+
+            add_present(result.img, user_img, user_name, user_id );
+
+            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+        },
+
+        complete: function() {
+            // success alerts
+        },
+
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+}

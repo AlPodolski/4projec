@@ -14,7 +14,7 @@ use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use Ratchet\ConnectionInterface;
 use Yii;
-
+use frontend\modules\chat\models\Message;
 
 class EchoServer extends WebSocketServer
 {
@@ -72,6 +72,35 @@ class EchoServer extends WebSocketServer
             }
 
         }
+
+        $client->close();
+
+    }
+
+    /**
+     * Отправка сообщения о подарке
+     * @param ConnectionInterface $client
+     * @param $msg
+     */
+    public function commandSendPhoto(ConnectionInterface $client, $msg)
+    {
+        $request = json_decode($msg, true);
+
+            foreach ($this->clients as $chatClient) {
+
+                if (isset( $chatClient->udata['id'])){
+                    if ($chatClient->udata['id'] == $request['from'] or $chatClient->udata['id'] == $request['to']){
+                        $chatClient->send( json_encode([
+                            'type' => 'send_photo_message',
+                            'from' => $request['from'],
+                            'to' => $request['to'],
+                            'img' => $request['file'],
+                        ]) );
+                    }
+                }
+
+            }
+
 
         $client->close();
 

@@ -93,7 +93,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 
                     <?php endforeach; ?>
 
-                <?php else:  ?>
+                <?php else: ?>
 
                     <p class="cta-box__text w-100 text-center" data-user-id="<?php echo $userTo['id'] ?>" onclick="get_presents(this)">Не знаешь как начать разговор начни с подарка
                         <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
