@@ -1564,6 +1564,7 @@ ul li .secodn-menu:hover {
 }
 #message-form{
     position: relative;
+    padding-left: 35px;
 }
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;

@@ -454,7 +454,7 @@ $('#send-message-photo-form').on('change', function(){
         success: function (data) {
             var result = JSON.parse(data)
 
-            var user_img = $('.user-img').attr('src');
+            var user_img = $('.user-img').attr('srcset');
             var user_name = $('.message-send-btn').attr('data-name');
             var user_id = $('.message-send-btn').attr('data-user-id');
 
