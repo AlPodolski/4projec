@@ -61,6 +61,15 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
                             }
 
+                            if($item['class'] == \frontend\models\Files::class){
+
+                                $messagePhoto = \frontend\models\Files::find()
+                                    ->where(['id' => $item['related_id']])->asArray()->one();
+
+                                echo \yii\helpers\Html::img('http://msk.'.Yii::$app->params['site_name'].$messagePhoto['file']);
+
+                            }
+
                         }
 
                         ?>

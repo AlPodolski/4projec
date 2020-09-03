@@ -413,6 +413,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modal-user-present" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -431,6 +432,40 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                 </div>
                 <div class="modal-body">
 
+                </div>
+            </div>
+            <div class="present-form">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-buy-vip-for-photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="present-modal-content-wrap">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 15.75L15.75 2.25" stroke="black" stroke-width="2"/>
+                                <path d="M2.25 2.25L15.75 15.75" stroke="black" stroke-width="2"/>
+                            </svg>
+                        </span>
+                </button>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="no-content-wrap d-flex">
+                                <div class="row">
+                                    <h1 class="h1 w-100">Для отправки фото требуется Досуг <img src="/files/img/vip_icon.png" alt="VIP"></h1>
+                                    <span class="blue-btn " data-toggle="modal" data-target="#modal-buy-vip">
+                                         Подключить</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="present-form">
@@ -472,6 +507,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
                         <ul>
                             <li>Не ограничено количество диалогов</li>
+                            <li>Отправка фото личным сообщением</li>
                         </ul>
 
                         <?php

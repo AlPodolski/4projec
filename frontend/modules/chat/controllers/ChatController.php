@@ -1,14 +1,20 @@
 <?php
+
 namespace frontend\modules\chat\controllers;
 
+use frontend\components\helpers\SaveFileHelper;
+use frontend\components\helpers\SocketHelper;
 use frontend\components\helpers\VipHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
+use frontend\modules\chat\models\forms\SendPhotoForm;
+use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use frontend\components\helpers\CheckVipDialogHelper;
+use yii\web\UploadedFile;
 
 class ChatController extends Controller
 {
@@ -23,7 +29,7 @@ class ChatController extends Controller
     public function actionIndex($city)
     {
 
-        return $this->render('list' , [
+        return $this->render('list', [
             'user_id' => Yii::$app->user->id,
         ]);
     }
@@ -33,13 +39,13 @@ class ChatController extends Controller
 
         $limitExist = false;
 
-        if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
+        if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
 
-            if (isset($id)){
+            if (isset($id)) {
 
-                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) {
+                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) {
 
-                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $id)) {
+                    if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $id)) {
 
                         $limitExist = true;
 
@@ -47,9 +53,9 @@ class ChatController extends Controller
 
                 }
 
-            }else{
+            } else {
 
-                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) $limitExist = true;
+                if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) $limitExist = true;
 
             }
 
@@ -59,12 +65,12 @@ class ChatController extends Controller
             ->select('user_id')
             ->asArray()->all(), 'user_id');
 
-        if(!\in_array(Yii::$app->user->id, $usersInDialog )) return $this->goHome();
+        if (!\in_array(Yii::$app->user->id, $usersInDialog)) return $this->goHome();
 
         $user = Profile::find()->where(['id' => Yii::$app->user->id])->with('userAvatarRelations')->asArray()->one();
 
         $recepient_id = UserDialog::find()->where(['dialog_id' => $id])
-            ->andWhere(['<>', 'user_id', Yii::$app->user->id ])
+            ->andWhere(['<>', 'user_id', Yii::$app->user->id])
             ->select('user_id')
             ->asArray()->one();
 
@@ -84,21 +90,21 @@ class ChatController extends Controller
         $dialog_id = 0;
         $limitExist = false;
 
-        if (Yii::$app->request->isPost and (Yii::$app->user->id != Yii::$app->request->post('id'))){
+        if (Yii::$app->request->isPost and (Yii::$app->user->id != Yii::$app->request->post('id'))) {
 
             $userDialogsId = ArrayHelper::getColumn(UserDialog::find()
                 ->where(['user_id' => Yii::$app->user->id])->asArray()->all(), 'dialog_id');
 
             $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])
-                ->andWhere(['in', 'dialog_id',$userDialogsId ])->asArray()->one();
+                ->andWhere(['in', 'dialog_id', $userDialogsId])->asArray()->one();
 
-            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
+            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
 
-                if (isset($dialog_id['dialog_id'])){
+                if (isset($dialog_id['dialog_id'])) {
 
-                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) {
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) {
 
-                        if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id , $dialog_id['dialog_id'])) {
+                        if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $dialog_id['dialog_id'])) {
 
                             $limitExist = true;
 
@@ -106,9 +112,9 @@ class ChatController extends Controller
 
                     }
 
-                }else{
+                } else {
 
-                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id , Yii::$app->params['dialog_day_limit']) ) $limitExist = true;
+                    if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) $limitExist = true;
 
                 }
 
@@ -140,7 +146,7 @@ class ChatController extends Controller
     {
 
 
-        if (Yii::$app->request->isPost){
+        if (Yii::$app->request->isPost) {
 
             $model = new SendMessageForm();
 
@@ -149,13 +155,13 @@ class ChatController extends Controller
 
             $model->load(Yii::$app->request->post());
 
-            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])){
+            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
 
-                if ($model->chat_id == ''){
+                if ($model->chat_id == '') {
 
                     if (!CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])) return 'Превышен лимит диалогов';
 
-                }else{
+                } else {
 
                     if (!CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $model->chat_id) and
                         !CheckVipDialogHelper::checkLimitDialog(Yii::$app->user->id, Yii::$app->params['dialog_day_limit'])
@@ -165,9 +171,9 @@ class ChatController extends Controller
 
             }
 
-            if ( $model->validate() ){
+            if ($model->validate()) {
 
-                if ($dialog_id = $model->save() and !CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $dialog_id)){
+                if ($dialog_id = $model->save() and !CheckVipDialogHelper::checkExistDialogId(Yii::$app->user->id, $dialog_id)) {
 
                     CheckVipDialogHelper::addDialogIdToDay(Yii::$app->user->id, $dialog_id);
 
@@ -177,4 +183,41 @@ class ChatController extends Controller
 
         }
     }
+
+    public function actionSendPhoto()
+    {
+        $model = new SendPhotoForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            if ($file = UploadedFile::getInstance($model, 'photo')) {
+
+                $photo = SaveFileHelper::save($file, '', Message::class, '');
+
+                $model->photo_id = $photo->id;
+
+                $photoModel = $model->save();
+
+                $photo->related_id = $photoModel->id;
+
+                $photo->save();
+
+                $params = array(
+                    'message_id' => $photoModel->id,
+                    'action' => 'sendPhoto',
+                );
+
+                //SocketHelper::send_notification($params);
+
+                echo \json_encode(array('img' => $photo->file));
+
+                exit();
+
+
+            }
+
+        }
+
+    }
+
 }

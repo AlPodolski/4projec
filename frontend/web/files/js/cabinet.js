@@ -433,3 +433,52 @@ $( ".wall-group-send-btn" ).click(function() {
     });
 
 });
+
+$('#send-message-photo-form').on('change', function(){
+    /*    files = this.files[0];
+
+        var form_data = new FormData();
+        form_data.append('file', files);*/
+
+
+    var formData = new FormData($("#send-message-photo-form")[0]);
+    $.ajax({
+        url: '/chat/send/send-photo',
+        type: 'POST',
+        data: formData,
+        datatype:'json',
+        // async: false,
+        beforeSend: function() {
+
+        },
+        success: function (data) {
+            var result = JSON.parse(data)
+
+            var user_img = $('.user-img').attr('src');
+            var user_name = $('.message-send-btn').attr('data-name');
+            var user_id = $('.message-send-btn').attr('data-user-id');
+
+            add_present(result.img, user_img, user_name, user_id );
+
+            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
+
+        },
+
+        complete: function() {
+            // success alerts
+        },
+
+        error: function (data) {
+            alert("There may a error on uploading. Try again later");
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+
+});
+function by_vip_for_photo(){
+
+    $('#modal-buy-vip-for-photo').modal('toggle');
+
+}

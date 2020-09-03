@@ -1504,7 +1504,28 @@ ul li .secodn-menu:hover {
     flex-direction: column-reverse;
 }
 .chat .img{
-    width:35px
+    width:35px!important;
+}
+.detal-dialog-wrap #message-form{
+    padding-left: 40px;
+}
+.nim-dialog--inner-text i{
+    color: #486bef;
+    font-size: 14px;
+}
+.send-message-photo{
+    float: left;
+    margin-right: 0px;
+    color: #486bef;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+}
+#modal-buy-vip-for-photo .close{
+    padding-right:15px
+}
+.send-message-photo #send-message-photo-input{
+    display: none;
 }
 .chat .chat{
     border-bottom:inherit;

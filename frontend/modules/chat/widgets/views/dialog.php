@@ -13,6 +13,8 @@ use frontend\widgets\PhotoWidget;
 $messageForm = new \frontend\modules\chat\models\forms\SendMessageForm();
 $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
+$photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
+
 ?>
 
 <div class="page-block chat-block " data-to="<?php echo $userTo['id']?>">
@@ -64,6 +66,15 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
                                                 }
 
+                                                if($item['class'] == \frontend\models\Files::class){
+
+                                                    $messagePhoto = \frontend\models\Files::find()
+                                                        ->where(['id' => $item['related_id']])->asArray()->one();
+
+                                                    echo \yii\helpers\Html::img($messagePhoto['file']);
+
+                                                }
+
                                             }
 
                                         ?>
@@ -95,6 +106,45 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 </div>
 
 <div  class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+
+    <?php if ($user['vip_status_work'] > time()) : ?>
+
+        <?php $photoForm = ActiveForm::begin([
+            'action' => '#',
+            'id' => 'send-message-photo-form',
+            'enableAjaxValidation' => false,
+            'enableClientValidation' => false,
+            'options' => ['class' => 'form-horizontal'],
+        ]) ?>
+        <?= $photoForm->field($photoModel, 'user_id',['options' => ['class' => 'd-none']])
+            ->hiddenInput(['value' => $user['id']])->label(false) ?>
+
+        <?= $photoForm->field($photoModel, 'dialog_id',['options' => ['class' => 'd-none']])
+            ->hiddenInput(['value' => $dialog_id])->label(false) ?>
+
+        <div class="img-label-wrap send-message-photo">
+            <label for="send-message-photo-input" class="">
+
+                <i class="fas fa-camera"></i>
+
+                <?= $photoForm->field($photoModel, 'photo')
+                    ->fileInput(['maxlength' => true, 'accept' => 'image/*', 'id' => 'send-message-photo-input'])
+                    ->label(false) ?>
+
+            </label>
+        </div>
+
+
+        <?php ActiveForm::end() ?>
+
+    <?php else : ?>
+
+    <div class="send-message-photo" onclick="by_vip_for_photo()">
+        <i class="fas fa-camera"></i>
+    </div>
+
+    <?php endif; ?>
+
 
     <?php
 
