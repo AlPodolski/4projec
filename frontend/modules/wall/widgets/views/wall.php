@@ -218,7 +218,7 @@ if (!empty($wallItems)) : ?>
                     } ?>
 
                     <div class="wall-img-wrap">
-                        <img loading="lazy" src="<?php echo $item['files']['file'] ?>" alt="">
+                        <img loading="lazy" src="<?php echo $images[0] ?>" alt="">
                     </div>
 
                 <?php endif; ?>
