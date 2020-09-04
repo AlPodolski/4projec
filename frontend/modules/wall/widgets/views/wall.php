@@ -213,15 +213,12 @@ if (!empty($wallItems)) : ?>
 
                     foreach ($item['files'] as $file) {
 
-                        d($file);
-
                         $images[] = $file['file'];
 
                     } ?>
 
-                    <div>
-                        <div class="files" data-files="<?php echo implode(', ', $images) ?>">
-                        </div>
+                    <div class="wall-img-wrap">
+                        <img loading="lazy" src="<?php echo $item['files']['file'] ?>" alt="">
                     </div>
 
                 <?php endif; ?>
