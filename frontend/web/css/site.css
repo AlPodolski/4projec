@@ -1576,6 +1576,10 @@ ul li .secodn-menu:hover {
     left: 25px;
     top: 10px;
 }
+.wall-img-wrap img{
+    margin: 0 auto;
+    display: block;
+}
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
 }

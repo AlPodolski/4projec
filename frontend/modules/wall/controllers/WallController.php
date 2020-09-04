@@ -2,6 +2,7 @@
 
 namespace frontend\modules\wall\controllers;
 
+use frontend\modules\user\models\Profile;
 use frontend\modules\wall\components\WallHelper;
 use frontend\modules\wall\models\forms\AddToWallForm;
 use Yii;
@@ -20,6 +21,7 @@ class WallController extends Controller
 
                 $model->from = Yii::$app->user->id;
                 $model->created_at = \time();
+                $model->class = Profile::class;
 
                 if ($model->load(Yii::$app->request->post()) and $wallItem[] = (array) $model->save()){
 

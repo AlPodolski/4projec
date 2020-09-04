@@ -1,4 +1,4 @@
-<?php /* @var $wallItems array */
+    <?php /* @var $wallItems array */
 /* @var $group array */
 /* @var $wrapCssClass string */
 /* @var $news bool */
@@ -10,12 +10,6 @@ use frontend\models\forms\AddCommentForm;
 use frontend\modules\wall\components\LikeHelper;
 use frontend\widgets\CommentsFormWidget;
 use frontend\widgets\PhotoWidget;
-
-if (!Yii::$app->request->isPost) {
-    $this->registerJsFile('/files/js/images-grid.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-    $this->registerCssFile('/css/images-grid.css');
-}
-
 
 $commentForm = new AddCommentForm();
 
@@ -198,9 +192,8 @@ if (!empty($wallItems)) : ?>
 
                         } ?>
 
-                        <div>
-                            <div class="files" data-files="<?php echo implode(', ', $images) ?>">
-                            </div>
+                        <div class="wall-img-wrap">
+                            <img loading="lazy" src="<?php echo $file['file'] ?>" alt="">
                         </div>
 
 
@@ -219,6 +212,8 @@ if (!empty($wallItems)) : ?>
                     <?php $images = array();
 
                     foreach ($item['files'] as $file) {
+
+                        d($file);
 
                         $images[] = $file['file'];
 
@@ -320,13 +315,6 @@ if (!empty($wallItems)) : ?>
                 <?php endif; ?>
             </div>
 
-
-            <?php if (Yii::$app->user->isGuest) : ?>
-
-                <p class="alert alert-info">Для того что бы комментировать стену требуется авторизация</p>
-
-            <?php else : ?>
-
                 <div class="comment-wall-form comment-wall-form-<?php echo $item['id'] ?> d-none">
 
                     <?php
@@ -342,7 +330,6 @@ if (!empty($wallItems)) : ?>
 
                 </div>
 
-            <?php endif; ?>
 
 
         </div>

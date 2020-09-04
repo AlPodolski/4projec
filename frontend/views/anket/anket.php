@@ -1005,12 +1005,6 @@ if (!Yii::$app->user->isGuest) {
 
             <div class="page-block wall-form">
 
-                <?php if (Yii::$app->user->isGuest) : ?>
-
-                    <p class="alert alert-info">Для того что бы оставлять записи на стене требуется авторизация</p>
-
-                <?php else : ?>
-
                     <?php
 
                     $form = ActiveForm::begin([
@@ -1049,8 +1043,10 @@ if (!Yii::$app->user->isGuest) {
 
                     <?php endif; ?>
 
+                <?php if (Yii::$app->user->isGuest)  $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                else $onclick = 'onclick="send_wall_item(this)"'; ?>
 
-                    <div class="form-group ">
+                    <div class="form-group " <?php echo $onclick ?>>
                         <span class="btn wall-send-btn">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -1058,9 +1054,8 @@ if (!Yii::$app->user->isGuest) {
                             </svg>
                         </span>
                     </div>
-                    <?php ActiveForm::end() ?>
 
-                <?php endif; ?>
+                    <?php ActiveForm::end() ?>
 
 
             </div>
