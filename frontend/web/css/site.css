@@ -1566,6 +1566,16 @@ ul li .secodn-menu:hover {
     position: relative;
     padding-left: 35px;
 }
+.online-single{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: rgb(78, 207, 168);
+    z-index: 1;
+    border-radius: 50%;
+    left: 25px;
+    top: 10px;
+}
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
 }

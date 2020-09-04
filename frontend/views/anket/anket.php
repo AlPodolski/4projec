@@ -68,6 +68,12 @@ if (!Yii::$app->user->isGuest) {
 
                         <?php endif; ?>
 
+                        <?php if ($model->email == 'adminadultero@mail.com') : ?>
+
+                            <div class="online-single"></div>
+
+                        <?php endif; ?>
+
 
                         <div class="post-photo">
 
