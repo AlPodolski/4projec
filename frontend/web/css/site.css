@@ -3071,11 +3071,6 @@ a {
     .main-info-anket .like-wrap{
         margin-top: 15px;
     }
-    .anket-info-content{
-        max-height: 356px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
 }
 @media (max-width: 767px) {
     .name , .name .old{
