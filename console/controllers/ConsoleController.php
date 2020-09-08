@@ -211,7 +211,7 @@ class ConsoleController extends Controller
 
     public function actionUpdateTime()
     {
-        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->limit(1000)->asArray()->all();
+        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->limit(500)->asArray()->all();
 
         $postsIds = ArrayHelper::getColumn($posts, 'id');
 
