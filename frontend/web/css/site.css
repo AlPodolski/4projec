@@ -459,6 +459,46 @@ label{
 .margin-top-30{
     margin-top:30px;
 }
+.BottomMenu__fixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 16;
+}
+.BottomMenu__table{
+    display: table;
+    width: 100%;
+    background:#fff;
+}
+.BottomMenu__row{
+    display: table-row;
+}
+.BottomMenu__cell{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 0;
+}
+.BottomMenu__link {
+    display: block;
+    min-width: 28px;
+    padding: 10px 0;
+    -webkit-tap-highlight-color: transparent;
+}
+.BottomMenu__link .sympathy svg{
+    max-width: 22px;
+}
+.BottomMenu__link .events svg{
+    max-width: 17px;
+}
+.BottomMenu__link .mobile-icon{
+    width:inherit;
+    height:inherit;
+    float:none;
+    line-height: 20px;
+    color: #486bef;
+}
 .razd{
     border: 1px solid
     #939a9b;
@@ -626,6 +666,7 @@ h1{
     height: 71px;
     box-sizing: border-box;
     padding: 3px 0;
+    padding-left: 10px;
 }
 .nim-dialog--inner-text{
     background: #f0f2f5;

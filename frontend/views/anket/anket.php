@@ -319,7 +319,7 @@ if (!Yii::$app->user->isGuest) {
                                     ?>
                                 <?php endif; ?>
 
-                                <div class="row" >
+                                <div class="row d-none" >
                                     <div class="col-12">
                                         <div class="position-relative get-heart margin-top-10"
                                             <?php if ($ava and file_exists(Yii::getAlias('@webroot') . $ava) and $ava) : ?>
