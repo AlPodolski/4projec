@@ -1,39 +1,44 @@
 @font-face {
-    font-display: auto;
+
     font-family: HelveticaNeueCyr-Roman; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Roman.woff); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
-    font-display: auto;
+
     font-family: HelveticaNeueCyr-Bold; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Bold.ttf); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
-    font-display: auto;
+
     font-family: HelveticaNeueCyr-Light; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Light.woff); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
-    font-display: auto;
+
     font-family: HelveticaNeueCyr-Medium; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Medium.ttf); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
-    font-display: auto;
+
     font-family: HelveticaNeueCyr; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Black.ttf); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
-    font-display: auto;
     font-family: futuralightc; /* Имя шрифта */
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
+    font-display: swap;
 }
 @font-face {
     font-family: 'Muller-light';
     src : url(../files/fonts/muller/MullerLight.woff2);
     font-weight: 300;
     font-style: normal;
-    font-display: auto;
+    font-display: swap;
 }
 
 @font-face {
