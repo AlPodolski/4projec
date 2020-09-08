@@ -668,6 +668,9 @@ h1{
     padding: 3px 0;
     padding-left: 10px;
 }
+.BottomMenu__fixed{
+    display: none;
+}
 .nim-dialog--inner-text{
     background: #f0f2f5;
     border-radius: 3px;
@@ -2683,6 +2686,9 @@ a {
     padding-top:10px;
 }
 @media (max-width: 1199px) {
+    .BottomMenu__fixed{
+        display: block;
+    }
     .add-advert-wrap{
         right: 10px;
     }
