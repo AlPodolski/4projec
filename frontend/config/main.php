@@ -38,6 +38,11 @@ return [
         ],
     ],
     'components' => [
+        'assetManager' =>[
+            'bundles' => [
+                'yii\authclient\widgets\AuthChoiceStyleAsset' => false,
+            ],
+        ],
         'formatter' => [
             'dateFormat' => 'd.MM.Y',
         ],
