@@ -662,11 +662,6 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
 
 <?php $this->endBody() ?>
-<link rel="preload" href="/files/slick/slick.css" as="style" />
-<link rel="preload" href="/files/slick/slick-theme.css" as="style" />
-<link rel="preload" href="/files/slick/fonts/slick.woff" as="font" />
-<link rel="stylesheet" href="/files/slick/slick-theme.css">
-<link rel="stylesheet" href="/files/slick/slick.css">
 
 </body>
 </html>

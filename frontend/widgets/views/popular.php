@@ -3,8 +3,6 @@
 use frontend\assets\SlickAsset;
 use frontend\modules\user\models\Profile;
 
-SlickAsset::register($this);
-
 if (Yii::$app->user->isGuest) $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
 else $onclick = 'onclick="get_foto_ryad_form()"';
 
