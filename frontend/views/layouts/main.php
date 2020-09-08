@@ -106,7 +106,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                                 <li><a href="/znakomstva/pol-zhenskij">Ищу женщину</a></li>
                                 <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                                 <li><a href="/adverts">Объявления</a></li>
-                                <li data-toggle="modal" data-target="#modal-feed-back" aria-hidden="true"><a href="#">Обратная связь</a></li>
+                                <li onclick="getFeedBackForm()"><a href="#">Обратная связь</a></li>
                                 <!--<li><a href="/novosti">Новости сайта</a></li>-->
 
                                 <li>
@@ -142,7 +142,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                         <ul class="top-nav">
                             <li><a href="/polzovatelskoe-soglashenie">Пользовательское соглашение</a></li>
                             <li><a href="/adverts">Объявления</a></li>
-                            <li data-toggle="modal" data-target="#modal-feed-back" aria-hidden="true"><a href="#">Обратная связь</a></li>
+                            <li onclick="getFeedBackForm()"><a href="#">Обратная связь</a></li>
                             <!--<li><a href="/novosti">Новости сайта</a></li>-->
                         </ul>
                     </div>
@@ -378,7 +378,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
             </div>
 
             <div class="modal-body modal-city-search">
-                <?php  echo \frontend\widgets\FeedBackFormWidget::widget() ?>
+
             </div>
 
         </div><!-- /.modal-content -->

@@ -186,4 +186,10 @@ class SiteController extends Controller
 
     }
 
+    public function actionGetFeedBackForm()
+    {
+        echo \frontend\widgets\FeedBackFormWidget::widget();
+        exit();
+    }
+
 }

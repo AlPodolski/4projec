@@ -681,6 +681,17 @@ function get_gift_vip_modal(object){
     $('#modal-gift-vip #giftvipstatusform-touser').val(id);
 
     $('#modal-gift-vip').modal('toggle');
+}
 
+function getFeedBackForm(){
+
+    $.ajax({
+        url: '/get-feed-back-form',
+        type: 'POST',
+        success: function (data) {
+            $('#modal-feed-back .modal-body').html(data);
+            $('#modal-feed-back ').modal('toggle');
+        },
+    });
 
 }
