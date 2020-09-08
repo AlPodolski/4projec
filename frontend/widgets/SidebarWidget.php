@@ -60,8 +60,8 @@ class SidebarWidget extends Widget
             $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
 
             //objee
-            $metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
-            $rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
+            //$metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
+            //$rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
 
             $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds(),  $city_id);
             $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds(),  $city_id);
