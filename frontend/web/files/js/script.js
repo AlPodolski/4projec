@@ -504,35 +504,36 @@ $(document).ready(function () {
 
     $('.mobile-icon').click(function () {
 
-        $('.mobile-menu').animate({
-            left: '0px'
-        }, 200);
+        if($('.mobile-icon').hasClass('icon-close')){
+            $('.mobile-icon').removeClass('icon-close');
+            $('.mobile-icon').css('display', 'block');
+            $('body').css('overflow', 'inherit');
+            $('.mobile-menu').animate({
 
-        $('.mobile-icon').css('display', 'none');
-        $('body').css('overflow', 'hidden');
+                left: '-285px'
+            }, 200);
 
-        $('body').animate({
+            $('body').animate({
 
-            left: '0'
+                left: '0px'
 
-        }, 200);
-    });
+            }, 200);
+        }else{
+            $('.mobile-icon').addClass('icon-close');
+            $('.mobile-menu').animate({
+                left: '0px'
+            }, 200);
 
-    $('.icon-close').click(function () {
+            $('body').css('overflow', 'hidden');
 
-        $('.mobile-icon').css('display', 'block');
-        $('body').css('overflow', 'inherit');
+            $('body').animate({
 
-        $('.mobile-menu').animate({
+                left: '0'
 
-            left: '-285px'
-        }, 200);
+            }, 200);
+        }
 
-        $('body').animate({
 
-            left: '0px'
-
-        }, 200);
     });
 
 });
