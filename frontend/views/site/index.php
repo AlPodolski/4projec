@@ -87,7 +87,7 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             </div>
 
-            <div class="col-12 col-xl-12 margin">
+            <div class="col-12 col-xl-12  margin-top-10">
 
                 <div class="row">
                     <div class="col-12">
