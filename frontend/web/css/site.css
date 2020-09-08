@@ -668,7 +668,7 @@ h1{
     padding: 3px 0;
     padding-left: 10px;
 }
-.BottomMenu__fixed{
+.BottomMenu__fixed , .site-index .start-search{
     display: none;
 }
 .nim-dialog--inner-text{
@@ -805,6 +805,7 @@ h1{
 .main-banner{
     background: #fff;
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 .main-banner-wrap{
     padding-right: 0;
@@ -2686,7 +2687,7 @@ a {
     padding-top:10px;
 }
 @media (max-width: 1199px) {
-    .BottomMenu__fixed{
+    .BottomMenu__fixed , .site-index .start-search{
         display: block;
     }
     .add-advert-wrap{

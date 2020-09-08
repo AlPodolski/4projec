@@ -62,7 +62,7 @@ class SiteController extends Controller
     {
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
             ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
-            ->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC])
+            ->orderBy(['rand()' => SORT_DESC])
             ->with('userAvatarRelations');
 
         $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);
