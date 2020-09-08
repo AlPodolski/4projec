@@ -1,24 +1,30 @@
 @font-face {
+    font-display: auto;
     font-family: HelveticaNeueCyr-Roman; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Roman.woff); /* Путь к файлу со шрифтом */
 }
 @font-face {
+    font-display: auto;
     font-family: HelveticaNeueCyr-Bold; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Bold.ttf); /* Путь к файлу со шрифтом */
 }
 @font-face {
+    font-display: auto;
     font-family: HelveticaNeueCyr-Light; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Light.woff); /* Путь к файлу со шрифтом */
 }
 @font-face {
+    font-display: auto;
     font-family: HelveticaNeueCyr-Medium; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Medium.ttf); /* Путь к файлу со шрифтом */
 }
 @font-face {
+    font-display: auto;
     font-family: HelveticaNeueCyr; /* Имя шрифта */
     src: url(../files/fonts/HelveticaNeueCyr-Black.ttf); /* Путь к файлу со шрифтом */
 }
 @font-face {
+    font-display: auto;
     font-family: futuralightc; /* Имя шрифта */
     src: url(../files/fonts/futuralightc.otf); /* Путь к файлу со шрифтом */
 }
@@ -27,6 +33,7 @@
     src : url(../files/fonts/muller/MullerLight.woff2);
     font-weight: 300;
     font-style: normal;
+    font-display: auto;
 }
 
 @font-face {
@@ -34,20 +41,24 @@
     src: local('Muller Narrow Light'), local('MullerNarrow-Light'), url('../files/fonts/muller/Mullernarrowlight.woff2') format('woff2'), url('../files/fonts/muller/Mullernarrowlight.woff') format('woff'), url('../files/fonts/muller/Mullernarrowlight.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
+    font-display: auto;
 }
 @font-face {
+    font-display: auto;
     font-family: 'Muller Narrow';
     src: local('Muller Narrow Light Italic'), local('MullerNarrow-LightItalic'), url('../files/fonts/muller/Mullernarrowlightitalic.woff2') format('woff2'), url('../files/fonts/muller/Mullernarrowlightitalic.woff') format('woff'), url('../files/fonts/muller/Mullernarrowlightitalic.ttf') format('truetype');
     font-weight: 300;
     font-style: italic;
 }
 @font-face {
+    font-display: auto;
     font-family: 'Muller Narrow';
     src: local('Muller Narrow ExtraBold'), local('MullerNarrow-ExtraBold'), url('../files/fonts/muller/Mullernarrowextrabold.woff2') format('woff2'), url('../files/fonts/muller/Mullernarrowextrabold.woff') format('woff'), url('../files/fonts/muller/Mullernarrowextrabold.ttf') format('truetype');
     font-weight: 800;
     font-style: normal;
 }
 @font-face {
+    font-display: auto;
     font-family: 'Muller Narrow';
     src: local('Muller Narrow ExtraBold Italic'), local('MullerNarrow-ExtraBoldItalic'), url('../files/fonts/muller/Mullernarrowextrabolditalic.woff2') format('woff2'), url('../files/fonts/muller/Mullernarrowextrabolditalic.woff') format('woff'), url('../files/fonts/muller/Mullernarrowextrabolditalic.ttf') format('truetype');
     font-weight: 800;
