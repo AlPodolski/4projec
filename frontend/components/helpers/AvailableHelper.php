@@ -31,7 +31,7 @@ class AvailableHelper
 
                 $available_service = $classInfo['class_name']::find()->where(['in' , 'id' , \array_unique($available_service_ids)])->asArray();
 
-                if ($findMetroOrRayon) $available_service->andWhere(['city' => $city_id]);
+                //if ($findMetroOrRayon) $available_service->andWhere(['city' => $city_id]);
 
                 return $available_service->all();
 
