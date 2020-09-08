@@ -5,16 +5,19 @@ namespace frontend\modules\sympathy\controllers;
 
 use frontend\modules\sympathy\components\helpers\SympathyHelper;
 use frontend\modules\sympathy\models\SympathySetting;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
 
 class SympathyController extends Controller
 {
+
     public function behaviors()
     {
         return [
             \common\behaviors\isAuth::class,
+            LastVisitTimeUpdate::class,
         ];
     }
 

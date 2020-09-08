@@ -53,6 +53,11 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
                    <?php echo \frontend\components\YearHelper::Year((time() - $post->birthday) / 31556926); ?>
                 </span>
             <?php } ?>
+            <?php if ($post['last_visit_time'] > time() - 3600) : ?>
+
+                <div class="online"></div>
+
+            <?php endif; ?>
         </div>
 
         <div class="city-info">

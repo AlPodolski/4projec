@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use common\models\City;
 use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\components\helpers\QueryParamsHelper;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -13,6 +14,17 @@ use yii\web\Controller;
 
 class FilterController extends Controller
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            LastVisitTimeUpdate::class,
+        ];
+    }
+
     public function actionIndex($city, $param)
     {
 
@@ -34,7 +46,8 @@ class FilterController extends Controller
 
             $posts = $posts->limit(Yii::$app->params['post_limit'])
                 ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
-                ->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
+                ->orderBy(['last_visit_time' => SORT_DESC])
+                ->with('userAvatarRelations');
 
             if (Yii::$app->request->isPost){
 

@@ -9,6 +9,7 @@ use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\forms\SendPhotoForm;
 use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -23,6 +24,7 @@ class ChatController extends Controller
     {
         return [
             \common\behaviors\isAuth::class,
+            LastVisitTimeUpdate::class,
         ];
     }
 

@@ -6,6 +6,7 @@ use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
 use frontend\modules\group\models\forms\addGroupRecordItemForm;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -22,7 +23,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-
+           LastVisitTimeUpdate::class,
         ];
     }
 
@@ -62,7 +63,7 @@ class SiteController extends Controller
     {
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
             ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
-            ->orderBy(['rand()' => SORT_DESC])
+            ->orderBy(['last_visit_time' => SORT_DESC])
             ->with('userAvatarRelations');
 
         $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);

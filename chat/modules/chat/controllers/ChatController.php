@@ -83,6 +83,8 @@ class ChatController extends Controller
 
             if ($model->load(Yii::$app->request->post()) and $model->validate() ){
 
+                Profile::updateAll(['last_visit_time' => time()], ['id' => $model->from_id]);
+
                 $model->save();
 
             }
@@ -93,8 +95,6 @@ class ChatController extends Controller
     public function actionSendPhoto()
     {
         $model = new SendPhotoForm();
-
-        \d(Yii::$app->request->post());
 
         if ($model->load(Yii::$app->request->post())) {
 
@@ -116,8 +116,6 @@ class ChatController extends Controller
                     'from' => $model->user_id,
                     'to' => $model->to,
                 );
-
-                \d($params);
 
                 SocketHelper::send_notification($params);
 

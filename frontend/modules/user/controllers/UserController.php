@@ -5,6 +5,7 @@ use frontend\components\helpers\CashHelper;
 use frontend\models\forms\GetHeartForm;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\forms\PayForm;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
@@ -18,6 +19,7 @@ class UserController extends \yii\web\Controller
     {
         return [
             \common\behaviors\isAuth::class,
+            LastVisitTimeUpdate::class,
         ];
     }
 

@@ -37,6 +37,8 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="preload" href="/files/fonts/HelveticaNeueCyr-Roman.woff" as="font">
+    <link rel="preload" href="/files/fonts/HelveticaNeueCyr-Medium.ttf" as="font">
     <link rel="apple-touch-icon" sizes="57x57" href="/files/favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/files/favicons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/files/favicons/apple-icon-72x72.png">
