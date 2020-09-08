@@ -60,6 +60,8 @@ class ChatController extends Controller
             $userFromDialog = UserDialog::find()->where(['dialog_id' => $id])->andWhere(['in', 'user_id', $fakeUsers])->select('user_id')->asArray()->one();
             $user = Profile::find()->where(['id' => ArrayHelper::getValue($userFromDialog, 'user_id')])->with('userAvatarRelations')->asArray()->one();
 
+            Profile::updateAll(['last_visit_time' => time()], ['id' => $user['id']]);
+
             return $this->renderFile(Yii::getAlias('@app/modules/chat/views/chat/get-dialog.php'), [
                 'dialog_id' => $id,
                 'user' => $user,
