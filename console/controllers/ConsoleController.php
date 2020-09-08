@@ -14,6 +14,7 @@ use frontend\modules\user\models\Profile;
 use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\console\Controller;
+use yii\helpers\ArrayHelper;
 
 class ConsoleController extends Controller
 {
@@ -207,4 +208,14 @@ class ConsoleController extends Controller
         \file_put_contents('result_json.json',\json_encode($result));
 
     }
+
+    public function actionUpdateTime()
+    {
+        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->limit(1000)->asArray()->all();
+
+        $postsIds = ArrayHelper::getColumn($posts, 'id');
+
+        Profile::updateAll(['last_visit_time' => time()], ['in' , 'id' , $postsIds]);
+    }
+
 }
