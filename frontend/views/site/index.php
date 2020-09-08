@@ -69,7 +69,7 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
             </div>
 
 
-            <div class="col-12 col-xl-9 main-banner-wrap">
+            <div class="col-12 col-xl-9 main-banner-wrap margin-bottom-30">
 
 
                 <div class="row ">
@@ -87,7 +87,7 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             </div>
 
-            <div class="col-12 col-xl-12">
+            <div class="col-12 col-xl-12 margin">
 
                 <div class="row">
                     <div class="col-12">
