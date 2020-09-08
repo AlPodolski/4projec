@@ -32,8 +32,6 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
                 <?php if (isset($post->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file']) and $post->userAvatarRelations['file']) : ?>
 
                     <picture>
-                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing_500') ?>"
-                                media="(max-width: 500px)">
                         <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
                         <img loading="lazy" class="img"
                              srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
