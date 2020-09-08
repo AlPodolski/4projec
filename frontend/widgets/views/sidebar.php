@@ -9,10 +9,6 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 ?>
 
 
-<div class="mobile-filter-icon">
-    <i class="fas fa-filter"></i>
-</div>
-
         <div class="sidebar-wrap">
         <div class="user-menu menu-nav">
             <div class="row">

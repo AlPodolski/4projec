@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use common\models\City;
 use frontend\components\helpers\MetaFilterHelper;
 use frontend\components\MetaBuilder;
 use frontend\modules\user\components\helpers\QueryParamsHelper;
@@ -18,6 +19,8 @@ class FilterController extends Controller
         $query_params = QueryParamsHelper::getParams($param, $city);
 
         $posts = '';
+
+        $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);
 
         if (!empty($query_params)){
 
@@ -42,7 +45,8 @@ class FilterController extends Controller
                 foreach ($posts as $post){
 
                     echo $this->renderFile('@app/views/layouts/article.php', [
-                        'post' => $post
+                        'post' => $post,
+                        'cityInfo' => $cityInfo,
                     ]);
 
                 }
@@ -72,6 +76,7 @@ class FilterController extends Controller
             'title' => $title,
             'des' => $des,
             'h1' => $h1,
+            'cityInfo' => $cityInfo,
             'more_posts' => $more_posts,
         ]);
     }

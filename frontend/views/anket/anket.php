@@ -309,6 +309,46 @@ if (!Yii::$app->user->isGuest) {
                                     </div>
                                 </div>
 
+                                <?php if (Yii::$app->user->isGuest) : ?>
+                                    <?php
+                                    $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                                    ?>
+                                <?php else : ?>
+                                    <?php
+                                    $onclick = '';
+                                    ?>
+                                <?php endif; ?>
+
+                                <div class="row" >
+                                    <div class="col-12">
+                                        <div class="position-relative get-heart margin-top-10"
+                                            <?php if ($ava and file_exists(Yii::getAlias('@webroot') . $ava) and $ava) : ?>
+                                                data-img="<?php echo Yii::$app->imageCache->thumbSrc($ava, 'popular'); ?>"
+                                            <?php else : ?>
+                                                data-img="/files/img/nophoto.png"
+                                            <?php endif; ?>
+                                            <?php echo $onclick ?>>
+
+                                            <div class="post_image">
+                                                <?php echo \frontend\widgets\PhotoWidget::widget([
+                                                    'path' => $ava,
+                                                    'size' => 'dialog',
+                                                    'options' => [
+                                                        'class' => 'img',
+                                                        'loading' => 'lazy',
+                                                        'alt' => $group['name'],
+                                                    ],
+                                                ]); ?>
+                                            </div>
+
+                                            <img class="synpathy-img" src="/files/img/iconfinder_heart_216238_3.png">
+
+                                            <span class="get-heart-text"> Занять сердце </span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row my-data-row">
 
                                     <div class="col-12">

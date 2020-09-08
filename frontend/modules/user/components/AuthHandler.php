@@ -39,7 +39,7 @@ class AuthHandler
         if ($auth) {
             /* @var User $user */
             $user = $auth->user;
-            return Yii::$app->user->login($user);
+            return Yii::$app->user->login($user , 3600 * 24 * 30);
         }
         if ($user = $this->createAccount($attributes)) {
             return Yii::$app->user->login($user);

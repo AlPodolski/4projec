@@ -105,7 +105,7 @@ class ImageCache extends Cache
 
 
         // create thumb
-        return $this->createThumb($src, $info['dstPath'], $info['size'], $this->resizeMode);
+        return $this->createThumb($src, $info['dstPath'], $info['size'],  ManipulatorInterface::THUMBNAIL_FLAG_NOCLONE);
     }
 
     /**
@@ -125,7 +125,7 @@ class ImageCache extends Cache
         } else {
             $width = $this->sizes[$size][0];
             $height = $this->sizes[$size][1];
-            $thumb = \frontend\components\Image::thumbnail($srcPath, $width, $height, $mode);
+            $thumb = \frontend\components\Image::thumbnail($srcPath, $width, $height, ManipulatorInterface::THUMBNAIL_OUTBOUND);
         }
 
         if ($thumb && $thumb->save($dstPath))

@@ -199,7 +199,7 @@ a.desc:after {
 }
 
 .wrap{
-    background: #edeef0;
+    background: #fff;
 }
 header{
     background: #fff;
@@ -455,8 +455,9 @@ label{
     margin-left: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    margin-bottom: 20px;
-    padding-bottom: 40px;
+}
+.margin-top-30{
+    margin-top:30px;
 }
 .razd{
     border: 1px solid
@@ -699,17 +700,23 @@ h1{
 }
 .article-anket-wrap{
     background: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     padding-bottom: 15px;
+    box-shadow: 0 0 5px 2px hsla(0, 0%, 80%, 0.44);
 }
 .article-anket-wrap .name{
-    text-align: center;
+    text-align: left;
     margin-top: 13px;
+    padding-left: 10px;
 }
 .like-wrap{
     margin-top: 10px;
+}
+.article-anket-wrap .city-info{
+    padding-left: 10px;
+    color: #b2b2b2;
 }
 .message{
     font-family: Muller, sans-serif;
@@ -753,8 +760,6 @@ h1{
 }
 .main-banner{
     background: #fff;
-    padding: 15px;
-    border-radius: 10px;
     margin-bottom: 15px;
 }
 .main-banner-wrap{
@@ -1550,6 +1555,23 @@ ul li .secodn-menu:hover {
 .no-content-wrap .blue-btn{
     margin: auto;
 }
+.get-heart .img{
+    max-width: 60px;
+}
+.get-heart .post_image{
+    float: none;
+    display: inline-block;
+}
+.get-heart .synpathy-img{
+    max-width: 35px;
+    position: relative;
+    bottom: 8px;
+    left: -20px;
+}
+.get-heart-text{
+    position: relative;
+    top: -30px;
+}
 .show-event{
     width: 10px;
     height: 10px;
@@ -1558,6 +1580,22 @@ ul li .secodn-menu:hover {
     border-radius: 50%;
     top: 0px;
     left: 14px;
+}
+.main-menu{
+    color: rgb(70, 170, 233);
+    font-size: 18px;
+    margin-left: 12px;
+}
+.main-menu:first-child{
+    margin-left: 0px;
+}
+.selected{
+    background: #ecf0f6;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-bottom: 12px;
+    display: inline-block;
+    color: #000;
 }
 .chat{
     min-height: 45vh;
@@ -1907,7 +1945,6 @@ a {
     font-weight: bold;
     font-size: 18px;
     line-height: 18px;
-    color: #486BEF;
 }
 .name .old{
     font-family: Muller, sans-serif;
@@ -2588,6 +2625,22 @@ a {
     outline:none;
     max-width: inherit;
 }
+.jasto-ijut{
+    color: #252d87;
+    padding: 10px;
+    border: 1px solid #00f;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+}
+.start-search{
+    color:#000;
+    text-decoration: underline;
+}
+.another-city-list .city-list{
+    padding:0px;
+    padding-top:10px;
+}
 @media (max-width: 1199px) {
     .add-advert-wrap{
         right: 10px;
@@ -2697,18 +2750,15 @@ a {
     }
     .mobile-filter-icon{
         display:block;
-        position: fixed;
-        right: 0px;
-        z-index: 3;
-        width: 40px;
-        height: 40px;
         background: #fff;
         text-align: center;
         line-height: 40px;
-        box-shadow: 1px 1px 3px #55555530;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
-        top: 100px;
+        float: right;
+        cursor: pointer;
+        color: #46aae9;
+        font-size: 20px;
     }
     .banner-menu-list li a {
         font-size: 14px;
@@ -2852,6 +2902,9 @@ a {
     }
 }
 @media (max-width: 767px) {
+    .name , .name .old{
+        font-size: 14px;
+    }
     .popular-group-side-wrap{
         margin-top: 15px;
         padding-right: 15px;
@@ -2944,5 +2997,6 @@ a {
     }
     .article-anket-wrap .img-wrap, .popular-anket-wrap .img-wrap {
         max-height: initial;
+        min-height: 150px;
     }
 }

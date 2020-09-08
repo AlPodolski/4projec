@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\City;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
@@ -61,7 +62,10 @@ class SiteController extends Controller
     {
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
             ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
-            ->orderBy(['rand()' => SORT_DESC])->with('userAvatarRelations');
+            ->orderBy(['fake' => SORT_DESC, 'sort' => SORT_DESC])
+            ->with('userAvatarRelations');
+
+        $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);
 
         if (Yii::$app->request->isPost){
 
@@ -72,7 +76,9 @@ class SiteController extends Controller
             foreach ($posts as $post){
 
                 echo $this->renderFile('@app/views/layouts/article.php', [
-                    'post' => $post
+                    'post' => $post,
+                    'cityInfo' => $cityInfo,
+                    'cssClass' => 'col-6 col-sm-6 col-md-4 col-lg-3',
                 ]);
 
             }
@@ -89,6 +95,8 @@ class SiteController extends Controller
 
         $yandex_meta = Meta::find()->where(['city' => $city])->asArray()->one();
 
+        Yii::$app->params['h1'] = $h1;
+
         return $this->render('index', [
             'city' => $city,
             'posts' => $posts,
@@ -96,6 +104,7 @@ class SiteController extends Controller
             'des' => $des,
             'h1' => $h1,
             'yandex_meta' => $yandex_meta,
+            'cityInfo' => $cityInfo,
         ]);
     }
 

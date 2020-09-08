@@ -4,6 +4,7 @@
 /* @var $title string */
 /* @var $h1 string */
 /* @var $des string */
+/* @var $cityInfo array */
 
 /* @var $city string */
 
@@ -21,7 +22,7 @@ Yii::$app->view->registerMetaTag([
 
 ?>
 
-<div class="site-index">
+<div class="site-index margin-top-30">
 
     <div class="body-content">
 
@@ -58,7 +59,8 @@ Yii::$app->view->registerMetaTag([
                         <?php foreach ($posts as $post) : ?>
 
                             <?php echo $this->renderFile('@app/views/layouts/article.php', [
-                                'post' => $post
+                                'post' => $post,
+                                    'cityInfo' => $cityInfo,
                             ]) ?>
 
                         <?php endforeach; ?>

@@ -1,6 +1,8 @@
 <?php
 
 namespace frontend\modules\user\controllers;
+use frontend\components\helpers\CashHelper;
+use frontend\models\forms\GetHeartForm;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\models\forms\PayForm;
@@ -81,6 +83,46 @@ class UserController extends \yii\web\Controller
             'city' => $city,
             'payForm' => $payForm,
         ]);
+    }
+
+    public function actionBuyHeart()
+    {
+        $model = new GetHeartForm();
+
+        if (!Yii::$app->user->isGuest and $model->load(Yii::$app->request->post())){
+
+            if (!CashHelper::enoughCash(Yii::$app->params['get_heart_status_week_price'], Yii::$app->user->identity['cash'])){
+
+                Yii::$app->session->setFlash('warning', 'Недостаточно средств для покупки');
+
+                return $this->redirect(Yii::$app->request->referrer);
+
+            }
+
+            $transaction = Yii::$app->db->beginTransaction();
+
+            if ($model->save() and CashHelper::babloSpiz(Yii::$app->user->identity, Yii::$app->params['get_heart_status_week_price'] )){
+
+                $transaction->commit();
+
+                Yii::$app->session->setFlash('warning', 'Сердце занято');
+
+                return $this->redirect(Yii::$app->request->referrer);
+
+            }else{
+
+                $transaction->rollBack();
+
+                Yii::$app->session->setFlash('warning', 'Ошибка');
+
+                return $this->redirect(Yii::$app->request->referrer);
+
+            }
+
+        }
+
+        return $this->goHome();
+
     }
 
 }

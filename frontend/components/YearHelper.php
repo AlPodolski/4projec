@@ -23,7 +23,7 @@ class YearHelper
         ];
 
         foreach ($years as $key => $value){
-            if (\in_array($year, $value)) return $year.' '.$key;
+            if (\in_array($year, $value)) return $year.' ';
         }
 
         return $year;

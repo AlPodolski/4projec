@@ -9,6 +9,8 @@
 
         <ul class="dialog_item_ul">
 
+            <?php echo count($dialogs)?>
+
             <?php foreach ($dialogs as $dialog) : ?>
 
             <?php if ($dialog) : ?>
@@ -26,7 +28,7 @@
 
                                     $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog->companion['author']['avatarRelation']['file'];
 
-                                    echo Html::img($src, ['width' => '50px', 'class' => 'img']);
+                                    echo Html::img($src, ['width' => '50px', 'class' => 'img', 'loading' => 'lazy']);
 
                                 ?>
 
@@ -48,6 +50,18 @@
                                             <a target="_blank" href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/user/chat/<?php echo $dialog['dialog_id'] ?>">
                                                 <span class="nim-dialog--who">
                                                     <span class="im-prebody">
+
+                                                         <?php if ( $dialog['lastMessage']['from'] == $dialog['user_id']) : ?>
+
+                                                             <?php
+
+                                                             $src = 'http://msk.'.Yii::$app->params['site_name'] .$dialog['lastMessage']['author']['avatarRelation']['file'];
+
+                                                             echo Html::img($src, ['width' => '50px', 'class' => 'img', 'loading' => 'lazy']);
+
+                                                             ?>
+
+                                                         <?php endif; ?>
 
                                                     </span>
                                                 </span>

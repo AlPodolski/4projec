@@ -498,9 +498,10 @@ $(document).ready(function () {
 
     });
 
-    $('.mobile-filter-icon').click(function () {
+    $('.open-filter').click(function () {
         $('.sidebar-wrap').toggle(100);
     });
+
     $('.mobile-icon').click(function () {
 
         $('.mobile-menu').animate({

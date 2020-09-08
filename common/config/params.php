@@ -17,4 +17,5 @@ return [
     'dialog_day_limit' => 10,
     'default_with_img' => 1024,
     'dialog_day_key' => 'dialog_day',
+    'get_heart_status_week_price' => 75,
 ];
