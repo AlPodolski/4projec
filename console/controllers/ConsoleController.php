@@ -229,33 +229,42 @@ class ConsoleController extends Controller
 
             $dialogCount = UserDialog::find()->where(['user_id' => $profile['id']])->count();
 
-            if ($dialogCount < 3){
+            if ($dialogCount){
 
                 $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
-
 
                 if ($userPol = UserPol::find()->where(['user_id' => $profile['id']])->asArray()->one()) {
 
                     $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
                         ->andWhere(['city_id' => $city['id']])
                         ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
-                        ->limit(1)
+                        ->asArray()
+                        ->all();
+
+                    $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
                         ->orderBy('rand()')
                         ->asArray()
+                        ->andWhere(['fake' => 0])
+                        ->limit(1)
                         ->one();
 
-                    $this->sendMessage($companionProfileId['user_id'], $profile['id'] );
+                    $this->sendMessage($fromProfile['id'], $profile['id'] );
 
                 }else{
 
                     $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
                         ->andWhere(['city_id' => $city['id']])
-                        ->limit(1)
+                        ->asArray()
+                        ->all();
+
+                    $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
                         ->orderBy('rand()')
                         ->asArray()
+                        ->andWhere(['fake' => 0])
+                        ->limit(1)
                         ->one();
 
-                    $this->sendMessage($companionProfileId['user_id'], $profile['id'] );
+                    $this->sendMessage($fromProfile['id'], $profile['id'] );
 
                 }
 
