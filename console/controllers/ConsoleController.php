@@ -3,9 +3,11 @@
 
 namespace console\controllers;
 
+use chat\modules\chat\models\Message;
 use common\models\City;
 use common\models\FilterParams;
 use frontend\models\UserPol;
+use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\components\helpers\FriendsHelper;
@@ -274,19 +276,69 @@ class ConsoleController extends Controller
 
     }
 
-    public function sendMessage($from, $to)
+    public function actionWriteAnswer()
+    {
+        $messages = Message::find()->where(['status' => 0])->andWhere(['>', 'created_at', \time() - 1800])->select('chat_id , from, message ,id')->asArray()->all();
+
+        foreach ($messages as $message){
+
+            if (!Message::find()->where(['chat_id' => $message['chat_id']])->andWhere(['<>', 'from', $message['from']])->count() ){
+
+                $userInfo = UserDialog::find()->where(['dialog_id' => $message['chat_id']])->andWhere(['<>', 'user_id', $message['from']])
+                ->asArray()->with('user')->one();
+
+                if ($userInfo['user']['fake'] == 0 ){
+
+                    $session_id = \md5($message['from'].$userInfo['id']);
+                    $text = $message['message'];
+
+                    $data = array(
+                        'session_id' => $session_id,
+                        'text'       => $text,
+                    );
+
+                    if ($curl = \curl_init()) {
+                        \curl_setopt($curl, CURLOPT_URL, 'https://gdialog.prostitutki-13.com/message');
+                        \curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                        \curl_setopt($curl, CURLOPT_POST, true);
+                        \curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                        $out = \curl_exec($curl);
+                        \curl_close($curl);
+                        if (strlen($out) < 500) {
+
+                            $answerText = $out;
+
+                            GetDialogsHelper::serRead($message['chat_id'], $userInfo['user']['id']);
+
+                            $this->sendMessage($userInfo['user']['id'] , '', $message['chat_id'] , $answerText );
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    }
+
+    public function sendMessage($from, $to , $chat_id = false, $text = false)
     {
 
         $phrases = include Yii::getAlias('@app/files/phrases_to_start_a_dialogue.php');
 
-        if (\rand(0, 2) != 2) $text = 'Привет';
-        else $text = $phrases[\array_rand($phrases)];
+        if (!$text){
+            if (\rand(0, 2) != 2) $text = 'Привет';
+            else $text = $phrases[\array_rand($phrases)];
+        }
 
         $model = new SendMessageForm();
 
         $model->from_id = $from;
         $model->created_at = \time();
         $model->user_id = $to;
+        if ($chat_id) $model->chat_id = $chat_id;
         $model->text = $text;
 
         $model->save();
