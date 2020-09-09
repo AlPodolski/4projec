@@ -158,6 +158,17 @@ if (!empty($wallItems)) : ?>
                     <div class="post_header">
                         <?php
 
+                        $group = Yii::$app->cache->get(Yii::$app->params['group_info'].'_'.$item['user_id']);
+
+                        if ($group === false) {
+                            // $data нет в кэше, вычисляем заново
+                            $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['parentWrite']['user_id']])
+                                ->with('avatar')
+                                ->asArray()
+                                ->one();
+                            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                            Yii::$app->cache->set(Yii::$app->params['group_info'].'_'.$item['user_id'] , $group);
+                        }
 
                         ?>
 
