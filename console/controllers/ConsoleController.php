@@ -229,7 +229,7 @@ class ConsoleController extends Controller
 
             $dialogCount = UserDialog::find()->where(['user_id' => $profile['id']])->count();
 
-            if ($dialogCount){
+            if ($dialogCount < 3){
 
                 $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
 
