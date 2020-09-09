@@ -6,6 +6,8 @@ namespace console\controllers;
 use common\models\City;
 use common\models\FilterParams;
 use frontend\models\UserPol;
+use frontend\modules\chat\models\forms\SendMessageForm;
+use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use frontend\modules\user\models\Friends;
@@ -216,6 +218,69 @@ class ConsoleController extends Controller
         $postsIds = ArrayHelper::getColumn($posts, 'id');
 
         Profile::updateAll(['last_visit_time' => time()], ['in' , 'id' , $postsIds]);
+    }
+
+    public function actionStartDialog()
+    {
+
+        $profiles = Profile::find()->where(['fake' => 1])->asArray()->all();
+
+        foreach ($profiles as $profile){
+
+            $dialogCount = UserDialog::find()->where(['user_id' => $profile['id']])->count();
+
+            if ($dialogCount < 3){
+
+                $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
+
+
+                if ($userPol = UserPol::find()->where(['user_id' => $profile['id']])->asArray()->one()) {
+
+                    $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
+                        ->andWhere(['city_id' => $city['id']])
+                        ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
+                        ->limit(1)
+                        ->orderBy('rand()')
+                        ->asArray()
+                        ->one();
+
+                    $this->sendMessage($companionProfileId['user_id'], $profile['id'] );
+
+                }else{
+
+                    $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
+                        ->andWhere(['city_id' => $city['id']])
+                        ->limit(1)
+                        ->orderBy('rand()')
+                        ->asArray()
+                        ->one();
+
+                    $this->sendMessage($companionProfileId['user_id'], $profile['id'] );
+
+                }
+
+            }
+
+        }
+
+    }
+
+    public function sendMessage($from, $to)
+    {
+
+        $phrases = include Yii::getAlias('@app/files/phrases_to_start_a_dialogue.php');
+
+        if (\rand(0, 2) != 2) $text = 'Привет';
+        else $text = $phrases[\array_rand($phrases)];
+
+        $model = new SendMessageForm();
+
+        $model->from_id = $from;
+        $model->created_at = \time();
+        $model->user_id = $to;
+        $model->text = $text;
+
+        $model->save();
     }
 
 }
