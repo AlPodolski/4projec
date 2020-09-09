@@ -129,7 +129,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
             'id' => 'send-message-photo-form',
             'enableAjaxValidation' => false,
             'enableClientValidation' => false,
-            'options' => ['class' => 'form-horizontal'],
+            'options' => ['class' => 'form-horizontal' , 'onchange' => 'send_message_photo()'],
         ]) ?>
         <?= $photoForm->field($photoModel, 'user_id',['options' => ['class' => 'd-none']])
             ->hiddenInput(['value' => $user['id']])->label(false) ?>

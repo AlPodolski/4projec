@@ -463,13 +463,7 @@ $( ".wall-group-send-btn" ).click(function() {
 
 });
 
-$('#send-message-photo-form').on('change', function(){
-    /*    files = this.files[0];
-
-        var form_data = new FormData();
-        form_data.append('file', files);*/
-
-
+function send_message_photo(){
     var formData = new FormData($("#send-message-photo-form")[0]);
     $.ajax({
         url: '/chat/send/send-photo',
@@ -504,8 +498,9 @@ $('#send-message-photo-form').on('change', function(){
         contentType: false,
         processData: false
     });
+}
 
-});
+
 function by_vip_for_photo(){
 
     $('#modal-buy-vip-for-photo').modal('toggle');
