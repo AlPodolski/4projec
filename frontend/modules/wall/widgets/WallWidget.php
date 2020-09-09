@@ -58,11 +58,18 @@ class WallWidget extends Widget
 
                     $class = $wallItem['parentWrite']['class'];
 
-                    $wallItem['parentWrite']['author'] = $class::find()
-                        ->where(['id' => $wallItem['parentWrite']['user_id']])
-                        ->with('avatar')
-                        ->asArray()
-                        ->one();
+                    $wallItem['parentWrite']['author'] = Yii::$app->cache->get(Yii::$app->params['parent_write_key'].'_'.$class.'_'.$wallItem['parentWrite']['user_id']);
+
+                    if ($wallItem['parentWrite']['author'] === false) {
+                        // $data нет в кэше, вычисляем заново
+                        $wallItem['parentWrite']['author'] = $class::find()
+                            ->where(['id' => $wallItem['parentWrite']['user_id']])
+                            ->with('avatar')
+                            ->asArray()
+                            ->one();
+                        // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                        Yii::$app->cache->set(Yii::$app->params['parent_write_key'].'_'.$class.'_'.$wallItem['parentWrite']['user_id'] , $wallItem['parentWrite']['author']);
+                    }
 
                 }
 

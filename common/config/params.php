@@ -13,6 +13,7 @@ return [
     'users_whom_like_key' => 'users_whom_like_key',
     'users_who_skip_key' => 'users_who_skip_key',
     'group_info' => 'users_who_skip_key',
+    'parent_write_key' => 'parent_write',
     'group_subscribe_key' => 'group_subscribe',
     'user_group_subscribe_key' => 'user_group_subscribe',
     'dialog_day_limit' => 10,
