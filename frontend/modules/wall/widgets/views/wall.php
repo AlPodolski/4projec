@@ -5,7 +5,8 @@
 
 /* @var $this \yii\web\View */
 
-use yii\widgets\ActiveForm;
+    use backend\models\MetaTemplate;
+    use yii\widgets\ActiveForm;
 use frontend\models\forms\AddCommentForm;
 use frontend\modules\wall\components\LikeHelper;
 use frontend\widgets\CommentsFormWidget;
@@ -39,10 +40,21 @@ if (!empty($wallItems)) : ?>
 
                         <?php
 
-                        $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['user_id']])
-                            ->with('avatar')
-                            ->asArray()
-                            ->one();
+                        //group_info
+
+                        $group = Yii::$app->cache->get(Yii::$app->params['group_info'].'_'.$item['user_id']);
+
+                        if ($group === false) {
+                            // $data нет в кэше, вычисляем заново
+                            $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['user_id']])
+                                ->with('avatar')
+                                ->asArray()
+                                ->one();
+                            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                            Yii::$app->cache->set(Yii::$app->params['group_info'].'_'.$item['user_id'] , $group);
+                        }
+
+
                         ?>
 
                         <a class="post_image" href="/group/<?php echo $group['id'] ?>">
@@ -146,10 +158,7 @@ if (!empty($wallItems)) : ?>
                     <div class="post_header">
                         <?php
 
-                        $group = \frontend\modules\group\models\Group::find()->where(['id' => $item['parentWrite']['user_id']])
-                            ->with('avatar')
-                            ->asArray()
-                            ->one();
+
                         ?>
 
                         <a class="post_image" href="/group/<?php echo $group['id'] ?>">
