@@ -62,7 +62,7 @@ class AnketController extends Controller
 
         if ($cityInfo === false) {
             // $data нет в кэше, вычисляем заново
-            $cityInfo = City::find()->where(['url' => $city])->asArray()->one();
+            $cityInfo = City::find()->where(['url' => $model['city']])->asArray()->one();
 
             Yii::$app->cache->set(Yii::$app->params['cache_name']['city_info'].$model['city'], $cityInfo);
 
