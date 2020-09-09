@@ -278,7 +278,7 @@ class ConsoleController extends Controller
 
     public function actionWriteAnswer()
     {
-        $messages = Message::find()->where(['status' => 0])->andWhere(['>', 'created_at', \time() - 1800])->select('chat_id , from, message ,id')->asArray()->all();
+        $messages = Message::find()->where(['status' => 0])->andWhere(['>', 'created_at', \time() - 310])->select('chat_id , from, message ,id')->asArray()->all();
 
         foreach ($messages as $message){
 
