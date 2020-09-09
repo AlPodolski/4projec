@@ -329,7 +329,7 @@ class ConsoleController extends Controller
         $phrases = include Yii::getAlias('@app/files/phrases_to_start_a_dialogue.php');
 
         if (!$text){
-            if (\rand(0, 2) != 2) $text = 'Привет';
+            if (\rand(0, 3) != 2) $text = 'Привет';
             else $text = $phrases[\array_rand($phrases)];
         }
 
