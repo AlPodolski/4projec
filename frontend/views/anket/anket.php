@@ -312,14 +312,23 @@ if (!Yii::$app->user->isGuest) {
                                 <?php if (Yii::$app->user->isGuest) : ?>
                                     <?php
                                     $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
+                                    $attributes = '';
                                     ?>
                                 <?php else : ?>
                                     <?php
-                                    $onclick = '';
+
+                                    if(Yii::$app->user->id != $model['id']){
+
+                                        $attributes = 'data-buyer="'.Yii::$app->user->id.'" ';
+                                        $attributes .= ' data-userWhoHeartIsBuy="'.$model['id'].'" ';
+                                        $onclick = 'onclick="get_take_heart_form(this)"';
+
+                                    }else $onclick = '';
+
                                     ?>
                                 <?php endif; ?>
 
-                                <div class="row d-none" >
+                                <div class="row" >
                                     <div class="col-12">
                                         <div class="position-relative get-heart margin-top-10"
                                             <?php if ($ava and file_exists(Yii::getAlias('@webroot') . $ava) and $ava) : ?>
@@ -327,7 +336,7 @@ if (!Yii::$app->user->isGuest) {
                                             <?php else : ?>
                                                 data-img="/files/img/nophoto.png"
                                             <?php endif; ?>
-                                            <?php echo $onclick ?>>
+                                            <?php echo $onclick ?> <?php echo $attributes ?>>
 
                                             <div class="post_image">
                                                 <?php echo \frontend\widgets\PhotoWidget::widget([
@@ -336,7 +345,7 @@ if (!Yii::$app->user->isGuest) {
                                                     'options' => [
                                                         'class' => 'img',
                                                         'loading' => 'lazy',
-                                                        'alt' => $group['name'],
+                                                        'alt' => $model['username'],
                                                     ],
                                                 ]); ?>
                                             </div>

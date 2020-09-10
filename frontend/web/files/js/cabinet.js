@@ -500,9 +500,29 @@ function send_message_photo(){
     });
 }
 
+function get_take_heart_form(object){
+
+    var userWhoHeartIsBuy = $(object).attr('data-userWhoHeartIsBuy');
+
+    $.ajax({
+        url: '/user/heart/get-form',
+        type: 'POST',
+        data: 'userWhoHeartIsBuy='+userWhoHeartIsBuy,
+        success: function (data) {
+
+            $('#modal-take-heart .get-heart-form-content').html(data);
+
+            $('#modal-take-heart').modal('toggle');
+
+        },
+    });
+
+
+
+}
 
 function by_vip_for_photo(){
 
-    $('#modal-buy-vip-for-photo').modal('toggle');
+
 
 }
