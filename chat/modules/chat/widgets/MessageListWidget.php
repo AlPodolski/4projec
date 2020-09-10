@@ -20,14 +20,8 @@ class MessageListWidget extends Widget
 
         $dialogs = GetDialogsHelper::getDialogs($this->user_id);
 
-        $result = array();
-
-        foreach ($dialogs as &$dialog){
-            if ($dialog['lastMessage']['status'] == 0 and $dialog['lastMessage']['from'] != $dialog['user_id']) $result[] =  $dialog;
-        }
-
         return $this->render('dialog_list', [
-            'dialogs' => $result,
+            'dialogs' => $dialogs,
             'user_id' => $this->user_id,
         ]);
     }

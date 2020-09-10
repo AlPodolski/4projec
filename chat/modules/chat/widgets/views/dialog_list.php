@@ -5,15 +5,17 @@
 <div class="dialog_list">
 
 
-        <?php if (!empty($dialogs)) : ?>
+        <?php if (!empty($dialogs) ) : ?>
+
+        <?php $i = 0; ?>
 
         <ul class="dialog_item_ul">
 
-            <?php echo count($dialogs)?>
-
             <?php foreach ($dialogs as $dialog) : ?>
 
-            <?php if ($dialog) : ?>
+            <?php if ($dialog and $dialog['lastMessage']['status'] == 0 and $dialog['lastMessage']['from'] != $dialog['user_id']) : ?>
+
+                <?php $i++; ?>
 
                 <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> <?php if ($dialog->lastMessage['status'] == 0 ) echo 'not-read-dialog'; ?> ">
                 <div class="row">
@@ -113,6 +115,8 @@
         <?php endforeach; ?>
 
     </ul>
+
+        <?php echo $i ?>
 
         <?php else : ?>
            <div class="col-12">
