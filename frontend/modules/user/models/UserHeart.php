@@ -44,4 +44,10 @@ class UserHeart extends \yii\db\ActiveRecord
             'timestamp' => 'Timestamp',
         ];
     }
+
+    public function getBuyer()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'who'])->with('avatar');
+    }
+
 }

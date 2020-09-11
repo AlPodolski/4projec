@@ -13,6 +13,7 @@ use frontend\modules\user\components\helpers\FriendsRequestHelper;
 /* @var $model Profile */
 /* @var $group array */
 /* @var $userFriends array */
+/* @var $userHeart array */
 
 $this->registerJsFile('/files/js/lightgallery-all.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/owl.carousel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
@@ -309,12 +310,45 @@ if (!Yii::$app->user->isGuest) {
                                     </div>
                                 </div>
 
+                                <?php if ($userHeart) : ?>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="position-relative get-heart margin-top-10">
+
+                                                <a href="/user/<?php echo $userHeart['who']?>">
+
+                                                <div class="post_image">
+                                                    <?php echo \frontend\widgets\PhotoWidget::widget([
+                                                        'path' => $userHeart['buyer']['avatar']['file'],
+                                                        'size' => 'dialog',
+                                                        'options' => [
+                                                            'class' => 'img',
+                                                            'loading' => 'lazy',
+                                                            'alt' => $userHeart['buyer']['username'],
+                                                        ],
+                                                    ]); ?>
+                                                </div>
+
+                                                </a>
+
+                                                <img class="synpathy-img" src="/files/img/iconfinder_heart_216238_3.png">
+
+                                                <span class="get-heart-text"> Сердце занято </span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <?php else : ?>
+
                                 <?php if (Yii::$app->user->isGuest) : ?>
                                     <?php
                                     $onclick = 'data-toggle="modal" data-target="#modal-in" aria-hidden="true"';
                                     $attributes = '';
                                     ?>
                                 <?php else : ?>
+
                                     <?php
 
                                     if(Yii::$app->user->id != $model['id']){
@@ -338,9 +372,11 @@ if (!Yii::$app->user->isGuest) {
                                             <?php endif; ?>
                                             <?php echo $onclick ?> <?php echo $attributes ?>>
 
+                                            <?php $buyerAvatar = Photo::getAvatar(Yii::$app->user->id); ?>
+
                                             <div class="post_image">
                                                 <?php echo \frontend\widgets\PhotoWidget::widget([
-                                                    'path' => $ava,
+                                                    'path' => $buyerAvatar['file'],
                                                     'size' => 'dialog',
                                                     'options' => [
                                                         'class' => 'img',
@@ -357,6 +393,8 @@ if (!Yii::$app->user->isGuest) {
                                         </div>
                                     </div>
                                 </div>
+
+                                <?php endif; ?>
 
                                 <div class="row my-data-row">
 

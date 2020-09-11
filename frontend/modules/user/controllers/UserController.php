@@ -9,6 +9,7 @@ use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\forms\PayForm;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
+use frontend\modules\user\models\UserHeart;
 use Yii;
 
 
@@ -41,11 +42,14 @@ class UserController extends \yii\web\Controller
 
         $group = Group::find()->where(['in', 'id', $userGroupId])->limit(6)->with('avatar')->asArray()->all();
 
+        $userHeart = UserHeart::find()->where(['whom' => $model->id])->with('buyer')->asArray()->one();
+
         return $this->render('index', [
             'model' => $model,
             'city' => $city,
             'userFriends' => $userFriends,
             'group' => $group,
+            'userHeart' => $userHeart,
         ]);
 
     }

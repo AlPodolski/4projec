@@ -45,6 +45,7 @@ class HeartController extends Controller
         if ($model->load(Yii::$app->request->post())){
 
             $model->buyer = Yii::$app->user->id;
+            $model->timestamp = \time();
 
             //buy_heart_cost
 

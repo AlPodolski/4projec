@@ -8,6 +8,7 @@ use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
+use frontend\modules\user\models\UserHeart;
 use Yii;
 use yii\web\Controller;
 
@@ -72,12 +73,15 @@ class AnketController extends Controller
 
         $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->limit(6)->asArray()->all();
 
+        $userHeart = UserHeart::find()->where(['whom' => $model->id])->with('buyer')->asArray()->one();
+
         return $this->render('single' , [
             'model' => $model,
             'city' => $city,
             'cityInfo' => $cityInfo,
             'userFriends' => $userFriends,
             'group' => $group,
+            'userHeart' => $userHeart,
         ]);
 
     }

@@ -4,6 +4,7 @@
 /* @var $model frontend\modules\user\models\Profile */
 /* @var $cityInfo array */
 /* @var $group array */
+/* @var $userHeart array */
 
 /* @var $userFriends array */
 
@@ -41,6 +42,7 @@ $this->registerMetaTag([
                 'model' => $model,
                 'group' => $group,
                 'userFriends' => $userFriends,
+                'userHeart' => $userHeart,
             ]
         ) ?>
 

@@ -2,6 +2,7 @@
 /* @var $this yii\web\View */
 /* @var $photo Photo */
 /* @var $userFriends array */
+/* @var $userHeart array */
 use frontend\modules\user\models\Photo;
 use frontend\widgets\UserSideBarWidget;
 use frontend\widgets\SidebarWidget;
@@ -34,6 +35,7 @@ $this->title = $model->username;
                     'model' => $model,
                     'city' => $city,
                     'userFriends' => $userFriends,
+                    '$userHeart' => $userHeart,
                 ]
             ) ?>
 
