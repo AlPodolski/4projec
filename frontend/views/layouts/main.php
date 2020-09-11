@@ -507,6 +507,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
                         <ul>
                             <li>Не ограничено количество диалогов</li>
+                            <li>Диалог с Вами всегда вверху и выделен ВИП иконкой</li>
                             <li>Отправка фото личным сообщением</li>
                         </ul>
 
