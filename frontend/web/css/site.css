@@ -2730,6 +2730,11 @@ a {
     left: 15px;
     position: relative;
 }
+.nim-dialog--content .vip-icon-wrap{
+    position: absolute;
+    top: 22px;
+    right: 30px;
+}
 #messageModal .limit-dialog-block , .dialog .limit-dialog-block{
     position: absolute;
     top: 0px;
