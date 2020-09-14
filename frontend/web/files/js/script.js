@@ -700,3 +700,9 @@ function getFeedBackForm(){
     });
 
 }
+
+function by_vip_for_photo(){
+
+    $('#modal-buy-vip-for-photo').modal('toggle');
+
+}
