@@ -1710,7 +1710,9 @@ ul li .secodn-menu:hover {
     z-index: 1;
 }
 #modal-buy-vip-for-photo .close{
-    padding-right:15px
+    padding-right:15px;
+    z-index: 1;
+    position: relative;
 }
 .send-message-photo #send-message-photo-input{
     display: none;
