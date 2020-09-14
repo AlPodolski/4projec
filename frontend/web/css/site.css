@@ -2737,7 +2737,7 @@ a {
 }
 .message-event{
     max-width: 350px;
-    background: hsla(0, 0%, 0%, 0.67);
+    background: hsla(0, 0%, 0%, 0.85);
     padding: 15px 15px;
     border-radius: 15px;
     color: #fff;
@@ -2866,6 +2866,10 @@ a {
     position: absolute;
     right: 15px;
     top: 10px;
+}
+.message-event .post_image{
+    max-width: 50px;
+    max-height: 50px;
 }
 @media (max-width: 1199px) {
     .BottomMenu__fixed , .site-index .start-search{
