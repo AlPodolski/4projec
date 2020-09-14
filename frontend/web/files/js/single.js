@@ -159,3 +159,49 @@ function deleteWallItem(object){
         },
     });
 }
+
+function close_message_event(object){
+
+    $(object).parent().remove();
+
+    $.ajax({
+        url: '/invitation/close',
+        type: 'POST',
+        success: function () {
+
+            $(object).parent().remove();
+
+        },
+    });
+
+}
+
+function get_invitation(){
+
+    if($('.message-event').length){
+
+        var image = $('.post-photo img').attr('srcset');
+
+        $('.message-event .img').attr('srcset', image);
+
+        $('.post-photo ')
+
+        message_sound();
+
+        $('.message-event').removeClass('d-none');
+
+    }
+
+}
+
+$(function() {
+
+    setTimeout(get_invitation, 5000);
+
+});
+
+function get_invitation_message_form(){
+
+    $('#modal-in').modal('toggle');
+
+}

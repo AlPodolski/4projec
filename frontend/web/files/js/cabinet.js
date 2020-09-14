@@ -293,11 +293,6 @@ function send_present(object) {
     });
 }
 
-function message_sound(){
-    var audio = new Audio( '/files/audio/alarm-clock-button-click_z17d0vno.mp3');
-    audio.play();
-}
-
 chat.onclose = function(event) {
     console.log(event);
     if (event.wasClean) {
@@ -516,13 +511,4 @@ function get_take_heart_form(object){
 
         },
     });
-
-
-
-}
-
-function by_vip_for_photo(){
-
-
-
 }

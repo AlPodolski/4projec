@@ -6,6 +6,11 @@ function showPhone(object) {
 
 }
 
+function message_sound(){
+    var audio = new Audio( '/files/audio/alarm-clock-button-click_z17d0vno.mp3');
+    audio.play();
+}
+
 function get_all_user_presents(object) {
 
     var id = $(object).attr('data-id');

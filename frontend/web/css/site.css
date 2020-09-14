@@ -2735,6 +2735,23 @@ a {
     top: 22px;
     right: 30px;
 }
+.message-event{
+    max-width: 350px;
+    background: hsla(0, 0%, 0%, 0.67);
+    padding: 15px 15px;
+    border-radius: 15px;
+    color: #fff;
+    position: fixed;
+    bottom: 10px;
+    z-index: 1;
+    left: 10px;
+}
+.message-event .new-message-text{
+    margin-bottom: 5px;
+}
+.message-event .message-text{
+    margin-top: 10px;
+}
 #messageModal .limit-dialog-block , .dialog .limit-dialog-block{
     position: absolute;
     top: 0px;
@@ -2843,6 +2860,12 @@ a {
 .another-city-list .city-list{
     padding:0px;
     padding-top:10px;
+}
+.close-message{
+    cursor:pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
 }
 @media (max-width: 1199px) {
     .BottomMenu__fixed , .site-index .start-search{

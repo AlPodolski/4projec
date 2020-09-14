@@ -26,7 +26,7 @@ $this->registerCssFile('/css/owl.theme.default.min.css');
 
 SlickAsset::register($this);
 
-$this->registerJsFile('/files/js/single.js', ['depends' => [SlickAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=1', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
@@ -54,6 +54,38 @@ if (!Yii::$app->user->isGuest) {
 ?>
 
 <div class="anket">
+
+    <?php
+
+    $cookies = Yii::$app->request->cookies;
+
+    if ( Yii::$app->user->isGuest and ($cookie = $cookies->get('invitation-message') === null)) : ?>
+
+    <div class="message-event d-none" >
+        <div class="row">
+            <div class="col-12 new-message-text" onclick="get_invitation_message_form(this)">
+                Новое сообщение
+            </div>
+            <div class="col-3" onclick="get_invitation_message_form(this)">
+                <a class="post_image">
+                    <img loading="lazy" class="img" srcset="" alt="">
+                </a>
+            </div>
+            <div class="col-9" onclick="get_invitation_message_form(this)">
+                <div class="row">
+                    <div class="col-12 message-text">
+                        Привет...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="close-message" onclick="close_message_event(this)">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+
+    <?php endif; ?>
+
     <div class="row">
 
         <div class="col-12">
@@ -93,7 +125,7 @@ if (!Yii::$app->user->isGuest) {
                                                 <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>"
                                                         media="(max-width: 767px)">
                                                 <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>">
-                                                <img loading="lazy" class="img"
+                                                <img loading="lazy" class="img "
                                                      srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>"
                                                      alt="">
 
@@ -102,7 +134,7 @@ if (!Yii::$app->user->isGuest) {
                                         <?php else : ?>
 
                                             <div class="img-wrap d-flex no-photo">
-                                                <img src="/files/img/nophoto.png" alt="">
+                                                <img srcset="/files/img/nophoto.png" alt="">
                                             </div>
 
                                         <?php endif; ?>
@@ -114,7 +146,7 @@ if (!Yii::$app->user->isGuest) {
                             <?php else : ?>
 
                                 <div class="img-wrap d-flex no-photo">
-                                    <img src="/files/img/nophoto.png" alt="">
+                                    <img srcset="/files/img/nophoto.png" alt="">
                                 </div>
 
                             <?php endif; ?>
@@ -1157,3 +1189,5 @@ if (!Yii::$app->user->isGuest) {
         </div>
     </div>
 </div>
+
+
