@@ -341,7 +341,7 @@ class ConsoleController extends Controller
                  $event->status = Events::STATUS_NOT_READ;
                  $event->user_id = $user['id'];
                  $event->from = $randUser['id'];
-                 $event->timestamp = \time() - (300 + \rand(0, 300));
+                 $event->timestamp = \time() - (60 + \rand(0, 900));
 
                  $event->save();
 
