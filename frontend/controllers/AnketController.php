@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use common\models\City;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\components\helpers\GuestHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use frontend\modules\user\models\UserHeart;
@@ -50,6 +51,12 @@ class AnketController extends Controller
                 ->one();
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
             Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
+        }
+
+        if (!Yii::$app->user->isGuest and Yii::$app->user->id != $model['id']){
+
+            GuestHelper::addGuest(Yii::$app->user->id, $model['id']);
+
         }
 
         $userFriends = Profile::find()

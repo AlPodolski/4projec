@@ -23,6 +23,7 @@ class Events extends \yii\db\ActiveRecord
     const NEW_SYMPATHY = 1;
     const MUTUAL_SYMPATHY = 2;
     const NEW_COMMENT = 3;
+    const NEW_GUEST = 4;
 
     const STATUS_NOT_READ = 0;
     const STATUS_READ = 1;

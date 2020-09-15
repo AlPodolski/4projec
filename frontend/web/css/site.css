@@ -2873,6 +2873,9 @@ a {
     max-width: 50px;
     max-height: 50px;
 }
+.blur-10{
+    filter:blur(2px);
+}
 @media (max-width: 1199px) {
     .BottomMenu__fixed , .site-index .start-search{
         display: block;
