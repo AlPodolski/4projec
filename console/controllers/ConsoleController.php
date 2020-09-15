@@ -10,6 +10,7 @@ use frontend\models\UserPol;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
+use frontend\modules\events\models\Events;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use frontend\modules\user\models\Friends;
@@ -321,6 +322,32 @@ class ConsoleController extends Controller
             }
 
         }
+    }
+
+    public function actionAddGuest()
+    {
+         $notFakeUsers = Profile::find()->where(['fake' => 1])->asArray()->all();
+
+         foreach ($notFakeUsers as $user){
+
+             if (\rand(0,3) == 3){
+
+                 $randUser = Profile::find()->where(['city' => $user['city'], 'fake' => 0])->orderBy('rand()')
+                     ->asArray()->one();
+
+                 $event = new Events();
+
+                 $event->type = Events::NEW_GUEST;
+                 $event->status = Events::STATUS_NOT_READ;
+                 $event->user_id = $user['id'];
+                 $event->from = $randUser['id'];
+                 $event->timestamp = \time() - (300 + \rand(0, 300));
+
+                 $event->save();
+
+             }
+
+         }
     }
 
     public function sendMessage($from, $to , $chat_id = false, $text = false)
