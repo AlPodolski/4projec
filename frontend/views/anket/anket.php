@@ -79,7 +79,7 @@ if (!Yii::$app->user->isGuest) {
                 </div>
             </div>
         </div>
-        <div class="close-message" onclick="close_message_event(this);ym(57612607,'reachGoal','chat')">
+        <div class="close-message" onclick="close_message_event(this)">
             <i class="fas fa-times"></i>
         </div>
     </div>
