@@ -207,7 +207,7 @@ function get_invitation_message_form(){
     var image = $('.first-message img').attr('srcset');
     var name = $('#invitation-dialog .chat-wrap').attr('data-name');
 
-    setTimeout(add_invision_message, 4000, image, name, 'Познакомимся?');
+    setTimeout(add_invision_message, 3000, image, name, 'Давай познакомимся?');
 
 }
 
