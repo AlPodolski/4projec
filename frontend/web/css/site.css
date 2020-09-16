@@ -2182,6 +2182,7 @@ a {
 #messageModal .page-block{
     box-shadow:none ;
     background: none;
+    border-radius: 0px !important;
 }
 #messageModal .modal-content{
     border-radius: 28px;
@@ -2211,6 +2212,15 @@ a {
 }
 .right-message .rel_date , .right-message .post-text{
     margin-right: 12px;
+}
+#invitation-dialog .page-block{
+    box-shadow: none;
+}
+#invitation-dialog .modal-header{
+    padding:16px;
+}
+#invitation-dialog .modal-body{
+    padding: 0px;
 }
 .right-message .post-text{
     margin-right: 12px;

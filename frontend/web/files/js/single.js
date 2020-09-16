@@ -196,12 +196,12 @@ function get_invitation(){
 
 $(function() {
 
-    setTimeout(get_invitation, 5000);
+    setTimeout(get_invitation, 1000);
 
 });
 
 function get_invitation_message_form(){
 
-    $('#modal-in').modal('toggle');
+    $('#invitation-dialog').modal('toggle');
 
 }

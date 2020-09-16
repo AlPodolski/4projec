@@ -1190,4 +1190,12 @@ if (!Yii::$app->user->isGuest) {
     </div>
 </div>
 
+<?php if (Yii::$app->user->isGuest) {
 
+    echo \frontend\widgets\InvitationWidget::widget([
+            'img'       => $ava,
+            'name'      => $model['username'],
+            'message'   => 'Привет'
+    ]);
+
+} ?>
