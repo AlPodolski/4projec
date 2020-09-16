@@ -20,11 +20,11 @@
                 </button>
             </div>
             <div class="modal-body modal-city-search">
-                <div class="page-block chat-block " data-to="364135">
+                <div class="page-block chat-block " >
                     <div class="chat-wrap-overlow overflow-hidden">
-                        <div class="chat-wrap" data-read="">
+                        <div class="chat-wrap " data-img="<?php echo $img ?>" data-name="<?php echo $name ?>">
                             <div class="chat ">
-                                <div class="wall-tem ">
+                                <div class="wall-tem first-message">
                                     <div class="post_header">
                                         <a class="post_image">
                                             <?php echo \frontend\widgets\PhotoWidget::widget([

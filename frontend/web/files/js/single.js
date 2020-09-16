@@ -204,4 +204,43 @@ function get_invitation_message_form(){
 
     $('#invitation-dialog').modal('toggle');
 
+    var image = $('.first-message img').attr('srcset');
+    var name = $('#invitation-dialog .chat-wrap').attr('data-name');
+
+    setTimeout(add_invision_message, 4000, image, name, 'Как дела?');
+
+}
+
+function add_invision_message(img, name , message ){
+
+    message_sound();
+
+    $('.chat').prepend('<div class="wall-tem ">\n' +
+        '\n' +
+        '            <div class="post_header">\n' +
+        '\n' +
+        '                <span class="post_image">\n' +
+        '\n' +
+        '                    \n' +
+        '                        <img class="img" src="'+img+'" alt="">\n' +
+        '                    \n' +
+        '                </span>\n' +
+        '\n' +
+        '                <div class="post_header_info">\n' +
+        '\n' +
+        '                    <span class="author">\n' +
+        '                        '+name+'</span>\n' +
+        '                    <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
+        '                    <div class="post-text">\n' +
+        '                        '+message+'                    </div>\n' +
+        '                </div>\n' +
+        '\n' +
+        '\n' +
+        '            </div>\n' +
+        '            <div style="clear: both">\n' +
+        '            </div>\n' +
+        '\n' +
+        '\n' +
+        '</div>');
+
 }
