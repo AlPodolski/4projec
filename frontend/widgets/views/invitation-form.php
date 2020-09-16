@@ -75,7 +75,7 @@
                             <div class="help-block"></div>
                         </div>
 
-                        <span data-toggle="modal" data-target="#modal-in" aria-hidden="true" class="message-send-btn">
+                        <span data-toggle="modal" data-target="#modal-in" aria-hidden="true" class="message-send-btn" onclick="ym(57612607,'reachGoal','mess')">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF"></path>
                             </svg>
