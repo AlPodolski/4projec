@@ -63,15 +63,15 @@ if (!Yii::$app->user->isGuest) {
 
     <div class="message-event d-none" >
         <div class="row">
-            <div class="col-12 new-message-text" onclick="get_invitation_message_form(this)">
+            <div class="col-12 new-message-text" onclick="get_invitation_message_form(this);ym(57612607,'reachGoal','chat')">
                 Новое сообщение
             </div>
-            <div class="col-3" onclick="get_invitation_message_form(this)">
+            <div class="col-3" onclick="get_invitation_message_form(this);ym(57612607,'reachGoal','chat')">
                 <a class="post_image">
                     <img loading="lazy" class="img" srcset="" alt="">
                 </a>
             </div>
-            <div class="col-9" onclick="get_invitation_message_form(this)">
+            <div class="col-9" onclick="get_invitation_message_form(this);ym(57612607,'reachGoal','chat')">
                 <div class="row">
                     <div class="col-12 message-text">
                         Привет...
@@ -79,7 +79,7 @@ if (!Yii::$app->user->isGuest) {
                 </div>
             </div>
         </div>
-        <div class="close-message" onclick="close_message_event(this)">
+        <div class="close-message" onclick="close_message_event(this);ym(57612607,'reachGoal','chat')">
             <i class="fas fa-times"></i>
         </div>
     </div>
