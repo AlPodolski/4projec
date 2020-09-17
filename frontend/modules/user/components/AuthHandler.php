@@ -71,6 +71,8 @@ class AuthHandler
 
                     $cookies->remove('chat_info');
 
+                    Yii::$app->user->login($user);
+
                     if ($userMessage->save()) return $this->redirect('/user/chat');
 
                 }
