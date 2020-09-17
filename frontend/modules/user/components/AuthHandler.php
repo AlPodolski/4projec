@@ -71,7 +71,7 @@ class AuthHandler
 
                     $cookies->remove('chat_info');
 
-                    Yii::$app->user->login($user);
+                    Yii::$app->user->login($user,  3600 * 24 * 30);
 
                     if ($userMessage->save()) {
 
