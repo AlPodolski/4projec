@@ -204,10 +204,29 @@ function get_invitation_message_form(){
 
     $('#invitation-dialog').modal('toggle');
 
-    var image = $('.first-message img').attr('srcset');
-    var name = $('#invitation-dialog .chat-wrap').attr('data-name');
+}
 
-    //setTimeout(add_invision_message, 3000, image, name, 'Давай познакомимся');
+function get_invitation_register_form(){
+
+    $('#modal-in').modal('toggle');
+
+    var profile_id = $('#invitation-dialog .chat-wrap').attr('data-id');
+    var message = $('#invitation-dialog #sendmessageform-text').val();
+
+    if(message.length > 0){
+
+        $.ajax({
+            url: '/invitation/set-data',
+            data: 'profile_id='+profile_id+'&message='+message,
+            type: 'POST',
+            success: function () {
+
+
+
+            },
+        });
+
+    }
 
 }
 

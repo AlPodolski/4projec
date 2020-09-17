@@ -15,4 +15,24 @@ class InvitationController extends Controller
             'value' => 'close',
         ]));
     }
+
+    public function actionSetData()
+    {
+
+        if (Yii::$app->request->isPost){
+
+            $profile_id = Yii::$app->request->post('profile_id');
+            $message = Yii::$app->request->post('message');
+
+            return Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'chat_info',
+                'value' => \json_encode(array([
+                    'profile_id' => $profile_id,
+                    'message' => $message,
+                ])),
+            ]));
+
+        }
+
+    }
 }

@@ -16,6 +16,7 @@ class SendMessageForm extends Model
     public $user_id;
     public $class;
     public $related_id;
+    public $status = 0;
 
 
     public function rules()
@@ -38,7 +39,7 @@ class SendMessageForm extends Model
             $message->from = $this->from_id;
             $message->created_at = $this->created_at;
             $message->chat_id = $this->chat_id;
-            $message->status = 0;
+            $message->status = $this->status;
             $message->class = $this->class;
             $message->related_id = $this->related_id;
 
@@ -60,7 +61,7 @@ class SendMessageForm extends Model
                     $message->from = $this->from_id;
                     $message->created_at = $this->created_at;
                     $message->chat_id = $item['dialog_id'];
-                    $message->status = 0;
+                    $message->status = $this->status;
                     $message->class = $this->class;
                     $message->related_id = $this->related_id;
 
@@ -93,7 +94,7 @@ class SendMessageForm extends Model
                 $message->from = $this->from_id;
                 $message->created_at = $this->created_at;
                 $message->chat_id = $dialog->id;
-                $message->status = 0;
+                $message->status = $this->status;
                 $message->class = $this->class;
                 $message->related_id = $this->related_id;
 

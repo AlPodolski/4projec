@@ -8,6 +8,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\VerifyEmailForm;
+use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\user\models\forms\SignupForm;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -31,6 +32,40 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $user = $model->signup()) {
             Yii::$app->user->login($user,  3600 * 24 * 30 );
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно, проверьте свой Email');
+
+            $cookies = Yii::$app->request->cookies;
+
+            if (isset($cookies['chat_info'])){
+
+                $data = \json_decode($cookies['chat_info']->value);
+
+                $messageModel = new SendMessageForm();
+
+                $messageModel->from_id = $data[0]->profile_id;
+                $messageModel->created_at = \time();
+                $messageModel->status = 1;
+                $messageModel->text = Yii::$app->params['invitation_message'];
+                $messageModel->user_id = $user->id;
+
+                if ($messageModel->validate() and $chat_id = $messageModel->save()){
+
+                    $userMessage = new SendMessageForm();
+
+                    $userMessage->from_id = $user->id;
+                    $userMessage->created_at = \time() + 3;
+                    $userMessage->text = $data[0]->message;
+                    $userMessage->chat_id = $chat_id;
+
+                    $cookies = Yii::$app->response->cookies;
+
+                    $cookies->remove('chat_info');
+
+                    if ($userMessage->save()) return $this->redirect('/user/chat');
+
+                }
+
+            }
+
             return $this->redirect('/user');
         }
 

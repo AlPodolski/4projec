@@ -147,6 +147,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/heart/get-form' => 'user/heart/get-form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/heart/buy' => 'user/heart/buy',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/invitation/close' => 'invitation/close',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/invitation/set-data' => 'invitation/set-data',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send/send-photo' => 'chat/chat/send-photo',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/get' => 'chat/chat/get',

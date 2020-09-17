@@ -3,6 +3,7 @@
 /* @var $message string */
 /* @var $img string */
 /* @var $name string */
+/* @var $post_id integer */
 
 ?>
 <div class="modal fade" id="invitation-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -22,7 +23,7 @@
             <div class="modal-body modal-city-search">
                 <div class="page-block chat-block " >
                     <div class="chat-wrap-overlow overflow-hidden">
-                        <div class="chat-wrap " data-img="<?php echo $img ?>" data-name="<?php echo $name ?>">
+                        <div class="chat-wrap " data-img="<?php echo $img ?>" data-name="<?php echo $name ?>" data-id="<?php echo $post_id ?>">
                             <div class="chat ">
                                 <div class="wall-tem first-message">
                                     <div class="post_header">
@@ -75,7 +76,7 @@
                             <div class="help-block"></div>
                         </div>
 
-                        <span data-toggle="modal" data-target="#modal-in" aria-hidden="true" class="message-send-btn" onclick="ym(57612607,'reachGoal','mess')">
+                        <span class="message-send-btn" onclick="get_invitation_register_form();ym(57612607,'reachGoal','mess')">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF"></path>
                             </svg>

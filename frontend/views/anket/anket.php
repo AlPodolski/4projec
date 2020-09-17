@@ -1195,6 +1195,7 @@ if (!Yii::$app->user->isGuest) {
     echo \frontend\widgets\InvitationWidget::widget([
             'img'       => $ava,
             'name'      => $model['username'],
+            'post_id'      => $model['id'],
             'message'   => 'Привет'
     ]);
 

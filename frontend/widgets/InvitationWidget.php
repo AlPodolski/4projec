@@ -9,10 +9,9 @@ class InvitationWidget extends Widget
 {
 
     public $img;
-
     public $message;
-
     public $name;
+    public $post_id;
 
     public function run()
     {
@@ -20,6 +19,7 @@ class InvitationWidget extends Widget
             'img' => $this->img,
             'message' => $this->message,
             'name' => $this->name,
+            'post_id' => $this->post_id,
         ]);
     }
 }

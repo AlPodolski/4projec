@@ -5,6 +5,7 @@ namespace frontend\modules\user\components;
 use common\models\City;
 use common\models\User;
 use frontend\models\UserPol;
+use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\user\components\helpers\DirHelprer;
 use frontend\modules\user\components\helpers\ImageHelper;
 use frontend\modules\user\models\Photo;
@@ -42,6 +43,40 @@ class AuthHandler
             return Yii::$app->user->login($user , 3600 * 24 * 30);
         }
         if ($user = $this->createAccount($attributes)) {
+
+            $cookies = Yii::$app->request->cookies;
+
+            if (isset($cookies['chat_info'])){
+
+                $data = \json_decode($cookies['chat_info']->value);
+
+                $messageModel = new SendMessageForm();
+
+                $messageModel->from_id = $data[0]->profile_id;
+                $messageModel->created_at = \time();
+                $messageModel->status = 1;
+                $messageModel->text = Yii::$app->params['invitation_message'];
+                $messageModel->user_id = $user->id;
+
+                if ($messageModel->validate() and $chat_id = $messageModel->save()){
+
+                    $userMessage = new SendMessageForm();
+
+                    $userMessage->from_id = $user->id;
+                    $userMessage->created_at = \time() + 3;
+                    $userMessage->text = $data[0]->message;
+                    $userMessage->chat_id = $chat_id;
+
+                    $cookies = Yii::$app->response->cookies;
+
+                    $cookies->remove('chat_info');
+
+                    if ($userMessage->save()) return $this->redirect('/user/chat');
+
+                }
+
+            }
+
             return Yii::$app->user->login($user);
         }
     }

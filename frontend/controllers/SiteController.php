@@ -5,6 +5,7 @@ use common\models\City;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
+use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\Profile;
@@ -174,14 +175,42 @@ class SiteController extends Controller
 
     public function actionCust(){
 
-        $item = new addGroupRecordItemForm();
+        $cookies = Yii::$app->request->cookies;
 
-        $item->class = 'frontend\modules\group\models\Group';
-        $item->user_id = 23215;
-        $item->group_id = 2;
-        $item->text = 'frontend\modules\group\models\Group';
+        \d($cookies['chat_info']);
 
-        $item->save();
+        if (isset($cookies['chat_info'])){
+
+            $data = \json_decode($cookies['chat_info']->value);
+
+            $model = new SendMessageForm();
+
+            $model->from_id = $data[0]->profile_id;
+            $model->created_at = \time();
+            $model->text = Yii::$app->params['invitation_message'];
+            $model->user_id = 28896;
+
+            if ($model->validate() and $chat_id = $model->save()){
+
+                $userMessage = new SendMessageForm();
+
+                $userMessage->from_id = 28896;
+                $userMessage->created_at = \time();
+                $userMessage->text = $data['message'];
+                $userMessage->chat_id = $chat_id;
+
+                //$cookies->remove('chat_info');
+
+                if ($userMessage->save()) return $this->redirect('/chat');
+
+
+
+            }
+
+            \d($model->getErrors());
+
+
+        }
 
 
     }

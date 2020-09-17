@@ -1913,8 +1913,16 @@ a {
     border-bottom: none;
     align-items: center;
     justify-content: center;
+
+}
+
+#modal-in .modal-header{
     padding-top: 60px;
 }
+#modal-in .modal-body {
+    padding: 60px;
+}
+
 .modal-dialog{
     width: 555px;
     height: 645px;
@@ -2012,9 +2020,6 @@ a {
 .remember-me-wrap {
     margin-bottom: 22px;
     margin-top: 26px;
-}
-.modal-body {
-    padding: 60px;
 }
 .type-btn{
     background: linear-gradient(98.98deg, #486BEF 3.79%, #80DFFD 96.13%);
