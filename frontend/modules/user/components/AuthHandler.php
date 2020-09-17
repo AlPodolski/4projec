@@ -73,7 +73,12 @@ class AuthHandler
 
                     Yii::$app->user->login($user);
 
-                    if ($userMessage->save()) return $this->redirect('/user/chat');
+                    if ($userMessage->save()) {
+
+                        Yii::$app->response->redirect('/user/chat', 301)->send();
+                        exit();
+
+                    }
 
                 }
 
