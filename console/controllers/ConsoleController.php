@@ -377,33 +377,35 @@ class ConsoleController extends Controller
 
         foreach ($users as $user){
 
-            $city = City::find()->where(['url' => $user['city']])->asArray()->one();
+            if (\rand(0,1) == 1){
 
-            if ($userPol = UserPol::find()->where(['user_id' => $user['id']])->asArray()->one()) {
+                if ($userPol = UserPol::find()->where(['user_id' => $user['id']])->asArray()->one()) {
 
-                $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $user['id']])
-                    ->andWhere(['city_id' => $city['id']])
-                    ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
-                    ->asArray()
-                    ->all();
+                    $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $user['id']])
+                        ->andWhere(['city_id' => $city['id']])
+                        ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
+                        ->asArray()
+                        ->all();
 
-                $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
-                    ->orderBy('rand()')
-                    ->asArray()
-                    ->andWhere(['fake' => 0])
-                    ->limit(1)
-                    ->one();
+                    $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
+                        ->orderBy('rand()')
+                        ->asArray()
+                        ->andWhere(['fake' => 0])
+                        ->limit(1)
+                        ->one();
 
-                SympathyHelper::add($fromProfile['id'], $user['id']);
+                    SympathyHelper::add($fromProfile['id'], $user['id']);
 
-            }else{
-                $fromProfile = Profile::find()->where(['fake' => 0])
-                    ->orderBy('rand()')
-                    ->asArray()
-                    ->limit(1)
-                    ->one();
+                }else{
+                    $fromProfile = Profile::find()->where(['fake' => 0])
+                        ->orderBy('rand()')
+                        ->asArray()
+                        ->limit(1)
+                        ->one();
 
-                SympathyHelper::add($fromProfile['id'], $user['id']);
+                    SympathyHelper::add($fromProfile['id'], $user['id']);
+                }
+
             }
 
         }
