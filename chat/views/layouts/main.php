@@ -9,8 +9,7 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use backend\assets\AdminLteAsset;
-
-
+use frontend\widgets\MetricaWidget;
 
 
 AppAsset::register($this);
@@ -27,6 +26,7 @@ AdminLteAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php echo MetricaWidget::widget(); ?>
 </head>
 
 <body class="skin-blue sidebar-mini wrapper sidebar-collapse">

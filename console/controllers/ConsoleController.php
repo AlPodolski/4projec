@@ -12,7 +12,6 @@ use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\events\models\Events;
 use frontend\modules\user\components\helpers\FriendsHelper;
-use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
@@ -369,6 +368,37 @@ class ConsoleController extends Controller
         $model->text = $text;
 
         $model->save();
+    }
+
+    public function actionSympathy()
+    {
+        $users = Profile::find()->where(['fake' => 1])->limit(1)->with('polRelation')->asArray()->all();
+
+        foreach ($users as $user){
+
+            $city = City::find()->where(['url' => $user['city']])->asArray()->one();
+
+            if ($userPol = UserPol::find()->where(['user_id' => $user['id']])->asArray()->one()) {
+
+                $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $user['id']])
+                    ->andWhere(['city_id' => $city['id']])
+                    ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
+                    ->asArray()
+                    ->all();
+
+                $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
+                    ->orderBy('rand()')
+                    ->asArray()
+                    ->andWhere(['fake' => 0])
+                    ->limit(1)
+                    ->one();
+
+                $this->sendMessage($fromProfile['id'], $profile['id'] );
+
+            }
+
+        }
+
     }
 
 }

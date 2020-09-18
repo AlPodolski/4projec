@@ -173,7 +173,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
     <span data-name="<?php echo $user['username'];  ?>"
           data-dialog-id="<?php echo  $dialog['dialog_id'] ?>"
           data-user-id-to="<?php echo $recepient ?>"
-          onclick="send_message(this)"
+          onclick="send_message(this);ym(57612607,'reachGoal','alina')"
           class="message-send-btn" data-id="<?php echo $user['id']; ?>">
          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 0L20 10L0 20V0ZM0 8V12L10 10L0 8Z" fill="#486BEF"/>
