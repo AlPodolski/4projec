@@ -7,6 +7,17 @@ use frontend\widgets\PhotoWidget;
 
 $this->title = 'Уведомления';
 
+if (Yii::$app->user->identity['vip_status_work'] < time()) {
+    $isVip = false;
+    $onclick = 'data-toggle="modal" data-target="#modal-buy-vip"';
+} else {
+
+    $isVip = true;
+
+    $onclick = '';
+
+}
+
 ?>
 <div class="row">
 
@@ -30,6 +41,8 @@ $this->title = 'Уведомления';
 
                                     <div class="col-2 col-sm-1">
 
+                                    <?php if ($isVip) : ?>
+
                                         <a class="position-relative"
                                            href="/user/<?php echo $event['fromProfile']['id'] ?>">
 
@@ -48,9 +61,30 @@ $this->title = 'Уведомления';
 
                                         </a>
 
+                                    <?php else: ?>
+
+                                        <a class="position-relative blur-10" <?php echo $onclick ?>>
+
+                                            <?php echo PhotoWidget::widget([
+                                                'path' => $event['fromProfile']['userAvatarRelations']['file'],
+                                                'size' => 'dialog',
+                                                'options' => [
+                                                    'class' => 'img',
+                                                    'loading' => 'lazy',
+                                                    'alt' => $event['profile']['username'],
+                                                ],
+                                            ]); ?>
+
+                                            <img class="synpathy-img" src="/files/img/iconfinder_heart_216238_3.png">
+
+
+                                        </a>
+
+                                    <?php endif; ?>
+
                                     </div>
 
-                                    <div class="col-10 d-flex align-center">
+                                    <div class="col-10 d-flex align-center" <?php echo $onclick?>>
 
                                         <div class="blue-text">
                                             1
@@ -74,7 +108,7 @@ $this->title = 'Уведомления';
 
                                     <div class="col-2 col-sm-1">
 
-                                        <?php if (Yii::$app->user->identity['vip_status_work'] > time()) : ?>
+                                        <?php if ($isVip) : ?>
 
                                             <a class="position-relative " href="/user/<?php echo $event['fromProfile']['id'] ?>">
 
@@ -92,7 +126,7 @@ $this->title = 'Уведомления';
 
                                         <?php else: ?>
 
-                                            <a class="position-relative blur-10">
+                                            <a class="position-relative blur-10"  <?php echo $onclick ?>>
 
                                                 <?php echo PhotoWidget::widget([
                                                     'path' => $event['fromProfile']['userAvatarRelations']['file'],
@@ -110,7 +144,7 @@ $this->title = 'Уведомления';
 
                                     </div>
 
-                                    <div class="col-10 d-flex align-center">
+                                    <div class="col-10 d-flex align-center" <?php echo $onclick ?>>
                                         <div class="small-text">
                                             Новый гость на странице
                                         </div>

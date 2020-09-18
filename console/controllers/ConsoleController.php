@@ -11,6 +11,7 @@ use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\events\models\Events;
+use frontend\modules\sympathy\components\helpers\SympathyHelper;
 use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Photo;
@@ -372,7 +373,7 @@ class ConsoleController extends Controller
 
     public function actionSympathy()
     {
-        $users = Profile::find()->where(['fake' => 1])->limit(1)->with('polRelation')->asArray()->all();
+        $users = Profile::find()->where(['fake' => 1])->with('polRelation')->asArray()->all();
 
         foreach ($users as $user){
 
@@ -393,8 +394,16 @@ class ConsoleController extends Controller
                     ->limit(1)
                     ->one();
 
-                $this->sendMessage($fromProfile['id'], $profile['id'] );
+                SympathyHelper::add($fromProfile['id'], $user['id']);
 
+            }else{
+                $fromProfile = Profile::find()->where(['fake' => 0])
+                    ->orderBy('rand()')
+                    ->asArray()
+                    ->limit(1)
+                    ->one();
+
+                SympathyHelper::add($fromProfile['id'], $user['id']);
             }
 
         }
