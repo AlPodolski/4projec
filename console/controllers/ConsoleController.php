@@ -382,8 +382,7 @@ class ConsoleController extends Controller
                 if ($userPol = UserPol::find()->where(['user_id' => $user['id']])->asArray()->one()) {
 
                     $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $user['id']])
-                        ->andWhere(['city_id' => $city['id']])
-                        ->andWhere(['<>', 'pol_id',$userPol['pol_id'] ])
+                        ->where(['<>', 'pol_id',$userPol['pol_id'] ])
                         ->asArray()
                         ->all();
 
