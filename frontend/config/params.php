@@ -1,7 +1,7 @@
 <?php
 return [
     'adminEmail' => 'admin@example.com',
-    'vip_status_week_price' => '250',
+    'vip_status_week_price' => '300',
     'no_value_text' => 'Спроси меня',
     'advert_limit' => '40',
     'post_limit' => '12',
