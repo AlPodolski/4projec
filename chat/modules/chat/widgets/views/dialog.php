@@ -67,7 +67,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                                 $messagePhoto = \frontend\models\Files::find()
                                     ->where(['id' => $item['related_id']])->asArray()->one();
 
-                                echo \yii\helpers\Html::img('http://msk.'.Yii::$app->params['site_name'].$messagePhoto['file'], ['class' => 'blur-2 remove-blur-hover']);
+                                echo \yii\helpers\Html::img('http://msk.'.Yii::$app->params['site_name'].$messagePhoto['file'], ['class' => 'blur-10 remove-blur-hover']);
 
                             }
 

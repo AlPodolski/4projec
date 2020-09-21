@@ -31,6 +31,9 @@ body {
 .blur-2{
     filter: blur(2px);
 }
+.blur-10{
+    filter: blur(10px);
+}
 .remove-blur-hover:hover{
     filter: blur(0px);
 }
