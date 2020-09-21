@@ -73,6 +73,8 @@ class WallWidget extends Widget
 
                 }
 
+                //if ()
+
             }
 
         }
