@@ -12,6 +12,7 @@ return [
     'users_who_like_key' => 'users_who_like_key',
     'users_whom_like_key' => 'users_whom_like_key',
     'users_who_skip_key' => 'users_who_skip_key',
+    'users_who_like_skip_key' => 'users_who_like_skip_key', //ключ для симпатий которые добавлены в архив скриптом console/mutual-sympathy
     'group_info' => 'users_who_skip_key',
     'parent_write_key' => 'parent_write',
     'group_subscribe_key' => 'group_subscribe',

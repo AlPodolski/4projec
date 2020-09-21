@@ -411,4 +411,40 @@ class ConsoleController extends Controller
 
     }
 
+    public function actionMutualSympathy()
+    {
+        $posts = Profile::find()->where(['fake' => 1])->asArray()->all();
+
+        foreach ($posts as $post){
+
+            $postSetSympathy = SympathyHelper::get($post['id'] , Yii::$app->params['users_who_like_key']);
+
+            $postSkipSympathy = SympathyHelper::get($post['id'] , Yii::$app->params['users_who_like_skip_key']);
+
+            $resultIds = \array_diff($postSetSympathy, $postSkipSympathy);
+
+            if ($resultIds){
+
+                foreach ($resultIds as $resultId){
+
+                    if (\rand(0,2) == 2){
+
+                        if($mutualSympathyPost = Profile::find()->where(['fake' => 0, 'id' => $resultId])->count()){
+
+                            SympathyHelper::add($resultId, $post['id']);
+
+                        }
+
+                    }
+
+                    SympathyHelper::set(Yii::$app->params['users_who_like_skip_key'], $post['id'], $resultId);
+
+                }
+
+            }
+
+        }
+
+    }
+
 }
