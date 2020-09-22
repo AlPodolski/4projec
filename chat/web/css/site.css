@@ -33,6 +33,7 @@ body {
 }
 .blur-10{
     filter: blur(10px);
+    transition: all 2s ease-out;
 }
 .remove-blur-hover:hover{
     filter: blur(0px);
