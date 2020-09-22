@@ -44,7 +44,7 @@ class WallWidget extends Widget
         }else{
             $wallItems = Wall::find()
                 ->where(['user_id' => $this->user_id, 'class' => $this->relatedClass])
-                ->orWhere(['class' => Photo::class])
+                ->orWhere(['class' => Photo::class , 'user_id' => $this->user_id])
                 ->limit(Yii::$app->params['wall_items_limit'])
                 ->offset($this->offset)
                 ->orderBy('id DESC')
