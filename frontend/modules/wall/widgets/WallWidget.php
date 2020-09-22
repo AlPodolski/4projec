@@ -3,6 +3,7 @@
 namespace frontend\modules\wall\widgets;
 
 use frontend\modules\user\models\News;
+use frontend\modules\user\models\Photo;
 use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\base\Widget;
@@ -43,6 +44,7 @@ class WallWidget extends Widget
         }else{
             $wallItems = Wall::find()
                 ->where(['user_id' => $this->user_id, 'class' => $this->relatedClass])
+                ->orWhere(['class' => Photo::class])
                 ->limit(Yii::$app->params['wall_items_limit'])
                 ->offset($this->offset)
                 ->orderBy('id DESC')
@@ -73,7 +75,11 @@ class WallWidget extends Widget
 
                 }
 
-                //if ()
+                if ($wallItem['class'] == Photo::class){
+
+                    $wallItem['photo'] = Photo::find()->where(['id' => $wallItem['related_id']])->asArray()->one();
+
+                }
 
             }
 

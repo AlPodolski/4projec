@@ -223,9 +223,11 @@ if (!empty($wallItems)) : ?>
 
             <?php else : ?>
 
-                <div class="post-text">
-                    <?php echo $item['text'] ?>
-                </div>
+                <?php if ($item['text']) : ?>
+                    <div class="post-text">
+                        <?php echo $item['text'] ?>
+                    </div>
+                <?php endif; ?>
 
                 <?php if ($item['files']) : ?>
 
@@ -242,6 +244,26 @@ if (!empty($wallItems)) : ?>
                     </div>
 
                 <?php endif; ?>
+
+            <?php endif; ?>
+
+            <?php if ($item['class'] == \frontend\modules\user\models\Photo::class) : ?>
+
+                <div class="post-text">
+                    <?php echo ($item['author']['username']); ?> обновил(а) фото
+                </div>
+
+                <div class="wall-img-wrap">
+                    <?php echo PhotoWidget::widget([
+                        'path' => $item['photo']['file'],
+                        'size' => 'listing_500',
+                        'options' => [
+                            'class' => 'img',
+                            'loading' => 'lazy',
+                            'alt' => '',
+                        ],
+                    ]); ?>
+                </div>
 
             <?php endif; ?>
 

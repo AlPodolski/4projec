@@ -37,7 +37,7 @@ class SavePhotoHelper
 
         $model->save();
 
-        if ($isAvatar) return $model->file;
+        //if ($isAvatar) return $model->file;
 
         return $model;
 

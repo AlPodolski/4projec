@@ -5,6 +5,8 @@ namespace frontend\modules\user\controllers;
 use frontend\modules\user\components\helpers\DeleteImgHelper;
 use frontend\modules\user\components\helpers\ImageHelper;
 use frontend\modules\user\components\SavePhotoHelper;
+use frontend\modules\user\models\Profile;
+use frontend\modules\wall\models\forms\AddToWallForm;
 use yii\web\Controller;
 use Yii;
 use yii\web\UploadedFile;
@@ -37,9 +39,20 @@ class PhotoController extends Controller
 
         if (!Yii::$app->user->isGuest and Yii::$app->request->isPost){
 
-            if ($file = UploadedFile::getInstance($model, 'file')){
+            if ($file = UploadedFile::getInstance($model, 'file') and $model = SavePhotoHelper::savePhoto( $file, 1)){
 
-                return SavePhotoHelper::savePhoto( $file, 1);
+                $wallForm = new AddToWallForm();
+
+                $wallForm->from = Yii::$app->user->id;
+                $wallForm->user_id = Yii::$app->user->id;
+                $wallForm->created_at = \time();
+                $wallForm->class = Photo::class;
+                $wallForm->related_id = $model->id;
+
+                $wallForm->save();
+
+                return $model->file;
+
 
             }elseif($files = UploadedFile::getInstances($model, 'file')){
 

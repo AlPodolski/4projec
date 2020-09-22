@@ -23,13 +23,14 @@ class AddToWallForm extends Model
     public $from;
     public $created_at;
     public $class;
+    public $related_id = '';
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['user_id', 'from', 'created_at'], 'integer'],
+            [['user_id', 'from', 'created_at', 'related_id'], 'integer'],
             [['user_id', 'from', 'created_at', 'text'], 'required'],
             [['text'], 'string', 'max' => 600],
             [['class'], 'string'],
@@ -55,6 +56,7 @@ class AddToWallForm extends Model
         $wallItem->created_at = $this->created_at;
         $wallItem->text = $this->text;
         $wallItem->class = $this->class;
+        $wallItem->related_id = $this->related_id;
 
         $wallItem->save();
 

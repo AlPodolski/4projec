@@ -62,8 +62,9 @@ $(document).ready(function() {
             success: function (data) {
 
                 $('#under-avatar-form .form-info p').text('Фото загружено');
-                $('.post-photo img').attr('src', data);
-                $('.img-label .main-img').attr('src', data);
+                $('.post-photo img').attr('srcset', data);
+                $('.img-label .main-img').attr('srcset', data);
+                $('.post-photo source').attr('srcset', data);
                 $('#under-avatar-form .form-info').css('display', 'block');
             },
 

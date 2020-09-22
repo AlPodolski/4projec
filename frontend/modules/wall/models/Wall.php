@@ -5,6 +5,7 @@ namespace frontend\modules\wall\models;
 use common\models\Comments;
 use frontend\models\Files;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
 use Yii;
 
@@ -18,6 +19,7 @@ use Yii;
  * @property string|null $text текст записи
  * @property string|null $class текст записи
  * @property string|null $parent_id текст записи
+ * @property string|null $related_id текст записи
  */
 class Wall extends \yii\db\ActiveRecord
 {
