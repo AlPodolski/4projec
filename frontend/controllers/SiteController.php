@@ -60,12 +60,15 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex($city)
+    public function actionIndex($city , $page = false)
     {
+
         $posts = Profile::find()->where(['city' => $city])->limit(Yii::$app->params['post_limit'] )
             ->andWhere(['!=',  'email' ,  'adminadultero@mail.com'])
             ->orderBy(['last_visit_time' => SORT_DESC])
             ->with('userAvatarRelations');
+
+        if ($page) $posts = $posts->offset(Yii::$app->params['post_limit'] * 1);
 
         $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);
 
@@ -74,6 +77,10 @@ class SiteController extends Controller
             $posts->offset(Yii::$app->params['post_limit'] * Yii::$app->request->post('page'));
 
             $posts = $posts->all();
+
+            $page = Yii::$app->request->post('page') + 1;
+
+            echo '<div data-url="/page-'.$page.'" class="col-12"></div>';
 
             foreach ($posts as $post){
 

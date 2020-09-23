@@ -7,6 +7,7 @@
 /* @var $cityInfo array */
 
 /* @var $city string */
+/* @var $param string */
 
 use frontend\modules\user\models\Profile;
 use frontend\widgets\SidebarWidget;
@@ -53,6 +54,8 @@ Yii::$app->view->registerMetaTag([
                     <h1><?php echo $h1; ?></h1>
 
                     <div class="row content">
+
+                        <div data-url="/<?php echo $param ?>" class="col-12"></div>
 
                         <?php if ($posts) : ?>
 

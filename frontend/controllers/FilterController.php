@@ -25,7 +25,7 @@ class FilterController extends Controller
         ];
     }
 
-    public function actionIndex($city, $param)
+    public function actionIndex($city, $param, $page = false)
     {
 
         $query_params = QueryParamsHelper::getParams($param, $city);
@@ -49,7 +49,13 @@ class FilterController extends Controller
                 ->orderBy(['last_visit_time' => SORT_DESC])
                 ->with('userAvatarRelations');
 
+            if ($page) $posts = $posts->offset(Yii::$app->params['post_limit'] * 1);
+
             if (Yii::$app->request->isPost){
+
+                $page = Yii::$app->request->post('page') + 1;
+
+                echo '<div data-url="/'.$param.'/page-'.$page.'" class="col-12"></div>';
 
                 $posts->offset(Yii::$app->params['post_limit'] * Yii::$app->request->post('page'));
 

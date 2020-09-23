@@ -586,9 +586,9 @@ $(window).scroll(function () {
 
     var accept = $(target).attr('data-accept');
 
-    if (winScrollTop > (scrollToElem - 100)) {
+    changeURL();
 
-        console.log(url)
+    if (winScrollTop > (scrollToElem - 100)) {
 
         $.ajax({
             type: 'POST',
@@ -705,4 +705,42 @@ function by_vip_for_photo(){
 
     $('#modal-buy-vip-for-photo').modal('toggle');
 
+}
+
+
+
+var changeURL = debounce(function() {
+    $('[data-url]').each(function() {
+        if (inView($(this))) {
+            window.history.pushState('', document.title, $(this).attr('data-url'));
+            yaCounter57612607.hit($(this).attr('data-url'));
+        }
+    });
+}, 1);
+
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+function inView($elem) {
+    var $window = $(window);
+
+    var docViewTop = $window.scrollTop();
+    var docViewBottom = docViewTop + $window.height();
+
+    var elemTop = $elem.offset().top;
+    var elemBottom = elemTop + $elem.height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }

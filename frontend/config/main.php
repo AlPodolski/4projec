@@ -100,6 +100,7 @@ return [
             'rules' => [
                 'thumbs/<path:.*>' => 'site/thumb',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/' => 'site/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/page-<page:[0-9]+>' => 'site/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/cust' => 'site/cust',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/news' => 'user/news/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',

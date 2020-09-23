@@ -74,6 +74,8 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
                 <div class="row ">
 
+                    <div data-url="/" class="col-12"></div>
+
                     <?php foreach ($posts as $post) : ?>
 
                         <?php echo $this->renderFile('@app/views/layouts/article.php', [
