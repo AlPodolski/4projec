@@ -55,6 +55,11 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
     <link rel="manifest" href="/files/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+    <?php if (strpos(Yii::$app->request->url, 'page')) : ?>
+
+        <link rel="canonical" href="/<?php echo strstr(Yii::$app->request->url, '/page' , true)?>"/>
+
+    <?php endif; ?>
     <?php echo MetricaWidget::widget(); ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170464939-1"></script>
