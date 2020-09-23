@@ -586,9 +586,9 @@ $(window).scroll(function () {
 
     var accept = $(target).attr('data-accept');
 
-    if (winScrollTop > (scrollToElem - 100)) {
+    changeURL();
 
-        changeURL();
+    if (winScrollTop > (scrollToElem - 100)) {
 
         $.ajax({
             type: 'POST',
@@ -713,8 +713,16 @@ function by_vip_for_photo(){
 var changeURL = debounce(function() {
     $('[data-url]').each(function() {
         if (inView($(this))) {
-            window.history.pushState('', document.title, $(this).attr('data-url'));
-            yaCounter57612607.hit($(this).attr('data-url'));
+
+            if(window.location.pathname != $(this).attr('data-url')){
+
+                window.history.pushState('', document.title, $(this).attr('data-url'));
+
+                console.log(window.location.pathname);
+
+                yaCounter57612607.hit($(this).attr('data-url'));
+
+            }
         }
     });
 }, 1);
