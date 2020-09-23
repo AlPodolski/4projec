@@ -55,8 +55,6 @@ class SidebarWidget extends Widget
 
         $html = Yii::$app->cache->get('4dosug_sidebar'.$hash);
 
-        $html = false;
-
         if ($html === false) {
             // $data нет в кэше, вычисляем заново
             $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
