@@ -53,23 +53,29 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
         <div class="row">
 
+            <?php if (!Yii::$app->user->isGuest) : ?>
+
             <div class="col-3 filter-sidebar">
 
-
-
-                <?php if (!Yii::$app->user->isGuest) : ?>
-
                     <?php echo UserSideBarWidget::Widget()?>
-
-                <?php endif; ?>
 
                 <?php
                     echo SidebarWidget::Widget()
                 ?>
+
             </div>
 
+            <?php endif; ?>
+
+            <?php if (!Yii::$app->user->isGuest) : ?>
 
             <div class="col-12 col-xl-9 main-banner-wrap margin-bottom-30">
+
+            <?php else : ?>
+
+            <div class="col-12 col-xl-12 main-banner-wrap margin-bottom-30">
+
+            <?php endif; ?>
 
 
                 <div class="row ">
