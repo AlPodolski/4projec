@@ -51,7 +51,7 @@ Yii::$app->view->registerMetaTag([
 
                 <div class="col-12 col-xl-12 main-banner-wrap margin-bottom-30">
 
-                    <?php endif; ?>
+                <?php endif; ?>
 
                 <div class="content-wrap">
 

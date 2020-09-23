@@ -22,20 +22,31 @@ $this->registerMetaTag([
 <div class="row">
 
 
-    <div class="col-3 filter-sidebar">
+    <?php if (!Yii::$app->user->isGuest) : ?>
 
-        <?php if (!Yii::$app->user->isGuest) : ?>
+        <div class="col-3 filter-sidebar">
 
-            <?php echo UserSideBarWidget::Widget() ?>
+            <?php echo UserSideBarWidget::Widget()?>
 
-        <?php endif; ?>
+            <?php
+            echo SidebarWidget::Widget()
+            ?>
 
-        <?php
-        echo SidebarWidget::Widget()
-        ?>
-    </div>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if (!Yii::$app->user->isGuest) : ?>
 
     <div class="col-12 col-xl-9">
+
+        <?php else : ?>
+
+        <div class="col-12 col-xl-12">
+
+            <?php endif; ?>
+
+
 
         <?php echo $this->renderFile('@app/views/anket/anket.php',
             [
