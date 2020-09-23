@@ -586,9 +586,9 @@ $(window).scroll(function () {
 
     var accept = $(target).attr('data-accept');
 
-    changeURL();
-
     if (winScrollTop > (scrollToElem - 100)) {
+
+        changeURL();
 
         $.ajax({
             type: 'POST',
