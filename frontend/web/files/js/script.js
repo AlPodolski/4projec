@@ -613,6 +613,7 @@ $(window).scroll(function () {
                 } else {
 
                     $(target).remove();
+                    $('.dots').remove();
 
                 }
 

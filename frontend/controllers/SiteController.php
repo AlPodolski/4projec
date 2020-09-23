@@ -80,7 +80,7 @@ class SiteController extends Controller
 
             $page = Yii::$app->request->post('page') + 1;
 
-            echo '<div data-url="/page-'.$page.'" class="col-12"></div>';
+            if ($posts) echo '<div data-url="/page-'.$page.'" class="col-12"></div>';
 
             foreach ($posts as $post){
 
