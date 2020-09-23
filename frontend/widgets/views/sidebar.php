@@ -8,12 +8,6 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
 ?>
 
-<?php if(Yii::$app->request->url != '/') : ?>
-    <div class="mobile-filter-icon open-filter listing-filter-btn">
-        <i class="fas fa-filter"></i>
-    </div>
-<?php endif; ?>
-
         <div class="sidebar-wrap">
         <div class="user-menu menu-nav">
             <div class="row">

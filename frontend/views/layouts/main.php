@@ -198,6 +198,11 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
     <?php echo PopularWidget::widget(); ?>
 
+    <?php if(Yii::$app->request->url != '/') : ?>
+        <div class="mobile-filter-icon open-filter listing-filter-btn">
+            <i class="fas fa-filter"></i>
+        </div>
+    <?php endif; ?>
 
     <div class="container">
         <?= Breadcrumbs::widget([

@@ -2023,8 +2023,10 @@ a {
 }
 .mobile-filter-icon.open-filter.listing-filter-btn {
     z-index: 1;
-    position: absolute;
-    right: 15px;
+    position: fixed;
+    right: 0px;
+    width: 40px;
+    box-shadow: 0 0 7px #0000004d;
 }
 .type-btn{
     background: linear-gradient(98.98deg, #486BEF 3.79%, #80DFFD 96.13%);
