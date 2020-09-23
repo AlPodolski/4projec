@@ -8,188 +8,212 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
 
 ?>
 
-        <div class="sidebar-wrap">
-        <div class="user-menu menu-nav">
-            <div class="row">
-                <div class="col-12">
-                    <p class="user-name">
+<div class="sidebar-wrap">
+    <div class="mobile-close-menu">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="user-menu menu-nav">
+        <div class="row">
+            <div class="col-12">
+                <p class="user-name">
                         <span class="slider-icon">
                              <i class="fas fa-sliders-h"></i>
                         </span>
-                        <span> Навигаця по сайту</span>
-                        <span class="side-bar-nav-burger">
+                    <span> Навигаця по сайту</span>
+                    <span class="side-bar-nav-burger">
                         <i class="fas fa-angle-down"></i>
                     </span>
-                    </p>
-                </div>
+                </p>
             </div>
         </div>
+    </div>
 
-        <div class="sidebar-menu-list">
-            <div id="accordion">
+    <div class="sidebar-menu-list">
+        <div id="accordion">
 
-                <?php if ($polList) : ?>
+            <?php if ($polList) : ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse15" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.62 20.76H9.57002C9.33002 20.76 9.12002 20.97 9.12002 21.21C9.12002 21.45 9.33002 21.66 9.57002 21.66H10.62V22.68C10.62 22.92 10.83 23.13 11.07 23.13C11.31 23.13 11.52 22.92 11.52 22.68V21.66H12.57C12.81 21.66 13.02 21.45 13.02 21.21C13.02 20.97 12.81 20.76 12.57 20.76H11.52V18.6C14.04 18.36 16.02 16.26 16.02 13.68C16.02 12.84 15.81 12 15.39 11.28C15.27 11.07 15 10.98 14.79 11.1C14.58 11.22 14.49 11.49 14.61 11.7C14.94 12.3 15.12 12.99 15.12 13.68C15.12 15.9 13.29 17.73 11.07 17.73C8.85002 17.73 7.02002 15.9 7.02002 13.68C7.02002 11.46 8.85002 9.63 11.07 9.63C11.61 9.63 12.15 9.75 12.66 9.96C12.9 10.05 13.14 9.96 13.26 9.72C13.35 9.48 13.26 9.24 13.02 9.12C12.42 8.85 11.76 8.73 11.1 8.73C8.37002 8.73 6.15002 10.95 6.15002 13.68C6.15002 16.26 8.13002 18.39 10.65 18.6V20.76H10.62Z" fill="#486BEF"/>
-                                        <path d="M23.85 7.13999C23.79 7.01999 23.73 6.93 23.61 6.9C23.55 6.87 23.49 6.87 23.46 6.87H21.3C21.06 6.87 20.85 7.08 20.85 7.32C20.85 7.56 21.06 7.77 21.3 7.77H22.32L20.22 9.87C19.32 9.12 18.21 8.73 17.04 8.73C15.72 8.73 14.46 9.24 13.53 10.17C11.97 11.73 11.64 14.16 12.69 16.08C12.81 16.29 13.08 16.38 13.29 16.26C13.5 16.14 13.59 15.87 13.47 15.66C12.6 14.1 12.87 12.09 14.16 10.83C14.91 10.08 15.93 9.62999 17.01 9.62999C18.09 9.62999 19.11 10.05 19.86 10.83C20.61 11.61 21.06 12.6 21.06 13.68C21.06 14.76 20.64 15.78 19.86 16.53C18.69 17.7 16.95 18.03 15.45 17.4C15.21 17.31 14.97 17.4 14.85 17.64C14.76 17.88 14.85 18.12 15.09 18.24C15.72 18.51 16.35 18.63 17.01 18.63C18.3 18.63 19.56 18.12 20.52 17.19C21.45 16.26 21.96 15 21.96 13.68C21.96 12.51 21.54 11.4 20.82 10.5L22.92 8.4V9.42C22.92 9.65999 23.13 9.87 23.37 9.87C23.61 9.87 23.82 9.65999 23.82 9.42V7.28999C23.88 7.25999 23.88 7.19999 23.85 7.13999Z" fill="#486BEF"/>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse15"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.62 20.76H9.57002C9.33002 20.76 9.12002 20.97 9.12002 21.21C9.12002 21.45 9.33002 21.66 9.57002 21.66H10.62V22.68C10.62 22.92 10.83 23.13 11.07 23.13C11.31 23.13 11.52 22.92 11.52 22.68V21.66H12.57C12.81 21.66 13.02 21.45 13.02 21.21C13.02 20.97 12.81 20.76 12.57 20.76H11.52V18.6C14.04 18.36 16.02 16.26 16.02 13.68C16.02 12.84 15.81 12 15.39 11.28C15.27 11.07 15 10.98 14.79 11.1C14.58 11.22 14.49 11.49 14.61 11.7C14.94 12.3 15.12 12.99 15.12 13.68C15.12 15.9 13.29 17.73 11.07 17.73C8.85002 17.73 7.02002 15.9 7.02002 13.68C7.02002 11.46 8.85002 9.63 11.07 9.63C11.61 9.63 12.15 9.75 12.66 9.96C12.9 10.05 13.14 9.96 13.26 9.72C13.35 9.48 13.26 9.24 13.02 9.12C12.42 8.85 11.76 8.73 11.1 8.73C8.37002 8.73 6.15002 10.95 6.15002 13.68C6.15002 16.26 8.13002 18.39 10.65 18.6V20.76H10.62Z"
+                                              fill="#486BEF"/>
+                                        <path d="M23.85 7.13999C23.79 7.01999 23.73 6.93 23.61 6.9C23.55 6.87 23.49 6.87 23.46 6.87H21.3C21.06 6.87 20.85 7.08 20.85 7.32C20.85 7.56 21.06 7.77 21.3 7.77H22.32L20.22 9.87C19.32 9.12 18.21 8.73 17.04 8.73C15.72 8.73 14.46 9.24 13.53 10.17C11.97 11.73 11.64 14.16 12.69 16.08C12.81 16.29 13.08 16.38 13.29 16.26C13.5 16.14 13.59 15.87 13.47 15.66C12.6 14.1 12.87 12.09 14.16 10.83C14.91 10.08 15.93 9.62999 17.01 9.62999C18.09 9.62999 19.11 10.05 19.86 10.83C20.61 11.61 21.06 12.6 21.06 13.68C21.06 14.76 20.64 15.78 19.86 16.53C18.69 17.7 16.95 18.03 15.45 17.4C15.21 17.31 14.97 17.4 14.85 17.64C14.76 17.88 14.85 18.12 15.09 18.24C15.72 18.51 16.35 18.63 17.01 18.63C18.3 18.63 19.56 18.12 20.52 17.19C21.45 16.26 21.96 15 21.96 13.68C21.96 12.51 21.54 11.4 20.82 10.5L22.92 8.4V9.42C22.92 9.65999 23.13 9.87 23.37 9.87C23.61 9.87 23.82 9.65999 23.82 9.42V7.28999C23.88 7.25999 23.88 7.19999 23.85 7.13999Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Пол
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse15" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($polList as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/pol-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Пол
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse15" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($polList as $item) : ?>
 
-                <?php if (isset($breastSizeList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/pol-' . $item['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse16" aria-expanded="true" aria-controls="collapseOne">
-                                    Размер груди
-                                </button>
-                            </h5>
-                        </div>
+                                <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
 
-                        <div id="collapse16" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($breastSizeList as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/grud-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <?php if (isset($hairColorList)) : ?>
+            <?php if (isset($breastSizeList)) : ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse17" aria-expanded="true" aria-controls="collapseOne">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse16"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                Размер груди
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse16" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($breastSizeList as $item) : ?>
+
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/grud-' . $item['url']) ?>
+
+                                <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($hairColorList)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse17"
+                                    aria-expanded="true" aria-controls="collapseOne">
                                     <span class="svg-wrap">
 
-                                        <svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8.31358 0C4.73568 0 1.82486 2.91082 1.82486 6.48872V8.81952C1.82486 11.3873 3.871 13.4896 6.43036 13.606V13.8969L1.42185 15.3531C0.670315 15.5814 0.165405 16.2625 0.165405 17.0479V19H0.724792V17.0479C0.724792 16.5105 1.07028 16.0445 1.58128 15.8893L6.98978 14.3168V12.8723C7.45005 13.0834 7.96153 13.2012 8.5001 13.2012C9.02456 13.2012 9.5386 13.0883 10.0104 12.8725V19H10.5698V12.5583V12.1757V8.7472L10.5649 8.72137C10.1628 6.60658 8.30642 5.07166 6.15074 5.07166H4.86419V9.56528C4.86419 10.8017 5.4847 11.8957 6.43043 12.5529V13.0462C4.1796 12.9304 2.38432 11.0789 2.38432 8.81952V6.48872C2.38432 3.21928 5.04421 0.559387 8.31366 0.559387C11.5831 0.559387 14.243 3.21928 14.243 6.48872V18.4407H14.2244V19H14.243H14.7837H14.8023V6.48872C14.8023 2.91082 11.8915 0 8.31358 0ZM5.42351 9.56528V5.63101H6.1507C8.0294 5.63101 9.64845 6.96228 10.0104 8.80038V12.1757V12.2456C9.55066 12.5052 9.03165 12.6418 8.50006 12.6418C6.80364 12.6418 5.42351 11.2617 5.42351 9.56528Z" fill="#486BEF"/>
+                                        <svg width="15" height="19" viewBox="0 0 15 19" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+<path d="M8.31358 0C4.73568 0 1.82486 2.91082 1.82486 6.48872V8.81952C1.82486 11.3873 3.871 13.4896 6.43036 13.606V13.8969L1.42185 15.3531C0.670315 15.5814 0.165405 16.2625 0.165405 17.0479V19H0.724792V17.0479C0.724792 16.5105 1.07028 16.0445 1.58128 15.8893L6.98978 14.3168V12.8723C7.45005 13.0834 7.96153 13.2012 8.5001 13.2012C9.02456 13.2012 9.5386 13.0883 10.0104 12.8725V19H10.5698V12.5583V12.1757V8.7472L10.5649 8.72137C10.1628 6.60658 8.30642 5.07166 6.15074 5.07166H4.86419V9.56528C4.86419 10.8017 5.4847 11.8957 6.43043 12.5529V13.0462C4.1796 12.9304 2.38432 11.0789 2.38432 8.81952V6.48872C2.38432 3.21928 5.04421 0.559387 8.31366 0.559387C11.5831 0.559387 14.243 3.21928 14.243 6.48872V18.4407H14.2244V19H14.243H14.7837H14.8023V6.48872C14.8023 2.91082 11.8915 0 8.31358 0ZM5.42351 9.56528V5.63101H6.1507C8.0294 5.63101 9.64845 6.96228 10.0104 8.80038V12.1757V12.2456C9.55066 12.5052 9.03165 12.6418 8.50006 12.6418C6.80364 12.6418 5.42351 11.2617 5.42351 9.56528Z"
+      fill="#486BEF"/>
 </svg>
 
 
                                     </span>
-                                    Цвет волос
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse17" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($hairColorList as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/cvet-volos-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Цвет волос
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse17" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($hairColorList as $item) : ?>
 
-                <?php if (isset($materialnoePolojenie)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/cvet-volos-' . $item['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse19" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M17.0711 2.92891C15.1823 1.04016 12.6711 0 10 0C7.32891 0 4.81766 1.04016 2.92891 2.92891C1.0402 4.81766 0 7.32891 0 10C0 12.6711 1.0402 15.1823 2.92891 17.0711C4.81766 18.9598 7.32891 20 10 20C12.6711 20 15.1823 18.9598 17.0711 17.0711C18.9598 15.1823 20 12.6711 20 10C20 7.32891 18.9598 4.81766 17.0711 2.92891ZM10 18.8281C5.13215 18.8281 1.17188 14.8679 1.17188 10C1.17188 5.13215 5.13215 1.17188 10 1.17188C14.8679 1.17188 18.8281 5.13215 18.8281 10C18.8281 14.8679 14.8679 18.8281 10 18.8281Z" fill="#486BEF"/>
-                                        <path d="M10.6276 9.41407H9.3724C8.65728 9.41407 8.07552 8.83231 8.07552 8.11723C8.07552 7.40212 8.65732 6.82036 9.3724 6.82036H11.8828C12.2064 6.82036 12.4688 6.55801 12.4688 6.23442C12.4688 5.91083 12.2064 5.64848 11.8828 5.64848H10.586V4.35161C10.586 4.02801 10.3236 3.76567 10 3.76567C9.67642 3.76567 9.41408 4.02801 9.41408 4.35161V5.64848H9.37244C8.01115 5.64848 6.90369 6.75598 6.90369 8.11723C6.90369 9.47848 8.01119 10.5859 9.37244 10.5859H10.6277C11.3428 10.5859 11.9245 11.1677 11.9245 11.8828C11.9245 12.5979 11.3428 13.1797 10.6277 13.1797H8.11724C7.79365 13.1797 7.5313 13.442 7.5313 13.7656C7.5313 14.0892 7.79365 14.3516 8.11724 14.3516H9.41408V15.6485C9.41408 15.9721 9.67642 16.2344 10 16.2344C10.3236 16.2344 10.586 15.9721 10.586 15.6485V14.3516H10.6276C11.9889 14.3516 13.0963 13.2441 13.0963 11.8828C13.0963 10.5216 11.9889 9.41407 10.6276 9.41407Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($materialnoePolojenie)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse19"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.0711 2.92891C15.1823 1.04016 12.6711 0 10 0C7.32891 0 4.81766 1.04016 2.92891 2.92891C1.0402 4.81766 0 7.32891 0 10C0 12.6711 1.0402 15.1823 2.92891 17.0711C4.81766 18.9598 7.32891 20 10 20C12.6711 20 15.1823 18.9598 17.0711 17.0711C18.9598 15.1823 20 12.6711 20 10C20 7.32891 18.9598 4.81766 17.0711 2.92891ZM10 18.8281C5.13215 18.8281 1.17188 14.8679 1.17188 10C1.17188 5.13215 5.13215 1.17188 10 1.17188C14.8679 1.17188 18.8281 5.13215 18.8281 10C18.8281 14.8679 14.8679 18.8281 10 18.8281Z"
+                                              fill="#486BEF"/>
+                                        <path d="M10.6276 9.41407H9.3724C8.65728 9.41407 8.07552 8.83231 8.07552 8.11723C8.07552 7.40212 8.65732 6.82036 9.3724 6.82036H11.8828C12.2064 6.82036 12.4688 6.55801 12.4688 6.23442C12.4688 5.91083 12.2064 5.64848 11.8828 5.64848H10.586V4.35161C10.586 4.02801 10.3236 3.76567 10 3.76567C9.67642 3.76567 9.41408 4.02801 9.41408 4.35161V5.64848H9.37244C8.01115 5.64848 6.90369 6.75598 6.90369 8.11723C6.90369 9.47848 8.01119 10.5859 9.37244 10.5859H10.6277C11.3428 10.5859 11.9245 11.1677 11.9245 11.8828C11.9245 12.5979 11.3428 13.1797 10.6277 13.1797H8.11724C7.79365 13.1797 7.5313 13.442 7.5313 13.7656C7.5313 14.0892 7.79365 14.3516 8.11724 14.3516H9.41408V15.6485C9.41408 15.9721 9.67642 16.2344 10 16.2344C10.3236 16.2344 10.586 15.9721 10.586 15.6485V14.3516H10.6276C11.9889 14.3516 13.0963 13.2441 13.0963 11.8828C13.0963 10.5216 11.9889 9.41407 10.6276 9.41407Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
 
-                                    Материальное положение
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse19" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($materialnoePolojenie as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/materialnoe-polozhenie-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Материальное положение
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse19" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($materialnoePolojenie as $item) : ?>
 
-                <?php if (isset($metroList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/materialnoe-polozhenie-' . $item['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse6" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="17" height="23" viewBox="0 0 17 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8.5 0C4.04141 0 0.414062 3.62735 0.414062 8.08594C0.414062 9.59235 0.831342 11.0625 1.62107 12.3379L8.03973 22.6815C8.16268 22.8796 8.37929 23 8.61226 23C8.61406 23 8.61581 23 8.61761 23C8.85259 22.9982 9.06965 22.874 9.19036 22.6724L15.4454 12.2286C16.1916 10.9802 16.5859 9.54765 16.5859 8.08594C16.5859 3.62735 12.9586 0 8.5 0ZM14.2889 11.5367L8.60206 21.0318L2.76649 11.6278C2.10914 10.5663 1.75273 9.3415 1.75273 8.08594C1.75273 4.37045 4.78451 1.33867 8.5 1.33867C12.2155 1.33867 15.2428 4.37045 15.2428 8.08594C15.2428 9.30426 14.9099 10.4977 14.2889 11.5367Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($metroList)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse6"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="17" height="23" viewBox="0 0 17 23" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.5 0C4.04141 0 0.414062 3.62735 0.414062 8.08594C0.414062 9.59235 0.831342 11.0625 1.62107 12.3379L8.03973 22.6815C8.16268 22.8796 8.37929 23 8.61226 23C8.61406 23 8.61581 23 8.61761 23C8.85259 22.9982 9.06965 22.874 9.19036 22.6724L15.4454 12.2286C16.1916 10.9802 16.5859 9.54765 16.5859 8.08594C16.5859 3.62735 12.9586 0 8.5 0ZM14.2889 11.5367L8.60206 21.0318L2.76649 11.6278C2.10914 10.5663 1.75273 9.3415 1.75273 8.08594C1.75273 4.37045 4.78451 1.33867 8.5 1.33867C12.2155 1.33867 15.2428 4.37045 15.2428 8.08594C15.2428 9.30426 14.9099 10.4977 14.2889 11.5367Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Метро
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse6" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($metroList as $metro) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/metro-'.$metro['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $metro['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Метро
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse6" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($metroList as $metro) : ?>
 
-                <?php if (isset($rayonList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/metro-' . $metro['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse7" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <a href="/<?php echo $url; ?>"><?php echo $metro['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($rayonList)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse7"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0)">
-                                            <path d="M21.8499 13.8H2.68326C2.47166 13.8 2.29993 13.6283 2.29993 13.4167V1.53333C2.29993 1.32173 2.47166 1.14999 2.68326 1.14999H21.8499C22.0615 1.14999 22.2333 1.32173 22.2333 1.53333V13.4167C22.2333 13.6283 22.0615 13.8 21.8499 13.8ZM3.06659 13.0333H21.4666V1.91666H3.06659V13.0333Z" fill="#486BEF"/>
-                                            <path d="M2.68326 21.4667C2.47166 21.4667 2.29993 21.2949 2.29993 21.0833V0.383333C2.29993 0.171733 2.47166 0 2.68326 0C2.89486 0 3.06659 0.171733 3.06659 0.383333V21.0833C3.06659 21.2949 2.89486 21.4667 2.68326 21.4667Z" fill="#486BEF"/>
-                                            <path d="M4.21671 13.8C4.00511 13.8 3.83337 13.6283 3.83337 13.4167V10.35C3.83337 10.1384 4.00511 9.96667 4.21671 9.96667C4.42831 9.96667 4.60004 10.1384 4.60004 10.35V13.4167C4.60004 13.6283 4.42831 13.8 4.21671 13.8Z" fill="#486BEF"/>
-                                            <path d="M4.21672 23H1.15006C0.938457 23 0.766724 22.8283 0.766724 22.6167V21.0833C0.766724 20.8717 0.938457 20.7 1.15006 20.7H4.21672C4.42832 20.7 4.60006 20.8717 4.60006 21.0833V22.6167C4.60006 22.8283 4.42832 23 4.21672 23ZM1.53339 22.2333H3.83339V21.4667H1.53339V22.2333Z" fill="#486BEF"/>
+                                            <path d="M21.8499 13.8H2.68326C2.47166 13.8 2.29993 13.6283 2.29993 13.4167V1.53333C2.29993 1.32173 2.47166 1.14999 2.68326 1.14999H21.8499C22.0615 1.14999 22.2333 1.32173 22.2333 1.53333V13.4167C22.2333 13.6283 22.0615 13.8 21.8499 13.8ZM3.06659 13.0333H21.4666V1.91666H3.06659V13.0333Z"
+                                                  fill="#486BEF"/>
+                                            <path d="M2.68326 21.4667C2.47166 21.4667 2.29993 21.2949 2.29993 21.0833V0.383333C2.29993 0.171733 2.47166 0 2.68326 0C2.89486 0 3.06659 0.171733 3.06659 0.383333V21.0833C3.06659 21.2949 2.89486 21.4667 2.68326 21.4667Z"
+                                                  fill="#486BEF"/>
+                                            <path d="M4.21671 13.8C4.00511 13.8 3.83337 13.6283 3.83337 13.4167V10.35C3.83337 10.1384 4.00511 9.96667 4.21671 9.96667C4.42831 9.96667 4.60004 10.1384 4.60004 10.35V13.4167C4.60004 13.6283 4.42831 13.8 4.21671 13.8Z"
+                                                  fill="#486BEF"/>
+                                            <path d="M4.21672 23H1.15006C0.938457 23 0.766724 22.8283 0.766724 22.6167V21.0833C0.766724 20.8717 0.938457 20.7 1.15006 20.7H4.21672C4.42832 20.7 4.60006 20.8717 4.60006 21.0833V22.6167C4.60006 22.8283 4.42832 23 4.21672 23ZM1.53339 22.2333H3.83339V21.4667H1.53339V22.2333Z"
+                                                  fill="#486BEF"/>
                                         </g>
                                         <defs>
                                             <clipPath id="clip0">
@@ -197,410 +221,463 @@ $this->registerJsFile('/files/js/sidebar.js', ['depends' => [\frontend\assets\Ap
                                             </clipPath>
                                         </defs>
                                     </svg></span>
-                                    Район
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($rayonList as $rayon) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/rayon-'.$rayon['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $rayon['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Район
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse7" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($rayonList as $rayon) : ?>
 
-                <?php if (isset($interesi)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/rayon-' . $rayon['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse9" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M10.3212 17.0474C6.29377 17.0474 3.01757 13.7705 3.01757 9.74375C3.01757 5.71558 6.29377 2.43942 10.3212 2.43942C14.3487 2.43942 17.6256 5.71563 17.6256 9.74375C17.6256 11.266 17.1567 12.6806 16.3566 13.8519L17.8113 15.2534C18.9427 13.7091 19.6114 11.8045 19.6114 9.74339C19.6114 4.58839 15.4324 0.409393 10.2774 0.409393C5.12235 0.409393 0.943359 4.58834 0.943359 9.74339C0.943359 14.8984 5.1223 19.0773 10.2774 19.0773C12.7036 19.0773 14.9134 18.1515 16.5733 16.6341L15.0066 15.3414C13.7374 16.4054 12.103 17.0474 10.3212 17.0474Z" fill="#486BEF"/>
-                                        <path d="M14.8717 12.4215C15.3339 11.6361 15.5994 10.721 15.5994 9.7438C15.5994 6.82276 13.2317 4.45508 10.3113 4.45508C7.39031 4.45508 5.02258 6.82276 5.02258 9.7438C5.02258 12.6641 7.39031 15.0319 10.3113 15.0319C11.4701 15.0319 12.5418 14.6589 13.4132 14.0267L11.5317 12.4744C11.1692 12.6317 10.7697 12.7195 10.3494 12.7195C8.7058 12.7195 7.3734 11.3872 7.3734 9.74344C7.3734 8.09991 8.70585 6.76745 10.3494 6.76745C11.9928 6.76745 13.3254 8.09991 13.3254 9.74344C13.3254 10.1004 13.2611 10.4419 13.1458 10.7589L14.8717 12.4215Z" fill="#486BEF"/>
-                                        <path d="M21.04 17.5751L19.3843 15.9699C19.4033 15.942 19.2658 15.8929 19.1305 15.8883L17.7983 16.0866L17.7141 16.006L12.391 10.8777L12.4033 10.864C12.4374 10.8257 12.434 10.7671 12.3958 10.733L12.3944 10.7318C12.3562 10.6977 12.2975 10.701 12.2635 10.7393L12.2499 10.7545C12.0526 10.6218 11.7964 10.6224 11.601 10.7496L10.3352 9.7731C10.3244 9.76477 10.3026 9.7731 10.2859 9.79183L10.2853 9.79254C10.2685 9.81133 10.2628 9.83388 10.2723 9.84368L11.389 10.9924C11.2919 11.1987 11.3225 11.4471 11.4739 11.6245L11.4603 11.6398C11.4262 11.678 11.4296 11.7367 11.4678 11.7707L11.4691 11.7719C11.5074 11.8061 11.566 11.8027 11.6001 11.7645L11.6124 11.7507L17.3139 16.4551L17.5273 16.6313L17.3986 16.5251L17.354 17.8486C17.3504 17.9565 17.3972 18.06 17.4808 18.1285L19.2494 19.5784C19.2844 19.607 19.3369 19.5819 19.3365 19.5367L19.3232 18.1135L20.0038 18.6752C20.0377 18.7032 20.0801 18.7152 20.1213 18.712C20.1467 18.7101 20.1714 18.7017 20.1938 18.6882C20.1986 18.6853 20.2036 18.6828 20.2082 18.6793C20.2097 18.6781 20.211 18.6765 20.2125 18.6754C20.2193 18.6699 20.2259 18.6642 20.2319 18.6576L20.2322 18.6573C20.2322 18.6572 20.2322 18.6572 20.2323 18.6572L20.2343 18.6548C20.2344 18.6547 20.2344 18.6547 20.2344 18.6547L20.2348 18.6544C20.2471 18.6405 20.2562 18.6246 20.263 18.6082C20.2642 18.6053 20.266 18.6025 20.267 18.5995C20.2671 18.5992 20.2671 18.5988 20.2673 18.5985C20.274 18.5791 20.277 18.5587 20.2762 18.5384C20.2748 18.4971 20.258 18.4562 20.2263 18.4257L19.7983 18.0139L19.5949 17.818L21.0074 17.6693C21.0538 17.6643 21.0734 17.6076 21.04 17.5751Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $rayon['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($interesi)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse9"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="22" height="20" viewBox="0 0 22 20" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.3212 17.0474C6.29377 17.0474 3.01757 13.7705 3.01757 9.74375C3.01757 5.71558 6.29377 2.43942 10.3212 2.43942C14.3487 2.43942 17.6256 5.71563 17.6256 9.74375C17.6256 11.266 17.1567 12.6806 16.3566 13.8519L17.8113 15.2534C18.9427 13.7091 19.6114 11.8045 19.6114 9.74339C19.6114 4.58839 15.4324 0.409393 10.2774 0.409393C5.12235 0.409393 0.943359 4.58834 0.943359 9.74339C0.943359 14.8984 5.1223 19.0773 10.2774 19.0773C12.7036 19.0773 14.9134 18.1515 16.5733 16.6341L15.0066 15.3414C13.7374 16.4054 12.103 17.0474 10.3212 17.0474Z"
+                                              fill="#486BEF"/>
+                                        <path d="M14.8717 12.4215C15.3339 11.6361 15.5994 10.721 15.5994 9.7438C15.5994 6.82276 13.2317 4.45508 10.3113 4.45508C7.39031 4.45508 5.02258 6.82276 5.02258 9.7438C5.02258 12.6641 7.39031 15.0319 10.3113 15.0319C11.4701 15.0319 12.5418 14.6589 13.4132 14.0267L11.5317 12.4744C11.1692 12.6317 10.7697 12.7195 10.3494 12.7195C8.7058 12.7195 7.3734 11.3872 7.3734 9.74344C7.3734 8.09991 8.70585 6.76745 10.3494 6.76745C11.9928 6.76745 13.3254 8.09991 13.3254 9.74344C13.3254 10.1004 13.2611 10.4419 13.1458 10.7589L14.8717 12.4215Z"
+                                              fill="#486BEF"/>
+                                        <path d="M21.04 17.5751L19.3843 15.9699C19.4033 15.942 19.2658 15.8929 19.1305 15.8883L17.7983 16.0866L17.7141 16.006L12.391 10.8777L12.4033 10.864C12.4374 10.8257 12.434 10.7671 12.3958 10.733L12.3944 10.7318C12.3562 10.6977 12.2975 10.701 12.2635 10.7393L12.2499 10.7545C12.0526 10.6218 11.7964 10.6224 11.601 10.7496L10.3352 9.7731C10.3244 9.76477 10.3026 9.7731 10.2859 9.79183L10.2853 9.79254C10.2685 9.81133 10.2628 9.83388 10.2723 9.84368L11.389 10.9924C11.2919 11.1987 11.3225 11.4471 11.4739 11.6245L11.4603 11.6398C11.4262 11.678 11.4296 11.7367 11.4678 11.7707L11.4691 11.7719C11.5074 11.8061 11.566 11.8027 11.6001 11.7645L11.6124 11.7507L17.3139 16.4551L17.5273 16.6313L17.3986 16.5251L17.354 17.8486C17.3504 17.9565 17.3972 18.06 17.4808 18.1285L19.2494 19.5784C19.2844 19.607 19.3369 19.5819 19.3365 19.5367L19.3232 18.1135L20.0038 18.6752C20.0377 18.7032 20.0801 18.7152 20.1213 18.712C20.1467 18.7101 20.1714 18.7017 20.1938 18.6882C20.1986 18.6853 20.2036 18.6828 20.2082 18.6793C20.2097 18.6781 20.211 18.6765 20.2125 18.6754C20.2193 18.6699 20.2259 18.6642 20.2319 18.6576L20.2322 18.6573C20.2322 18.6572 20.2322 18.6572 20.2323 18.6572L20.2343 18.6548C20.2344 18.6547 20.2344 18.6547 20.2344 18.6547L20.2348 18.6544C20.2471 18.6405 20.2562 18.6246 20.263 18.6082C20.2642 18.6053 20.266 18.6025 20.267 18.5995C20.2671 18.5992 20.2671 18.5988 20.2673 18.5985C20.274 18.5791 20.277 18.5587 20.2762 18.5384C20.2748 18.4971 20.258 18.4562 20.2263 18.4257L19.7983 18.0139L19.5949 17.818L21.0074 17.6693C21.0538 17.6643 21.0734 17.6076 21.04 17.5751Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Интересы
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse9" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($interesi as $interesiitem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/interesy-'.$interesiitem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $interesiitem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Интересы
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse9" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($interesi as $interesiitem) : ?>
 
-                <?php if (isset($deti) ): ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/interesy-' . $interesiitem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse10" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.2901 20.8868C16.1575 20.203 15.7362 19.611 15.134 19.2614C15.2435 19.172 15.3462 19.073 15.44 18.9641C15.9024 18.4269 16.1072 17.7167 16.0017 17.0157C15.8304 15.8769 15.3457 14.8127 14.6 13.9384C14.0417 13.2837 13.3555 12.7562 12.5875 12.3855C13.5274 11.3829 14.1039 10.0357 14.1039 8.55625C14.1039 5.996 12.3779 3.8312 10.0285 3.16426C10.3485 2.78218 10.5231 2.30483 10.5231 1.80044C10.5232 0.807666 9.71544 0 8.72271 0C8.72266 0 8.72262 0 8.72257 0C8.32183 0 7.94649 0.130322 7.66578 0.366895C7.35552 0.62832 7.18468 0.995752 7.18463 1.40146C7.18463 1.67109 7.40323 1.88975 7.67291 1.88975C7.94254 1.88975 8.16119 1.67114 8.16119 1.40146C8.16119 1.2853 8.20621 1.18848 8.29508 1.11357C8.39996 1.0252 8.55176 0.976514 8.72261 0.976514H8.72266C9.17696 0.976514 9.54659 1.34604 9.54659 1.80034C9.54659 2.10806 9.42676 2.39731 9.20919 2.61489C8.99161 2.83242 8.7024 2.95225 8.39478 2.95225C8.39473 2.95225 8.39473 2.95225 8.39469 2.95225C8.38272 2.95225 8.371 2.95317 8.35928 2.95405C5.33409 3.02905 2.89615 5.51328 2.8961 8.5562C2.8961 10.0356 3.47266 11.3828 4.41256 12.3854C3.64459 12.7562 2.95836 13.2836 2.40006 13.9383C1.6544 14.8127 1.16969 15.8768 0.998298 17.0156C0.89283 17.7166 1.09757 18.4268 1.56002 18.9641C1.65377 19.073 1.7565 19.172 1.86602 19.2614C1.26383 19.611 0.842488 20.203 0.70992 20.8868C0.576961 21.5723 0.747566 22.281 1.17789 22.8309L2.22354 24.1671C2.646 24.7069 3.28775 24.9972 3.93868 24.9972C4.30821 24.9972 4.68077 24.9037 5.01778 24.7091C5.94849 24.1717 6.34732 23.0149 5.94552 22.0182L5.31119 20.4446C5.26881 20.3395 5.21871 20.2386 5.1628 20.1417H8.74415C9.01383 20.1417 9.23243 19.9231 9.23243 19.6535C9.23243 19.3838 9.01383 19.1652 8.74415 19.1652H4.23458V18.1358C4.23458 18.0033 4.34239 17.8955 4.47496 17.8955H12.5251C12.6576 17.8955 12.7655 18.0033 12.7655 18.1358V19.2327C12.281 19.4983 11.8985 19.9243 11.6888 20.4446L11.0545 22.0182C10.6526 23.0149 11.0515 24.1717 11.9822 24.7091C12.3192 24.9037 12.6917 24.9972 13.0613 24.9972C13.7122 24.9972 14.354 24.7069 14.7765 24.1671L15.8221 22.8309C16.2525 22.281 16.4231 21.5724 16.2901 20.8868ZM3.87261 8.55625C3.87266 6.00474 5.94854 3.92891 8.50001 3.92886C11.0515 3.92891 13.1274 6.00474 13.1274 8.55625C13.1274 11.1078 11.0516 13.1836 8.50001 13.1836C5.94849 13.1836 3.87261 11.1078 3.87261 8.55625ZM4.40557 20.8097L5.0399 22.3834C5.26085 22.9316 5.04141 23.5679 4.52955 23.8634C4.01773 24.159 3.35694 24.0309 2.99263 23.5653L1.94698 22.2292C1.69097 21.9021 1.58951 21.4806 1.66861 21.0728C1.74771 20.6649 1.99942 20.3119 2.35919 20.1042C2.7189 19.8965 3.1505 19.8551 3.54322 19.9904C3.93594 20.1258 4.25025 20.4245 4.40557 20.8097ZM12.5283 15.9424C12.2586 15.9424 12.04 16.161 12.04 16.4307V16.9189H4.96319V16.4307C4.96319 16.161 4.74459 15.9424 4.47491 15.9424C4.20523 15.9424 3.98663 16.161 3.98663 16.4307V17.0215C3.55806 17.2101 3.25797 17.6385 3.25797 18.1359V18.8254C2.88819 18.7884 2.54508 18.6116 2.3001 18.327C2.0234 18.0055 1.90089 17.5805 1.96397 17.161C2.24351 15.3029 3.48238 13.7677 5.22159 13.0982C6.14405 13.7659 7.27677 14.1602 8.50001 14.1602C9.72325 14.1602 10.856 13.7659 11.7784 13.0982C13.5176 13.7677 14.7565 15.3029 15.036 17.161C15.0991 17.5805 14.9766 18.0055 14.6999 18.327C14.4549 18.6116 14.1118 18.7884 13.742 18.8254V18.1359C13.742 17.6397 13.4434 17.2123 13.0166 17.023V16.4307C13.0166 16.161 12.798 15.9424 12.5283 15.9424ZM15.053 22.2291L14.0074 23.5653C13.6431 24.0308 12.9824 24.1589 12.4705 23.8634C11.9586 23.5678 11.7392 22.9315 11.9602 22.3833L12.5945 20.8096C12.7499 20.4244 13.0642 20.1257 13.4569 19.9903C13.609 19.9379 13.7669 19.912 13.9242 19.912C14.1731 19.912 14.4205 19.9769 14.6409 20.1042C15.0007 20.3119 15.2523 20.6649 15.3315 21.0727C15.4105 21.4805 15.309 21.902 15.053 22.2291Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $interesiitem['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($deti)): ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse10"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="17" height="25" viewBox="0 0 17 25" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.2901 20.8868C16.1575 20.203 15.7362 19.611 15.134 19.2614C15.2435 19.172 15.3462 19.073 15.44 18.9641C15.9024 18.4269 16.1072 17.7167 16.0017 17.0157C15.8304 15.8769 15.3457 14.8127 14.6 13.9384C14.0417 13.2837 13.3555 12.7562 12.5875 12.3855C13.5274 11.3829 14.1039 10.0357 14.1039 8.55625C14.1039 5.996 12.3779 3.8312 10.0285 3.16426C10.3485 2.78218 10.5231 2.30483 10.5231 1.80044C10.5232 0.807666 9.71544 0 8.72271 0C8.72266 0 8.72262 0 8.72257 0C8.32183 0 7.94649 0.130322 7.66578 0.366895C7.35552 0.62832 7.18468 0.995752 7.18463 1.40146C7.18463 1.67109 7.40323 1.88975 7.67291 1.88975C7.94254 1.88975 8.16119 1.67114 8.16119 1.40146C8.16119 1.2853 8.20621 1.18848 8.29508 1.11357C8.39996 1.0252 8.55176 0.976514 8.72261 0.976514H8.72266C9.17696 0.976514 9.54659 1.34604 9.54659 1.80034C9.54659 2.10806 9.42676 2.39731 9.20919 2.61489C8.99161 2.83242 8.7024 2.95225 8.39478 2.95225C8.39473 2.95225 8.39473 2.95225 8.39469 2.95225C8.38272 2.95225 8.371 2.95317 8.35928 2.95405C5.33409 3.02905 2.89615 5.51328 2.8961 8.5562C2.8961 10.0356 3.47266 11.3828 4.41256 12.3854C3.64459 12.7562 2.95836 13.2836 2.40006 13.9383C1.6544 14.8127 1.16969 15.8768 0.998298 17.0156C0.89283 17.7166 1.09757 18.4268 1.56002 18.9641C1.65377 19.073 1.7565 19.172 1.86602 19.2614C1.26383 19.611 0.842488 20.203 0.70992 20.8868C0.576961 21.5723 0.747566 22.281 1.17789 22.8309L2.22354 24.1671C2.646 24.7069 3.28775 24.9972 3.93868 24.9972C4.30821 24.9972 4.68077 24.9037 5.01778 24.7091C5.94849 24.1717 6.34732 23.0149 5.94552 22.0182L5.31119 20.4446C5.26881 20.3395 5.21871 20.2386 5.1628 20.1417H8.74415C9.01383 20.1417 9.23243 19.9231 9.23243 19.6535C9.23243 19.3838 9.01383 19.1652 8.74415 19.1652H4.23458V18.1358C4.23458 18.0033 4.34239 17.8955 4.47496 17.8955H12.5251C12.6576 17.8955 12.7655 18.0033 12.7655 18.1358V19.2327C12.281 19.4983 11.8985 19.9243 11.6888 20.4446L11.0545 22.0182C10.6526 23.0149 11.0515 24.1717 11.9822 24.7091C12.3192 24.9037 12.6917 24.9972 13.0613 24.9972C13.7122 24.9972 14.354 24.7069 14.7765 24.1671L15.8221 22.8309C16.2525 22.281 16.4231 21.5724 16.2901 20.8868ZM3.87261 8.55625C3.87266 6.00474 5.94854 3.92891 8.50001 3.92886C11.0515 3.92891 13.1274 6.00474 13.1274 8.55625C13.1274 11.1078 11.0516 13.1836 8.50001 13.1836C5.94849 13.1836 3.87261 11.1078 3.87261 8.55625ZM4.40557 20.8097L5.0399 22.3834C5.26085 22.9316 5.04141 23.5679 4.52955 23.8634C4.01773 24.159 3.35694 24.0309 2.99263 23.5653L1.94698 22.2292C1.69097 21.9021 1.58951 21.4806 1.66861 21.0728C1.74771 20.6649 1.99942 20.3119 2.35919 20.1042C2.7189 19.8965 3.1505 19.8551 3.54322 19.9904C3.93594 20.1258 4.25025 20.4245 4.40557 20.8097ZM12.5283 15.9424C12.2586 15.9424 12.04 16.161 12.04 16.4307V16.9189H4.96319V16.4307C4.96319 16.161 4.74459 15.9424 4.47491 15.9424C4.20523 15.9424 3.98663 16.161 3.98663 16.4307V17.0215C3.55806 17.2101 3.25797 17.6385 3.25797 18.1359V18.8254C2.88819 18.7884 2.54508 18.6116 2.3001 18.327C2.0234 18.0055 1.90089 17.5805 1.96397 17.161C2.24351 15.3029 3.48238 13.7677 5.22159 13.0982C6.14405 13.7659 7.27677 14.1602 8.50001 14.1602C9.72325 14.1602 10.856 13.7659 11.7784 13.0982C13.5176 13.7677 14.7565 15.3029 15.036 17.161C15.0991 17.5805 14.9766 18.0055 14.6999 18.327C14.4549 18.6116 14.1118 18.7884 13.742 18.8254V18.1359C13.742 17.6397 13.4434 17.2123 13.0166 17.023V16.4307C13.0166 16.161 12.798 15.9424 12.5283 15.9424ZM15.053 22.2291L14.0074 23.5653C13.6431 24.0308 12.9824 24.1589 12.4705 23.8634C11.9586 23.5678 11.7392 22.9315 11.9602 22.3833L12.5945 20.8096C12.7499 20.4244 13.0642 20.1257 13.4569 19.9903C13.609 19.9379 13.7669 19.912 13.9242 19.912C14.1731 19.912 14.4205 19.9769 14.6409 20.1042C15.0007 20.3119 15.2523 20.6649 15.3315 21.0727C15.4105 21.4805 15.309 21.902 15.053 22.2291Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Дети
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse10" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($deti as $detiItem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/deti-'.$detiItem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $detiItem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Дети
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse10" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($deti as $detiItem) : ?>
 
-                <?php if (isset($semeinoePolojenie)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/deti-' . $detiItem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse11" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.9043 11.1347C13.7462 11.1347 13.592 11.0848 13.4639 10.992C13.3358 10.8991 13.2403 10.7682 13.1911 10.6179C13.1419 10.4676 13.1414 10.3055 13.1898 10.1549C13.2382 10.0043 13.3329 9.87285 13.4605 9.77933C14.0905 9.31968 14.5614 8.67507 14.8079 7.93523C15.0544 7.19538 15.0641 6.3971 14.8357 5.65147C14.6073 4.90585 14.1521 4.24999 13.5335 3.77516C12.9149 3.30033 12.1637 3.03016 11.3843 3.00224C10.605 2.97433 9.83636 3.19006 9.18538 3.61942C8.53439 4.04878 8.03345 4.6704 7.75227 5.39777C7.47109 6.12513 7.42366 6.92207 7.61658 7.67765C7.8095 8.43324 8.23318 9.10989 8.82864 9.61343C8.98044 9.74202 9.07494 9.92566 9.09135 10.1239C9.10775 10.3222 9.04472 10.5189 8.91613 10.6707C8.78753 10.8225 8.6039 10.917 8.40563 10.9334C8.20736 10.9498 8.01069 10.8867 7.85889 10.7582C7.02566 10.0531 6.43292 9.1058 6.16313 8.04815C5.89335 6.9905 5.95993 5.87505 6.35363 4.85701C6.74732 3.83896 7.44854 2.96894 8.35974 2.36799C9.27093 1.76704 10.3468 1.46504 11.4376 1.50402C12.5284 1.543 13.58 1.92101 14.446 2.58546C15.3119 3.24992 15.9493 4.16777 16.2693 5.21132C16.5893 6.25487 16.5761 7.37222 16.2315 8.40792C15.887 9.44362 15.2281 10.3462 14.3467 10.99C14.2184 11.0841 14.0634 11.1348 13.9043 11.1347Z" fill="#486BEF"/>
-                                        <path d="M6.75001 16.5C5.63069 16.4999 4.54069 16.1422 3.63906 15.4789C2.73744 14.8156 2.07139 13.8815 1.73812 12.813C1.40485 11.7444 1.4218 10.5973 1.7865 9.53909C2.15119 8.48085 2.84455 7.56686 3.76537 6.93051C3.92895 6.81769 4.13061 6.77439 4.32608 6.8101C4.52156 6.84581 4.69487 6.95763 4.80799 7.121C4.92111 7.28437 4.96478 7.48595 4.92942 7.68149C4.89406 7.87703 4.78256 8.05055 4.6194 8.16396C3.97744 8.60692 3.48955 9.239 3.22363 9.97222C2.95771 10.7054 2.92699 11.5033 3.13575 12.2548C3.34451 13.0063 3.78237 13.674 4.38837 14.165C4.99438 14.656 5.73838 14.9459 6.51683 14.9943C7.29528 15.0426 8.06945 14.8471 8.73158 14.4349C9.39371 14.0227 9.91087 13.4144 10.2111 12.6945C10.5113 11.9746 10.5796 11.1791 10.4065 10.4186C10.2334 9.65809 9.8275 8.97047 9.24532 8.45144C9.09692 8.31895 9.00722 8.13293 8.99596 7.93431C8.9847 7.73569 9.0528 7.54073 9.18529 7.39232C9.31777 7.24391 9.50379 7.15421 9.70241 7.14295C9.90103 7.1317 10.096 7.1998 10.2444 7.33228C11.0384 8.04038 11.5985 8.973 11.8506 10.0066C12.1026 11.0402 12.0347 12.1259 11.6557 13.1201C11.2768 14.1142 10.6048 14.9697 9.72874 15.5733C8.85267 16.1769 7.81388 16.5 6.75001 16.5Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $detiItem['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($semeinoePolojenie)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse11"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13.9043 11.1347C13.7462 11.1347 13.592 11.0848 13.4639 10.992C13.3358 10.8991 13.2403 10.7682 13.1911 10.6179C13.1419 10.4676 13.1414 10.3055 13.1898 10.1549C13.2382 10.0043 13.3329 9.87285 13.4605 9.77933C14.0905 9.31968 14.5614 8.67507 14.8079 7.93523C15.0544 7.19538 15.0641 6.3971 14.8357 5.65147C14.6073 4.90585 14.1521 4.24999 13.5335 3.77516C12.9149 3.30033 12.1637 3.03016 11.3843 3.00224C10.605 2.97433 9.83636 3.19006 9.18538 3.61942C8.53439 4.04878 8.03345 4.6704 7.75227 5.39777C7.47109 6.12513 7.42366 6.92207 7.61658 7.67765C7.8095 8.43324 8.23318 9.10989 8.82864 9.61343C8.98044 9.74202 9.07494 9.92566 9.09135 10.1239C9.10775 10.3222 9.04472 10.5189 8.91613 10.6707C8.78753 10.8225 8.6039 10.917 8.40563 10.9334C8.20736 10.9498 8.01069 10.8867 7.85889 10.7582C7.02566 10.0531 6.43292 9.1058 6.16313 8.04815C5.89335 6.9905 5.95993 5.87505 6.35363 4.85701C6.74732 3.83896 7.44854 2.96894 8.35974 2.36799C9.27093 1.76704 10.3468 1.46504 11.4376 1.50402C12.5284 1.543 13.58 1.92101 14.446 2.58546C15.3119 3.24992 15.9493 4.16777 16.2693 5.21132C16.5893 6.25487 16.5761 7.37222 16.2315 8.40792C15.887 9.44362 15.2281 10.3462 14.3467 10.99C14.2184 11.0841 14.0634 11.1348 13.9043 11.1347Z"
+                                              fill="#486BEF"/>
+                                        <path d="M6.75001 16.5C5.63069 16.4999 4.54069 16.1422 3.63906 15.4789C2.73744 14.8156 2.07139 13.8815 1.73812 12.813C1.40485 11.7444 1.4218 10.5973 1.7865 9.53909C2.15119 8.48085 2.84455 7.56686 3.76537 6.93051C3.92895 6.81769 4.13061 6.77439 4.32608 6.8101C4.52156 6.84581 4.69487 6.95763 4.80799 7.121C4.92111 7.28437 4.96478 7.48595 4.92942 7.68149C4.89406 7.87703 4.78256 8.05055 4.6194 8.16396C3.97744 8.60692 3.48955 9.239 3.22363 9.97222C2.95771 10.7054 2.92699 11.5033 3.13575 12.2548C3.34451 13.0063 3.78237 13.674 4.38837 14.165C4.99438 14.656 5.73838 14.9459 6.51683 14.9943C7.29528 15.0426 8.06945 14.8471 8.73158 14.4349C9.39371 14.0227 9.91087 13.4144 10.2111 12.6945C10.5113 11.9746 10.5796 11.1791 10.4065 10.4186C10.2334 9.65809 9.8275 8.97047 9.24532 8.45144C9.09692 8.31895 9.00722 8.13293 8.99596 7.93431C8.9847 7.73569 9.0528 7.54073 9.18529 7.39232C9.31777 7.24391 9.50379 7.15421 9.70241 7.14295C9.90103 7.1317 10.096 7.1998 10.2444 7.33228C11.0384 8.04038 11.5985 8.973 11.8506 10.0066C12.1026 11.0402 12.0347 12.1259 11.6557 13.1201C11.2768 14.1142 10.6048 14.9697 9.72874 15.5733C8.85267 16.1769 7.81388 16.5 6.75001 16.5Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Семейное положение
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($semeinoePolojenie as $semeinoePolojenieItem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/semejnoe-polozhenie-'.$semeinoePolojenieItem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $semeinoePolojenieItem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Семейное положение
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse11" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($semeinoePolojenie as $semeinoePolojenieItem) : ?>
 
-                <?php if (isset($celiZnakomstva)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/semejnoe-polozhenie-' . $semeinoePolojenieItem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse14" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20.386 15.3103C21.0808 14.5993 21.4688 13.6441 21.4667 12.65C21.4613 11.1109 20.5395 9.72297 19.123 9.12103C19.5372 8.14129 19.6507 7.06044 19.4488 6.01603C20.5194 5.39465 21.0833 4.6437 21.0833 3.83333C21.0833 1.68398 16.8739 0 11.5 0C6.12605 0 1.91667 1.68398 1.91667 3.83333C1.91667 4.6437 2.48055 5.39465 3.5512 6.01833C3.3491 7.06273 3.46253 8.14365 3.87703 9.12333C2.46127 9.72494 1.53966 11.1117 1.53333 12.65C1.5312 13.6441 1.91921 14.5993 2.61395 15.3103C0.997009 16.2781 0.00514567 18.0221 0 19.9065V20.8035C0.000844468 21.3811 0.468884 21.8492 1.0465 21.85H5.36667C5.36667 22.4851 5.88154 23 6.51667 23H16.4833C17.1185 23 17.6333 22.4851 17.6333 21.85H21.9535C22.5311 21.8492 22.9992 21.3811 23 20.8035V19.9065C22.9949 18.0221 22.003 16.278 20.386 15.3103ZM20.7 12.65C20.7014 13.8758 19.972 14.9844 18.8457 15.4683C17.7195 15.9522 16.4132 15.7181 15.525 14.8733C16.2896 13.4897 16.2896 11.8103 15.525 10.4267C16.0874 9.88487 16.8386 9.58324 17.6195 9.58563C17.7257 9.87122 17.7782 10.0633 17.779 10.0656C17.8161 10.203 17.9263 10.3085 18.0652 10.3396C18.2041 10.3707 18.3488 10.3223 18.441 10.2139C18.551 10.0832 18.6534 9.94621 18.7477 9.80375C19.9204 10.2626 20.6942 11.3908 20.7 12.65ZM11.5 16.4833C9.59201 16.4862 7.97291 15.0842 7.70289 13.1955C7.43287 11.3067 8.5943 9.50721 10.4267 8.97537L11.1738 10.1702C11.2437 10.283 11.3669 10.3516 11.4996 10.3516C11.6323 10.3516 11.7556 10.283 11.8254 10.1702L12.5733 8.97537C14.4045 9.50827 15.5647 11.3072 15.2948 13.1951C15.0249 15.0831 13.4072 16.4849 11.5 16.4833ZM7.9051 9.78037C7.29291 9.23669 6.52164 8.90504 5.70592 8.83468C5.99688 8.20123 6.44017 7.64968 6.99622 7.22928C7.84291 7.40301 8.69969 7.52335 9.56148 7.58962L10.0077 8.303C9.18036 8.58503 8.45086 9.09761 7.9051 9.78037ZM15.0949 9.78037C14.549 9.09762 13.8196 8.58494 12.9923 8.30262L13.4385 7.59C14.3015 7.52553 15.1593 7.40556 16.0068 7.23082C16.562 7.65117 17.0046 8.20228 17.2952 8.83507C16.4791 8.90537 15.7075 9.23701 15.0949 9.78075V9.78037ZM2.68333 3.83333C2.68333 2.3828 6.30392 0.766667 11.5 0.766667C16.6961 0.766667 20.3167 2.3828 20.3167 3.83333C20.3167 4.39492 19.7907 4.9795 18.8355 5.47937C18.6779 5.56183 18.5978 5.74181 18.6419 5.91407C18.9185 6.99597 18.7851 8.14194 18.2674 9.13138L18.2413 9.06698C17.9055 8.24243 17.3098 7.14687 16.3653 6.55002C16.2723 6.45674 16.1382 6.41728 16.0095 6.44537C15.0795 6.64584 14.136 6.77755 13.1867 6.83943C13.0571 6.84992 12.9416 6.9254 12.88 7.03992L11.5 9.24485L10.1315 7.05333C10.0716 6.93013 9.9504 6.84829 9.81372 6.83867C8.86529 6.77493 7.92267 6.64311 6.99315 6.44422C6.87253 6.41931 6.74726 6.45333 6.65582 6.53583C5.69748 7.12962 5.0968 8.23553 4.7587 9.06583L4.73263 9.13062C4.21455 8.14129 4.08113 6.99517 4.35812 5.9133C4.40254 5.7415 4.32325 5.56167 4.16645 5.4786C3.20927 4.9795 2.68333 4.39492 2.68333 3.83333ZM4.2504 9.80452C4.34475 9.94695 4.44713 10.0839 4.55707 10.2147C4.64929 10.3231 4.79398 10.3715 4.93286 10.3403C5.07173 10.3092 5.18194 10.2037 5.21908 10.0663C5.21908 10.064 5.27237 9.87198 5.37855 9.5864C6.16006 9.58314 6.91208 9.88455 7.475 10.4267C6.71035 11.8103 6.71035 13.4897 7.475 14.8733C6.90602 15.4139 6.15146 15.7157 5.36667 15.7167C3.67369 15.715 2.30169 14.343 2.3 12.65C2.30583 11.3915 3.07874 10.2639 4.2504 9.80452ZM3.45 21.0833V19.9333C3.45 19.7216 3.27838 19.55 3.06667 19.55C2.85496 19.55 2.68333 19.7216 2.68333 19.9333V21.0833H1.0465C0.892815 21.0813 0.76873 20.9572 0.766667 20.8035V19.9065C0.771175 18.1954 1.72431 16.6279 3.24147 15.8366C4.68825 16.8066 6.60813 16.6743 7.90817 15.515C8.08428 15.7362 8.28049 15.9407 8.49428 16.1257C6.68337 17.1438 5.51144 19.0099 5.38085 21.0833H3.45ZM16.8667 21.85C16.8667 22.0617 16.695 22.2333 16.4833 22.2333H14.5667V20.7C14.5667 20.4883 14.395 20.3167 14.1833 20.3167C13.9716 20.3167 13.8 20.4883 13.8 20.7V22.2333H9.2V20.7C9.2 20.4883 9.02838 20.3167 8.81667 20.3167C8.60496 20.3167 8.43333 20.4883 8.43333 20.7V22.2333H6.51667C6.30496 22.2333 6.13333 22.0617 6.13333 21.85V21.4667C6.13505 19.3984 7.32508 17.5153 9.19233 16.6259C10.6181 17.4573 12.3808 17.4573 13.8065 16.6259C14.359 16.8861 14.8619 17.2407 15.2927 17.6736C16.3043 18.6761 16.8713 20.0425 16.8667 21.4667V21.85ZM22.2333 20.8035C22.2313 20.9572 22.1072 21.0813 21.9535 21.0833H20.3167V19.9333C20.3167 19.7216 20.145 19.55 19.9333 19.55C19.7216 19.55 19.55 19.7216 19.55 19.9333V21.0833H17.6145C17.486 19.0112 16.3175 17.1448 14.5096 16.1241C14.7226 15.9396 14.918 15.7357 15.0934 15.515C16.3934 16.6743 18.3133 16.8066 19.7601 15.8366C21.2766 16.6284 22.2291 18.1957 22.2333 19.9065V20.8035Z" fill="#486BEF"/>
-                                        <path d="M11.5 4.98335C12.1351 4.98335 12.65 4.46848 12.65 3.83335C12.65 3.19822 12.1351 2.68335 11.5 2.68335C10.8648 2.68335 10.35 3.19822 10.35 3.83335C10.35 4.46848 10.8648 4.98335 11.5 4.98335ZM11.5 3.45002C11.7117 3.45002 11.8833 3.62164 11.8833 3.83335C11.8833 4.04506 11.7117 4.21668 11.5 4.21668C11.2883 4.21668 11.1166 4.04506 11.1166 3.83335C11.1166 3.62164 11.2883 3.45002 11.5 3.45002Z" fill="#486BEF"/>
-                                        <path d="M8.05002 4.98335C8.68515 4.98335 9.20003 4.46848 9.20003 3.83335C9.20003 3.19822 8.68515 2.68335 8.05002 2.68335C7.4149 2.68335 6.90002 3.19822 6.90002 3.83335C6.90002 4.46848 7.4149 4.98335 8.05002 4.98335ZM8.05002 3.45002C8.26173 3.45002 8.43336 3.62164 8.43336 3.83335C8.43336 4.04506 8.26173 4.21668 8.05002 4.21668C7.83832 4.21668 7.66669 4.04506 7.66669 3.83335C7.66669 3.62164 7.83832 3.45002 8.05002 3.45002Z" fill="#486BEF"/>
-                                        <path d="M14.95 4.98335C15.5852 4.98335 16.1 4.46848 16.1 3.83335C16.1 3.19822 15.5852 2.68335 14.95 2.68335C14.3149 2.68335 13.8 3.19822 13.8 3.83335C13.8 4.46848 14.3149 4.98335 14.95 4.98335ZM14.95 3.45002C15.1618 3.45002 15.3334 3.62164 15.3334 3.83335C15.3334 4.04506 15.1618 4.21668 14.95 4.21668C14.7383 4.21668 14.5667 4.04506 14.5667 3.83335C14.5667 3.62164 14.7383 3.45002 14.95 3.45002Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $semeinoePolojenieItem['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($celiZnakomstva)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse14"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="23" height="23" viewBox="0 0 23 23" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.386 15.3103C21.0808 14.5993 21.4688 13.6441 21.4667 12.65C21.4613 11.1109 20.5395 9.72297 19.123 9.12103C19.5372 8.14129 19.6507 7.06044 19.4488 6.01603C20.5194 5.39465 21.0833 4.6437 21.0833 3.83333C21.0833 1.68398 16.8739 0 11.5 0C6.12605 0 1.91667 1.68398 1.91667 3.83333C1.91667 4.6437 2.48055 5.39465 3.5512 6.01833C3.3491 7.06273 3.46253 8.14365 3.87703 9.12333C2.46127 9.72494 1.53966 11.1117 1.53333 12.65C1.5312 13.6441 1.91921 14.5993 2.61395 15.3103C0.997009 16.2781 0.00514567 18.0221 0 19.9065V20.8035C0.000844468 21.3811 0.468884 21.8492 1.0465 21.85H5.36667C5.36667 22.4851 5.88154 23 6.51667 23H16.4833C17.1185 23 17.6333 22.4851 17.6333 21.85H21.9535C22.5311 21.8492 22.9992 21.3811 23 20.8035V19.9065C22.9949 18.0221 22.003 16.278 20.386 15.3103ZM20.7 12.65C20.7014 13.8758 19.972 14.9844 18.8457 15.4683C17.7195 15.9522 16.4132 15.7181 15.525 14.8733C16.2896 13.4897 16.2896 11.8103 15.525 10.4267C16.0874 9.88487 16.8386 9.58324 17.6195 9.58563C17.7257 9.87122 17.7782 10.0633 17.779 10.0656C17.8161 10.203 17.9263 10.3085 18.0652 10.3396C18.2041 10.3707 18.3488 10.3223 18.441 10.2139C18.551 10.0832 18.6534 9.94621 18.7477 9.80375C19.9204 10.2626 20.6942 11.3908 20.7 12.65ZM11.5 16.4833C9.59201 16.4862 7.97291 15.0842 7.70289 13.1955C7.43287 11.3067 8.5943 9.50721 10.4267 8.97537L11.1738 10.1702C11.2437 10.283 11.3669 10.3516 11.4996 10.3516C11.6323 10.3516 11.7556 10.283 11.8254 10.1702L12.5733 8.97537C14.4045 9.50827 15.5647 11.3072 15.2948 13.1951C15.0249 15.0831 13.4072 16.4849 11.5 16.4833ZM7.9051 9.78037C7.29291 9.23669 6.52164 8.90504 5.70592 8.83468C5.99688 8.20123 6.44017 7.64968 6.99622 7.22928C7.84291 7.40301 8.69969 7.52335 9.56148 7.58962L10.0077 8.303C9.18036 8.58503 8.45086 9.09761 7.9051 9.78037ZM15.0949 9.78037C14.549 9.09762 13.8196 8.58494 12.9923 8.30262L13.4385 7.59C14.3015 7.52553 15.1593 7.40556 16.0068 7.23082C16.562 7.65117 17.0046 8.20228 17.2952 8.83507C16.4791 8.90537 15.7075 9.23701 15.0949 9.78075V9.78037ZM2.68333 3.83333C2.68333 2.3828 6.30392 0.766667 11.5 0.766667C16.6961 0.766667 20.3167 2.3828 20.3167 3.83333C20.3167 4.39492 19.7907 4.9795 18.8355 5.47937C18.6779 5.56183 18.5978 5.74181 18.6419 5.91407C18.9185 6.99597 18.7851 8.14194 18.2674 9.13138L18.2413 9.06698C17.9055 8.24243 17.3098 7.14687 16.3653 6.55002C16.2723 6.45674 16.1382 6.41728 16.0095 6.44537C15.0795 6.64584 14.136 6.77755 13.1867 6.83943C13.0571 6.84992 12.9416 6.9254 12.88 7.03992L11.5 9.24485L10.1315 7.05333C10.0716 6.93013 9.9504 6.84829 9.81372 6.83867C8.86529 6.77493 7.92267 6.64311 6.99315 6.44422C6.87253 6.41931 6.74726 6.45333 6.65582 6.53583C5.69748 7.12962 5.0968 8.23553 4.7587 9.06583L4.73263 9.13062C4.21455 8.14129 4.08113 6.99517 4.35812 5.9133C4.40254 5.7415 4.32325 5.56167 4.16645 5.4786C3.20927 4.9795 2.68333 4.39492 2.68333 3.83333ZM4.2504 9.80452C4.34475 9.94695 4.44713 10.0839 4.55707 10.2147C4.64929 10.3231 4.79398 10.3715 4.93286 10.3403C5.07173 10.3092 5.18194 10.2037 5.21908 10.0663C5.21908 10.064 5.27237 9.87198 5.37855 9.5864C6.16006 9.58314 6.91208 9.88455 7.475 10.4267C6.71035 11.8103 6.71035 13.4897 7.475 14.8733C6.90602 15.4139 6.15146 15.7157 5.36667 15.7167C3.67369 15.715 2.30169 14.343 2.3 12.65C2.30583 11.3915 3.07874 10.2639 4.2504 9.80452ZM3.45 21.0833V19.9333C3.45 19.7216 3.27838 19.55 3.06667 19.55C2.85496 19.55 2.68333 19.7216 2.68333 19.9333V21.0833H1.0465C0.892815 21.0813 0.76873 20.9572 0.766667 20.8035V19.9065C0.771175 18.1954 1.72431 16.6279 3.24147 15.8366C4.68825 16.8066 6.60813 16.6743 7.90817 15.515C8.08428 15.7362 8.28049 15.9407 8.49428 16.1257C6.68337 17.1438 5.51144 19.0099 5.38085 21.0833H3.45ZM16.8667 21.85C16.8667 22.0617 16.695 22.2333 16.4833 22.2333H14.5667V20.7C14.5667 20.4883 14.395 20.3167 14.1833 20.3167C13.9716 20.3167 13.8 20.4883 13.8 20.7V22.2333H9.2V20.7C9.2 20.4883 9.02838 20.3167 8.81667 20.3167C8.60496 20.3167 8.43333 20.4883 8.43333 20.7V22.2333H6.51667C6.30496 22.2333 6.13333 22.0617 6.13333 21.85V21.4667C6.13505 19.3984 7.32508 17.5153 9.19233 16.6259C10.6181 17.4573 12.3808 17.4573 13.8065 16.6259C14.359 16.8861 14.8619 17.2407 15.2927 17.6736C16.3043 18.6761 16.8713 20.0425 16.8667 21.4667V21.85ZM22.2333 20.8035C22.2313 20.9572 22.1072 21.0813 21.9535 21.0833H20.3167V19.9333C20.3167 19.7216 20.145 19.55 19.9333 19.55C19.7216 19.55 19.55 19.7216 19.55 19.9333V21.0833H17.6145C17.486 19.0112 16.3175 17.1448 14.5096 16.1241C14.7226 15.9396 14.918 15.7357 15.0934 15.515C16.3934 16.6743 18.3133 16.8066 19.7601 15.8366C21.2766 16.6284 22.2291 18.1957 22.2333 19.9065V20.8035Z"
+                                              fill="#486BEF"/>
+                                        <path d="M11.5 4.98335C12.1351 4.98335 12.65 4.46848 12.65 3.83335C12.65 3.19822 12.1351 2.68335 11.5 2.68335C10.8648 2.68335 10.35 3.19822 10.35 3.83335C10.35 4.46848 10.8648 4.98335 11.5 4.98335ZM11.5 3.45002C11.7117 3.45002 11.8833 3.62164 11.8833 3.83335C11.8833 4.04506 11.7117 4.21668 11.5 4.21668C11.2883 4.21668 11.1166 4.04506 11.1166 3.83335C11.1166 3.62164 11.2883 3.45002 11.5 3.45002Z"
+                                              fill="#486BEF"/>
+                                        <path d="M8.05002 4.98335C8.68515 4.98335 9.20003 4.46848 9.20003 3.83335C9.20003 3.19822 8.68515 2.68335 8.05002 2.68335C7.4149 2.68335 6.90002 3.19822 6.90002 3.83335C6.90002 4.46848 7.4149 4.98335 8.05002 4.98335ZM8.05002 3.45002C8.26173 3.45002 8.43336 3.62164 8.43336 3.83335C8.43336 4.04506 8.26173 4.21668 8.05002 4.21668C7.83832 4.21668 7.66669 4.04506 7.66669 3.83335C7.66669 3.62164 7.83832 3.45002 8.05002 3.45002Z"
+                                              fill="#486BEF"/>
+                                        <path d="M14.95 4.98335C15.5852 4.98335 16.1 4.46848 16.1 3.83335C16.1 3.19822 15.5852 2.68335 14.95 2.68335C14.3149 2.68335 13.8 3.19822 13.8 3.83335C13.8 4.46848 14.3149 4.98335 14.95 4.98335ZM14.95 3.45002C15.1618 3.45002 15.3334 3.62164 15.3334 3.83335C15.3334 4.04506 15.1618 4.21668 14.95 4.21668C14.7383 4.21668 14.5667 4.04506 14.5667 3.83335C14.5667 3.62164 14.7383 3.45002 14.95 3.45002Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Цели знакомства
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse14" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($celiZnakomstva as $celiZnakomstvaItem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/celi-znakomstva-'.$celiZnakomstvaItem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Цели знакомства
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse14" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($celiZnakomstva as $celiZnakomstvaItem) : ?>
 
-                <?php if (isset($smoke)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/celi-znakomstva-' . $celiZnakomstvaItem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse12" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.0547 14.7734L2.28125 1L1 2.28125L14.7734 16.0547L16.0547 14.7734Z" stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M17.0156 15.7344L15.7344 17.0156" stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M17.9764 16.6953L16.6952 17.9766" stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M17.8228 14.6197C18.4627 13.9797 18.7702 14.2872 19.4101 13.6473C20.0511 13.0063 19.7436 12.6988 20.3846 12.0579C21.0255 11.4169 21.333 11.7244 21.974 11.0834" stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M19.104 15.9009C19.7439 15.261 20.0514 15.5685 20.6914 14.9286C21.3323 14.2876 21.0248 13.9801 21.6658 13.3391C22.3068 12.6982 22.6143 13.0057 23.2553 12.3647" stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $celiZnakomstvaItem['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($smoke)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse12"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="24" height="19" viewBox="0 0 24 19" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.0547 14.7734L2.28125 1L1 2.28125L14.7734 16.0547L16.0547 14.7734Z"
+                                              stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17.0156 15.7344L15.7344 17.0156" stroke="#486BEF" stroke-width="0.5"
+                                              stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17.9764 16.6953L16.6952 17.9766" stroke="#486BEF" stroke-width="0.5"
+                                              stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17.8228 14.6197C18.4627 13.9797 18.7702 14.2872 19.4101 13.6473C20.0511 13.0063 19.7436 12.6988 20.3846 12.0579C21.0255 11.4169 21.333 11.7244 21.974 11.0834"
+                                              stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M19.104 15.9009C19.7439 15.261 20.0514 15.5685 20.6914 14.9286C21.3323 14.2876 21.0248 13.9801 21.6658 13.3391C22.3068 12.6982 22.6143 13.0057 23.2553 12.3647"
+                                              stroke="#486BEF" stroke-width="0.5" stroke-miterlimit="10"
+                                              stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg></span>
-                                    Отношение к курению
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse12" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($smoke as $smokeItem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-kureniyu-'.$smokeItem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $smokeItem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Отношение к курению
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse12" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($smoke as $smokeItem) : ?>
 
-                <?php if (isset($alcogol)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-kureniyu-' . $smokeItem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse13" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="17" height="29" viewBox="0 0 17 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M0.570312 11.3281C0.570312 15.0971 3.21073 18.2891 6.80077 19.0746V25.8179L2.5826 27.9269C2.34763 28.0444 2.22439 28.3081 2.28457 28.5636C2.34497 28.8194 2.57331 28.9999 2.83593 28.9999H14.164C14.4267 28.9999 14.655 28.8194 14.7152 28.5636C14.7756 28.3081 14.6523 28.0446 14.4171 27.9269L10.1992 25.8179V19.0746C13.8892 18.267 16.4965 14.9509 16.429 11.204C16.4053 9.75013 16.1788 9.56318 14.1497 0.440292C14.091 0.182754 13.8618 0 13.5976 0H10.8222C10.5094 0 10.2558 0.253555 10.2558 0.566405C10.2558 0.879255 10.5094 1.13281 10.8222 1.13281H13.1461C13.1461 1.13281 15.1851 10.0889 15.2081 10.2307C14.0171 9.64526 12.5878 9.09921 11.3488 9.0627C10.0406 9.02332 8.84425 9.68088 7.68821 10.3161C6.59257 10.9181 5.558 11.4867 4.62586 11.3354C3.8559 11.2106 2.91669 10.648 1.89738 9.70411L3.85413 1.13281H6.291C6.60385 1.13281 6.85741 0.879255 6.85741 0.566405C6.85741 0.253555 6.60385 0 6.291 0H3.40234C3.13816 0 2.90895 0.182754 2.85009 0.440292C0.590004 10.3475 0.570313 10.0428 0.570313 11.3281H0.570312ZM11.7648 27.8671H5.23519L7.62051 26.6746C7.81233 26.5786 7.93358 26.3823 7.93358 26.1679V19.237C8.12186 19.2503 8.31103 19.2578 8.49998 19.2578C8.68893 19.2578 8.8781 19.2503 9.06639 19.237V26.1679C9.06639 26.3825 9.18763 26.5786 9.37946 26.6746L11.7648 27.8671ZM8.23382 11.3089C9.25689 10.7469 10.3145 10.1654 11.3154 10.1951C12.3115 10.2243 13.7153 10.7031 15.2929 11.5478C15.1758 15.1069 12.2206 18.1551 8.44334 18.1243C4.57763 18.0931 1.55267 14.8168 1.70954 11.0434C2.68836 11.8443 3.60523 12.3175 4.44443 12.4536C5.7715 12.6691 7.04415 11.9627 8.23382 11.3089Z" fill="#486BEF"/>
+                                <a href="/<?php echo $url; ?>"><?php echo $smokeItem['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($alcogol)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse13"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="17" height="29" viewBox="0 0 17 29" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.570312 11.3281C0.570312 15.0971 3.21073 18.2891 6.80077 19.0746V25.8179L2.5826 27.9269C2.34763 28.0444 2.22439 28.3081 2.28457 28.5636C2.34497 28.8194 2.57331 28.9999 2.83593 28.9999H14.164C14.4267 28.9999 14.655 28.8194 14.7152 28.5636C14.7756 28.3081 14.6523 28.0446 14.4171 27.9269L10.1992 25.8179V19.0746C13.8892 18.267 16.4965 14.9509 16.429 11.204C16.4053 9.75013 16.1788 9.56318 14.1497 0.440292C14.091 0.182754 13.8618 0 13.5976 0H10.8222C10.5094 0 10.2558 0.253555 10.2558 0.566405C10.2558 0.879255 10.5094 1.13281 10.8222 1.13281H13.1461C13.1461 1.13281 15.1851 10.0889 15.2081 10.2307C14.0171 9.64526 12.5878 9.09921 11.3488 9.0627C10.0406 9.02332 8.84425 9.68088 7.68821 10.3161C6.59257 10.9181 5.558 11.4867 4.62586 11.3354C3.8559 11.2106 2.91669 10.648 1.89738 9.70411L3.85413 1.13281H6.291C6.60385 1.13281 6.85741 0.879255 6.85741 0.566405C6.85741 0.253555 6.60385 0 6.291 0H3.40234C3.13816 0 2.90895 0.182754 2.85009 0.440292C0.590004 10.3475 0.570313 10.0428 0.570313 11.3281H0.570312ZM11.7648 27.8671H5.23519L7.62051 26.6746C7.81233 26.5786 7.93358 26.3823 7.93358 26.1679V19.237C8.12186 19.2503 8.31103 19.2578 8.49998 19.2578C8.68893 19.2578 8.8781 19.2503 9.06639 19.237V26.1679C9.06639 26.3825 9.18763 26.5786 9.37946 26.6746L11.7648 27.8671ZM8.23382 11.3089C9.25689 10.7469 10.3145 10.1654 11.3154 10.1951C12.3115 10.2243 13.7153 10.7031 15.2929 11.5478C15.1758 15.1069 12.2206 18.1551 8.44334 18.1243C4.57763 18.0931 1.55267 14.8168 1.70954 11.0434C2.68836 11.8443 3.60523 12.3175 4.44443 12.4536C5.7715 12.6691 7.04415 11.9627 8.23382 11.3089Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
-                                    Отношение к алкоголю
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse13" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($alcogol as $alcogolItem) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-akogolyu-'.$alcogolItem['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $alcogolItem['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Отношение к алкоголю
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse13" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($alcogol as $alcogolItem) : ?>
 
-                <?php if (isset($placeList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/otnoshenie-k-akogolyu-' . $alcogolItem['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Место
-                                </button>
-                            </h5>
-                        </div>
+                                <a href="/<?php echo $url; ?>"><?php echo $alcogolItem['value'] ?></a>
 
-                        <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($placeList as $place) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/mesto-vstreji-'.$place['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $place['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <?php if (isset($ageList)) : ?>
+            <?php if (isset($placeList)) : ?>
 
-
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Возраст
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($ageList as $age) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/vozrast-'.$age['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $age['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                Место
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($placeList as $place) : ?>
 
-                <?php if (isset($priceList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/mesto-vstreji-' . $place['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Цены
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($priceList as $price) : ?>
+                                <a href="/<?php echo $url; ?>"><?php echo $place['value'] ?></a>
 
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/cena-'.$price['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $price['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <?php if (isset($nationalList)) : ?>
+            <?php if (isset($ageList)) : ?>
 
 
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapseThree">
-                                    Национальность
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($nationalList as $national) : ?>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                Возраст
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($ageList as $age) : ?>
 
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/nacionalnost-'.$national['url']) ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/vozrast-' . $age['url']) ?>
 
-                                    <a href="/<?php echo $url; ?>"><?php echo $national['value'] ?></a>
+                                <a href="/<?php echo $url; ?>"><?php echo $age['value'] ?></a>
 
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <?php if (isset($bodyList) ): ?>
+            <?php if (isset($priceList)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                    aria-expanded="false" aria-controls="collapseThree">
+                                Цены
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($priceList as $price) : ?>
+
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/cena-' . $price['url']) ?>
+
+                                <a href="/<?php echo $url; ?>"><?php echo $price['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($nationalList)) : ?>
 
 
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapseThree">
-                                    <span class="svg-wrap"><svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M18.298 11.3625C17.7437 9.37432 15.3272 6.25303 15.6272 0.784522C15.6346 0.650635 15.5865 0.51958 15.4943 0.422119C15.4021 0.324707 15.2738 0.269531 15.1397 0.269531H3.8604C3.72627 0.269531 3.598 0.324707 3.50581 0.422119C3.41363 0.519531 3.36553 0.650586 3.37286 0.784522C3.67149 6.22783 1.26226 9.3811 0.69854 11.3584C-0.320747 14.9233 1.34205 19.5278 3.67188 22.5409C3.76436 22.6604 3.90699 22.7305 4.05816 22.7305H14.9424C15.0936 22.7305 15.2362 22.6604 15.3287 22.5409C17.5462 19.674 19.2829 14.881 18.298 11.3625ZM3.07627 8.28579C3.9918 5.96694 4.42569 3.60122 4.36831 1.24614H14.6317C14.5744 3.60029 15.0081 5.96553 15.9233 8.28467C15.9621 8.38291 16.0027 8.48198 16.0447 8.58218C14.0357 9.53389 11.7832 10.0352 9.50005 10.0352C7.21695 10.0352 4.96426 9.53389 2.95528 8.58218C2.99683 8.48296 3.03731 8.38438 3.07627 8.28579ZM9.01177 21.7539H4.3002C1.78516 18.3918 1.03462 14.5766 1.51563 12.134C4.15982 13.1492 6.66494 15.3365 9.01177 17.1139V21.7539ZM1.7794 11.1896C1.94395 10.7346 2.14883 10.3108 2.37779 9.83813C2.43565 9.71875 2.49449 9.59707 2.55391 9.47246C4.68887 10.4807 7.0792 11.0117 9.50005 11.0117C11.9209 11.0117 14.3111 10.4807 16.446 9.47251C16.5053 9.59673 16.5639 9.71797 16.6215 9.83691C16.8507 10.3103 17.0558 10.7347 17.2186 11.1903C14.4276 12.2408 11.7975 14.5106 9.50005 16.2591C7.19273 14.5033 4.5711 12.2398 1.7794 11.1896ZM14.6996 21.7539H9.98833V17.1139C12.3518 15.3236 14.8415 13.151 17.4767 12.137C18.0573 15.2228 16.5433 19.2622 14.6996 21.7539Z" fill="#486BEF"/>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4"
+                                    aria-expanded="false" aria-controls="collapseThree">
+                                Национальность
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse4" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($nationalList as $national) : ?>
+
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/nacionalnost-' . $national['url']) ?>
+
+                                <a href="/<?php echo $url; ?>"><?php echo $national['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($bodyList)): ?>
+
+
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5"
+                                    aria-expanded="false" aria-controls="collapseThree">
+                                    <span class="svg-wrap"><svg width="19" height="23" viewBox="0 0 19 23" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M18.298 11.3625C17.7437 9.37432 15.3272 6.25303 15.6272 0.784522C15.6346 0.650635 15.5865 0.51958 15.4943 0.422119C15.4021 0.324707 15.2738 0.269531 15.1397 0.269531H3.8604C3.72627 0.269531 3.598 0.324707 3.50581 0.422119C3.41363 0.519531 3.36553 0.650586 3.37286 0.784522C3.67149 6.22783 1.26226 9.3811 0.69854 11.3584C-0.320747 14.9233 1.34205 19.5278 3.67188 22.5409C3.76436 22.6604 3.90699 22.7305 4.05816 22.7305H14.9424C15.0936 22.7305 15.2362 22.6604 15.3287 22.5409C17.5462 19.674 19.2829 14.881 18.298 11.3625ZM3.07627 8.28579C3.9918 5.96694 4.42569 3.60122 4.36831 1.24614H14.6317C14.5744 3.60029 15.0081 5.96553 15.9233 8.28467C15.9621 8.38291 16.0027 8.48198 16.0447 8.58218C14.0357 9.53389 11.7832 10.0352 9.50005 10.0352C7.21695 10.0352 4.96426 9.53389 2.95528 8.58218C2.99683 8.48296 3.03731 8.38438 3.07627 8.28579ZM9.01177 21.7539H4.3002C1.78516 18.3918 1.03462 14.5766 1.51563 12.134C4.15982 13.1492 6.66494 15.3365 9.01177 17.1139V21.7539ZM1.7794 11.1896C1.94395 10.7346 2.14883 10.3108 2.37779 9.83813C2.43565 9.71875 2.49449 9.59707 2.55391 9.47246C4.68887 10.4807 7.0792 11.0117 9.50005 11.0117C11.9209 11.0117 14.3111 10.4807 16.446 9.47251C16.5053 9.59673 16.5639 9.71797 16.6215 9.83691C16.8507 10.3103 17.0558 10.7347 17.2186 11.1903C14.4276 12.2408 11.7975 14.5106 9.50005 16.2591C7.19273 14.5033 4.5711 12.2398 1.7794 11.1896ZM14.6996 21.7539H9.98833V17.1139C12.3518 15.3236 14.8415 13.151 17.4767 12.137C18.0573 15.2228 16.5433 19.2622 14.6996 21.7539Z"
+                                              fill="#486BEF"/>
                                     </svg></span>
 
-                                    Телосложение
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapse5" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($bodyList as $body) : ?>
+                                Телосложение
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse5" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($bodyList as $body) : ?>
 
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/teloslozhenie-'.$body['url']) ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/teloslozhenie-' . $body['url']) ?>
 
-                                    <a href="/<?php echo $url; ?>"><?php echo $body['value'] ?></a>
+                                <a href="/<?php echo $url; ?>"><?php echo $body['value'] ?></a>
 
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                </div>
 
-                <?php endif; ?>
+            <?php endif; ?>
 
-                <?php if (isset($intimHairList)) : ?>
+            <?php if (isset($intimHairList)) : ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse18" aria-expanded="true" aria-controls="collapseOne">
-                                    <span class="svg-wrap"><svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M20.8548 11.9838C20.8161 11.5039 20.7634 11.0256 20.7159 10.5466C20.6807 10.1909 20.6436 9.80823 20.4129 9.51853C19.9282 8.90989 18.9139 8.78147 18.1954 8.7242C17.2645 8.64998 16.3265 8.71385 15.3936 8.68445C14.6431 8.66087 13.8987 8.61121 13.1453 8.61121C12.9004 8.60682 12.6555 8.60242 12.4106 8.59803C12.2811 8.59568 12.0172 8.65335 11.9574 8.4927C11.8798 8.2847 11.9813 8.02122 12.0297 7.82264C12.3415 6.5431 12.8531 5.34047 13.2903 4.10302C13.5193 3.45498 13.6874 2.78814 13.8395 2.11841C13.9822 1.48917 14.2334 0.878037 14.3301 0.2401C14.3464 0.132532 14.2831 -0.013415 14.1479 0.000989247C13.7025 0.0483523 13.4759 0.547569 13.3022 0.902548C13.0276 1.46383 12.7553 2.02647 12.4996 2.59668C12.1699 3.33193 11.8469 4.06972 11.4857 4.79038C11.3198 5.12143 11.1552 5.45082 10.9974 5.78573C10.856 6.08588 10.6983 6.38617 10.5837 6.69794C10.5567 6.76742 10.5168 6.86278 10.4784 6.96942C10.4535 6.88207 10.4295 6.79647 10.4019 6.7183C10.2898 6.40092 10.1456 6.08983 10.0023 5.78573C9.84447 5.45087 9.67992 5.12148 9.51405 4.79038C9.15292 4.06972 8.82988 3.33188 8.50014 2.59668C8.24443 2.02647 7.97217 1.46378 7.69751 0.902548C7.52383 0.547569 7.29722 0.0483523 6.85181 0.000989247C6.71665 -0.013415 6.65337 0.132532 6.66968 0.2401C6.76631 0.877988 7.01748 1.48917 7.1603 2.11841C7.3123 2.78814 7.48042 3.45498 7.70947 4.10302C7.8435 4.48242 7.99487 4.85527 8.13882 5.2309C8.37304 5.84193 8.51318 6.50111 8.6748 7.13465C8.79746 7.61541 8.87861 8.1637 9.11684 8.60711C8.94575 8.53509 8.75654 8.58885 8.57231 8.59632C7.58657 8.63636 6.59781 8.65325 5.60621 8.68445C4.6734 8.71385 3.73537 8.64998 2.80436 8.7242C2.08596 8.78147 1.07161 8.90989 0.586893 9.51853C0.356133 9.80823 0.319219 10.1909 0.283965 10.5466C0.236455 11.0256 0.183721 11.5039 0.145001 11.9838C0.104669 12.4833 0.0783504 12.9844 0.0797664 13.4858C0.0807918 13.8312 0.0806454 14.1844 0.169073 14.521C0.23377 14.767 0.349297 15.0411 0.575077 15.1805C0.829763 15.3377 1.11839 15.2538 1.34309 15.0846C1.37717 15.0589 1.4092 15.0316 1.43943 15.003C1.67688 15.2154 2.27986 15.1446 2.50896 15.1229C3.09748 15.067 3.68625 15.026 4.27706 15.0044C4.85856 14.9832 5.44054 14.976 6.02242 14.9757C6.43223 14.9754 6.88819 15.037 7.31143 14.9984C7.23213 15.2087 7.15576 15.4216 7.10728 15.638C6.93574 15.634 6.76514 15.6522 6.59815 15.7025C6.42994 15.723 6.26548 15.7562 6.10879 15.8015C5.16314 16.0751 4.40675 16.7924 3.9319 17.6374C3.46862 18.4619 3.25158 19.4618 3.41833 20.3987C3.50177 20.8675 3.70368 21.3127 4.01544 21.6739C4.36305 22.0765 4.84371 22.3127 5.34239 22.4728C5.57945 22.5489 5.82164 22.6025 6.06158 22.6681C6.28951 22.7304 6.59156 22.8146 6.70889 23.0427C6.86538 23.3471 6.66197 23.8061 6.65196 24.129C6.62598 24.9688 7.51807 25.2293 8.12983 24.7877C8.71884 24.3626 9.08129 23.6489 9.39574 23.0129C9.84779 22.0985 10.2146 21.1313 10.3497 20.1155C10.5108 18.9058 10.2796 17.6945 9.46025 16.7579C9.21288 16.4751 8.92822 16.2496 8.61059 16.0752C8.61074 16.0746 8.61079 16.074 8.61098 16.0733C8.6436 15.9592 8.7372 15.8575 8.82358 15.7801C9.04047 15.5856 9.23901 15.6187 9.49755 15.5432C9.79564 15.4561 9.98393 15.1763 10.1017 14.8567C10.2127 14.9031 10.3469 14.9177 10.448 14.9259C10.575 14.9362 10.7672 14.9547 10.9218 14.9174C11.0407 15.2113 11.2235 15.4617 11.5026 15.5431C11.7611 15.6186 11.9596 15.5855 12.1765 15.7801C12.2629 15.8575 12.3565 15.9592 12.3891 16.0732C12.3893 16.0739 12.3893 16.0745 12.3895 16.0751C12.0719 16.2496 11.7872 16.475 11.5399 16.7578C10.7205 17.6944 10.4893 18.9057 10.6503 20.1155C10.7856 21.1312 11.1523 22.0985 11.6044 23.0129C11.9188 23.6489 12.2812 24.3625 12.8703 24.7877C13.4821 25.2292 14.3741 24.9688 14.3481 24.129C14.3382 23.8061 14.1347 23.347 14.2913 23.0427C14.4085 22.8146 14.7107 22.7304 14.9385 22.668C15.1784 22.6024 15.4206 22.5489 15.6577 22.4727C16.1564 22.3126 16.6371 22.0765 16.9847 21.6738C17.2965 21.3127 17.4983 20.8674 17.5818 20.3987C17.7485 19.4618 17.5316 18.4618 17.0682 17.6374C16.5934 16.7923 15.837 16.075 14.8913 15.8015C14.7347 15.7562 14.5702 15.723 14.4019 15.7025C14.235 15.6522 14.0644 15.634 13.8929 15.6379C13.8444 15.4216 13.7679 15.2086 13.6887 14.9983C14.1119 15.037 14.5679 14.9754 14.9777 14.9756C15.5596 14.976 16.1416 14.9832 16.7231 15.0044C17.3139 15.026 17.9026 15.067 18.4911 15.1228C18.7203 15.1445 19.3233 15.2154 19.5607 15.0029C19.5909 15.0315 19.6229 15.0588 19.657 15.0845C19.8817 15.2537 20.1704 15.3377 20.425 15.1805C20.6509 15.0411 20.7664 14.7669 20.831 14.5209C20.9195 14.1844 20.9194 13.8311 20.9203 13.4857C20.9215 12.9844 20.8952 12.4833 20.8548 11.9838ZM12.0168 10.6962C12.0943 10.7041 12.1821 10.7359 12.2392 10.7465C12.3085 10.7593 12.3787 10.7704 12.4492 10.7806C12.3653 11.0586 12.4067 11.3984 12.4152 11.6717C12.4181 11.7641 12.4216 11.8564 12.4251 11.9487C12.4216 11.8556 12.3444 11.7247 12.3107 11.6371C12.2662 11.5213 12.2185 11.4065 12.1603 11.2969C12.1151 11.2118 12.069 11.125 12.0068 11.0508C11.9491 10.9819 11.8515 10.9267 11.8531 10.8259C11.8549 10.7087 11.9292 10.6872 12.0168 10.6962ZM10.7644 7.47611C10.7741 7.44427 10.7844 7.41229 10.7954 7.38021C10.8649 7.17821 10.96 6.97411 11.0407 6.77953C11.1041 6.62665 11.1617 6.47904 11.2088 6.3307C11.2877 6.1828 11.3791 6.0369 11.4421 5.8933C11.573 5.59477 11.728 5.30859 11.8727 5.01664C12.1891 4.37837 12.4833 3.7292 12.7564 3.07124C12.9982 2.48892 13.2628 1.91812 13.5129 1.33985C13.5971 1.14522 13.6801 0.949374 13.7865 0.765488C13.8058 0.731943 13.8301 0.687217 13.8583 0.640245C13.7369 1.1169 13.5738 1.58546 13.465 2.06475C13.3201 2.70279 13.1632 3.34087 12.9538 3.96123C12.7421 4.58852 12.4757 5.19667 12.2803 5.82958C12.1793 6.15692 12.0737 6.48368 11.9778 6.81249C11.9473 6.91708 11.9476 7.01825 11.9082 7.11908C11.8677 7.22274 11.821 7.32352 11.7867 7.42957C11.7276 7.61209 11.653 7.82352 11.6263 8.02816C11.4845 7.90911 11.3229 7.81317 11.1415 7.7494C10.9924 7.69691 10.6968 7.70184 10.7644 7.47611ZM10.8452 8.13314C11.3953 8.22547 11.7431 8.71736 11.8592 9.23225C11.9709 9.72786 11.8822 10.3274 11.4805 10.6743C10.9203 11.1582 9.9036 11.0042 9.47148 10.4248C9.15717 10.0035 9.2248 9.44807 9.42861 8.99422C9.52983 8.76873 9.66874 8.55647 9.85277 8.38997C10.1361 8.1741 10.4899 8.07347 10.8452 8.13314ZM9.08417 7.10877C9.06913 7.0097 9.05058 6.91078 9.02202 6.81254C8.73979 5.84423 8.36792 4.91537 8.04599 3.96128C7.83662 3.34092 7.67964 2.70288 7.53481 2.0648C7.42598 1.58555 7.26289 1.11695 7.14146 0.640293C7.16963 0.687315 7.19385 0.732041 7.21328 0.765537C7.31968 0.949423 7.40269 1.14522 7.48687 1.3399C7.73701 1.91817 8.00161 2.48897 8.24336 3.07129C8.51645 3.72925 8.81064 4.37841 9.12704 5.01669C9.27177 5.30863 9.42685 5.59477 9.55771 5.89335C9.70946 6.23944 9.89989 6.56566 10.006 6.9307C10.0734 7.16224 10.1329 7.47332 10.2722 7.70506C10.0482 7.7555 9.83505 7.85242 9.65439 7.99134C9.57148 8.05511 9.49101 8.13187 9.41532 8.21746C9.29853 7.84959 9.19306 7.48079 9.08417 7.10877ZM8.43979 10.7515C8.64692 10.7732 8.87665 10.7961 9.054 10.7343C8.90517 10.9907 8.77138 11.3068 8.69531 11.6211C8.6437 11.7548 8.59716 11.891 8.54668 12.0239C8.50576 12.1315 8.46103 12.2377 8.4143 12.3431C8.40879 12.1362 8.40605 11.9334 8.42548 11.7261C8.45 11.465 8.55566 11.0322 8.43979 10.7515ZM2.53796 12.0202C2.53498 12.4194 2.53244 12.8187 2.50837 13.2172C2.4905 13.512 2.449 13.8049 2.43293 14.0998C2.42302 14.2818 2.40935 14.5026 2.4593 14.6926C2.44372 14.6941 2.42815 14.6957 2.41257 14.6973C2.16262 14.7225 1.91794 14.6942 1.67043 14.6979C1.89885 14.2792 1.92722 13.7305 1.95383 13.2787C1.97268 12.9591 1.99587 12.64 2.01291 12.3203C2.032 11.963 2.04411 11.5282 2.28015 11.2367C2.36399 11.1331 2.47009 11.0706 2.58664 11.0309C2.52473 11.3532 2.54035 11.6954 2.53796 12.0202ZM3.3652 11.621C3.35759 11.9763 3.35212 12.3317 3.34557 12.687C3.33385 13.3242 3.30363 13.9714 3.32697 14.6096C3.1714 14.6231 3.01599 14.6373 2.86057 14.6525C2.84069 14.4297 2.81491 14.2164 2.83078 13.9853C2.8506 13.6952 2.88542 13.4088 2.88742 13.1176C2.88996 12.7517 2.87653 12.3858 2.86164 12.0202C2.84772 11.6786 2.85329 11.3208 2.78718 10.9832C2.8361 10.9755 2.88566 10.9697 2.93508 10.9651C3.08859 10.9506 3.24162 10.9334 3.39474 10.9163C3.36467 11.1489 3.37013 11.3923 3.3652 11.621ZM4.19445 12.794C4.20524 13.1519 4.22521 13.5095 4.23712 13.8675C4.24391 14.072 4.20504 14.3308 4.24684 14.5488C4.2087 14.5505 4.17052 14.5518 4.13239 14.5536C4.01232 14.5593 3.89245 14.5666 3.77267 14.5748C3.79367 13.948 3.76418 13.3126 3.7527 12.6871C3.74645 12.3486 3.7402 12.0103 3.73395 11.6718C3.72926 11.4172 3.73688 11.1428 3.69889 10.8843C3.88336 10.8667 4.06823 10.8538 4.25328 10.8439C4.18576 11.1094 4.18414 11.408 4.17858 11.6723C4.17072 12.0458 4.18322 12.4206 4.19445 12.794ZM5.08468 12.7055C5.08419 13.0543 5.08766 13.4025 5.10138 13.7509C5.11031 13.979 5.08155 14.2754 5.13673 14.5202C4.99361 14.5235 4.85055 14.5266 4.70748 14.5313C4.73536 14.3315 4.69415 14.103 4.68634 13.9162C4.67081 13.542 4.65104 13.1677 4.62755 12.794C4.60509 12.4365 4.58536 12.0789 4.57599 11.7209C4.56852 11.4325 4.58258 11.121 4.53556 10.8312C4.74137 10.8238 4.94723 10.8206 5.15309 10.8189C5.04791 11.4316 5.08541 12.0915 5.08468 12.7055ZM5.92559 14.507C5.81802 14.508 5.71051 14.5101 5.60294 14.5116C5.63096 14.2646 5.57388 13.9896 5.56221 13.7509C5.54517 13.4025 5.52833 13.0541 5.51417 12.7055C5.48902 12.0882 5.52413 11.4304 5.41754 10.816C5.63804 10.8142 5.85743 10.8075 6.07671 10.7992C6.04512 10.9276 6.05079 11.0802 6.05176 11.179C6.05528 11.5377 6.09102 11.9 6.10606 12.2588C6.12403 12.6886 6.1254 13.115 6.10987 13.5447C6.09849 13.8602 6.08511 14.1944 6.15123 14.5077C6.07588 14.5068 6.00064 14.5064 5.92559 14.507ZM7.13008 11.4764C7.14404 11.9312 7.12573 12.3876 7.12446 12.8425C7.12324 13.2698 7.13999 13.6993 7.11553 14.1261C7.10947 14.2314 7.09082 14.3786 7.10098 14.5152C6.92437 14.5201 6.74712 14.5183 6.56993 14.515C6.50899 14.1632 6.52227 13.8169 6.53726 13.4601C6.55337 13.0758 6.54605 12.6927 6.52969 12.3086C6.51563 11.9776 6.49038 11.6503 6.44712 11.3218C6.42779 11.1752 6.44248 10.9611 6.40967 10.7856C6.58736 10.7778 6.76509 10.7696 6.94356 10.7622C7.01187 10.7593 7.07993 10.7595 7.1478 10.761C7.09873 10.9914 7.12276 11.2373 7.13008 11.4764ZM7.01909 10.3289C6.58535 10.3381 6.15377 10.393 5.71881 10.3969C5.26993 10.401 4.8212 10.4033 4.37277 10.4265C3.92804 10.4495 3.48996 10.513 3.04723 10.5536C2.71682 10.5839 2.38581 10.6053 2.11345 10.8162C1.86257 11.0105 1.72292 11.3093 1.65608 11.6137C1.5239 12.2159 1.54373 12.8602 1.49416 13.4735C1.4696 13.7777 1.43645 14.0978 1.31614 14.3816C1.24968 14.5383 1.01619 14.9129 0.803885 14.7798C0.636014 14.6746 0.584647 14.3229 0.561259 14.1482C0.50911 13.7578 0.525907 13.3481 0.535429 12.9554C0.556327 12.0882 0.603592 11.1874 0.746268 10.3306C0.814187 9.92263 0.994167 9.68274 1.37161 9.51082C1.7157 9.35403 2.09895 9.27254 2.47165 9.22088C3.42648 9.08845 4.39576 9.16614 5.35577 9.12976C5.96749 9.10657 6.57686 9.03977 7.18897 9.0241C7.5022 9.01609 7.81621 9.02127 8.12807 9.05286C8.40346 9.08069 8.69384 9.13899 8.96508 9.05081C8.94213 9.13933 8.92661 9.2284 8.91996 9.31673C8.86347 9.5657 8.84999 9.82258 8.89667 10.0689C8.91039 10.1414 8.92958 10.2111 8.95322 10.2782C8.8602 10.2656 8.76127 10.2708 8.66215 10.269C8.1061 10.2588 7.57441 10.3171 7.01909 10.3289ZM8.09843 12.3655C8.10654 12.5718 8.0893 12.7772 8.11313 12.9812C8.05376 13.1049 7.99526 13.2289 7.94014 13.3541C7.79307 13.6882 7.66494 14.0289 7.5416 14.3719C7.54375 14.2613 7.55347 14.151 7.5584 14.0405C7.57695 13.6259 7.5564 13.2082 7.55508 12.7932C7.55386 12.3831 7.56909 11.9653 7.53887 11.5562C7.51953 11.2943 7.48081 11.0338 7.4521 10.7725C7.6625 10.7808 7.87036 10.7823 8.07568 10.7334C8.11152 10.7314 8.14453 10.7302 8.17348 10.7306C8.18022 10.7307 8.18735 10.7311 8.19428 10.7313C8.17832 10.8618 8.18803 11.0009 8.17632 11.1308C8.15742 11.3409 8.12612 11.5491 8.10346 11.7588C8.08154 11.9619 8.09038 12.1616 8.09843 12.3655ZM9.04775 16.9975C9.71464 17.7074 9.9767 18.6387 9.93397 19.5974C9.89145 20.5527 9.58905 21.4953 9.19765 22.3615C8.93559 22.9416 8.64775 23.5467 8.2435 24.0424C8.07368 24.2506 7.84004 24.5174 7.55684 24.5569C7.24199 24.6008 7.10425 24.3635 7.13853 24.0851C7.1812 23.7386 7.3023 23.4029 7.23301 23.05C7.16074 22.6821 6.8687 22.4428 6.53619 22.306C6.12022 22.1348 5.6647 22.0814 5.24278 21.9239C4.79532 21.7568 4.41095 21.4812 4.16256 21.0679C3.71652 20.3258 3.76335 19.3821 4.01623 18.5827C4.29874 17.6895 4.90524 16.8549 5.74537 16.4159C6.20474 16.1758 6.73902 16.0562 7.25674 16.0971C7.31328 16.1016 7.3687 16.1089 7.42358 16.1177C7.58154 16.1602 7.73472 16.2116 7.87554 16.2615C8.32924 16.4221 8.71567 16.6439 9.04775 16.9975ZM10.1232 13.1128C10.0912 13.3633 9.99218 13.6104 9.93559 13.8876C9.85238 14.2955 9.81151 14.8265 9.44931 15.0979C9.35092 15.1715 9.2205 15.1563 9.10517 15.1764C8.96406 15.201 8.83349 15.2598 8.71542 15.3409C8.52089 15.4747 8.33427 15.6794 8.28203 15.9179C8.18989 15.8795 8.0957 15.8445 7.99897 15.8133C7.82969 15.7586 7.65615 15.7104 7.4813 15.6781C7.63623 15.4107 7.73393 15.0994 7.8352 14.8161C7.99057 14.3816 8.14389 13.9474 8.33227 13.5258C8.51582 13.1151 8.72583 12.7131 8.88549 12.2923C8.90444 12.2424 8.9226 12.1922 8.94106 12.1422C9.04555 11.9545 9.12289 11.7464 9.2058 11.5522C9.25556 11.4359 9.30702 11.3167 9.35527 11.196C9.41313 11.3407 9.48759 11.4802 9.55634 11.6095C9.72685 11.93 9.91591 12.2407 10.0565 12.5763C10.1351 12.7643 10.1453 12.9393 10.1232 13.1128ZM10.4708 14.4633C10.4099 14.4644 10.3473 14.4635 10.2846 14.4646C10.3412 14.3456 10.3706 14.2062 10.4 14.0836C10.4243 13.982 10.4638 13.8533 10.4957 13.7192C10.5814 13.9559 10.666 14.1931 10.7518 14.4302C10.6526 14.442 10.5516 14.4618 10.4708 14.4633ZM12.2843 15.3409C12.1663 15.2598 12.0357 15.201 11.8946 15.1764C11.7793 15.1563 11.6489 15.1715 11.5505 15.0979C11.4559 15.027 11.3924 14.9316 11.3449 14.824C11.3561 14.7238 11.3058 14.592 11.2796 14.5107C11.2416 14.3929 11.2016 14.2762 11.1607 14.16C11.1452 14.1072 11.1275 14.0563 11.1068 14.0081C10.9456 13.5629 10.7685 13.1255 10.5956 12.682C10.4489 12.3057 10.2706 11.9616 10.0602 11.6172C9.97431 11.4765 9.89237 11.3273 9.80741 11.1794C10.2854 11.4033 10.866 11.4376 11.3502 11.237C11.4701 11.1873 11.5773 11.1244 11.6743 11.0524C11.6721 11.0712 11.6739 11.0911 11.6819 11.1118C11.8326 11.5032 11.9655 11.9005 12.1142 12.2923C12.274 12.7132 12.484 13.1152 12.6675 13.5259C12.8558 13.9475 13.0092 14.3817 13.1645 14.8162C13.2658 15.0995 13.3635 15.4109 13.5185 15.6782C13.3437 15.7104 13.1701 15.7587 13.0008 15.8134C12.9041 15.8446 12.8098 15.8796 12.7177 15.918C12.6655 15.6794 12.4789 15.4747 12.2843 15.3409ZM13.4448 12.7932C13.4434 13.2082 13.4229 13.6259 13.4414 14.0405C13.4463 14.151 13.456 14.2613 13.4582 14.3719C13.3348 14.0289 13.2068 13.6882 13.0596 13.3541C12.9495 13.1039 12.8263 12.8581 12.7087 12.6103C12.7452 12.322 12.6826 11.9877 12.6712 11.7198C12.6592 11.4361 12.6967 11.0967 12.6373 10.805C12.6884 10.8106 12.7394 10.8158 12.7901 10.8201C13.0304 10.8405 13.2871 10.8528 13.5403 10.8365C13.5126 11.0763 13.4787 11.3157 13.461 11.5563C13.4307 11.9653 13.446 12.3831 13.4448 12.7932ZM13.7431 16.097C14.2609 16.0562 14.7951 16.1757 15.2545 16.4158C16.0947 16.8549 16.7011 17.6895 16.9837 18.5826C17.2365 19.3821 17.2834 20.3258 16.8373 21.0679C16.5889 21.4812 16.2046 21.7568 15.7571 21.9239C15.3351 22.0814 14.8796 22.1348 14.4637 22.3059C14.1311 22.4428 13.8392 22.6821 13.7669 23.05C13.6975 23.4029 13.8187 23.7386 13.8614 24.085C13.8956 24.3634 13.7579 24.6007 13.443 24.5569C13.1598 24.5174 12.9261 24.2506 12.7564 24.0424C12.3521 23.5467 12.0643 22.9415 11.8022 22.3614C11.4108 21.4952 11.1084 20.5526 11.0659 19.5974C11.0232 18.6387 11.2852 17.7073 11.9521 16.9974C12.2842 16.6439 12.6707 16.422 13.1244 16.2614C13.2653 16.2115 13.4184 16.16 13.5764 16.1176C13.6312 16.1089 13.6866 16.1015 13.7431 16.097ZM14.5527 11.3218C14.5093 11.6502 14.4842 11.9775 14.4701 12.3086C14.4537 12.6927 14.4464 13.0758 14.4625 13.4601C14.4775 13.8169 14.4908 14.1632 14.4299 14.515C14.2527 14.5183 14.0754 14.5201 13.8988 14.5152C13.909 14.3786 13.8903 14.2314 13.8843 14.1261C13.8598 13.6993 13.8766 13.2698 13.8753 12.8425C13.874 12.3876 13.8557 11.9313 13.8697 11.4764C13.8766 11.2502 13.8977 11.0182 13.8586 10.7987C13.915 10.7884 13.9707 10.7759 14.0256 10.7614C14.0358 10.7617 14.046 10.7617 14.0562 10.7621C14.2346 10.7696 14.4124 10.7778 14.5901 10.7856C14.5573 10.961 14.5719 11.1752 14.5527 11.3218ZM15.4856 12.7055C15.4715 13.0541 15.4546 13.4025 15.4376 13.7509C15.4259 13.9896 15.3689 14.2646 15.3968 14.5116C15.2893 14.5101 15.1818 14.508 15.0742 14.507C14.9991 14.5064 14.9239 14.5068 14.8486 14.5077C14.9147 14.1944 14.9013 13.8602 14.8899 13.5447C14.8744 13.115 14.8758 12.6886 14.8937 12.2588C14.9088 11.9 14.9445 11.5377 14.9481 11.179C14.949 11.0802 14.9548 10.9276 14.9231 10.7992C15.1423 10.8075 15.3617 10.8142 15.5822 10.816C15.4757 11.4304 15.5107 12.0882 15.4856 12.7055ZM16.4238 11.7209C16.4145 12.0789 16.3947 12.4365 16.3722 12.794C16.3487 13.1677 16.329 13.542 16.3134 13.9162C16.3057 14.1031 16.2644 14.3315 16.2923 14.5313C16.1492 14.5267 16.0062 14.5235 15.8631 14.5202C15.9182 14.2754 15.8894 13.979 15.8984 13.7509C15.9121 13.4025 15.9156 13.0542 15.9151 12.7055C15.9143 12.0915 15.9519 11.4316 15.8467 10.8189C16.0526 10.8206 16.2585 10.8238 16.4642 10.8312C16.4172 11.121 16.4313 11.4325 16.4238 11.7209ZM17.2658 11.6718C17.2595 12.0102 17.2533 12.3486 17.2471 12.687C17.2356 13.3126 17.206 13.9479 17.2271 14.5747C17.1073 14.5666 16.9874 14.5592 16.8673 14.5535C16.8292 14.5517 16.791 14.5504 16.7529 14.5488C16.7946 14.3307 16.7559 14.0719 16.7626 13.8674C16.7745 13.5095 16.7945 13.1519 16.8053 12.7939C16.8165 12.4205 16.829 12.0458 16.8211 11.6722C16.8155 11.408 16.8139 11.1093 16.7464 10.8439C16.9315 10.8537 17.1163 10.8666 17.3008 10.8843C17.2629 11.1428 17.2705 11.4172 17.2658 11.6718ZM18.169 13.9853C18.1848 14.2164 18.159 14.4298 18.1392 14.6525C17.9838 14.6373 17.8284 14.6231 17.6728 14.6096C17.6962 13.9715 17.6659 13.3243 17.6542 12.6871C17.6476 12.3318 17.6422 11.9763 17.6346 11.621C17.6296 11.3924 17.6351 11.149 17.6051 10.9164C17.7582 10.9335 17.9113 10.9507 18.0647 10.9652C18.1142 10.9698 18.1637 10.9756 18.2127 10.9833C18.1465 11.3209 18.1521 11.6787 18.1382 12.0203C18.1232 12.3859 18.1099 12.7518 18.1124 13.1177C18.1144 13.4088 18.1492 13.6952 18.169 13.9853ZM18.5872 14.6973C18.5716 14.6958 18.5561 14.6942 18.5405 14.6926C18.5904 14.5026 18.5768 14.2818 18.5668 14.0998C18.5508 13.8048 18.5093 13.512 18.4914 13.2172C18.4673 12.8187 18.4648 12.4194 18.4619 12.0202C18.4594 11.6954 18.4751 11.3532 18.4132 11.0309C18.5298 11.0706 18.6359 11.1331 18.7197 11.2366C18.9557 11.5282 18.9678 11.9629 18.9869 12.3202C19.004 12.64 19.0272 12.959 19.046 13.2787C19.0726 13.7305 19.101 14.2791 19.3294 14.6979C19.0818 14.6942 18.8372 14.7225 18.5872 14.6973ZM20.4386 14.1482C20.4152 14.3229 20.3638 14.6746 20.1959 14.7798C19.9835 14.9129 19.7501 14.5383 19.6837 14.3816C19.5634 14.0978 19.5302 13.7777 19.5057 13.4735C19.4561 12.8602 19.4759 12.2158 19.3437 11.6137C19.2769 11.3093 19.1372 11.0104 18.8864 10.8162C18.614 10.6053 18.2831 10.5839 17.9526 10.5536C17.5099 10.5131 17.0718 10.4495 16.6271 10.4265C16.1786 10.4032 15.7298 10.4009 15.2811 10.3969C14.8461 10.3931 14.4145 10.3382 13.9807 10.3289C13.9039 10.3273 13.8266 10.3292 13.7492 10.3328C13.3878 10.3088 13.0166 10.3391 12.6599 10.3073C12.5889 10.301 12.3955 10.2803 12.2172 10.292C12.3089 10.0242 12.3385 9.73674 12.3165 9.45515C12.3091 9.36077 12.2223 9.13191 12.2558 9.04993C12.2977 8.94744 12.5457 8.99827 12.6417 8.9989C13.4446 9.00418 14.2459 9.03128 15.0468 9.08992C15.4274 9.11775 15.7962 9.13801 16.1763 9.14021C16.5812 9.14251 16.9861 9.13504 17.3911 9.14226C17.7711 9.14905 18.1515 9.16853 18.5282 9.22078C18.901 9.27249 19.2842 9.35398 19.6283 9.51072C20.0057 9.68264 20.1857 9.92253 20.2536 10.3305C20.3963 11.1873 20.4436 12.0881 20.4644 12.9553C20.4739 13.3481 20.4907 13.7578 20.4386 14.1482Z" fill="#486BEF"/>
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse18"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="svg-wrap"><svg width="21" height="25" viewBox="0 0 21 25" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.8548 11.9838C20.8161 11.5039 20.7634 11.0256 20.7159 10.5466C20.6807 10.1909 20.6436 9.80823 20.4129 9.51853C19.9282 8.90989 18.9139 8.78147 18.1954 8.7242C17.2645 8.64998 16.3265 8.71385 15.3936 8.68445C14.6431 8.66087 13.8987 8.61121 13.1453 8.61121C12.9004 8.60682 12.6555 8.60242 12.4106 8.59803C12.2811 8.59568 12.0172 8.65335 11.9574 8.4927C11.8798 8.2847 11.9813 8.02122 12.0297 7.82264C12.3415 6.5431 12.8531 5.34047 13.2903 4.10302C13.5193 3.45498 13.6874 2.78814 13.8395 2.11841C13.9822 1.48917 14.2334 0.878037 14.3301 0.2401C14.3464 0.132532 14.2831 -0.013415 14.1479 0.000989247C13.7025 0.0483523 13.4759 0.547569 13.3022 0.902548C13.0276 1.46383 12.7553 2.02647 12.4996 2.59668C12.1699 3.33193 11.8469 4.06972 11.4857 4.79038C11.3198 5.12143 11.1552 5.45082 10.9974 5.78573C10.856 6.08588 10.6983 6.38617 10.5837 6.69794C10.5567 6.76742 10.5168 6.86278 10.4784 6.96942C10.4535 6.88207 10.4295 6.79647 10.4019 6.7183C10.2898 6.40092 10.1456 6.08983 10.0023 5.78573C9.84447 5.45087 9.67992 5.12148 9.51405 4.79038C9.15292 4.06972 8.82988 3.33188 8.50014 2.59668C8.24443 2.02647 7.97217 1.46378 7.69751 0.902548C7.52383 0.547569 7.29722 0.0483523 6.85181 0.000989247C6.71665 -0.013415 6.65337 0.132532 6.66968 0.2401C6.76631 0.877988 7.01748 1.48917 7.1603 2.11841C7.3123 2.78814 7.48042 3.45498 7.70947 4.10302C7.8435 4.48242 7.99487 4.85527 8.13882 5.2309C8.37304 5.84193 8.51318 6.50111 8.6748 7.13465C8.79746 7.61541 8.87861 8.1637 9.11684 8.60711C8.94575 8.53509 8.75654 8.58885 8.57231 8.59632C7.58657 8.63636 6.59781 8.65325 5.60621 8.68445C4.6734 8.71385 3.73537 8.64998 2.80436 8.7242C2.08596 8.78147 1.07161 8.90989 0.586893 9.51853C0.356133 9.80823 0.319219 10.1909 0.283965 10.5466C0.236455 11.0256 0.183721 11.5039 0.145001 11.9838C0.104669 12.4833 0.0783504 12.9844 0.0797664 13.4858C0.0807918 13.8312 0.0806454 14.1844 0.169073 14.521C0.23377 14.767 0.349297 15.0411 0.575077 15.1805C0.829763 15.3377 1.11839 15.2538 1.34309 15.0846C1.37717 15.0589 1.4092 15.0316 1.43943 15.003C1.67688 15.2154 2.27986 15.1446 2.50896 15.1229C3.09748 15.067 3.68625 15.026 4.27706 15.0044C4.85856 14.9832 5.44054 14.976 6.02242 14.9757C6.43223 14.9754 6.88819 15.037 7.31143 14.9984C7.23213 15.2087 7.15576 15.4216 7.10728 15.638C6.93574 15.634 6.76514 15.6522 6.59815 15.7025C6.42994 15.723 6.26548 15.7562 6.10879 15.8015C5.16314 16.0751 4.40675 16.7924 3.9319 17.6374C3.46862 18.4619 3.25158 19.4618 3.41833 20.3987C3.50177 20.8675 3.70368 21.3127 4.01544 21.6739C4.36305 22.0765 4.84371 22.3127 5.34239 22.4728C5.57945 22.5489 5.82164 22.6025 6.06158 22.6681C6.28951 22.7304 6.59156 22.8146 6.70889 23.0427C6.86538 23.3471 6.66197 23.8061 6.65196 24.129C6.62598 24.9688 7.51807 25.2293 8.12983 24.7877C8.71884 24.3626 9.08129 23.6489 9.39574 23.0129C9.84779 22.0985 10.2146 21.1313 10.3497 20.1155C10.5108 18.9058 10.2796 17.6945 9.46025 16.7579C9.21288 16.4751 8.92822 16.2496 8.61059 16.0752C8.61074 16.0746 8.61079 16.074 8.61098 16.0733C8.6436 15.9592 8.7372 15.8575 8.82358 15.7801C9.04047 15.5856 9.23901 15.6187 9.49755 15.5432C9.79564 15.4561 9.98393 15.1763 10.1017 14.8567C10.2127 14.9031 10.3469 14.9177 10.448 14.9259C10.575 14.9362 10.7672 14.9547 10.9218 14.9174C11.0407 15.2113 11.2235 15.4617 11.5026 15.5431C11.7611 15.6186 11.9596 15.5855 12.1765 15.7801C12.2629 15.8575 12.3565 15.9592 12.3891 16.0732C12.3893 16.0739 12.3893 16.0745 12.3895 16.0751C12.0719 16.2496 11.7872 16.475 11.5399 16.7578C10.7205 17.6944 10.4893 18.9057 10.6503 20.1155C10.7856 21.1312 11.1523 22.0985 11.6044 23.0129C11.9188 23.6489 12.2812 24.3625 12.8703 24.7877C13.4821 25.2292 14.3741 24.9688 14.3481 24.129C14.3382 23.8061 14.1347 23.347 14.2913 23.0427C14.4085 22.8146 14.7107 22.7304 14.9385 22.668C15.1784 22.6024 15.4206 22.5489 15.6577 22.4727C16.1564 22.3126 16.6371 22.0765 16.9847 21.6738C17.2965 21.3127 17.4983 20.8674 17.5818 20.3987C17.7485 19.4618 17.5316 18.4618 17.0682 17.6374C16.5934 16.7923 15.837 16.075 14.8913 15.8015C14.7347 15.7562 14.5702 15.723 14.4019 15.7025C14.235 15.6522 14.0644 15.634 13.8929 15.6379C13.8444 15.4216 13.7679 15.2086 13.6887 14.9983C14.1119 15.037 14.5679 14.9754 14.9777 14.9756C15.5596 14.976 16.1416 14.9832 16.7231 15.0044C17.3139 15.026 17.9026 15.067 18.4911 15.1228C18.7203 15.1445 19.3233 15.2154 19.5607 15.0029C19.5909 15.0315 19.6229 15.0588 19.657 15.0845C19.8817 15.2537 20.1704 15.3377 20.425 15.1805C20.6509 15.0411 20.7664 14.7669 20.831 14.5209C20.9195 14.1844 20.9194 13.8311 20.9203 13.4857C20.9215 12.9844 20.8952 12.4833 20.8548 11.9838ZM12.0168 10.6962C12.0943 10.7041 12.1821 10.7359 12.2392 10.7465C12.3085 10.7593 12.3787 10.7704 12.4492 10.7806C12.3653 11.0586 12.4067 11.3984 12.4152 11.6717C12.4181 11.7641 12.4216 11.8564 12.4251 11.9487C12.4216 11.8556 12.3444 11.7247 12.3107 11.6371C12.2662 11.5213 12.2185 11.4065 12.1603 11.2969C12.1151 11.2118 12.069 11.125 12.0068 11.0508C11.9491 10.9819 11.8515 10.9267 11.8531 10.8259C11.8549 10.7087 11.9292 10.6872 12.0168 10.6962ZM10.7644 7.47611C10.7741 7.44427 10.7844 7.41229 10.7954 7.38021C10.8649 7.17821 10.96 6.97411 11.0407 6.77953C11.1041 6.62665 11.1617 6.47904 11.2088 6.3307C11.2877 6.1828 11.3791 6.0369 11.4421 5.8933C11.573 5.59477 11.728 5.30859 11.8727 5.01664C12.1891 4.37837 12.4833 3.7292 12.7564 3.07124C12.9982 2.48892 13.2628 1.91812 13.5129 1.33985C13.5971 1.14522 13.6801 0.949374 13.7865 0.765488C13.8058 0.731943 13.8301 0.687217 13.8583 0.640245C13.7369 1.1169 13.5738 1.58546 13.465 2.06475C13.3201 2.70279 13.1632 3.34087 12.9538 3.96123C12.7421 4.58852 12.4757 5.19667 12.2803 5.82958C12.1793 6.15692 12.0737 6.48368 11.9778 6.81249C11.9473 6.91708 11.9476 7.01825 11.9082 7.11908C11.8677 7.22274 11.821 7.32352 11.7867 7.42957C11.7276 7.61209 11.653 7.82352 11.6263 8.02816C11.4845 7.90911 11.3229 7.81317 11.1415 7.7494C10.9924 7.69691 10.6968 7.70184 10.7644 7.47611ZM10.8452 8.13314C11.3953 8.22547 11.7431 8.71736 11.8592 9.23225C11.9709 9.72786 11.8822 10.3274 11.4805 10.6743C10.9203 11.1582 9.9036 11.0042 9.47148 10.4248C9.15717 10.0035 9.2248 9.44807 9.42861 8.99422C9.52983 8.76873 9.66874 8.55647 9.85277 8.38997C10.1361 8.1741 10.4899 8.07347 10.8452 8.13314ZM9.08417 7.10877C9.06913 7.0097 9.05058 6.91078 9.02202 6.81254C8.73979 5.84423 8.36792 4.91537 8.04599 3.96128C7.83662 3.34092 7.67964 2.70288 7.53481 2.0648C7.42598 1.58555 7.26289 1.11695 7.14146 0.640293C7.16963 0.687315 7.19385 0.732041 7.21328 0.765537C7.31968 0.949423 7.40269 1.14522 7.48687 1.3399C7.73701 1.91817 8.00161 2.48897 8.24336 3.07129C8.51645 3.72925 8.81064 4.37841 9.12704 5.01669C9.27177 5.30863 9.42685 5.59477 9.55771 5.89335C9.70946 6.23944 9.89989 6.56566 10.006 6.9307C10.0734 7.16224 10.1329 7.47332 10.2722 7.70506C10.0482 7.7555 9.83505 7.85242 9.65439 7.99134C9.57148 8.05511 9.49101 8.13187 9.41532 8.21746C9.29853 7.84959 9.19306 7.48079 9.08417 7.10877ZM8.43979 10.7515C8.64692 10.7732 8.87665 10.7961 9.054 10.7343C8.90517 10.9907 8.77138 11.3068 8.69531 11.6211C8.6437 11.7548 8.59716 11.891 8.54668 12.0239C8.50576 12.1315 8.46103 12.2377 8.4143 12.3431C8.40879 12.1362 8.40605 11.9334 8.42548 11.7261C8.45 11.465 8.55566 11.0322 8.43979 10.7515ZM2.53796 12.0202C2.53498 12.4194 2.53244 12.8187 2.50837 13.2172C2.4905 13.512 2.449 13.8049 2.43293 14.0998C2.42302 14.2818 2.40935 14.5026 2.4593 14.6926C2.44372 14.6941 2.42815 14.6957 2.41257 14.6973C2.16262 14.7225 1.91794 14.6942 1.67043 14.6979C1.89885 14.2792 1.92722 13.7305 1.95383 13.2787C1.97268 12.9591 1.99587 12.64 2.01291 12.3203C2.032 11.963 2.04411 11.5282 2.28015 11.2367C2.36399 11.1331 2.47009 11.0706 2.58664 11.0309C2.52473 11.3532 2.54035 11.6954 2.53796 12.0202ZM3.3652 11.621C3.35759 11.9763 3.35212 12.3317 3.34557 12.687C3.33385 13.3242 3.30363 13.9714 3.32697 14.6096C3.1714 14.6231 3.01599 14.6373 2.86057 14.6525C2.84069 14.4297 2.81491 14.2164 2.83078 13.9853C2.8506 13.6952 2.88542 13.4088 2.88742 13.1176C2.88996 12.7517 2.87653 12.3858 2.86164 12.0202C2.84772 11.6786 2.85329 11.3208 2.78718 10.9832C2.8361 10.9755 2.88566 10.9697 2.93508 10.9651C3.08859 10.9506 3.24162 10.9334 3.39474 10.9163C3.36467 11.1489 3.37013 11.3923 3.3652 11.621ZM4.19445 12.794C4.20524 13.1519 4.22521 13.5095 4.23712 13.8675C4.24391 14.072 4.20504 14.3308 4.24684 14.5488C4.2087 14.5505 4.17052 14.5518 4.13239 14.5536C4.01232 14.5593 3.89245 14.5666 3.77267 14.5748C3.79367 13.948 3.76418 13.3126 3.7527 12.6871C3.74645 12.3486 3.7402 12.0103 3.73395 11.6718C3.72926 11.4172 3.73688 11.1428 3.69889 10.8843C3.88336 10.8667 4.06823 10.8538 4.25328 10.8439C4.18576 11.1094 4.18414 11.408 4.17858 11.6723C4.17072 12.0458 4.18322 12.4206 4.19445 12.794ZM5.08468 12.7055C5.08419 13.0543 5.08766 13.4025 5.10138 13.7509C5.11031 13.979 5.08155 14.2754 5.13673 14.5202C4.99361 14.5235 4.85055 14.5266 4.70748 14.5313C4.73536 14.3315 4.69415 14.103 4.68634 13.9162C4.67081 13.542 4.65104 13.1677 4.62755 12.794C4.60509 12.4365 4.58536 12.0789 4.57599 11.7209C4.56852 11.4325 4.58258 11.121 4.53556 10.8312C4.74137 10.8238 4.94723 10.8206 5.15309 10.8189C5.04791 11.4316 5.08541 12.0915 5.08468 12.7055ZM5.92559 14.507C5.81802 14.508 5.71051 14.5101 5.60294 14.5116C5.63096 14.2646 5.57388 13.9896 5.56221 13.7509C5.54517 13.4025 5.52833 13.0541 5.51417 12.7055C5.48902 12.0882 5.52413 11.4304 5.41754 10.816C5.63804 10.8142 5.85743 10.8075 6.07671 10.7992C6.04512 10.9276 6.05079 11.0802 6.05176 11.179C6.05528 11.5377 6.09102 11.9 6.10606 12.2588C6.12403 12.6886 6.1254 13.115 6.10987 13.5447C6.09849 13.8602 6.08511 14.1944 6.15123 14.5077C6.07588 14.5068 6.00064 14.5064 5.92559 14.507ZM7.13008 11.4764C7.14404 11.9312 7.12573 12.3876 7.12446 12.8425C7.12324 13.2698 7.13999 13.6993 7.11553 14.1261C7.10947 14.2314 7.09082 14.3786 7.10098 14.5152C6.92437 14.5201 6.74712 14.5183 6.56993 14.515C6.50899 14.1632 6.52227 13.8169 6.53726 13.4601C6.55337 13.0758 6.54605 12.6927 6.52969 12.3086C6.51563 11.9776 6.49038 11.6503 6.44712 11.3218C6.42779 11.1752 6.44248 10.9611 6.40967 10.7856C6.58736 10.7778 6.76509 10.7696 6.94356 10.7622C7.01187 10.7593 7.07993 10.7595 7.1478 10.761C7.09873 10.9914 7.12276 11.2373 7.13008 11.4764ZM7.01909 10.3289C6.58535 10.3381 6.15377 10.393 5.71881 10.3969C5.26993 10.401 4.8212 10.4033 4.37277 10.4265C3.92804 10.4495 3.48996 10.513 3.04723 10.5536C2.71682 10.5839 2.38581 10.6053 2.11345 10.8162C1.86257 11.0105 1.72292 11.3093 1.65608 11.6137C1.5239 12.2159 1.54373 12.8602 1.49416 13.4735C1.4696 13.7777 1.43645 14.0978 1.31614 14.3816C1.24968 14.5383 1.01619 14.9129 0.803885 14.7798C0.636014 14.6746 0.584647 14.3229 0.561259 14.1482C0.50911 13.7578 0.525907 13.3481 0.535429 12.9554C0.556327 12.0882 0.603592 11.1874 0.746268 10.3306C0.814187 9.92263 0.994167 9.68274 1.37161 9.51082C1.7157 9.35403 2.09895 9.27254 2.47165 9.22088C3.42648 9.08845 4.39576 9.16614 5.35577 9.12976C5.96749 9.10657 6.57686 9.03977 7.18897 9.0241C7.5022 9.01609 7.81621 9.02127 8.12807 9.05286C8.40346 9.08069 8.69384 9.13899 8.96508 9.05081C8.94213 9.13933 8.92661 9.2284 8.91996 9.31673C8.86347 9.5657 8.84999 9.82258 8.89667 10.0689C8.91039 10.1414 8.92958 10.2111 8.95322 10.2782C8.8602 10.2656 8.76127 10.2708 8.66215 10.269C8.1061 10.2588 7.57441 10.3171 7.01909 10.3289ZM8.09843 12.3655C8.10654 12.5718 8.0893 12.7772 8.11313 12.9812C8.05376 13.1049 7.99526 13.2289 7.94014 13.3541C7.79307 13.6882 7.66494 14.0289 7.5416 14.3719C7.54375 14.2613 7.55347 14.151 7.5584 14.0405C7.57695 13.6259 7.5564 13.2082 7.55508 12.7932C7.55386 12.3831 7.56909 11.9653 7.53887 11.5562C7.51953 11.2943 7.48081 11.0338 7.4521 10.7725C7.6625 10.7808 7.87036 10.7823 8.07568 10.7334C8.11152 10.7314 8.14453 10.7302 8.17348 10.7306C8.18022 10.7307 8.18735 10.7311 8.19428 10.7313C8.17832 10.8618 8.18803 11.0009 8.17632 11.1308C8.15742 11.3409 8.12612 11.5491 8.10346 11.7588C8.08154 11.9619 8.09038 12.1616 8.09843 12.3655ZM9.04775 16.9975C9.71464 17.7074 9.9767 18.6387 9.93397 19.5974C9.89145 20.5527 9.58905 21.4953 9.19765 22.3615C8.93559 22.9416 8.64775 23.5467 8.2435 24.0424C8.07368 24.2506 7.84004 24.5174 7.55684 24.5569C7.24199 24.6008 7.10425 24.3635 7.13853 24.0851C7.1812 23.7386 7.3023 23.4029 7.23301 23.05C7.16074 22.6821 6.8687 22.4428 6.53619 22.306C6.12022 22.1348 5.6647 22.0814 5.24278 21.9239C4.79532 21.7568 4.41095 21.4812 4.16256 21.0679C3.71652 20.3258 3.76335 19.3821 4.01623 18.5827C4.29874 17.6895 4.90524 16.8549 5.74537 16.4159C6.20474 16.1758 6.73902 16.0562 7.25674 16.0971C7.31328 16.1016 7.3687 16.1089 7.42358 16.1177C7.58154 16.1602 7.73472 16.2116 7.87554 16.2615C8.32924 16.4221 8.71567 16.6439 9.04775 16.9975ZM10.1232 13.1128C10.0912 13.3633 9.99218 13.6104 9.93559 13.8876C9.85238 14.2955 9.81151 14.8265 9.44931 15.0979C9.35092 15.1715 9.2205 15.1563 9.10517 15.1764C8.96406 15.201 8.83349 15.2598 8.71542 15.3409C8.52089 15.4747 8.33427 15.6794 8.28203 15.9179C8.18989 15.8795 8.0957 15.8445 7.99897 15.8133C7.82969 15.7586 7.65615 15.7104 7.4813 15.6781C7.63623 15.4107 7.73393 15.0994 7.8352 14.8161C7.99057 14.3816 8.14389 13.9474 8.33227 13.5258C8.51582 13.1151 8.72583 12.7131 8.88549 12.2923C8.90444 12.2424 8.9226 12.1922 8.94106 12.1422C9.04555 11.9545 9.12289 11.7464 9.2058 11.5522C9.25556 11.4359 9.30702 11.3167 9.35527 11.196C9.41313 11.3407 9.48759 11.4802 9.55634 11.6095C9.72685 11.93 9.91591 12.2407 10.0565 12.5763C10.1351 12.7643 10.1453 12.9393 10.1232 13.1128ZM10.4708 14.4633C10.4099 14.4644 10.3473 14.4635 10.2846 14.4646C10.3412 14.3456 10.3706 14.2062 10.4 14.0836C10.4243 13.982 10.4638 13.8533 10.4957 13.7192C10.5814 13.9559 10.666 14.1931 10.7518 14.4302C10.6526 14.442 10.5516 14.4618 10.4708 14.4633ZM12.2843 15.3409C12.1663 15.2598 12.0357 15.201 11.8946 15.1764C11.7793 15.1563 11.6489 15.1715 11.5505 15.0979C11.4559 15.027 11.3924 14.9316 11.3449 14.824C11.3561 14.7238 11.3058 14.592 11.2796 14.5107C11.2416 14.3929 11.2016 14.2762 11.1607 14.16C11.1452 14.1072 11.1275 14.0563 11.1068 14.0081C10.9456 13.5629 10.7685 13.1255 10.5956 12.682C10.4489 12.3057 10.2706 11.9616 10.0602 11.6172C9.97431 11.4765 9.89237 11.3273 9.80741 11.1794C10.2854 11.4033 10.866 11.4376 11.3502 11.237C11.4701 11.1873 11.5773 11.1244 11.6743 11.0524C11.6721 11.0712 11.6739 11.0911 11.6819 11.1118C11.8326 11.5032 11.9655 11.9005 12.1142 12.2923C12.274 12.7132 12.484 13.1152 12.6675 13.5259C12.8558 13.9475 13.0092 14.3817 13.1645 14.8162C13.2658 15.0995 13.3635 15.4109 13.5185 15.6782C13.3437 15.7104 13.1701 15.7587 13.0008 15.8134C12.9041 15.8446 12.8098 15.8796 12.7177 15.918C12.6655 15.6794 12.4789 15.4747 12.2843 15.3409ZM13.4448 12.7932C13.4434 13.2082 13.4229 13.6259 13.4414 14.0405C13.4463 14.151 13.456 14.2613 13.4582 14.3719C13.3348 14.0289 13.2068 13.6882 13.0596 13.3541C12.9495 13.1039 12.8263 12.8581 12.7087 12.6103C12.7452 12.322 12.6826 11.9877 12.6712 11.7198C12.6592 11.4361 12.6967 11.0967 12.6373 10.805C12.6884 10.8106 12.7394 10.8158 12.7901 10.8201C13.0304 10.8405 13.2871 10.8528 13.5403 10.8365C13.5126 11.0763 13.4787 11.3157 13.461 11.5563C13.4307 11.9653 13.446 12.3831 13.4448 12.7932ZM13.7431 16.097C14.2609 16.0562 14.7951 16.1757 15.2545 16.4158C16.0947 16.8549 16.7011 17.6895 16.9837 18.5826C17.2365 19.3821 17.2834 20.3258 16.8373 21.0679C16.5889 21.4812 16.2046 21.7568 15.7571 21.9239C15.3351 22.0814 14.8796 22.1348 14.4637 22.3059C14.1311 22.4428 13.8392 22.6821 13.7669 23.05C13.6975 23.4029 13.8187 23.7386 13.8614 24.085C13.8956 24.3634 13.7579 24.6007 13.443 24.5569C13.1598 24.5174 12.9261 24.2506 12.7564 24.0424C12.3521 23.5467 12.0643 22.9415 11.8022 22.3614C11.4108 21.4952 11.1084 20.5526 11.0659 19.5974C11.0232 18.6387 11.2852 17.7073 11.9521 16.9974C12.2842 16.6439 12.6707 16.422 13.1244 16.2614C13.2653 16.2115 13.4184 16.16 13.5764 16.1176C13.6312 16.1089 13.6866 16.1015 13.7431 16.097ZM14.5527 11.3218C14.5093 11.6502 14.4842 11.9775 14.4701 12.3086C14.4537 12.6927 14.4464 13.0758 14.4625 13.4601C14.4775 13.8169 14.4908 14.1632 14.4299 14.515C14.2527 14.5183 14.0754 14.5201 13.8988 14.5152C13.909 14.3786 13.8903 14.2314 13.8843 14.1261C13.8598 13.6993 13.8766 13.2698 13.8753 12.8425C13.874 12.3876 13.8557 11.9313 13.8697 11.4764C13.8766 11.2502 13.8977 11.0182 13.8586 10.7987C13.915 10.7884 13.9707 10.7759 14.0256 10.7614C14.0358 10.7617 14.046 10.7617 14.0562 10.7621C14.2346 10.7696 14.4124 10.7778 14.5901 10.7856C14.5573 10.961 14.5719 11.1752 14.5527 11.3218ZM15.4856 12.7055C15.4715 13.0541 15.4546 13.4025 15.4376 13.7509C15.4259 13.9896 15.3689 14.2646 15.3968 14.5116C15.2893 14.5101 15.1818 14.508 15.0742 14.507C14.9991 14.5064 14.9239 14.5068 14.8486 14.5077C14.9147 14.1944 14.9013 13.8602 14.8899 13.5447C14.8744 13.115 14.8758 12.6886 14.8937 12.2588C14.9088 11.9 14.9445 11.5377 14.9481 11.179C14.949 11.0802 14.9548 10.9276 14.9231 10.7992C15.1423 10.8075 15.3617 10.8142 15.5822 10.816C15.4757 11.4304 15.5107 12.0882 15.4856 12.7055ZM16.4238 11.7209C16.4145 12.0789 16.3947 12.4365 16.3722 12.794C16.3487 13.1677 16.329 13.542 16.3134 13.9162C16.3057 14.1031 16.2644 14.3315 16.2923 14.5313C16.1492 14.5267 16.0062 14.5235 15.8631 14.5202C15.9182 14.2754 15.8894 13.979 15.8984 13.7509C15.9121 13.4025 15.9156 13.0542 15.9151 12.7055C15.9143 12.0915 15.9519 11.4316 15.8467 10.8189C16.0526 10.8206 16.2585 10.8238 16.4642 10.8312C16.4172 11.121 16.4313 11.4325 16.4238 11.7209ZM17.2658 11.6718C17.2595 12.0102 17.2533 12.3486 17.2471 12.687C17.2356 13.3126 17.206 13.9479 17.2271 14.5747C17.1073 14.5666 16.9874 14.5592 16.8673 14.5535C16.8292 14.5517 16.791 14.5504 16.7529 14.5488C16.7946 14.3307 16.7559 14.0719 16.7626 13.8674C16.7745 13.5095 16.7945 13.1519 16.8053 12.7939C16.8165 12.4205 16.829 12.0458 16.8211 11.6722C16.8155 11.408 16.8139 11.1093 16.7464 10.8439C16.9315 10.8537 17.1163 10.8666 17.3008 10.8843C17.2629 11.1428 17.2705 11.4172 17.2658 11.6718ZM18.169 13.9853C18.1848 14.2164 18.159 14.4298 18.1392 14.6525C17.9838 14.6373 17.8284 14.6231 17.6728 14.6096C17.6962 13.9715 17.6659 13.3243 17.6542 12.6871C17.6476 12.3318 17.6422 11.9763 17.6346 11.621C17.6296 11.3924 17.6351 11.149 17.6051 10.9164C17.7582 10.9335 17.9113 10.9507 18.0647 10.9652C18.1142 10.9698 18.1637 10.9756 18.2127 10.9833C18.1465 11.3209 18.1521 11.6787 18.1382 12.0203C18.1232 12.3859 18.1099 12.7518 18.1124 13.1177C18.1144 13.4088 18.1492 13.6952 18.169 13.9853ZM18.5872 14.6973C18.5716 14.6958 18.5561 14.6942 18.5405 14.6926C18.5904 14.5026 18.5768 14.2818 18.5668 14.0998C18.5508 13.8048 18.5093 13.512 18.4914 13.2172C18.4673 12.8187 18.4648 12.4194 18.4619 12.0202C18.4594 11.6954 18.4751 11.3532 18.4132 11.0309C18.5298 11.0706 18.6359 11.1331 18.7197 11.2366C18.9557 11.5282 18.9678 11.9629 18.9869 12.3202C19.004 12.64 19.0272 12.959 19.046 13.2787C19.0726 13.7305 19.101 14.2791 19.3294 14.6979C19.0818 14.6942 18.8372 14.7225 18.5872 14.6973ZM20.4386 14.1482C20.4152 14.3229 20.3638 14.6746 20.1959 14.7798C19.9835 14.9129 19.7501 14.5383 19.6837 14.3816C19.5634 14.0978 19.5302 13.7777 19.5057 13.4735C19.4561 12.8602 19.4759 12.2158 19.3437 11.6137C19.2769 11.3093 19.1372 11.0104 18.8864 10.8162C18.614 10.6053 18.2831 10.5839 17.9526 10.5536C17.5099 10.5131 17.0718 10.4495 16.6271 10.4265C16.1786 10.4032 15.7298 10.4009 15.2811 10.3969C14.8461 10.3931 14.4145 10.3382 13.9807 10.3289C13.9039 10.3273 13.8266 10.3292 13.7492 10.3328C13.3878 10.3088 13.0166 10.3391 12.6599 10.3073C12.5889 10.301 12.3955 10.2803 12.2172 10.292C12.3089 10.0242 12.3385 9.73674 12.3165 9.45515C12.3091 9.36077 12.2223 9.13191 12.2558 9.04993C12.2977 8.94744 12.5457 8.99827 12.6417 8.9989C13.4446 9.00418 14.2459 9.03128 15.0468 9.08992C15.4274 9.11775 15.7962 9.13801 16.1763 9.14021C16.5812 9.14251 16.9861 9.13504 17.3911 9.14226C17.7711 9.14905 18.1515 9.16853 18.5282 9.22078C18.901 9.27249 19.2842 9.35398 19.6283 9.51072C20.0057 9.68264 20.1857 9.92253 20.2536 10.3305C20.3963 11.1873 20.4436 12.0881 20.4644 12.9553C20.4739 13.3481 20.4907 13.7578 20.4386 14.1482Z"
+                                              fill="#486BEF"/>
                                     </svg></span>Интимная стрижка
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse18" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($intimHairList as $item) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/intimnaya-strizhka-'.$item['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse18" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($intimHairList as $item) : ?>
 
-                <?php if (isset($serviceList)) : ?>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/intimnaya-strizhka-' . $item['url']) ?>
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8" aria-expanded="true" aria-controls="collapseOne">
+                                <a href="/<?php echo $url; ?>"><?php echo $item['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
+            <?php if (isset($serviceList)) : ?>
+
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse8"
+                                    aria-expanded="true" aria-controls="collapseOne">
                                     <span class="svg-wrap">
-                                        <svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M19.6032 7.96417H4.2492C2.5396 7.96417 1 9.2207 1 10.9303V15.3879C1 15.593 1.31994 15.8501 1.52508 15.8501H22.3273C22.5325 15.8501 22.6095 15.593 22.6095 15.3879V10.9303C22.6095 9.2207 21.3128 7.96417 19.6032 7.96417Z" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M22.6095 12.0226C22.6095 11.8174 22.4431 11.6511 22.238 11.6511H1.37146C1.16632 11.6511 1 11.8174 1 12.0226V15.4787C1 15.6838 1.16632 15.8501 1.37146 15.8501H22.238C22.4431 15.8501 22.6095 15.6838 22.6095 15.4787V12.0226V12.0226Z" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M20.766 6.83763V1.27212C20.766 1.06698 20.6752 1 20.47 1H3.38252C3.17738 1 2.94592 1.06698 2.94592 1.27212V6.83763" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M1 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M22.6095 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M8.98 4.38879C8.98 3.80188 8.50271 3.32611 7.91385 3.32611C7.52596 3.32611 7.18656 3.53261 7.00004 3.84131C6.81352 3.53261 6.47406 3.32611 6.08617 3.32611C5.49731 3.32611 5.02002 3.80188 5.02002 4.38879C5.02002 4.69419 5.1495 4.96932 5.35649 5.16316H5.3562L6.88258 6.61897C6.91057 6.6525 6.95257 6.67387 6.99964 6.67387C7.04325 6.67387 7.0825 6.65544 7.11027 6.626L8.64404 5.16316H8.64359C8.8506 4.96935 8.98 4.69421 8.98 4.38879Z" fill="#486BEF"/>
-                                            <path d="M17.98 4.38879C17.98 3.80188 17.5027 3.32611 16.9138 3.32611C16.526 3.32611 16.1866 3.53261 16 3.84131C15.8135 3.53261 15.4741 3.32611 15.0862 3.32611C14.4973 3.32611 14.02 3.80188 14.02 4.38879C14.02 4.69419 14.1495 4.96932 14.3565 5.16316H14.3562L15.8826 6.61897C15.9106 6.6525 15.9526 6.67387 15.9996 6.67387C16.0432 6.67387 16.0825 6.65544 16.1103 6.626L17.644 5.16316H17.6436C17.8506 4.96935 17.98 4.69421 17.98 4.38879Z" fill="#486BEF"/>
+                                        <svg width="24" height="19" viewBox="0 0 24 19" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.6032 7.96417H4.2492C2.5396 7.96417 1 9.2207 1 10.9303V15.3879C1 15.593 1.31994 15.8501 1.52508 15.8501H22.3273C22.5325 15.8501 22.6095 15.593 22.6095 15.3879V10.9303C22.6095 9.2207 21.3128 7.96417 19.6032 7.96417Z"
+                                                  stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round"
+                                                  stroke-linejoin="round"/>
+                                            <path d="M22.6095 12.0226C22.6095 11.8174 22.4431 11.6511 22.238 11.6511H1.37146C1.16632 11.6511 1 11.8174 1 12.0226V15.4787C1 15.6838 1.16632 15.8501 1.37146 15.8501H22.238C22.4431 15.8501 22.6095 15.6838 22.6095 15.4787V12.0226V12.0226Z"
+                                                  stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round"
+                                                  stroke-linejoin="round"/>
+                                            <path d="M20.766 6.83763V1.27212C20.766 1.06698 20.6752 1 20.47 1H3.38252C3.17738 1 2.94592 1.06698 2.94592 1.27212V6.83763"
+                                                  stroke="#486BEF" stroke-miterlimit="10" stroke-linecap="round"
+                                                  stroke-linejoin="round"/>
+                                            <path d="M1 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M22.6095 13.9042V17.5912" stroke="#486BEF" stroke-miterlimit="10"
+                                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8.98 4.38879C8.98 3.80188 8.50271 3.32611 7.91385 3.32611C7.52596 3.32611 7.18656 3.53261 7.00004 3.84131C6.81352 3.53261 6.47406 3.32611 6.08617 3.32611C5.49731 3.32611 5.02002 3.80188 5.02002 4.38879C5.02002 4.69419 5.1495 4.96932 5.35649 5.16316H5.3562L6.88258 6.61897C6.91057 6.6525 6.95257 6.67387 6.99964 6.67387C7.04325 6.67387 7.0825 6.65544 7.11027 6.626L8.64404 5.16316H8.64359C8.8506 4.96935 8.98 4.69421 8.98 4.38879Z"
+                                                  fill="#486BEF"/>
+                                            <path d="M17.98 4.38879C17.98 3.80188 17.5027 3.32611 16.9138 3.32611C16.526 3.32611 16.1866 3.53261 16 3.84131C15.8135 3.53261 15.4741 3.32611 15.0862 3.32611C14.4973 3.32611 14.02 3.80188 14.02 4.38879C14.02 4.69419 14.1495 4.96932 14.3565 5.16316H14.3562L15.8826 6.61897C15.9106 6.6525 15.9526 6.67387 15.9996 6.67387C16.0432 6.67387 16.0825 6.65544 16.1103 6.626L17.644 5.16316H17.6436C17.8506 4.96935 17.98 4.69421 17.98 4.38879Z"
+                                                  fill="#486BEF"/>
                                         </svg>
                                     </span>
-                                    Сексуальные предпочтения
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                <?php foreach ($serviceList as $service) : ?>
-
-                                    <?php $url = UrlBuilder::buildUrlForFilter($param, '/usluga-'.$service['url']) ?>
-
-                                    <a href="/<?php echo $url; ?>"><?php echo $service['value'] ?></a>
-
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
+                                Сексуальные предпочтения
+                            </button>
+                        </h5>
                     </div>
 
-                <?php endif; ?>
+                    <div id="collapse8" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <?php foreach ($serviceList as $service) : ?>
 
-            </div>
+                                <?php $url = UrlBuilder::buildUrlForFilter($param, '/usluga-' . $service['url']) ?>
+
+                                <a href="/<?php echo $url; ?>"><?php echo $service['value'] ?></a>
+
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+
+            <?php endif; ?>
+
         </div>
-
     </div>
+
+</div>
 

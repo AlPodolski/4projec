@@ -753,3 +753,11 @@ function inView($elem) {
 
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
+
+$(function () {
+
+    $('.mobile-close-menu').click(function () {
+        $('.sidebar-wrap').hide(100);
+    })
+
+})

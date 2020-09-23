@@ -2028,6 +2028,13 @@ a {
     width: 40px;
     box-shadow: 0 0 7px #0000004d;
 }
+.mobile-close-menu {
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 10px;
+    display:none;
+}
 .type-btn{
     background: linear-gradient(98.98deg, #486BEF 3.79%, #80DFFD 96.13%);
     box-shadow: 0px 4px 7px rgba(72, 107, 239, 0.38);
@@ -3031,7 +3038,7 @@ a {
 }
 
 @media (max-width: 1199px) {
-    .BottomMenu__fixed , .site-index .start-search{
+    .BottomMenu__fixed , .site-index .start-search , .mobile-close-menu{
         display: block;
     }
     .add-advert-wrap{
