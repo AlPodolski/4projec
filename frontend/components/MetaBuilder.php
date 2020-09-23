@@ -20,8 +20,6 @@ class MetaBuilder
 
         $tamplate = self::getTemplate($find, $uri);
 
-        \d($uri);
-
         $subject = '';
 
         if (!empty($tamplate)){
