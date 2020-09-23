@@ -18,6 +18,8 @@ class MetaBuilder
      */
     public static function Build($uri, $city, $find){
 
+        $uri = \strstr($uri, '/page', true);
+
         $tamplate = self::getTemplate($find, $uri);
 
         $subject = '';
