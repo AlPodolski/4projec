@@ -98,9 +98,13 @@ class SiteController extends Controller
 
         $posts = $posts->all();
 
-        $title =  MetaBuilder::Build(Yii::$app->request->url, $city, 'Title');
-        $des = MetaBuilder::Build(Yii::$app->request->url, $city, 'des');
-        $h1 = MetaBuilder::Build(Yii::$app->request->url, $city, 'h1');
+        $uri = Yii::$app->request->url;
+
+        if (\strpos($uri, 'page')) $uri = \strstr($uri, 'page', true);
+
+        $title =  MetaBuilder::Build($uri, $city, 'Title');
+        $des = MetaBuilder::Build($uri, $city, 'des');
+        $h1 = MetaBuilder::Build($uri, $city, 'h1');
 
         $yandex_meta = Meta::find()->where(['city' => $city])->asArray()->one();
 

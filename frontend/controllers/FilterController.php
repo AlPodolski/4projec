@@ -84,9 +84,13 @@ class FilterController extends Controller
         if(\count($posts) < 4) $more_posts = Profile::find()->limit(8)
             ->all();
 
-        $title = MetaFilterHelper::Filter( MetaBuilder::Build(Yii::$app->request->url, $city, 'Title'));
-        $des = MetaFilterHelper::Filter(MetaBuilder::Build(Yii::$app->request->url, $city, 'des'));
-        $h1 = MetaFilterHelper::Filter(MetaBuilder::Build(Yii::$app->request->url, $city, 'h1'));
+        $uri = Yii::$app->request->url;
+
+        if (\strpos($uri, 'page')) $uri = \strstr($uri, '/page', true);
+
+        $title =  MetaBuilder::Build($uri, $city, 'Title');
+        $des = MetaBuilder::Build($uri, $city, 'des');
+        $h1 = MetaBuilder::Build($uri, $city, 'h1');
 
         return $this->render('index', [
             'posts' => $posts,
