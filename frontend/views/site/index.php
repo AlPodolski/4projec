@@ -71,7 +71,11 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             <div class="col-12 col-xl-9 main-banner-wrap margin-bottom-30">
 
+                <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-4' ?>
+
             <?php else : ?>
+
+                <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-3' ?>
 
             <div class="col-12 col-xl-12 main-banner-wrap margin-bottom-30">
 
@@ -87,6 +91,7 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
                         <?php echo $this->renderFile('@app/views/layouts/article.php', [
                             'post' => $post,
                             'cityInfo' => $cityInfo,
+                            'cssClass' => $class
                         ]) ?>
 
                     <?php endforeach; ?>
