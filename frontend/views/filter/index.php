@@ -45,9 +45,13 @@ Yii::$app->view->registerMetaTag([
 
             <?php if (!Yii::$app->user->isGuest) : ?>
 
+            <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-4' ?>
+
             <div class="col-12 col-xl-9 main-banner-wrap margin-bottom-30">
 
                 <?php else : ?>
+
+                <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-3' ?>
 
                 <div class="col-12 col-xl-12 main-banner-wrap margin-bottom-30">
 
@@ -74,6 +78,7 @@ Yii::$app->view->registerMetaTag([
                             <?php echo $this->renderFile('@app/views/layouts/article.php', [
                                 'post' => $post,
                                     'cityInfo' => $cityInfo,
+                                    'cssClass' => $class
                             ]) ?>
 
                         <?php endforeach; ?>

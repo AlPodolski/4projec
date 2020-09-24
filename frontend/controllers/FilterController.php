@@ -67,11 +67,15 @@ class FilterController extends Controller
 
                 }
 
+                if (Yii::$app->user->isGuest) $class = 'col-6 col-sm-6 col-md-4 col-lg-3';
+                else $class = 'col-6 col-sm-6 col-md-4 col-lg-4';
+
                 foreach ($posts as $post){
 
                     echo $this->renderFile('@app/views/layouts/article.php', [
                         'post' => $post,
                         'cityInfo' => $cityInfo,
+                        'cssClass' => $class,
                     ]);
 
                 }
