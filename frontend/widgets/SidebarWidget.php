@@ -59,23 +59,16 @@ class SidebarWidget extends Widget
             // $data нет в кэше, вычисляем заново
             $city_id = ArrayHelper::getValue(City::find()->select('id')->where(['url' => Yii::$app->controller->actionParams['city']])->one(), 'id');
 
-            //objee
-            //$metroList = AvailableHelper::getAvailable(Metro::class, $this->getAvalibleIds(), $city_id, true);
-            //$rayonList = AvailableHelper::getAvailable(Rayon::class, $this->getAvalibleIds(), $city_id, true);
-
             $polList = AvailableHelper::getAvailable(Pol::class, $this->getAvalibleIds(),  $city_id);
             $serviceList = AvailableHelper::getAvailable(Service::class, $this->getAvalibleIds(),  $city_id);
             $ageList = AvailableHelper::getAvailable(Age::class, $this->getAvalibleIds(),  $city_id);
-            $nationalList = AvailableHelper::getAvailable(National::class, $this->getAvalibleIds(),  $city_id);
             $bodyList = AvailableHelper::getAvailable(BodyType::class, $this->getAvalibleIds(),  $city_id);
             $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
             $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
             $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
-            $intimHairList = AvailableHelper::getAvailable(IntimHair::class, $this->getAvalibleIds(),  $city_id);
 
             if (\strstr($param, 'znakomstva')){
                 //znakom
-                $interesi = AvailableHelper::getAvailable(Interesting::class, $this->getAvalibleIds(),  $city_id);
                 $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
                 $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
                 $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
@@ -90,12 +83,8 @@ class SidebarWidget extends Widget
 
             $html =  $this->render('sidebar', [
                 'ageList' => $ageList,
-                'nationalList' => $nationalList,
                 'bodyList' => $bodyList,
                 'serviceList' => $serviceList,
-                'metroList' => $metroList,
-                'rayonList' => $rayonList,
-                'interesi' => $interesi,
                 'deti' => $deti,
                 'semeinoePolojenie' => $semeinoePolojenie,
                 'celiZnakomstva' => $celiZnakomstva,
@@ -103,7 +92,6 @@ class SidebarWidget extends Widget
                 'alcogol' => $alcogol,
                 'hairColorList' => $hairColorList,
                 'polList' => $polList,
-                'intimHairList' => $intimHairList,
                 'materialnoePolojenie' => $materialnoePolojenie,
                 'param' => $param,
             ]);
