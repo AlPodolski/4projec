@@ -3,6 +3,7 @@
 
 namespace frontend\modules\advert\controllers;
 
+use frontend\components\MetaBuilder;
 use yii\web\Controller;
 use frontend\modules\advert\models\Advert;
 use Yii;
@@ -42,8 +43,17 @@ class AdvertController extends Controller
             ->with('userRelations')
             ->all();
 
+        $uri = Yii::$app->request->url;
+
+        $title =  MetaBuilder::Build($uri, $city, 'Title');
+        $des = MetaBuilder::Build($uri, $city, 'des');
+        $h1 = MetaBuilder::Build($uri, $city, 'h1');
+
         return $this->render('advert', [
-            'advertList' => $advertList
+            'advertList' => $advertList,
+            'title' => $title,
+            'des' => $des,
+            'h1' => $h1,
         ]);
     }
 

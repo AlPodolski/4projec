@@ -1,17 +1,20 @@
 <?php
 /* @var $advertList Advert[] */
 /* @var $this View */
+/* @var $title string */
+/* @var $des string */
+/* @var $h1 string */
 
 use frontend\modules\advert\models\Advert;
 use frontend\widgets\SidebarWidget;
 use yii\web\View;
 use frontend\widgets\UserSideBarWidget;
 
-$this->title = 'Объявления о знакомствах ';
+$this->title = $title;
 
 Yii::$app->view->registerMetaTag([
     'name' => 'description',
-    'content' => 'Объявления знакомств с девушками, парнями и парами для общения, отношений и секса. Без регистрации! Бесплатно!'
+    'content' => $des
 ]);
 ?>
 <div class="row">
@@ -38,7 +41,7 @@ Yii::$app->view->registerMetaTag([
         <div class="anket content advert-page">
 
             <div class="row">
-                <h1 class="mb-4">Объявления о знакомствах</h1>
+                <h1 class="mb-4 margin-top-10"><?php echo $h1 ?></h1>
             </div>
 
             <div class="add-advert-wrap" <?php if (Yii::$app->user->isGuest) : ?>
