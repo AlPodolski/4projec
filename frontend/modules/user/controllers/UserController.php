@@ -62,7 +62,7 @@ class UserController extends \yii\web\Controller
 
         if ($payForm->load(Yii::$app->request->post()) and $payForm->validate()){
 
-            if ($payForm->sum > 199){
+            if ($payForm->sum > (Yii::$app->params['min_sum_pay'] - 1)){
 
                 $order_id = Yii::$app->user->id.'_'.$city;
 
@@ -79,7 +79,7 @@ class UserController extends \yii\web\Controller
 
             }else{
 
-                Yii::$app->session->setFlash('warning', 'Минимальная сумма пополнения 200 рублей');
+                Yii::$app->session->setFlash('warning', 'Минимальная сумма пополнения '.Yii::$app->params['min_sum_pay'].' рублей');
 
             }
 

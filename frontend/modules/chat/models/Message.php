@@ -17,9 +17,14 @@ use Yii;
  * @property int $id
  * @property string $class
  * @property string $related_id
+ * @property integer $type
  */
 class Message extends \yii\db\ActiveRecord
 {
+
+    const REGULAR_MESSAGE = 1;
+    const INVITING_MESSAGE = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +39,7 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['chat_id', 'from', 'created_at', 'status', 'related_id'], 'integer'],
+            [['chat_id', 'from', 'created_at', 'status', 'related_id', 'type'], 'integer'],
             [['message', 'class'], 'string'],
         ];
     }

@@ -447,4 +447,49 @@ class ConsoleController extends Controller
 
     }
 
+    public function actionAddInvitingMessage()
+    {
+
+        $profiles = Profile::find()->where(['fake' => 1])->asArray()->with('polRelation')->all();
+
+        foreach ($profiles as $profile){
+
+            $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
+
+            if ($profile['polRelation']) {
+
+                $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
+                        ->andWhere(['city_id' => $city['id']])
+                        ->andWhere(['<>', 'pol_id',$profile['polRelation']['pol_id'] ])
+                        ->asArray()
+                        ->all();
+
+                $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
+                        ->orderBy('rand()')
+                        ->asArray()
+                        ->andWhere(['fake' => 0])
+                        ->limit(1)
+                        ->one();
+
+                $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
+
+            }
+
+        }
+
+    }
+
+    public function sendInvitingMessage($from, $to , $name)
+    {
+        $model = new SendMessageForm();
+
+        $model->from_id = $from;
+        $model->created_at = \time();
+        $model->user_id = $to;
+        $model->text = $name . ' ' . Yii::$app->params['invitation_message_text'];
+        $model->type = \frontend\modules\chat\models\Message::INVITING_MESSAGE;
+
+        $model->save();
+    }
+
 }

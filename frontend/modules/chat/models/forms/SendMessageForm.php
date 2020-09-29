@@ -17,6 +17,7 @@ class SendMessageForm extends Model
     public $class;
     public $related_id;
     public $status = 0;
+    public $type = Message::REGULAR_MESSAGE;
 
 
     public function rules()
@@ -42,6 +43,7 @@ class SendMessageForm extends Model
             $message->status = $this->status;
             $message->class = $this->class;
             $message->related_id = $this->related_id;
+            $message->type = $this->type;
 
             if ($message->save()) return $this->chat_id;
 
@@ -64,6 +66,7 @@ class SendMessageForm extends Model
                     $message->status = $this->status;
                     $message->class = $this->class;
                     $message->related_id = $this->related_id;
+                    $message->type = $this->type;
 
                     if ($message->save()) return $item['dialog_id'];
 
@@ -97,6 +100,7 @@ class SendMessageForm extends Model
                 $message->status = $this->status;
                 $message->class = $this->class;
                 $message->related_id = $this->related_id;
+                $message->type = $this->type;
 
                 if ($message->save()) return $dialog->id;
 

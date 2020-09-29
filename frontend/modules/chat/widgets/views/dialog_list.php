@@ -20,6 +20,20 @@
 
                             ?>
 
+                        <?php elseif ($dialog['lastMessage']['type'] == \frontend\modules\chat\models\Message::INVITING_MESSAGE
+                            and
+                            $dialog['lastMessage']['status'] != 1 ) : ?>
+
+                            <?php if ($dialog['lastMessage']['from'] != Yii::$app->user->id) : ?>
+
+                                    <?php echo $this->renderFile(Yii::getAlias('@app/modules/chat/widgets/views/dialog_list_item.php') , [
+                                        'dialog'    => $dialog,
+                                        'user_id'   => $user_id
+                                    ]) ;
+                                    ?>
+
+                            <?php endif; ?>
+
                         <?php else: ?>
 
                         <?php $notVipDialogs[] = $dialog ?>
