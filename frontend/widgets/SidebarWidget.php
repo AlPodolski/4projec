@@ -66,13 +66,14 @@ class SidebarWidget extends Widget
             $smoke = AvailableHelper::getAvailable(Smoking::class, $this->getAvalibleIds(),  $city_id);
             $alcogol = AvailableHelper::getAvailable(Alcogol::class, $this->getAvalibleIds(),  $city_id);
             $hairColorList = AvailableHelper::getAvailable(HairColor::class, $this->getAvalibleIds(),  $city_id);
+            $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
+            $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
+            $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
+            $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
 
             if (\strstr($param, 'znakomstva')){
                 //znakom
-                $deti = AvailableHelper::getAvailable(Children::class, $this->getAvalibleIds(),  $city_id);
-                $semeinoePolojenie = AvailableHelper::getAvailable(Family::class, $this->getAvalibleIds(),  $city_id);
-                $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
-                $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
+
             }else{
                 //pr
                 $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
