@@ -450,7 +450,7 @@ class ConsoleController extends Controller
     public function actionAddInvitingMessage()
     {
 
-        $profiles = Profile::find()->where(['fake' => 1])->asArray()->with('polRelation')->all();
+        $profiles = Profile::find()->where(['id' => 23215])->asArray()->with('polRelation')->all();
 
         foreach ($profiles as $profile){
 
@@ -471,7 +471,16 @@ class ConsoleController extends Controller
                         ->limit(1)
                         ->one();
 
-                $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
+                $userDialog = UserDialog::find()->where(['user_id' => $profile['id']])->select('dialog_id')->asArray()->all();
+
+                $userDialogIds = ArrayHelper::getColumn($userDialog, 'dialog_id');
+
+                if (!UserDialog::find()->where(['in', 'dialog_id', $userDialogIds])->andWhere(['user_id' => $fromProfile['id'] ])->count()){
+
+                    $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
+
+                }
+
 
             }
 
