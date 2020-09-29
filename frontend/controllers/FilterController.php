@@ -27,6 +27,7 @@ class FilterController extends Controller
 
     public function actionIndex($city, $param, $page = false)
     {
+        if (Yii::$app->request->url == '/znakomstva') return $this->redirect('/', 301);
 
         $query_params = QueryParamsHelper::getParams($param, $city);
 
