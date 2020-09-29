@@ -450,7 +450,7 @@ class ConsoleController extends Controller
     public function actionAddInvitingMessage()
     {
 
-        $profiles = Profile::find()->where(['id' => 23215])->asArray()->with('polRelation')->all();
+        $profiles = Profile::find()->where(['fake' => 1])->asArray()->with('polRelation')->all();
 
         foreach ($profiles as $profile){
 
