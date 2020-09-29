@@ -28,6 +28,10 @@ class MarcHelper
 
                     $close = '<span><i class="fa fa-times" aria-hidden="true"></i></span>';
 
+                    if ($marck_url == '/znakomstva' or $marck_url == 'znakomstva') $marck_url = '';
+
+                    if ($param['label'] == 'знакомства') $param['label'] = 'Главная';
+
                     $url[] = str_replace('//', '/','<a class="marc" href="/'.$marck_url.'"> <span class="marc-text"> '.$param['label'].' </span> '.$close.'  </a>');
 
                 }

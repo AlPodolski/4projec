@@ -71,14 +71,6 @@ class SidebarWidget extends Widget
             $celiZnakomstva = AvailableHelper::getAvailable(CeliZnakomstvamstva::class, $this->getAvalibleIds(),  $city_id);
             $materialnoePolojenie = AvailableHelper::getAvailable(FinancialSituation::class, $this->getAvalibleIds(),  $city_id);
 
-            if (\strstr($param, 'znakomstva')){
-                //znakom
-
-            }else{
-                //pr
-                $priceList = AvailableHelper::getAvailable(Price::class, $this->getAvalibleIds(),  $city_id);
-            }
-
             if (isset(Yii::$app->controller->actionParams['param'])) $param =
                 $this->prepereParam(Yii::$app->controller->actionParams['param']);
 
