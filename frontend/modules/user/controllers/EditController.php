@@ -56,7 +56,7 @@ class EditController extends Controller
 
             $data = Yii::$app->request->post();
 
-            if ($model->load($data) and $model->save(Yii::$app->user->id)) {
+            if ($model->load($data) and $model->save(Yii::$app->user->id, Yii::$app->user->identity->city)) {
 
                 Yii::$app->session->setFlash('success', "Информация обновлена");
 

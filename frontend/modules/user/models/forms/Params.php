@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\models\forms;
 
+use common\models\City;
 use common\models\FilterParams;
 use frontend\modules\user\components\helpers\SaveAnketInfoHelper;
 use frontend\modules\user\components\helpers\TimeHelper;
@@ -151,9 +152,11 @@ class Params extends Model
         $this->birthday = \date('d.m.Y' , $this->birthday );
     }
 
-    public function save($user_id){
+    public function save($user_id, $city_url){
 
         $filterParams = FilterParams::find()->asArray()->all();
+
+        $city =  City::find()->where(['url' => $city_url])->asArray()->one();
 
         foreach ($this as $key => $value){
 
@@ -163,7 +166,7 @@ class Params extends Model
 
                     $filterParam['relation_class']::deleteAll('user_id = '.$user_id);
 
-                    SaveAnketInfoHelper::save($value, $user_id, $filterParam['relation_class'], $filterParam['column_param_name']);
+                    SaveAnketInfoHelper::save($value, $user_id, $filterParam['relation_class'], $filterParam['column_param_name'], $city['id']);
 
                 }
 

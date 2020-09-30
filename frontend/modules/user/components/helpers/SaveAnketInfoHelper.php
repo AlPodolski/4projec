@@ -5,7 +5,7 @@ namespace frontend\modules\user\components\helpers;
 
 class SaveAnketInfoHelper
 {
-    public static function save($id, $user_id, $class_name, $column_param_name){
+    public static function save($id, $user_id, $class_name, $column_param_name , $city_id){
 
         if (\is_array($id)){
 
@@ -15,6 +15,7 @@ class SaveAnketInfoHelper
 
                 $model->$column_param_name = \strip_tags($item);
                 $model->user_id = $user_id;
+                $model->city_id = $city_id;
 
                 if(!$model->save()) return false;
 
@@ -28,6 +29,7 @@ class SaveAnketInfoHelper
 
             $model->$column_param_name = $id;
             $model->user_id = $user_id;
+            $model->city_id = $city_id;
 
             if ($model->save()) return true;
 

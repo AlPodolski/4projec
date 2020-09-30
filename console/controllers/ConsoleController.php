@@ -6,6 +6,8 @@ namespace console\controllers;
 use chat\modules\chat\models\Message;
 use common\models\City;
 use common\models\FilterParams;
+use common\models\FinancialSituation;
+use frontend\models\UserFinancialSituation;
 use frontend\models\UserPol;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
 use frontend\modules\chat\models\forms\SendMessageForm;
@@ -499,6 +501,34 @@ class ConsoleController extends Controller
         $model->type = \frontend\modules\chat\models\Message::INVITING_MESSAGE;
 
         $model->save();
+    }
+
+    public function actionCust()
+    {
+        $profiles = Profile::find()->where(['fake' => 0])->asArray()->all();
+
+        $finantial = ArrayHelper::getColumn(FinancialSituation::find()->asArray()->all(), 'id');
+
+        foreach ($profiles as $profile){
+
+            if(!UserFinancialSituation::find()->where(['user_id' => $profile['id']])->asArray()->one()){
+
+                $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
+
+                UserFinancialSituation::deleteAll(['user_id' => $profile['id']]);
+
+                $userFin = new UserFinancialSituation();
+
+                $userFin->user_id = $profile['id'];
+                $userFin->param_id = $finantial[\array_rand($finantial)];
+                $userFin->city_id = $city['id'];
+
+                $userFin->save();
+
+            }
+
+        }
+
     }
 
 }
