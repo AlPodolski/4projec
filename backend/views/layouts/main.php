@@ -50,7 +50,7 @@ AdminLteAsset::register($this);
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview ">
+                    <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i> <p>Страницы</p>
                         </a>
@@ -65,6 +65,13 @@ AdminLteAsset::register($this);
                                 <a href="/meta" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Мета теги</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/page-mark" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Метки страниц</p>
                                 </a>
                             </li>
 

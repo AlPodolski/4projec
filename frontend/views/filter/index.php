@@ -67,6 +67,8 @@ Yii::$app->view->registerMetaTag([
 
                     <h1><?php echo $h1; ?></h1>
 
+                    <?php echo \frontend\widgets\MarkWidget::widget(['url' => Yii::$app->request->url]) ?>
+
                     <div class="row content">
 
                         <div data-url="/<?php echo $param ?>" class="col-12"></div>
