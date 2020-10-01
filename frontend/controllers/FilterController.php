@@ -20,9 +20,24 @@ class FilterController extends Controller
      */
     public function behaviors()
     {
-        return [
-            LastVisitTimeUpdate::class,
-        ];
+
+        if (Yii::$app->user->isGuest){
+            return [
+                [
+                    'class' => 'yii\filters\PageCache',
+                    'only' => ['index'],
+                    'duration' => 3600 * 3,
+                    'variations' => [
+                        \Yii::$app->request->url,
+                        \Yii::$app->request->post('page'),
+                    ],
+                ],
+            ];
+        }else{
+            return [
+                LastVisitTimeUpdate::class,
+            ];
+        }
     }
 
     public function actionIndex($city, $param, $page = false)
