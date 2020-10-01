@@ -26,10 +26,11 @@ class FilterController extends Controller
                 [
                     'class' => 'yii\filters\PageCache',
                     'only' => ['index'],
-                    'duration' => 0,
+                    'duration' => 3600 * 3,
                     'variations' => [
                         \Yii::$app->request->url,
                         \Yii::$app->request->post('page'),
+                        \Yii::$app->request->hostInfo,
                     ],
                 ],
             ];
