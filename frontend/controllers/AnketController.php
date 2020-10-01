@@ -6,6 +6,7 @@ namespace frontend\controllers;
 use common\models\City;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\components\helpers\GuestHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
@@ -15,6 +16,31 @@ use yii\web\Controller;
 
 class AnketController extends Controller
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+
+        if (Yii::$app->user->isGuest){
+            return [
+                [
+                    'class' => 'yii\filters\PageCache',
+                    'only' => ['index'],
+                    'duration' => 3600 * 24,
+                    'variations' => [
+                        \Yii::$app->request->url,
+                    ],
+                ],
+            ];
+        }else{
+            return [
+                LastVisitTimeUpdate::class,
+            ];
+        }
+    }
+
     public function actionView($city, $id){
 
         $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id);
