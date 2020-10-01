@@ -44,4 +44,10 @@ class PageMark extends \yii\db\ActiveRecord
             'url' => 'Ссылка',
         ];
     }
+
+    public function beforeSave($insert)
+    {
+        Yii::$app->cache->delete(Yii::$app->params['mark_cache'].'_'.$this->page_url);
+    }
+    
 }

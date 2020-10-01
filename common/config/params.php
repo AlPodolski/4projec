@@ -19,6 +19,7 @@ return [
     'user_group_subscribe_key' => 'user_group_subscribe',
     'dialog_day_limit' => 7,
     'min_sum_pay' => 300,
+    'mark_cache' => 'mark_cache',
     'invitation_message_text' => 'хочет познакомится',//
     'default_with_img' => 1024,
     'dialog_day_key' => 'dialog_day',
