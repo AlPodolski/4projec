@@ -498,15 +498,18 @@ class ConsoleController extends Controller
 
     public function sendInvitingMessage($from, $to , $name)
     {
-        $model = new SendMessageForm();
+        if ($name){
+            $model = new SendMessageForm();
 
-        $model->from_id = $from;
-        $model->created_at = \time();
-        $model->user_id = $to;
-        $model->text = $name . ' ' . Yii::$app->params['invitation_message_text'];
-        $model->type = \frontend\modules\chat\models\Message::INVITING_MESSAGE;
+            $model->from_id = $from;
+            $model->created_at = \time();
+            $model->user_id = $to;
+            $model->text = $name . ' ' . Yii::$app->params['invitation_message_text'];
+            $model->type = \frontend\modules\chat\models\Message::INVITING_MESSAGE;
 
-        $model->save();
+            $model->save();
+        }
+
     }
 
     public function actionCust()
