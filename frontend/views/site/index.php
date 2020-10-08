@@ -120,7 +120,10 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
                                         <a href="/znakomstva/pol-zhenskij/vozrast-ot-30-let">30+</a>
                                     </div>
                                     <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-40-do-50-let">40-50+</a>
+                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-40-let">40+</a>
+                                    </div>
+                                    <div class="popular-mark">
+                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-45-let">45+</a>
                                     </div>
                                     <div class="popular-mark">
                                         <a href="/znakomstva/pol-zhenskij/vozrast-ot-50-let">50+</a>
@@ -180,7 +183,10 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
                                         <a href="/znakomstva/pol-muzhskoj/vozrast-ot-30-let">30+</a>
                                     </div>
                                     <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-40-do-50-let">40-50+</a>
+                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-40-let">40+</a>
+                                    </div>
+                                    <div class="popular-mark">
+                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-45-let">45+</a>
                                     </div>
                                     <div class="popular-mark">
                                         <a href="/znakomstva/pol-muzhskoj/vozrast-ot-50-let">50+</a>

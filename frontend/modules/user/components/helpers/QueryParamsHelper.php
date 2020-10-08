@@ -114,13 +114,20 @@ class QueryParamsHelper
                 $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 30];
             }
 
-            if ($url == 'ot-40-do-50-let') {
+            if ($url == 'ot-40-let') {
                 $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-40-do-50-let',
-                    'label' => 'от 40 до 50 лет'
+                    'url' => '/vozrast-ot-40-let',
+                    'label' => 'от 40 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 40)];
-                $age_params[] = ['>=', 'birthday', \time() - (24 * 3600 * 365 * 50)];
+            }
+
+            if ($url == 'ot-45-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-45-let',
+                    'label' => 'от 45 лет'
+                ];
+                $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 45)];
             }
 
             if ($url == 'ot-50-let') {
