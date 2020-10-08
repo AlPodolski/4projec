@@ -78,7 +78,7 @@ class FilterController extends Controller
 
                     $page = Yii::$app->request->post('page') + 1;
 
-                    if (strpos($param, 'page')) strstr($param, '/page' , true);
+                    if (strpos($param, 'page')) $param = strstr($param, '/page' , true);
 
                     echo '<div data-url="/'.$param.'/page-'.$page.'" class="col-12"></div>';
 
