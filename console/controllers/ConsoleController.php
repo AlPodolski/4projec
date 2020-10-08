@@ -460,11 +460,23 @@ class ConsoleController extends Controller
 
             if ($profile['polRelation']) {
 
-                $companionProfileId  = UserPol::find()->where(['<>' , 'user_id', $profile['id']])
+                $userDialog = UserDialog::find()
+                    ->where(['user_id' => $profile['id']])->select('dialog_id')
+                    ->asArray()->all();
+
+                $userDialogIds = ArrayHelper::getColumn($userDialog, 'dialog_id');
+
+                $usersWithWhomThereIsADialogue = UserDialog::find()->select('user_id')->where(['dialog_id' => $userDialogIds])
+                ->asArray()->all();
+
+                $tmpId = ArrayHelper::getColumn($usersWithWhomThereIsADialogue, 'user_id');
+
+                $companionProfileId  = UserPol::find()
+                        ->where(['<>' , 'user_id', $profile['id']])
+                        ->andWhere(['not in' , 'user_id', $tmpId])
                         ->andWhere(['city_id' => $city['id']])
                         ->andWhere(['<>', 'pol_id',$profile['polRelation']['pol_id'] ])
-                        ->asArray()
-                        ->all();
+                        ->asArray()->all();
 
                 if (!$fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
                     ->orderBy('rand()')
@@ -480,15 +492,7 @@ class ConsoleController extends Controller
                         ->one();
                 }
 
-                $userDialog = UserDialog::find()->where(['user_id' => $profile['id']])->select('dialog_id')->asArray()->all();
-
-                $userDialogIds = ArrayHelper::getColumn($userDialog, 'dialog_id');
-
-                if (!UserDialog::find()->where(['in', 'dialog_id', $userDialogIds])->andWhere(['user_id' => $fromProfile['id'] ])->count()){
-
-                    $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
-
-                }
+                $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
 
             }
 
@@ -498,7 +502,6 @@ class ConsoleController extends Controller
 
     public function sendInvitingMessage($from, $to , $name)
     {
-        if ($name){
             $model = new SendMessageForm();
 
             $model->from_id = $from;
@@ -508,7 +511,6 @@ class ConsoleController extends Controller
             $model->type = \frontend\modules\chat\models\Message::INVITING_MESSAGE;
 
             $model->save();
-        }
 
     }
 
