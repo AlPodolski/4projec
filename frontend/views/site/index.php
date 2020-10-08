@@ -68,8 +68,6 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
         <div class="row">
             <div class="col-12 col-xl-12 fast-links-block">
 
-                <h5 class="margin-bottom-20 hide-mobile">Чаще всего ищут:</h5>
-
                 <div class="row">
 
                     <div class="col-12 women-block">
