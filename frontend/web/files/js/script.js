@@ -761,3 +761,16 @@ $(function () {
     })
 
 })
+
+function toggle_women_block(){
+
+    $('.women-block').toggle(150);
+
+}
+
+
+function toggle_men_block(){
+
+    $('.men-block').toggle(150);
+
+}

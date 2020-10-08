@@ -7,6 +7,7 @@ use common\models\FilterParams;
 use frontend\components\MarcHelper;
 use frontend\models\UserPrice;
 use frontend\modules\user\models\Profile;
+use yii\caching\DbDependency;
 use yii\helpers\ArrayHelper;
 use Yii;
 
@@ -84,6 +85,90 @@ class QueryParamsHelper
                     }
 
 
+
+                }
+
+            }
+
+        }
+
+        if (strstr($value, 'vozrast')) {
+
+            $url = str_replace('vozrast-', '', $value);
+
+            $age_params = array();
+
+            if ($url == 'ot-20-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-20-let',
+                    'label' => 'от 20 лет'
+                ];
+                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 20];
+            }
+
+            if ($url == 'ot-30-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-30-let',
+                    'label' => 'от 30 лет'
+                ];
+                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 30];
+            }
+
+            if ($url == 'ot-40-do-50-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-40-do-50-let',
+                    'label' => 'от 40 до 50 лет'
+                ];
+                $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 40)];
+                $age_params[] = ['>=', 'birthday', \time() - (24 * 3600 * 365 * 50)];
+            }
+
+            if ($url == 'ot-50-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-50-let',
+                    'label' => 'от 50 лет'
+                ];
+                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 50];
+            }
+
+            if ($url == 'ot-60-let') {
+                $bread_crumbs_params[] = [
+                    'url' => '/vozrast-ot-60-let',
+                    'label' => 'от 60 лет'
+                ];
+                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 60];
+            }
+
+            $id = Profile::find();
+
+            foreach ($age_params as $age_param) {
+                $id->andWhere($age_param);
+            }
+
+            $id = $id->asArray()->select('id')->all();
+
+
+            if ($id) {
+
+                if (!empty($ids)) {
+
+                    foreach ($id as $id_item) {
+
+                        $result[] = ArrayHelper::getValue($id_item, 'id');
+
+                    }
+
+                    $ids = array_intersect($ids, $result) ;
+
+                } else {
+
+                    foreach ($id as $id_item) {
+
+                        $result[] = ArrayHelper::getValue($id_item, 'id');
+
+                    }
+
+                    $ids = $id;
 
                 }
 
