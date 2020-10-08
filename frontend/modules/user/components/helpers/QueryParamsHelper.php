@@ -16,6 +16,8 @@ class QueryParamsHelper
     public static function getParams($params,$city)
     {
 
+        if (\strpos($params, '/page')) $params = \strstr($params, '/page', true);
+
         $city = City::find()->select('id')->where(['url' => $city])->asArray()->one();
 
         $params = explode('/', $params);
@@ -84,8 +86,6 @@ class QueryParamsHelper
 
                     }
 
-
-
                 }
 
             }
@@ -103,7 +103,7 @@ class QueryParamsHelper
                     'url' => '/vozrast-ot-20-let',
                     'label' => 'от 20 лет'
                 ];
-                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 20];
+                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 20];
             }
 
             if ($url == 'ot-30-let') {
@@ -111,7 +111,7 @@ class QueryParamsHelper
                     'url' => '/vozrast-ot-30-let',
                     'label' => 'от 30 лет'
                 ];
-                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 30];
+                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 30];
             }
 
             if ($url == 'ot-40-do-50-let') {
@@ -128,7 +128,7 @@ class QueryParamsHelper
                     'url' => '/vozrast-ot-50-let',
                     'label' => 'от 50 лет'
                 ];
-                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 50];
+                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 50];
             }
 
             if ($url == 'ot-60-let') {
@@ -136,7 +136,7 @@ class QueryParamsHelper
                     'url' => '/vozrast-ot-60-let',
                     'label' => 'от 60 лет'
                 ];
-                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 60];
+                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 60];
             }
 
             $id = Profile::find();
