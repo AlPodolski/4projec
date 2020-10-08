@@ -448,7 +448,7 @@ class ConsoleController extends Controller
         }
 
     }
-
+    //Отправка сообщения о желающем познакомиться пользователе
     public function actionAddInvitingMessage()
     {
 
@@ -466,12 +466,19 @@ class ConsoleController extends Controller
                         ->asArray()
                         ->all();
 
-                $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
+                if (!$fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
+                    ->orderBy('rand()')
+                    ->asArray()
+                    ->andWhere(['fake' => 1])
+                    ->limit(1)
+                    ->one()){
+                    $fromProfile = Profile::find()->where(['in', 'id', ArrayHelper::getColumn($companionProfileId, 'user_id')])
                         ->orderBy('rand()')
                         ->asArray()
                         ->andWhere(['fake' => 0])
                         ->limit(1)
                         ->one();
+                }
 
                 $userDialog = UserDialog::find()->where(['user_id' => $profile['id']])->select('dialog_id')->asArray()->all();
 
@@ -482,7 +489,6 @@ class ConsoleController extends Controller
                     $this->sendInvitingMessage($fromProfile['id'], $profile['id'], $fromProfile['username']);
 
                 }
-
 
             }
 
