@@ -3,12 +3,15 @@
 use yii\widgets\ActiveForm;
 use yii\bootstrap4\Html;
 
+if (Yii::$app->user->isGuest) $email = '';
+else $email = Yii::$app->user->identity->email;
+
 $form = ActiveForm::begin([
     'id' => 'feedback-form',
     'action' => '/feedback',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
-<?= $form->field($model, 'mail') ?>
+<?= $form->field($model, 'mail')->textInput(['value' => $email]) ?>
 <?= $form->field($model, 'text')->textarea() ?>
 
     <div class="form-group">
