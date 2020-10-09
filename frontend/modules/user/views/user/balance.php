@@ -43,7 +43,7 @@ $this->title = 'Пополнить баланс';
 
             ?>
 
-            <?= $form->field($payForm, 'sum')->textInput(['value' => 200]) ?>
+            <?= $form->field($payForm, 'sum')->textInput(['value' => 300]) ?>
 
             <div class="form-group">
 
@@ -52,6 +52,10 @@ $this->title = 'Пополнить баланс';
             </div>
 
             <?php ActiveForm::end() ?>
+
+            <p>Если возникли проблемы с оплатой просим обратиться в поддержку</p>
+
+            <?php echo \frontend\widgets\FeedBackFormWidget::widget(); ?>
 
         </div>
 
