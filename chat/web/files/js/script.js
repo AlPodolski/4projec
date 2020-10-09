@@ -163,6 +163,8 @@ function get_message_form(object) {
             $('#messageModal .modal-body').html(data);
             $('#messageModal').modal('show');
             $('.dialog-item-'+dialog_id).addClass('read-dialog');
+            var now = new Date();
+            $('.open-date-'+dialog_id).html(now);
         },
     });
 

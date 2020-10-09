@@ -2275,6 +2275,15 @@ a {
 .read-dialog{
     background: #d0d1ff;
 }
+.open-date{
+    position: absolute;
+    right: 10px;
+    font-size: 13px;
+    color: #4e5966;
+}
+.dialog_item{
+    position:relative;
+}
 @media (max-width: 1199px) {
     .img-wrap img{
         max-width:inherit;

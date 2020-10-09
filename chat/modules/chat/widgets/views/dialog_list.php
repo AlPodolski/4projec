@@ -107,6 +107,9 @@
 
                         </div>
                     </div>
+                    <div class="open-date open-date-<?php echo $dialog['dialog_id'] ?>">
+
+                    </div>
                 </div>
             </li>
 
