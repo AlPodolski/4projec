@@ -162,6 +162,7 @@ function get_message_form(object) {
         success: function (data) {
             $('#messageModal .modal-body').html(data);
             $('#messageModal').modal('show');
+            $('.dialog-item-'+dialog_id).addClass('read-dialog');
         },
     });
 
