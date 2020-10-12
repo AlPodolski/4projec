@@ -123,6 +123,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/signup' => 'user/auth/signup',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/profile' => 'user/edit/edit-profile',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/anket' => 'user/edit/edit-anket',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/setting/private' => 'user/edit/private',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/login' => 'user/auth/login',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/logout' => 'user/auth/logout',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/balance' => 'user/user/balance',

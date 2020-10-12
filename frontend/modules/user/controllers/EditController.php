@@ -6,6 +6,7 @@ namespace frontend\modules\user\controllers;
 use frontend\modules\user\components\helpers\DropCacheHelper;
 use frontend\modules\user\components\helpers\TimeHelper;
 use frontend\modules\user\models\forms\Params;
+use frontend\modules\user\models\forms\PrivateSettingsForm;
 use frontend\modules\user\models\Profile;
 use yii\web\Controller;
 use Yii;
@@ -48,6 +49,27 @@ class EditController extends Controller
         ] );
 
     }
+
+    public function actionPrivate($city)
+    {
+
+        $model  = new PrivateSettingsForm();
+
+        $model->user_id = Yii::$app->user->id;
+
+        if ($model->load(Yii::$app->request->post()) and $model->save()){
+
+            Yii::$app->session->setFlash('success', "Данные обновлены");
+
+            return $this->redirect('/user');
+
+        }
+
+        return $this->render('private', [
+            'model' => $model
+        ]);
+    }
+
     public function actionEditAnket($city){
 
         $model = new Params();

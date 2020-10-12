@@ -47,7 +47,7 @@ $this->title = 'Пополнить баланс';
 
             <div class="form-group">
 
-                    <?= Html::submitButton('Пополнить', ['class' => 'type-btn']) ?>
+                <?= Html::submitButton('Пополнить', ['class' => 'type-btn']) ?>
 
             </div>
 
