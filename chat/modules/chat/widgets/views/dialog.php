@@ -15,7 +15,33 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 ?>
 
 <div class="page-block chat-block">
-    <a href="/"><i class="fas fa-arrow-left"></i>Назад</a>
+
+    <?php if($user['privacyParams']) : ?>
+
+    <span>Ограничения:</span>
+
+    <?php foreach ($user['privacyParams'] as $param) : ?>
+
+            <?php  if ($param['param'] == \frontend\modules\user\models\PrivacySettings::VIP_USER) { ?>
+
+                <?php if ($user['vip_status_work'] < time()) : ?>
+
+                    вип
+
+                <?php endif; ?>
+
+            <? } ?>
+
+            <?php  if ($param['param'] == \frontend\modules\user\models\PrivacySettings::FRIEND_USER) { ?>
+
+                <p class="cta-box__text w-100">Друзья</p>
+
+            <? } ?>
+
+    <?php endforeach; ?>
+
+    <?php endif; ?>
+
     <div class="chat-wrap">
 
     <div class="chat">
