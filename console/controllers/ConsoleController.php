@@ -18,6 +18,7 @@ use frontend\modules\user\components\helpers\FriendsHelper;
 use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
+use frontend\modules\user\models\UserPrivacySetting;
 use frontend\modules\wall\models\Wall;
 use Yii;
 use yii\console\Controller;
@@ -516,25 +517,18 @@ class ConsoleController extends Controller
 
     public function actionCust()
     {
-        $profiles = Profile::find()->where(['fake' => 0])->asArray()->all();
-
-        $finantial = ArrayHelper::getColumn(FinancialSituation::find()->asArray()->all(), 'id');
+        $profiles = Profile::find()->where(['email' => 'adminadultero@mail.com'])->asArray()->all();
 
         foreach ($profiles as $profile){
 
-            if(!UserFinancialSituation::find()->where(['user_id' => $profile['id']])->asArray()->one()){
+            if (\rand(0, 1) == 1){
 
-                $city = City::find()->where(['url' => $profile['city']])->asArray()->one();
+                $userPrivacy = new UserPrivacySetting();
 
-                UserFinancialSituation::deleteAll(['user_id' => $profile['id']]);
+                $userPrivacy->user_id = $profile['id'];
+                $userPrivacy->param = 2;
 
-                $userFin = new UserFinancialSituation();
-
-                $userFin->user_id = $profile['id'];
-                $userFin->param_id = $finantial[\array_rand($finantial)];
-                $userFin->city_id = $city['id'];
-
-                $userFin->save();
+                $userPrivacy->save();
 
             }
 
