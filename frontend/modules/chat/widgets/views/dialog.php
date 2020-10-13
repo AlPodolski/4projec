@@ -252,3 +252,84 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
         </div>
     </div>
 <?php endif; ?>
+
+
+<?php if ($userTo['privacyParams']) : ?>
+
+<?php $privacyErrors = array() ?>
+
+    <?php foreach ($userTo['privacyParams'] as $param) : ?>
+
+        <?php
+
+        if ($param['param'] == \frontend\modules\user\models\PrivacySettings::VIP_USER) {
+
+            if ($user['vip_status_work'] < time()) $privacyErrors = true;
+
+        }
+
+        if ($param['param'] == \frontend\modules\user\models\PrivacySettings::FRIEND_USER) {
+
+            if(!\frontend\modules\user\components\helpers\FriendsHelper::isFiends(Yii::$app->user->id, $userTo['id'])){
+
+                $privacyErrors = true;
+
+            }
+
+        }
+
+        ?>
+
+    <?php endforeach; ?>
+
+<?php if ($privacyErrors) : ?>
+
+    <div class="limit-dialog-block no-content-wrap d-flex">
+        <div class="row">
+            <div class="col-12">
+
+                <p class="cta-box__text w-100"><?php echo $userTo['username'] ?> Ограничел(а) список тех кто может писать ей/ему</p>
+
+                <p class="cta-box__text w-100">
+                    Вам нужно:
+                </p>
+
+                    <?php foreach ($userTo['privacyParams'] as $param) : ?>
+
+                            <?php  if ($param['param'] == \frontend\modules\user\models\PrivacySettings::VIP_USER) { ?>
+
+                                <?php if ($user['vip_status_work'] < time()) : ?>
+
+                                    <p class="cta-box__text w-100">
+                                        Подключить Досуг <img src="/files/img/vip_icon.png" alt="VIP"> <br>
+                                    </p>
+
+
+                                    <span class="blue-btn " data-toggle="modal" data-target="#modal-buy-vip">Подключить</span>
+
+                                    <br>
+                                    <br>
+
+                            <?php endif; ?>
+
+                            <? } ?>
+
+                            <?php  if ($param['param'] == \frontend\modules\user\models\PrivacySettings::FRIEND_USER) { ?>
+
+                            <p class="cta-box__text w-100">Отправить заявку в друзья</p>
+
+                            <? } ?>
+
+                    <?php endforeach; ?>
+
+                    <br>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <?php endif; ?>
+
+<?php endif; ?>

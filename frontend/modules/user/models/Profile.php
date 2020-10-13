@@ -117,6 +117,8 @@ class Profile extends \yii\db\ActiveRecord
         ];
     }
 
+
+
     /**
      * {@inheritdoc}
      */
@@ -194,6 +196,11 @@ class Profile extends \yii\db\ActiveRecord
 
     public function getUserPrice(){
         return $this->hasMany(UserPrice::class, ['user_id' => 'id'])->asArray()->one();
+    }
+
+    public function getPrivacyParams()
+    {
+        return $this->hasMany(UserPrivacySetting::class, ['user_id' => 'id']);
     }
 
     public function formatDate(){

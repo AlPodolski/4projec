@@ -13,6 +13,10 @@ use Yii;
  */
 class PrivacySettings extends \yii\db\ActiveRecord
 {
+
+    const VIP_USER = 2;
+    const FRIEND_USER = 1;
+
     /**
      * {@inheritdoc}
      */
