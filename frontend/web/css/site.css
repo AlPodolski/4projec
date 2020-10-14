@@ -1782,8 +1782,9 @@ ul li .secodn-menu:hover {
     position: relative;
     bottom: -2px;
     border: 2px solid;
-    padding: 5px 10px;
+    padding: 1px 10px;
     border-radius: 27px;
+    display: inline-block;
 }
 .main-menu:first-child{
     margin-left: 0px;
@@ -3258,6 +3259,7 @@ a {
         cursor: pointer;
         color: #486BEF;
         font-size: 18px;
+        margin-bottom: 5px;
         font-family: Muller;
     }
     .banner-menu-list li a {
