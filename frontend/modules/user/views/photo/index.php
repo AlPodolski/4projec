@@ -25,27 +25,31 @@ $this->title = 'Все фото';
 
                 <div class="col-12 d-flex flex-row-reverse">
 
-                    <?php
+                        <div class="img-label-wrap ">
 
-                        $photoModel = new Photo();
+                            <?php
 
-                        $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data', 'id' => 'add-gallery-form']]);
+                                $photoModel = new Photo();
 
-                    ?>
+                                $form = ActiveForm::begin(['action' => '/user/photo/add', 'options' => ['enctype' => 'multipart/form-data', 'id' => 'add-gallery-form']]);
 
-                    <div class="img-label-wrap">
+                            ?>
 
-                        <label for="photo-file" class="">
+                                <label for="photo-file" class="">
 
-                            <span class="blue-btn"> Загрузить фото </span>
+                                    <span class="blue-btn "> Загрузить фото </span>
 
-                            <?= $form->field($photoModel, 'file[]')
-                                        ->fileInput(['multiple' => true, 'accept' => 'image/*'])
-                                        ->label(false) ?>
+                                    <?= $form->field($photoModel, 'file[]')
+                                                ->fileInput(['multiple' => true, 'accept' => 'image/*'])
+                                                ->label(false) ?>
 
-                            </label>
+                                </label>
 
                         </div>
+
+                    <div class="img-label-wrap d-none">
+                        <span class="blue-btn " data-toggle="modal" data-target="#modal-add-albom"> Создать альбом </span>
+                    </div>
 
                 <?php ActiveForm::end(); ?>
 
@@ -89,5 +93,28 @@ $this->title = 'Все фото';
 
     </div>
 
+</div>
 
+<div class="modal fade" id="modal-add-albom" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="present-modal-content-wrap">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Создать альбом</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.25 15.75L15.75 2.25" stroke="black" stroke-width="2"/>
+                                <path d="M2.25 2.25L15.75 15.75" stroke="black" stroke-width="2"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

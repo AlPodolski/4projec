@@ -763,14 +763,29 @@ $(function () {
 })
 
 function toggle_women_block(){
-
-    $('.women-block').toggle(150);
-
+    $('.women-block').toggleClass('d-none');
+    $('.close-toggle-block').toggleClass('d-none');
+    $('#men-block-btn').toggleClass('d-none');
 }
-
-
 function toggle_men_block(){
-
-    $('.men-block').toggle(150);
-
+    $('#women-block-btn').toggleClass('d-none');
+    $('.men-block').toggleClass('d-none');
+    $('.close-toggle-block').toggleClass('d-none');
 }
+
+$( ".close-toggle-block" ).click(function() {
+
+    if(!$( ".women-block" ).hasClass( "d-none" )){
+
+        toggle_women_block();
+
+    }
+    if(!$( ".men-block" ).hasClass( "d-none" )){
+
+        toggle_men_block();
+
+    }
+
+    $('.close-toggle-block ').addClass('d-none');
+
+});

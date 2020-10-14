@@ -1639,11 +1639,17 @@ ul li .secodn-menu:hover {
 .item .wall-tem-menu{
     width: 20px;
     height: 20px;
-    right: 30px;
+    right: 20px;
     top: 5px;
     background: #fff;
     border-radius: 50%;
     text-align:center;
+}
+.img-label-wrap .blue-btn{
+    font-size: 13px;
+}
+.img-label-wrap{
+    margin-left: 15px;
 }
 .all-photo .img{
     width: 100%;
@@ -1775,6 +1781,9 @@ ul li .secodn-menu:hover {
     margin-left: 10px;
     position: relative;
     bottom: -2px;
+    border: 2px solid;
+    padding: 5px 10px;
+    border-radius: 27px;
 }
 .main-menu:first-child{
     margin-left: 0px;
@@ -2830,6 +2839,10 @@ a {
 .padding-top-0{
     padding-top: 0px;
 }
+.photo-items .item{
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
 .padding-top-5{
     padding-top: 5px;
 }
@@ -3088,10 +3101,15 @@ a {
     margin-top: 40px;
 }
 .main-menu-wrap .main-menu{
-    color: #8A8A8A;
+    color: #486BEF;
 }
 .main-menu-wrap{
     display:none;
+}
+@media (min-width: 1199px) {
+    .women-block , .men-block{
+        display:block!important;
+    }
 }
 @media (max-width: 1199px) {
     .main-menu-wrap {
@@ -3107,7 +3125,6 @@ a {
     }
     .women-block , .men-block{
         margin-bottom: 15px;
-        display:none;
     }
     .s-jentatimi , .s-zamyjnimi{
         margin-top: 0px;
