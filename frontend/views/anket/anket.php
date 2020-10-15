@@ -26,7 +26,7 @@ $this->registerCssFile('/css/owl.theme.default.min.css');
 
 SlickAsset::register($this);
 
-$this->registerJsFile('/files/js/single.js?v=9', ['depends' => [SlickAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=10', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
@@ -74,7 +74,7 @@ if (!Yii::$app->user->isGuest) {
             <div class="col-9" onclick="get_invitation_message_form(this);ym(57612607,'reachGoal','chat')">
                 <div class="row">
                     <div class="col-12 message-text">
-                        Привет...
+
                     </div>
                 </div>
             </div>

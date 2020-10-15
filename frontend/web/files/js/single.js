@@ -177,9 +177,27 @@ function close_message_event(object){
 
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 function get_invitation(){
 
     if($('.message-event').length){
+
+        let fruits = [
+            "Привет",
+            "Напиши мне, хочу узнать тебя ближе",
+            "Привет, как дела",
+            "Привет, а у тебя есть чувство юмора?",
+            "Приветик котик, как твои делишки?",
+            "Как насчет флирта?",
+            "Привет, научишь варить пельмени?",
+            "Привет! Я пишу книгу о том, чего хотят девушки. Не расскажешь?",
+            "Приветик не видно моего хомячка? Не пробегал там у тебя?",
+        ];
+
+        var text = fruits[getRandomInt(fruits.length)];
 
         var image = $('.post-photo img').attr('srcset');
 
@@ -189,6 +207,7 @@ function get_invitation(){
 
         message_sound();
 
+        $('.message-event .message-text').html(text);
         $('.message-event').removeClass('d-none');
 
     }
