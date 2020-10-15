@@ -26,7 +26,7 @@ $this->registerCssFile('/css/owl.theme.default.min.css');
 
 SlickAsset::register($this);
 
-$this->registerJsFile('/files/js/single.js?v=10', ['depends' => [SlickAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=11', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
