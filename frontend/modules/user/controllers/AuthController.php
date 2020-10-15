@@ -44,7 +44,7 @@ class AuthController extends Controller
                 $messageModel->from_id = $data[0]->profile_id;
                 $messageModel->created_at = \time();
                 $messageModel->status = 1;
-                $messageModel->text = Yii::$app->params['invitation_message'];
+                $messageModel->text = $data[0]->inv_message;
                 $messageModel->user_id = $user->id;
 
                 if ($messageModel->validate() and $chat_id = $messageModel->save()){

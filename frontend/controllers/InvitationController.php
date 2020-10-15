@@ -23,12 +23,14 @@ class InvitationController extends Controller
 
             $profile_id = Yii::$app->request->post('profile_id');
             $message = Yii::$app->request->post('message');
+            $inv_message = Yii::$app->request->post('inv_message');
 
             return Yii::$app->response->cookies->add(new \yii\web\Cookie([
                 'name' => 'chat_info',
                 'value' => \json_encode(array([
                     'profile_id' => $profile_id,
                     'message' => $message,
+                    'inv_message' => $inv_message,
                 ])),
             ]));
 

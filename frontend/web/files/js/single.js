@@ -222,7 +222,9 @@ $(function() {
 
 function get_invitation_message_form(){
 
+    $('#invitation-dialog .post-text').html($('.message-event .message-text').html());
     $('#invitation-dialog').modal('toggle');
+
 
 }
 
@@ -231,13 +233,14 @@ function get_invitation_register_form(){
     $('#modal-in').modal('toggle');
 
     var profile_id = $('#invitation-dialog .chat-wrap').attr('data-id');
+    var inv_message = $('#invitation-dialog .post-text').html();
     var message = $('#invitation-dialog #sendmessageform-text').val();
 
     if(message.length > 0){
 
         $.ajax({
             url: '/invitation/set-data',
-            data: 'profile_id='+profile_id+'&message='+message,
+            data: 'profile_id='+profile_id+'&message='+message+'&inv_message='+inv_message,
             type: 'POST',
             success: function () {
 
