@@ -198,7 +198,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
     <?php echo PopularWidget::widget(); ?>
 
-    <?php if(Yii::$app->request->url != '/') : ?>
+    <?php if(Yii::$app->request->url != '/' and !Yii::$app->user->isGuest) : ?>
         <div class="mobile-filter-icon open-filter listing-filter-btn">
             <i class="fas fa-filter"></i>
         </div>

@@ -786,6 +786,6 @@ $( ".close-toggle-block" ).click(function() {
 
     }
 
-    $('.close-toggle-block ').addClass('d-none');
+    $('.close-toggle-block').addClass('d-none');
 
 });
