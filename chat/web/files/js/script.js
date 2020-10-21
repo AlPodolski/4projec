@@ -107,7 +107,7 @@ function send_message(object){
 
     $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
     check_conection();
-    console.log(window.chat.readyState );
+    $('#messageModal').modal('hide');
     if(window.chat.readyState != 1){
 
         var formData = new FormData($("#message-form")[0]);
@@ -128,7 +128,7 @@ function send_message(object){
                 $('.chat-wrap').scrollTop($('.chat').height());
                 $('.chat-wrap').attr('data-read', '0');
                 $('#message-form textarea').val('');
-                $('#messageModal').modal('hide');
+
             },
             error: function (data) {
                 alert("There may a error on uploading. Try again later");
