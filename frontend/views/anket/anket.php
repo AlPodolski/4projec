@@ -404,7 +404,9 @@ if (!Yii::$app->user->isGuest) {
                                             <?php endif; ?>
                                             <?php echo $onclick ?> <?php echo $attributes ?>>
 
-                                            <?php $buyerAvatar = Photo::getAvatar(Yii::$app->user->id); ?>
+                                            <?php if (!Yii::$app->user->isGuest) $buyerAvatar = Photo::getAvatar(Yii::$app->user->id);
+                                            else $buyerAvatar = false
+                                            ?>
 
                                             <div class="post_image">
                                                 <?php echo \frontend\widgets\PhotoWidget::widget([
@@ -978,7 +980,7 @@ if (!Yii::$app->user->isGuest) {
                 </div>
             <?php endif; ?>
 
-            <?php if (\frontend\modules\user\components\Friends::countFriends($model->id) > 0) : ?>
+            <?php if (!Yii::$app->user->isGuest and \frontend\modules\user\components\Friends::countFriends($model->id) > 0) : ?>
 
                 <div class="page-block friends">
                 <span class="small-heading">

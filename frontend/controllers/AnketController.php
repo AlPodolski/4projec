@@ -84,12 +84,6 @@ class AnketController extends Controller
 
         }
 
-        $userFriends = Profile::find()
-            ->where(['in', 'id', \frontend\modules\user\components\Friends::getFriendsIds($id) ])
-            ->select('id, username')
-            ->limit(6)
-            ->with('userAvatarRelations')
-            ->asArray()->all();
 
         $cityInfo = Yii::$app->cache->get(Yii::$app->params['cache_name']['city_info'].$model['city']);
 
@@ -101,9 +95,23 @@ class AnketController extends Controller
 
         }
 
-        $userGroupId = SubscribeHelper::getUserSubscribe($id, Yii::$app->params['user_group_subscribe_key']);
+        $userFriends = false;
+        $group = false;
 
-        $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->limit(6)->asArray()->all();
+        if (!Yii::$app->user->isGuest){
+
+            $userFriends = Profile::find()
+                ->where(['in', 'id', \frontend\modules\user\components\Friends::getFriendsIds($id) ])
+                ->select('id, username')
+                ->limit(6)
+                ->with('userAvatarRelations')
+                ->asArray()->all();
+
+            $userGroupId = SubscribeHelper::getUserSubscribe($id, Yii::$app->params['user_group_subscribe_key']);
+
+            $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->limit(6)->asArray()->all();
+
+        }
 
         $userHeart = UserHeart::find()->where(['whom' => $model->id])->with('buyer')->asArray()->one();
 
