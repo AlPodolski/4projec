@@ -17,7 +17,7 @@ return [
     'parent_write_key' => 'parent_write',
     'group_subscribe_key' => 'group_subscribe',
     'user_group_subscribe_key' => 'user_group_subscribe',
-    'dialog_day_limit' => 7,
+    'dialog_day_limit' => 6,
     'min_sum_pay' => 200,
     'mark_cache' => 'mark_cache',
     'invitation_message_text' => 'хочет познакомится',//
