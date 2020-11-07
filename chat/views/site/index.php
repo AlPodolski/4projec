@@ -14,6 +14,8 @@ $this->title = 'Чат';
 
         <div class="row">
             <div class="col-12 col-xl-12">
+                <br>
+                <span class="deamon-restart btn btn-info " onclick="restart()">Перезапустить демона</span>
 
                 <?php
                     echo MessageListWidget::widget(['user_id' => $fakeUsers]);

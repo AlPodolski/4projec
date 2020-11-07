@@ -28,7 +28,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'restart'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -103,6 +103,11 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionRestart()
+    {
+        return \shell_exec('systemctl restart 4dosug');
     }
 
     public function actionError()

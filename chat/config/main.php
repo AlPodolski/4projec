@@ -47,6 +47,7 @@ return [
             'rules' => [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]+>' => 'chat/chat/chat',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send' => 'chat/chat/send',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/restart' => 'site/restart',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/get' => 'chat/chat/get',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',

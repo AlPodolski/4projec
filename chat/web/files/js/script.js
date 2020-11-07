@@ -424,3 +424,18 @@ function send_photo_to_user(){
     });
 
 }
+
+function restart(){
+    $.ajax({
+        url: '/restart',
+        type: 'POST',
+        // async: false,
+        beforeSend: function() {
+
+        },
+        success: function (data) {
+
+
+        },
+    });
+}

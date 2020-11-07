@@ -37,7 +37,7 @@ $rayon = $model->getRayon();
 
 $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
-$userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id])->with('present')->all();
+$userPresent = null;
 
 if ($model) {
     $service = $model->getService();
@@ -45,6 +45,8 @@ if ($model) {
 }
 //фото для формы отправки сообщения
 if (!Yii::$app->user->isGuest) {
+
+    $userPresent = \frontend\models\relation\UserPresents::find()->where(['to' => $model->id])->with('present')->all();
 
     $userPhoto = Photo::getAvatar(Yii::$app->user->id);
 
