@@ -97,6 +97,7 @@ class AnketController extends Controller
 
         $userFriends = false;
         $group = false;
+        $userHeart = false;
 
         if (!Yii::$app->user->isGuest){
 
@@ -111,9 +112,9 @@ class AnketController extends Controller
 
             $group = Group::find()->where(['in', 'id', $userGroupId])->with('avatar')->limit(6)->asArray()->all();
 
-        }
+            $userHeart = UserHeart::find()->where(['whom' => $model->id])->with('buyer')->asArray()->one();
 
-        $userHeart = UserHeart::find()->where(['whom' => $model->id])->with('buyer')->asArray()->one();
+        }
 
         return $this->render('single' , [
             'model' => $model,

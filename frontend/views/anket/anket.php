@@ -398,7 +398,9 @@ if (!Yii::$app->user->isGuest) {
 
                                 <div class="row" >
                                     <div class="col-12">
+                                        <?php if (!Yii::$app->user->isGuest) :?>
                                         <div class="position-relative get-heart margin-top-10"
+
                                             <?php if ($ava and file_exists(Yii::getAlias('@webroot') . $ava) and $ava) : ?>
                                                 data-img="<?php echo Yii::$app->imageCache->thumbSrc($ava, 'popular'); ?>"
                                             <?php else : ?>
@@ -427,6 +429,9 @@ if (!Yii::$app->user->isGuest) {
                                             <span class="get-heart-text"> Занять сердце </span>
 
                                         </div>
+
+                                        <?php endif; ?>
+
                                     </div>
                                 </div>
 
