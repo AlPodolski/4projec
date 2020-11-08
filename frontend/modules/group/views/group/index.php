@@ -15,7 +15,9 @@ $this->title = 'Группы';
 <div class="row">
 
     <div class="col-xl-3">
-        <?php echo UserSideBarWidget::Widget() ?>
+        <?php if (!Yii::$app->user->isGuest) : ?>
+            <?php echo UserSideBarWidget::Widget() ?>
+        <?php endif; ?>
     </div>
 
     <div class="col-12 col-lg-8 col-md-7 col-xl-6 dialog">

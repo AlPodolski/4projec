@@ -8,6 +8,7 @@ use frontend\components\helpers\SaveFileHelper;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\forms\addGroupRecordItemForm;
 use frontend\modules\group\models\Group;
+use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -16,6 +17,29 @@ use yii\web\UploadedFile;
 
 class GroupController extends \yii\web\Controller
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+
+        if (Yii::$app->user->isGuest){
+            return [
+                [
+                    'class' => 'yii\filters\PageCache',
+                    'duration' => 3600 * 24 * 7,
+                    'variations' => [
+                        \Yii::$app->request->url,
+                    ],
+                ],
+            ];
+        }else{
+            return [
+
+            ];
+        }
+    }
 
     public function actionIndex($city)
     {
