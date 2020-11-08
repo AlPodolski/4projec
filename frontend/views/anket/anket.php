@@ -1184,7 +1184,17 @@ if (!Yii::$app->user->isGuest) {
             </div>
 
             <div class="wall-wrapper">
-                <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
+
+                <?php if (Yii::$app->user->isGuest) :?>
+
+                    <div class="alert alert-info">Стена доступна после авторизации</div>
+
+                <?php else :?>
+
+                    <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
+
+                <?php endif; ?>
+
             </div>
 
             <br>
