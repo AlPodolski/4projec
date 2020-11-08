@@ -589,361 +589,371 @@ if (!Yii::$app->user->isGuest) {
                     </div>
                     <div class="col-12">
                         <div class="profile-full-wrap">
-                            <div class="profile_full">
 
-                                <?php if (!empty($metro)) : ?>
+                            <?php if (Yii::$app->user->isGuest) : ?>
+
+                            <div class="alert alert-info">Полная информация доступна после авторизации</div>
+
+                            <?php else : ?>
+
+                                <div class="profile_full">
+
+                                    <?php if (!empty($metro)) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                            <div class="user-prop ">Метро:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($rayon)) : ?>
+
+                                        <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                            <div class="user-prop">Район:</div>
+
+                                            <div class="user-prop-value">
+                                                <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            </div>
+
+                                        </div>
+
+                                    <?php endif; ?>
+
 
                                     <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                        <div class="user-prop ">Метро:</div>
+                                        <div class="user-prop ">Место встречи:</div>
 
                                         <div class="user-prop-value">
-                                            <?php foreach ($metro as $item) echo '<a href="/znakomstva/metro-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php if (!empty($model['place'])) : ?>
+
+                                                <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
                                         </div>
 
                                     </div>
 
-                                <?php endif; ?>
-
-                                <?php if (!empty($rayon)) : ?>
 
                                     <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                        <div class="user-prop">Район:</div>
+                                        <div class="user-prop ">Телосложение:</div>
 
                                         <div class="user-prop-value">
-                                            <?php foreach ($rayon as $item) echo '<a href="/znakomstva/rayon-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php if (!empty($model['bodyType'])) : ?>
+
+                                                <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
                                         </div>
 
                                     </div>
 
-                                <?php endif; ?>
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
+                                        <div class="user-prop">Национальность:</div>
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                        <div class="user-prop-value">
 
-                                    <div class="user-prop ">Место встречи:</div>
+                                            <?php if (!empty($model['national'])) : ?>
 
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['place'])) : ?>
+                                                <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                            <?php foreach ($model['place'] as $item) echo '<a href="/znakomstva/mesto-vstreji-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php else : ?>
 
-                                        <?php else : ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                            <?php endif; ?>
 
-                                        <?php endif; ?>
-                                    </div>
-
-                                </div>
-
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Телосложение:</div>
-
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['bodyType'])) : ?>
-
-                                            <?php foreach ($model['bodyType'] as $item) echo '<a href="/znakomstva/teloslozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                    <div class="user-prop">Национальность:</div>
+                                        <div class="user-prop ">Материальное положение:</div>
 
-                                    <div class="user-prop-value">
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['financialSituation'])) : ?>
 
-                                        <?php if (!empty($model['national'])) : ?>
+                                                <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                            <?php foreach ($model['national'] as $item) echo '<a href="/znakomstva/nacionalnost-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php else : ?>
 
-                                        <?php else : ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                            <?php endif; ?>
 
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Материальное положение:</div>
-
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['financialSituation'])) : ?>
-
-                                            <?php foreach ($model['financialSituation'] as $item) echo '<a href="/znakomstva/materialnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                        <div class="user-prop ">Интересы:</div>
 
-                                    <div class="user-prop ">Интересы:</div>
+                                        <div class="user-prop-value">
 
-                                    <div class="user-prop-value">
+                                            <?php if (!empty($model['interesting'])) : ?>
 
-                                        <?php if (!empty($model['interesting'])) : ?>
+                                                <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                            <?php foreach ($model['interesting'] as $item) echo '<a href="/znakomstva/interesy-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php else : ?>
 
-                                        <?php else : ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                            <?php endif; ?>
 
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Профессия:</div>
-
-                                    <div class="user-prop-value">
-
-                                        <?php if (!empty($model['professionals'])) : ?>
-
-                                            <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
-                                    <div class="user-prop ">Важное в партнере:</div>
+                                        <div class="user-prop ">Профессия:</div>
 
-                                    <div class="user-prop-value">
+                                        <div class="user-prop-value">
 
-                                        <?php if (!empty($model['vajnoeVPartnere'])) : ?>
+                                            <?php if (!empty($model['professionals'])) : ?>
 
-                                            <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                                <?php foreach ($model['professionals'] as $item) echo '<a href="/znakomstva/profesiya-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                        <?php else : ?>
+                                            <?php else : ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                        <?php endif; ?>
+                                            <?php endif; ?>
 
-                                    </div>
-
-                                </div>
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Дети:</div>
-
-                                    <div class="user-prop-value">
-
-
-                                        <?php if (!empty($model['children'])) : ?>
-
-                                            <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
+                                        <div class="user-prop ">Важное в партнере:</div>
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                        <div class="user-prop-value">
 
-                                    <div class="user-prop ">Семья:</div>
+                                            <?php if (!empty($model['vajnoeVPartnere'])) : ?>
 
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['family'])) : ?>
+                                                <?php foreach ($model['vajnoeVPartnere'] as $item) echo '<a href="/znakomstva/vazhno-v-partnere-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                            <?php foreach ($model['family'] as $item) echo '<a href="/znakomstva/semejnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php else : ?>
 
-                                        <?php else: ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                            <?php endif; ?>
 
-                                        <?php endif; ?>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Образование:</div>
-
-                                    <div class="user-prop-value">
-
-                                        <?php if (!empty($model['education'])) : ?>
-
-                                            <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Дети:</div>
+
+                                        <div class="user-prop-value">
 
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                            <?php if (!empty($model['children'])) : ?>
 
-                                    <div class="user-prop ">Размер груди:</div>
+                                                <?php foreach ($model['children'] as $item) echo '<a href="/znakomstva/deti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['breast'])) : ?>
+                                            <?php else : ?>
 
-                                            <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/grud-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                        <?php else : ?>
+                                            <?php endif; ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Интимная стрижка:</div>
-
-                                    <div class="user-prop-value">
-
-                                        <?php if (!empty($model['intimHair'])) : ?>
-
-                                            <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/intimnaya-strizhka-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Семья:</div>
+
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['family'])) : ?>
+
+                                                <?php foreach ($model['family'] as $item) echo '<a href="/znakomstva/semejnoe-polozhenie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else: ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
 
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Цвет волос:</div>
-
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['hairColor'])) : ?>
-
-                                            <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/cvet-volos-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Сфера деятельности:</div>
-
-                                    <div class="user-prop-value">
-
-                                        <?php if (!empty($model['sferaDeyatelnosti'])) : ?>
-
-                                            <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/sfera-deyatelnosti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
 
+                                        <div class="user-prop ">Образование:</div>
 
-                                <div class="clear_fix profile_info_row user-prop-wrap">
+                                        <div class="user-prop-value">
 
-                                    <div class="user-prop ">Жилье:</div>
+                                            <?php if (!empty($model['education'])) : ?>
 
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['zhile'])) : ?>
+                                                <?php foreach ($model['education'] as $item) echo '<a href="/znakomstva/obrazovanie-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
 
-                                            <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/zhile-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+                                            <?php else : ?>
 
-                                        <?php else : ?>
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
 
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
+                                            <?php endif; ?>
 
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="clear_fix profile_info_row user-prop-wrap">
-
-                                    <div class="user-prop ">Транспорт:</div>
-
-                                    <div class="user-prop-value">
-                                        <?php if (!empty($model['transport'])) : ?>
-
-                                            <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
-
-                                        <?php else : ?>
-
-                                            <?php echo Yii::$app->params['no_value_text'] ?>
-
-                                        <?php endif; ?>
+                                        </div>
 
                                     </div>
 
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Размер груди:</div>
+
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['breast'])) : ?>
+
+                                                <?php foreach ($model['breast'] as $item) echo '<a href="/znakomstva/grud-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Интимная стрижка:</div>
+
+                                        <div class="user-prop-value">
+
+                                            <?php if (!empty($model['intimHair'])) : ?>
+
+                                                <?php foreach ($model['intimHair'] as $item) echo '<a href="/znakomstva/intimnaya-strizhka-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Цвет волос:</div>
+
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['hairColor'])) : ?>
+
+                                                <?php foreach ($model['hairColor'] as $item) echo '<a href="/znakomstva/cvet-volos-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Сфера деятельности:</div>
+
+                                        <div class="user-prop-value">
+
+                                            <?php if (!empty($model['sferaDeyatelnosti'])) : ?>
+
+                                                <?php foreach ($model['sferaDeyatelnosti'] as $item) echo '<a href="/znakomstva/sfera-deyatelnosti-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Жилье:</div>
+
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['zhile'])) : ?>
+
+                                                <?php foreach ($model['zhile'] as $item) echo '<a href="/znakomstva/zhile-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="clear_fix profile_info_row user-prop-wrap">
+
+                                        <div class="user-prop ">Транспорт:</div>
+
+                                        <div class="user-prop-value">
+                                            <?php if (!empty($model['transport'])) : ?>
+
+                                                <?php foreach ($model['transport'] as $item) echo '<a href="/znakomstva/transport-' . $item['url'] . '">' . $item['value'] . ' </a> ' ?>
+
+                                            <?php else : ?>
+
+                                                <?php echo Yii::$app->params['no_value_text'] ?>
+
+                                            <?php endif; ?>
+
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
 
+                            <?php endif; ?>
 
-                            </div>
                             <?php if ($model['text']) : ?>
 
                                 <div class="col-12">

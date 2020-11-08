@@ -42,40 +42,60 @@ class AnketController extends Controller
 
     public function actionView($city, $id){
 
-        $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id);
+        if (Yii::$app->user->isGuest){
+            $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id.'_guest');
 
-        if ($model === false) {
-            // $data нет в кэше, вычисляем заново
-            $model = Profile::find()->where(['id' => $id])
-                ->with('place')
-                ->with('sexual')
-                ->with('bodyType')
-                ->with('national')
-                ->with('financialSituation')
-                ->with('interesting')
-                ->with('professionals')
-                ->with('vneshnost')
-                ->with('children')
-                ->with('family')
-                ->with('wantFind')
-                ->with('celiZnakomstvamstva')
-                ->with('haracter')
-                ->with('lifeGoals')
-                ->with('smoking')
-                ->with('alcogol')
-                ->with('education')
-                ->with('breast')
-                ->with('intimHair')
-                ->with('hairColor')
-                ->with('sferaDeyatelnosti')
-                ->with('zhile')
-                ->with('transport')
-                ->with('ves')
-                ->with('rost')
-                ->with('vajnoeVPartnere')
-                ->one();
-            // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
-            Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
+            if ($model === false) {
+                // $data нет в кэше, вычисляем заново
+                $model = Profile::find()->where(['id' => $id])
+                    ->with('ves')
+                    ->with('rost')
+                    ->with('sexual')
+                    ->with('place')
+                    ->with('wantFind')
+                    ->with('smoking')
+                    ->with('alcogol')
+                    ->one();
+                // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id.'_guest', $model);
+            }
+
+        }else{
+            $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id);
+
+            if ($model === false) {
+                // $data нет в кэше, вычисляем заново
+                $model = Profile::find()->where(['id' => $id])
+                    ->with('place')
+                    ->with('sexual')
+                    ->with('bodyType')
+                    ->with('national')
+                    ->with('financialSituation')
+                    ->with('interesting')
+                    ->with('professionals')
+                    ->with('vneshnost')
+                    ->with('children')
+                    ->with('family')
+                    ->with('wantFind')
+                    ->with('celiZnakomstvamstva')
+                    ->with('haracter')
+                    ->with('lifeGoals')
+                    ->with('smoking')
+                    ->with('alcogol')
+                    ->with('education')
+                    ->with('breast')
+                    ->with('intimHair')
+                    ->with('hairColor')
+                    ->with('sferaDeyatelnosti')
+                    ->with('zhile')
+                    ->with('transport')
+                    ->with('ves')
+                    ->with('rost')
+                    ->with('vajnoeVPartnere')
+                    ->one();
+                // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
+                Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
+            }
         }
 
         if (!Yii::$app->user->isGuest and Yii::$app->user->id != $model['id']){
