@@ -5,9 +5,7 @@ namespace frontend\modules\user\components\helpers;
 use common\models\City;
 use common\models\FilterParams;
 use frontend\components\MarcHelper;
-use frontend\models\UserPrice;
 use frontend\modules\user\models\Profile;
-use yii\caching\DbDependency;
 use yii\helpers\ArrayHelper;
 use Yii;
 
