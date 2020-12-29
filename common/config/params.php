@@ -8,7 +8,7 @@ return [
     'photo_path' => '/files/uploads/',
     'bsVersion' => '4.x',
     'site_name' => '4dosug.com',
-    'photo_row_pay' => 10,
+    'photo_row_pay' => 50,
     'users_who_like_key' => 'users_who_like_key',
     'users_whom_like_key' => 'users_whom_like_key',
     'users_who_skip_key' => 'users_who_skip_key',

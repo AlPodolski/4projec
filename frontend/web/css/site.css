@@ -3475,6 +3475,5 @@ a {
     }
     .article-anket-wrap .img-wrap, .popular-anket-wrap .img-wrap {
         max-height: initial;
-        min-height: 150px;
     }
 }
