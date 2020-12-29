@@ -861,7 +861,6 @@ class ImportController extends Controller
 
                         if (isset($record['gal'])) {
 
-
                             $gall = \explode(',', $record['gal']);
 
                             if ($gall) {

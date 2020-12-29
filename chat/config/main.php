@@ -53,6 +53,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-form' => 'present/form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-presents' => 'present/presents',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/gift' => 'present/gift',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/black/add' => 'black-list/add',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/send/send-photo' => 'chat/chat/send-photo',
             ],
         ],

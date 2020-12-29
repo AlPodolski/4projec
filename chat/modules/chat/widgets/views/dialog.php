@@ -41,7 +41,11 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
     <?php endforeach; ?>
 
     <?php endif; ?>
-
+    <div class="col-12" onclick="add_to_black(this)" data-user-id="<?php echo $user['id'] ?>">
+        <div class="btn btn-danger black-list-btn">
+            В черный список
+        </div>
+    </div>
     <div class="chat-wrap">
 
     <div class="chat">

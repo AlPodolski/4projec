@@ -570,6 +570,7 @@ $(function () {
         $('.user-menu-list').toggle('slow')
     });
 });
+
 $(window).scroll(function () {
 
     var target = $('.pager');

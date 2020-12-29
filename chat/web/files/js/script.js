@@ -424,7 +424,22 @@ function send_photo_to_user(){
     });
 
 }
+function add_to_black(object){
 
+    var id = $(object).attr('data-user-id');
+console.log(id);
+    $.ajax({
+        url: '/black/add',
+        type: 'POST',
+        data: 'user_id='+id,
+        datatype:'json',
+        success: function (data) {
+            $('.black-list-btn').html('ok');
+        },
+
+    });
+
+}
 function restart(){
     $.ajax({
         url: '/restart',
