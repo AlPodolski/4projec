@@ -36,13 +36,8 @@ class ChatController extends Controller
     public function actionChat($city, $id)
     {
 
-        $blackList = BlackList::find()->select('user_id')->asArray()->all();
-
-        $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
-
         $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()
             ->where(['fake' => 0])
-            ->andWhere(['not in' , 'id', $blackListIds])
             ->select('id')->asArray()->all(), 'id');
 
         $userFromDialog = UserDialog::find()->where(['dialog_id' => $id])->andWhere(['in', 'user_id', $fakeUsers])->select('user_id')->asArray()->one();

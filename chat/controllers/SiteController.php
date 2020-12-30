@@ -1,6 +1,7 @@
 <?php
 namespace chat\controllers;
 
+use common\models\BlackList;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -63,7 +64,19 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])->select('id')->asArray()->all(), 'id');
+        $blackList = BlackList::find()->select('user_id')->asArray()->all();
+
+        $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
+
+        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()
+            ->where(['fake' => 0])
+            ->andWhere(['not in' , 'id', $blackListIds])
+
+            ->select('id')->asArray()->all(), 'id');
+
+        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])
+            ->andWhere(['not in' , 'id', $blackListIds])
+            ->select('id')->asArray()->all(), 'id');
 
         return $this->render('index' , [
             'fakeUsers' => $fakeUsers,
