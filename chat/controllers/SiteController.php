@@ -68,12 +68,6 @@ class SiteController extends Controller
 
         $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
 
-        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()
-            ->where(['fake' => 0])
-            ->andWhere(['not in' , 'id', $blackListIds])
-
-            ->select('id')->asArray()->all(), 'id');
-
         $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])
             ->andWhere(['not in' , 'id', $blackListIds])
             ->select('id')->asArray()->all(), 'id');
