@@ -18,7 +18,7 @@ class GetDialogsHelper extends Helper
 
         $notReadMessageDialogsIds = Message::find()->where(['status' => 0])
             ->andWhere(['type' => 1])
-            ->andWhere(['not in', 'from_id', $blackListIds])
+            ->andWhere(['not in', 'from', $blackListIds])
             ->select('chat_id')
             ->groupBy('chat_id')->asArray()->all();
 
