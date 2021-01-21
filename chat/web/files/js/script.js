@@ -434,7 +434,7 @@ console.log(id);
         data: 'user_id='+id,
         datatype:'json',
         success: function (data) {
-            $('.black-list-btn').html('ok');
+            $(object).html('ok');
         },
 
     });
