@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use frontend\components\helpers\CashHelper;
 use frontend\modules\user\models\Popular;
 use frontend\modules\user\models\Profile;
 use Yii;
@@ -57,6 +58,8 @@ class PhotoRowController extends Controller
                     $photoRowForm->created_at = \time();
 
                     if ($photoRowForm->save()) {
+
+                        CashHelper::babloSpiz(Yii::$app->user->identity, Yii::$app->params['photo_row_pay'] );
 
                         Yii::$app->session->setFlash('success' , 'Анкета добавлена');
 
