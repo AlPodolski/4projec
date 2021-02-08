@@ -61,4 +61,10 @@ class UserDialog extends \yii\db\ActiveRecord
     public function getCompanion(){
         return $this->hasOne(UserDialog::class, ['dialog_id' =>'dialog_id'] )->andWhere([ '<>' , 'user_id',  $this->user_id])->with('author')->asArray();
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'user_id'])->with('avatarRelation');
+    }
+
 }

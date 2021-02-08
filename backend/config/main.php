@@ -41,7 +41,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'meta' => 'meta/index'
+                'meta' => 'meta/index',
+                'reting-message' => 'reting-message/index'
             ],
         ],
     ],

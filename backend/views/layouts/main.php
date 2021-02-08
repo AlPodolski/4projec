@@ -88,6 +88,12 @@ AdminLteAsset::register($this);
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/reting-message" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Рейтинг по сообщениям</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/profile" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Пользователи</p>
