@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\components;
 use common\models\City;
+use common\models\RegisterCount;
 use common\models\User;
 use frontend\models\UserPol;
 use frontend\modules\chat\models\forms\SendMessageForm;
@@ -126,6 +127,8 @@ class AuthHandler
 
             $auth = $this->createAuth($user->id, $id);
             if ($auth->save()) {
+
+                RegisterCount::addRegister(\date('d-m-Y'));
 
                 if (isset($sex) and !empty($sex)){
                     if ($sex == 1) $this->savePol($user->id, 2,$cityInfo['id'] );

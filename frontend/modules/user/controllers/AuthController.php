@@ -4,6 +4,7 @@
 namespace frontend\modules\user\controllers;
 
 use common\models\LoginForm;
+use common\models\RegisterCount;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
@@ -32,7 +33,7 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $user = $model->signup()) {
             Yii::$app->user->login($user,  3600 * 24 * 30 );
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно, проверьте свой Email');
-
+            RegisterCount::addRegister(\date('d-m-Y'));
             $cookies = Yii::$app->request->cookies;
 
             if (isset($cookies['chat_info'])){
