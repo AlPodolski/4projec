@@ -48,7 +48,17 @@ class Photo extends \yii\db\ActiveRecord
 
     public static function getAvatar($user_id)
     {
-        return Photo::find()->where(['user_id' => $user_id, 'avatar' => 1])->one();
+        $photo = Yii::$app->cache->get('avatar_'.$user_id);
+
+        if ($photo === false){
+
+            $photo = Photo::find()->where(['user_id' => $user_id, 'avatar' => 1])->one();
+
+            Yii::$app->cache->set('avatar_'.$user_id, $photo, 60);
+
+        }
+
+        return $photo;
     }
 
     /**
