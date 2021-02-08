@@ -19,8 +19,12 @@ use yii\helpers\Html;
 
     <tr>
         <th scope="row"><?php echo $userDialogItem['user_id'] ?></th>
-        <td><?php echo $userDialogItem['user']['username'] ?></td>
-        <td><?php echo Html::img('http://msk.'.Yii::$app->params['site_name'] .$userDialogItem['user']['avatarRelation']['file'], ['width' => '50px']) ?></td>
+        <td>
+            <a href="<?php echo 'http://msk.'.Yii::$app->params['site_name'] ?>/user/<?php echo $userDialogItem['user_id'] ?>">
+                <?php echo $userDialogItem['user']['username'] ?>
+            </a>
+        </td>
+        <td><?php echo Html::img('http://msk.'.Yii::$app->params['site_name'] .$userDialogItem['user']['avatarRelation']['file'], ['width' => '200px']) ?></td>
         <td><?php echo $userDialogItem['counted'] ?></td>
     </tr>
 
