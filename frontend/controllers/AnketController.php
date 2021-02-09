@@ -20,7 +20,7 @@ class AnketController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
+    public function behaviors1()
     {
 
         if (Yii::$app->user->isGuest){
@@ -43,6 +43,7 @@ class AnketController extends Controller
     public function actionView($city, $id){
 
         if (Yii::$app->user->isGuest){
+
             $model = Yii::$app->cache->get(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id.'_guest');
 
             if ($model === false) {
@@ -55,6 +56,7 @@ class AnketController extends Controller
                     ->with('wantFind')
                     ->with('smoking')
                     ->with('alcogol')
+                    ->limit(1)
                     ->one();
                 // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
                 Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id.'_guest', $model);
@@ -92,6 +94,7 @@ class AnketController extends Controller
                     ->with('ves')
                     ->with('rost')
                     ->with('vajnoeVPartnere')
+                    ->limit(1)
                     ->one();
                 // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
                 Yii::$app->cache->set(Yii::$app->params['cache_name']['detail_profile_cache_name'].$id, $model);
@@ -146,4 +149,34 @@ class AnketController extends Controller
         ]);
 
     }
+
+    public function actionMore($city)
+    {
+
+        if (Yii::$app->request->isPost){
+
+            $data = \explode(',' , Yii::$app->request->post('id'));
+
+            // $data нет в кэше, вычисляем заново
+            $model = Profile::find()
+                ->where(['not in' , 'id', $data])
+                ->with('ves')
+                ->with('rost')
+                ->with('sexual')
+                ->with('place')
+                ->with('wantFind')
+                ->with('smoking')
+                ->with('alcogol')
+                ->limit(1)
+                ->one();
+
+            return $this->renderFile('@app/views/anket/more.php', [
+                'model' => $model
+            ]);
+
+        }
+
+        return $this->goHome();
+    }
+
 }

@@ -591,10 +591,34 @@ $(window).scroll(function () {
 
     if (winScrollTop > (scrollToElem - 100)) {
 
+        var ids = '';
+
+        if ($(".anket-single-page").length > 0){
+
+            $('.anket-single-page').each(function() {
+
+                ids = ids  + $(this).attr('data-id')+',';
+
+            });
+
+            ids = 'id='+ids;
+
+            var send_data = ids;
+
+            url = '/user/more';
+
+            console.log(url);
+
+        } else {
+
+            var send_data = 'page=' + page + '&req=' + request;
+
+        }
+
         $.ajax({
             type: 'POST',
             url: '' + url,
-            data: 'page=' + page + '&req=' + request,
+            data: send_data,
             async: false,
             dataType: "html",
             headers: {
@@ -712,16 +736,16 @@ function by_vip_for_photo(){
 
 
 var changeURL = debounce(function() {
-    $('[data-url]').each(function() {
+    $('[data-adress]').each(function() {
         if (inView($(this))) {
 
-            if(window.location.pathname != $(this).attr('data-url')){
+            if(window.location.pathname != $(this).attr('data-adress')){
 
-                window.history.pushState('', document.title, $(this).attr('data-url'));
+                window.history.pushState('', document.title, $(this).attr('data-adress'));
 
                 console.log(window.location.pathname);
 
-                yaCounter57612607.hit($(this).attr('data-url'));
+                yaCounter57612607.hit($(this).attr('data-adress'));
 
             }
         }
