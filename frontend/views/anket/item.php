@@ -956,7 +956,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                         <div class="">
 
-                            <div class="slider-items-single">
+                            <div class="slider-items-single slider-items-single-<?php echo $model->id ?>" data-id="<?php echo $model->id ?>">
 
                                 <?php foreach ($photo as $item) : ?>
 

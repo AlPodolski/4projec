@@ -635,6 +635,55 @@ $(window).scroll(function () {
 
                     wall_photo_items();
 
+                    if ($(".anket-single-page").length > 0){
+
+                        $('.slider-items-single').each(function() {
+
+                            var id = $(this).attr('data-id');
+
+                            var object = $('.slider-items-single-'+id);
+
+                            var sliderFor2 = $(object);
+
+                            if(!$(object).hasClass('slick-initialized')){
+                                $(sliderFor2).slick({
+                                    dots: false,
+                                    infinite: true,
+                                    speed: 300,
+                                    slidesToShow: 4,
+                                    slidesToScroll: 4,
+                                    responsive: [
+                                        {
+                                            breakpoint: 1024,
+                                            settings: {
+                                                slidesToShow: 3,
+                                                slidesToScroll: 3,
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 600,
+                                            settings: {
+                                                slidesToShow: 3,
+                                                slidesToScroll: 2
+                                            }
+                                        },
+                                        {
+                                            breakpoint: 480,
+                                            settings: {
+                                                slidesToShow: 2,
+                                                slidesToScroll: 1
+                                            }
+                                        }
+                                    ]
+                                });
+                            }
+
+
+
+                        });
+
+                    }
+
                 } else {
 
                     $(target).remove();
