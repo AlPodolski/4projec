@@ -28,6 +28,7 @@ class AnketController extends Controller
                 [
                     'class' => 'yii\filters\PageCache',
                     'duration' => 3600 * 24 * 7,
+                    'only' => ['index'],
                     'variations' => [
                         \Yii::$app->request->url,
                     ],
