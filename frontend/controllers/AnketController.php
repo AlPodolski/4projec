@@ -8,11 +8,11 @@ use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
 use frontend\modules\user\components\helpers\GuestHelper;
-use frontend\modules\user\models\Friends;
 use frontend\modules\user\models\Profile;
 use frontend\modules\user\models\UserHeart;
 use Yii;
 use yii\web\Controller;
+use frontend\modules\user\models\Photo;
 
 class AnketController extends Controller
 {
@@ -168,10 +168,14 @@ class AnketController extends Controller
                 ->with('smoking')
                 ->with('alcogol')
                 ->limit(1)
+                ->orderBy(" RAND() ")
                 ->one();
 
+            $photo = Photo::getUserphoto($model->id);
+
             return $this->renderFile('@app/views/anket/more.php', [
-                'model' => $model
+                'model' => $model,
+                'photo' => $photo
             ]);
 
         }
