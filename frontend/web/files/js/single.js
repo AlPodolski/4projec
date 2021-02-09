@@ -40,14 +40,10 @@ $(document).ready(function() {
     );
 
 });
+
 $(document).ready(function() {
 
     $('#under-avatar-form-input').on('change', function(){
-        /*    files = this.files[0];
-
-            var form_data = new FormData();
-            form_data.append('file', files);*/
-
 
         var formData = new FormData($("#under-avatar-form")[0]);
         $.ajax({
@@ -122,6 +118,138 @@ $(document).ready(function() {
         $('.profile_label_less ').toggle();
         $('.profile-full-wrap').toggle();
     });
+
+});
+
+$(document).ready(function() {
+
+    if ($(".isGuest").length > 0){
+
+        var target = $('.pager');
+        var targetPos = target.offset().top;
+        var winHeight = $(window).height();
+        var scrollToElem = targetPos - winHeight;
+
+        var winScrollTop = $(this).scrollTop();
+
+        var page = $(target).attr('data-page');
+
+        var url = $(target).attr('data-url');
+        var request = $(target).attr('data-reqest');
+
+        var accept = $(target).attr('data-accept');
+
+        changeURL();
+
+        if (winScrollTop > (scrollToElem - 100)) {
+
+            var ids = '';
+
+            if ($(".anket-single-page").length > 0){
+
+                $('.anket-single-page').each(function() {
+
+                    ids = ids  + $(this).attr('data-id')+',';
+
+                });
+
+                ids = 'id='+ids;
+
+                var send_data = ids;
+
+                url = '/user/more';
+
+                console.log(url);
+
+            } else {
+
+                var send_data = 'page=' + page + '&req=' + request;
+
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '' + url,
+                data: send_data,
+                async: false,
+                dataType: "html",
+                headers: {
+                    "Accept": accept,
+                },
+                cache: false,
+                success: function (data) {
+
+                    if (data !== '') {
+
+                        $('.content').append(data);
+
+                        page = $(target).attr('data-page', Number(page) + 1);
+
+                        wall_photo_items();
+
+                        if ($(".anket-single-page").length > 0){
+
+                            $('.slider-items-single').each(function() {
+
+                                var id = $(this).attr('data-id');
+
+                                var object = $('.slider-items-single-'+id);
+
+                                var sliderFor2 = $(object);
+
+                                if(!$(object).hasClass('slick-initialized')){
+
+                                    sliderFor2.lightGallery();
+
+                                    $(sliderFor2).slick({
+                                        dots: false,
+                                        infinite: true,
+                                        speed: 300,
+                                        slidesToShow: 4,
+                                        slidesToScroll: 4,
+                                        responsive: [
+                                            {
+                                                breakpoint: 1024,
+                                                settings: {
+                                                    slidesToShow: 3,
+                                                    slidesToScroll: 3,
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 600,
+                                                settings: {
+                                                    slidesToShow: 3,
+                                                    slidesToScroll: 2
+                                                }
+                                            },
+                                            {
+                                                breakpoint: 480,
+                                                settings: {
+                                                    slidesToShow: 2,
+                                                    slidesToScroll: 1
+                                                }
+                                            }
+                                        ]
+                                    });
+
+                                }
+
+                            });
+
+                        }
+
+                    } else {
+
+                        $(target).remove();
+                        $('.dots').remove();
+
+                    }
+
+                }
+            })
+        }
+
+    }
 
 });
 
@@ -216,7 +344,7 @@ function get_invitation(){
 
 $(function() {
 
-    setTimeout(get_invitation, 2000);
+    setTimeout(get_invitation, 5000);
 
 });
 

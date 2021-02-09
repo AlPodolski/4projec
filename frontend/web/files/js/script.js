@@ -646,6 +646,9 @@ $(window).scroll(function () {
                             var sliderFor2 = $(object);
 
                             if(!$(object).hasClass('slick-initialized')){
+
+                                sliderFor2.lightGallery();
+
                                 $(sliderFor2).slick({
                                     dots: false,
                                     infinite: true,
@@ -676,9 +679,8 @@ $(window).scroll(function () {
                                         }
                                     ]
                                 });
+
                             }
-
-
 
                         });
 

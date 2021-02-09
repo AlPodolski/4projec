@@ -24,7 +24,7 @@ $this->registerCssFile('/css/owl.theme.default.min.css');
 
 SlickAsset::register($this);
 
-$this->registerJsFile('/files/js/single.js?v=12', ['depends' => [SlickAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=13', ['depends' => [SlickAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
@@ -53,7 +53,7 @@ if (!Yii::$app->user->isGuest) {
 \frontend\assets\LightGalleryAsset::register($this);
 ?>
 
-<div class="anket " >
+<div class="anket <?php if (Yii::$app->user->isGuest) echo 'isGuest'?>" >
 
     <?php
 
