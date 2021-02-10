@@ -78,6 +78,23 @@ $(document).ready(function() {
 
     });
 
+    if($('.isGuest').length > 0){
+
+        var id = $('.isGuest').attr('data-id');
+
+        $.ajax({
+            url: '/user/get-online',
+            type: 'POST',
+            data: 'id='+id,
+            success: function (data) {
+
+                $('.single-photo-block-'+id+' .online-single').remove();
+                $('.single-photo-block-'+id).append(data);
+
+            },
+        });
+
+    }
 
 });
 

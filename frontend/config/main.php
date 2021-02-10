@@ -136,6 +136,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/remove' => 'user/friends/remove-friend',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/<id:[0-9]+>' => 'anket/view',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/more' => 'anket/more',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/user/get-online' => 'anket/get-online',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/<id:[0-9]+>' => 'user/friends/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/friends/check' => 'user/friends/check',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/group' => 'group/group/index',

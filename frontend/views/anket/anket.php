@@ -53,7 +53,7 @@ if (!Yii::$app->user->isGuest) {
 \frontend\assets\LightGalleryAsset::register($this);
 ?>
 
-<div class="anket <?php if (Yii::$app->user->isGuest) echo 'isGuest'?>" >
+<div class="anket <?php if (Yii::$app->user->isGuest) echo 'isGuest'?>" data-id="<?php echo $model->id ?>">
 
     <?php
 

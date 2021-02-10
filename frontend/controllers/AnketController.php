@@ -184,4 +184,28 @@ class AnketController extends Controller
         return $this->goHome();
     }
 
+    public function actionGetOnline($city)
+    {
+
+        if (Yii::$app->request->isPost){
+
+            $id = Yii::$app->request->post('id');
+
+            $data = Profile::find()
+                ->where(['id' => $id])
+                ->select('last_visit_time , email')
+                ->limit(1)
+                ->asArray()
+                ->one();
+
+            return $this->renderFile('@app/views/anket/time.php', [
+                'data' => $data,
+            ]);
+
+        }
+
+        return $this->goHome();
+
+    }
+
 }

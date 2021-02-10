@@ -20,7 +20,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
         <div class="col-12">
             <div class="page-block main-info-anket">
                 <div class="row">
-                    <div class="col-12 col-xl-4 col-lg-4 col-md-6 position-relative">
+                    <div class="col-12 col-xl-4 col-lg-4 col-md-6 position-relative single-photo-block-<?php echo $model['id'] ?>">
 
                         <?php if ($model['vip_status_work'] > time()) : ?>
 
