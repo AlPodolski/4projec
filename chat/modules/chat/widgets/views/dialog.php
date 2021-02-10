@@ -71,9 +71,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                         <?php echo $item['author']['username'] ?>
                     </a>
 
-                    <span class="add-user-to-black-list" onclick="add_to_black(this)" data-user-id="<?php echo $item['author']['id'] ?>">
-                        Добавить в черный список
-                    </span>
+
 
                     <span class="post_date"><span class="post_link"><span class="rel_date"><?php echo Yii::$app->formatter->asDatetime($item['created_at']) ?></span></span></span>
                     <div class="post-text">
@@ -106,6 +104,9 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
                         ?>
                         <?php echo $item['message'] ?>
                     </div>
+                    <span class="add-user-to-black-list" onclick="add_to_black(this)" data-user-id="<?php echo $item['author']['id'] ?>">
+                        Добавить в чс
+                    </span>
                 </div>
 
 
