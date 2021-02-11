@@ -10,6 +10,7 @@ use common\models\FinancialSituation;
 use frontend\models\UserFinancialSituation;
 use frontend\models\UserPol;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
+use frontend\modules\chat\models\Chat;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\relation\UserDialog;
 use frontend\modules\events\models\Events;
@@ -515,22 +516,39 @@ class ConsoleController extends Controller
 
     }
 
+    public function actionDeleteOldDialogs()
+    {
+
+        $messages = \frontend\modules\chat\models\Message::find()
+            ->where(['created_at' => (\time() - ( 3600 * 24 * 30))])
+            ->asArray()
+            ->all();
+
+        foreach ($messages as $message){
+
+            $result = \frontend\modules\chat\models\Message::find()
+                ->where(['chat_id' => $message['chat_id']])
+                ->max('created_at');
+
+            \d($result);
+
+            echo \PHP_EOL;
+
+        }
+
+    }
+
     public function actionCust()
     {
-        $profiles = Profile::find()->where(['email' => 'adminadultero@mail.com'])->asArray()->all();
+        $message = \frontend\modules\chat\models\Message::find()->where(['status' => 0, 'type' => \frontend\modules\chat\models\Message::INVITING_MESSAGE])
+            ->andWhere(['<', 'created_at' , \time() - (3600 * 24 * 30)])
+            ->asArray()->all();
 
-        foreach ($profiles as $profile){
+        foreach ($message as $item){
 
-            if (\rand(0, 1) == 1){
-
-                $userPrivacy = new UserPrivacySetting();
-
-                $userPrivacy->user_id = $profile['id'];
-                $userPrivacy->param = 2;
-
-                $userPrivacy->save();
-
-            }
+            \frontend\modules\chat\models\Chat::deleteAll(['id' => $item['chat_id']]);
+            \frontend\modules\chat\models\Message::deleteAll(['chat_id' => $item['chat_id']]);
+            UserDialog::deleteAll(['dialog_id' => $item['chat_id']]);
 
         }
 

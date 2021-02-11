@@ -113,7 +113,7 @@ class Profile extends \yii\db\ActiveRecord
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'city'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['password_reset_token'], 'unique'],
-            [['phone', 'pol', 'birthday'], 'safe'],
+            [['phone', 'pol', 'birthday', 'text'], 'safe'],
         ];
     }
 

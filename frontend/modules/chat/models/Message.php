@@ -39,6 +39,7 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['from'], 'required'],
             [['chat_id', 'from', 'created_at', 'status', 'related_id', 'type'], 'integer'],
             [['message', 'class'], 'string'],
         ];
