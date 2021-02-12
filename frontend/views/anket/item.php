@@ -30,9 +30,9 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                         <?php endif; ?>
 
-                        <?php if ($model->email == 'adminadultero@mail.com') : ?>
+                        <?php if ($model->email == 'adminadultero@mail.com' or $model['last_visit_time'] > time() - 3600) : ?>
 
-                            <div class="online-single"></div>
+                            <div class="online-single">Онлайн</div>
 
                         <?php endif; ?>
 
