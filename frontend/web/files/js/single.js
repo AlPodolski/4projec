@@ -78,9 +78,9 @@ $(document).ready(function() {
 
     });
 
-    if($('.isGuest').length > 0){
+    if($('.anket').length > 0){
 
-        var id = $('.isGuest').attr('data-id');
+        var id = $('.anket').attr('data-id');
 
         $.ajax({
             url: '/user/get-online',
