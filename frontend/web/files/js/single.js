@@ -361,7 +361,7 @@ function get_invitation(){
 
 $(function() {
 
-    setTimeout(get_invitation, 5000);
+    setTimeout(get_invitation, 3000);
 
 });
 
