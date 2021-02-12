@@ -221,11 +221,26 @@ class ConsoleController extends Controller
 
     public function actionUpdateTime()
     {
-        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->limit(500)->asArray()->all();
+        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->with('polValue')->limit(800)->asArray()->all();
+
+        $deleteIds = array();
+
+        foreach ($posts as $key => $post){
+
+            if ($post['polValue']['id'] == 1 ) $deleteIds[] = $key;
+
+        }
+
+        foreach($deleteIds as $deleteIdsItem){
+
+            if (\rand(0, 2) >0) unset($posts[$deleteIdsItem]);
+
+        }
 
         $postsIds = ArrayHelper::getColumn($posts, 'id');
 
         Profile::updateAll(['last_visit_time' => time()], ['in' , 'id' , $postsIds]);
+
     }
 
     public function actionStartDialog()
