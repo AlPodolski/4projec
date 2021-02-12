@@ -1812,7 +1812,7 @@ ul li .secodn-menu:hover {
     position: absolute;
     background: rgb(78, 207, 168);
     z-index: 1;
-    border-radius: 50%;
+    border-radius: 5px;
     left: 25px;
     top: 10px;
     color: #fff;
