@@ -27,7 +27,7 @@ class RetingMessageController extends Controller
             ->with('user')
             ->orderBy('counted DESC')
             ->groupBy('user_id')
-            ->limit(200)
+            ->limit(700)
             ->asArray()
             ->all();
 
