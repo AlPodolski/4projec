@@ -1810,13 +1810,13 @@ ul li .secodn-menu:hover {
 }
 .online-single{
     position: absolute;
-    width: 25px;
-    height: 25px;
     background: rgb(78, 207, 168);
     z-index: 1;
     border-radius: 50%;
     left: 25px;
     top: 10px;
+    color: #fff;
+    padding: 2px 5px;
 }
 .wall-img-wrap img{
     margin: 0 auto;

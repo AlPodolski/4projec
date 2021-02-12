@@ -7,6 +7,7 @@ use chat\modules\chat\models\Message;
 use common\models\City;
 use common\models\FilterParams;
 use common\models\FinancialSituation;
+use frontend\models\Files;
 use frontend\models\UserFinancialSituation;
 use frontend\models\UserPol;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
@@ -520,8 +521,10 @@ class ConsoleController extends Controller
     {
 
         $messages = \frontend\modules\chat\models\Message::find()
-            ->where(['created_at' => (\time() - ( 3600 * 24 * 30))])
+            ->where(['<','created_at', (\time() - ( 3600 * 24 * 30))])
             ->asArray()
+            ->groupBy('chat_id')
+            ->limit(500)
             ->all();
 
         foreach ($messages as $message){
@@ -530,8 +533,32 @@ class ConsoleController extends Controller
                 ->where(['chat_id' => $message['chat_id']])
                 ->max('created_at');
 
-            \d($result);
+            if ($result < \time() - ( 3600 * 24 * 30)){
 
+                if ($messageWithPhoto = Message::find()
+                    ->where(['chat_id' => $message['chat_id']])
+                    ->andWhere(['class' => Files::class])
+                    ->asArray()
+                    ->all())
+
+                {
+                    foreach ($messageWithPhoto as $item){
+
+                        $file = Files::find()->where(['id' => $item['related_id']])->asArray()->one();
+
+                        \unlink(Yii::getAlias('@frontend').'/web'.$file['file']);
+
+                    }
+                }
+
+            }
+
+            \frontend\modules\chat\models\Chat::deleteAll(['id' =>  $message['chat_id']]);
+            \frontend\modules\chat\models\Message::deleteAll(['chat_id' => $message['chat_id']]);
+            UserDialog::deleteAll(['dialog_id' => $message['chat_id']]);
+
+
+            echo $message['chat_id'];
             echo \PHP_EOL;
 
         }
