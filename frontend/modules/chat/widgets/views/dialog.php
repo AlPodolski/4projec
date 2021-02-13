@@ -212,7 +212,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
     ]  ); ?>
 
     <span
-            <?php if (!$limitExist) : ?>
+            <?php if (!$limitExist or (in_array($user['id'], Yii::$app->params['admin_id']) or in_array($userTo['id'], Yii::$app->params['admin_id']))) : ?>
           data-name="<?php echo $user['username'];  ?>"
           data-user-id="<?php echo $user['id'];  ?>"
           data-user-id-to="<?php echo $userTo['id']; ?>"
@@ -237,7 +237,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 
 </div>
 
-<?php if ($limitExist) : ?>
+<?php if ($limitExist and !in_array($user['id'], Yii::$app->params['admin_id']) and !in_array($userTo['id'], Yii::$app->params['admin_id'])) : ?>
     <div class="limit-dialog-block no-content-wrap d-flex">
         <div class="row">
             <div class="col-12">
@@ -254,7 +254,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 <?php endif; ?>
 
 
-<?php if ($userTo['privacyParams']) : ?>
+<?php if ($userTo['privacyParams'] and !in_array($user['id'], Yii::$app->params['admin_id']) and !in_array($userTo['id'], Yii::$app->params['admin_id'])) : ?>
 
 <?php $privacyErrors = array() ?>
 

@@ -105,7 +105,7 @@ class ChatController extends Controller
             $dialog_id = UserDialog::find()->where(['user_id' => Yii::$app->request->post('id')])
                 ->andWhere(['in', 'dialog_id', $userDialogsId])->asArray()->one();
 
-            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
+            if (!\in_array(Yii::$app->user->id, Yii::$app->params['admin_id']) and !VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
 
                 if (isset($dialog_id['dialog_id'])) {
 
@@ -165,7 +165,9 @@ class ChatController extends Controller
 
             $model->load(Yii::$app->request->post());
 
-            if (!VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
+            if (!\in_array(Yii::$app->user->id, Yii::$app->params['admin_id'])
+                and !\in_array($model->user_id, Yii::$app->params['admin_id'])
+                and !VipHelper::checkVip(Yii::$app->user->identity['vip_status_work'])) {
 
                 if ($model->chat_id == '') {
 
