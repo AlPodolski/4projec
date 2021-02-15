@@ -147,6 +147,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/item/add' => 'group/group/add',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/group/<id:[0-9]+>/subscribers' => 'group/group/subscribers',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat' => 'chat/chat/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/chat/delete' => '/chat/chat/delete',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/chat/<id:[0-9]+>' => 'chat/chat/chat',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/heart/get-form' => 'user/heart/get-form',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/heart/buy' => 'user/heart/buy',

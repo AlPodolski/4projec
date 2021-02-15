@@ -86,7 +86,12 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="delete-dialog position-absolute " onclick="delete_dialog(this)" data-id="<?php echo $dialog['dialog_id'] ?>">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.25 14.75L14.75 1.25" stroke="black" stroke-width="2"/>
+                    <path d="M1.25 1.25L14.75 14.75" stroke="black" stroke-width="2"/>
+                </svg>
             </div>
             <?php if ($dialog['companion']['author']['vip_status_work'] > time()) : ?>
                 <div class="vip-icon-wrap">

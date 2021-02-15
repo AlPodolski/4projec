@@ -483,6 +483,21 @@ $(document).ready(function () {
     }
 })
 
+function delete_dialog(object){
+
+    var id  = $(object).attr('data-id');
+
+    $.ajax({
+        url: '/chat/delete',
+        data: 'id='+id,
+        type: 'POST',
+        success: function () {
+            $(object).closest('.dialog_item').remove();
+        },
+    });
+
+}
+
 $(document).ready(function () {
 
     $('.city-search').bind("input", function () {

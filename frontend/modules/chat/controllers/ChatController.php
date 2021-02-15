@@ -5,6 +5,8 @@ namespace frontend\modules\chat\controllers;
 use frontend\components\helpers\SaveFileHelper;
 use frontend\components\helpers\SocketHelper;
 use frontend\components\helpers\VipHelper;
+use frontend\models\Files;
+use frontend\modules\chat\models\Chat;
 use frontend\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\forms\SendPhotoForm;
 use frontend\modules\chat\models\Message;
@@ -235,6 +237,39 @@ class ChatController extends Controller
             }
 
         }
+
+    }
+
+    public function actionDelete()
+    {
+        if (Yii::$app->request->isPost){
+
+            $id = Yii::$app->request->post('id');
+
+            if ($userDialog = UserDialog::find()->where(['dialog_id' => $id, 'user_id' => Yii::$app->user->id])
+                ->asArray()->all()){
+
+                if ($message = Message::find()->where(['chat_id' => $id, 'class' => Files::class])->asArray()->all()){
+
+                    foreach ($message as $messageItem){
+
+                        $file = Files::find()->where(['id' => $messageItem['related_id']])->asArray()->one();
+
+                        \unlink(Yii::getAlias('@frontend').'/web'.$file['file']);
+
+                    }
+
+                }
+
+                Chat::deleteAll(['id' =>  $id]);
+                \frontend\modules\chat\models\Message::deleteAll(['chat_id' => $id]);
+                UserDialog::deleteAll(['dialog_id' => $id]);
+
+            }
+
+        }
+
+        return true;
 
     }
 
