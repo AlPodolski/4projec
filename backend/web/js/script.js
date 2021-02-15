@@ -47,3 +47,17 @@ function show_photo(object){
     });
 
 }
+function delete_photo(object){
+
+    var photo_id  = $(object).attr('data-photo-id');
+
+    $.ajax({
+        url: '/photo/delete',
+        data: 'photo_id='+photo_id,
+        type: 'POST',
+        success: function () {
+            $(object).closest('.admin-user-photo').remove();
+        },
+    });
+
+}

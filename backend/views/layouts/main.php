@@ -28,7 +28,7 @@ AdminLteAsset::register($this);
     <?php $this->head() ?>
 </head>
 
-<body class="skin-blue sidebar-mini wrapper">
+<body class="skin-blue sidebar-mini wrapper sidebar-collapse">
 <?php $this->beginBody() ?>
 <header>
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">

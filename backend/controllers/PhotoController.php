@@ -58,4 +58,17 @@ class PhotoController extends Controller
         return true;
     }
 
+    public function actionDelete()
+    {
+        $photoId = Yii::$app->request->post('photo_id');
+
+        $photo = Photo::find()->where(['id' => $photoId])->one();
+
+        @\unlink(Yii::getAlias('@frontend').'/web'.$photo['file']);
+
+        $photo->delete();
+
+        return true;
+    }
+
 }

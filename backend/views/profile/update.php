@@ -63,6 +63,16 @@ $this->params['breadcrumbs'][] = 'Изменить';
                     echo Html::img($src, ['width' => '250px', 'class' => 'img', 'loading' => 'lazy']);
 
                     ?>
+                    <br>
+                    <br>
+                    <div class="action-photo main-photo btn btn-danger"
+                         data-photo-id="<?php echo $item['id'] ?>"
+                         data-user-id="<?php echo $model->id ?>"
+                         onclick="delete_photo(this)">
+
+                        Удалить
+
+                    </div>
 
                 </div>
 
