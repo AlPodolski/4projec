@@ -15,6 +15,9 @@ use Yii;
 class Photo extends \yii\db\ActiveRecord
 {
 
+    const STATUS_DEFAULT = 0;
+    const STATUS_HIDE = 1;
+
     /**
      * {@inheritdoc}
      */

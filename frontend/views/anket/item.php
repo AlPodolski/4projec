@@ -960,6 +960,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                                 <?php foreach ($photo as $item) : ?>
 
+                                <?php if ($item['status'] == Photo::STATUS_DEFAULT) : ?>
+
                                     <div class="item" href="<?php echo $item->file ?>">
 
                                         <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
@@ -975,6 +977,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                                         <?php endif; ?>
 
                                     </div>
+
+                                <?php endif; ?>
 
                                 <?php endforeach; ?>
 
