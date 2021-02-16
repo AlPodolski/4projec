@@ -108,7 +108,6 @@ function send_message(object){
     $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
     check_conection();
     $('#messageModal').modal('hide');
-    if(window.chat.readyState != 1){
 
         var formData = new FormData($("#message-form")[0]);
 
@@ -137,18 +136,6 @@ function send_message(object){
             contentType: false,
             processData: false
         });
-    }
-    else{
-
-        window.chat.send(JSON.stringify({'action' : 'chatAdmin', 'from_name' : from_name, 'from_id' : from_id, 'message' : message, 'to' : to, 'dialog_id' : dialog_id}));
-
-        add_message(img, name, id, text);
-
-        $('.chat-wrap').scrollTop($('.chat').height());
-
-        $(object).siblings('.field-sendmessageform-text').find('#sendmessageform-text').val('');
-
-    }
 
 }
 
