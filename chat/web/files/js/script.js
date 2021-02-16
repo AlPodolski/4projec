@@ -454,3 +454,69 @@ function restart(){
         },
     });
 }
+
+function get_post_gallery_modal(object){
+
+    var id = $(object).attr('data-id');
+    var chat_id = $(object).attr('data-chat-id');
+
+    $.ajax({
+        url: '/chat/photo/get-gallery',
+        data: 'id='+id+'&chat_id='+chat_id,
+        type: 'POST',
+        success: function (data) {
+            $('#modal-photo .modal-body').html(data);
+            $('#modal-photo').modal();
+        },
+    });
+
+}
+
+function send_photo_from_gallery(object){
+
+    var chat_id = $(object).attr('data-chat-id');
+    var img_id = $(object).attr('data-img-id');
+    var from = $(object).attr('data-from');
+
+    $.ajax({
+        url: '/chat/photo/send',
+        data: 'chat_id='+chat_id+'&img_id='+img_id+'&from='+from,
+        type: 'POST',
+        success: function (data) {
+
+            var result = JSON.parse(data);
+
+            var user_img = $('.user-img').attr('srcset');
+            var user_name = $('.message-send-btn').attr('data-name');
+            var user_id = $('.message-send-btn').attr('data-user-id');
+
+            add_present(result.img, user_img, user_name, user_id );
+
+        },
+    });
+
+}
+
+function add_present(presentImg, userImg, name, id, message = '', className = 'right-message') {
+
+    $('.chat').prepend(
+        '<div class="wall-tem ' + className + '">\n' +
+        '    <div class="post_header">\n' +
+        '        <a class="post_image" href="/user/' + id + '">\n' +
+        '            <img loading="lazy" class="img"\n' +
+        '                 srcset="' + userImg + '" alt="">\n' +
+        '        </a>\n' +
+        '        <div class="post_header_info">\n' +
+        '            <a href="/user/' + id + '" class="author">\n' +
+        '                ' + name + ' </a>\n' +
+        '            <span class="post_date"><span class="post_link"><span class="rel_date">Только что</span></span></span>\n' +
+        '            <div class="post-text">\n' +
+        '                <p>' + message + '</p><img src="' + presentImg + '" alt="">\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '    <div style="clear: both">\n' +
+        '    </div>\n' +
+        '</div>');
+
+}

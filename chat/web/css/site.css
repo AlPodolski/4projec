@@ -58,6 +58,8 @@ body {
     font-size: 24px;
     position: relative;
     z-index: 1;
+    line-height: 56px;
+    margin-left: 7px;
 }
 #send-message-photo-input {
     display: none;
@@ -1494,10 +1496,25 @@ ul li .secodn-menu:hover {
 }
 #message-form{
     position: relative;
-    padding-left: 40px;
+    padding-left: 75px;
 }
 .slider .slick-dotted.slick-slider {
     margin-bottom: 0px!important;
+}
+#messageModal .modal-dialog{
+    max-width: 650px;
+}
+.send-message-photo .form-group{
+    margin: 0;
+}
+#modal-photo{
+    z-index: 1051;
+}
+#modal-photo .img{
+    margin-bottom: 10px;
+}
+#modal-photo .btn{
+    margin-bottom: 25px;
 }
 .icon-close{
     text-align: right;

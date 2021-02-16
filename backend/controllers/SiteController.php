@@ -20,6 +20,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+            \backend\components\behaviors\isAdminAuth::class,
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [

@@ -128,7 +128,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 </div>
 
 
-<div onfocusout="" class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
+<div class="comment-wall-form page-block comment-wall-form-<?php echo $item['id'] ?>">
 
     <?php $photoForm = ActiveForm::begin([
         'action' => '#',
@@ -145,6 +145,10 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $photoForm->field($photoModel, 'to',['options' => ['class' => 'd-none']])
         ->hiddenInput(['value' => $recepient])->label(false) ?>
+
+    <div class="img-label-wrap send-message-photo" data-chat-id="<?php echo $dialog['dialog_id'] ?>" data-id="<?php echo $user['id'] ?>" onclick="get_post_gallery_modal(this)">
+        <i class="fas fa-images"></i>
+    </div>
 
     <div class="img-label-wrap send-message-photo">
         <label for="send-message-photo-input" class="">

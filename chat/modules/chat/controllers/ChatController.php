@@ -127,7 +127,7 @@ class ChatController extends Controller
 
                 SocketHelper::send_notification($params);
 
-                echo \json_encode(array('img' => $photo->file));
+                echo \json_encode(array('img' => 'http://msk.'.Yii::$app->params['site_name'] . $photo->file));
 
                 exit();
 
