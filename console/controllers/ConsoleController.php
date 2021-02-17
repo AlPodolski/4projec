@@ -237,11 +237,7 @@ class ConsoleController extends Controller
 
             if ($post['polValue']['id'] == 2  and  ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
 
-                if (TaborUser::find()->where(['user_id' => $post['id']])){
-
-                    $deleteIds[] = $key;
-
-                }
+                $deleteIds[] = $key;
 
             }
 
