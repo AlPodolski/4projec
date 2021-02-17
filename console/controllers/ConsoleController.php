@@ -225,7 +225,7 @@ class ConsoleController extends Controller
         $posts = Profile::find()->where(['fake' => 0])
             ->orderBy(['rand()' => SORT_DESC])
             ->with('polValue')
-            ->limit(2500)
+            ->limit(3000)
             ->asArray()
             ->all();
 
@@ -246,7 +246,10 @@ class ConsoleController extends Controller
 
         foreach($deleteIds as $deleteIdsItem){
 
-            if (\rand(0, 6) > 0 ) unset ($posts[$deleteIdsItem]) ;
+            if ($deleteIdsItem['email'] == 'adminadultgai@mail.com') unset ($posts[$deleteIdsItem]);
+
+            elseif (\rand(0, 6) > 0 ) unset ($posts[$deleteIdsItem]) ;
+
 
         }
         foreach($deleteIdsWoman as $deleteIdsItem){
