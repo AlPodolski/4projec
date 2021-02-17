@@ -230,6 +230,7 @@ class ConsoleController extends Controller
             ->all();
 
         $deleteIds = array();
+        $deleteIdsWoman = array();
 
         foreach ($posts as $key => $post){
 
@@ -237,7 +238,7 @@ class ConsoleController extends Controller
 
             if ($post['polValue']['id'] == 2  and  ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
 
-                $deleteIds[] = $key;
+                $deleteIdsWoman[] = $key;
 
             }
 
@@ -246,6 +247,11 @@ class ConsoleController extends Controller
         foreach($deleteIds as $deleteIdsItem){
 
             if (\rand(0, 3) > 0 ) unset ($posts[$deleteIdsItem]) ;
+
+        }
+        foreach($deleteIdsWoman as $deleteIdsItem){
+
+            unset ($posts[$deleteIdsItem]) ;
 
         }
 
