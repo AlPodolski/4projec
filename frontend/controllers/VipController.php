@@ -31,9 +31,12 @@ class VipController extends Controller
 
                 $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
 
+                $email = Yii::$app->user->identity->email;
+
                 $params = 'm='.Yii::$app->params['merchant_id'].
                     '&oa='.Yii::$app->params['vip_status_week_price'].
                     '&o='.$order_id.
+                    '&email='.$email.
                     '&s='.$sign;
 
                 return Yii::$app->response->redirect($cassa_url.$params, 301, false);
@@ -80,9 +83,12 @@ class VipController extends Controller
 
                 $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
 
+                $email = Yii::$app->user->identity->email;
+
                 $params = 'm='.Yii::$app->params['merchant_id'].
                     '&oa='.Yii::$app->params['vip_status_week_price'].
                     '&o='.$order_id.
+                    '&email='.$email.
                     '&s='.$sign;
 
                 return Yii::$app->response->redirect($cassa_url.$params, 301, false);
