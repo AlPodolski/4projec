@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use frontend\models\forms\BuyVipStatusForm;
+use frontend\models\forms\GiftVipStatusForm;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -20,7 +21,19 @@ class CashController extends Controller
 
             $vipForm = new BuyVipStatusForm();
 
-            $vipForm->user_id = $user_data['0'];
+            $vipForm->user_id = $user_data[0];
+
+            $vipForm->save();
+
+            Yii::$app->session->setFlash('success', 'Досуг vip подключен');
+
+        }
+        elseif (isset($user_data[2]) and $user_data[2] == 'vipgift'){
+
+            $vipForm = new GiftVipStatusForm();
+
+            $vipForm->fromUser = $user_data[0];
+            $vipForm->toUser = $user_data[3];
 
             $vipForm->save();
 

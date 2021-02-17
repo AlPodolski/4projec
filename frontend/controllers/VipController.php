@@ -75,9 +75,13 @@ class VipController extends Controller
     {
         if (Yii::$app->request->isPost){
 
+            $vipForm = new GiftVipStatusForm();
+
+            $vipForm->load(Yii::$app->request->post());
+
             if (!CashHelper::enoughCash(Yii::$app->params['vip_status_week_price'], Yii::$app->user->identity['cash'])){
 
-                $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+                $order_id = Yii::$app->user->id.'_'.$city.'_vipgift_'.$vipForm->toUser;
 
                 $sign = \md5(Yii::$app->params['merchant_id'].':'.Yii::$app->params['vip_status_week_price'].':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
 
@@ -94,10 +98,6 @@ class VipController extends Controller
                 return Yii::$app->response->redirect($cassa_url.$params, 301, false);
 
             }
-
-            $vipForm = new GiftVipStatusForm();
-
-            $vipForm->load(Yii::$app->request->post());
 
             $vipForm->fromUser = Yii::$app->user->id;
 
