@@ -68,11 +68,14 @@ class UserController extends \yii\web\Controller
 
                 $sign = \md5(Yii::$app->params['merchant_id'].':'.$payForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
 
+                $email = Yii::$app->user->identity->email;
+
                 $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
 
                 $params = 'm='.Yii::$app->params['merchant_id'].
                     '&oa='.$payForm->sum.
                     '&o='.$order_id.
+                    '&email='.$email.
                     '&s='.$sign;
 
                 Yii::$app->response->redirect($cassa_url.$params, 301, false);
