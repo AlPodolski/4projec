@@ -8,6 +8,7 @@ use common\models\City;
 use common\models\FilterParams;
 use common\models\FinancialSituation;
 use frontend\models\Files;
+use frontend\models\relation\TaborUser;
 use frontend\models\UserFinancialSituation;
 use frontend\models\UserPol;
 use frontend\modules\chat\components\helpers\GetDialogsHelper;
@@ -221,7 +222,12 @@ class ConsoleController extends Controller
 
     public function actionUpdateTime()
     {
-        $posts = Profile::find()->where(['fake' => 0])->orderBy(['rand()' => SORT_DESC])->with('polValue')->limit(800)->asArray()->all();
+        $posts = Profile::find()->where(['fake' => 0])
+            ->orderBy(['rand()' => SORT_DESC])
+            ->with('polValue')
+            ->limit(1700)
+            ->asArray()
+            ->all();
 
         $deleteIds = array();
 
@@ -229,11 +235,21 @@ class ConsoleController extends Controller
 
             if ($post['polValue']['id'] == 1 ) $deleteIds[] = $key;
 
+            if ($post['polValue']['id'] == 2  and  ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
+
+                if (TaborUser::find()->where(['user_id' => $post['id']])){
+
+                    $deleteIds[] = $key;
+
+                }
+
+            }
+
         }
 
         foreach($deleteIds as $deleteIdsItem){
 
-            if (\rand(0, 2) >0) unset($posts[$deleteIdsItem]);
+            if (\rand(0, 3) > 0 ) unset ($posts[$deleteIdsItem]) ;
 
         }
 

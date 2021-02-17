@@ -11,6 +11,7 @@ use Yii;
  * @property int|null $user_id
  * @property string|null $file
  * @property int|null $avatar
+ * @property int|null $status
  */
 class Photo extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class Photo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'avatar'], 'integer'],
+            [['user_id', 'avatar', 'status'], 'integer'],
             [['file'], 'safe'],
         ];
     }
