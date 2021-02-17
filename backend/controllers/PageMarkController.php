@@ -20,6 +20,7 @@ class PageMarkController extends Controller
     public function behaviors()
     {
         return [
+            \backend\components\behaviors\isAdminAuth::class,
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
