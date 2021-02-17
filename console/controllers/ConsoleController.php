@@ -236,7 +236,7 @@ class ConsoleController extends Controller
 
             if ($post['polValue']['id'] == 1 ) $deleteIds[] = $key;
 
-            if ($post['polValue']['id'] == 2  and  ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
+            if ($post['polValue']['id'] == 2  and $post['birthday'] and ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
 
                 $deleteIdsWoman[] = $key;
 
