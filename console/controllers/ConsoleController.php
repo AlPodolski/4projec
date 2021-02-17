@@ -231,10 +231,13 @@ class ConsoleController extends Controller
 
         $deleteIds = array();
         $deleteIdsWoman = array();
+        $deleteIdsGai = array();
 
         foreach ($posts as $key => $post){
 
-            if ($post['polValue']['id'] == 1 ) $deleteIds[] = $key;
+            if ($post['polValue']['id'] == 1) $deleteIds[] = $key;
+
+            if ($post['email'] == 'adminadultgai@mail.com') $deleteIdsGai[] = $key;
 
             if ($post['polValue']['id'] == 2  and $post['birthday'] and ($post['birthday'] < (\time() - (3600 * 24 * 365 * 33))) ) {
 
@@ -253,6 +256,12 @@ class ConsoleController extends Controller
 
         }
         foreach($deleteIdsWoman as $deleteIdsItem){
+
+            unset ($posts[$deleteIdsItem]) ;
+
+        }
+
+        foreach($deleteIdsGai as $deleteIdsItem){
 
             unset ($posts[$deleteIdsItem]) ;
 
