@@ -19,15 +19,24 @@ class VipController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($city)
     {
         if (Yii::$app->request->isPost){
 
             if (!CashHelper::enoughCash(Yii::$app->params['vip_status_week_price'], Yii::$app->user->identity['cash'])){
 
-                Yii::$app->session->setFlash('warning', 'Недостаточно средств для покупки');
+                $order_id = Yii::$app->user->id.'_'.$city.'_vip';
 
-                return $this->redirect(Yii::$app->request->referrer);
+                $sign = \md5(Yii::$app->params['merchant_id'].':'.Yii::$app->params['vip_status_week_price'].':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+
+                $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
+
+                $params = 'm='.Yii::$app->params['merchant_id'].
+                    '&oa='.Yii::$app->params['vip_status_week_price'].
+                    '&o='.$order_id.
+                    '&s='.$sign;
+
+                return Yii::$app->response->redirect($cassa_url.$params, 301, false);
 
             }
 

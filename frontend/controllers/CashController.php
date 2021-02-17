@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use frontend\models\forms\BuyVipStatusForm;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -15,13 +16,27 @@ class CashController extends Controller
 
         $user_data = \explode('_', $data['MERCHANT_ORDER_ID']);
 
-        $post = Profile::find()->where(['id' => $user_data['0']])->one();
+        if (isset($user_data[2]) and $user_data[2] == 'vip'){
 
-        $post->cash = $post->cash + (int) $data['AMOUNT'];
+            $vipForm = new BuyVipStatusForm();
 
-        $post->save();
+            $vipForm->user_id = $user_data['0'];
 
-        Yii::$app->session->setFlash('success', 'Баланс пополнен');
+            $vipForm->save();
+
+            Yii::$app->session->setFlash('success', 'Досуг vip подключен');
+
+        }else {
+
+            $post = Profile::find()->where(['id' => $user_data['0']])->one();
+
+            $post->cash = $post->cash + (int) $data['AMOUNT'];
+
+            $post->save();
+
+            Yii::$app->session->setFlash('success', 'Баланс пополнен');
+
+        }
 
         Yii::$app->response->redirect('https://'.$user_data[1].'.4dosug.com/user', 301, false);
 
