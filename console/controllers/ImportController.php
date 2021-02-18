@@ -951,6 +951,209 @@ class ImportController extends Controller
 
     }
 
+    public function actionImportMen()
+    {
+        $stream = \fopen(Yii::getAlias('@app/files/import_men_17_02_2021.csv'), 'r');
+
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
+
+        //build a statement
+        $stmt = (new Statement());
+
+        $city = City::find()->asArray()->all();
+
+        $records = $stmt->process($csv);
+
+        $posts = array();
+
+        foreach ($records as $item){
+
+            $posts[] = $item;
+
+        }
+
+        $celiZnakomstva = CeliZnakomstvamstva::find()->asArray()->all();
+        $vajmoeVPartnere = VajnoeVPartnere::find()->asArray()->all();
+        $semeinoePolojenie = Family::find()->asArray()->all();
+        $sexual = Sexual::find()->asArray()->all();
+        $diti = Children::find()->asArray()->all();
+        $body = BodyType::find()->asArray()->all();
+        $glaza = EyeColor::find()->asArray()->all();
+        $vneshnost = Vneshnost::find()->asArray()->all();
+        $sfera_deyatelnosti = SferaDeyatelnosti::find()->asArray()->all();
+        $zhile = Zhile::find()->asArray()->all();
+        $materialnoePolozhenie = FinancialSituation::find()->asArray()->all();
+        $transport = Transport::find()->asArray()->all();
+        $obrazovanie = Education::find()->asArray()->all();
+        $lifeGoals = LifeGoals::find()->asArray()->all();
+        $haracter = Haracter::find()->asArray()->all();
+        $interesi = Interesting::find()->asArray()->all();
+        $smoking = Smoking::find()->asArray()->all();
+        $alcogol = Alcogol::find()->asArray()->all();
+
+        foreach ($city as $cityItem){
+
+            $to = \rand(20, 25);
+
+            $i = 0;
+
+            $temp = $posts;
+
+            $time = \time();
+
+            while($i <= $to){
+
+                $user = new Profile();
+
+                $index = array_rand($temp);
+
+                $record = $temp[$index];
+
+                unset($temp[$index]);
+
+                $user->username = $record['name'];
+                $user->password_hash = Yii::$app->security->generateRandomString(60);
+                $user->auth_key = Yii::$app->security->generateRandomString();
+                $user->email = 'adminmen@mail.com';
+                $user->status = 10;
+                $user->fake = 0;
+                $user->created_at = $time;
+                $user->updated_at = $time;
+                $user->verification_token = Yii::$app->security->generateRandomString(43);
+                $user->city = $cityItem['url'];
+
+                $user->birthday = \time() - ($record['age'] * 3600 * 24 * 365) + \rand(0, 3600 * 24 * \rand(1, 365));
+
+                if ($user->save()) {
+
+                    foreach ($zhile as $item2) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserZhile();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $item2['id'];
+                            $class->city_id = $cityItem['id'];
+
+                            $class->save();
+
+                            break;
+
+                        }
+                    }
+
+                    foreach ($interesi as $item2) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserInteresting();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $item2['id'];
+                            $class->city_id = $cityItem['id'];
+
+                            $class->save();
+                        }
+                    }
+
+                    foreach ($celiZnakomstva as $itemCel) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserCeliZnakomstvamstva();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $itemCel['id'];
+                            $class->city_id = $cityItem['id'];
+
+                            $class->save();
+
+                        }
+
+                    }
+
+                    foreach ($vajmoeVPartnere as $itemCel) {
+
+                        if (\rand(0, 2) != 2) {
+
+                            $class = new UserVajnoeVPartnere();
+
+                            $class->user_id = $user->id;
+                            $class->param_id = $itemCel['id'];
+                            $class->city_id = $cityItem['id'];
+
+                            $class->save();
+
+                        }
+
+                    }
+
+
+                    $userPol = new UserPol();
+                    $userPol->user_id = $user->id;
+                    $userPol->city_id = $cityItem['id'];
+                    $userPol->pol_id = 1;
+
+                    $userPol->save();
+
+                    $userZnakom = new UserZnakomstva();
+
+                    $userZnakom->user_id = $user->id;
+                    $userZnakom->param_id = 1;
+                    $userZnakom->city_id = $cityItem['id'];
+
+                    $userZnakom->save();
+
+
+                    if (isset($record['gal'])) {
+
+                        $gall = \explode(',', $record['gal']);
+
+                        if ($gall) {
+
+                            $main = \array_shift($gall);
+
+                            $userPhoto = new Photo();
+
+                            $userPhoto->user_id = $user->id;
+                            $userPhoto->file = '/files/uploads/000' . $main;
+                            $userPhoto->avatar = 1;
+
+                            $userPhoto->save();
+
+                            foreach ($gall as $gallitem) {
+
+                                if ($gallitem) {
+
+                                    $userPhoto = new Photo();
+
+                                    $userPhoto->user_id = $user->id;
+                                    $userPhoto->file = \str_replace('\r\n', '', '/files/uploads/000' . $gallitem);
+                                    $userPhoto->avatar = 0;
+
+                                    $userPhoto->save();
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                $i++;
+
+            }
+
+        }
+
+    }
+
     public function actionImport()
     {
 
