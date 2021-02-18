@@ -17,6 +17,8 @@ class CashController extends Controller
 
         $user_data = \explode('_', $data['MERCHANT_ORDER_ID']);
 
+        $post = Profile::find()->where(['id' => $user_data['0']])->one();
+
         if (isset($user_data[2]) and $user_data[2] == 'vip'){
 
             $vipForm = new BuyVipStatusForm();
@@ -24,6 +26,8 @@ class CashController extends Controller
             $vipForm->user_id = $user_data[0];
 
             $vipForm->save();
+
+            $post->sum = Yii::$app->params['vip_status_week_price'];
 
             Yii::$app->session->setFlash('success', 'Досуг vip подключен');
 
@@ -35,15 +39,17 @@ class CashController extends Controller
             $vipForm->fromUser = $user_data[0];
             $vipForm->toUser = $user_data[3];
 
+            $post->sum = Yii::$app->params['vip_status_week_price'];
+
             $vipForm->save();
 
             Yii::$app->session->setFlash('success', 'Досуг vip подключен');
 
         }else {
 
-            $post = Profile::find()->where(['id' => $user_data['0']])->one();
-
             $post->cash = $post->cash + (int) $data['AMOUNT'];
+
+            $post->sum = $post->sum + (int) $data['AMOUNT'];
 
             $post->save();
 

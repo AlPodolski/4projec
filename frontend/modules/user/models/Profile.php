@@ -87,6 +87,7 @@ use yii\helpers\ArrayHelper;
  * @property int|null $fake
  * @property int|null $vip_status_work
  * @property int|null $last_visit_time
+ * @property int|null $sum
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -109,7 +110,7 @@ class Profile extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at', 'cash', 'fake', 'vip_status_work', 'last_visit_time'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'cash', 'fake', 'vip_status_work', 'last_visit_time' , 'sum'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'city'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['password_reset_token'], 'unique'],
