@@ -21,7 +21,7 @@
 
             </div>
         </div>
-        <div class="col-8 col-md-11 nim-dialog--content position-relative">
+        <div class="col-10 col-md-11 nim-dialog--content position-relative">
             <div class="dialog-text">
                 <div class="row">
                     <div class="col-12">

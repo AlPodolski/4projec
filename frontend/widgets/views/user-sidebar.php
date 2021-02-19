@@ -367,6 +367,11 @@ use yii\helpers\Html;
                     </a>
                 </div>
                 <div class="BottomMenu__cell">
+                    <div class="mobile-filter-icon open-filter listing-filter-btn">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                </div>
+                <div class="BottomMenu__cell">
                     <a class="BottomMenu__link" >
                         <div class="_BottomMenu__icon_js BottomMenu__icon_feed BottomMenu__icon BottomMenu__icon_active events">
                             <div class="mobile-icon">

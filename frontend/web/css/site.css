@@ -2071,11 +2071,8 @@ a {
     margin-top: 26px;
 }
 .mobile-filter-icon.open-filter.listing-filter-btn {
-    z-index: 1;
-    position: fixed;
-    right: 0px;
-    width: 40px;
-    box-shadow: 0 0 7px #0000004d;
+    position: relative;
+    top: 1px;
 }
 .mobile-close-menu {
     position: absolute;
@@ -2812,8 +2809,8 @@ a {
 }
 .nim-dialog--content .vip-icon-wrap{
     position: absolute;
-    top: 22px;
-    right: 30px;
+    top: 25px;
+    right: 13px;
 }
 .message-event{
     max-width: 350px;
