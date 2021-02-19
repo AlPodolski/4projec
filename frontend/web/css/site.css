@@ -332,6 +332,7 @@ a.desc:after {
     background-repeat: no-repeat;
     border-radius: 5px;
     overflow: hidden;
+    background-size: contain;
 }
 
 .wrap{
