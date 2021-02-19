@@ -513,6 +513,8 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
                     <div class="anket-info">
 
+                        <p class="text-center"> Люди с Досуг <img src="/files/img/vip_icon.png" alt="VIP"> получают вдвое больше сообщений!</p>
+
                         <ul>
                             <li>Не ограничено количество диалогов</li>
                             <li>Диалог с Вами всегда вверху и выделен ВИП иконкой</li>
@@ -549,11 +551,22 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
                         </div>
 
+                        <?php
+
+                            $tarifParams = [
+                                Yii::$app->params['vip_status_three_month_price'] => '90 дней '. Yii::$app->params['vip_status_three_month_price'].' рублей',
+                                Yii::$app->params['vip_status_month_price'] => '30 дней '. Yii::$app->params['vip_status_month_price'].' рублей',
+                                Yii::$app->params['vip_status_week_price'] => '7 дней '. Yii::$app->params['vip_status_week_price'].' рублей ',
+                                Yii::$app->params['vip_status_day_price'] => '1 день '. Yii::$app->params['vip_status_day_price'] .' рублей',
+                            ]
+
+                        ?>
+
+                        <?= $form->field($buyVipForm, 'sum')->dropDownList($tarifParams)->label(false); ?>
+
                         <?= Html::submitButton('Подключить', ['class' => 'blue-btn']) ?>
 
                         <?php ActiveForm::end() ?>
-
-                        <span class="cost"> Стоимость на 7 дней <?php echo Yii::$app->params['vip_status_week_price'] ?> рублей</span>
 
                         <div class="bottom">
 

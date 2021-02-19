@@ -25,9 +25,11 @@ class CashController extends Controller
 
             $vipForm->user_id = $user_data[0];
 
+            $vipForm->sum = (int) $data['AMOUNT'];
+
             $vipForm->save();
 
-            $post->sum = Yii::$app->params['vip_status_week_price'];
+            $post->sum = $post->sum + Yii::$app->params['vip_status_week_price'];
 
             Yii::$app->session->setFlash('success', 'Досуг vip подключен');
 
@@ -39,7 +41,7 @@ class CashController extends Controller
             $vipForm->fromUser = $user_data[0];
             $vipForm->toUser = $user_data[3];
 
-            $post->sum = Yii::$app->params['vip_status_week_price'];
+            $post->sum = $post->sum + Yii::$app->params['vip_status_week_price'];
 
             $vipForm->save();
 

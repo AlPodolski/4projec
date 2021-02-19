@@ -23,18 +23,24 @@ class VipController extends Controller
     {
         if (Yii::$app->request->isPost){
 
-            if (!CashHelper::enoughCash(Yii::$app->params['vip_status_week_price'], Yii::$app->user->identity['cash'])){
+            $vipForm = new BuyVipStatusForm();
+
+            $vipForm->load(Yii::$app->request->post());
+
+            $vipForm->user_id = Yii::$app->user->id;
+
+            if (!CashHelper::enoughCash($vipForm->sum, Yii::$app->user->identity['cash'])){
 
                 $order_id = Yii::$app->user->id.'_'.$city.'_vip';
 
-                $sign = \md5(Yii::$app->params['merchant_id'].':'.Yii::$app->params['vip_status_week_price'].':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+                $sign = \md5(Yii::$app->params['merchant_id'].':'.$vipForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
 
                 $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
 
                 $email = Yii::$app->user->identity->email;
 
                 $params = 'm='.Yii::$app->params['merchant_id'].
-                    '&oa='.Yii::$app->params['vip_status_week_price'].
+                    '&oa='.$vipForm->sum.
                     '&o='.$order_id.
                     '&email='.$email.
                     '&s='.$sign;
@@ -43,15 +49,9 @@ class VipController extends Controller
 
             }
 
-            $vipForm = new BuyVipStatusForm();
-
-            $vipForm->load(Yii::$app->request->post());
-
-            $vipForm->user_id = Yii::$app->user->id;
-
             $transaction  = Yii::$app->db->beginTransaction();
 
-            if ($vipForm->validate() and $vipForm->save() and CashHelper::babloSpiz(Yii::$app->user->identity, Yii::$app->params['vip_status_week_price'] )){
+            if ($vipForm->validate() and $vipForm->save() and CashHelper::babloSpiz(Yii::$app->user->identity, $vipForm->sum)){
 
                 $transaction->commit();
 

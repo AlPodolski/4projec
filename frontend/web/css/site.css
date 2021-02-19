@@ -824,8 +824,11 @@ h1{
     vertical-align: top;
     font-size: 13px;
 }
-.nim-dialog--content{
+.dialog_item_ul .dialog_item{
     border-top: 1px solid #e7e8ec;
+}
+.dialog_item:first-child{
+    border-top: none!important;
 }
 .dialog_item .dialog-text .dialog-name{
     height: 19px;
@@ -1326,7 +1329,7 @@ ul li .secodn-menu:hover {
     font-size: 13px;
 }
 .comment-wall-form{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .send-comment-btn {
     position: absolute;
@@ -1738,11 +1741,32 @@ ul li .secodn-menu:hover {
 }
 .chat .post_header_info {
     margin-left: 55px;
-    padding-top: 0px;
     line-height: 10px;
-    padding: 10px 5px 5px 5px;
+    padding: 10px 15px 5px 15px;
     border-radius: 5px;
     margin-right: 0px;
+}
+.dialog .post_date{
+    margin-right: 10px;
+    position: relative;
+    top: -2px;
+}
+#login-form select , .edit-form select{
+    background-color: #F9F9F9;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1px solid #F0F0F0;
+    font-weight: 100;
+    font-family: HelveticaNeueCyr-Roman , sans-serif;
+    display: block;
+    max-width: 290px;
+    margin: 0 auto;
+    background-image: url("../files/img/right-arrow.png");
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+    font-size: 13px;
 }
 .chat .wall-tem{
     padding: 0 !important;
@@ -1820,7 +1844,7 @@ ul li .secodn-menu:hover {
 }
 .delete-dialog{
     top: 1px;
-    right: 1px;
+    right: 20px;
     z-index: 6;
 }
 .wall-img-wrap img{
@@ -1964,6 +1988,7 @@ a {
     margin: 0 auto;
     width: 126px;
     height: 126px;
+    margin-bottom: 15px;
 }
 #login-form .blue-btn{
     margin: 15px auto;
@@ -2254,7 +2279,7 @@ a {
     margin-bottom: 5px;
 }
 .right-message .rel_date , .right-message .post-text{
-    margin-right: 12px;
+    margin-right: 0px;
 }
 #invitation-dialog .page-block{
     box-shadow: none;
@@ -2266,7 +2291,7 @@ a {
     padding: 0px;
 }
 .right-message .post-text{
-    margin-right: 12px;
+    margin-right: 0px;
 }
 .chat .right-message .post_header_info{
     margin-right: 42px;
