@@ -49,13 +49,13 @@ Yii::$app->view->registerMetaTag([
 
             <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-4' ?>
 
-            <div class="col-12 col-xl-9 main-banner-wrap margin-bottom-30">
+            <div class="col-12 col-xl-9 main-banner-wrap ">
 
                 <?php else : ?>
 
                 <?php $class = 'col-6 col-sm-6 col-md-4 col-lg-3' ?>
 
-                <div class="col-12 col-xl-12 main-banner-wrap margin-bottom-30">
+                <div class="col-12 col-xl-12 main-banner-wrap ">
 
                 <?php endif; ?>
 
