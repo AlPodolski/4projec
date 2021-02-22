@@ -100,7 +100,13 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                         </div>
 
                         <div class="mobile-menu">
+
+                            <div class="mobile-icon">
+                                <img src="/files/img/close-black.png" alt="">
+                            </div>
+
                             <ul class="mobile-nav">
+
                                 <?php if (!Yii::$app->user->isGuest) : ?>
 
                                     <?php echo UserSideBarWidget::Widget(['form_id' => 'header_form'])?>

@@ -973,6 +973,11 @@ h1{
 .owl-theme .owl-nav{
     margin-top: 0px;
 }
+.mobile-menu .mobile-icon{
+    position: absolute;
+    right: 0px;
+    top: -17px;
+}
 .owl-prev , .owl-next{
     position: absolute;
     left: 10px;
