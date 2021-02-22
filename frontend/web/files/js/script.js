@@ -652,8 +652,6 @@ $(window).scroll(function () {
 
                     if ($(".anket-single-page").length > 0){
 
-                        $('.slider-items-single').each(function() {
-
                             var singleGallery = $('.owl-carousel-main');
                             singleGallery.lightGallery();
 
@@ -665,8 +663,6 @@ $(window).scroll(function () {
                                 navText: ['', ''],
                                 navElement: 'a></a',
                             });
-
-                        });
 
                     }
 
