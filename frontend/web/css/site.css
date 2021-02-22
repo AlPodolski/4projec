@@ -733,7 +733,7 @@ h1{
     font-size: 32px;
 }
 .content-wrap{
-    margin-top: 15px;
+    margin-top: 5px;
 }
 .city-list {
     list-style: none;
@@ -992,7 +992,7 @@ h1{
     transition: all .2s ease-in-out;
     display: inline-block;
     margin-right: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 6px;
     margin-top: 0px;
     background: #fff;
 }
@@ -3089,7 +3089,7 @@ a {
 .popular-mark{
     background: #486BEF;
     color: #fff;
-    padding: 6px 20px;
+    padding: 5px 10px;
     border-radius: 50px;
     display:inline-block;
     margin-bottom: 10px;
@@ -3122,18 +3122,14 @@ a {
 }
 .fast-links-block{
     text-align:left;
-    margin-bottom: 30px;
-}
-.s-jentatimi{
-    margin-top: 10px;
-}
-.s-zamyjnimi{
-    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-top: 3px;
 }
 .main-menu-wrap .main-menu{
     color: #486BEF;
 }
 .main-menu-wrap{
+    margin-bottom: 17px;
     display:none;
 }
 @media (min-width: 1199px) {

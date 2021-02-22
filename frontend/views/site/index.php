@@ -29,27 +29,15 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
         <div class="col-12">
             <div class="main-menu-wrap">
 
-                <?php if (!Yii::$app->user->isGuest) : ?>
-
-                <div class="mobile-filter-icon open-filter">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.01919 8.9423H9.7273C10.1145 10.4368 11.4626 11.5486 13.0765 11.5486C14.6904 11.5486 16.0385 10.4368 16.4257 8.9423H27.9807C28.4585 8.9423 28.8461 8.55468 28.8461 8.07692C28.8461 7.59916 28.4585 7.21154 27.9807 7.21154H16.4257C16.0385 5.71704 14.6904 4.60524 13.0765 4.60524C11.4626 4.60524 10.1145 5.71704 9.7273 7.21154H2.01919C1.54143 7.21154 1.15381 7.59916 1.15381 8.07692C1.15381 8.55468 1.54143 8.9423 2.01919 8.9423ZM13.0765 6.33601C14.0365 6.33601 14.8174 7.11688 14.8174 8.07692C14.8174 9.03696 14.0365 9.81783 13.0765 9.81783C12.1165 9.81783 11.3356 9.03696 11.3356 8.07692C11.3356 7.11688 12.1165 6.33601 13.0765 6.33601Z" fill="#486BEF"/>
-                        <path d="M27.9807 14.1346H26.1275C25.7403 12.6401 24.3922 11.5283 22.7783 11.5283C21.1643 11.5283 19.8163 12.6401 19.4291 14.1346H2.01919C1.54143 14.1346 1.15381 14.5222 1.15381 15C1.15381 15.4778 1.54143 15.8654 2.01919 15.8654H19.4291C19.8163 17.3599 21.1643 18.4717 22.7783 18.4717C24.3922 18.4717 25.7403 17.3599 26.1275 15.8654H27.9807C28.4585 15.8654 28.8461 15.4778 28.8461 15C28.8461 14.5222 28.4585 14.1346 27.9807 14.1346ZM22.7783 16.7409C21.8182 16.7409 21.0374 15.96 21.0374 15C21.0374 14.04 21.8182 13.2591 22.7783 13.2591C23.7383 13.2591 24.5192 14.04 24.5192 15C24.5192 15.96 23.7383 16.7409 22.7783 16.7409Z" fill="#486BEF"/>
-                        <path d="M27.9807 21.0577H11.2132C10.8261 19.5632 9.47806 18.4514 7.86505 18.4514C6.25111 18.4514 4.90303 19.5632 4.51584 21.0577H2.01919C1.54143 21.0577 1.15381 21.4453 1.15381 21.9231C1.15381 22.4008 1.54143 22.7884 2.01919 22.7884H4.51584C4.90303 24.2829 6.25111 25.3947 7.86505 25.3947C9.47806 25.3947 10.8261 24.2829 11.2132 22.7884H27.9807C28.4585 22.7884 28.8461 22.4008 28.8461 21.9231C28.8461 21.4453 28.4585 21.0577 27.9807 21.0577ZM7.86505 23.664C6.90501 23.664 6.12414 22.8831 6.12414 21.9231C6.12414 20.963 6.90501 20.1822 7.86505 20.1822C8.82396 20.1822 9.60483 20.963 9.60483 21.9231C9.60483 22.8831 8.82396 23.664 7.86505 23.664Z" fill="#486BEF"/>
-                    </svg>
-                    Фильтр</div>
-
-                <?php endif; ?>
-
-                <span onclick="toggle_women_block()" id="women-block-btn" class=" main-menu" >
+                <span id="women-block-btn" class=" main-menu" >
                     <svg width="20" height="20" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.06828 3.57851C7.06828 1.92189 5.60275 0.578918 3.79488 0.578918C1.98702 0.578918 0.521484 1.92189 0.521484 3.57851C0.521484 5.03217 1.64997 6.24419 3.1479 6.5194V8.64129H1.75932V9.82703H3.1479V11.1052H4.44187V9.82703H5.83045V8.64129H4.44187V6.5194C5.93982 6.24419 7.06828 5.03217 7.06828 3.57851ZM1.75932 3.57851C1.75932 2.54833 2.67066 1.71321 3.79488 1.71321C4.9191 1.71321 5.83045 2.54833 5.83045 3.57851C5.83045 4.60869 4.9191 5.4438 3.79488 5.4438C2.67066 5.4438 1.75932 4.60869 1.75932 3.57851Z" fill="#486BEF"/>
-                    </svg> Женщины</span>
-                <span onclick="toggle_men_block()" id="men-block-btn" class=" main-menu " >
+                    </svg> <a href="/znakomstva/pol-zhenskij"> Женщины </a></span>
+                <span id="men-block-btn" class=" main-menu " >
                     <svg width="15" height="15" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.32744 0V0.901156H6.46164L4.87744 2.48536C4.36894 2.10811 3.73936 1.88488 3.05758 1.88488C1.36892 1.88488 0 3.25378 0 4.94244C0 6.63108 1.36892 8 3.05756 8C4.7462 8 6.11513 6.63108 6.11513 4.94244C6.11513 4.26066 5.89189 3.63106 5.51464 3.12256L7.09884 1.53838V3.67258H8V0L4.32744 0ZM3.05756 6.993C1.92506 6.993 1.00698 6.07492 1.00698 4.94242C1.00698 3.80992 1.92506 2.89184 3.05756 2.89184C4.19006 2.89184 5.10814 3.80992 5.10814 4.94242C5.10814 6.07494 4.19006 6.993 3.05756 6.993Z" fill="#486BEF"/>
                     </svg>
-                    Мужчины</span>
+                    <a href="/znakomstva/pol-muzhskoj">Мужчины</a></span>
                 <span class="close-toggle-block d-none">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M28.71 4.70998L27.29 3.28998L16 14.59L4.71001 3.28998L3.29001 4.70998L14.59 16L3.29001 27.29L4.71001 28.71L16 17.41L27.29 28.71L28.71 27.29L17.41 16L28.71 4.70998Z" fill="#486BEF"/>
@@ -72,151 +60,6 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             <?php endif; ?>
 
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-xl-12 fast-links-block">
-
-                <div class="row">
-
-                    <div class="col-12 women-block d-none">
-                        <div class="row">
-                            <div class="col-12 col-xl-2">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p class="hide-mobile">Я хочу найти:</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <a href="/znakomstva/pol-zhenskij" class="blue-text blue-border">
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.5594 4.55937C12.5594 2.04131 10.5181 0 8.00002 0C5.48192 0 3.44064 2.04131 3.44064 4.55937C3.44064 6.76894 5.01246 8.61122 7.09886 9.02953V12.2548H5.16477V14.0571H7.09886V16H8.90118V14.0571H10.8353V12.2548H8.90118V9.02953C10.9876 8.61122 12.5594 6.76894 12.5594 4.55937ZM5.16477 4.55937C5.16477 2.9935 6.43414 1.72413 8.00002 1.72413C9.56589 1.72413 10.8353 2.9935 10.8353 4.55937C10.8353 6.12525 9.56589 7.39463 8.00002 7.39463C6.43414 7.39463 5.16477 6.12525 5.16477 4.55937Z" fill="#486BEF"/>
-                                            </svg>
-                                            Девушку
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-5">
-                                <div class="col-12">
-                                    <p class="hide-mobile">цель:</p>
-                                </div>
-                                <div class="col-12">
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/materialnoe-polozhenie-ishchu-sponsora/pol-zhenskij">любовница/содержанка </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-lyubovy-i-otnosheniya/pol-zhenskij">для серьезных отношений </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-realynyy-seks/pol-zhenskij">для секса без  обязательств </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-drughba-i-obschenie/pol-zhenskij">для общения и дружбы </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-3">
-                                <div class="col-12">
-                                    <p class="hide-mobile">Параметры:</p>
-                                </div>
-                                <div class="col-12">
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-20-let">20+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-30-let">30+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-40-let">40+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-45-let">45+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-50-let">50+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-60-let">60+</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-2">
-                                <div class="popular-mark s-zamyjnimi">
-                                    <a href="/znakomstva/pol-zhenskij/semejnoe-polozhenie-zamughem">с замужними</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 men-block d-none">
-                        <div class="row">
-                            <div class="col-12 col-xl-2">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <a href="/znakomstva/pol-muzhskoj" class="blue-text blue-border margin-top-35">
-                                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.03209 0V1.46438H10.5002L7.92584 4.03871C7.09952 3.42568 6.07646 3.06292 4.96856 3.06292C2.2245 3.06292 0 5.2874 0 8.03146C0 10.7755 2.2245 13 4.96854 13C7.71258 13 9.93708 10.7755 9.93708 8.03146C9.93708 6.92357 9.57432 5.90048 8.96129 5.07416L11.5356 2.49986V5.96794H13V0L7.03209 0ZM4.96854 11.3636C3.12823 11.3636 1.63635 9.87175 1.63635 8.03144C1.63635 6.19112 3.12823 4.69925 4.96854 4.69925C6.80885 4.69925 8.30073 6.19112 8.30073 8.03144C8.30073 9.87177 6.80885 11.3636 4.96854 11.3636Z" fill="#486BEF"/>
-                                            </svg>
-                                            Мужчину
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-5">
-                                <div class="col-12 margin-top-10 ">
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/materialnoe-polozhenie-gotov-stat-sponsorom/pol-muzhskoj">богатого спонсора </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-lyubovy-i-otnosheniya/pol-muzhskoj">для серьезных отношений </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-realynyy-seks/pol-muzhskoj">для секса без  обязательств </a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/celi-znakomstva-drughba-i-obschenie/pol-muzhskoj">для общения и дружбы </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-3">
-                                <div class="col-12 margin-top-10 ">
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-20-let">20+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-30-let">30+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-40-let">40+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-45-let">45+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-50-let">50+</a>
-                                    </div>
-                                    <div class="popular-mark">
-                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-60-let">60+</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-xl-2">
-                                <div class="popular-mark s-jentatimi">
-                                    <a href="/znakomstva/pol-muzhskoj/semejnoe-polozhenie-ghenat">с женатым</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
         </div>
 
         <div class="row">
