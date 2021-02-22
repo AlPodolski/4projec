@@ -548,9 +548,9 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                         <?php
 
                             $tarifParams = [
+                                Yii::$app->params['vip_status_week_price'] => '7 дней '. Yii::$app->params['vip_status_week_price'].' рублей ',
                                 Yii::$app->params['vip_status_three_month_price'] => '90 дней '. Yii::$app->params['vip_status_three_month_price'].' рублей',
                                 Yii::$app->params['vip_status_month_price'] => '30 дней '. Yii::$app->params['vip_status_month_price'].' рублей',
-                                Yii::$app->params['vip_status_week_price'] => '7 дней '. Yii::$app->params['vip_status_week_price'].' рублей ',
                                 Yii::$app->params['vip_status_day_price'] => '1 день '. Yii::$app->params['vip_status_day_price'] .' рублей',
                             ]
 
