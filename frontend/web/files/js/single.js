@@ -177,58 +177,17 @@ $(document).ready(function() {
 
                         page = $(target).attr('data-page', Number(page) + 1);
 
-                        wall_photo_items();
+                        var singleGallery = $('.owl-carousel-main');
+                        singleGallery.lightGallery();
 
-                        if ($(".anket-single-page").length > 0){
-
-                            $('.slider-items-single').each(function() {
-
-                                var id = $(this).attr('data-id');
-
-                                var object = $('.slider-items-single-'+id);
-
-                                var sliderFor2 = $(object);
-
-                                if(!$(object).hasClass('slick-initialized')){
-
-                                    sliderFor2.lightGallery();
-
-                                    $(sliderFor2).slick({
-                                        dots: false,
-                                        infinite: true,
-                                        speed: 300,
-                                        slidesToShow: 4,
-                                        slidesToScroll: 4,
-                                        responsive: [
-                                            {
-                                                breakpoint: 1024,
-                                                settings: {
-                                                    slidesToShow: 3,
-                                                    slidesToScroll: 3,
-                                                }
-                                            },
-                                            {
-                                                breakpoint: 600,
-                                                settings: {
-                                                    slidesToShow: 3,
-                                                    slidesToScroll: 2
-                                                }
-                                            },
-                                            {
-                                                breakpoint: 480,
-                                                settings: {
-                                                    slidesToShow: 2,
-                                                    slidesToScroll: 1
-                                                }
-                                            }
-                                        ]
-                                    });
-
-                                }
-
-                            });
-
-                        }
+                        singleGallery.owlCarousel({
+                            items: 1,
+                            margin: 16,
+                            loop: true,
+                            nav: true,
+                            navText: ['', ''],
+                            navElement: 'a></a',
+                        });
 
                     } else {
 
