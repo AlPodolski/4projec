@@ -101,7 +101,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
 
                         <div class="mobile-menu">
 
-                            <div class="mobile-icon">
+                            <div class="mobile-icon mobile-icon-close">
                                 <img src="/files/img/close-black.png" alt="">
                             </div>
 
