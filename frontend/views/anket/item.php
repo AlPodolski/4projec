@@ -44,7 +44,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                                 <?php foreach ($photo as $item) : ?>
 
-                                    <?php $ava = $item['file']; ?>
+                                <?php if ($item['status'] != Photo::STATUS_HIDE) : ?>
 
                                         <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
@@ -62,6 +62,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                                             <div class="img-wrap d-flex no-photo">
                                                 <img srcset="/files/img/nophoto.png" alt="">
                                             </div>
+
+                                        <?php endif; ?>
 
                                         <?php endif; ?>
 
