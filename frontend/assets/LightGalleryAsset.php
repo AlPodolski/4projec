@@ -12,7 +12,7 @@ class LightGalleryAsset extends AssetBundle
     ];
 
     public $js = [
-        'dist/js/lightgallery-all.js',
+        'dist/js/lightgallery-all.min.js',
     ];
 
     public $depends = [

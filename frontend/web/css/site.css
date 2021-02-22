@@ -730,7 +730,7 @@ label{
     text-align: center;
 }
 h1{
-    font-size: 32px;
+    font-size: 25px;
 }
 .content-wrap{
     margin-top: 5px;
@@ -946,11 +946,46 @@ h1{
 }
 .main-banner{
     background: #fff;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 .main-banner-wrap{
     padding-right: 0;
+}
+.owl-dot span {
+    width: 15px !important;
+    height: 2px !important;
+}
+.owl-dot.active span {
+    width: 33px !important;
+    height: 2px !important;
+}
+.owl-dot{
+    padding: 0;
+    border: none;
+    background: none;
+}
+.owl-dots{
+    position: absolute;
+    bottom: 45px;
+}
+.owl-prev , .owl-next{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50% !important;
+    background-color: hsla(0, 0%, 0%, 0.3) !important;
+    background-image: url("../files/img/back.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 11px 17px !important;
+}
+.owl-next{
+    left: inherit;
+    right: 10px;
+    transform: rotate(0.5turn);
 }
 .text-main{
     font-size: 14px;

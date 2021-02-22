@@ -40,23 +40,21 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                             <?php if (!empty($photo)) : ?>
 
-                                <?php foreach ($photo as $item) : ?>
+                            <div class="owl-carousel owl-theme owl-carousel-main">
 
-                                    <?php if ($item['avatar'] == 1) : ?>
+                                <?php foreach ($photo as $item) : ?>
 
                                     <?php $ava = $item['file']; ?>
 
                                         <?php if (file_exists(Yii::getAlias('@webroot') . $item['file']) and $item['file']) : ?>
 
-                                            <picture>
-
+                                            <picture href="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>">
                                                 <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-510') ?>"
                                                         media="(max-width: 767px)">
                                                 <source srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>">
                                                 <img loading="lazy" class="img "
-                                                     srcset="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>"
+                                                     src="<?= Yii::$app->imageCache->thumbSrc($item['file'], 'single-main') ?>"
                                                      alt="">
-
                                             </picture>
 
                                         <?php else : ?>
@@ -67,9 +65,9 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                                         <?php endif; ?>
 
-                                    <?php endif; ?>
-
                                 <?php endforeach; ?>
+
+                            </div>
 
                             <?php else : ?>
 
@@ -501,6 +499,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                         <div class="profile-full-wrap">
 
                             <?php if (Yii::$app->user->isGuest) : ?>
+
+                                <br>
 
                             <div class="alert alert-info">Полная информация доступна после авторизации</div>
 
@@ -942,57 +942,6 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
         <div class="col-12 col-lg-8 col-xl-8 right-column-anket">
 
-            <?php if (!empty($photo)) : ?>
-
-                <div class="page-block page-photo">
-
-                    <?php if (!Yii::$app->user->isGuest and Yii::$app->user->id == $model->id) : ?>
-
-                        <a href="/user/photo">Все фото</a>
-
-                    <?php endif; ?>
-
-                    <div class="slider">
-
-                        <div class="">
-
-                            <div class="slider-items-single slider-items-single-<?php echo $model->id ?>" data-id="<?php echo $model->id ?>">
-
-                                <?php foreach ($photo as $item) : ?>
-
-                                <?php if ($item['status'] == Photo::STATUS_DEFAULT) : ?>
-
-                                    <div class="item" href="<?php echo $item->file ?>">
-
-                                        <?php if (isset($item->file) and file_exists(Yii::getAlias('@webroot') . $item->file) and $item->file) : ?>
-
-                                            <img loading="lazy" class="img"
-                                                 src="<?= Yii::$app->imageCache->thumbSrc($item->file, 'gallery-mini') ?>"
-                                                 alt="">
-
-                                        <?php else : ?>
-
-                                            <img class="img" src="/files/img/nophoto.png" alt="">
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                <?php endif; ?>
-
-                                <?php endforeach; ?>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-            <?php endif; ?>
-
-
             <div class="page-block wall-form">
 
                     <?php
@@ -1052,11 +1001,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
             <div class="wall-wrapper">
 
-                <?php if (Yii::$app->user->isGuest) :?>
-
-                    <div class="alert alert-info">Стена доступна после авторизации</div>
-
-                <?php else :?>
+                <?php if (!Yii::$app->user->isGuest) :?>
 
                     <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
 

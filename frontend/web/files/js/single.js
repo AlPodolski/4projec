@@ -1,43 +1,18 @@
 $(document).ready(function() {
 
+    var singleGallery = $('.owl-carousel-main');
+    singleGallery.lightGallery();
+
+    singleGallery.owlCarousel({
+        items: 1,
+        margin: 16,
+        loop: true,
+        nav: true,
+        navText: ['', ''],
+        navElement: 'a></a',
+    });
 
 
-    var sliderFor1 = $('.slider-items-single');
-
-    sliderFor1.lightGallery();
-
-    console.log($(sliderFor1).slick({
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    })
-
-    );
 
 });
 

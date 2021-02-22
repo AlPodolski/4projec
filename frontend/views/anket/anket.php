@@ -13,18 +13,15 @@ use frontend\assets\SlickAsset;
 /* @var $userHeart array */
 /* @var $this \yii\web\View */
 
-$this->registerJsFile('/files/js/lightgallery-all.min.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+
 $this->registerJsFile('/files/js/owl.carousel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 $this->registerJsFile('/files/js/owl.navigation.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 
-$this->registerCssFile('/css/lightgallery.min.css');
 $this->registerCssFile('/css/owl.carousel.min.css');
 $this->registerCssFile('/css/owl.theme.default.min.css');
 
-SlickAsset::register($this);
-
-$this->registerJsFile('/files/js/single.js?v=15', ['depends' => [SlickAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=15', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
