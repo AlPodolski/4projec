@@ -113,7 +113,7 @@ class ImportController extends Controller
 
         foreach ($profiles as $item){
 
-            $item->text = $data[\array_rand($data)]['text'];
+            $item->text = '';
 
             $item->save();
 
