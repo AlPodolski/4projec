@@ -90,32 +90,35 @@ class ImportController extends Controller
 
     public function actionCustom()
     {
-        $profiles = Profile::find()->where(['not in', 'email', 'adminadultero@mail.com'])->andWhere(['fake' => 0])->asArray()->all();
+        $profiles = Profile::find()->where(['not in', 'email', 'adminadultero1@mail.com'])->andWhere(['text' => ''])->all();
 
-        foreach ($profiles as $profile){
+        $stream = \fopen(Yii::getAlias('@app/files/import_text_23_02_2021.csv'), 'r');
 
-            $userGroupId = SubscribeHelper::getUserSubscribe($profile['id'], Yii::$app->params['user_group_subscribe_key']);
+        //build a statement
+        $stmt = (new Statement());
 
-            $wallItems = Wall::find()
-                ->where(['in', 'user_id', $userGroupId])
-                ->andWhere(['class' => Group::class])
-                ->orderBy(['rand()' => SORT_DESC])
-                ->limit(\rand(20, 40))
-                ->asArray()
-                ->all();
+        $csv = Reader::createFromStream($stream);
+        $csv->setDelimiter(';');
+        $csv->setHeaderOffset(0);
 
-            foreach ($wallItems as $wallItem){
+        $records = $stmt->process($csv);
 
-                $feedItem = new Wall();
-                $feedItem->user_id = $profile['id'];
-                $feedItem->from = $profile['id'];
-                $feedItem->class = Profile::class;
-                $feedItem->parent_id = $wallItem['id'];
-                $feedItem->save();
+        $data = array();
 
-            }
+        foreach ($records as $item){
+
+            $data[] = $item;
 
         }
+
+        foreach ($profiles as $item){
+
+            $item->text = $data[\array_rand($data)]['text'];
+
+            $item->save();
+
+        }
+
 
     }
 
