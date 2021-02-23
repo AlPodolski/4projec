@@ -106,22 +106,22 @@ Yii::$app->view->registerMetaTag([
 
                                             </div>
 
-                                            <div class="col-12 col-xl-4">
+                                            <div class="col-12 col-xl-3">
 
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-20-do-30-let">от 20 до 30 лет</a>
+                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-20-let">20+</a>
                                                     </div>
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-30-do-40-let">от 30 до 40 лет</a>
+                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-30-let">30+</a>
                                                     </div>
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-40-do-45-let">от 40 до 45 лет</a>
+                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-40-let">40+</a>
                                                     </div>
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-45-do-50-let">от 45 до 50 лет</a>
+                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-45-let">45+</a>
                                                     </div>
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-50-do-60-let">от 50 до 60 лет</a>
+                                                        <a href="/znakomstva/pol-zhenskij/vozrast-ot-50-let">50+</a>
                                                     </div>
                                                 <div class="popular-mark">
                                                         <a href="/znakomstva/pol-zhenskij/vozrast-ot-60-let">60+</a>
@@ -168,25 +168,25 @@ Yii::$app->view->registerMetaTag([
                                                     </div>
                                             </div>
 
-                                            <div class="col-12 col-xl-4">
+                                            <div class="col-12 col-xl-3">
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-20-do-30-let">от 20 до 30 лет</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-20-let">20+</a>
+                                                    </div>
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-30-do-40-let">от 30 до 40 лет</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-30-let">30+</a>
+                                                    </div>
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-40-do-45-let">от 40 до 45 лет</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-40-let">40+</a>
+                                                    </div>
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-45-do-50-let">от 45 до 50 лет</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-45-let">45+</a>
+                                                    </div>
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-50-do-60-let">от 50 до 60 лет</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-50-let">50+</a>
+                                                    </div>
                                                 <div class="popular-mark">
-                                                    <a href="/znakomstva/pol-muzhskoj/vozrast-ot-60-let">60+</a>
-                                                </div>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-60-let">60+</a>
+                                                    </div>
                                             </div>
 
                                             <div class="col-12 col-xl-2">

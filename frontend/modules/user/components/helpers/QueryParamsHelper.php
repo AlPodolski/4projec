@@ -102,24 +102,7 @@ class QueryParamsHelper
                     'label' => 'от 20 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 20];
-            }
-
-            if ($url == 'ot-20-do-30-let') {
-                $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-20-do-30-let',
-                    'label' => 'от 20 до 30 лет'
-                ];
-                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 20];
                 $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 30];
-            }
-
-            if ($url == 'ot-30-do-40-let') {
-                $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-30-do-40-let',
-                    'label' => 'от 30 до 40 лет'
-                ];
-                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 30];
-                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 40];
             }
 
             if ($url == 'ot-30-let') {
@@ -128,20 +111,13 @@ class QueryParamsHelper
                     'label' => 'от 30 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 30];
+                $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 40];
             }
 
             if ($url == 'ot-40-let') {
                 $bread_crumbs_params[] = [
                     'url' => '/vozrast-ot-40-let',
                     'label' => 'от 40 лет'
-                ];
-                $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 40)];
-            }
-
-            if ($url == 'ot-40-do-45-let') {
-                $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-40-do-45-let',
-                    'label' => 'от 40 до 45 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 40)];
                 $age_params[] = ['>=', 'birthday', \time() - (24 * 3600 * 365 * 45)];
@@ -153,14 +129,6 @@ class QueryParamsHelper
                     'label' => 'от 45 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 45)];
-            }
-
-            if ($url == 'ot-45-do-50-let') {
-                $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-45-do-50-let',
-                    'label' => 'от 45 до 50 лет'
-                ];
-                $age_params[] = ['<=', 'birthday', \time() - (24 * 3600 * 365 * 45)];
                 $age_params[] = ['>=', 'birthday', \time() - (24 * 3600 * 365 * 50)];
             }
 
@@ -170,16 +138,9 @@ class QueryParamsHelper
                     'label' => 'от 50 лет'
                 ];
                 $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 50];
-            }
-
-            if ($url == 'ot-50-do-60-let') {
-                $bread_crumbs_params[] = [
-                    'url' => '/vozrast-ot-50-do-60-let',
-                    'label' => 'от 50 лет'
-                ];
-                $age_params[] = ['<=', 'birthday', \time() - 24 * 3600 * 365 * 50];
                 $age_params[] = ['>=', 'birthday', \time() - 24 * 3600 * 365 * 60];
             }
+
 
             if ($url == 'ot-60-let') {
                 $bread_crumbs_params[] = [
