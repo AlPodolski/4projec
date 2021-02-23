@@ -169,6 +169,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/gift' => 'vip/gift',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/verify-email' => 'user/auth/verify-email',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/site/request-password-reset' => 'user/auth/request-password-reset',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/site/reset-password' => 'user/auth/reset-password',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/city/search' => 'city/search',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/present/get-user-presents' => 'present/user-presents',

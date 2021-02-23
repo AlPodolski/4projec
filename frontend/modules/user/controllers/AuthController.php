@@ -117,14 +117,16 @@ class AuthController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset()
+    public function actionRequestPasswordReset($city)
     {
+
         $model = new PasswordResetRequestForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', 'Проверьте Вашу почту');
 
-                Yii::$app->response->redirect(['/'], 301, false);
+                //Yii::$app->response->redirect(['/'], 301, false);
 
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
@@ -143,8 +145,9 @@ class AuthController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public function actionResetPassword( $token)
     {
+
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
