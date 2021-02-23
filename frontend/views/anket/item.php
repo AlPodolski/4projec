@@ -15,7 +15,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
 ?>
 
-<div class="row anket-single-page" data-id="<?php echo $model['id']?>" data-adress="/user/<?php echo $model['id']?>">
+<div class="row anket-single-page" data-id="<?php echo $model['id']?>" data-img="" data-adress="/user/<?php echo $model['id']?>">
 
         <div class="col-12">
             <div class="page-block main-info-anket">
@@ -43,6 +43,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                             <div class="owl-carousel owl-theme owl-carousel-main">
 
                                 <?php foreach ($photo as $item) : ?>
+                                
+                                <?php if ($item['avatar'] == 1 ) $ava = $item['file']?>
 
                                 <?php if ($item['status'] != Photo::STATUS_HIDE) : ?>
 
@@ -70,6 +72,12 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                                 <?php endforeach; ?>
 
                             </div>
+                            
+                            <?php if (isset($ava) and $ava) : ?>
+
+                                    <div class="post-photo d-none"><img srcset="<?php echo $ava ?>" alt=""></div>
+                                
+                            <?php endif; ?>
 
                             <?php else : ?>
 
