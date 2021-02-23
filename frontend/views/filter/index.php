@@ -170,7 +170,7 @@ Yii::$app->view->registerMetaTag([
 
                                             <div class="col-12 col-xl-3">
                                                 <div class="popular-mark">
-                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-20-let">от 20 лет+</a>
+                                                        <a href="/znakomstva/pol-muzhskoj/vozrast-ot-20-let">от 20 лет</a>
                                                     </div>
                                                 <div class="popular-mark">
                                                         <a href="/znakomstva/pol-muzhskoj/vozrast-ot-30-let">от 30 лет</a>

@@ -18,7 +18,7 @@ class FilterController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function behaviors1()
+    public function behaviors()
     {
 
         if (Yii::$app->user->isGuest){
