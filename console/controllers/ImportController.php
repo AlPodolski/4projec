@@ -111,13 +111,17 @@ class ImportController extends Controller
 
         }
 
-        foreach ($profiles as $item){
+        foreach ($records as $item){
 
-            if (\in_array($item->text, $data)){
+            if ($posts = Profile::find()->where(['like', 'text', $item])->all()){
 
-                $item->text = '';
+                foreach ($posts as $post){
 
-                $item->save();
+                    $post->text = '';
+
+                    $post->save();
+
+                }
 
             }
 
