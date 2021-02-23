@@ -25,7 +25,8 @@ class ImageCache extends Cache
 
         {
             header('Content-type: image/png');
-            readfile(Yii::getAlias('@app/web/img/nophoto.png'));
+            readfile(Yii::getAlias('@app/web/files/img/nophoto.png'));
+            exit();
         }
 
 
