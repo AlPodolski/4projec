@@ -21,7 +21,7 @@ $this->registerJsFile('/files/js/owl.navigation.js', ['depends' => [\frontend\as
 $this->registerCssFile('/css/owl.carousel.min.css');
 $this->registerCssFile('/css/owl.theme.default.min.css');
 
-$this->registerJsFile('/files/js/single.js?v=17', ['depends' => [\frontend\assets\AppAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=18', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();
