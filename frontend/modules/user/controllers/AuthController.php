@@ -126,7 +126,7 @@ class AuthController extends Controller
             if ($model->sendEmail()) {
                 Yii::$app->session->setFlash('success', 'Проверьте Вашу почту');
 
-                //Yii::$app->response->redirect(['/'], 301, false);
+                Yii::$app->response->redirect(['/'], 301, false);
 
             } else {
                 Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
@@ -155,7 +155,7 @@ class AuthController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
+            Yii::$app->session->setFlash('success', 'Новый пароль сохранен');
 
             Yii::$app->response->redirect(['/'], 301, false);
         }
