@@ -7,7 +7,7 @@ $(document).ready(function() {
         items: 1,
         margin: 16,
         loop: true,
-        nav: false,
+        nav: true,
         navText: ['', ''],
         navElement: 'a></a',
     });
