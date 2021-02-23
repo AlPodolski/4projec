@@ -22,7 +22,12 @@ class ImageCache extends Cache
         // test path
         $info = $this->getPathInfo($path);
         if (!is_array($info) || (!file_exists($info['dstPath']) && !$this->create($path)))
-            return false;
+
+        {
+            header('Content-type: image/png');
+            readfile(Yii::getAlias('@app/web/img/nophoto.png'));
+        }
+
 
         header('Content-type: image/' . $this->extensions[$info['extension']]);
         header('Content-Length: ' . filesize($info['dstPath']));
