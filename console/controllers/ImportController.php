@@ -90,7 +90,7 @@ class ImportController extends Controller
 
     public function actionCustom()
     {
-        $profiles = Profile::find()->where(['not in', 'email', 'adminadultero1@mail.com'])->andWhere(['text' => ''])->all();
+        $profiles = Profile::find()->where(['not in', 'email', 'adminadultero1@mail.com'])->all();
 
         $stream = \fopen(Yii::getAlias('@app/files/import_text_23_02_2021.csv'), 'r');
 
@@ -107,15 +107,19 @@ class ImportController extends Controller
 
         foreach ($records as $item){
 
-            $data[] = $item;
+            $data[] = $item['text'];
 
         }
 
         foreach ($profiles as $item){
 
-            $item->text = '';
+            if (\in_array($item->text, $data)){
 
-            $item->save();
+                $item->text = '';
+
+                $item->save();
+
+            }
 
         }
 
