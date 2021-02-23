@@ -75,7 +75,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                             
                             <?php if (isset($ava) and $ava) : ?>
 
-                                    <div class="post-photo d-none"><img srcset="<?php echo $ava ?>" alt=""></div>
+                                    <img class="d-none post-image" srcset="<?php echo $ava ?>" alt="">
                                 
                             <?php endif; ?>
 

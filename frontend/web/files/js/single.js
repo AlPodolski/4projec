@@ -278,7 +278,7 @@ function get_invitation(){
 
         var text = fruits[getRandomInt(fruits.length)];
 
-        var image = $('.post-photo img').attr('srcset');
+        var image = $('.post-image').attr('srcset');
 
         $('.message-event .img').attr('srcset', image);
 
