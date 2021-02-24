@@ -980,6 +980,7 @@ h1{
     position: absolute;
     right: 0px;
     top: -17px;
+    z-index:2;
 }
 .breadcrumb .active{
     margin-left: 10px;
@@ -2749,7 +2750,7 @@ a {
     overflow-y: scroll;
     position: relative;
     right: -12px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 .chat .right-message  .post_header_info{
     margin-left: 0px;
@@ -3187,6 +3188,10 @@ a {
 .main-menu-wrap{
     margin-bottom: 17px;
     display:none;
+}
+.no-photo img{
+    width:inherit;
+    max-width:100%;
 }
 @media (min-width: 1199px) {
     .women-block , .men-block{
