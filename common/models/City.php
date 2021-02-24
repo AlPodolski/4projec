@@ -39,7 +39,7 @@ class City extends \yii\db\ActiveRecord
 
         if ($result === false) {
             // $data нет в кэше, вычисляем заново
-            $result = City::find()->select('city')->where(['url' => $city])->orWhere(['city' => $city])->asArray()->one();
+            $result = City::find()->where(['url' => $city])->orWhere(['city' => $city])->asArray()->one();
             // Сохраняем значение $data в кэше. Данные можно получить в следующий раз.
             Yii::$app->cache->set('4dosug_city_'.$city , $result);
         }

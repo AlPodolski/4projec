@@ -139,6 +139,8 @@ $(document).ready(function() {
 
             if ($(".anket-single-page").length > 0){
 
+                var pol_id = $('.anket-single-page').attr('data-pol');
+
                 $('.anket-single-page').each(function() {
 
                     ids = ids  + $(this).attr('data-id')+',';
@@ -147,7 +149,7 @@ $(document).ready(function() {
 
                 ids = 'id='+ids;
 
-                var send_data = ids;
+                var send_data = ids + '&pol='+pol_id;
 
                 url = '/user/more';
 

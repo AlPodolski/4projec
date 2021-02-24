@@ -59,11 +59,18 @@ $this->registerMetaTag([
 
     </div>
 
-        <?php if (Yii::$app->user->isGuest) : ?>
 
-        <div class="content col-12">
+</div>
 
-        </div>
+    <?php if (Yii::$app->user->isGuest) : ?>
+
+    <p>Возможно Вам понравятся эти анкеты</p>
+
+
+            <div class="content ">
+
+            </div>
+
 
             <svg class="filter" version="1.1">
                 <defs>
@@ -87,6 +94,3 @@ $this->registerMetaTag([
                  data-accept="<?php echo Yii::$app->request->headers->get('Accept') ?>"></div>
 
         <?php endif; ?>
-
-
-</div>

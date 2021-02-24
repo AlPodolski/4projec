@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\models\UserPol;
 use frontend\modules\group\components\helpers\SubscribeHelper;
 use frontend\modules\group\models\Group;
 use frontend\modules\user\components\behavior\LastVisitTimeUpdate;
@@ -11,6 +12,7 @@ use frontend\modules\user\components\helpers\GuestHelper;
 use frontend\modules\user\models\Profile;
 use frontend\modules\user\models\UserHeart;
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use frontend\modules\user\models\Photo;
 
@@ -51,6 +53,7 @@ class AnketController extends Controller
                 // $data нет в кэше, вычисляем заново
                 $model = Profile::find()->where(['id' => $id])
                     ->with('ves')
+                    ->with('polRelation')
                     ->with('rost')
                     ->with('sexual')
                     ->with('place')
@@ -156,12 +159,28 @@ class AnketController extends Controller
 
         if (Yii::$app->request->isPost){
 
+            $city = City::getCity($city);
+
             $data = \explode(',' , Yii::$app->request->post('id'));
+            $pol = Yii::$app->request->post('pol');
 
             // $data нет в кэше, вычисляем заново
             $model = Profile::find()
                 ->where(['not in' , 'id', $data])
-                ->with('ves')
+                ->andWhere(['city' => $city['url']]);
+
+            if ($pol){
+
+                $pol_ids = ArrayHelper::getColumn(
+                    UserPol::find()->where(['pol_id' => $pol, 'city_id' => $city['id']])->asArray()->all(),
+                    'user_id'
+                );
+
+                $model = $model->andWhere(['in' , 'id', $pol_ids]);
+
+            }
+
+            $model = $model->with('ves')
                 ->with('rost')
                 ->with('sexual')
                 ->with('place')

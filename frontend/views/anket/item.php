@@ -15,7 +15,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
 ?>
 
-<div class="row anket-single-page" data-id="<?php echo $model['id']?>" data-img="" data-adress="/user/<?php echo $model['id']?>">
+<div class="row anket-single-page" data-pol="<?php echo $model['polRelation']['pol_id'] ?>" data-id="<?php echo $model['id']?>" data-img="" data-adress="/user/<?php echo $model['id']?>">
 
         <div class="col-12">
             <div class="page-block main-info-anket">
@@ -825,6 +825,8 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
             </div>
         </div>
 
+    <?php if (!Yii::$app->user->isGuest) :?>
+
         <div class="col-12 col-lg-4 col-xl-4 left-column-anket">
 
             <?php if (!empty($userPresent)) : ?>
@@ -1011,11 +1013,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
             <div class="wall-wrapper">
 
-                <?php if (!Yii::$app->user->isGuest) :?>
-
                     <?php echo \frontend\modules\wall\widgets\WallWidget::widget(['user_id' => $model->id]) ?>
-
-                <?php endif; ?>
 
             </div>
 
@@ -1023,5 +1021,7 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
             <br>
 
         </div>
+
+    <?php endif; ?>
 
     </div>
