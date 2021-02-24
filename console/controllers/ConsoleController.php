@@ -275,7 +275,7 @@ class ConsoleController extends Controller
 
         foreach ($postsIds as $id){
 
-            if (\rand(0 , 8) == 8 ) $vipIds[] = $id;
+            if (\rand(0 , 7) == 7 ) $vipIds[] = $id;
 
         }
 
