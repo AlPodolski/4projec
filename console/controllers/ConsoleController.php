@@ -271,6 +271,16 @@ class ConsoleController extends Controller
 
         Profile::updateAll(['last_visit_time' => time()], ['in' , 'id' , $postsIds]);
 
+        $vipIds = array();
+
+        foreach ($postsIds as $id){
+
+            if (\rand(0 , 8) == 8 ) $vipIds[] = $id;
+
+        }
+
+        Profile::updateAll(['vip_status_work' => time() + (3600 * 24)], ['in' , 'id' , $vipIds]);
+
     }
 
     public function actionStartDialog()
