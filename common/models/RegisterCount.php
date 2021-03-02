@@ -48,7 +48,7 @@ class RegisterCount extends \yii\db\ActiveRecord
     {
         if (RegisterCount::find()->where(['date' => $date])->count()){
 
-            RegisterCount::updateAllCounters(['count' => 1]);
+            RegisterCount::updateAllCounters(['count' => 1] , ['date' => $date]);
 
         }else {
 
