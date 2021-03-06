@@ -12,6 +12,10 @@ use Yii;
  */
 class Pol extends \yii\db\ActiveRecord
 {
+
+    const POL_MEN = 1;
+    const POL_WOMEN = 2;
+
     /**
      * {@inheritdoc}
      */

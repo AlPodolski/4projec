@@ -21,7 +21,7 @@ class PresentWidget extends Widget
     public function run()
     {
 
-        $data = Presents::find()->asArray()->all();
+        $data = Presents::find()->asArray()->orderBy('id DESC')->all();
 
         return $this->render('present', [
                 'data' => $data,

@@ -105,13 +105,13 @@ class ImportController extends Controller
 
         $data = array();
 
-        foreach ($records as $item){
+        foreach ($records as $item) {
 
             $data[] = $item['text'];
 
         }
 
-        foreach ($profiles as $post){
+        foreach ($profiles as $post) {
 
             $post->text = $data[\array_rand($data)];
 
@@ -138,7 +138,7 @@ class ImportController extends Controller
 
         foreach ($records as $record) {
 
-            if (!ImportNewsFromVk::find()->where(['group_url' => $record['url'], 'time' => $record['time']])->asArray()->one()){
+            if (!ImportNewsFromVk::find()->where(['group_url' => $record['url'], 'time' => $record['time']])->asArray()->one()) {
 
                 $groupInfo = Group::find()->where(['vk_url' => $record['url']])->with('admin')->asArray()->one();
 
@@ -157,16 +157,16 @@ class ImportController extends Controller
                 $importNewsFromVk->group_url = $record['url'];
                 $importNewsFromVk->time = $record['time'];
 
-                if ($importNewsFromVk->save() and $wallItem = $item->save()){
+                if ($importNewsFromVk->save() and $wallItem = $item->save()) {
 
-                    if ($record['img']){
+                    if ($record['img']) {
 
                         $model = new Files();
 
                         $model->related_class = Wall::class;
                         $model->related_id = $wallItem['id'];
                         $model->main = 0;
-                        $model->file = '/files/uploads/aa12/'.$record['img'];
+                        $model->file = '/files/uploads/aa12/' . $record['img'];
 
                         $model->save();
 
@@ -174,8 +174,7 @@ class ImportController extends Controller
 
                     $transaction->commit();
 
-                }
-                else $transaction->rollBack();
+                } else $transaction->rollBack();
 
             }
 
@@ -198,7 +197,7 @@ class ImportController extends Controller
 
         foreach ($records as $record) {
 
-            $profile = Profile::find()->where(['email'=> 'admin@mail.com'])
+            $profile = Profile::find()->where(['email' => 'admin@mail.com'])
                 ->orderBy(['rand()' => SORT_DESC])
                 ->asArray()->one();
 
@@ -235,16 +234,16 @@ class ImportController extends Controller
             ->select('id')
             ->asArray()->all();
 
-        foreach ($posts as $post){
+        foreach ($posts as $post) {
 
-            $limit = \rand(10 , 30);
+            $limit = \rand(10, 30);
 
             $groups = Group::find()->asArray()
                 ->limit($limit)
                 ->orderBy(['rand()' => SORT_DESC])
                 ->all();
 
-            foreach ($groups as $group){
+            foreach ($groups as $group) {
 
                 SubscribeHelper::Subscribe(
                     $group['id'],
@@ -923,19 +922,19 @@ class ImportController extends Controller
 
         }
 
-        foreach ($city as $item){
+        foreach ($city as $item) {
 
             $posts = UserPol::find()->where(['pol_id' => 2, 'city_id' => $item['id']])->with('fakeProfile')->all();
 
-            foreach ($posts as $post){
+            foreach ($posts as $post) {
 
-                if (\rand(0, 2) != 2){
+                if (\rand(0, 2) != 2) {
 
                     $text = $descItems[\array_rand($descItems)];
 
-                    if (isset($text['text']) and !empty($text['text'])){
+                    if (isset($text['text']) and !empty($text['text'])) {
 
-                        if($post->fakeProfile){
+                        if ($post->fakeProfile) {
 
                             @$post->fakeProfile->text = $text['text'];
 
@@ -970,7 +969,7 @@ class ImportController extends Controller
 
         $posts = array();
 
-        foreach ($records as $item){
+        foreach ($records as $item) {
 
             $posts[] = $item;
 
@@ -995,7 +994,7 @@ class ImportController extends Controller
         $smoking = Smoking::find()->asArray()->all();
         $alcogol = Alcogol::find()->asArray()->all();
 
-        foreach ($city as $cityItem){
+        foreach ($city as $cityItem) {
 
             $to = \rand(20, 25);
 
@@ -1005,7 +1004,7 @@ class ImportController extends Controller
 
             $time = \time();
 
-            while($i <= $to){
+            while ($i <= $to) {
 
                 $user = new Profile();
 
@@ -1138,8 +1137,6 @@ class ImportController extends Controller
 
                                     $userPhoto->save();
 
-                                    }
-
                                 }
 
                             }
@@ -1147,6 +1144,8 @@ class ImportController extends Controller
                         }
 
                     }
+
+                }
 
                 $i++;
 
@@ -1392,7 +1391,7 @@ class ImportController extends Controller
                                     $userPhoto = new Photo();
 
                                     $userPhoto->user_id = $user->id;
-                                    $userPhoto->file = '/files/uploads/aa10'.\str_replace('files', '',   $gallitem);
+                                    $userPhoto->file = '/files/uploads/aa10' . \str_replace('files', '', $gallitem);
                                     $userPhoto->avatar = 0;
 
                                     $userPhoto->save();
@@ -1421,43 +1420,43 @@ class ImportController extends Controller
 
         $profilesId = ArrayHelper::getColumn($profiles, 'id');
 
-        $photos = Photo::find()->where(['in', 'id' , $profilesId])->asArray()->all();
+        $photos = Photo::find()->where(['in', 'id', $profilesId])->asArray()->all();
 
-       foreach ($photos as $photo){
+        foreach ($photos as $photo) {
 
-            $file = Yii::getAlias('@frontend/web').$photo['file'];
+            $file = Yii::getAlias('@frontend/web') . $photo['file'];
 
             $imageInfo = \getimagesize($file);
 
             $width = $imageInfo[0];
 
-            $height = $imageInfo[1] ;
+            $height = $imageInfo[1];
 
-           try {
-               $imagic = new Imagick($file);
+            try {
+                $imagic = new Imagick($file);
 
-               $imagic->cropImage($width   , $height - 150 , 0, 50);
+                $imagic->cropImage($width, $height - 150, 0, 50);
 
-               $imagic->setImageFormat('jpg');
+                $imagic->setImageFormat('jpg');
 
-               file_put_contents($file, $imagic);
+                file_put_contents($file, $imagic);
 
-               unset($imagic);
-           }catch (Exception $e){
-               echo $e->getMessage();
-           }
-
+                unset($imagic);
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
 
 
         }
 
     }
 
-    private function getNames($pol_id = 1){
+    private function getNames($pol_id = 1)
+    {
 
         $womenIds = UserPol::find()->where(['pol_id' => $pol_id])->asArray()->all();
 
-        return ArrayHelper::getColumn( Profile::find()->where(['in' , 'id' ,ArrayHelper::getColumn($womenIds, 'user_id') ])
+        return ArrayHelper::getColumn(Profile::find()->where(['in', 'id', ArrayHelper::getColumn($womenIds, 'user_id')])
             ->distinct()
             ->select('username')
             ->asArray()
@@ -1468,9 +1467,7 @@ class ImportController extends Controller
     public function actionPresents()
     {
 
-        $category = PresentsCategory::find()->asArray()->all();
-
-        $stream = \fopen(Yii::getAlias('@app/files/presents.csv'), 'r');
+        $stream = \fopen(Yii::getAlias('@app/files/presents2.csv'), 'r');
 
         $csv = Reader::createFromStream($stream);
         $csv->setDelimiter(';');
@@ -1485,31 +1482,16 @@ class ImportController extends Controller
 
         foreach ($records as $record) {
 
-            foreach ($category as $item) {
+            $present = new Presents();
+            $present->name = $record['name'];
+            $present->price = $record['cifr'];
+            $present->img = '/files/presents/' . $record['img'];
+            $present->status = Presents::PODAROK_DOSTUPEN;
 
-                if ($item['category_name'] == $record['category']) {
-
-                    $present = new Presents();
-                    $present->name = $record['name'];
-                    $present->price = $record['cifr'];
-                    $present->img = '/files/presents/' . $record['img'];
-                    $present->status = Presents::PODAROK_DOSTUPEN;
-
-                    if ($present->save()) {
-
-                        $present_to_category = new PresentToCategory();
-                        $present_to_category->present_id = $present->id;
-                        $present_to_category->category_id = $item['id'];
-
-                        if ($present_to_category->save()) echo 'da';
-
-                    }
-
-                }
-
-            }
+            $present->save();
 
         }
+
     }
 
     public function actionAdvert()

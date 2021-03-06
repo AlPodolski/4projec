@@ -82,6 +82,7 @@ class ChatController extends Controller
             ->where(['id' => $recepient_id['user_id']])
             ->with('userAvatarRelations')
             ->with('privacyParams')
+            ->with('polRelation')
             ->asArray()
             ->one();
 
@@ -134,9 +135,11 @@ class ChatController extends Controller
             $user = Profile::find()->where(['id' => Yii::$app->user->id])
                 ->with('userAvatarRelations')->asArray()->one();
 
-            $userTo = Profile::find()->where(['id' => Yii::$app->request->post('id')])
+            $userTo = Profile::find()
+                ->where(['id' => Yii::$app->request->post('id')])
                 ->with('userAvatarRelations')
                 ->with('privacyParams')
+                ->with('polRelation')
                 ->asArray()
                 ->one();
 
