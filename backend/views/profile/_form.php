@@ -22,6 +22,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'created_at')->textInput() ?>
 
+    <?= $form->field($model, 'vip_status_work')->textInput() ?>
+
     <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <?= $form->field($model, 'verification_token')->textInput(['maxlength' => true]) ?>
