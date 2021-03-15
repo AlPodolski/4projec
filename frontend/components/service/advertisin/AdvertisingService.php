@@ -15,8 +15,6 @@ class AdvertisingService
 
         $cityId = City::find()->where(['url' => $city])->asArray()->one();
 
-        \dd($cityId);
-
         return Posts::find()
             ->where(['city_id' => $cityId])
             ->with('avatar')
