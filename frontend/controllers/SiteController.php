@@ -249,8 +249,8 @@ class SiteController extends Controller
 
         $posts = AdvertisingService::getAdvertising($city);
 
-        if (Yii::$app->user->isGuest) $css = 'col-6 col-sm-6 col-md-4 col-lg-4';
-        else $css = 'col-6 col-sm-6 col-md-4 col-lg-3';
+        if (Yii::$app->user->isGuest) $css = 'col-6 col-sm-6 col-md-4 col-lg-3';
+        else $css = 'col-6 col-sm-6 col-md-4 col-lg-4';
 
         if ($posts){
 
