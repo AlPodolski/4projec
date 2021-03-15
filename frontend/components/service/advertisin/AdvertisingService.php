@@ -13,7 +13,9 @@ class AdvertisingService
 
         if ($city == 'msk' ) $city = 'moskva';
 
-        $cityId = City::find()->where(['url' => $city])->asArray()->cache(3600 * 30 * 24)->one();
+        $cityId = City::find()->where(['url' => $city])->asArray()->one();
+
+        \dd($cityId);
 
         return Posts::find()
             ->where(['city_id' => $cityId])
