@@ -16,7 +16,7 @@ class AdvertisingService
         $cityId = City::find()->where(['url' => $city])->asArray()->one();
 
         return Posts::find()
-            ->where(['city_id' => $cityId])
+            ->where(['city_id' => $cityId['id']])
             ->with('avatar')
             ->limit(30)
             ->cache(3600 * 24)
