@@ -37,7 +37,7 @@ class Posts extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Posts';
+        return 'posts';
     }
 
     /**
