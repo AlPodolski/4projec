@@ -17,7 +17,7 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
 
     <div class="article-anket-wrap position-relative">
 
-        <div class="img-wrap d-flex ">
+        <div class="img-wrap d-flex <?php if (!isset($post->userAvatarRelations['file']) or !file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file'])) echo 'no-img'?> ">
 
             <a href="https://<?php echo $city ?>.sex-true.com/post/<?php echo $post['id'] ?>" target="_blank">
 
