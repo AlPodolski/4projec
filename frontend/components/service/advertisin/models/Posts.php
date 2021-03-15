@@ -2,7 +2,6 @@
 
 namespace frontend\components\service\advertisin\models;
 
-use frontend\models\Files;
 use Yii;
 use yii\db\ActiveQuery;
 
