@@ -233,4 +233,16 @@ class SiteController extends Controller
         exit();
     }
 
+    public function actionAdvertising($city)
+    {
+        if ($city == 'msk') $city = 'moskva';
+
+        //if (Yii::$app->user->identity->role == 'admin') return null;
+
+        $ipData =  unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR']));
+
+        \dd($ipData);
+
+    }
+
 }

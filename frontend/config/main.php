@@ -168,6 +168,8 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/buy' => 'vip/index',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/gift' => 'vip/gift',
 
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/advertising' => 'site/advertising',
+
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/verify-email' => 'user/auth/verify-email',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/request-password-reset' => 'user/auth/request-password-reset',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/reset-password' => 'user/auth/reset-password',

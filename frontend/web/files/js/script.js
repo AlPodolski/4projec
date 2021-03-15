@@ -456,6 +456,18 @@ function register_slick() {
 }
 
 $(document).ready(function () {
+
+    $.ajax({
+        url: '/advertising',
+        type: 'POST',
+        success: function () {
+
+        },
+    });
+
+});
+
+$(document).ready(function () {
     if ($(window).width() < 1200) {
 
         /*
