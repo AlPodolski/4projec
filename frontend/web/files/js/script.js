@@ -460,7 +460,14 @@ $(document).ready(function () {
     $.ajax({
         url: '/advertising',
         type: 'POST',
-        success: function () {
+        success: function (data) {
+
+            if(data.length > 10){
+
+                $('.article-item').last().remove();
+                $('.first-content').prepend(data);
+
+            }
 
         },
     });

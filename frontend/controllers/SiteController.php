@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\components\service\advertisin\AdvertisingService;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
 use frontend\components\MetaBuilder;
@@ -235,13 +236,34 @@ class SiteController extends Controller
 
     public function actionAdvertising($city)
     {
+
+        $cityInfo = City::getCity($city);
+
         if ($city == 'msk') $city = 'moskva';
 
-        //if (Yii::$app->user->identity->role == 'admin') return null;
+        if (Yii::$app->user->identity->role == 'admin') return null;
 
         $ipData =  unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR']));
 
-        \dd($ipData);
+        if (!$ipData or $ipData['geoplugin_countryCode'] == 'UA') return false;
+
+        $posts = AdvertisingService::getAdvertising($city);
+
+        if ($posts){
+
+            echo $this->renderFile('@app/views/layouts/article-adv.php', [
+                'post' => $posts[\array_rand($posts)],
+                'cityInfo' => $cityInfo,
+                'city' => $city,
+                'cssClass' => 'col-6 col-sm-6 col-md-4 col-lg-4',
+                'type' => 'advertising'
+            ]);
+
+            exit();
+
+        }
+
+        return false;
 
     }
 

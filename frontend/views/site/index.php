@@ -92,10 +92,7 @@ if (isset($yandex_meta['tag'])) $this->registerMetaTag(['name' => 'yandex-verifi
 
             <?php endif; ?>
 
-
-                <div class="row ">
-
-                    <div data-url="/" class="col-12"></div>
+                <div class="row first-content">
 
                     <?php foreach ($posts as $post) : ?>
 

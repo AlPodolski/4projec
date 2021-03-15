@@ -208,9 +208,7 @@ Yii::$app->view->registerMetaTag([
 
                     <?php //echo \frontend\widgets\MarkWidget::widget(['url' => Yii::$app->request->url]) ?>
 
-                    <div class="row content">
-
-                        <div data-url="/<?php echo $param ?>" class="col-12"></div>
+                    <div class="row content first-content">
 
                         <?php if ($posts) : ?>
 
@@ -223,6 +221,8 @@ Yii::$app->view->registerMetaTag([
                             ]) ?>
 
                         <?php endforeach; ?>
+
+                            <div data-url="/<?php echo $param ?>" class="col-12"></div>
 
                         <?php else : ?>
 

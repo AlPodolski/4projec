@@ -1,6 +1,7 @@
 <?php /* @var $post Profile */
-      /* @var $cityInfo array */
-      /* @var $cssClass string */
+/* @var $cityInfo array */
+/* @var $cssClass string */
+/* @var $city string */
 
 use frontend\modules\user\models\Profile;
 
@@ -16,25 +17,16 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
 
     <div class="article-anket-wrap position-relative">
 
-        <?php if (isset($post['vip_status_work']) and $post['vip_status_work'] > time()) : ?>
-
-            <div class="vip-icon-wrap">
-                <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
-            </div>
-
-        <?php endif; ?>
-
         <div class="img-wrap d-flex <?php if (!isset($post->userAvatarRelations['file']) or !file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file'])) echo 'no-img'?> ">
 
-            <a href="/user/<?php echo $post->id ?>">
+            <a href="https://<?php echo $city ?>.sex-true.com/post/<?php echo $post['id'] ?>" target="_blank">
 
-
-                <?php if (isset($post->userAvatarRelations['file']) and file_exists(Yii::getAlias('@webroot') . $post->userAvatarRelations['file']) and $post->userAvatarRelations['file']) : ?>
+                <?php if (isset($post['avatar']['file'])) : ?>
 
                     <picture>
-                        <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
+                        <source srcset="<?= $post['avatar']['file'] ?>">
                         <img loading="lazy" class="img"
-                             srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
+                             srcset="<?= $post['avatar']['file'] ?>">
                     </picture>
 
                 <?php else : ?>
@@ -46,26 +38,15 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
                         <path d="M52.1174 19.637C60.4349 19.716 68.3154 26.1395 69.9039 34.42C71.8869 44.7575 63.4744 56.0245 52.1174 56.097C43.4429 56.152 35.2379 49.2265 33.9629 40.5255C32.5179 30.664 40.4419 20.333 50.8324 19.6735C51.2599 19.6465 51.6884 19.6355 52.1174 19.637ZM51.9204 25.637C46.4014 25.6895 41.1874 29.87 40.0339 35.327C38.8709 40.828 42.0409 46.935 47.2434 49.137C52.9499 51.552 60.3004 48.8155 63.0249 43.1645C66.4944 35.968 61.1314 25.8365 52.2379 25.639C52.1319 25.6375 52.0264 25.6365 51.9204 25.637Z" fill="#1D61E1"/>
                     </svg>
 
-
                 <?php endif; ?>
             </a>
         </div>
         <div class="name">
-            <?php echo explode(' ', $post->username)[0]; ?>
-            <?php if ($post->birthday) { ?>
-                <span class="old">
-                   <?php echo \frontend\components\YearHelper::Year((time() - $post->birthday) / 31556926); ?>
-                </span>
-            <?php } ?>
-            <?php if (isset($post['last_visit_time']) and $post['last_visit_time'] > time() - 3600) : ?>
-
-                <div class="online"></div>
-
-            <?php endif; ?>
+            <?php echo $post['name'] ?>
         </div>
 
         <div class="city-info">
-            <?php echo $cityInfo['city']?>
+           Реклама
         </div>
 
     </div>
