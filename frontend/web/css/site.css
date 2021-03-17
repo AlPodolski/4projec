@@ -3193,6 +3193,23 @@ a {
     width:inherit;
     max-width:100%;
 }
+.no-vip-photo {
+    position: relative;
+}
+.no-vip-photo-wrap {
+    filter: blur(7px);
+}
+.no-vip-photo-text {
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+.send-message-photo svg{
+    position: relative;
+    top: -2px;
+}
 @media (min-width: 1199px) {
     .women-block , .men-block{
         display:block!important;
