@@ -21,21 +21,29 @@ class SaveFileHelper
 
         $model->related_id = $relatedId;
 
-        $model->file = 'photo-'.$id.'-'.\md5($file->name).\time().'.jpg';
+        if (\getimagesize($file->tempName)){
 
-        $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
+            $type = \explode('/', $file->type);
 
-        $dir = Yii::$app->params['photo_path'].$dir_hash;
+            $model->file = 'photo-'.$id.'-'.\md5($file->name).\time().'.'.$type[1];
 
-        $save_dir = DirHelprer::prepareDir(Yii::getAlias('@frontend').'/web/'.$dir);
+            $dir_hash = DirHelprer::generateDirNameHash($model->file).'/';
 
-        ImageHelper::regenerateImg($file->tempName, Yii::$app->params['default_with_img'], $save_dir.$model->file);
+            $dir = Yii::$app->params['photo_path'].$dir_hash;
 
-        $model->file = $dir.$model->file;
+            $save_dir = DirHelprer::prepareDir(Yii::getAlias('@frontend').'/web/'.$dir);
 
-        $model->save();
+            if (!$type[1] == 'gif') ImageHelper::regenerateImg($file->tempName, Yii::$app->params['default_with_img'], $save_dir.$model->file);
 
-        return $model;
+            else $file->saveAs($save_dir.$model->file);
+
+            $model->file = $dir.$model->file;
+
+            $model->save();
+
+            return $model;
+
+        }
 
     }
 }
