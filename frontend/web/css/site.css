@@ -3197,7 +3197,7 @@ a {
     position: relative;
 }
 .no-vip-photo-wrap {
-    filter: blur(7px);
+    filter: blur(12px);
 }
 .no-vip-photo-text {
     position: absolute;
