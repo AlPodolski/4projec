@@ -3,6 +3,8 @@
 
 namespace frontend\controllers;
 
+use common\models\ObmenkaOrder;
+use frontend\components\service\obmenka\Obmenka;
 use frontend\models\forms\BuyVipStatusForm;
 use frontend\models\forms\GiftVipStatusForm;
 use frontend\modules\user\models\Profile;
@@ -60,6 +62,51 @@ class CashController extends Controller
         }
 
         Yii::$app->response->redirect('https://'.$user_data[1].'.4dosug.com/user', 301, false);
+
+    }
+
+    public function actionObmenkaPay($city,$protocol, $id)
+    {
+
+        if ($order = ObmenkaOrder::findOne($id) and $order['status'] == ObmenkaOrder::WAIT and $user = Profile::findOne($order['user_id'])){
+
+            $obmenka = new Obmenka();
+
+            $data = $obmenka->getOrderInfo($id);
+
+            if (isset($data->amount)){
+
+                $transaction = Yii::$app->db->beginTransaction();
+
+                $user->cash = $user->cash + (int) $data->amount;
+
+                $order->status = ObmenkaOrder::FINISH;
+
+                if ($user->save() and $order->save()) {
+
+                    $transaction->commit();
+
+                    Yii::$app->session->setFlash('success', 'Баланс пополнен');
+
+                    return  $this->redirect($protocol.'://'.$user->city.'.'.Yii::$app->params['site_name']);
+
+                }
+
+                else{
+
+                    $transaction->rollBack();
+
+                    Yii::$app->session->setFlash('warning', 'Ошибка');
+
+                    return  $this->redirect($protocol.'://'.$user->city.'.'.Yii::$app->params['site_name']);
+
+                }
+
+            }
+
+        }
+
+        return  $this->redirect($protocol.'://msk.'.Yii::$app->params['site_name']);
 
     }
 }
