@@ -926,6 +926,7 @@ h1{
     border-bottom-left-radius: 0;
     cursor:pointer;
     position: relative;
+    padding: 8px 12px 7px;
 }
 .write-message{
     border-top-right-radius: 0px;
@@ -3197,7 +3198,7 @@ a {
     position: relative;
 }
 .no-vip-photo-wrap {
-    filter: blur(35px);
+    filter: blur(15px);
 }
 .no-vip-photo-text {
     position: absolute;
@@ -3242,6 +3243,13 @@ input:checked+.img-label-radio{
     background:url('../files/img/qiwi.png');
     background-position: center;
     background-repeat: no-repeat;
+}
+.free_label{
+    background:url('../files/img/free-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 57px;
+    width: 64px;
 }
 .visa_master_label{
     background:url('../files/img/visa-master.png');
