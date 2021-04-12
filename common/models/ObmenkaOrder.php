@@ -13,11 +13,17 @@ use Yii;
  * @property string|null $tracking
  * @property int|null $created_at
  * @property int|null $status
+ * @property int|null $user_to
+ * @property int|null $pay_info
  */
 class ObmenkaOrder extends \yii\db\ActiveRecord
 {
     const WAIT = 1;
     const FINISH = 2;
+
+    const BUY_VIP = 1;
+    const GIFT_VIP = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -32,7 +38,7 @@ class ObmenkaOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'sum', 'created_at', 'status'], 'integer'],
+            [['user_id', 'sum', 'created_at', 'status', 'user_to', 'pay_info'], 'integer'],
             [['tracking'], 'string', 'max' => 40],
         ];
     }

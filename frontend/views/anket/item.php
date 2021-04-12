@@ -211,21 +211,33 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
                                                     <?php echo $onclick ?>>
                                                     <?php if (!Yii::$app->user->isGuest and FriendsHelper::isFiends(Yii::$app->user->id, $model->id)) : ?>
                                                         <span class="show-message" data-message="Ваш друг">
-                                                         <i class="fas fa-user-friends"></i>
+                                                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9352 7.1875H10.375V1.88008C10.375 1.18691 9.76055 0.625 9 0.625C8.23945 0.625 7.625 1.18691 7.625 1.88008V7.1875H2.06484C1.33867 7.1875 0.75 7.77402 0.75 8.5C0.75 9.22598 1.33867 9.8125 2.06484 9.8125H7.625V15.1199C7.625 15.8131 8.23945 16.375 9 16.375C9.76055 16.375 10.375 15.8131 10.375 15.1199V9.8125H15.9352C16.6613 9.8125 17.25 9.22598 17.25 8.5C17.25 7.77402 16.6613 7.1875 15.9352 7.1875Z" fill="white"/>
+</svg>
+
                                                     </span>
                                                     <?php elseif (!Yii::$app->user->isGuest and isset($isFriendsRequestTo) and $isFriendsRequestTo) : ?>
                                                         <span class="show-message" data-message="Заявка отправлена">
-                                                        <i class="fas fa-check"></i>
+                                                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9352 7.1875H10.375V1.88008C10.375 1.18691 9.76055 0.625 9 0.625C8.23945 0.625 7.625 1.18691 7.625 1.88008V7.1875H2.06484C1.33867 7.1875 0.75 7.77402 0.75 8.5C0.75 9.22598 1.33867 9.8125 2.06484 9.8125H7.625V15.1199C7.625 15.8131 8.23945 16.375 9 16.375C9.76055 16.375 10.375 15.8131 10.375 15.1199V9.8125H15.9352C16.6613 9.8125 17.25 9.22598 17.25 8.5C17.25 7.77402 16.6613 7.1875 15.9352 7.1875Z" fill="white"/>
+</svg>
+
                                                     </span>
                                                     <?php elseif (!Yii::$app->user->isGuest and $isFriendsRequestFrom) : ?>
                                                         <span class="show-message" data-message="Принять заявку"
                                                               onclick="check_friend_request_listing(this)"
                                                               data-user-id="<?php echo $model->id ?>">
-                                                        <i class="fas fa-user-check"></i>
+                                                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9352 7.1875H10.375V1.88008C10.375 1.18691 9.76055 0.625 9 0.625C8.23945 0.625 7.625 1.18691 7.625 1.88008V7.1875H2.06484C1.33867 7.1875 0.75 7.77402 0.75 8.5C0.75 9.22598 1.33867 9.8125 2.06484 9.8125H7.625V15.1199C7.625 15.8131 8.23945 16.375 9 16.375C9.76055 16.375 10.375 15.8131 10.375 15.1199V9.8125H15.9352C16.6613 9.8125 17.25 9.22598 17.25 8.5C17.25 7.77402 16.6613 7.1875 15.9352 7.1875Z" fill="white"/>
+</svg>
+
                                                     </span>
                                                     <?php else : ?>
                                                         <span class="show-message" data-message="Добавить в друзья">
-                                                        <i class="fas fa-plus"></i>
+                                                        <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.9352 7.1875H10.375V1.88008C10.375 1.18691 9.76055 0.625 9 0.625C8.23945 0.625 7.625 1.18691 7.625 1.88008V7.1875H2.06484C1.33867 7.1875 0.75 7.77402 0.75 8.5C0.75 9.22598 1.33867 9.8125 2.06484 9.8125H7.625V15.1199C7.625 15.8131 8.23945 16.375 9 16.375C9.76055 16.375 10.375 15.8131 10.375 15.1199V9.8125H15.9352C16.6613 9.8125 17.25 9.22598 17.25 8.5C17.25 7.77402 16.6613 7.1875 15.9352 7.1875Z" fill="white"/>
+</svg>
+
                                                     </span>
                                                     <?php endif; ?>
                                                 </div>

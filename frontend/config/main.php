@@ -168,6 +168,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/like' => 'wall/wall/item-like',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/wall/item/delete' => 'wall/wall/item-delete',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/buy' => 'vip/index',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/cust-pay' => 'vip/cust-pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/vip/gift' => 'vip/gift',
 
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/advertising' => 'site/advertising',

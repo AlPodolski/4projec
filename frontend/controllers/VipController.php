@@ -3,11 +3,14 @@
 
 namespace frontend\controllers;
 
+use common\models\ObmenkaOrder;
 use frontend\components\helpers\CashHelper;
 use frontend\models\forms\BuyVipStatusForm;
 use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 use frontend\models\forms\GiftVipStatusForm;
+use frontend\models\forms\ObmenkaPayForm;
 
 class VipController extends Controller
 {
@@ -31,21 +34,12 @@ class VipController extends Controller
 
             if (!CashHelper::enoughCash($vipForm->sum, Yii::$app->user->identity['cash'])){
 
-                $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+                $model = new ObmenkaPayForm();
 
-                $sign = \md5(Yii::$app->params['merchant_id'].':'.$vipForm->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
-
-                $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
-
-                $email = Yii::$app->user->identity->email;
-
-                $params = 'm='.Yii::$app->params['merchant_id'].
-                    '&oa='.$vipForm->sum.
-                    '&o='.$order_id.
-                    '&email='.$email.
-                    '&s='.$sign;
-
-                return Yii::$app->response->redirect($cassa_url.$params, 301, false);
+                return $this->render('buy', [
+                    'buyForm' => $vipForm,
+                    'model' => $model
+                ]);
 
             }
 
@@ -124,4 +118,51 @@ class VipController extends Controller
         }
 
     }
+
+    public function actionCustPay($city)
+    {
+
+        $model = new ObmenkaPayForm();
+
+        if ($model->load(Yii::$app->request->post())){
+
+            if ($model->currency == 3){
+
+                $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+
+                $sign = \md5(Yii::$app->params['merchant_id'].':'.$model->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+
+                $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
+
+                $email = Yii::$app->user->identity->email;
+
+                $params = 'm='.Yii::$app->params['merchant_id'].
+                    '&oa='.$model->sum.
+                    '&o='.$order_id.
+                    '&email='.$email.
+                    '&s='.$sign;
+
+                return Yii::$app->response->redirect($cassa_url.$params, 301, false);
+
+            }else{
+
+                $model->user_id = Yii::$app->user->id;
+                $model->city = $city;
+                $model->pay_info = ObmenkaOrder::BUY_VIP;
+
+                if ($payUrl = $model->createPay() and isset($payUrl->pay_link)){
+
+                    $this->redirect($payUrl->pay_link);
+
+                }
+
+            }
+
+        }
+
+        return true;
+
+    }
+
+
 }

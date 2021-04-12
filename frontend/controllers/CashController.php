@@ -9,6 +9,7 @@ use frontend\models\forms\BuyVipStatusForm;
 use frontend\models\forms\GiftVipStatusForm;
 use frontend\modules\user\models\Profile;
 use Yii;
+use yii\base\BaseObject;
 use yii\web\Controller;
 
 class CashController extends Controller
@@ -30,8 +31,6 @@ class CashController extends Controller
             $vipForm->sum = (int) $data['AMOUNT'];
 
             $vipForm->save();
-
-            $post->sum = $post->sum + Yii::$app->params['vip_status_week_price'];
 
             Yii::$app->session->setFlash('success', 'Досуг vip подключен');
 
@@ -78,15 +77,29 @@ class CashController extends Controller
 
                 $transaction = Yii::$app->db->beginTransaction();
 
-                $user->cash = $user->cash + (int) $data->amount;
-
                 $order->status = ObmenkaOrder::FINISH;
+
+                if ($order->pay_info == ObmenkaOrder::BUY_VIP){
+
+                    $vipForm = new BuyVipStatusForm();
+
+                    $vipForm->user_id = $user->id;
+
+                    $vipForm->sum = (int) $data->amount;
+
+                    $vipForm->save();
+
+                }else{
+
+                    $user->cash = $user->cash + (int) $data->amount;
+
+                }
 
                 if ($user->save() and $order->save()) {
 
                     $transaction->commit();
 
-                    Yii::$app->session->setFlash('success', 'Баланс пополнен');
+                    Yii::$app->session->setFlash('success', 'Оплата совершена успешно');
 
                     return  $this->redirect($protocol.'://'.$user->city.'.'.Yii::$app->params['site_name']);
 
