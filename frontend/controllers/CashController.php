@@ -41,8 +41,7 @@ class CashController extends Controller
 
             $vipForm->fromUser = $user_data[0];
             $vipForm->toUser = $user_data[3];
-
-            $post->sum = $post->sum + Yii::$app->params['vip_status_week_price'];
+            $vipForm->sum = (int) $data['AMOUNT'];
 
             $vipForm->save();
 
@@ -51,8 +50,6 @@ class CashController extends Controller
         }else {
 
             $post->cash = $post->cash + (int) $data['AMOUNT'];
-
-            $post->sum = $post->sum + (int) $data['AMOUNT'];
 
             $post->save();
 
@@ -89,7 +86,19 @@ class CashController extends Controller
 
                     $vipForm->save();
 
-                }else{
+                }
+                elseif ($order->pay_info == ObmenkaOrder::GIFT_VIP){
+
+                    $vipForm = new GiftVipStatusForm();
+
+                    $vipForm->fromUser = $user->id;
+                    $vipForm->toUser = $order->user_to;
+                    $vipForm->sum = (int) $data->amount;
+
+                    $vipForm->save();
+
+                }
+                else{
 
                     $user->cash = $user->cash + (int) $data->amount;
 

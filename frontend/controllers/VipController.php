@@ -38,7 +38,8 @@ class VipController extends Controller
 
                 return $this->render('buy', [
                     'buyForm' => $vipForm,
-                    'model' => $model
+                    'model' => $model,
+                    'action' => ObmenkaOrder::BUY_VIP,
                 ]);
 
             }
@@ -73,23 +74,17 @@ class VipController extends Controller
 
             $vipForm->load(Yii::$app->request->post());
 
-            if (!CashHelper::enoughCash(Yii::$app->params['vip_status_week_price'], Yii::$app->user->identity['cash'])){
+            if (!CashHelper::enoughCash($vipForm->sum , Yii::$app->user->identity['cash'])){
 
-                $order_id = Yii::$app->user->id.'_'.$city.'_vipgift_'.$vipForm->toUser;
+                $model = new ObmenkaPayForm();
 
-                $sign = \md5(Yii::$app->params['merchant_id'].':'.Yii::$app->params['vip_status_week_price'].':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
+                return $this->render('buy', [
+                    'buyForm' => $vipForm,
+                    'model' => $model,
+                    'toUser' => $vipForm->toUser,
+                    'action' => ObmenkaOrder::GIFT_VIP,
+                ]);
 
-                $cassa_url = 'https://www.free-kassa.ru/merchant/cash.php?';
-
-                $email = Yii::$app->user->identity->email;
-
-                $params = 'm='.Yii::$app->params['merchant_id'].
-                    '&oa='.Yii::$app->params['vip_status_week_price'].
-                    '&o='.$order_id.
-                    '&email='.$email.
-                    '&s='.$sign;
-
-                return Yii::$app->response->redirect($cassa_url.$params, 301, false);
 
             }
 
@@ -128,7 +123,17 @@ class VipController extends Controller
 
             if ($model->currency == 3){
 
-                $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+                if ($model->action){
+
+                    if ($model->action == ObmenkaOrder::BUY_VIP) $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+
+                    if ($model->action == ObmenkaOrder::GIFT_VIP) $order_id = Yii::$app->user->id.'_'.$city.'_vipgift_'.$model->toUser;
+
+                }else{
+
+                    $order_id = Yii::$app->user->id.'_'.$city.'_vip';
+
+                }
 
                 $sign = \md5(Yii::$app->params['merchant_id'].':'.$model->sum.':'.Yii::$app->params['fk_merchant_key'].':'.$order_id);
 
@@ -148,11 +153,12 @@ class VipController extends Controller
 
                 $model->user_id = Yii::$app->user->id;
                 $model->city = $city;
-                $model->pay_info = ObmenkaOrder::BUY_VIP;
+                $model->pay_info = $model->action;
+
 
                 if ($payUrl = $model->createPay() and isset($payUrl->pay_link)){
 
-                    $this->redirect($payUrl->pay_link);
+                    return $this->redirect($payUrl->pay_link);
 
                 }
 

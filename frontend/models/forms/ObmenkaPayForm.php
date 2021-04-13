@@ -15,14 +15,15 @@ class ObmenkaPayForm extends Model
     public $sum;
     public $currency;
     public $city;
-    public $userToId;
+    public $toUser;
     public $pay_info;
+    public $action;
 
     public function rules()
     {
         return [
             [['user_id', 'sum', 'currency'], 'required'],
-            [['user_id', 'sum', 'userToId', 'pay_info'], 'integer'],
+            [['user_id', 'sum', 'toUser', 'pay_info', 'action'], 'integer'],
             [['city'], 'string'],
             [['currency'] , 'safe'],
         ];
@@ -70,6 +71,7 @@ class ObmenkaPayForm extends Model
         $order->sum = $this->sum;
         $order->status = ObmenkaOrder::WAIT;
         $order->pay_info = $this->pay_info;
+        $order->user_to = $this->toUser;
 
         if ($order->save()) return $order;
 

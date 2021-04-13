@@ -2,13 +2,15 @@
 
 /* @var $buyForm BuyVipStatusForm */
 /* @var $model \frontend\models\forms\ObmenkaPayForm */
+/* @var $action integer | null */
 
 use frontend\models\forms\BuyVipStatusForm;
-use yii\base\BaseObject;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use frontend\widgets\UserSideBarWidget;
 use yii\helpers\ArrayHelper;
+
+$this->title = 'Оплата';
 
 ?>
 
@@ -38,6 +40,13 @@ use yii\helpers\ArrayHelper;
 
                 <?= $form->field($model, 'sum')->hiddenInput(['value' => $buyForm->sum])->label(false) ?>
 
+                <?php if (isset($toUser)) : ?>
+
+                    <?= $form->field($model, 'toUser')->hiddenInput(['value' => $toUser])->label(false) ?>
+
+                <?php endif; ?>
+
+                <?= $form->field($model, 'action')->hiddenInput(['value' => $action])->label(false) ?>
 
                 <?= $form->field($model, 'currency')
                     ->radioList(ArrayHelper::map(\common\models\ObmenkaCurrency::find()->all(), 'id', 'name'),

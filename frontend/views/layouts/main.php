@@ -628,20 +628,33 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['d
                                 <img src="" alt="">
                             </div>
 
-                            <?= $form->field($giftVipStatusForm, 'toUser')
-                                ->hiddenInput()->label(false) ?>
-
                             <div class="vip-icon-wrap">
                                 <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
                             </div>
 
                         </div>
 
+                        <?php
+
+                        $tarifParams = [
+                            Yii::$app->params['vip_status_week_price'] => '7 дней '. Yii::$app->params['vip_status_week_price'].' рублей ',
+                            Yii::$app->params['vip_status_three_month_price'] => '90 дней '. Yii::$app->params['vip_status_three_month_price'].' рублей',
+                            Yii::$app->params['vip_status_month_price'] => '30 дней '. Yii::$app->params['vip_status_month_price'].' рублей',
+                            Yii::$app->params['vip_status_day_price'] => '1 день '. Yii::$app->params['vip_status_day_price'] .' рублей',
+                        ]
+
+                        ?>
+
+                        <?= $form->field($giftVipStatusForm, 'sum')->dropDownList($tarifParams)->label(false); ?>
+
+                        <?= $form->field($giftVipStatusForm, 'toUser')
+                            ->hiddenInput()->label(false) ?>
+
+
+
                         <?= Html::submitButton('Подарить', ['class' => 'blue-btn']) ?>
 
                         <?php ActiveForm::end() ?>
-
-                        <span class="cost"> Стоимость на 7 дней <?php echo Yii::$app->params['vip_status_week_price'] ?> рублей</span>
 
                         <div class="bottom">
 
