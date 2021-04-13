@@ -74,9 +74,9 @@ class Obmenka
             "amount" => $sum,
             'currency' => $currency,
             "description" => $des,
-            "success_url" => "http://".$city.".4dosug.loc/pay/obmenka/".$orderId,
-            "fail_url" => "http://".$city.".4dosug.loc/pay",
-            "status_url" => "http://".$city.".4dosug.loc/user",
+            "success_url" => "https://".$city.".4dosug.com/pay/obmenka/".$orderId,
+            "fail_url" => "https://".$city.".4dosug.com/pay",
+            "status_url" => "https://".$city.".4dosug.com/user",
         ];
 
         return $this->sendData($data, $this->create_pay_url);
