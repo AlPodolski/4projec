@@ -232,9 +232,7 @@ class ChatController extends Controller
 
                 }
 
-                echo \json_encode(array('img' => $photo->file));
-
-                exit();
+                return \json_encode(array('img' => $photo->file));
 
 
             }

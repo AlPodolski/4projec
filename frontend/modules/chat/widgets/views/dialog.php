@@ -173,6 +173,9 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
             <?= $photoForm->field($photoModel, 'dialog_id', ['options' => ['class' => 'd-none']])
                 ->hiddenInput(['value' => $dialog_id])->label(false) ?>
 
+            <?= $photoForm->field($photoModel, 'to', ['options' => ['class' => 'd-none']])
+                ->hiddenInput(['value' => $userTo['id']])->label(false) ?>
+
             <div class="send-message-photo">
                 <label for="send-message-photo-input" class="">
 
