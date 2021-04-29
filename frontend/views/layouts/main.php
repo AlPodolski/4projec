@@ -25,7 +25,7 @@ FontAwesomeAsset::register($this);
 
 $login = new LoginForm();
 
-if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
+if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 ?>
 <?php $this->beginPage() ?>

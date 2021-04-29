@@ -470,15 +470,8 @@ function send_message_photo(){
 
         },
         success: function (data) {
-            var result = JSON.parse(data)
 
-            var user_img = $('.user-img').attr('srcset');
-            var user_name = $('.message-send-btn').attr('data-name');
-            var user_id = $('.message-send-btn').attr('data-user-id');
 
-            add_present(result.img, user_img, user_name, user_id );
-
-            $('.chat-wrap').scrollTop($('.chat-wrap').height() + 99999999);
 
         },
 
