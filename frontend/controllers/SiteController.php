@@ -265,7 +265,7 @@ class SiteController extends Controller
 
         $cityInfo = City::getCity($city);
 
-        if ($city == 'msk') $city = 'moskva';
+        if ($city == 'msk') return false;
 
         if (Yii::$app->user->identity->role == 'admin') return null;
 
