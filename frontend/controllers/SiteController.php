@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\models\City;
+use frontend\components\helpers\PromoHelper;
 use frontend\components\service\advertisin\AdvertisingService;
 use frontend\models\forms\FeedBackForm;
 use frontend\models\Meta;
@@ -70,6 +71,12 @@ class SiteController extends Controller
             ->orderBy(['last_visit_time' => SORT_DESC])
             ->with('userAvatarRelations');
 
+        if ($promoPostId = Yii::$app->request->get('id')){
+
+            $posts = $posts->andWhere(['<>', 'id', $promoPostId]);
+
+        }
+
         if ($page) $posts = $posts->offset(Yii::$app->params['post_limit'] * 1);
 
         $cityInfo = City::getCity(Yii::$app->controller->actionParams['city']);
@@ -100,9 +107,28 @@ class SiteController extends Controller
 
         $posts = $posts->all();
 
+        if($promoPostId = Yii::$app->request->get('id') and Yii::$app->request->get('promo')) {
+
+            PromoHelper::addCookie();
+
+            $promoPost = Profile::find()->where(['id' => $promoPostId])
+                ->limit(1)
+                ->with('userAvatarRelations')
+                ->one();
+
+            if ($posts){
+
+                array_shift($posts);
+
+                array_unshift($posts, $promoPost);
+
+            }
+
+        }
+
         $uri = Yii::$app->request->url;
 
-        if (\strpos($uri, 'page')) $uri = \strstr($uri, 'page', true);
+        if (\strpos($uri, '?')) $uri = \strstr($uri, '?', true);
 
         $title =  MetaBuilder::Build($uri, $city, 'Title');
         $des = MetaBuilder::Build($uri, $city, 'des');

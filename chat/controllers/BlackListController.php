@@ -20,7 +20,7 @@ class BlackListController extends Controller
 
             $profile = Profile::find()->where(['id' => $userId])->asArray()->all();
 
-            if ($profile['sum'] <= 0 and !BlackList::find()->where(['user_id' => $userId])->one()){
+            if (!BlackList::find()->where(['user_id' => $userId])->one()){
 
                 $blackList = new BlackList;
 
