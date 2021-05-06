@@ -62,6 +62,24 @@ AdminLteAsset::register($this);
                                     <p>Главная</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/site/all" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Все диалоги</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/site/promo" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Диалоги из рекламы</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/site/logout" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Выйти</p>
+                                </a>
+                            </li>
 
                         </ul>
                     </li>

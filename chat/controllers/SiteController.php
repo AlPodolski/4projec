@@ -29,7 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'restart'],
+                        'actions' => ['logout', 'index', 'restart', 'all'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -38,7 +38,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -63,18 +63,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
-        $blackList = BlackList::find()->select('user_id')->asArray()->all();
-
-        $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
-
-        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])
-            ->andWhere(['not in' , 'id', $blackListIds])
-            ->select('id')->asArray()->all(), 'id');
-
-        return $this->render('index' , [
-            'fakeUsers' => $fakeUsers,
-        ]);
+        return $this->render('main' );
     }
 
     /**
@@ -98,6 +87,21 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionAll()
+    {
+        $blackList = BlackList::find()->select('user_id')->asArray()->all();
+
+        $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
+
+        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])
+            ->andWhere(['not in' , 'id', $blackListIds])
+            ->select('id')->asArray()->all(), 'id');
+
+        return $this->render('index' , [
+            'fakeUsers' => $fakeUsers,
+        ]);
     }
 
     /**
