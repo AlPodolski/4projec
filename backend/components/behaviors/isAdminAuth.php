@@ -18,6 +18,8 @@ class isAdminAuth extends Behavior
 
         if (Yii::$app->user->isGuest or Yii::$app->user->identity['role'] != 'admin') {
 
+            Yii::$app->user->logout();
+
             Yii::$app->response->redirect(['/'], 301, false);
 
         }
