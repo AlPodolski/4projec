@@ -3,6 +3,7 @@
 
 namespace frontend\modules\user\components;
 use common\models\City;
+use common\models\PromoRegisterCount;
 use common\models\RegisterCount;
 use common\models\User;
 use frontend\models\UserPol;
@@ -13,8 +14,10 @@ use frontend\modules\user\models\Photo;
 use yii\authclient\ClientInterface;
 use Yii;
 use frontend\modules\user\models\Auth;
+use yii\base\BaseObject;
 use yii\helpers\ArrayHelper;
 use function Composer\Autoload\includeFile;
+use common\models\PromoRegister;
 
 class AuthHandler
 {
@@ -128,7 +131,20 @@ class AuthHandler
             $auth = $this->createAuth($user->id, $id);
             if ($auth->save()) {
 
+                $cookies = Yii::$app->request->cookies;
+
+                if (isset($cookies['promo'])){
+
+                    $promoRegister = new PromoRegister();
+
+                    $promoRegister->user_id = $user->id;
+
+                    $promoRegister->save();
+
+                }
+
                 RegisterCount::addRegister(\date('d-m-Y'));
+                PromoRegisterCount::addRegister(\date('d-m-Y'));
 
                 if (isset($sex) and !empty($sex)){
                     if ($sex == 1) $this->savePol($user->id, 2,$cityInfo['id'] );

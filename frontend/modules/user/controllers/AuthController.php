@@ -4,6 +4,8 @@
 namespace frontend\modules\user\controllers;
 
 use common\models\LoginForm;
+use common\models\PromoRegister;
+use common\models\PromoRegisterCount;
 use common\models\RegisterCount;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
@@ -34,7 +36,18 @@ class AuthController extends Controller
             Yii::$app->user->login($user,  3600 * 24 * 30 );
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно, проверьте свой Email');
             RegisterCount::addRegister(\date('d-m-Y'));
+            PromoRegisterCount::addRegister(\date('d-m-Y'));
             $cookies = Yii::$app->request->cookies;
+
+            if (isset($cookies['promo'])){
+
+                $promoRegister = new PromoRegister();
+
+                $promoRegister->user_id = $user->id;
+
+                $promoRegister->save();
+
+            }
 
             if (isset($cookies['chat_info'])){
 
@@ -67,7 +80,14 @@ class AuthController extends Controller
 
             }
 
+
             return $this->redirect('/user');
+        }
+
+        if ($model->hasErrors()){
+
+            Yii::$app->session->setFlash('warning', $model->getFirstErrors());
+
         }
 
         return $this->render('signup', [
