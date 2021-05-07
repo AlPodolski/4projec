@@ -80,7 +80,11 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 
                                                         echo '<div class="no-vip-photo-wrap">';
 
-                                                            echo \yii\helpers\Html::img($messagePhoto['file']);
+                                                            ?>
+
+                                                    <span class="no-img-block" style="background-image: url('<?php echo $messagePhoto['file'] ?>');"></span>
+
+                                                        <?php
 
                                                         echo '</div>';
 
