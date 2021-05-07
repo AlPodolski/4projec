@@ -36,7 +36,6 @@ class AuthController extends Controller
             Yii::$app->user->login($user,  3600 * 24 * 30 );
             Yii::$app->session->setFlash('success', 'Регистрация прошла успешно, проверьте свой Email');
             RegisterCount::addRegister(\date('d-m-Y'));
-            PromoRegisterCount::addRegister(\date('d-m-Y'));
             $cookies = Yii::$app->request->cookies;
 
             if (isset($cookies['promo'])){
@@ -46,6 +45,8 @@ class AuthController extends Controller
                 $promoRegister->user_id = $user->id;
 
                 $promoRegister->save();
+
+                PromoRegisterCount::addRegister(\date('d-m-Y'));
 
             }
 

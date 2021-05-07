@@ -141,10 +141,12 @@ class AuthHandler
 
                     $promoRegister->save();
 
+                    PromoRegisterCount::addRegister(\date('d-m-Y'));
+
                 }
 
                 RegisterCount::addRegister(\date('d-m-Y'));
-                PromoRegisterCount::addRegister(\date('d-m-Y'));
+
 
                 if (isset($sex) and !empty($sex)){
                     if ($sex == 1) $this->savePol($user->id, 2,$cityInfo['id'] );
