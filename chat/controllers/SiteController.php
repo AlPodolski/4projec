@@ -2,6 +2,8 @@
 namespace chat\controllers;
 
 use common\models\BlackList;
+use common\models\PromoRegister;
+use common\models\User;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -29,7 +31,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'restart', 'all'],
+                        'actions' => ['logout', 'index', 'restart', 'all', 'promo'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -95,8 +97,18 @@ class SiteController extends Controller
 
         $blackListIds = ArrayHelper::getColumn($blackList, 'user_id');
 
+        $usersFromPromoRegister = Profile::find()
+            ->where(['in', 'id', ArrayHelper::getColumn(PromoRegister::find()->asArray()->all(), 'user_id')])
+            ->andWhere(['<', 'created_at', \time() - (3600 * 24 * 7)])
+            ->asArray()
+            ->select('id')
+            ->all();
+
+        $usersFromPromoRegister = ArrayHelper::getColumn($usersFromPromoRegister, 'id');
+
         $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['fake' => 0])
             ->andWhere(['not in' , 'id', $blackListIds])
+            ->andWhere(['not in' , 'id', $usersFromPromoRegister])
             ->select('id')->asArray()->all(), 'id');
 
         return $this->render('index' , [
@@ -114,6 +126,20 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionPromo()
+    {
+
+        $usersFromPromoRegister = ArrayHelper::getColumn(PromoRegister::find()->asArray()->all(), 'user_id');
+
+        $fakeUsers = ArrayHelper::getColumn(Profile::find()->asArray()->where(['in', 'id', $usersFromPromoRegister])
+            ->andWhere(['>', 'created_at', \time() - (3600 * 24 * 7)])
+            ->select('id')->asArray()->all(), 'id');
+
+        return $this->render('index' , [
+            'fakeUsers' => $fakeUsers,
+        ]);
     }
 
     public function actionRestart()
