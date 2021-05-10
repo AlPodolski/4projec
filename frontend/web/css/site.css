@@ -80,6 +80,10 @@
 #nav-tabContent {
     font-family: futuralightc , sans-serif;
 }
+.listing-img{
+    max-width: 100%;
+    height: auto;
+}
 .auth-icon {
     display: block;
     width: 32px;

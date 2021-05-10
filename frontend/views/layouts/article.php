@@ -33,7 +33,7 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
 
                     <picture>
                         <source srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
-                        <img loading="lazy" class="img"
+                        <img width="260px" height="250px" loading="lazy" class="img listing-img"
                              srcset="<?= Yii::$app->imageCache->thumbSrc($post->userAvatarRelations['file'], 'listing') ?>">
                     </picture>
 
