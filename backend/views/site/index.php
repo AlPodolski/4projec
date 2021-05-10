@@ -6,6 +6,7 @@
 /* @var $realProfileCount integer */
 /* @var $promoRegisterCount integer */
 /* @var $promoRegisterWeek array */
+/* @var $userCashPay array */
 
 $this->title = 'My Yii Application';
 ?>
@@ -51,6 +52,24 @@ $this->title = 'My Yii Application';
                         <?php foreach ($promoRegisterWeek as $item) : ?>
 
                             <p>Регистраций <?php echo $item['date'] ?> - <?php echo $item['count'] ?> </p>
+
+                        <?php endforeach; ?>
+
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <p>Пополнения</p>
+
+                        <?php foreach ($userCashPay as $item) : ?>
+
+                            <p>Приход <?php echo $item['date'] ?> - <?php echo $item['count'] ?> </p>
 
                         <?php endforeach; ?>
 

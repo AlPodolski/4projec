@@ -4,6 +4,7 @@ namespace backend\controllers;
 use backend\components\LastVisitHelper;
 use common\models\PromoRegister;
 use common\models\PromoRegisterCount;
+use common\models\UserCashPay;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\web\Controller;
@@ -71,12 +72,16 @@ class SiteController extends Controller
 
         $userCountWhoRegister24HourAgo = LastVisitHelper::todayCount($profiles);
 
+        $userCashPay = UserCashPay::find()->orderBy('id DESC')->asArray()->limit(7)->all();
+
         $promoRegisterWeek = PromoRegisterCount::find()->orderBy('id DESC')->asArray()->limit(7)->all();
+
         $promoRegisterCount = PromoRegister::find()->count();
 
         return $this->render('index' , [
             'userCountWhoRegister24HourAgo' => $userCountWhoRegister24HourAgo,
             'profilesCount' => $profilesCount,
+            'userCashPay' => $userCashPay,
             'realProfileCount' => $realProfileCount,
             'promoRegisterWeek' => $promoRegisterWeek,
             'promoRegisterCount' => $promoRegisterCount,

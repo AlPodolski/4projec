@@ -4,6 +4,7 @@
 namespace frontend\controllers;
 
 use common\models\ObmenkaOrder;
+use common\models\UserCashPay;
 use frontend\components\service\obmenka\Obmenka;
 use frontend\models\forms\BuyVipStatusForm;
 use frontend\models\forms\GiftVipStatusForm;
@@ -57,6 +58,8 @@ class CashController extends Controller
 
         }
 
+        if (isset($data['AMOUNT']) and $data['AMOUNT']) UserCashPay::addCash(\date('d-m-Y'), (int) $data['AMOUNT']);
+
         Yii::$app->response->redirect('https://'.$user_data[1].'.4dosug.com/user', 301, false);
 
     }
@@ -109,6 +112,8 @@ class CashController extends Controller
                     $transaction->commit();
 
                     Yii::$app->session->setFlash('success', 'Оплата совершена успешно');
+
+                    UserCashPay::addCash(\date('d-m-Y'), (int) $data->amount);
 
                     return  $this->redirect($protocol.'://'.$user->city.'.'.Yii::$app->params['site_name']);
 
