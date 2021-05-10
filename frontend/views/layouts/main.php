@@ -9,7 +9,6 @@ use yii\helpers\Html;
 
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use common\assets\FontAwesomeAsset;
 use common\widgets\Alert;
 use frontend\modules\user\widgets\RegisterWidget;
 use frontend\modules\user\widgets\LoginWidget;
@@ -21,7 +20,7 @@ use yii\widgets\ActiveForm;
 use frontend\modules\user\models\Photo;
 use frontend\widgets\PhotoWidget;
 AppAsset::register($this);
-FontAwesomeAsset::register($this);
+
 
 $login = new LoginForm();
 

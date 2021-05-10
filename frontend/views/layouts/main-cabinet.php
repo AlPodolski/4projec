@@ -9,7 +9,6 @@ use yii\helpers\Html;
 
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
-use common\assets\FontAwesomeAsset;
 use common\widgets\Alert;
 use frontend\modules\user\widgets\RegisterWidget;
 use frontend\modules\user\widgets\LoginWidget;
@@ -18,7 +17,6 @@ use frontend\widgets\UserSideBarWidget;
 use frontend\widgets\MetricaWidget;
 
 AppAsset::register($this);
-FontAwesomeAsset::register($this);
 
 $login = new LoginForm();
 

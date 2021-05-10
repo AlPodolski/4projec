@@ -474,34 +474,6 @@ $(document).ready(function () {
 
 });
 
-$(document).ready(function () {
-    if ($(window).width() < 1200) {
-
-        /*
-                $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick-theme.css'>" );
-                $( "head" ).append( "<link rel='stylesheet' href='/files/slick/slick.css'>" );
-
-                $( "head" ).append( "<link rel='preload' href='/files/slick/slick-theme.css' as='style'>" );
-                $( "head" ).append( "<link rel='preload' href='/files/slick/slick.css' as='style'>" );
-                $( "head" ).append( "<link rel='preload' href='/files/slick/fonts/slick.woff' as='font'>" );
-        */
-
-        let script = document.createElement('script');
-
-        // мы можем загрузить любой скрипт с любого домена
-        script.src = "/files/slick/slick.min.js"
-
-        document.head.append(script);
-
-        script.onload = function () {
-            register_slick();
-            $('.popular-block-mobile').css('display', 'block');
-            $('.main-banner-wrap-mobile').css('display', 'block');
-        };
-
-    }
-})
-
 function delete_dialog(object){
 
     var id  = $(object).attr('data-id');
@@ -673,17 +645,10 @@ $(window).scroll(function () {
 
                     if ($(".anket-single-page").length > 0){
 
-                            var singleGallery = $('.owl-carousel-main');
+                            var singleGallery = $('.carousel-inner');
                             singleGallery.lightGallery();
 
-                            singleGallery.owlCarousel({
-                                items: 1,
-                                margin: 16,
-                                loop: true,
-                                nav: true,
-                                navText: ['', ''],
-                                navElement: 'a></a',
-                            });
+                            $('.carousel').carousel()
 
                     }
 

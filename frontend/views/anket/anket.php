@@ -5,7 +5,6 @@ use common\models\Params;
 use common\models\Price;
 use frontend\modules\user\models\Photo;
 use frontend\modules\user\models\Profile;
-use frontend\assets\SlickAsset;
 
 /* @var $model Profile */
 /* @var $group array */
@@ -13,15 +12,7 @@ use frontend\assets\SlickAsset;
 /* @var $userHeart array */
 /* @var $this \yii\web\View */
 
-
-$this->registerJsFile('/files/js/owl.carousel.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-$this->registerJsFile('/files/js/owl.navigation.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
-
-
-$this->registerCssFile('/css/owl.carousel.min.css');
-$this->registerCssFile('/css/owl.theme.default.min.css');
-
-$this->registerJsFile('/files/js/single.js?v=20', ['depends' => [\frontend\assets\AppAsset::className()]]);
+$this->registerJsFile('/files/js/single.js?v=21', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 $photo = Photo::getUserphoto($model->id);
 $params = Params::find()->asArray()->all();

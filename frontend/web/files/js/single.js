@@ -1,18 +1,8 @@
 $(document).ready(function() {
 
-    var singleGallery = $('.owl-carousel-main');
+    var singleGallery = $('.carousel-inner');
+
     singleGallery.lightGallery();
-
-    singleGallery.owlCarousel({
-        items: 1,
-        margin: 16,
-        loop: true,
-        nav: true,
-        navText: ['', ''],
-        navElement: 'a></a',
-    });
-
-
 
 });
 
