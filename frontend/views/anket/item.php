@@ -77,9 +77,12 @@ $addWallForm = new \frontend\modules\wall\models\forms\AddToWallForm();
 
                                             <?php else : ?>
 
-                                                <div class="img-wrap d-flex no-photo <?php echo $class ?>" href="/files/img/nophoto.png">
-                                                    <img srcset="/files/img/nophoto.png" alt="">
-                                                </div>
+                                                <picture class="<?php echo $class ?>"
+                                                         href="/files/img/nophoto.png">
+                                                    <img loading="lazy" class="img d-block w-100"
+                                                         src="/files/img/nophoto.png"
+                                                         alt="">
+                                                </picture>
 
                                             <?php endif; ?>
 
