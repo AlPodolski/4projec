@@ -375,7 +375,11 @@ use yii\helpers\Html;
                     <a class="BottomMenu__link" >
                         <div class="_BottomMenu__icon_js BottomMenu__icon_feed BottomMenu__icon BottomMenu__icon_active events">
                             <div class="mobile-icon">
-                                <i class="fas fa-bars"></i>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 14.4448H0V16.6671H20V14.4448Z" fill="#486BEF"/>
+                                    <path d="M20 8.88916H0V11.1114H20V8.88916Z" fill="#486BEF"/>
+                                    <path d="M20 3.3335H0V5.55574H20V3.3335Z" fill="#486BEF"/>
+                                </svg>
                             </div>
                         </div>
                     </a>

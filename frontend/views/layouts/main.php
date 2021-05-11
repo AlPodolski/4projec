@@ -95,13 +95,18 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1',
                     </div>
                     <div class="col-2">
                         <div class="mobile-icon">
-                            <i class="fas fa-bars"></i>
+                            <svg width="35" height="19" viewBox="0 0 35 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="35" height="3" rx="1.5" fill="#486BEF"/>
+                                <rect y="16" width="35" height="3" rx="1.5" fill="#486BEF"/>
+                                <rect x="15" y="8" width="20" height="3" rx="1.5" fill="#486BEF"/>
+                            </svg>
+
                         </div>
 
                         <div class="mobile-menu">
 
                             <div class="mobile-icon mobile-icon-close">
-                                <img src="/files/img/close-black.png" alt="">
+                                <img src="/files/img/close-black.png" alt="" width="14px" height="14px">
                             </div>
 
                             <ul class="mobile-nav">
