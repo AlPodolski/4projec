@@ -2141,7 +2141,7 @@ a {
 }
 .mobile-filter-icon.open-filter.listing-filter-btn {
     position: relative;
-    top: 1px;
+    top: 3px;
 }
 .mobile-close-menu {
     position: absolute;
@@ -3270,6 +3270,10 @@ input:checked+.img-label-radio{
 }
 .img-label-radio:checked+label {
     border: 1px solid #F74952;
+}
+.place-mobile svg{
+    position: relative;
+    top: -2px;
 }
 @media (min-width: 1199px) {
     .women-block , .men-block{
