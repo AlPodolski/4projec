@@ -19,7 +19,7 @@ if (!isset($cssClass))  $cssClass = 'col-6 col-sm-6 col-md-4 col-lg-4';
         <?php if (isset($post['vip_status_work']) and $post['vip_status_work'] > time()) : ?>
 
             <div class="vip-icon-wrap">
-                <img class="vip-icon" src="/files/img/vip_icon.png" alt="VIP">
+                <img class="vip-icon listing-img" width="29px" height="25px" src="/files/img/vip_icon.png" alt="VIP">
             </div>
 
         <?php endif; ?>

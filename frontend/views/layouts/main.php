@@ -61,14 +61,14 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1',
     <?php endif; ?>
     <?php echo MetricaWidget::widget(); ?>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170464939-1"></script>
+<!--    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170464939-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'UA-170464939-1');
-    </script>
+    </script>-->
     <?php $this->head() ?>
 </head>
 <body>
@@ -86,7 +86,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1',
                     <div class="col-5 col-sm-4 col-md-4">
                         <div class="logo">
                             <a href="/">
-                                <img src="/files/img/DOSUG.png" alt="">
+                                <img class="listing-img" width="160px" height="79px" src="/files/img/DOSUG.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1',
 </div>
 
 <footer class="footer">
-    <img src="//www.free-kassa.ru/img/fk_btn/18.png">
+    <img width="88px" height="31px" src="//www.free-kassa.ru/img/fk_btn/18.png">
 </footer>
 
 <!-- Modal -->
