@@ -50,6 +50,8 @@ class UserCashPay extends \yii\db\ActiveRecord
 
             $data->count = $data->count + $cash;
 
+            $data->save();
+
         } else {
 
             $registerCount = new self();
