@@ -13,7 +13,7 @@
 
             <?php foreach ($dialogs as $dialog) : ?>
 
-            <?php if ($dialog and $dialog['lastMessage']['status'] == 0 and $dialog['lastMessage']['from'] != $dialog['user_id']) : ?>
+            <?php if ($dialog and $dialog['lastMessage']['status'] == 0 and $dialog['lastMessage']['author']['fake'] == 1) : ?>
 
                 <?php $i++; ?>
 
