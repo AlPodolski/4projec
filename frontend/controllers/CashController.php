@@ -85,7 +85,7 @@ class CashController extends Controller
 
                     $vipForm->user_id = $user->id;
 
-                    $vipForm->sum = (int) $data->amount;
+                    $vipForm->sum = (int) $order->sum;
 
                     $vipForm->save();
 
@@ -96,14 +96,14 @@ class CashController extends Controller
 
                     $vipForm->fromUser = $user->id;
                     $vipForm->toUser = $order->user_to;
-                    $vipForm->sum = (int) $data->amount;
+                    $vipForm->sum = (int) $order->sum;
 
                     $vipForm->save();
 
                 }
                 else{
 
-                    $user->cash = $user->cash + (int) $data->amount;
+                    $user->cash = $user->cash + (int) $order->sum;
 
                 }
 
@@ -113,7 +113,7 @@ class CashController extends Controller
 
                     Yii::$app->session->setFlash('success', 'Оплата совершена успешно');
 
-                    UserCashPay::addCash(\date('d-m-Y'), (int) $data->amount);
+                    UserCashPay::addCash(\date('d-m-Y'), (int) $order->sum);
 
                     return  $this->redirect($protocol.'://'.$user->city.'.'.Yii::$app->params['site_name']);
 
