@@ -76,7 +76,7 @@ class Obmenka
             "description" => $des,
             "success_url" => "https://".$city.".4dosug.com/pay/obmenka/".$orderId,
             "fail_url" => "https://".$city.".4dosug.com/pay",
-            "status_url" => "https://".$city.".4dosug.com/user",
+            "status_url" => "https://".$city.".4dosug.com/cust-pay",
         ];
 
         return $this->sendData($data, $this->create_pay_url);

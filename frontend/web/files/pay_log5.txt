@@ -1,0 +1,342 @@
+
+Array
+(
+    [0] => yii\web\Request Object
+        (
+            [enableCsrfValidation] => 
+            [csrfParam] => _csrf-frontend
+            [csrfCookie] => Array
+                (
+                    [httpOnly] => 1
+                )
+
+            [enableCsrfCookie] => 1
+            [enableCookieValidation] => 1
+            [cookieValidationKey] => Uv5gSG7AYqbTm74F6b9UeTxDhI7HHD9K
+            [methodParam] => _method
+            [parsers] => Array
+                (
+                )
+
+            [trustedHosts] => Array
+                (
+                )
+
+            [secureHeaders] => Array
+                (
+                    [0] => X-Forwarded-For
+                    [1] => X-Forwarded-Host
+                    [2] => X-Forwarded-Proto
+                    [3] => Front-End-Https
+                    [4] => X-Rewrite-Url
+                    [5] => X-Original-Host
+                )
+
+            [ipHeaders] => Array
+                (
+                    [0] => X-Forwarded-For
+                )
+
+            [secureProtocolHeaders] => Array
+                (
+                    [X-Forwarded-Proto] => Array
+                        (
+                            [0] => https
+                        )
+
+                    [Front-End-Https] => Array
+                        (
+                            [0] => on
+                        )
+
+                )
+
+            [_cookies:yii\web\Request:private] => yii\web\CookieCollection Object
+                (
+                    [readOnly] => 1
+                    [_cookies:yii\web\CookieCollection:private] => Array
+                        (
+                            [_identity-frontend] => yii\web\Cookie Object
+                                (
+                                    [name] => _identity-frontend
+                                    [value] => [42187,"9akVXkxnIvYXX3q1gbKhQThA3VDJXGaH",2592000]
+                                    [domain] => 
+                                    [expire] => 
+                                    [path] => /
+                                    [secure] => 
+                                    [httpOnly] => 1
+                                    [sameSite] => Lax
+                                )
+
+                        )
+
+                )
+
+            [_headers:yii\web\Request:private] => yii\web\HeaderCollection Object
+                (
+                    [_headers:yii\web\HeaderCollection:private] => Array
+                        (
+                            [host] => Array
+                                (
+                                    [0] => msk.4dosug.loc
+                                )
+
+                            [user-agent] => Array
+                                (
+                                    [0] => Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0
+                                )
+
+                            [accept] => Array
+                                (
+                                    [0] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                )
+
+                            [accept-language] => Array
+                                (
+                                    [0] => ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+                                )
+
+                            [accept-encoding] => Array
+                                (
+                                    [0] => gzip, deflate
+                                )
+
+                            [connection] => Array
+                                (
+                                    [0] => keep-alive
+                                )
+
+                            [cookie] => Array
+                                (
+                                    [0] => _ym_uid=1587037485972774507; _ym_d=1609230104; _ga=GA1.2.1336446919.1593005951; _identity-frontend=a7c5a8056c26b85432ebf7af4ea2e955bb30cfab91ef79d494d20e106e09c2b8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B42187%2C%229akVXkxnIvYXX3q1gbKhQThA3VDJXGaH%22%2C2592000%5D%22%3B%7D; advanced-frontend=c9mtvs7qd0cedtv23qmp95aipoo9rks3; _ym_isad=2
+                                )
+
+                            [upgrade-insecure-requests] => Array
+                                (
+                                    [0] => 1
+                                )
+
+                        )
+
+                )
+
+            [_rawBody:yii\web\Request:private] => 
+            [_bodyParams:yii\web\Request:private] => 
+            [_queryParams:yii\web\Request:private] => 
+            [_hostInfo:yii\web\Request:private] => http://msk.4dosug.loc
+            [_hostName:yii\web\Request:private] => 
+            [_baseUrl:yii\web\Request:private] => 
+            [_scriptUrl:yii\web\Request:private] => /index.php
+            [_scriptFile:yii\web\Request:private] => 
+            [_pathInfo:yii\web\Request:private] => cust-pay
+            [_url:yii\web\Request:private] => /cust-pay
+            [_port:yii\web\Request:private] => 
+            [_securePort:yii\web\Request:private] => 
+            [_contentTypes:yii\web\Request:private] => 
+            [_languages:yii\web\Request:private] => 
+            [_csrfToken:yii\web\Request:private] => 
+            [_secureForwardedHeaderParts:yii\web\Request:private] => Array
+                (
+                )
+
+            [_isConsoleRequest:yii\base\Request:private] => 
+            [_events:yii\base\Component:private] => Array
+                (
+                )
+
+            [_eventWildcards:yii\base\Component:private] => Array
+                (
+                )
+
+            [_behaviors:yii\base\Component:private] => 
+            [_scriptFile:yii\base\Request:private] => 
+        )
+
+)
+
+Array
+(
+    [Host] => msk.4dosug.loc
+    [User-Agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0
+    [Accept] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [Accept-Language] => ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+    [Accept-Encoding] => gzip, deflate
+    [Connection] => keep-alive
+    [Cookie] => _ym_uid=1587037485972774507; _ym_d=1609230104; _ga=GA1.2.1336446919.1593005951; _identity-frontend=a7c5a8056c26b85432ebf7af4ea2e955bb30cfab91ef79d494d20e106e09c2b8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B42187%2C%229akVXkxnIvYXX3q1gbKhQThA3VDJXGaH%22%2C2592000%5D%22%3B%7D; advanced-frontend=c9mtvs7qd0cedtv23qmp95aipoo9rks3; _ym_isad=2
+    [Upgrade-Insecure-Requests] => 1
+)
+
+
+Array
+(
+    [0] => yii\web\Request Object
+        (
+            [enableCsrfValidation] => 
+            [csrfParam] => _csrf-frontend
+            [csrfCookie] => Array
+                (
+                    [httpOnly] => 1
+                )
+
+            [enableCsrfCookie] => 1
+            [enableCookieValidation] => 1
+            [cookieValidationKey] => Uv5gSG7AYqbTm74F6b9UeTxDhI7HHD9K
+            [methodParam] => _method
+            [parsers] => Array
+                (
+                )
+
+            [trustedHosts] => Array
+                (
+                )
+
+            [secureHeaders] => Array
+                (
+                    [0] => X-Forwarded-For
+                    [1] => X-Forwarded-Host
+                    [2] => X-Forwarded-Proto
+                    [3] => Front-End-Https
+                    [4] => X-Rewrite-Url
+                    [5] => X-Original-Host
+                )
+
+            [ipHeaders] => Array
+                (
+                    [0] => X-Forwarded-For
+                )
+
+            [secureProtocolHeaders] => Array
+                (
+                    [X-Forwarded-Proto] => Array
+                        (
+                            [0] => https
+                        )
+
+                    [Front-End-Https] => Array
+                        (
+                            [0] => on
+                        )
+
+                )
+
+            [_cookies:yii\web\Request:private] => yii\web\CookieCollection Object
+                (
+                    [readOnly] => 1
+                    [_cookies:yii\web\CookieCollection:private] => Array
+                        (
+                            [_identity-frontend] => yii\web\Cookie Object
+                                (
+                                    [name] => _identity-frontend
+                                    [value] => [42187,"9akVXkxnIvYXX3q1gbKhQThA3VDJXGaH",2592000]
+                                    [domain] => 
+                                    [expire] => 
+                                    [path] => /
+                                    [secure] => 
+                                    [httpOnly] => 1
+                                    [sameSite] => Lax
+                                )
+
+                        )
+
+                )
+
+            [_headers:yii\web\Request:private] => yii\web\HeaderCollection Object
+                (
+                    [_headers:yii\web\HeaderCollection:private] => Array
+                        (
+                            [host] => Array
+                                (
+                                    [0] => msk.4dosug.loc
+                                )
+
+                            [user-agent] => Array
+                                (
+                                    [0] => Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0
+                                )
+
+                            [accept] => Array
+                                (
+                                    [0] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                                )
+
+                            [accept-language] => Array
+                                (
+                                    [0] => ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+                                )
+
+                            [accept-encoding] => Array
+                                (
+                                    [0] => gzip, deflate
+                                )
+
+                            [connection] => Array
+                                (
+                                    [0] => keep-alive
+                                )
+
+                            [cookie] => Array
+                                (
+                                    [0] => _ym_uid=1587037485972774507; _ym_d=1609230104; _ga=GA1.2.1336446919.1593005951; _identity-frontend=a7c5a8056c26b85432ebf7af4ea2e955bb30cfab91ef79d494d20e106e09c2b8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B42187%2C%229akVXkxnIvYXX3q1gbKhQThA3VDJXGaH%22%2C2592000%5D%22%3B%7D; advanced-frontend=c9mtvs7qd0cedtv23qmp95aipoo9rks3; _ym_isad=2
+                                )
+
+                            [upgrade-insecure-requests] => Array
+                                (
+                                    [0] => 1
+                                )
+
+                            [cache-control] => Array
+                                (
+                                    [0] => max-age=0
+                                )
+
+                        )
+
+                )
+
+            [_rawBody:yii\web\Request:private] => 
+            [_bodyParams:yii\web\Request:private] => 
+            [_queryParams:yii\web\Request:private] => 
+            [_hostInfo:yii\web\Request:private] => http://msk.4dosug.loc
+            [_hostName:yii\web\Request:private] => 
+            [_baseUrl:yii\web\Request:private] => 
+            [_scriptUrl:yii\web\Request:private] => /index.php
+            [_scriptFile:yii\web\Request:private] => 
+            [_pathInfo:yii\web\Request:private] => cust-pay
+            [_url:yii\web\Request:private] => /cust-pay
+            [_port:yii\web\Request:private] => 
+            [_securePort:yii\web\Request:private] => 
+            [_contentTypes:yii\web\Request:private] => 
+            [_languages:yii\web\Request:private] => 
+            [_csrfToken:yii\web\Request:private] => 
+            [_secureForwardedHeaderParts:yii\web\Request:private] => Array
+                (
+                )
+
+            [_isConsoleRequest:yii\base\Request:private] => 
+            [_events:yii\base\Component:private] => Array
+                (
+                )
+
+            [_eventWildcards:yii\base\Component:private] => Array
+                (
+                )
+
+            [_behaviors:yii\base\Component:private] => 
+            [_scriptFile:yii\base\Request:private] => 
+        )
+
+)
+
+Array
+(
+    [Host] => msk.4dosug.loc
+    [User-Agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0
+    [Accept] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [Accept-Language] => ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+    [Accept-Encoding] => gzip, deflate
+    [Connection] => keep-alive
+    [Cookie] => _ym_uid=1587037485972774507; _ym_d=1609230104; _ga=GA1.2.1336446919.1593005951; _identity-frontend=a7c5a8056c26b85432ebf7af4ea2e955bb30cfab91ef79d494d20e106e09c2b8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B42187%2C%229akVXkxnIvYXX3q1gbKhQThA3VDJXGaH%22%2C2592000%5D%22%3B%7D; advanced-frontend=c9mtvs7qd0cedtv23qmp95aipoo9rks3; _ym_isad=2
+    [Upgrade-Insecure-Requests] => 1
+    [Cache-Control] => max-age=0
+)
+

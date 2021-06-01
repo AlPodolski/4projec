@@ -8,6 +8,7 @@ use common\models\UserCashPay;
 use frontend\components\service\obmenka\Obmenka;
 use frontend\models\forms\BuyVipStatusForm;
 use frontend\models\forms\GiftVipStatusForm;
+use frontend\models\forms\PayForm;
 use frontend\modules\user\models\Profile;
 use Yii;
 use yii\base\BaseObject;
@@ -15,6 +16,24 @@ use yii\web\Controller;
 
 class CashController extends Controller
 {
+
+    public function actionCustPay($city)
+    {
+
+        $data = array();
+
+        $data[] = Yii::$app->request;
+
+        $log_file = fopen(Yii::getAlias("@frontend/web/files/pay_log5.txt"), 'a+');
+        fwrite($log_file, print_r($requestDAta = json_decode(file_get_contents('php://input')), true).PHP_EOL);
+        fwrite($log_file, print_r($data, true).PHP_EOL);
+        fwrite($log_file, print_r(getallheaders(), true).PHP_EOL);
+        fclose($log_file);
+
+
+    }
+
+
     public function actionPay()
     {
         $data = Yii::$app->request->post();

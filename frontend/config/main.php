@@ -104,6 +104,7 @@ return [
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/site/cust' => 'site/cust',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/user/news' => 'user/news/list',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay' => 'cash/pay',
+                '<protocol>://<city:[a-z-0-9]+>.<domain>/cust-pay' => 'cash/cust-pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/pay/obmenka/<id:[0-9]+>' => 'cash/obmenka-pay',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/robots.txt' => 'site/robot',
                 '<protocol>://<city:[a-z-0-9]+>.<domain>/auth' => 'site/auth',
