@@ -22,7 +22,8 @@ class CashController extends Controller
 
         $data = array();
 
-        $data[] = Yii::$app->request;
+        $data[] = Yii::$app->request->get();
+        $data[] = Yii::$app->request->post();
 
         $log_file = fopen(Yii::getAlias("@frontend/web/files/pay_log5.txt"), 'a+');
         fwrite($log_file, print_r($requestDAta = json_decode(file_get_contents('php://input')), true).PHP_EOL);
