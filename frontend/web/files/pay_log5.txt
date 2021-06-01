@@ -340,3 +340,32 @@ Array
     [Cache-Control] => max-age=0
 )
 
+
+Array
+(
+    [0] => Array
+        (
+            [protocol] => http
+            [city] => msk
+            [domain] => 4dosug.loc
+        )
+
+    [1] => Array
+        (
+        )
+
+)
+
+Array
+(
+    [Host] => msk.4dosug.loc
+    [User-Agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0
+    [Accept] => text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+    [Accept-Language] => ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+    [Accept-Encoding] => gzip, deflate
+    [Connection] => keep-alive
+    [Cookie] => _ym_uid=1587037485972774507; _ym_d=1609230104; _ga=GA1.2.1336446919.1593005951; _identity-frontend=a7c5a8056c26b85432ebf7af4ea2e955bb30cfab91ef79d494d20e106e09c2b8a%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A50%3A%22%5B42187%2C%229akVXkxnIvYXX3q1gbKhQThA3VDJXGaH%22%2C2592000%5D%22%3B%7D; advanced-frontend=c9mtvs7qd0cedtv23qmp95aipoo9rks3; _ym_isad=2
+    [Upgrade-Insecure-Requests] => 1
+    [Cache-Control] => max-age=0
+)
+
