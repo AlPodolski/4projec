@@ -93,7 +93,7 @@ class CashController extends Controller
 
             $data = $obmenka->getOrderInfo($id);
 
-            if (isset($data->amount)){
+            if (isset($data->amount) and $data->status == 'FINISHED'){
 
                 $transaction = Yii::$app->db->beginTransaction();
 
