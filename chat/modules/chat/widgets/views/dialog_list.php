@@ -98,7 +98,9 @@
                                                 </span>
                                             </a>
                                         </div>
-                                        <div class="message write-message" data-dialog-id="<?php echo $dialog['dialog_id'] ?>" onclick="get_message_form(this)" data-user-id="<?php echo $dialog->companion['author']['id'] ?>">
+                                        <div class="message write-message" data-dialog-id="<?php echo $dialog['dialog_id'] ?>"
+                                             onclick="get_message_form(this);ym(57612607,'reachGoal','open_<?php echo Yii::$app->params['id_'.Yii::$app->user->id] ?: 'alina' ?>')"
+                                             data-user-id="<?php echo $dialog->companion['author']['id'] ?>">
                                             Написать
                                         </div>
                                     </div>
