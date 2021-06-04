@@ -77,7 +77,7 @@ AdminLteAsset::register($this);
                             <li class="nav-item">
                                 <a href="/site/logout" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Выйти</p>
+                                    <p>Выйти (<?php echo Yii::$app->params['id_'.Yii::$app->user->id] ?>)</p>
                                 </a>
                             </li>
 
