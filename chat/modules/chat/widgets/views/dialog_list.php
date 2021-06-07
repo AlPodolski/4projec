@@ -17,7 +17,7 @@
 
                 <?php $i++; ?>
 
-                <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> <?php if ($dialog->lastMessage['status'] == 0 ) echo 'not-read-dialog'; ?> ">
+                <li class="dialog_item dialog-item-<?php echo $dialog['dialog_id'] ?> not-read-dialog ">
                 <div class="row">
                     <div class="col-2 col-md-1">
                         <div class="dialog-photo">
@@ -69,7 +69,7 @@
                                                 </span>
                                             </a>
                                             <a href="#">
-                                                <span class="nim-dialog--inner-text <?php if ($dialog->lastMessage['status'] != 0) echo 'read-dialog'; ?> ">
+                                                <span class="nim-dialog--inner-text ">
                                                    <?php if (isset($dialog->lastMessage['class'])) : ?>
 
                                                        <?php if ($dialog->lastMessage['class'] == \frontend\models\relation\UserPresents::class) : ?>
