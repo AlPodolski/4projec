@@ -263,7 +263,7 @@ class SiteController extends Controller
     public function actionAdvertising($city)
     {
 
-        return true;
+        exit();
 
         $cityInfo = City::getCity($city);
 
