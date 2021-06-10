@@ -36,7 +36,7 @@ class AnswerController extends Controller
                 );
 
                 if ($curl = \curl_init()) {
-                        \curl_setopt($curl, CURLOPT_URL, 'https://gdialog.prostitutki-13.com/message');
+                        \curl_setopt($curl, CURLOPT_URL, 'https://gdialog.pr-13.com/message');
                         \curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                         \curl_setopt($curl, CURLOPT_POST, true);
                         \curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
