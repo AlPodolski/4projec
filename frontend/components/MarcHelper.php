@@ -26,7 +26,7 @@ class MarcHelper
 
                     else $marck_url = rtrim(str_replace(trim($param['url'], '/'), '', $path), '/');
 
-                    $close = '<span><i class="fa fa-times" aria-hidden="true"></i></span>';
+                    $close = '<span>&times;</span>';
 
                     if ($marck_url == '/znakomstva' or $marck_url == 'znakomstva') $marck_url = '';
 

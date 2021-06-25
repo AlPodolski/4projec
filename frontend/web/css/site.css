@@ -1080,10 +1080,6 @@ h1{
     color: #fb3f4c;
     transition: all .2s ease-in-out;
 }
-.marc:hover span {
-    background-color: #fff;
-    transition: all .2s ease-in-out;
-}
 .marc span {
     display: inline-block;
     width: 24px;
@@ -1092,7 +1088,6 @@ h1{
     line-height: 32px;
     border-radius: 50%;
     position: relative;
-    top: 3px;
 }
 .marc span i {
     line-height: 24px;
@@ -3219,7 +3214,6 @@ a {
 }
 .send-message-photo svg{
     position: relative;
-    top: -2px;
 }
 .pay-from-wrap{
     background: #FFFFFF;
@@ -3274,6 +3268,11 @@ input:checked+.img-label-radio{
 .place-mobile svg{
     position: relative;
     top: -2px;
+}
+#modal-in .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
 }
 @media (min-width: 1199px) {
     .women-block , .men-block{
@@ -3558,6 +3557,33 @@ input:checked+.img-label-radio{
     }
 }
 @media (max-width: 767px) {
+    .register-btn {
+        margin-bottom: 18px;
+    }
+    .new-message-text {
+        font-size: 14px;
+    }
+    .logo {
+        position: relative;
+        top: 3px;
+    }
+    .nim-dialog--content .vip-icon-wrap {
+        position: absolute;
+        top: 33px;
+        right: 19px;
+    }
+    .message-text{
+        font-size: 12px;
+    }
+    #modal-in .modal-header{
+        padding-top: 20px;
+    }
+    #modal-in .modal-body {
+        padding: 20px;
+    }
+    .field-loginform-email {
+        margin-bottom: 30px;
+    }
     .no-img svg{
         min-height: 230px;
     }

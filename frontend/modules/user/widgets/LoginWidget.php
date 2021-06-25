@@ -46,7 +46,7 @@ class LoginWidget extends Widget
                         </a>
                     </div>
 
-                <div style="color:#999;margin-bottom: 25px;line-height: 30px;" class="text-center text-black " >
+                <div style="color:#999;margin-bottom: 25px;line-height: 25px;" class="text-center text-black " >
                     Забыли пароль <?= Html::a('Сбросить', ['site/request-password-reset']) ?>.
                     <br>
                     Отправить письмо еще раз <?= Html::a('Отправить', ['site/resend-verification-email']) ?>

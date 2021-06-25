@@ -226,6 +226,9 @@ if (!Yii::$app->user->isGuest) $this->registerJsFile('/files/js/cabinet.js?v=1',
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Войти</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
 
