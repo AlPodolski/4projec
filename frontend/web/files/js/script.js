@@ -579,6 +579,16 @@ $(function () {
 
 $(window).scroll(function () {
 
+    if($(this).scrollTop() != 0) {
+
+        $('#toTop').fadeIn();
+
+    } else {
+
+        $('#toTop').fadeOut();
+
+    }
+
     var target = $('.pager');
     var targetPos = target.offset().top;
     var winHeight = $(window).height();
@@ -829,5 +839,16 @@ $( ".close-toggle-block" ).click(function() {
     }
 
     $('.close-toggle-block').addClass('d-none');
+
+});
+
+
+$(function() {
+
+    $('#toTop').click(function() {
+
+        $('body,html').animate({scrollTop:0},800);
+
+    });
 
 });

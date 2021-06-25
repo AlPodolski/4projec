@@ -1080,6 +1080,21 @@ h1{
     color: #fb3f4c;
     transition: all .2s ease-in-out;
 }
+#toTop {
+    text-align:center;
+    padding:5px;
+    position:fixed;
+    bottom:60px; /* отступ кнопки от нижнего края страницы*/
+    left:15px;
+    cursor:pointer;
+    display:none;
+    color:#333;
+    font-family:verdana;
+    font-size:11px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px hsla(0, 0%, 80%, 0.44);
+}
 .marc span {
     display: inline-block;
     width: 24px;
