@@ -996,6 +996,9 @@ h1{
 .breadcrumb .active{
     margin-left: 10px;
 }
+.content{
+    margin-right: -15px;
+}
 .content .anket-single-page{
     margin-bottom: 15px;
 }
@@ -3569,6 +3572,9 @@ input:checked+.img-label-radio{
     }
 }
 @media (max-width: 767px) {
+    .content{
+        margin-right: inherit;
+    }
     .register-btn {
         margin-bottom: 18px;
     }
