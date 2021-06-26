@@ -11,7 +11,13 @@ $form = ActiveForm::begin([
     'action' => '/feedback',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
-<?= $form->field($model, 'mail')->textInput(['value' => $email]) ?>
+
+<?php if (Yii::$app->user->isGuest) : ?>
+
+<?= $form->field($model, 'mail')->textInput(['value' => $email, 'required' => 'required']) ?>
+
+<?php endif; ?>
+
 <?= $form->field($model, 'text')->textarea() ?>
 
     <div class="form-group">

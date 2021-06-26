@@ -31,6 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'mail',
             'status',
             'created_at',
+            [
+                'attribute' => 'Пользователь',
+                'format' => 'raw',
+                'value' => function ($claim) {
+                    /* @var $claim \common\models\Feedback */
+
+                    if (isset($claim->user_id) and $claim->user_id)
+                        return Html::a($claim->user_id, '/profile/update?id='.$claim->user_id);
+
+                    return '-';
+
+                },
+            ],
 
             ['class' => 'backend\components\ActionColumnExtends'],
         ],

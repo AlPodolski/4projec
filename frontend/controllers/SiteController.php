@@ -183,6 +183,8 @@ class SiteController extends Controller
 
             $model = new FeedBackForm();
 
+            if (!Yii::$app->user->isGuest) $model->user_id = Yii::$app->user->id;
+
             if ($model->load(Yii::$app->request->post()) and $model->save()){
 
                 Yii::$app->session->setFlash('success' , 'Сообщение отправлено');

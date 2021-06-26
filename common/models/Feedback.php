@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $mail
  * @property int|null $status
  * @property int|null $created_at
+ * @property int|null $user_id
  */
 class Feedback extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['status', 'created_at'], 'integer'],
+            [['status', 'created_at', 'user_id'], 'integer'],
             [['text', 'mail'], 'string', 'max' => 255],
         ];
     }
@@ -48,6 +49,13 @@ class Feedback extends \yii\db\ActiveRecord
             'mail' => 'Mail',
             'status' => 'Status',
             'created_at' => 'Created At',
+            'user_id ' => 'user id',
         ];
     }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
 }
