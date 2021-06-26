@@ -68,7 +68,7 @@ if (!Yii::$app->user->isGuest) {
             </div>
         </div>
         <div class="close-message" onclick="close_message_event(this)">
-            <i class="fas fa-times"></i>
+            <span aria-hidden="true">&times;</span>
         </div>
     </div>
 
