@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use frontend\modules\user\models\Profile;
 use Yii;
 
 /**
@@ -28,6 +29,11 @@ class BlackList extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
         ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(Profile::class, ['id' => 'user_id']);
     }
 
     /**

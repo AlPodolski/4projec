@@ -94,6 +94,12 @@ AdminLteAsset::register($this);
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a href="/black-list/index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Черный список</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="/profile" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Пользователи</p>
