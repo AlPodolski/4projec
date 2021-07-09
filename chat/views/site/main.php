@@ -24,7 +24,7 @@ $i = 1;
 
                 <p class="<?php echo $class ?>">
                     <?php echo $i ?>.
-                    <?php echo $item->user_name ?> :
+                    <?php echo ucfirst($item->user_name) ?> :
                     <?php echo $item->count ?>
                 </p>
 
