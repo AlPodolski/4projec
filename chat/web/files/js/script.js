@@ -97,6 +97,7 @@ function send_message(object){
     var dialog_id = $(object).attr('data-dialog-id');
     var from_id = $(object).attr('data-id');
     var from_name = $(object).attr('data-name');
+    var from_admin = $(object).attr('data-admin-from');
 
 
     var img = $('.user-img').attr('srcset');
@@ -112,6 +113,8 @@ function send_message(object){
         var formData = new FormData($("#message-form")[0]);
 
         $('#message-form textarea').val('');
+
+        console.log(formData);
 
         $.ajax({
             url: '/chat/send',

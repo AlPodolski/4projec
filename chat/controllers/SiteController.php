@@ -2,6 +2,7 @@
 namespace chat\controllers;
 
 use common\models\BlackList;
+use common\models\CountMessage;
 use common\models\PromoRegister;
 use common\models\User;
 use frontend\modules\user\models\Profile;
@@ -65,7 +66,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('main' );
+
+        $messageCount = CountMessage::find()
+            ->where(['date' => $date = date('Y-m-d', \time() - (3600 * 24))])
+            ->orderBy('count DESC')
+            ->all();
+
+        return $this->render('main',[
+            'date' => $date,
+            'messageCount' => $messageCount,
+        ] );
     }
 
     /**

@@ -2,6 +2,7 @@
 namespace backend\controllers;
 
 use backend\components\LastVisitHelper;
+use common\models\CountMessage;
 use common\models\PromoRegister;
 use common\models\PromoRegisterCount;
 use common\models\UserCashPay;
@@ -78,6 +79,11 @@ class SiteController extends Controller
 
         $promoRegisterCount = PromoRegister::find()->count();
 
+        $messageCount = CountMessage::find()
+            ->where(['date' => $date = date('Y-m-d', \time() - (3600 * 24))])
+            ->orderBy('count DESC')
+            ->all();
+
         return $this->render('index' , [
             'userCountWhoRegister24HourAgo' => $userCountWhoRegister24HourAgo,
             'profilesCount' => $profilesCount,
@@ -85,6 +91,8 @@ class SiteController extends Controller
             'realProfileCount' => $realProfileCount,
             'promoRegisterWeek' => $promoRegisterWeek,
             'promoRegisterCount' => $promoRegisterCount,
+            'date' => $date,
+            'messageCount' => $messageCount,
         ]);
     }
 

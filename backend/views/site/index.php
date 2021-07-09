@@ -7,8 +7,13 @@
 /* @var $promoRegisterCount integer */
 /* @var $promoRegisterWeek array */
 /* @var $userCashPay array */
+/* @var $messageCount array */
+/* @var $date string */
 
 $this->title = 'My Yii Application';
+
+$i = 1;
+
 ?>
 <div class="site-index">
 
@@ -79,6 +84,41 @@ $this->title = 'My Yii Application';
                     </div>
                 </div>
             </div>
+
+            <?php if ($messageCount) : ?>
+                    <div class="col-lg-4 margin-top-30">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <p>Отправлено сообщений за <?php echo $date ?></p>
+
+                                <?php foreach ($messageCount as $item) : ?>
+
+                                    <?php
+
+                                    if ($i == 1) $class = 'text-uppercase fw-bold big-text';
+                                    else $class = '';
+
+                                    ?>
+
+                                    <p class="<?php echo $class ?>">
+                                        <?php echo $i ?>.
+                                        <?php echo $item->user_name ?> :
+                                        <?php echo $item->count ?>
+                                    </p>
+
+                                    <?php $i++; ?>
+
+                                <?php endforeach; ?>
+
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+
+            <?php endif; ?>
+
         </div>
 
     </div>

@@ -5,7 +5,7 @@ use chat\modules\chat\components\helpers\GetDialogsHelper;
 use common\models\BlackList;
 use frontend\components\helpers\SaveFileHelper;
 use frontend\components\helpers\SocketHelper;
-use frontend\modules\chat\models\forms\SendMessageForm;
+use chat\modules\chat\models\forms\SendMessageForm;
 use frontend\modules\chat\models\forms\SendPhotoForm;
 use frontend\modules\chat\models\Message;
 use frontend\modules\chat\models\relation\UserDialog;

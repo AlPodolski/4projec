@@ -9,7 +9,7 @@ $photoModel = new \frontend\modules\chat\models\forms\SendPhotoForm();
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
-$messageForm = new \frontend\modules\chat\models\forms\SendMessageForm();
+$messageForm = new \chat\modules\chat\models\forms\SendMessageForm();
 $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAsset::className()]]);
 
 ?>
@@ -174,8 +174,14 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
         'enableClientValidation' => false,
         'options' => ['class' => 'form-horizontal'],
     ]) ?>
+
     <?= $form->field($messageForm, 'chat_id',['options' => ['class' => 'd-none']])
         ->hiddenInput(['value' => $dialog['dialog_id']])->label(false) ?>
+
+    <?php $userAdminFrom = Yii::$app->params['id_'.Yii::$app->user->id] ?: 'alina' ?>
+
+    <?= $form->field($messageForm, 'from_admin_id',['options' => ['class' => 'd-none']])
+        ->hiddenInput(['value' => $userAdminFrom])->label(false) ?>
 
     <?php if ($recepient) :?>
 
@@ -186,7 +192,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
 
     <?= $form->field($messageForm, 'from_id')->hiddenInput(['value' => $user['id']])->label(false) ?>
 
-    <div class="show-message" data-from="<?php echo $user['id']; ?>" data-user-id="<?php echo $recepient ?>" onclick="get_presents(this)"data-message="Отправить подарок">
+    <div class="show-message" data-from="<?php echo $user['id']; ?>" data-user-id="<?php echo $recepient ?>" onclick="get_presents(this)" data-message="Отправить подарок">
         <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg" >
             <path d="M10.8 12.88H1.07996V7.83997H25.92V12.88H16.2" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
             <path d="M16.2 7.83997H10.8V26.88H16.2V7.83997Z" stroke="#486BEF" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
@@ -208,6 +214,7 @@ $this->registerJsFile('/files/js/chat.js', ['depends' => [\frontend\assets\AppAs
     <span data-name="<?php echo $user['username'];  ?>"
           data-dialog-id="<?php echo  $dialog['dialog_id'] ?>"
           data-user-id-to="<?php echo $recepient ?>"
+          data-admin-from="<?php echo Yii::$app->params['id_'.Yii::$app->user->id] ?: 'alina' ?>"
           onclick="send_message(this);ym(57612607,'reachGoal','<?php echo Yii::$app->params['id_'.Yii::$app->user->id] ?: 'alina' ?>')"
           class="message-send-btn" data-id="<?php echo $user['id']; ?>">
          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
