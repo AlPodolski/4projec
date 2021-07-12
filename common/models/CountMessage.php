@@ -50,7 +50,7 @@ class CountMessage extends \yii\db\ActiveRecord
     {
         if (self::find()->where(['date' => $date, 'user_name' => $user_name])->count()){
 
-            self::updateAllCounters(['count' => 1] , ['date' => $date]);
+            self::updateAllCounters(['count' => 1] , ['date' => $date,  'user_name' => $user_name]);
 
         } else {
 
