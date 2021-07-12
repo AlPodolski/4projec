@@ -64,8 +64,6 @@ class CountMessage extends \yii\db\ActiveRecord
 
             $registerCount->save();
 
-            \dd($registerCount->getErrors());
-
         }
     }
 }
